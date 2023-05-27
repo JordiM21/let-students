@@ -11,6 +11,8 @@ function classNames(...classes) {
 
 export default function Example() {
 
+  // MAKES REGISTER A STUDENT ONLY AVAILABLE WHEN IS AN ADMIN
+
   const router = useRouter()
 
   return (
@@ -21,7 +23,7 @@ export default function Example() {
             <div className="relative flex h-16 items-center justify-between">
               <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
                 {/* Mobile menu button*/}
-                <Disclosure.Button className="inline-flex items-center justify-center rounded-md p-2 text-white bg-[var(--color4)] hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
+                <Disclosure.Button className="inline-flex items-center justify-center rounded-md p-2 text-white bg-[var(--color3Shadow)] hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
                   <span className="sr-only">Open main menu</span>
                   {open ? (
                     <XMarkIcon className="block h-6 w-6" aria-hidden="true" />
@@ -40,35 +42,35 @@ export default function Example() {
                     <a
                       href={"/Dashboard"}
                       className={classNames(
-                        router.pathname === "/Dashboard" ? ' bg-[#c56d01] text-white' : 'text-gray-300 hover:bg-[var(--color2Shadow)] hover:text-white',
+                        router.pathname === "/Dashboard" ? ' bg-[#2e4052] text-white' : 'text-gray-300 hover:bg-[var(--color3Shadow)] hover:text-white',
                         'rounded-md px-3 py-2 text-sm'
                       )}
                     >
                       Dashboard
                     </a>
                     <a
-                      href={"/Beneficios"}
+                      href={"/Register"}
                       className={classNames(
-                        router.pathname === "/Beneficios" ? ' bg-[#c56d01] text-white' : 'text-gray-300 hover:bg-[var(--color2Shadow)] hover:text-white',
+                        router.pathname === "/Register" ? ' bg-[#2e4052] text-white' : 'text-gray-300 hover:bg-[var(--color3Shadow)] hover:text-white',
                         'rounded-md px-3 py-2 text-sm'
                       )}
                     >
-                      Beneficios
+                      Register
                     </a>
                     <a
-                      href={"/Niveles"}
+                      href={"/Login"}
                       className={classNames(
-                        router.pathname === "/Niveles" ? ' bg-[#c56d01] text-white' : 'text-gray-300 hover:bg-[var(--color2Shadow)] hover:text-white',
+                        router.pathname === "/Login" ? ' bg-[#2e4052] text-white' : 'text-gray-300 hover:bg-[var(--color3Shadow)] hover:text-white',
                         'rounded-md px-3 py-2 text-sm'
                       )}
                     >
-                      Niveles
+                      Login
                     </a>
                   </div>
                 </div>
               </div>
               <div onClick={() => router.push("/Profile")} className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-                <p className='text-white text-sm cursor-pointer hover:bg-[var(--color3)] border-4 border-[var(--color4)] p-1 bg-[var(--color4)] rounded-md'>
+                <p className='text-white text-sm cursor-pointer p-2 bg-[var(--color3Shadow)] rounded-md'>
                   Mi Perfil
                 </p>
               </div>
@@ -80,7 +82,7 @@ export default function Example() {
                 as="a"
                 href="/Dashboard"
                 className={classNames(
-                  router.pathname === "/Dashboard" ? ' bg-[#c56d01] text-white' : 'text-gray-300 hover:bg-[var(--color3Shadow)] hover:text-white',
+                  router.pathname === "/Dashboard" ? ' bg-[#2e4052] text-white' : 'text-gray-300 hover:bg-[var(--color3Shadow)] hover:text-white',
                   'block rounded-md px-3 py-2 text-base font-medium'
                 )}
               >
@@ -88,24 +90,24 @@ export default function Example() {
               </Disclosure.Button>
               <Disclosure.Button
                 as="a"
-                href="Beneficios"
+                href="Register"
                 className={classNames(
-                  router.pathname === "/Beneficios" ? ' bg-[#c56d01] text-white' : 'text-gray-300 hover:bg-[var(--color3Shadow)] hover:text-white',
+                  router.pathname === "/Register" ? ' bg-[#2e4052] text-white' : 'text-gray-300 hover:bg-[var(--color3Shadow)] hover:text-white',
                   'block rounded-md px-3 py-2 text-base font-medium'
                 )}
               >
-                Beneficios
+                Register
               </Disclosure.Button>
 
               <Disclosure.Button
                 as="a"
-                href="/Niveles"
+                href="/Login"
                 className={classNames(
-                  router.pathname === "/Niveles" ? ' bg-[#c56d01] text-white' : 'text-gray-300 hover:bg-[var(--color3Shadow)] hover:text-white',
+                  router.pathname === "/Login" ? ' bg-[#2e4052] text-white' : 'text-gray-300 hover:bg-[var(--color3Shadow)] hover:text-white',
                   'block rounded-md px-3 py-2 text-base font-medium'
                 )}
               >
-                Niveles
+                Login
               </Disclosure.Button>
 
             </div>

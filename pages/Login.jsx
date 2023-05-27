@@ -1,11 +1,17 @@
 import { useAuth } from '@/context/AuthContext'
 import { TextField } from '@mui/material'
 import { Router, useRouter } from 'next/router'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 export default function Login() {
   const { user, login } = useAuth()
   const router = useRouter()
+
+  useEffect(() => {
+    if (user) {
+      router.push("/Dashboard")
+    }
+  }, [])
 
   const [data, setData] = useState({
     email: "",
