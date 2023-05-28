@@ -48,24 +48,26 @@ export default function Dashboard() {
   return (
     <div>
       {
-        role == "Admin" ?
-          (
-            <AdminDashboard
-              firstName={firstName}
-              level={level}
-              allUsers={allUsers}
-              role={role}
-            />
-          ) :
-          (
-            <StudentDashboard
-              firstName={firstName}
-              level={level}
-              role={role}
-            />
-          )
+        role == "Admin" &&
+        (
+          <AdminDashboard
+            firstName={firstName}
+            level={level}
+            allUsers={allUsers}
+            role={role}
+          />
+        )
       }
-
+      {
+        role == "Student" &&
+        (
+          <StudentDashboard
+            firstName={firstName}
+            level={level}
+            role={role}
+          />
+        )
+      }
     </div>
   )
 }
