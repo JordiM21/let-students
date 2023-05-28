@@ -3,6 +3,8 @@ import { db } from '@/config/firebase';
 import { useEffect, useState } from 'react';
 import { useAuth } from '@/context/AuthContext';
 import { useRouter } from 'next/router';
+import AdminDashboard from '@/components/AdminDashboard';
+import StudentDashboard from '@/components/StudentDashboard';
 
 export default function Dashboard() {
   const [id, setId] = useState("")
@@ -19,12 +21,14 @@ export default function Dashboard() {
 
   const { user } = useAuth();
   const [authUid, setAuthUid] = useState(user.uid)
+  const [allUsers, setAllUsers] = useState([])
   const fetchPost = async () => {
     await getDocs(collection(db, "users"))
       .then((querySnapshot) => {
         const newData = querySnapshot.docs
           .map((doc) => ({ ...doc.data(), id: doc.id }));
         const userMatched = newData.filter(item => item.uid == authUid);
+        setAllUsers(newData)
         setFirstName(userMatched[0].firstName);
         setLastName(userMatched[0].lastName);
         setCountry(userMatched[0].country);
@@ -43,8 +47,25 @@ export default function Dashboard() {
 
   return (
     <div>
-      <h1>DASHBOARD</h1>
-      <p>Welcome {firstName}!</p>
+      {
+        role == "Admin" ?
+          (
+            <AdminDashboard
+              firstName={firstName}
+              level={level}
+              allUsers={allUsers}
+              role={role}
+            />
+          ) :
+          (
+            <StudentDashboard
+              firstName={firstName}
+              level={level}
+              role={role}
+            />
+          )
+      }
+
     </div>
   )
 }

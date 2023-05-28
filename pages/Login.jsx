@@ -2,6 +2,8 @@ import { useAuth } from '@/context/AuthContext'
 import { TextField } from '@mui/material'
 import { Router, useRouter } from 'next/router'
 import React, { useEffect, useState } from 'react'
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function Login() {
   const { user, login } = useAuth()
@@ -22,9 +24,18 @@ export default function Login() {
     e.preventDefault()
     try {
       await login(data.email, data.password)
+      setTimeout(toast("¡Autenticación exitosa!", {
+        hideProgressBar: true,
+        autoClose: 200,
+        type: 'success'
+      }), 200)
       router.push("/Dashboard")
     } catch (error) {
       console.log(error)
+      toast(`Algo salió mal, intenta de nuevo`, {
+        autoClose: 1000,
+        type: 'error'
+      })
     }
   }
 
@@ -57,7 +68,6 @@ export default function Login() {
           Entrar
         </button>
         <p className='text-sm text-gray-700'>¿Tienes problemas al iniciar sesión? comunicate con <a>Soporte al cliente</a></p>
-        <a href='/Register'>Registrarme</a>
       </form>
     </div>
   )

@@ -12,6 +12,7 @@ function classNames(...classes) {
 export default function Example() {
 
   // MAKES REGISTER A STUDENT ONLY AVAILABLE WHEN IS AN ADMIN
+  //Changes the nav options depending on the role student(Dashboard, Ejercicios, Niveles) admin(Dashboard, Register a Student, Panel Admin)
 
   const router = useRouter()
 

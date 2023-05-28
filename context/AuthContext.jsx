@@ -28,7 +28,7 @@ export const AuthContextProvider = ({ children }) => {
     return () => unsubscribe()
   }, [])
 
-  const register = async (email, password, firstName, lastName, age, country, phone, role, level) => {
+  const register = async (email, password, firstName, lastName, age, country, phone, role, level, plan) => {
 
     await createUserWithEmailAndPassword(auth, email, password)
       .then(cred => {
@@ -42,7 +42,8 @@ export const AuthContextProvider = ({ children }) => {
             country,
             phone,
             role,
-            level
+            level,
+            plan
           })
         } catch (error) {
           console.log("error adding document",)

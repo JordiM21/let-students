@@ -37,7 +37,8 @@ export default function Register() {
     role: "",
     level: "",
     email: "",
-    password: ""
+    password: "",
+    plan: ""
   })
 
   const handleRegister = async (e) => {
@@ -53,6 +54,7 @@ export default function Register() {
         data.phone,
         data.role,
         data.level,
+        data.plan
       )
       setData({
         firstName: "",
@@ -63,7 +65,8 @@ export default function Register() {
         role: "",
         level: "",
         email: "",
-        password: ""
+        password: "",
+        plan: ""
       })
       router.push("/Login")
     } catch (error) {
@@ -140,6 +143,16 @@ export default function Register() {
           onChange={(e) => setData({
             ...data,
             phone: e.target.value
+          })}
+        />
+        <TextField id="filled-basic" label="Plan" variant="filled"
+          value={data.plan}
+          required
+          type='text'
+          placeholder='ingresa el plan adquirido por el estudiante'
+          onChange={(e) => setData({
+            ...data,
+            plan: e.target.value
           })}
         />
         <div className='flex gap-4'>
