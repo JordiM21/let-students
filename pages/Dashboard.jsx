@@ -5,6 +5,7 @@ import { useAuth } from '@/context/AuthContext';
 import { useRouter } from 'next/router';
 import AdminDashboard from '@/components/AdminDashboard';
 import StudentDashboard from '@/components/StudentDashboard';
+import LoadingScreen from '@/components/LoadingScreen';
 
 export default function Dashboard() {
   const [id, setId] = useState("")
@@ -46,7 +47,13 @@ export default function Dashboard() {
   }, [])
 
   return (
-    <div>
+    <div className='bg-[var(--color3Shadow)]'>
+      {
+        role != "Admin" && role != "Student" &&
+        (
+          <LoadingScreen />
+        )
+      }
       {
         role == "Admin" &&
         (

@@ -24,16 +24,16 @@ export default function ListOfUsers({ allUsers }) {
   return (
     <TableContainer component={Paper}>
       <Table aria-label="simple table">
-        <TableHead>
+        <TableHead className='bg-sky-300'>
           <TableRow>
             <TableCell>Nombre</TableCell>
-            <TableCell align="right">Apellido</TableCell>
-            <TableCell align="right">Nivel</TableCell>
-            <TableCell align="right">Plan</TableCell>
-            <TableCell align="right">Role</TableCell>
-            <TableCell align="right">Email</TableCell>
-            <TableCell align="right">Country</TableCell>
-            <TableCell align="right">Phone</TableCell>
+            <TableCell align="center">Apellido</TableCell>
+            <TableCell align="center">Nivel</TableCell>
+            <TableCell align="center">Plan</TableCell>
+            <TableCell align="center">Role</TableCell>
+            <TableCell align="center">Email</TableCell>
+            <TableCell align="center">Country</TableCell>
+            <TableCell align="center">Phone</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -45,13 +45,13 @@ export default function ListOfUsers({ allUsers }) {
               <TableCell component="th" scope="row">
                 {row.firstName}
               </TableCell>
-              <TableCell align="right">{row.lastName}</TableCell>
-              <TableCell align="right">{row.level}</TableCell>
-              <TableCell align="right">{row.plan}</TableCell>
-              <TableCell align="right">{row.role}</TableCell>
-              <TableCell align="right">{row.email}</TableCell>
-              <TableCell align="right">{row.country}</TableCell>
-              <TableCell align="right">{row.phone}</TableCell>
+              <TableCell align="center">{row.lastName}</TableCell>
+              <TableCell align="center">{row.level}</TableCell>
+              <TableCell align="center">{row.plan}</TableCell>
+              <TableCell align="center">{row.role}</TableCell>
+              <TableCell align="center">{row.email}</TableCell>
+              <TableCell align="center">{row.country}</TableCell>
+              <TableCell align="center">{row.phone}</TableCell>
 
             </TableRow>
           ))}

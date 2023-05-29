@@ -20,7 +20,7 @@ export default function FormsCheck() {
     }
   ]
   return (
-    <div className='bg-[var(--color3Shadow)]'>
+    <div className=''>
       <h1 className='text-4xl font-bold text-white text-center py-4'>Google Forms Responses</h1>
       <div className='md:flex space-y-4'>
         {
