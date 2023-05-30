@@ -11,8 +11,8 @@ function classNames(...classes) {
 
 export default function Example() {
 
-  // MAKES REGISTER A STUDENT ONLY AVAILABLE WHEN IS AN ADMIN
-  //Changes the nav options depending on the role student(Dashboard, Ejercicios, Niveles) admin(Dashboard, Register a Student, Panel Admin)
+  // MAKES Niveles A STUDENT ONLY AVAILABLE WHEN IS AN ADMIN
+  //Changes the nav options depending on the role student(Dashboard, Ejercicios, Niveles) admin(Dashboard, Niveles a Student, Panel Admin)
 
   const router = useRouter()
 
@@ -50,13 +50,13 @@ export default function Example() {
                       Dashboard
                     </a>
                     <a
-                      href={"/Register"}
+                      href={"/Niveles"}
                       className={classNames(
-                        router.pathname === "/Register" ? ' bg-[#2e4052] text-white' : 'text-gray-300 hover:bg-[var(--color3Shadow)] hover:text-white',
+                        router.pathname === "/Niveles" ? ' bg-[#2e4052] text-white' : 'text-gray-300 hover:bg-[var(--color3Shadow)] hover:text-white',
                         'rounded-md px-3 py-2 text-sm'
                       )}
                     >
-                      Register
+                      Niveles
                     </a>
                     <a
                       href={"/Login"}
@@ -91,13 +91,13 @@ export default function Example() {
               </Disclosure.Button>
               <Disclosure.Button
                 as="a"
-                href="Register"
+                href="Niveles"
                 className={classNames(
-                  router.pathname === "/Register" ? ' bg-[#2e4052] text-white' : 'text-gray-300 hover:bg-[var(--color3Shadow)] hover:text-white',
+                  router.pathname === "/Niveles" ? ' bg-[#2e4052] text-white' : 'text-gray-300 hover:bg-[var(--color3Shadow)] hover:text-white',
                   'block rounded-md px-3 py-2 text-base font-medium'
                 )}
               >
-                Register
+                Niveles
               </Disclosure.Button>
 
               <Disclosure.Button

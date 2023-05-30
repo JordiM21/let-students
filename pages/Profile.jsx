@@ -8,9 +8,9 @@ import LoadingScreen from '@/components/LoadingScreen';
 import cover from '@/public/cover-dark.png'
 import Image from 'next/image';
 import YourFlag from '@/components/YourFlag';
+import { CgPassword } from 'react-icons/cg'
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
-import { CgPassword } from 'react-icons/cg'
 
 const style = {
   position: 'absolute',
@@ -80,22 +80,20 @@ export default function Profile() {
           firstName != "" &&
           (
             <>
-              <div className='bg-sky-300 h-32 relative rounded-t-xl'>
+              <div className='bg-gradient-to-r from-cyan-500 to-blue-500 h-32 relative rounded-t-xl'>
                 <div className='bg-gray-300 shadow-2xl hover:shadow-none transition ease-in 1s cursor-pointer absolute h-24 rounded-full left-8 flex items-center justify-center w-24 text-4xl font-extrabold border-8 border-[var(--color3Shadow)] -bottom-10 hover:brightness-90'>{firstName[0].toLocaleUpperCase()} {lastName[0].toLocaleUpperCase()} <div className='bg-green-500 h-6 w-6 rounded-full absolute left-14 -bottom-2'></div></div>
               </div>
               <div className='flex justify-center gap-4 items-center pt-8'>
                 <h1 className='text-center text-4xl text-white font-semibold py-4'>{firstName} {lastName} </h1>
                 <YourFlag country={country} />
               </div>
-              <div className='flex items-center justify-center pb-4'>
+              <div onClick={() => router.push("/Niveles")} className='flex items-center justify-center pb-4'>
                 <button class="btn-cta"> Continua en tu Nivel</button>
-              </div>
-              <div className='flex justify-around'>
-                <p className='bg-[var(--color2)] px-8 py-2 rounded-full font-bold text-[var(--color1)] cursor-pointer hover:text-white transition 1s ease-in'>{role}</p>
-                <p className='bg-[var(--color2)] px-8 py-2 rounded-full font-bold text-[var(--color1)] cursor-pointer hover:text-white transition 1s ease-in'>{level}</p>
               </div>
               <div className='mx-8 my-4 space-y-4'>
                 <h1 className='text-3xl text-[var(--color3)]'>Información Personal</h1>
+                <p className='text-lg text-[var(--color3)]'>Nivel Actual: <span className='text-white'>{level}</span></p>
+                <p className='text-lg text-[var(--color3)]'>Correo Electrónico: <span className='text-white'>{email}</span></p>
                 <p className='text-lg text-[var(--color3)]'>Correo Electrónico: <span className='text-white'>{email}</span></p>
                 <p className='text-lg text-[var(--color3)]'>Numero de celular: <span className='text-white'>{phone}</span></p>
                 <p className='text-lg text-[var(--color3)]'>Edad: <span className='text-white'>{age}</span></p>
@@ -110,11 +108,11 @@ export default function Profile() {
                   </button>
                 </div>
                 <div className='w-full'>
-                  <button onClick={handleOpen} class="Btn">
+                  <button onClick={handleOpen} class="Btn-password">
                     <div class="sign">
                       <CgPassword />
                     </div>
-                    <div class="text">Restablecer Contraseña</div>
+                    <div style={{ fontSize: ".9rem" }} class="text">Restablecer Contraseña</div>
                   </button>
                 </div>
               </div>
