@@ -2,6 +2,7 @@ import { useAuth } from '@/context/AuthContext'
 import { FormControl, InputLabel, MenuItem, Select, TextField } from '@mui/material'
 import React, { useEffect, useState } from 'react'
 import { countries } from '@/models/Countries'
+import { Plans } from '@/models/Plans'
 import { useRouter } from 'next/router'
 import { db } from '@/config/firebase'
 import { collection, getDocs } from 'firebase/firestore'
@@ -145,16 +146,28 @@ export default function Register() {
             phone: e.target.value
           })}
         />
-        <TextField id="filled-basic" label="Plan" variant="filled"
-          value={data.plan}
-          required
-          type='text'
-          placeholder='ingresa el plan adquirido por el estudiante'
-          onChange={(e) => setData({
-            ...data,
-            plan: e.target.value
-          })}
-        />
+        <FormControl variant="filled" className='w-full'>
+          <InputLabel id="demo-simple-select-filled-label">Plan Adquirido por estudiante</InputLabel>
+          <Select
+            required
+            labelId="demo-simple-select-filled-label"
+            id="demo-simple-select-filled"
+            value={data.plan}
+            onChange={(e) => setData({
+              ...data,
+              plan: e.target.value
+            })}
+          >
+            <MenuItem value="">
+              <em>None</em>
+            </MenuItem>
+            {
+              Plans.map((plan) => (
+                <MenuItem value={plan.value}>{plan.name}</MenuItem>
+              ))
+            }
+          </Select>
+        </FormControl>
         <div className='flex gap-4'>
           <FormControl variant="filled" className='w-full'>
             <InputLabel id="demo-simple-select-filled-label">Nivel</InputLabel>

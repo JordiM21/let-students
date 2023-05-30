@@ -48,10 +48,6 @@ export const countries = [
 		value: "uru"
 	},
 	{
-		name: "Uruguay",
-		value: "uru"
-	},
-	{
 		name: "Romania",
 		value: "rom"
 	},
