@@ -43,7 +43,8 @@ export const AuthContextProvider = ({ children }) => {
             phone,
             role,
             level,
-            plan
+            plan,
+            currentLesson: 0,
           })
         } catch (error) {
           console.log("error adding document",)

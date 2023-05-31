@@ -94,7 +94,6 @@ export default function Profile() {
                 <h1 className='text-3xl text-[var(--color3)]'>Información Personal</h1>
                 <p className='text-lg text-[var(--color3)]'>Nivel Actual: <span className='text-white'>{level}</span></p>
                 <p className='text-lg text-[var(--color3)]'>Correo Electrónico: <span className='text-white'>{email}</span></p>
-                <p className='text-lg text-[var(--color3)]'>Correo Electrónico: <span className='text-white'>{email}</span></p>
                 <p className='text-lg text-[var(--color3)]'>Numero de celular: <span className='text-white'>{phone}</span></p>
                 <p className='text-lg text-[var(--color3)]'>Edad: <span className='text-white'>{age}</span></p>
               </div>
