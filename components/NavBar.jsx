@@ -56,7 +56,7 @@ export default function Example() {
                         'rounded-md px-3 py-2 text-sm'
                       )}
                     >
-                      Niveles
+                      Levels
                     </a>
                     <a
                       href={"/Login"}
@@ -91,13 +91,13 @@ export default function Example() {
               </Disclosure.Button>
               <Disclosure.Button
                 as="a"
-                href="Niveles"
+                href="/Niveles"
                 className={classNames(
                   router.pathname === "/Niveles" ? ' bg-[#2e4052] text-white' : 'text-gray-300 hover:bg-[var(--color3Shadow)] hover:text-white',
                   'block rounded-md px-3 py-2 text-base font-medium'
                 )}
               >
-                Niveles
+                Levels
               </Disclosure.Button>
 
               <Disclosure.Button
