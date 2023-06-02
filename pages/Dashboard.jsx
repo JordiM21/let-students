@@ -10,14 +10,10 @@ import LoadingScreen from '@/components/LoadingScreen';
 export default function Dashboard() {
   const [id, setId] = useState("")
   const [firstName, setFirstName] = useState("")
-  const [lastName, setLastName] = useState("")
-  const [phone, setPhone] = useState("")
   const [level, setLevel] = useState("")
   const [role, setRole] = useState("")
   const [plan, setPlan] = useState("")
-  const [age, setAge] = useState("")
-  const [country, setCountry] = useState("")
-  const [email, setEmail] = useState("")
+  const [progress, setProgress] = useState("")
   const router = useRouter()
 
 
@@ -33,14 +29,10 @@ export default function Dashboard() {
         const allStudents = newData.filter(item => item.role == "Student")
         setAllUsers(allStudents)
         setFirstName(userMatched[0].firstName);
-        setLastName(userMatched[0].lastName);
-        setCountry(userMatched[0].country);
-        setEmail(userMatched[0].email);
         setLevel(userMatched[0].level);
-        setPhone(userMatched[0].phone);
         setRole(userMatched[0].role);
-        setAge(userMatched[0].age);
         setId(userMatched[0].uid);
+        setProgress(userMatched[0].progressLesson);
       })
   }
 
@@ -74,6 +66,7 @@ export default function Dashboard() {
             firstName={firstName}
             level={level}
             role={role}
+            progress={progress}
           />
         )
       }

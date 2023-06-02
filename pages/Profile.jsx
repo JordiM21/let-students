@@ -13,6 +13,7 @@ import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import letPet from '@/public/letPet.png'
 import ProgressLesson from '@/components/ProgressLesson';
+import YourLevelBtn from '@/components/YourLevelBtn';
 
 const style = {
   position: 'absolute',
@@ -69,9 +70,7 @@ export default function Profile() {
           (
             <>
               <div className='bg-gradient-to-r from-cyan-500 to-blue-500 h-32 relative rounded-t-xl'>
-                <div onClick={() => router.push("/Niveles")} className='absolute right-4 top-8 pb-4'>
-                  <button class="btn-cta"> Continua en tu Nivel</button>
-                </div>
+                <YourLevelBtn />
                 <div className='bg-transparent shadow-2xl hover:shadow-none transition ease-in 1s cursor-pointer absolute h-24 rounded-full left-8 flex items-center justify-center w-24 text-4xl font-extrabold border-8 border-[var(--color3Shadow)] -bottom-10 hover:brightness-90 z-20'><Image src={letPet} className='w-36 h-24 object-cover rounded-full' /><div className='bg-green-500 h-6 w-6 rounded-full absolute left-14 -bottom-2'></div></div>
               </div>
               <div className='flex justify-center gap-4 items-center pt-8'>
