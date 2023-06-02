@@ -13,9 +13,10 @@
 	--color-texto-dark: #131313;
 	--color-texto-white: #fff4e4;
 }
-.button {
+.rg-button {
 	position: relative;
-	width: 200px;
+	width: 180px;
+	font-size: 13px;
 	padding-left: 8px;
 	height: 40px;
 	cursor: pointer;
@@ -25,20 +26,20 @@
 	background-color: #3aa856;
 }
 
-.button,
+.rg-button,
 .button__icon,
 .button__text {
 	transition: all 0.3s;
 }
 
-.button .button__text {
+.rg-button .button__text {
 	color: #fff;
 	font-weight: 600;
 }
 
-.button .button__icon {
+.rg-button .button__icon {
 	position: absolute;
-	transform: translateX(150px);
+	transform: translateX(130px);
 	height: 100%;
 	width: 39px;
 	background-color: #34974d;
@@ -46,30 +47,35 @@
 	align-items: center;
 	justify-content: center;
 }
+@media only screen and (max-width: 430px) {
+	.rg-button .button__icon {
+		transform: translateX(120px);
+	}
+}
 
-.button .svg {
+.rg-button .svg {
 	width: 30px;
 	stroke: #fff;
 }
 
-.button:hover {
+.rg-button:hover {
 	background: #34974d;
 }
 
-.button:hover .button__text {
+.rg-button:hover .button__text {
 	color: transparent;
 }
 
-.button:hover .button__icon {
-	width: 180px;
+.rg-button:hover .button__icon {
+	width: 160px;
 	transform: translateX(0);
 }
 
-.button:active .button__icon {
+.rg-button:active .button__icon {
 	background-color: #2e8644;
 }
 
-.button:active {
+.rg-button:active {
 	border: 1px solid #2e8644;
 }
 

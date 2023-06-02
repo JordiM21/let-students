@@ -9,8 +9,8 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { useRouter } from 'next/router';
 
-function createData(firstName, lastName, level, plan, email, country, phone) {
-  return { firstName, lastName, level, plan, email, country, phone };
+function createData(firstName, lastName, level, plan, asignedTutor, email, country, phone) {
+  return { firstName, lastName, level, plan, asignedTutor, email, country, phone };
 }
 
 export default function ListOfUsers({ allUsers }) {
@@ -25,6 +25,7 @@ export default function ListOfUsers({ allUsers }) {
             <TableCell align="center">Apellido</TableCell>
             <TableCell align="center">Nivel</TableCell>
             <TableCell align="center">Plan</TableCell>
+            <TableCell align="center">asignedTutor</TableCell>
             <TableCell align="center">Email</TableCell>
             <TableCell align="center">Country</TableCell>
             <TableCell align="center">Phone</TableCell>
@@ -44,6 +45,7 @@ export default function ListOfUsers({ allUsers }) {
               <TableCell align="center">{row.lastName}</TableCell>
               <TableCell align="center">{row.level}</TableCell>
               <TableCell align="center">{row.plan}</TableCell>
+              <TableCell align="center">{row.asignedTutor}</TableCell>
               <TableCell align="center">{row.email}</TableCell>
               <TableCell align="center">{row.country}</TableCell>
               <TableCell align="center">{row.phone}</TableCell>

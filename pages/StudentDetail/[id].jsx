@@ -118,7 +118,7 @@ export default function () {
           </Select>
           <FormHelperText>current Level: {user.level}</FormHelperText>
         </FormControl>
-        <button type='submit' className='bg-red-100 w-full py-4 bg-[var(--color2)] text-white font-bold hover:opacity-75'>Change level</button>
+        <button type='submit' className='w-full py-4 bg-[var(--color2)] text-white font-bold hover:opacity-75'>Change level</button>
       </form>
       <form onSubmit={updatePhone} className='my-8'>
         <FormControl variant="filled" className='w-full'>
@@ -131,7 +131,7 @@ export default function () {
           />
           <FormHelperText>current Phone Number: {user.phone}</FormHelperText>
         </FormControl>
-        <button type='submit' className='bg-red-100 w-full py-4 bg-[var(--color2)] text-white font-bold hover:opacity-75'>Change Phone Number</button>
+        <button type='submit' className='w-full py-4 bg-[var(--color2)] text-white font-bold hover:opacity-75'>Change Phone Number</button>
       </form>
       <form onSubmit={updatePlan} className='my-8'>
         <FormControl variant="filled" className='w-full'>
@@ -153,7 +153,7 @@ export default function () {
           </Select>
           <FormHelperText>current Plan: {user.plan}</FormHelperText>
         </FormControl>
-        <button type='submit' className='bg-red-100 w-full py-4 bg-[var(--color2)] text-white font-bold hover:opacity-75'>Change Plan</button>
+        <button type='submit' className='w-full py-4 bg-[var(--color2)] text-white font-bold hover:opacity-75'>Change Plan</button>
       </form>
       <form onSubmit={updateTutor} className='my-8'>
         <FormControl variant="filled" className='w-full'>
@@ -175,7 +175,7 @@ export default function () {
           </Select>
           <FormHelperText>current Tutor: {user.asignedTutor}</FormHelperText>
         </FormControl>
-        <button type='submit' className='bg-red-100 w-full py-4 bg-[var(--color2)] text-white font-bold hover:opacity-75'>Change Plan</button>
+        <button type='submit' className='w-full py-4 bg-[var(--color2)] text-white font-bold hover:opacity-75'>Change Plan</button>
       </form>
       <form onSubmit={updateRole} className='bg-yellow-400 p-4 rounded-md'>
         <p className='text-yellow-900 font-semibold text-xl'>Warning</p>
@@ -196,7 +196,7 @@ export default function () {
           </Select>
           <FormHelperText>current value: {user.asignedTutor}</FormHelperText>
         </FormControl>
-        <button type='submit' className='bg-red-100 w-full py-4 bg-[var(--color4)] text-white font-bold hover:opacity-75'>Change Role</button>
+        <button type='submit' className='w-full py-4 bg-[var(--color4)] text-white font-bold hover:opacity-75'>Change Role</button>
       </form>
     </div>
   )

@@ -11,6 +11,8 @@ import YourFlag from '@/components/YourFlag';
 import { CgPassword } from 'react-icons/cg'
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
+import letPet from '@/public/letPet.png'
+import ProgressLesson from '@/components/ProgressLesson';
 
 const style = {
   position: 'absolute',
@@ -26,16 +28,7 @@ const style = {
 };
 
 export default function Profile() {
-  const [id, setId] = useState("")
-  const [firstName, setFirstName] = useState("")
-  const [lastName, setLastName] = useState("")
-  const [level, setLevel] = useState("")
-  const [phone, setPhone] = useState("")
-  const [role, setRole] = useState("")
-  const [age, setAge] = useState("")
-  const [country, setCountry] = useState("")
-  const [email, setEmail] = useState("")
-  const [asignedTutor, setAsignedTutor] = useState("")
+  const [userMatched, setUserMatched] = useState({})
   const router = useRouter()
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
@@ -50,17 +43,9 @@ export default function Profile() {
       .then((querySnapshot) => {
         const newData = querySnapshot.docs
           .map((doc) => ({ ...doc.data(), id: doc.id }));
-        const userMatched = newData.filter(item => item.uid == authUid);
-        setFirstName(userMatched[0].firstName);
-        setLastName(userMatched[0].lastName);
-        setCountry(userMatched[0].country);
-        setEmail(userMatched[0].email);
-        setLevel(userMatched[0].level);
-        setPhone(userMatched[0].phone);
-        setRole(userMatched[0].role);
-        setAge(userMatched[0].age);
-        setId(userMatched[0].uid);
-        setAsignedTutor(userMatched[0].asignedTutor)
+        const userMatch = newData.filter(item => item.uid == authUid);
+        setUserMatched(userMatch)
+        console.log(userMatched)
       })
   }
 
@@ -71,7 +56,7 @@ export default function Profile() {
   return (
     <>
       {
-        firstName == "" &&
+        !userMatched &&
         (
           <LoadingScreen />
         )
@@ -80,25 +65,31 @@ export default function Profile() {
       {/* <Image src={cover} className='w-full h-[100%] object-cover absolute -z-10' /> */}
       <div className='bg-[var(--color3Shadow)] shadow-2xl max-w-3xl mx-auto rounded-xl mt-8 pb-8'>
         {
-          firstName != "" &&
+          userMatched != "" &&
           (
             <>
               <div className='bg-gradient-to-r from-cyan-500 to-blue-500 h-32 relative rounded-t-xl'>
                 <div onClick={() => router.push("/Niveles")} className='absolute right-4 top-8 pb-4'>
                   <button class="btn-cta"> Continua en tu Nivel</button>
                 </div>
-                <div className='bg-gray-300 shadow-2xl hover:shadow-none transition ease-in 1s cursor-pointer absolute h-24 rounded-full left-8 flex items-center justify-center w-24 text-4xl font-extrabold border-8 border-[var(--color3Shadow)] -bottom-10 hover:brightness-90'>{firstName[0].toLocaleUpperCase()} {lastName[0].toLocaleUpperCase()} <div className='bg-green-500 h-6 w-6 rounded-full absolute left-14 -bottom-2'></div></div>
+                <div className='bg-transparent shadow-2xl hover:shadow-none transition ease-in 1s cursor-pointer absolute h-24 rounded-full left-8 flex items-center justify-center w-24 text-4xl font-extrabold border-8 border-[var(--color3Shadow)] -bottom-10 hover:brightness-90 z-20'><Image src={letPet} className='w-36 h-24 object-cover rounded-full' /><div className='bg-green-500 h-6 w-6 rounded-full absolute left-14 -bottom-2'></div></div>
               </div>
               <div className='flex justify-center gap-4 items-center pt-8'>
-                <h1 className='text-center text-2xl md:text-4xl text-white font-semibold py-4'>{firstName} {lastName} </h1>
-                <YourFlag country={country} />
+                <h1 className='text-center text-2xl md:text-4xl text-white font-semibold py-4'>{userMatched[0]?.firstName} {userMatched[0]?.lastName} </h1>
+                <YourFlag country={userMatched[0]?.country} />
               </div>
               <div className='mx-8 my-4 space-y-4'>
-                <p className='text-lg text-[var(--color3)]'>Nivel Actual: <span className='text-white'>{level}</span></p>
-                <p className='text-lg text-[var(--color3)]'>Correo Electrónico: <span className='text-white'>{email}</span></p>
-                <p className='text-lg text-[var(--color3)]'>Numero de celular: <span className='text-white'>{phone}</span></p>
-                <p className='text-lg text-[var(--color3)]'>Edad: <span className='text-white'>{age}</span></p>
-                <p className='text-lg text-[var(--color3)]'>Tutor asignado: <span className='text-white'>{asignedTutor}</span></p>
+                <p className='text-lg text-[var(--color3)]'>Nivel Actual: <span className='text-white'>{userMatched[0]?.level}</span></p>
+                <p className='text-lg text-[var(--color3)]'>Correo Electrónico: <span className='text-white'>{userMatched[0]?.email}</span></p>
+                <p className='text-lg text-[var(--color3)]'>Numero de celular: <span className='text-white'>{userMatched[0]?.phone}</span></p>
+                <p className='text-lg text-[var(--color3)]'>Edad: <span className='text-white'>{userMatched[0]?.age}</span></p>
+                {
+                  user.role == "Student" && (
+                    <p className='text-lg text-[var(--color3)]'>Tutor asignado: <span className='text-white'>{userMatched[0]?.asignedTutor}</span></p>
+                  )
+                }
+                <p className='text-2xl text-[var(--color3)] text-center'>Progreso de Nivel</p>
+                <ProgressLesson progress={userMatched[0]?.progressLesson} />
               </div>
               <div className='flex justify-around'>
                 <div className='w-full'>
