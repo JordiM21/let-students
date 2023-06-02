@@ -1,8 +1,10 @@
 import React from 'react'
 import ProgressLesson from './ProgressLesson'
+import { useRouter } from 'next/router'
 
 export default function StudentDashboard({ firstName, level, role, progress }) {
   const learnedWords = progress * 23
+  const router = useRouter()
   return (
     <div>
       <h1 className='text-center text-2xl py-2 font-bold text-[var(--color2)]'>Welcome {firstName}!</h1>
@@ -17,7 +19,7 @@ export default function StudentDashboard({ firstName, level, role, progress }) {
           </div>
           <div>
             <p className='font-bold text-xl'>Learn more words and complete lessons now!</p>
-            <button className='my-2 bg-[var(--color2)] w-full text-white font-bold text-2xl py-4 rounded-md hover:bg-[var(--color1)] transition-all 1s ease-in'>Go to my current Lesson</button>
+            <button onClick={() => router.push(`/Niveles/${level}/${progress + 1}`)} className='my-2 bg-[var(--color2)] w-full text-white font-bold text-2xl py-4 rounded-md hover:bg-[var(--color1)] transition-all 1s ease-in'>Go to my current Lesson</button>
           </div>
         </div>
       </div>
