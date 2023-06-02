@@ -35,6 +35,7 @@ export default function Profile() {
   const [age, setAge] = useState("")
   const [country, setCountry] = useState("")
   const [email, setEmail] = useState("")
+  const [asignedTutor, setAsignedTutor] = useState("")
   const router = useRouter()
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
@@ -59,6 +60,7 @@ export default function Profile() {
         setRole(userMatched[0].role);
         setAge(userMatched[0].age);
         setId(userMatched[0].uid);
+        setAsignedTutor(userMatched[0].asignedTutor)
       })
   }
 
@@ -74,28 +76,29 @@ export default function Profile() {
           <LoadingScreen />
         )
       }
-      <Image src={cover} className='w-full h-[100%] object-cover absolute -z-10' />
-      <div className='bg-[var(--color3Shadow)] max-w-3xl mx-auto rounded-xl mt-8 pb-8'>
+      <div className='bg-gray-200 w-full h-full object-cover absolute -z-10'></div>
+      {/* <Image src={cover} className='w-full h-[100%] object-cover absolute -z-10' /> */}
+      <div className='bg-[var(--color3Shadow)] shadow-2xl max-w-3xl mx-auto rounded-xl mt-8 pb-8'>
         {
           firstName != "" &&
           (
             <>
               <div className='bg-gradient-to-r from-cyan-500 to-blue-500 h-32 relative rounded-t-xl'>
+                <div onClick={() => router.push("/Niveles")} className='absolute right-4 top-8 pb-4'>
+                  <button class="btn-cta"> Continua en tu Nivel</button>
+                </div>
                 <div className='bg-gray-300 shadow-2xl hover:shadow-none transition ease-in 1s cursor-pointer absolute h-24 rounded-full left-8 flex items-center justify-center w-24 text-4xl font-extrabold border-8 border-[var(--color3Shadow)] -bottom-10 hover:brightness-90'>{firstName[0].toLocaleUpperCase()} {lastName[0].toLocaleUpperCase()} <div className='bg-green-500 h-6 w-6 rounded-full absolute left-14 -bottom-2'></div></div>
               </div>
               <div className='flex justify-center gap-4 items-center pt-8'>
-                <h1 className='text-center text-4xl text-white font-semibold py-4'>{firstName} {lastName} </h1>
+                <h1 className='text-center text-2xl md:text-4xl text-white font-semibold py-4'>{firstName} {lastName} </h1>
                 <YourFlag country={country} />
               </div>
-              <div onClick={() => router.push("/Niveles")} className='flex items-center justify-center pb-4'>
-                <button class="btn-cta"> Continua en tu Nivel</button>
-              </div>
               <div className='mx-8 my-4 space-y-4'>
-                <h1 className='text-3xl text-[var(--color3)]'>Información Personal</h1>
                 <p className='text-lg text-[var(--color3)]'>Nivel Actual: <span className='text-white'>{level}</span></p>
                 <p className='text-lg text-[var(--color3)]'>Correo Electrónico: <span className='text-white'>{email}</span></p>
                 <p className='text-lg text-[var(--color3)]'>Numero de celular: <span className='text-white'>{phone}</span></p>
                 <p className='text-lg text-[var(--color3)]'>Edad: <span className='text-white'>{age}</span></p>
+                <p className='text-lg text-[var(--color3)]'>Tutor asignado: <span className='text-white'>{asignedTutor}</span></p>
               </div>
               <div className='flex justify-around'>
                 <div className='w-full'>

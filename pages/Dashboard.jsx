@@ -30,7 +30,8 @@ export default function Dashboard() {
         const newData = querySnapshot.docs
           .map((doc) => ({ ...doc.data(), id: doc.id }));
         const userMatched = newData.filter(item => item.uid == authUid);
-        setAllUsers(newData)
+        const allStudents = newData.filter(item => item.role == "Student")
+        setAllUsers(allStudents)
         setFirstName(userMatched[0].firstName);
         setLastName(userMatched[0].lastName);
         setCountry(userMatched[0].country);

@@ -21,35 +21,35 @@ export default function YourFlag({ country }) {
   return (
     <div>
       {
-        country == "col" && (<Image className='h-16 w-24' src={colombia} />)
+        country == "col" && (<Image className='h-8 w-12 md:h-16 md:w-24' src={colombia} />)
       }
       {
-        country == "alb" && (<Image className='h-16 w-24' src={albania} />)
+        country == "alb" && (<Image className='h-8 w-12 md:h-16 md:w-24' src={albania} />)
       }{
-        country == "arg" && (<Image className='h-16 w-24' src={argentina} />)
+        country == "arg" && (<Image className='h-8 w-12 md:h-16 md:w-24' src={argentina} />)
       }{
-        country == "bol" && (<Image className='h-16 w-24' src={bolivia} />)
+        country == "bol" && (<Image className='h-8 w-12 md:h-16 md:w-24' src={bolivia} />)
       }{
-        country == "bra" && (<Image className='h-16 w-24' src={brazil} />)
+        country == "bra" && (<Image className='h-8 w-12 md:h-16 md:w-24' src={brazil} />)
       }{
-        country == "chi" && (<Image className='h-16 w-24' src={chile} />)
+        country == "chi" && (<Image className='h-8 w-12 md:h-16 md:w-24' src={chile} />)
       }{
-        country == "ecu" && (<Image className='h-16 w-24' src={ecuador} />)
+        country == "ecu" && (<Image className='h-8 w-12 md:h-16 md:w-24' src={ecuador} />)
       }{
-        country == "ita" && (<Image className='h-16 w-24' src={italia} />)
+        country == "ita" && (<Image className='h-8 w-12 md:h-16 md:w-24' src={italia} />)
       }{
-        country == "mex" && (<Image className='h-16 w-24' src={mexico} />)
+        country == "mex" && (<Image className='h-8 w-12 md:h-16 md:w-24' src={mexico} />)
       }{
-        country == "per" && (<Image className='h-16 w-24' src={peru} />)
+        country == "per" && (<Image className='h-8 w-12 md:h-16 md:w-24' src={peru} />)
       }{
-        country == "esp" && (<Image className='h-16 w-24' src={spain} />)
+        country == "esp" && (<Image className='h-8 w-12 md:h-16 md:w-24' src={spain} />)
       }{
-        country == "rom" && (<Image className='h-16 w-24' src={romania} />)
+        country == "rom" && (<Image className='h-8 w-12 md:h-16 md:w-24' src={romania} />)
       }{
-        country == "uru" && (<Image className='h-16 w-24' src={uruguay} />)
+        country == "uru" && (<Image className='h-8 w-12 md:h-16 md:w-24' src={uruguay} />)
       }
       {
-        country == "ven" && (<Image className='h-16 w-24' src={venezuela} />)
+        country == "ven" && (<Image className='h-8 w-12 md:h-16 md:w-24' src={venezuela} />)
       }
     </div>
   )

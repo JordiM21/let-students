@@ -9,7 +9,7 @@ export default function AdminDashboard({ allUsers, firstName }) {
       <p className='text-center text-4xl py-4 font-bold text-[var(--color2)]'>Welcome {firstName}!</p>
       <div className='px-4 py-2'>
         <div className='flex justify-around items-center py-4'>
-          <p className='text-white text-xl sm:text-3xl font-bold'>Vista General Usuarios</p>
+          <p className='text-white text-xl sm:text-3xl font-bold'>General View Students</p>
           <AddButton text={"Registrar Estudiante"} link={"/Register"} />
         </div>
         <ListOfUsers allUsers={allUsers} />

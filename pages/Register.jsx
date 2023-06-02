@@ -10,6 +10,7 @@ import { collection, getDocs } from 'firebase/firestore'
 export default function Register() {
   const { user, register } = useAuth()
   const [authUid, setAuthUid] = useState(user.uid)
+  const [admins, setAdmins] = useState([])
 
   const router = useRouter()
 
@@ -19,6 +20,8 @@ export default function Register() {
         const newData = querySnapshot.docs
           .map((doc) => ({ ...doc.data(), id: doc.id }));
         const userMatched = newData.filter(item => item.uid == authUid);
+        const adminsFound = newData.filter(item => item.role == "Admin")
+        setAdmins(adminsFound)
         if (userMatched[0].role != "Admin") {
           router.push("/Dashboard")
         }
@@ -39,7 +42,8 @@ export default function Register() {
     level: "",
     email: "",
     password: "",
-    plan: ""
+    plan: "",
+    asignedTutor: ""
   })
 
   const handleRegister = async (e) => {
@@ -55,7 +59,8 @@ export default function Register() {
         data.phone,
         data.role,
         data.level,
-        data.plan
+        data.plan,
+        data.asignedTutor
       )
       setData({
         firstName: "",
@@ -67,7 +72,8 @@ export default function Register() {
         level: "",
         email: "",
         password: "",
-        plan: ""
+        plan: "",
+        asignedTutor: ""
       })
       router.push("/Login")
     } catch (error) {
@@ -164,6 +170,27 @@ export default function Register() {
             {
               Plans.map((plan) => (
                 <MenuItem value={plan.value}>{plan.name}</MenuItem>
+              ))
+            }
+          </Select>
+        </FormControl>
+        <FormControl variant="filled" className='w-full'>
+          <InputLabel id="demo-simple-select-filled-label">Tutor Asignado</InputLabel>
+          <Select
+            labelId="demo-simple-select-filled-label"
+            id="demo-simple-select-filled"
+            value={data.asignedTutor}
+            onChange={(e) => setData({
+              ...data,
+              asignedTutor: e.target.value
+            })}
+          >
+            <MenuItem value="">
+              <em>None</em>
+            </MenuItem>
+            {
+              admins.map((admin) => (
+                <MenuItem value={admin.uid}>{admin.firstName}</MenuItem>
               ))
             }
           </Select>

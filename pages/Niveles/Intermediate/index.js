@@ -62,11 +62,13 @@ export default function index() {
     fetchPost();
   }, [])
 
+  console.log(level)
+
 
   return (
     <div>
       {
-        level != "Intermediate" || level !== "Advanced" &&
+        (level !== "Intermediate" && level !== "Advanced") &&
         (
           <LoadingScreen />
         )
