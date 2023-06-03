@@ -44,7 +44,7 @@ export default function Home() {
           className=""
         >
           <SwiperSlide>
-            <Image src={people2} className='w-full h-[100vh] object-cover' />
+            <Image src={people5} className='w-full h-[100vh] object-cover' />
           </SwiperSlide>
           <SwiperSlide>
             <Image src={people1} className='w-full h-[100vh] object-cover' />
@@ -54,12 +54,6 @@ export default function Home() {
           </SwiperSlide>
           <SwiperSlide>
             <Image src={people4} className='w-full h-[100vh] object-cover' />
-          </SwiperSlide>
-          <SwiperSlide>
-            <Image src={people5} className='w-full h-[100vh] object-cover' />
-          </SwiperSlide>
-          <SwiperSlide>
-            <Image src={people6} className='w-full h-[100vh] object-cover' />
           </SwiperSlide>
         </Swiper>
       </div>
