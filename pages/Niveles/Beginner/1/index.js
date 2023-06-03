@@ -2,22 +2,13 @@ import { DoubleExample, SingleExample } from '@/components/DoubleExample'
 import Nota from '@/components/Nota'
 import React, { useEffect, useState } from 'react'
 import ReactPlayer from 'react-player'
-import Radio from '@mui/material/Radio';
-import RadioGroup from '@mui/material/RadioGroup';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import FormControl from '@mui/material/FormControl';
-import FormLabel from '@mui/material/FormLabel';
+import UnitTest from '@/components/UnitTest';
 
 export default function index() {
 
-  const [res1, setRes1] = useState('');
-  const [res2, setRes2] = useState('');
-  const [res3, setRes3] = useState('');
-  const [res4, setRes4] = useState('');
-  const [res5, setRes5] = useState('');
 
   return (
-    <div className='mx-6'>
+    <div className='mx-6 md:max-w-xl md:mx-auto'>
       <p>Pronouns - LESSON 1.1</p>
       <h1>Personal Pronouns</h1>
       <p>(Los pronombres personales)</p>
@@ -157,71 +148,8 @@ export default function index() {
           />
           <Nota text="Nota: “It” es una partícula muy importante en inglés de la que los hablantes de lengua española se suelen olvidar." />
         </div>
-        <div className='bg-blue-200 space-x-2'>
-          <h3>Ejercicios</h3>
-          <p>Completa los ejercicios para actualizar tus progresos</p>
-          <div className='my-4'>
-            <FormLabel id="demo-controlled-radio-buttons-group">Who is Kate? Kate is my friend. ____ is a teacher.</FormLabel>
-            <RadioGroup
-              aria-labelledby="demo-controlled-radio-buttons-group"
-              name="controlled-radio-buttons-group"
-              value={res1}
-              onChange={(e) => setRes1(e.target.value)}
-            >
-              <FormControlLabel value="Her" control={<Radio />} label="Her" />
-              <FormControlLabel value="It" control={<Radio />} label="It" />
-              <FormControlLabel value="She" control={<Radio />} label="She" />
-              <FormControlLabel value="His" control={<Radio />} label="His" />
-            </RadioGroup>
-            <FormLabel id="demo-controlled-radio-buttons-group">Do you know Tom? Yes, I know _____.</FormLabel>
-            <RadioGroup
-              aria-labelledby="demo-controlled-radio-buttons-group"
-              name="controlled-radio-buttons-group"
-              value={res2}
-              onChange={(e) => setRes2(e.target.value)}
-            >
-              <FormControlLabel value="She" control={<Radio />} label="She" />
-              <FormControlLabel value="He" control={<Radio />} label="He" />
-              <FormControlLabel value="Her" control={<Radio />} label="Her" />
-              <FormControlLabel value="Him" control={<Radio />} label="Him" />
-            </RadioGroup>
-            <FormLabel id="demo-controlled-radio-buttons-group">I love this book! Did you read _____?</FormLabel>
-            <RadioGroup
-              aria-labelledby="demo-controlled-radio-buttons-group"
-              name="controlled-radio-buttons-group"
-              value={res3}
-              onChange={(e) => setRes3(e.target.value)}
-            >
-              <FormControlLabel value="it" control={<Radio />} label="it" />
-              <FormControlLabel value="He" control={<Radio />} label="He" />
-              <FormControlLabel value="Her" control={<Radio />} label="Her" />
-              <FormControlLabel value="They" control={<Radio />} label="They" />
-            </RadioGroup>
-            <FormLabel id="demo-controlled-radio-buttons-group">Where are Tom and Kate living? _____ live next to my house.</FormLabel>
-            <RadioGroup
-              aria-labelledby="demo-controlled-radio-buttons-group"
-              name="controlled-radio-buttons-group"
-              value={res4}
-              onChange={(e) => setRes4(e.target.value)}
-            >
-              <FormControlLabel value="She" control={<Radio />} label="She" />
-              <FormControlLabel value="He" control={<Radio />} label="He" />
-              <FormControlLabel value="Her" control={<Radio />} label="Her" />
-              <FormControlLabel value="They" control={<Radio />} label="They" />
-            </RadioGroup>
-            <FormLabel id="demo-controlled-radio-buttons-group">Do you want to run with _____?</FormLabel>
-            <RadioGroup
-              aria-labelledby="demo-controlled-radio-buttons-group"
-              name="controlled-radio-buttons-group"
-              value={res5}
-              onChange={(e) => setRes5(e.target.value)}
-            >
-              <FormControlLabel value="I" control={<Radio />} label="I" />
-              <FormControlLabel value="Me" control={<Radio />} label="Me" />
-              <FormControlLabel value="Her" control={<Radio />} label="Her" />
-              <FormControlLabel value="We" control={<Radio />} label="We" />
-            </RadioGroup>
-          </div>
+        <div className='my-8 rounded-md p-4 bg-blue-200 '>
+          <UnitTest level={"Beginner"} unit={1} />
         </div>
       </div>
     </div>

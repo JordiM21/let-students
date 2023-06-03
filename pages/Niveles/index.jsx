@@ -28,7 +28,6 @@ export default function Niveles() {
         setLevel(userMatched[0].level);
         setRole(userMatched[0].role);
         setPlan(userMatched[0].plan)
-        console.log(userMatched)
       })
   }
 
@@ -44,6 +43,18 @@ export default function Niveles() {
         !level &&
         (
           <LoadingScreen />
+        )
+      }
+      {
+        role == "Admin" && (
+          <div className='w-full flex justify-around py-4'>
+            <button onClick={() => router.push("/adminCreate/createUnits")} className='bg-[var(--color2)] text-white font-bold text-xl py-2 px-4 rounded-md hover:opacity-75'>
+              Create Units
+            </button>
+            <button onClick={() => router.push("/adminCreate/createTests")} className='bg-[var(--color4)] text-white font-bold text-xl py-2 px-4 rounded-md hover:opacity-75'>
+              Create Tests
+            </button>
+          </div>
         )
       }
       <h1 className='text-center text-3xl font-semibold py-5 text-white'>¡Comienza a aprender ahora!</h1>
