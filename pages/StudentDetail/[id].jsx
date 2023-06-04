@@ -194,7 +194,7 @@ export default function () {
             <MenuItem value="Student">Student</MenuItem>
             <MenuItem value="Admin">Admin</MenuItem>
           </Select>
-          <FormHelperText>current value: {user.asignedTutor}</FormHelperText>
+          <FormHelperText>current value: {user.role}</FormHelperText>
         </FormControl>
         <button type='submit' className='w-full py-4 bg-[var(--color4)] text-white font-bold hover:opacity-75'>Change Role</button>
       </form>

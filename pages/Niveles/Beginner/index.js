@@ -6,11 +6,12 @@ import Typography from '@mui/material/Typography';
 import Link from '@mui/material/Link';
 import Stack from '@mui/material/Stack';
 import { AiFillCheckCircle } from 'react-icons/ai'
-import { collection, getDocs } from 'firebase/firestore';
+import { collection, doc, getDocs, updateDoc } from 'firebase/firestore';
 import { db } from '@/config/firebase';
 import { useRouter } from 'next/router';
 import { useAuth } from '@/context/AuthContext';
 import { BsCircle } from 'react-icons/bs'
+import { toast } from 'react-toastify';
 
 export default function Beginner() {
   const breadcrumbs = [
@@ -54,7 +55,7 @@ export default function Beginner() {
         const newData = querySnapshot.docs
           .map((doc) => ({ ...doc.data(), id: doc.id }));
         const userMatched = newData.find(item => item.uid == authUid);
-        setLevel(userMatched[0].level);
+        setLevel(userMatched[0]?.level);
         if (level == "Beginner") {
           setProgress(userMatched[0].progressBeginner);
         }

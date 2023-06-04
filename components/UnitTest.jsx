@@ -4,17 +4,20 @@ import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
-import { collection, getDocs } from 'firebase/firestore';
+import { collection, doc, getDocs, updateDoc } from 'firebase/firestore';
 import { db } from '@/config/firebase';
 import { toast } from 'react-toastify';
 import { useAuth } from '@/context/AuthContext';
+import { useRouter } from 'next/router';
 
 
 export default function UnitTest({ level, unit }) {
   const [data, setData] = useState([])
   const { user } = useAuth();
   const [authUid, setAuthUid] = useState(user.uid)
-  const [progress, setProgress] = useState("")
+  const [progress, setProgress] = useState(0)
+  const router = useRouter()
+  const [userMatched, setUserMatched] = useState({})
 
 
   const fetchPost = async () => {
@@ -31,15 +34,49 @@ export default function UnitTest({ level, unit }) {
       .then((querySnapshot) => {
         const newData = querySnapshot.docs
           .map((doc) => ({ ...doc.data(), id: doc.id }));
-        const userMatched = newData.find(item => item.uid == authUid);
-        setProgress(userMatched.progressLesson)
+        const userFound = newData.find(item => item.uid == authUid);
+        setUserMatched(userFound)
+        if (level == "Beginner") {
+          setProgress(userMatched.progressBeginner)
+        }
+        if (level == "Intermediate") {
+          setProgress(userMatched.progressIntermediate)
+        }
+        if (level == "Advanced") {
+          setProgress(userMatched.progressAdvanced)
+        }
+        console.log(userMatched)
       })
   }
 
   useEffect(() => {
     fetchPost();
     fetchUser();
-  }, [])
+  }, [progress])
+
+
+  const updateProgress = async (e) => {
+    const nameRef = doc(db, "users", userMatched.id);
+    if (level == "Beginner") {
+      await updateDoc(nameRef, {
+        progressBeginner: progress + 1,
+      });
+    }
+    if (level == "Intermediate") {
+      await updateDoc(nameRef, {
+        progressIntermediate: progress + 1,
+      });
+    }
+    if (level == "Advanced") {
+      await updateDoc(nameRef, {
+        progressAdvanced: progress + 1,
+      });
+    }
+    setTimeout(() => {
+      router.reload()
+    }, 3000)
+  }
+
 
   const [res1, setRes1] = useState('');
   const [res2, setRes2] = useState('');
@@ -77,7 +114,10 @@ export default function UnitTest({ level, unit }) {
     if (res8 != data[7]?.answer) {
       return toast.error("¡Ups! Algo esta mal, revisa la octava respuesta")
     }
-    toast.success("Nice job! All of your answers are correct.")
+    setTimeout(() => {
+      toast.success("Nice job! All of your answers are correct.")
+    }, 2500)
+    updateProgress()
   }
 
   return (
@@ -257,7 +297,16 @@ export default function UnitTest({ level, unit }) {
           progress: {progress}
         </p>
         <div className='flex w-full justify-center'>
-          <button className='bg-[var(--color3)] w-10/12 py-3 my-4 text-white font-bold transition-all 1s ease-in hover:-translate-y-1 hover:shadow-xl rounded-md' type='submit'>Submit</button>
+          {
+            progress >= unit && (
+              <button disabled className='bg-green-500 w-10/12 opacity-60 py-3 my-4 text-white font-bold transition-all 1s ease-in hover:shadow-xl rounded-md' type='submit'>Well Done!</button>
+            )
+          }
+          {
+            progress < unit && (
+              <button className='bg-[var(--color3)] w-10/12 py-3 my-4 text-white font-bold transition-all 1s ease-in hover:-translate-y-1 hover:shadow-xl rounded-md' type='submit'>Submit</button>
+            )
+          }
         </div>
       </form>
     </div>
