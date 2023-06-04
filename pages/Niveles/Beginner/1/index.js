@@ -3,17 +3,19 @@ import Nota from '@/components/Nota'
 import React, { useEffect, useState } from 'react'
 import ReactPlayer from 'react-player'
 import UnitTest from '@/components/UnitTest';
+import { useRouter } from 'next/router';
 
 export default function index() {
 
+  const router = useRouter()
 
   return (
     <div className='mx-6 md:max-w-xl md:mx-auto'>
-      <p>Pronouns - LESSON 1.1</p>
+
+      <p className='text-center font-bold text-2xl md:text-4xl text-[var(--color2)]'>Pronouns - LESSON 1.1</p>
       <h1>Personal Pronouns</h1>
       <p>(Los pronombres personales)</p>
       <ReactPlayer
-
         width={"100%"}
         className="max-w-2xl mx-auto"
         url="https://www.youtube.com/watch?v=cVkSndpZtN0"
@@ -21,7 +23,6 @@ export default function index() {
       <p>Dentro de los pronombres personales, la lengua inglesa distingue entre pronombres en función de sujeto (subject pronouns) y pronombres en función de objeto (object pronouns).</p>
       <div>
         <small>Pronombres (En función de sujeto) osea que, ¡reemplazan a el sujeto!</small>
-        <p>EJEMPLO</p>
         <div className='space-y-2'>
           <DoubleExample
             english1="I"
