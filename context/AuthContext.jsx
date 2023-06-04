@@ -45,7 +45,9 @@ export const AuthContextProvider = ({ children }) => {
             level,
             plan,
             asignedTutor,
-            progressLesson: 0,
+            progressBeginner: 0,
+            progressIntermediate: 0,
+            progressAdvanced: 0,
           })
         } catch (error) {
           console.log("error adding document",)

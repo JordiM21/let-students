@@ -33,6 +33,7 @@ export default function Beginner() {
     </Typography>,
   ];
   const router = useRouter()
+  const [level, setLevel] = useState("")
 
   const [data, setData] = useState([])
   const { user } = useAuth();
@@ -53,7 +54,16 @@ export default function Beginner() {
         const newData = querySnapshot.docs
           .map((doc) => ({ ...doc.data(), id: doc.id }));
         const userMatched = newData.find(item => item.uid == authUid);
-        setProgress(userMatched.progressLesson)
+        setLevel(userMatched[0].level);
+        if (level == "Beginner") {
+          setProgress(userMatched[0].progressBeginner);
+        }
+        if (level == "Intermediate") {
+          setProgress(userMatched[0].progressIntermediate);
+        }
+        if (level == "Advanced") {
+          setProgress(userMatched[0].progressAdvanced);
+        }
       })
   }
 

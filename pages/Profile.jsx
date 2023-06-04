@@ -88,7 +88,21 @@ export default function Profile() {
                   )
                 }
                 <p className='text-2xl text-[var(--color3)] text-center'>Progreso de Nivel</p>
-                <ProgressLesson progress={userMatched[0]?.progressLesson} />
+                {
+                  userMatched[0]?.level == "Beginner" && (
+                    <ProgressLesson progress={userMatched[0]?.progressBeginner} />
+                  )
+                }
+                {
+                  userMatched[0]?.level == "Intermediate" && (
+                    <ProgressLesson progress={userMatched[0]?.progressIntermediate} />
+                  )
+                }
+                {
+                  userMatched[0]?.level == "Advanced" && (
+                    <ProgressLesson progress={userMatched[0]?.progressAdvanced} />
+                  )
+                }
               </div>
               <div className='flex justify-around'>
                 <div className='w-full'>

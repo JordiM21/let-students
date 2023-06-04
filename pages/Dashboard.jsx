@@ -32,7 +32,15 @@ export default function Dashboard() {
         setLevel(userMatched[0].level);
         setRole(userMatched[0].role);
         setId(userMatched[0].uid);
-        setProgress(userMatched[0].progressLesson);
+        if (level == "Beginner") {
+          setProgress(userMatched[0].progressBeginner);
+        }
+        if (level == "Intermediate") {
+          setProgress(userMatched[0].progressIntermediate);
+        }
+        if (level == "Advanced") {
+          setProgress(userMatched[0].progressAdvanced);
+        }
       })
   }
 
