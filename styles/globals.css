@@ -13,6 +13,11 @@
 	--color-texto-dark: #131313;
 	--color-texto-white: #fff4e4;
 }
+#bluebg {
+	background-color: var(--color2Shadow);
+	color: white;
+	font-weight: 700;
+}
 .rg-button {
 	position: relative;
 	width: 180px;

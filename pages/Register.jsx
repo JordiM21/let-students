@@ -87,21 +87,21 @@ export default function Register() {
       <div className='w-10/12 mx-auto'>Este usuario será almacenado en la base de datos y podrá acceder a la pagina web con estas credenciales</div>
       <form onSubmit={handleRegister} className='flex flex-col p-8 space-y-4'>
         <div className='flex gap-4'>
-          <TextField id="filled-basic" label="Primer Nombre" variant="filled"
+          <TextField id="filled-basic" label="Nombre" variant="filled"
             value={data.firstName}
             required
             type='text'
-            placeholder='Ingresa primer nombre'
+            placeholder='Ingresa nombre'
             onChange={(e) => setData({
               ...data,
               firstName: e.target.value
             })}
           />
-          <TextField id="filled-basic" label="Segundo Nombre" variant="filled"
+          <TextField id="filled-basic" label="Apellido" variant="filled"
             value={data.lastName}
             required
             type='text'
-            placeholder='ingresa segundo nombre'
+            placeholder='ingresa apelldio'
             onChange={(e) => setData({
               ...data,
               lastName: e.target.value

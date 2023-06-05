@@ -17,18 +17,18 @@ export default function ListOfUsers({ allUsers }) {
 
   const router = useRouter()
   return (
-    <TableContainer component={Paper}>
-      <Table aria-label="simple table">
-        <TableHead className='bg-sky-300'>
+    <TableContainer sx={{ maxHeight: 360 }} component={Paper}>
+      <Table sx={{ height: "100px" }} stickyHeader aria-label="sticky table">
+        <TableHead>
           <TableRow>
-            <TableCell>Nombre</TableCell>
-            <TableCell align="center">Apellido</TableCell>
-            <TableCell align="center">Nivel</TableCell>
-            <TableCell align="center">Plan</TableCell>
-            <TableCell align="center">asignedTutor</TableCell>
-            <TableCell align="center">Email</TableCell>
-            <TableCell align="center">Country</TableCell>
-            <TableCell align="center">Phone</TableCell>
+            <TableCell id='bluebg' >Nombre</TableCell>
+            <TableCell id='bluebg' align="center">Apellido</TableCell>
+            <TableCell id='bluebg' align="center">Nivel</TableCell>
+            <TableCell id='bluebg' align="center">Plan</TableCell>
+            {/* <TableCell id='bluebg' align="center">asignedTutor</TableCell> */}
+            <TableCell id='bluebg' align="center">Email</TableCell>
+            <TableCell id='bluebg' align="center">Country</TableCell>
+            <TableCell id='bluebg' align="center">Phone</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -45,7 +45,7 @@ export default function ListOfUsers({ allUsers }) {
               <TableCell align="center">{row.lastName}</TableCell>
               <TableCell align="center">{row.level}</TableCell>
               <TableCell align="center">{row.plan}</TableCell>
-              <TableCell align="center">{row.asignedTutor}</TableCell>
+              {/* <TableCell align="center">{row.asignedTutor}</TableCell> */}
               <TableCell align="center">{row.email}</TableCell>
               <TableCell align="center">{row.country}</TableCell>
               <TableCell align="center">{row.phone}</TableCell>
