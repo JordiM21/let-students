@@ -50,26 +50,30 @@ export default function Beginner() {
         const dataFound = newData.filter(item => item.level == "Beginner");
         setData(dataFound.sort((a, b) => a.number - b.number))
       })
+  }
+  const fetchUser = async () => {
     await getDocs(collection(db, "users"))
       .then((querySnapshot) => {
         const newData = querySnapshot.docs
           .map((doc) => ({ ...doc.data(), id: doc.id }));
         const userMatched = newData.find(item => item.uid == authUid);
-        setLevel(userMatched[0]?.level);
-        if (level == "Beginner") {
-          setProgress(userMatched[0].progressBeginner);
-        }
-        if (level == "Intermediate") {
-          setProgress(userMatched[0].progressIntermediate);
-        }
-        if (level == "Advanced") {
-          setProgress(userMatched[0].progressAdvanced);
-        }
+        console.log(userMatched)
+        setLevel(userMatched.level);
+        // if (level == "Beginner") {
+        setProgress(userMatched.progressBeginner);
+        // }
+        // if (level == "Intermediate") {
+        //   setProgress(userMatched.progressIntermediate);
+        // }
+        // if (level == "Advanced") {
+        //   setProgress(userMatched.progressAdvanced);
+        // }
       })
   }
 
   useEffect(() => {
     fetchPost()
+    fetchUser()
   }, [])
 
   return (

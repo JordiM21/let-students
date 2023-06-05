@@ -26,3 +26,13 @@ export function SingleExample({ english, spanish }) {
   )
 }
 
+export function CustomTitle({ title, titleSpanish }) {
+  return (
+    <div className='my-4'>
+      <h1 className='text-gray-800 font-bold text-4xl'>{title}</h1>
+      <p className='text-sm opacity-60 font-semibold'>({titleSpanish})</p>
+
+    </div>
+  )
+}
+

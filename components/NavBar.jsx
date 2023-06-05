@@ -77,7 +77,7 @@ export default function Example() {
               </div>
             </div>
           </div>
-          <Disclosure.Panel className="sm:hidden absolute z-10 bg-[var(--color3)] w-full">
+          <Disclosure.Panel className="sm:hidden absolute z-20 bg-[var(--color3)] w-full">
             <div className="space-y-1 px-2 pb-3 pt-2">
               <Disclosure.Button
                 as="a"
