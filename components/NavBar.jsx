@@ -59,13 +59,13 @@ export default function Example() {
                       Levels
                     </a>
                     <a
-                      href={"/Login"}
+                      href={"/Immersive"}
                       className={classNames(
-                        router.pathname === "/Login" ? ' bg-[#2e4052] text-white' : 'text-gray-300 hover:bg-[var(--color3Shadow)] hover:text-white',
+                        router.pathname === "/Immersive" ? ' bg-[#2e4052] text-white' : 'text-gray-300 hover:bg-[var(--color3Shadow)] hover:text-white',
                         'rounded-md px-3 py-2 text-sm'
                       )}
                     >
-                      Login
+                      Immersive
                     </a>
                   </div>
                 </div>
@@ -102,13 +102,13 @@ export default function Example() {
 
               <Disclosure.Button
                 as="a"
-                href="/Login"
+                href="/Immersive"
                 className={classNames(
-                  router.pathname === "/Login" ? ' bg-[#2e4052] text-white' : 'text-gray-300 hover:bg-[var(--color3Shadow)] hover:text-white',
+                  router.pathname === "/Immersive" ? ' bg-[#2e4052] text-white' : 'text-gray-300 hover:bg-[var(--color3Shadow)] hover:text-white',
                   'block rounded-md px-3 py-2 text-base font-medium'
                 )}
               >
-                Login
+                Immersive
               </Disclosure.Button>
 
             </div>
