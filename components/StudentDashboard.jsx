@@ -34,12 +34,12 @@ export default function StudentDashboard({ firstName, level, role, progress }) {
           </div>
         </div>
       </div>
-      <div className='mx-4 my-8 md:flex gap-8 items-center justify-center'>
+      <div className='mx-4 py-8 md:flex gap-8 items-center justify-center'>
         <div className='group rounded-md relative max-w-md h-72 my-8 md:max-w-xl mx-auto overflow-hidden transition-all .1s ease-in cursor-pointer'>
           <Image src={image2} className='object-contain group-hover:scale-110 transition-all .1s ease-in' />
           <p className='bg-gradient-to-t text-white text-center from-[var(--color3Shadow)] to-transparent absolute z-10 transition-all .2s backdrop-blur-lg font-semibold px-4 bg-opacity-70 ease-in bottom-0 right-0 w-full'>Immersive Activities to learn while having fun</p>
         </div>
-        <div className='my-8 bg-[var(--color2)] p-2 rounded-md max-w-xl'>
+        <div className='bg-[var(--color2)] p-2 rounded-md max-w-xl'>
           <div className='group rounded-md relative max-w-sm md:max-w-full h-40 my-8 md:h-full mx-auto overflow-hidden transition-all .1s ease-in cursor-pointer'>
             <Image src={image1} className='w-full object-cover group-hover:scale-110 transition-all .1s ease-in' />
             <p className='bg-gradient-to-t text-white text-center from-[var(--color3Shadow)] to-transparent absolute z-10 transition-all .2s backdrop-blur-lg font-semibold px-4 bg-opacity-70 ease-in bottom-0 right-0 w-full'>Start Learning right now</p>
