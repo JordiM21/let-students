@@ -46,9 +46,9 @@ export default function createTests() {
     }).then(() => (
       toast.success("Question created succesfuly!"))
     )
-    setTimeout(() => {
-      router.reload()
-    }, 2500)
+    // setTimeout(() => {
+    //   router.reload()
+    // }, 2500)
   }
 
   return (

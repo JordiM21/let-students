@@ -1,7 +1,7 @@
 import { CustomTitle, DoubleExample, SingleExample } from '@/components/DoubleExample'
 import Nota from '@/components/Nota'
 import React, { useEffect, useState } from 'react'
-import ReactPlayer from 'react-player'
+import ReactPlayer from 'react-player/youtube'
 import UnitTest from '@/components/UnitTest';
 import { useRouter } from 'next/router';
 import { Breadcrumbs, Link, Typography } from '@mui/material';

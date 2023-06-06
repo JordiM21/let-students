@@ -59,15 +59,7 @@ export default function Beginner() {
         const userMatched = newData.find(item => item.uid == authUid);
         console.log(userMatched)
         setLevel(userMatched.level);
-        // if (level == "Beginner") {
         setProgress(userMatched.progressBeginner);
-        // }
-        // if (level == "Intermediate") {
-        //   setProgress(userMatched.progressIntermediate);
-        // }
-        // if (level == "Advanced") {
-        //   setProgress(userMatched.progressAdvanced);
-        // }
       })
   }
 
