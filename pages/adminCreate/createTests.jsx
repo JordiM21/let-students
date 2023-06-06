@@ -17,7 +17,7 @@ export default function createTests() {
   const [op2, setOp2] = useState("")
   const [op3, setOp3] = useState("")
   const [op4, setOp4] = useState("")
-  const [unit, setUnit] = useState("")
+  const [unit, setUnit] = useState(1)
 
   const router = useRouter()
 
@@ -26,14 +26,14 @@ export default function createTests() {
       .then((querySnapshot) => {
         const newData = querySnapshot.docs
           .map((doc) => ({ ...doc.data(), id: doc.id }));
-        const unitMatched = newData.filter(item => item.level == currentLevel);
+        const unitMatched = newData.filter(item => item.level == currentLevel && item.unit == unit);
         setAllUnits(unitMatched)
       })
   }
 
   useEffect(() => {
     fetchPost();
-  }, [currentLevel])
+  }, [currentLevel, unit])
 
   const createUnit = async (e) => {
     e.preventDefault()
@@ -69,7 +69,7 @@ export default function createTests() {
         </Select>
       </FormControl>
       <div>
-        <p>{allUnits.length} Questions for the level {currentLevel}</p>
+        <p>{allUnits.length} Questions for the level {currentLevel} and unit {unit}</p>
       </div>
       {
         allUnits.map((unit) => (
@@ -82,15 +82,35 @@ export default function createTests() {
       <div>
         <p className='text-3xl text-[var(--color2)] text-center'>Create Question on the level <span className='text-[var(--color3)]'>{currentLevel}</span></p>
         <form onSubmit={createUnit}>
-          <div className='w-full flex justify-center'>
-            <TextField id="filled-basic" label="In what unit you want to add this question?" variant="filled"
-              value={unit}
-              className='w-10/12'
+          <FormControl variant="filled" className='w-full'>
+            <InputLabel id="demo-simple-select-filled-label">Select the unit/lesson of your question</InputLabel>
+            <Select
               required
-              type='number'
+              labelId="demo-simple-select-filled-label"
+              id="demo-simple-select-filled"
+              value={unit}
               onChange={(e) => setUnit(e.target.value)}
-            />
-          </div>
+            >
+              <MenuItem value="1">1</MenuItem>
+              <MenuItem value="2">2</MenuItem>
+              <MenuItem value="3">3</MenuItem>
+              <MenuItem value="4">4</MenuItem>
+              <MenuItem value="5">5</MenuItem>
+              <MenuItem value="6">6</MenuItem>
+              <MenuItem value="7">7</MenuItem>
+              <MenuItem value="8">8</MenuItem>
+              <MenuItem value="9">9</MenuItem>
+              <MenuItem value="10">10</MenuItem>
+              <MenuItem value="11">11</MenuItem>
+              <MenuItem value="12">12</MenuItem>
+              <MenuItem value="13">13</MenuItem>
+              <MenuItem value="14">14</MenuItem>
+              <MenuItem value="15">15</MenuItem>
+              {/* <MenuItem value="16">16</MenuItem>
+              <MenuItem value="17">17</MenuItem> */}
+
+            </Select>
+          </FormControl>
           <div className='my-4 flex flex-col md:flex-row space-y-4 md:space-y-0 justify-between w-full md:justify-center md:gap-8'>
             <TextField id="filled-basic" label="Insert question" variant="filled"
               value={question}
@@ -137,6 +157,7 @@ export default function createTests() {
           </div>
         </form>
       </div>
+
     </div>
   )
 }

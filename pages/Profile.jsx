@@ -45,7 +45,6 @@ export default function Profile() {
           .map((doc) => ({ ...doc.data(), id: doc.id }));
         const userMatch = newData.filter(item => item.uid == authUid);
         setUserMatched(userMatch)
-        console.log(userMatched)
       })
   }
 
@@ -87,7 +86,7 @@ export default function Profile() {
                     <p className='text-lg text-[var(--color3)]'>Tutor asignado: <span className='text-white'>{userMatched[0]?.asignedTutor}</span></p>
                   )
                 }
-                <p className='text-2xl text-[var(--color3)] text-center'>Progreso de Nivel</p>
+                <p className='text-2xl text-[var(--color3)] text-center'>Progreso de Nivel <span className='text-[var(--color2)] font-bold'>{userMatched[0]?.level}</span></p>
                 {
                   userMatched[0]?.level == "Beginner" && (
                     <ProgressLesson progress={userMatched[0]?.progressBeginner} />

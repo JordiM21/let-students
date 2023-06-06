@@ -41,178 +41,188 @@ export default function index() {
       <Breadcrumbs separator="›" aria-label="breadcrumb">
         {breadcrumbs}
       </Breadcrumbs>
-      <p className='opacity-60 font-bold text-lg md:text-4xl text-[var(--color2)]'>ARTICLES - LESSON 2.1</p>
-      <CustomTitle title="The Definite Article" titleSpanish="El artículo determinado" />
+      <p className='opacity-60 font-bold text-lg md:text-4xl text-[var(--color2)]'>POSSESIVES PRONOUNS - LESSON 2</p>
+      <CustomTitle title="Possesives" titleSpanish="Los posesivos" />
       <ReactPlayer
         width={"100%"}
         className="max-w-2xl mx-auto my-8 border-8 rounded-md bg-blue-600 border-blue-600"
-        url="https://www.youtube.com/watch?v=ZBxF4wlXR0c"
+        url="https://www.youtube.com/watch?v=pbpnnvwb5wQ"
         controls={true} />
-      <p className='font-bold text-gray-700'>Los artículos definen a un nombre y siempre están situados delante del nombre. En inglés, a diferencia del castellano, no tienen género ni forma plural. En castellano decimos “el coche” (género masculino, singular) o “las casas” (género femenino, plural) y en inglés es “the car” y “the houses”. “The” corresponde a los siguientes artículos en español: el, la, los, las.</p>
+      <p className='font-bold text-gray-700'>Los posesivos se clasifican en dos tipos según su función en la oración.</p>
       <div className='my-4'>
-        <p className='text-sm opacity-60 mt-8'>Masculino/Singular: (EL)</p>
+        <p className='text-sm opacity-60 mt-8'>PRONOMBRES POSESIVOS (EN FUNCIÓN DE DETERMINANTE)</p>
         <div className='space-y-4'>
+          <DoubleExample
+            english1="my"
+            english2="This is my house."
+            spanish1="mi(s)"
+            spanish2="Ésta es mi casa."
+          />
+          <DoubleExample
+            english1="your"
+            english2="This is your book."
+            spanish1="tu(s), de ti / su(s), de usted"
+            spanish2="Éste es tu libro. / Éste es su libro."
+          />
+          <DoubleExample
+            english1="his"
+            english2="This is his bicycle."
+            spanish1="su(s), de él"
+            spanish2="Ésta es su bicicleta."
+          />
+          <DoubleExample
+            english1="her"
+            english2="This is her dress."
+            spanish1="su(s), de ella"
+            spanish2="Éste es su vestido."
+          />
+          <DoubleExample
+            english1="its"
+            english2="The dog doesn’t like to be on its own."
+            spanish1="su(s)"
+            spanish2="El perro no le gusta estar solo."
+          />
+          <DoubleExample
+            english1="our"
+            english2="These are our suitcases."
+            spanish1="nuestro(s), de nosotros"
+            spanish2="Éstas son nuestras maletas."
+          />
+          <DoubleExample
+            english1="your"
+            english2="These are your seats."
+            spanish1="vuestro(s) / su(s), de ustedes"
+            spanish2="Éstos son vuestros asientos. / Éstos son sus asientos."
+          />
+          <DoubleExample
+            english1="their"
+            english2="These are their books."
+            spanish1="su(s), de ellos"
+            spanish2="Éstos son sus libros."
+          />
+          <Nota text="Nota: Sólo utilizamos el pronombre posesivo “its” con el adjetivo “own”." />
+          <p className='text-sm opacity-60 mt-8'>PRONOMBRES POSESIVOS (EN FUNCIÓN DE PRONOMBRE)</p>
+          <DoubleExample
+            english1="mine"
+            english2="This book is mine."
+            spanish1="mío(s)"
+            spanish2="Este libro es mío."
+          />
+          <DoubleExample
+            english1="yours"
+            english2="Is this book yours?"
+            spanish1="tuyo(s) / suyo(s)"
+            spanish2="¿Este libro es tuyo? / ¿Este libro es suyo?"
+          />
+          <DoubleExample
+            english1="his"
+            english2="This bicycle is his."
+            spanish1="suyo(s)"
+            spanish2="Esta bicicleta es de él."
+          />
+          <DoubleExample
+            english1="hers"
+            english2="The dress is hers."
+            spanish1="suyo(s)"
+            spanish2="El vestido es de ella."
+          />
+          <DoubleExample
+            english1="its"
+            english2="The house is its (the cat´s)."
+            spanish1="su(s)"
+            spanish2="La casa es suya (del gato)."
+          />
+          <DoubleExample
+            english1="ours"
+            english2="The suitcases are ours."
+            spanish1="nuestro(s)"
+            spanish2="Las maletas son nuestras."
+          />
+          <DoubleExample
+            english1="theirs"
+            english2="This pencil is theirs."
+            spanish1="suyo(s)"
+            spanish2="Este lápiz es de ellos."
+          />
+          <p className='font-bold opacity-75'>Los posesivos varían según el que posee y no según la cantidad poseida:</p>
+          <DoubleExample
+            english1="My book"
+            english2="My books"
+            spanish1="Mi libro"
+            spanish2="Mis libros"
+          />
+          <DoubleExample
+            english1="Your book"
+            english2="Your books"
+            spanish1="tu libro"
+            spanish2="tus libros"
+          />
+          <p className='text-[var(--color2)] font-bold text-lg opacity-75'>EXAMPLES:</p>
           <SingleExample
-            english="The boy"
-            spanish="el niño"
+            english="My car is blue."
+            spanish="Mi coche/carro es azul."
           />
           <SingleExample
-            english="The book"
-            spanish="el libro"
-          />
-          <p className='text-sm opacity-60 mt-8'>Masculino/Plural: (LOS)</p>
-          <SingleExample
-            english="The books"
-            spanish="Los libros"
+            english="His house is big"
+            spanish="Su (hombre) casa es grande"
           />
           <SingleExample
-            english="The boys"
-            spanish="Los niños"
-          />
-          <p className='text-sm opacity-60 mt-8'>Femenino/Singular: (la)</p>
-          <SingleExample
-            english="The girl"
-            spanish="La niña"
+            english="Her friend is kind"
+            spanish="Su (mujer) amiga es amigable"
           />
           <SingleExample
-            english="The table"
-            spanish="La mesa"
-          />
-          <p className='text-sm opacity-60 mt-8'>Femenino/plural: (las)</p>
-          <SingleExample
-            english="The tables"
-            spanish="Las mesas"
+            english="The blue car is mine"
+            spanish="El carro azul es mío"
           />
           <SingleExample
-            english="The girls"
-            spanish="Las niñas"
+            english="The big house is his"
+            spanish="La casa grande es suya. (hombre)"
           />
-          <p className='font-bold opacity-60 mt-8'>Este artículo puede ir precedido de las preposiciones “of” o “to”. En inglés no hay contracción de preposición y artículo (“Del” = “of the” y “al” = “to the”).</p>
-          <p className='text-gray-600 font-bold text-xl'>EJEMPLO</p>
+          <Nota text="Nota: estos ejemplos responden a la pregunta, ¿De quién es?. algo así: ¿De quien es el carro? / Whose is the car? -> La respuesta sería: (El carro es mío)/(The car is mine)  " />
+          <CustomTitle title="Possessive Pronouns vs. the Genitive Case" titleSpanish="Pronombres posesivos y el genitivo" />
+          <p className='font-bold opacity-75'>El genitivo por dificil que suene es solo agregar una “-s” al final de un sujeto para decir que es el propietario del siguiente sustantivo, no te quiero confundir, ¡mira los ejemplos!:</p>
           <SingleExample
-            english="The days of the week"
-            spanish="Los días de la semana"
+            english="Her dress…"
+            spanish="Su vestido... [de ella]"
           />
+          <p className='text-sm font-bold opacity-75'>O podemos usar el genitivo "-s"</p>
           <SingleExample
-            english="I am going to the garden"
-            spanish="Me voy al jardín."
-          />
-          <CustomTitle
-            title="Uses of the Definite Article"
-            titleSpanish="Usos del artículo determinado" />
-          <p className='font-bold text-gray-700 text-sm opacity-75'>1. Cuando sabemos de quién o de qué estamos hablando. Utilizamos “the” para indicar algo o alguien en particular, por ello se llama definido. Hablamos de algo o alguien concreto que tanto el emisor como el receptor del mensaje conocen porque ya ha salido anteriormente en la conversación o porque los dos lo conocen previamente.</p>
-          <SingleExample
-            english="What is the name of the restaurant?"
-            spanish="¿Cuál es el nombre del restaurante?"
+            english="Andrea’s dress…"
+            spanish="El vestido de Andrea"
           />
           <SingleExample
-            english="Do you remember the day we went to New York?"
-            spanish="¿Recuerdas el día que fuimos a Nueva York?"
+            english="Giuseppe's Pizzeria"
+            spanish="La pizzeria de giuseppe"
           />
           <SingleExample
-            english="Who is the president of the United States?"
-            spanish="¿Quién es el presidente de los Estados Unidos?"
+            english="My friend's car"
+            spanish="El carro de mi amigo"
           />
-          <SingleExample
-            english="The doctor is very good."
-            spanish="El médico es muy bueno."
-          />
-          <p className='font-bold text-gray-700 text-sm opacity-75'>2. Con los nombres de regiones geológicas, cadenas de montañas, mares, océanos, grupos de islas, ríos y países en plural.</p>
-          <SingleExample
-            english="The United States"
-            spanish="Los Estados Unidos"
-          />
-          <SingleExample
-            english="The Netherlands"
-            spanish="Los Países Bajos"
-          />
-          <SingleExample
-            english="The Andes"
-            spanish="Las montañas Andes"
-          />
-          <SingleExample
-            english="The Atlantic Ocean"
-            spanish="El océano Atlántico"
-          />
-          <p className='font-bold text-gray-700 text-sm opacity-75'>3. Para hacer referencia a direcciones (right, left, top, bottom) y a los puntos cardinales (north, south, east, west).</p>
-          <SingleExample
-            english="the south of France"
-            spanish="el sur de Francia"
-          />
-          <SingleExample
-            english="
-the house on the left"
-            spanish="la casa de la izquierda"
-          />
-          <SingleExample
-            english="
-the top of the page"
-            spanish="la parte superior de la página"
-          />
-          <p className='font-bold text-gray-700 text-sm opacity-75'>4. Con los adjetivos en grado superlativo y números ordinales.</p>
-          <SingleExample
-            english="the tallest building"
-            spanish="el edificio más alto"
-          />
-          <SingleExample
-            english="the strongest man"
-            spanish="el hombre más fuerte"
-          />
-          <SingleExample
-            english="the first time"
-            spanish="la primera vez"
-          />
-          <SingleExample
-            english="the second floor"
-            spanish="el segundo piso"
-          />
-          <CustomTitle title="When Not To Use The Definite Article" titleSpanish="Cuando no usamos el artículo determinado" />
-          <p className='font-bold text-gray-700 text-sm opacity-75'>1. Cuando hablamos de algo en general.</p>
-          <SingleExample
-            english="
-I like ice cream."
-            spanish="Me gusta el helado"
-          />
-          <SingleExample
-            english="Math is difficult"
-            spanish="Las matemáticas son difíciles"
-          />
-          <p className='font-bold text-gray-700 text-sm opacity-75'>2. Nunca utilizaremos “the” cuando nos referimos a la televisión, las horas de las comidas, los días de la semana, la hora, los meses del año, las estaciones o los años.</p>
+          <p className='text-sm font-bold opacity-75'>Es muy importante que recuerdes que el genitivo "-s" solo lo usamos con personas:</p>
 
           <SingleExample
+            english="Paul's house..."
+            spanish="La casa de Paul"
+          />
+          <p className='text-sm font-bold opacity-75'>Cuando nos referimos a cosas o lugares que pertenecen a otra cosa usamos "of":</p>
+          <SingleExample
+            english="The wheel of the bike…"
+            spanish="La rueda de la bicicleta…"
+          />
+          <SingleExample
             english="
-I do not like to watch television [TV]."
-            spanish="No me gusta ver la televisión [tele]."
+            Washington is the capital of the United States."
+            spanish="Washington es la capital de los Estados Unidos."
+          />
+          <Nota text="Cuando el nombre del poseedor termina en una “s”, el genitivo se añade a final del poseedor, pero sólo añadiendo el apóstrofo y no la “-s” del genitivo." />
+          <p className='text-[var(--color2)] font-bold text-lg opacity-75'>EXAMPLES:</p>
+          <SingleExample
+            english="Luis' house"
+            spanish=" La casa de Luis.."
           />
           <SingleExample
-            english="I have an appointment on Monday."
-            spanish="Tengo una cita el lunes."
-          />
-          <SingleExample
-            english="We eat breakfast at 9:00"
-            spanish="Comemos el desayuno [Desayunamos] a las 9:00."
-          />
-          <p className='font-bold text-gray-700 text-sm opacity-75'>3. Con instituciones y modos de transporte, cuando estamos hablando en general.</p>
-          <SingleExample
-            english="We like school."
-            spanish="Nos gusta la escuela."
-          />
-          <SingleExample
-            english="I go to work by train."
-            spanish="Voy al trabajo en tren"
-          />
-          <SingleExample
-            english="They go to church on Sundays"
-            spanish="Van a la iglesia los domingos."
-          />
-          <p className='font-bold text-gray-700 text-sm opacity-75'>4. No se utiliza el artículo con nombres de ciudades ni nombres de lugares en general, aunque hay algunas excepciones como hemos visto en el apartado anterior. Además, no se utiliza el artículo con lagos o calles.</p>
-          <SingleExample
-            english="I went to Lake Titicaca."
-            spanish="Fui al lago Titicaca."
-          />
-          <SingleExample
-            english="She lives on Flores Street."
-            spanish="Vive en la calle Flores"
+            english="The students’ exams…"
+            spanish="los exámenes de los estudiantes…"
           />
         </div>
         <div className='my-8 rounded-md p-4 bg-blue-200 '>
