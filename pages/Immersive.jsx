@@ -32,22 +32,25 @@ export default function Immersive() {
   const router = useRouter()
 
   return (
-    <div><h1>Immersive page</h1>
-      <FormControl variant="filled" className='w-full'>
-        <InputLabel id="demo-simple-select-filled-label">Search by Level</InputLabel>
-        <Select
-          required
-          labelId="demo-simple-select-filled-label"
-          id="demo-simple-select-filled"
-          value={currentLevel}
-          onChange={(e) => setCurrentLevel(e.target.value)}
-        >
-          <MenuItem value="all">All</MenuItem>
-          <MenuItem value="Beginner">Beginner</MenuItem>
-          <MenuItem value="Intermediate">Intermediate</MenuItem>
-          <MenuItem value="Advanced">Advanced</MenuItem>
-        </Select>
-      </FormControl>
+    <div>
+      <h1 className='px-4 text-3xl my-4 font-bold text-[var(--color1)]'>Immersive page</h1>
+      <div className='w-full flex justify-center px-4'>
+        <FormControl variant="filled" className='w-full md:max-w-md'>
+          <InputLabel id="demo-simple-select-filled-label">Search by Level</InputLabel>
+          <Select
+            required
+            labelId="demo-simple-select-filled-label"
+            id="demo-simple-select-filled"
+            value={currentLevel}
+            onChange={(e) => setCurrentLevel(e.target.value)}
+          >
+            <MenuItem value="all">All</MenuItem>
+            <MenuItem value="Beginner">Beginner</MenuItem>
+            <MenuItem value="Intermediate">Intermediate</MenuItem>
+            <MenuItem value="Advanced">Advanced</MenuItem>
+          </Select>
+        </FormControl>
+      </div>
       <div className='md:flex md:mx-8 gap-4 flex-wrap space-y-8 py-8 md:space-y-0'>
         {
           data.map((video) => (
