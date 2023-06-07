@@ -3,7 +3,6 @@ import ProgressLesson from './ProgressLesson'
 import { useRouter } from 'next/router'
 import Image from 'next/image'
 import image1 from '@/public/writeAndImprove.png'
-
 import image2 from '@/public/enviroments.png'
 import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
