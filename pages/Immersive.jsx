@@ -1,4 +1,5 @@
 import { db } from '@/config/firebase';
+import { useAuth } from '@/context/AuthContext';
 import { FormControl, InputLabel, MenuItem, Select } from '@mui/material';
 import { collection, getDocs } from 'firebase/firestore';
 import { useRouter } from 'next/router';
@@ -9,6 +10,10 @@ export default function Immersive() {
 
   const [data, setData] = useState([])
   const [currentLevel, setCurrentLevel] = useState("all")
+  const { user } = useAuth();
+  const [authUid, setAuthUid] = useState(user.uid)
+  const [role, setRole] = useState("")
+
 
   const fetchPost = async () => {
     await getDocs(collection(db, "Immersive"))
@@ -23,6 +28,13 @@ export default function Immersive() {
           setData(dataFound)
         }
       })
+    await getDocs(collection(db, "users"))
+      .then((querySnapshot) => {
+        const newData = querySnapshot.docs
+          .map((doc) => ({ ...doc.data(), id: doc.id }));
+        const userMatched = newData.find(item => item.uid == authUid);
+        setRole(userMatched.role)
+      })
   }
 
   useEffect(() => {
@@ -33,7 +45,14 @@ export default function Immersive() {
 
   return (
     <div>
-      <h1 className='px-4 text-3xl my-4 font-bold text-[var(--color1)]'>Immersive page</h1>
+      <h1 className='px-4 text-3xl text-center my-4 font-bold text-[var(--color1)]'>Immersive page</h1>
+      {
+        role == "Admin" && (
+          <div className='w-10/12 my-8 hover:scale-105 mx-auto max-w-md'>
+            <button onClick={() => router.push("/adminCreate/createVideo")} className='text-white hover:opacity-80 font-bold w-full py-2 rounded-md bg-[var(--color3)]'>{role} Function: CREATE VIDEOS </button>
+          </div>
+        )
+      }
       <div className='w-full flex justify-center px-4'>
         <FormControl variant="filled" className='w-full md:max-w-md'>
           <InputLabel id="demo-simple-select-filled-label">Search by Level</InputLabel>
@@ -54,7 +73,7 @@ export default function Immersive() {
       <div className='md:flex md:mx-8 gap-4 flex-wrap space-y-8 py-8 md:space-y-0'>
         {
           data.map((video) => (
-            <div onClick={() => router.push(`/immersiveActivities/${video.id}`)} className='hover:opacity-70 transition-all 1s ease-in hover:scale-110 cursor-pointer w-[280px] mx-auto bg-blue-950 rounded-md relative'>
+            <div onClick={() => router.push(`/immersiveActivities/${video.id}`)} className='shadow-gray-600 shadow-xl hover:opacity-70 transition-all 1s ease-in hover:scale-110 cursor-pointer w-[280px] mx-auto bg-blue-950 rounded-md relative'>
               <ReactPlayer
                 width={"100%"}
                 height={"150px"}
