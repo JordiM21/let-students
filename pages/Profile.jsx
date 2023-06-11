@@ -45,7 +45,7 @@ export default function Profile() {
       .then((querySnapshot) => {
         const newData = querySnapshot.docs
           .map((doc) => ({ ...doc.data(), id: doc.id }));
-        const userMatch = newData.filter(item => item.uid == authUid);
+        const userMatch = newData.find(item => item.uid == authUid);
         setUserMatched(userMatch)
         const studentsAsigned = newData.filter(item => item.asignedTutor == authUid)
         setStudents(studentsAsigned)
@@ -72,8 +72,8 @@ export default function Profile() {
             <>
               <div className='bg-gradient-to-r from-cyan-500 to-blue-500 h-32 relative rounded-t-xl'>
                 {
-                  userMatched[0]?.role == "Student" && (
-                    <div onClick={() => router.push(`/Niveles/${userMatched[0]?.level}`)} className='absolute right-4 top-8 pb-4'>
+                  userMatched.role == "Student" && (
+                    <div onClick={() => router.push(`/Niveles/${userMatched.level}`)} className='absolute right-4 top-8 pb-4'>
                       <button class="btn-cta"> Continua en tu Nivel</button>
                     </div>
                   )
@@ -81,33 +81,33 @@ export default function Profile() {
                 <div className='bg-transparent shadow-2xl hover:shadow-none transition ease-in 1s cursor-pointer absolute h-24 rounded-full left-8 flex items-center justify-center w-24 text-4xl font-extrabold border-8 border-[var(--color3Shadow)] -bottom-10 hover:brightness-90 z-20'><Image src={letPet} className='w-20 h-20 object-cover rounded-full' /><div className='bg-green-500 h-6 w-6 rounded-full absolute left-14 -bottom-2'></div></div>
               </div>
               <div className='flex justify-center gap-4 items-center pt-8'>
-                <h1 className='text-center text-2xl md:text-4xl text-white font-semibold py-4'>{userMatched[0]?.firstName} {userMatched[0]?.lastName} </h1>
-                <YourFlag country={userMatched[0]?.country} />
+                <h1 className='text-center text-2xl md:text-4xl text-white font-semibold py-4'>{userMatched.firstName} {userMatched.lastName} </h1>
+                <YourFlag country={userMatched.country} />
               </div>
               <div className='mx-8 my-4 space-y-4'>
-                <p className='text-lg text-[var(--color3)]'>Nivel Actual: <span className='text-white'>{userMatched[0]?.level}</span></p>
-                <p className='text-lg text-[var(--color3)]'>Correo Electrónico: <span className='text-white'>{userMatched[0]?.email}</span></p>
-                <p className='text-lg text-[var(--color3)]'>Numero de celular: <span className='text-white'>{userMatched[0]?.phone}</span></p>
-                <p className='text-lg text-[var(--color3)]'>Edad: <span className='text-white'>{userMatched[0]?.age}</span></p>
+                <p className='text-lg text-[var(--color3)]'>Nivel Actual: <span className='text-white'>{userMatched.level}</span></p>
+                <p className='text-lg text-[var(--color3)]'>Correo Electrónico: <span className='text-white'>{userMatched.email}</span></p>
+                <p className='text-lg text-[var(--color3)]'>Numero de celular: <span className='text-white'>{userMatched.phone}</span></p>
+                <p className='text-lg text-[var(--color3)]'>Edad: <span className='text-white'>{userMatched.age}</span></p>
                 {
                   user.role == "Student" && (
-                    <p className='text-lg text-[var(--color3)]'>Tutor asignado: <span className='text-white'>{userMatched[0]?.asignedTutor}</span></p>
+                    <p className='text-lg text-[var(--color3)]'>Tutor asignado: <span className='text-white'>{userMatched.asignedTutor}</span></p>
                   )
                 }
-                <p className='text-2xl text-[var(--color3)] text-center'>Progreso de Nivel <span className='text-[var(--color2)] font-bold'>{userMatched[0]?.level}</span></p>
+                <p className='text-2xl text-[var(--color3)] text-center'>Progreso de Nivel <span className='text-[var(--color2)] font-bold'>{userMatched.level}</span></p>
                 {
-                  userMatched[0]?.level == "Beginner" && (
-                    <ProgressLesson progress={userMatched[0]?.progressBeginner} />
-                  )
-                }
-                {
-                  userMatched[0]?.level == "Intermediate" && (
-                    <ProgressLesson progress={userMatched[0]?.progressIntermediate} />
+                  userMatched.level == "Beginner" && (
+                    <ProgressLesson progress={userMatched.progressBeginner} />
                   )
                 }
                 {
-                  userMatched[0]?.level == "Advanced" && (
-                    <ProgressLesson progress={userMatched[0]?.progressAdvanced} />
+                  userMatched.level == "Intermediate" && (
+                    <ProgressLesson progress={userMatched.progressIntermediate} />
+                  )
+                }
+                {
+                  userMatched.level == "Advanced" && (
+                    <ProgressLesson progress={userMatched.progressAdvanced} />
                   )
                 }
               </div>
@@ -145,7 +145,7 @@ export default function Profile() {
           )
         }
         {
-          userMatched[0].role == "Admin" && (
+          userMatched.role == "Admin" && (
             <div className='mx-14'>
               <h1 className='text-3xl text-white font-bold text-center'>Your students</h1>
               {

@@ -76,7 +76,7 @@ export default function VideoDetails() {
         const userRef = doc(db, "users", userMatched.id); // Replace USER_ID with the actual user ID
         await updateDoc(userRef, {
           likedVideos: [...userMatched.likedVideos, data.url],
-        }).then(() => toast.success("Added succesfully!"))
+        }).then(() => toast.success("Saved succesfully!"))
 
         setLiked(true);
       } catch (error) {
@@ -84,7 +84,7 @@ export default function VideoDetails() {
       }
     }
     else {
-      toast.error("This video is already liked!")
+      toast.info("This video is already on your list!")
     }
   };
 
@@ -107,9 +107,9 @@ export default function VideoDetails() {
             />
           </div>
           <div className='bg-[var(--color2)] p-2 max-w-3xl mx-auto mb-2'>
-            <div onClick={handleLike} className={`group transition-all 1s ease-in cursor-pointer flex w-full border-red-600 border-4 rounded-md py-2 justify-around ${liked ? 'bg-red-600 text-white opacity-80' : 'active:translate-y-2 bg-transparent hover:bg-red-600 hover:border-white '}`}>
-              <p className={`text-sm  transition-all 1s ease-in font-bold ${liked ? 'text-white' : 'group-hover:text-white text-red-600 group-hover:scale-110'}`}>{liked ? 'Already Liked' : 'add to Liked'}</p>
-              <MdFavoriteBorder className={`fill-red-600 transition-all 1s ease-in ${liked ? 'fill-white scale-125' : 'group-hover:scale-125 group-hover:fill-white'}`} />
+            <div onClick={handleLike} className={`group max-w-[200px] transition-all 1s ease-in cursor-pointer flex w-full border-green-600 border-4 rounded-md py-2 justify-around ${liked ? 'bg-green-600 text-white opacity-90' : 'active:translate-y-2 bg-white hover:bg-green-600 hover:border-white '}`}>
+              <p className={`text-sm  transition-all 1s ease-in font-bold ${liked ? 'text-white' : 'group-hover:text-white text-green-600 group-hover:scale-110'}`}>{liked ? 'Video on your list' : 'Save video'}</p>
+              <MdFavoriteBorder className={`transition-all 1s ease-in ${liked ? 'fill-white scale-125' : 'group-hover:scale-125 group-hover:fill-white fill-green-600'}`} />
             </div>
             <p className='p-2 text-white opacity-80 font-bold'>{data.description}</p>
           </div>

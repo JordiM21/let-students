@@ -1,6 +1,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+* {
+	color: rgb(31, 41, 55);
+	font-weight: 700;
+}
 
 :root {
 	--color1: #140f2d;
