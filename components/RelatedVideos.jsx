@@ -15,20 +15,22 @@ export default function RelatedVideos({ relatedVideos, level }) {
       <div className='md:flex md:mx-4 max-w-lg gap-2 flex-wrap space-y-8 py-8 md:py-2 md:space-y-0'>
         {
           relatedVideos.map((video) => (
-            <div onClick={() => router.push(`/immersiveActivities/${video.id}`)} className='hover:opacity-90 transition-all 1s ease-in hover:scale-105 cursor-pointer w-[280px] mx-auto bg-blue-950 rounded-md relative'>
-              <ReactPlayer
-                width={"100%"}
-                height={"150px"}
-                className="mx-auto md:my-4 rounded-md"
-                url={video.url}
-                controls={false}
-                light={true}
-              />
-              <div className={`absolute top-4 px-1 rounded-l-md font-bold text-white right-0 ${video.level == 'Advanced' && 'bg-red-600'} ${video.level == 'Intermediate' && 'bg-orange-600'} ${video.level == 'Beginner' && 'bg-blue-600'}`}>
-                <p>{video.level}</p>
+            <a href={`/immersiveActivities/${video.id}`}>
+              <div className='hover:opacity-90 transition-all 1s ease-in hover:scale-105 cursor-pointer w-[280px] mx-auto bg-blue-950 rounded-md relative'>
+                <ReactPlayer
+                  width={"100%"}
+                  height={"150px"}
+                  className="mx-auto md:my-4 rounded-md"
+                  url={video.url}
+                  controls={false}
+                  light={true}
+                />
+                <div className={`absolute top-4 px-1 rounded-l-md font-bold text-white right-0 ${video.level == 'Advanced' && 'bg-red-600'} ${video.level == 'Intermediate' && 'bg-orange-600'} ${video.level == 'Beginner' && 'bg-blue-600'}`}>
+                  <p>{video.level}</p>
+                </div>
+                <p className='text-white font-bold text-xl p-2'>{video.title}</p>
               </div>
-              <p className='text-white font-bold text-xl p-2'>{video.title}</p>
-            </div>
+            </a>
           ))
         }
       </div>

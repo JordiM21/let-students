@@ -1,10 +1,12 @@
 import RelatedVideos from '@/components/RelatedVideos';
 import { db } from '@/config/firebase';
-import { collection, getDocs } from 'firebase/firestore';
+import { useAuth } from '@/context/AuthContext';
+import { collection, doc, getDocs, updateDoc } from 'firebase/firestore';
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react'
-import { MdArrowBackIosNew } from 'react-icons/md';
+import { MdArrowBackIosNew, MdFavoriteBorder } from 'react-icons/md';
 import ReactPlayer from 'react-player';
+import { toast } from 'react-toastify';
 
 export default function VideoDetails() {
 
@@ -12,8 +14,20 @@ export default function VideoDetails() {
   const id = router.query.id
   const [data, setData] = useState({})
   const [related, setRelated] = useState([])
-  const [level, setLevel] = useState("")
+  const [userMatched, setUserMatched] = useState({})
+  const { user } = useAuth();
+  const [authUid, setAuthUid] = useState(user.uid)
+  const [isLiked, setIsLiked] = useState("")
 
+  const fetchUser = async () => {
+    await getDocs(collection(db, "users"))
+      .then((querySnapshot) => {
+        const newData = querySnapshot.docs
+          .map((doc) => ({ ...doc.data(), id: doc.id }));
+        const userFound = newData.find(item => item.uid == authUid);
+        setUserMatched(userFound)
+      })
+  }
 
   const fetchPost = async () => {
     await getDocs(collection(db, "Immersive"))
@@ -27,9 +41,52 @@ export default function VideoDetails() {
       })
   }
 
+  const [liked, setLiked] = useState(false);
+
   useEffect(() => {
-    fetchPost()
+    const checkLikedStatus = async () => {
+      try {
+        const querySnapshot = await getDocs(collection(db, 'users'));
+        const newData = querySnapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
+
+        const user = newData.find((user) => user.id === userMatched.id);
+        if (user && user.likedVideos.includes(data.url)) {
+          setLiked(true);
+        }
+      } catch (error) {
+        console.error('Error fetching user data:', error);
+      }
+    };
+
+
+    checkLikedStatus();
+  }, [data.url, liked]);
+
+
+
+  useEffect(() => {
+    fetchUser();
+    fetchPost();
   }, [])
+
+  const handleLike = async () => {
+    if (!liked) {
+      try {
+        //     const nameRef = doc(db, "users", userMatched.id);
+        const userRef = doc(db, "users", userMatched.id); // Replace USER_ID with the actual user ID
+        await updateDoc(userRef, {
+          likedVideos: [...userMatched.likedVideos, data.url],
+        }).then(() => toast.success("Added succesfully!"))
+
+        setLiked(true);
+      } catch (error) {
+        console.error('Error updating liked videos:', error);
+      }
+    }
+    else {
+      toast.error("This video is already liked!")
+    }
+  };
 
   return (
     <div>
@@ -50,6 +107,10 @@ export default function VideoDetails() {
             />
           </div>
           <div className='bg-[var(--color2)] p-2 max-w-3xl mx-auto mb-2'>
+            <div onClick={handleLike} className={`group transition-all 1s ease-in cursor-pointer flex w-full border-red-600 border-4 rounded-md py-2 justify-around ${liked ? 'bg-red-600 text-white opacity-80' : 'active:translate-y-2 bg-transparent hover:bg-red-600 hover:border-white '}`}>
+              <p className={`text-sm  transition-all 1s ease-in font-bold ${liked ? 'text-white' : 'group-hover:text-white text-red-600 group-hover:scale-110'}`}>{liked ? 'Already Liked' : 'add to Liked'}</p>
+              <MdFavoriteBorder className={`fill-red-600 transition-all 1s ease-in ${liked ? 'fill-white scale-125' : 'group-hover:scale-125 group-hover:fill-white'}`} />
+            </div>
             <p className='p-2 text-white opacity-80 font-bold'>{data.description}</p>
           </div>
         </div>

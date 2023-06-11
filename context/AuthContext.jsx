@@ -48,6 +48,7 @@ export const AuthContextProvider = ({ children }) => {
             progressBeginner: 0,
             progressIntermediate: 0,
             progressAdvanced: 0,
+            likedVideos: [],
           })
         } catch (error) {
           console.log("error adding document",)

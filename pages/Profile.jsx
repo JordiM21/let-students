@@ -144,17 +144,21 @@ export default function Profile() {
             </>
           )
         }
-        <div className='mx-14'>
-          <h1 className='text-3xl text-white font-bold text-center'>Your students</h1>
-          {
-            students.map((student) => (
-              <div onClick={() => router.push(`/adminCreate/studentDetails/${student.id}`)} className='p-2 flex justify-end pr-16 gap-4 items-center  bg-gray-300 rounded-md my-2 max-w-md mx-auto hover:scale-110 hover:opacity-60 transition-all 1s ease-in cursor-pointer'>
-                <p className='text-center font-bold text-xl py-1 cursor-pointer'>{student.firstName}</p>
-                <YourFlag country={student.country} />
-              </div>
-            ))
-          }
-        </div>
+        {
+          userMatched[0].role == "Admin" && (
+            <div className='mx-14'>
+              <h1 className='text-3xl text-white font-bold text-center'>Your students</h1>
+              {
+                students.map((student) => (
+                  <div onClick={() => router.push(`/adminCreate/studentDetails/${student.id}`)} className='p-2 flex justify-end pr-16 gap-4 items-center  bg-gray-300 rounded-md my-2 max-w-md mx-auto hover:scale-110 hover:opacity-60 transition-all 1s ease-in cursor-pointer'>
+                    <p className='text-center font-bold text-xl py-1 cursor-pointer'>{student.firstName}</p>
+                    <YourFlag country={student.country} />
+                  </div>
+                ))
+              }
+            </div>
+          )
+        }
       </div >
 
 
