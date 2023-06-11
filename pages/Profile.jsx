@@ -13,6 +13,7 @@ import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import letPet from '@/public/letPet.png'
 import ProgressLesson from '@/components/ProgressLesson';
+import ListOfUsers from '@/components/ListOfUsers';
 
 const style = {
   position: 'absolute',
@@ -29,11 +30,12 @@ const style = {
 
 export default function Profile() {
   const [userMatched, setUserMatched] = useState({})
+  const [students, setStudents] = useState([])
+
   const router = useRouter()
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-
 
 
   const { user, logout } = useAuth();
@@ -45,6 +47,8 @@ export default function Profile() {
           .map((doc) => ({ ...doc.data(), id: doc.id }));
         const userMatch = newData.filter(item => item.uid == authUid);
         setUserMatched(userMatch)
+        const studentsAsigned = newData.filter(item => item.asignedTutor == authUid)
+        setStudents(studentsAsigned)
       })
   }
 
@@ -67,9 +71,13 @@ export default function Profile() {
           (
             <>
               <div className='bg-gradient-to-r from-cyan-500 to-blue-500 h-32 relative rounded-t-xl'>
-                <div onClick={() => router.push(`/Niveles/${userMatched[0]?.level}`)} className='absolute right-4 top-8 pb-4'>
-                  <button class="btn-cta"> Continua en tu Nivel</button>
-                </div>
+                {
+                  userMatched[0]?.role == "Student" && (
+                    <div onClick={() => router.push(`/Niveles/${userMatched[0]?.level}`)} className='absolute right-4 top-8 pb-4'>
+                      <button class="btn-cta"> Continua en tu Nivel</button>
+                    </div>
+                  )
+                }
                 <div className='bg-transparent shadow-2xl hover:shadow-none transition ease-in 1s cursor-pointer absolute h-24 rounded-full left-8 flex items-center justify-center w-24 text-4xl font-extrabold border-8 border-[var(--color3Shadow)] -bottom-10 hover:brightness-90 z-20'><Image src={letPet} className='w-20 h-20 object-cover rounded-full' /><div className='bg-green-500 h-6 w-6 rounded-full absolute left-14 -bottom-2'></div></div>
               </div>
               <div className='flex justify-center gap-4 items-center pt-8'>
@@ -136,7 +144,20 @@ export default function Profile() {
             </>
           )
         }
+        <div className='mx-14'>
+          <h1 className='text-3xl text-white font-bold text-center'>Your students</h1>
+          {
+            students.map((student) => (
+              <div onClick={() => router.push(`/adminCreate/studentDetails/${student.id}`)} className='p-2 flex justify-end pr-16 gap-4 items-center  bg-gray-300 rounded-md my-2 max-w-md mx-auto hover:scale-110 hover:opacity-60 transition-all 1s ease-in cursor-pointer'>
+                <p className='text-center font-bold text-xl py-1 cursor-pointer'>{student.firstName}</p>
+                <YourFlag country={student.country} />
+              </div>
+            ))
+          }
+        </div>
       </div >
+
+
     </>
   )
 }

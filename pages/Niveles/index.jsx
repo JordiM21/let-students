@@ -38,7 +38,7 @@ export default function Niveles() {
 
 
   return (
-    <div className='bg-[var(--color3Shadow)]'>
+    <div className='bg-[var(--color3Shadow)] min-h-screen'>
       {
         !level &&
         (
@@ -57,7 +57,11 @@ export default function Niveles() {
           </div>
         )
       }
-      <h1 className='text-center text-3xl font-semibold py-5 text-white'>¡Comienza a aprender ahora!</h1>
+      {
+        role == "Student" && (
+          <h1 className='text-center text-3xl font-semibold py-5 text-white'>¡Comienza a aprender ahora!</h1>
+        )
+      }
       {
         level === "Beginner" && (
           <div className='space-y-4 md:space-y-0 md:flex md:py-8 justify-center items-center'>

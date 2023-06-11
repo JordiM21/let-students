@@ -1,3 +1,4 @@
+import Nota from '@/components/Nota';
 import { db } from '@/config/firebase';
 import { useAuth } from '@/context/AuthContext';
 import { FormControl, InputLabel, MenuItem, Select } from '@mui/material';
@@ -48,12 +49,13 @@ export default function Immersive() {
       <h1 className='px-4 text-3xl text-center my-4 font-bold text-[var(--color1)]'>Immersive page</h1>
       {
         role == "Admin" && (
-          <div className='w-10/12 my-8 hover:scale-105 mx-auto max-w-md'>
+          <div className='w-10/12 my-8 transition-all 1s ease-in hover:opacity-80 hover:scale-105 mx-auto max-w-md'>
             <button onClick={() => router.push("/adminCreate/createVideo")} className='text-white hover:opacity-80 font-bold w-full py-2 rounded-md bg-[var(--color3)]'>{role} Function: CREATE VIDEOS </button>
           </div>
         )
       }
-      <div className='w-full flex justify-center px-4'>
+      {/* <Nota text="Recuerda que los videos son necesarios para tu aprendizaje pero no es necesario que entiendas todo lo que dice en el video para aprender, siempre puedes volver a mirarlo de nuevo y aprender cada vez mas cosas" /> */}
+      <div className='w-full flex justify-center px-4 mt-4'>
         <FormControl variant="filled" className='w-full md:max-w-md'>
           <InputLabel id="demo-simple-select-filled-label">Search by Level</InputLabel>
           <Select

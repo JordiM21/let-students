@@ -7,7 +7,7 @@ export default function Nota({ text }) {
       <div className='mr-2'>
         <FcIdea size={30} />
       </div>
-      <p className='font-semibold text-gray-800'>
+      <p className='font-semibold text-sm opacity-90 text-gray-800'>
         {text}
       </p>
     </div>
