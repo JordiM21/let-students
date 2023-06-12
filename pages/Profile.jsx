@@ -65,7 +65,7 @@ export default function Profile() {
         )
       }
       <div className='bg-gray-200 w-full h-full object-cover absolute -z-10'></div>
-      <div className='bg-[var(--color3Shadow)] shadow-2xl max-w-3xl mx-auto rounded-xl mt-8 pb-8'>
+      <div className='bg-[var(--color3Shadow)] shadow-2xl max-w-3xl mx-auto rounded-xl mt-0 pb-8'>
         {
           userMatched != "" &&
           (

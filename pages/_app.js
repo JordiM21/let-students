@@ -17,14 +17,14 @@ export default function App({ Component, pageProps }) {
       <NextNProgress />
       <ToastContainer />
       {allowedUrl.includes(router.pathname) ? (
-        <>
-          < Component {...pageProps} />
-        </>
+        <div className='md:pl-[50px]'>
+          < Component  {...pageProps} />
+        </div>
       ) : (
         <ProtectedRoutes>
-          <>
+          <div className='md:pl-[50px]'>
             < Component {...pageProps} />
-          </>
+          </div>
         </ProtectedRoutes>
       )
       }
