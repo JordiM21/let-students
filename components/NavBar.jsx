@@ -17,7 +17,7 @@ export default function Example() {
   const router = useRouter()
 
   return (
-    <Disclosure as="nav" className="bg-[var(--color3)]">
+    <Disclosure as="nav" className="bg-slate-100 bg-opacity-40 backdrop-blur-md fixed z-50 w-full top-0">
       {({ open }) => (
         <>
           <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
@@ -77,7 +77,7 @@ export default function Example() {
               </div>
             </div>
           </div>
-          <Disclosure.Panel className="sm:hidden absolute z-50 bg-[var(--color3)] w-full">
+          <Disclosure.Panel className="sm:hidden absolute z-50 bg-slate-100 bg-opacity-40 backdrop-blur-md w-full">
             <div className="space-y-1 px-2 pb-3 pt-2">
               <Disclosure.Button
                 as="a"
