@@ -12,27 +12,9 @@ import { useRouter } from 'next/router';
 import { useAuth } from '@/context/AuthContext';
 import { BsCircle } from 'react-icons/bs'
 import { toast } from 'react-toastify';
+import BackHeader from '@/components/BackHeader';
 
 export default function Beginner() {
-  const breadcrumbs = [
-    <Link underline="hover" key="1" color="inherit" href="/Dashboard">
-      Dashboard
-    </Link>,
-    <Link
-      underline="hover"
-      key="2"
-      color="inherit"
-      href="/Niveles"
-
-    >
-      Levels
-    </Link>,
-    <Typography
-      key="3"
-      color="text.primary">
-      Beginner
-    </Typography>,
-  ];
   const router = useRouter()
   const [level, setLevel] = useState("")
 
@@ -69,18 +51,14 @@ export default function Beginner() {
   }, [])
 
   return (
-    <div>
-      <div className='max-w-3xl mx-auto bg-[var(--color3Shadow)]'>
-        <Image src={image1} className='w-full h-48 md:h-72 object-cover' />
-        <Stack spacing={2}>
-          <Breadcrumbs separator="›" aria-label="breadcrumb">
-            {breadcrumbs}
-          </Breadcrumbs>
-        </Stack>
-      </div>
-      <div className='mx-8 space-y-4'>
-        <h3>Curso básico de inglés para los que están empezando.</h3>
+    <div className='bg-[var(--color3Shadow)] pt-24'>
+      <BackHeader largeTitle="Beginner" parentTitle="Levels" />
+      <div className='md:w-2/5 max-md:w-10/12 mx-8 md:fixed bg-[var(--color3Shadow)]'>
+        <Image src={image1} className='w-full h-48 md:h-80 object-cover rounded-md' />
+        <h3 className='text-2xl font-bold text-white'>Curso básico de inglés para los que están empezando.</h3>
         <p>El curso básico de inglés, está diseñado para los que están empezando. Al finalizar el curso, el estudiante tendrá una comprensión de los conceptos básicos de inglés y será capaz de formar construcciones y oraciones simples.</p>
+      </div>
+      <div className='md:ml-[46%] max-md:w-10/12 mx-auto md:w-1/2 space-y-4'>
         <div className='space-y-2'>
           {
             data.map((data, index) => (
@@ -108,7 +86,7 @@ export default function Beginner() {
                 }
                 {
                   progress < index && (
-                    <div onClick={() => router.push(`/Niveles/${data.level}/${data.number}`)} className='opacity-60 transition-all 1s ease-in cursor-pointer flex justify-between items-center bg-gray-300 px-4 py-2 rounded-md'>
+                    <div onClick={() => router.push(`/Niveles/${data.level}/${data.number}`)} className='grayscale opacity-70 transition-all 1s ease-in cursor-pointer flex justify-between items-center bg-gray-300 px-4 py-2 rounded-md'>
                       <div className='w-4/5'>
                         <small className='text-xs text-[var(--color3)] font-semibold'>UNIT {data.number}</small>
                         <p className='font-bold text-[var(--color2)]'>{data.title}</p>

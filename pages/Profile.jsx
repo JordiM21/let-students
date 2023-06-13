@@ -3,19 +3,14 @@ import { db } from '@/config/firebase';
 import { useEffect, useState } from 'react';
 import { useAuth } from '@/context/AuthContext';
 import { useRouter } from 'next/router';
-import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import LoadingScreen from '@/components/LoadingScreen';
-import cover from '@/public/cover-dark.png'
-import Image from 'next/image';
 import YourFlag from '@/components/YourFlag';
 import { CgPassword } from 'react-icons/cg'
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
-import letPet from '@/public/letPet.png'
-import ProgressLesson from '@/components/ProgressLesson';
-import ListOfUsers from '@/components/ListOfUsers';
 import YourProfile from '@/components/YourProfile';
 import { TbEdit } from 'react-icons/tb'
+import { ChevronRightOutlined } from '@mui/icons-material';
 
 const style = {
   position: 'absolute',
@@ -66,56 +61,57 @@ export default function Profile() {
         )
       }
       <div className='bg-gray-200 w-full h-full object-cover absolute -z-10'></div>
-      <div className='bg-[var(--color3Shadow)] shadow-2xl max-w-3xl mx-auto rounded-xl mt-0 pb-8'>
+      <div className='bg-[var(--color3Shadow)] shadow-2xl mx-auto mt-0 pb-28'>
         {
           userMatched != "" &&
           (
             <>
-              <div className='bg-gradient-to-r flex justify-center items-center from-cyan-500 to-blue-500 h-64 relative rounded-t-xl'>
-                {/* {
-                  userMatched.role == "Student" && (
-                    <div onClick={() => router.push(`/Niveles/${userMatched.level}`)} className='absolute right-4 top-8 pb-4'>
-                      <button class="btn-cta"> Continua en tu Nivel</button>
-                    </div>
-                  )
-                } */}
+              <div className='bg-gradient-to-r flex justify-center items-center from-cyan-500 to-blue-500 h-64 relative rounded-b-2xl'>
                 <div className='cursor-pointer rounded-full hover:opacity-90 relative active:scale-95 active:opacity-100 transition-all 1s ease-in' onClick={() => router.push(`/selectCharacter/${userMatched.id}`)} >
                   <YourProfile char={userMatched.profileImg} />
                   <div className='bg-gray-800 flex absolute rounded-full p-1 right-0 bottom-4'>
                     <TbEdit fill='white' size={40} />
                   </div>
+                  <div className='flex absolute rounded-full p-1 left-0 bottom-4'>
+                    <YourFlag country={userMatched.country} />
+                  </div>
+
                 </div>
               </div>
-              <div className='flex justify-start mx-8 gap-4 items-center pt-8'>
-                <h1 className='text-start text-xl md:text-3xl text-white font-semibold py-4'>{userMatched.firstName} {userMatched.lastName} </h1>
-                <YourFlag country={userMatched.country} />
-              </div>
-              <div className='mx-8 my-4 space-y-4'>
-                <p className='text-lg text-[var(--color3)]'>Nivel Actual: <span className='text-white'>{userMatched.level}</span></p>
-                <p className='text-lg text-[var(--color3)]'>Correo Electrónico: <span className='text-white'>{userMatched.email}</span></p>
-                <p className='text-lg text-[var(--color3)]'>Numero de celular: <span className='text-white'>{userMatched.phone}</span></p>
-                <p className='text-lg text-[var(--color3)]'>Edad: <span className='text-white'>{userMatched.age}</span></p>
-                {
-                  user.role == "Student" && (
-                    <p className='text-lg text-[var(--color3)]'>Tutor asignado: <span className='text-white'>{userMatched.asignedTutor}</span></p>
-                  )
-                }
-                <p className='text-2xl text-[var(--color3)] text-center'>Progreso de Nivel <span className='text-[var(--color2)] font-bold'>{userMatched.level}</span></p>
-                {
-                  userMatched.level == "Beginner" && (
-                    <ProgressLesson progress={userMatched.progressBeginner} />
-                  )
-                }
-                {
-                  userMatched.level == "Intermediate" && (
-                    <ProgressLesson progress={userMatched.progressIntermediate} />
-                  )
-                }
-                {
-                  userMatched.level == "Advanced" && (
-                    <ProgressLesson progress={userMatched.progressAdvanced} />
-                  )
-                }
+              <div className='w-11/12 mx-auto space-y-3 my-4'>
+                <div className='bg-black cursor-pointer hover:bg-opacity-70 w-full flex items-center rounded-xl justify-between py-2 px-4'>
+                  <p className='text-white'>Name</p>
+                  <div className='flex items-center justify-center'>
+                    <p>{userMatched.firstName} {userMatched.lastName} </p>
+                    <ChevronRightOutlined />
+                  </div>
+                </div>
+                <div className=''>
+                  <div className='bg-black cursor-pointer hover:bg-opacity-70 w-full flex items-center rounded-t-xl justify-between py-2 px-4'>
+                    <p className='text-white'>Level</p>
+                    <div className='flex items-center justify-center'>
+                      <p>{userMatched.level}</p>
+                    </div>
+                  </div>
+                  <div className='bg-black cursor-pointer hover:bg-opacity-70 w-full flex items-center justify-between py-2 px-4'>
+                    <p className='text-white'>Email</p>
+                    <div className='flex items-center justify-center'>
+                      <p>{userMatched.email}</p>
+                    </div>
+                  </div>
+                  <div className='bg-black cursor-pointer hover:bg-opacity-70 w-full flex items-center justify-between py-2 px-4'>
+                    <p className='text-white'>Phone</p>
+                    <div className='flex items-center justify-center'>
+                      <p>{userMatched.phone}</p>
+                    </div>
+                  </div>
+                  <div className='bg-black cursor-pointer hover:bg-opacity-70 w-full flex items-center rounded-b-xl justify-between py-2 px-4'>
+                    <p className='text-white'>Age</p>
+                    <div className='flex items-center justify-center'>
+                      <p>{userMatched.age}</p>
+                    </div>
+                  </div>
+                </div>
               </div>
               <div className='flex justify-around'>
                 <div className='w-full'>

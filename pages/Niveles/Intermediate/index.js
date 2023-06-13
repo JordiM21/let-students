@@ -11,78 +11,111 @@ import Breadcrumbs from '@mui/material/Breadcrumbs';
 import Typography from '@mui/material/Typography';
 import Link from '@mui/material/Link';
 import Stack from '@mui/material/Stack';
+import BackHeader from '@/components/BackHeader';
+import { BsCircle } from 'react-icons/bs';
+import { AiFillCheckCircle } from 'react-icons/ai';
 
 export default function index() {
-  const breadcrumbs = [
-    <Link underline="hover" key="1" color="inherit" href="/Dashboard">
-      Dashboard
-    </Link>,
-    <Link
-      underline="hover"
-      key="2"
-      color="inherit"
-      href="/Niveles"
-
-    >
-      Levels
-    </Link>,
-    <Typography
-      key="3"
-      color="text.primary">
-      Intermediate
-    </Typography>,
-  ];
   const router = useRouter()
 
   const [level, setLevel] = useState("")
   const [role, setRole] = useState("")
+  const [data, setData] = useState([])
+
 
   const toastId = "customId"
 
   const { user } = useAuth();
   const [authUid, setAuthUid] = useState(user.uid)
+  const [progress, setProgress] = useState("")
+
+
   const fetchPost = async () => {
+    await getDocs(collection(db, "units"))
+      .then((querySnapshot) => {
+        const newData = querySnapshot.docs
+          .map((doc) => ({ ...doc.data(), id: doc.id }));
+        const dataFound = newData.filter(item => item.level == "Beginner");
+        //REPLACE THIS WITH INTERMEDIATE CORRECT LEVEL 
+        setData(dataFound.sort((a, b) => a.number - b.number))
+      })
+  }
+  const fetchUser = async () => {
     await getDocs(collection(db, "users"))
       .then((querySnapshot) => {
         const newData = querySnapshot.docs
           .map((doc) => ({ ...doc.data(), id: doc.id }));
-        const userMatched = newData.filter(item => item.uid == authUid);
-        if (userMatched[0].level == "Beginner") {
-          router.push("/Niveles")
-          toast.error("¡Ups! Parece que no eres aún nivel Intermediate.", {
-            toastId,
-          })
-        }
-        setLevel(userMatched[0].level);
-        setRole(userMatched[0].role);
+        const userMatched = newData.find(item => item.uid == authUid);
+        setLevel(userMatched.level);
+        setProgress(userMatched.progressIntermediate);
       })
   }
 
   useEffect(() => {
-    fetchPost();
+    fetchPost()
+    fetchUser()
   }, [])
 
-  console.log(level)
-
-
   return (
-    <div>
+    <div className='bg-[var(--color3Shadow)] pt-24'>
       {
         (level !== "Intermediate" && level !== "Advanced") &&
         (
           <LoadingScreen />
         )
       }
-      <div>
-        <div className='max-w-3xl mx-auto bg-[var(--color3Shadow)]'>
-          <Image src={image1} className='w-full h-48 md:h-72 object-cover' />
-          <Stack spacing={2}>
-            <Breadcrumbs separator="›" aria-label="breadcrumb">
-              {breadcrumbs}
-            </Breadcrumbs>
-          </Stack>
+      <BackHeader largeTitle="Intermediate" parentTitle="Levels" />
+      <div className='md:w-2/5 max-md:w-10/12 mx-8 md:fixed bg-[var(--color3Shadow)]'>
+        <Image src={image1} className='w-full h-48 md:h-80 object-cover rounded-md' />
+        <h3 className='text-2xl font-bold text-white'>Curso básico de inglés para los que están empezando.</h3>
+        <p>El curso básico de inglés, está diseñado para los que están empezando. Al finalizar el curso, el estudiante tendrá una comprensión de los conceptos básicos de inglés y será capaz de formar construcciones y oraciones simples.</p>
+      </div>
+      <div className='md:ml-[46%] max-md:w-10/12 mx-auto md:w-1/2 space-y-4'>
+        <div className='space-y-2'>
+          {
+            data.map((data, index) => (
+              <>
+                {
+                  progress >= index && (
+                    <div onClick={() => router.push(`/Niveles/${data.level}/${data.number}`)} className='hover:px-3 hover:opacity-80 transition-all 1s ease-in cursor-pointer flex justify-between items-center bg-gray-300 px-4 py-2 rounded-md'>
+                      <div className='w-4/5'>
+                        <small className='text-xs text-[var(--color3)] font-semibold'>UNIT {data.number}</small>
+                        <p className='font-bold text-[var(--color2)]'>{data.title}</p>
+                        <p className='text-gray-700 text-sm'>({data.titleSpanish})</p>
+                      </div>
+                      {
+                        progress == index && (
+                          <BsCircle size={24} fill='green' />
+                        )
+                      }
+                      {
+                        progress > index && (
+                          <AiFillCheckCircle size={24} fill='green' />
+                        )
+                      }
+                    </div>
+                  )
+                }
+                {
+                  progress < index && (
+                    <div onClick={() => router.push(`/Niveles/${data.level}/${data.number}`)} className='grayscale opacity-70 transition-all 1s ease-in cursor-pointer flex justify-between items-center bg-gray-300 px-4 py-2 rounded-md'>
+                      <div className='w-4/5'>
+                        <small className='text-xs text-[var(--color3)] font-semibold'>UNIT {data.number}</small>
+                        <p className='font-bold text-[var(--color2)]'>{data.title}</p>
+                        <p className='text-gray-700 text-sm'>({data.titleSpanish})</p>
+                      </div>
+                      <BsCircle size={24} fill='green' />
+                    </div>
+                  )
+                }
+              </>
+            ))
+          }
         </div>
-      </div></div>
+
+      </div>
+
+    </div>
   )
 
 }

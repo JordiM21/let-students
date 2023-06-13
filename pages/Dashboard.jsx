@@ -49,7 +49,7 @@ export default function Dashboard() {
   }, [])
 
   return (
-    <div className='bg-[var(--color3Shadow)]'>
+    <div className='bg-[var(--color3Shadow)] pb-16'>
       {
         role != "Admin" && role != "Student" &&
         (

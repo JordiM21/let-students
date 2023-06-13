@@ -27,6 +27,11 @@ export default function YourProfile({ char }) {
   return (
     <div>
       {
+        !char && (
+          <Image src={boy5} className='rounded-full object-cover h-52 w-52' />
+        )
+      }
+      {
         char == "" && (
           <Image src={deafult} className='rounded-full object-cover h-52 w-52' />
         )
