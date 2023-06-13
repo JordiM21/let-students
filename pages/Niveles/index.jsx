@@ -112,7 +112,7 @@ export default function Niveles() {
       }
       {
         level === "Advanced" && (
-          <div className='space-y-4 md:space-y-0 md:flex md:py-8 justify-center items-center'>
+          <div className='space-y-4 md:space-y-0 md:flex md:px-8 md:gap-4 justify-center items-center'>
             <div onClick={() => router.push("/Niveles/Beginner")} className='group rounded-md relative max-w-sm h-72 md:h-full mx-auto overflow-hidden transition-all .1s ease-in cursor-pointer'>
               <p className='bg-sky-200 absolute z-10 -top-16 transition-all .2s backdrop-blur-md font-semibold px-4 bg-opacity-30 ease-in group-hover:top-0 right-0'>Pie de foto colocado en cada nivel del curso para dar una pequeña información</p>
               <Image src={image1} className='w-full object-cover group-hover:scale-110 transition-all .1s ease-in' />

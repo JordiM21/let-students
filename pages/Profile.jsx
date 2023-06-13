@@ -79,17 +79,15 @@ export default function Profile() {
                     </div>
                   )
                 } */}
-                {/* <div onClick={() => router.push(`/selectCharacter/${userMatched.id}`)} className='bg-transparent shadow-2xl hover:shadow-none transition ease-in 1s cursor-pointer absolute h-24 rounded-full left-8 flex items-center justify-center text-4xl font-extrabold border-8 border-[var(--color3Shadow)] -bottom-10 hover:brightness-90 z-20'> */}
                 <div className='cursor-pointer rounded-full hover:opacity-90 relative active:scale-95 active:opacity-100 transition-all 1s ease-in' onClick={() => router.push(`/selectCharacter/${userMatched.id}`)} >
                   <YourProfile char={userMatched.profileImg} />
                   <div className='bg-gray-800 flex absolute rounded-full p-1 right-0 bottom-4'>
                     <TbEdit fill='white' size={40} />
                   </div>
                 </div>
-                {/* <div className='bg-green-500 h-6 w-6 rounded-full absolute left-14 -bottom-2'></div></div> */}
               </div>
-              <div className='flex justify-center gap-4 items-center pt-8'>
-                <h1 className='text-center text-2xl md:text-4xl text-white font-semibold py-4'>{userMatched.firstName} {userMatched.lastName} </h1>
+              <div className='flex justify-start mx-8 gap-4 items-center pt-8'>
+                <h1 className='text-start text-xl md:text-3xl text-white font-semibold py-4'>{userMatched.firstName} {userMatched.lastName} </h1>
                 <YourFlag country={userMatched.country} />
               </div>
               <div className='mx-8 my-4 space-y-4'>
