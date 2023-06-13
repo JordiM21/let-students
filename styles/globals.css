@@ -4,6 +4,7 @@
 * {
 	color: rgb(31, 41, 55);
 	font-weight: 700;
+	transition: all 0.3s ease-in;
 }
 
 :root {
@@ -192,7 +193,7 @@
 	height: 100vh;
 	margin: 0px auto;
 	position: absolute;
-	z-index: 999;
+	z-index: 49;
 	background-color: var(--color3Shadow);
 	padding: 160px;
 }

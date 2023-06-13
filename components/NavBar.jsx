@@ -14,23 +14,23 @@ export default function index() {
         <div>
           <Image src={Icon} className='w-7 h-7 p-1 mx-auto' />
         </div>
-        <div className=' bg-red-500 group p-1 hover:shadow-md hover:shadow-red-900 cursor-pointer transition-all hover:scale-110 duration-150 active:scale-95 active:opacity-80 ease-in rounded-lg'>
-          <MdHome fill='white' className='mx-auto text-2xl' />
+        <div className={`bg-red-500 group p-1 hover:shadow-md hover:shadow-red-900 cursor-pointer transition-all hover:scale-110 duration-150 active:scale-95 active:opacity-80 ease-in rounded-lg ${router.pathname == "/Dashboard" && "scale-110 translate-x-2 border-2"}`}>
+          <MdHome onClick={() => router.push("/Dashboard")} fill='white' className='mx-auto text-2xl' />
           <p className='text-gray-700 text-[16px] absolute bottom-1 opacity-0 group-hover:opacity-100 font-bold -right-[78px] rounded-lg px-3 bg-slate-300 shadow-md bg-opacity-95 shadow-black'>Home</p>
         </div>
-        <div className='bg-orange-500/95 group p-1 hover:shadow-md hover:shadow-orange-800 cursor-pointer transition-all hover:scale-110 duration-150 active:scale-95 active:opacity-80 ease-in rounded-lg'>
+        <div onClick={() => router.push("/Niveles")} className={`bg-orange-500/95 group p-1 hover:shadow-md hover:shadow-orange-800 cursor-pointer transition-all hover:scale-110 duration-150 active:scale-95 active:opacity-80 ease-in rounded-lg ${router.pathname == "/Niveles" && "scale-110 translate-x-2 border-2"}`}>
           <MdLibraryBooks fill='white' className='mx-auto text-2xl' />
           <p className='text-gray-700 text-[16px] absolute bottom-1 opacity-0 group-hover:opacity-100 font-bold -right-[90px] rounded-lg px-3 bg-slate-300 shadow-md bg-opacity-95 shadow-black'>Lessons</p>
         </div>
-        <div className='bg-yellow-400/90 group p-1 hover:shadow-md hover:shadow-yellow-700 cursor-pointer transition-all hover:scale-110 duration-150 active:scale-95 active:opacity-80 ease-in rounded-lg'>
+        <div onClick={() => router.push("/Immersive")} className={`bg-yellow-400/90 group p-1 hover:shadow-md hover:shadow-yellow-700 cursor-pointer transition-all hover:scale-110 duration-150 active:scale-95 active:opacity-80 ease-in rounded-lg ${router.pathname == "/Immersive" && "scale-110 translate-x-2 border-2"}`}>
           <MdVideoLibrary fill='white' className='mx-auto text-2xl' />
           <p className='text-gray-700 text-[16px] absolute bottom-1 opacity-0 group-hover:opacity-100 font-bold -right-[111px] rounded-lg px-3 bg-slate-300 shadow-md bg-opacity-95 shadow-black'>Immersive</p>
         </div>
-        <div className='bg-green-500/90 group p-1 hover:shadow-md hover:shadow-green-900 cursor-pointer transition-all hover:scale-110 duration-150 active:scale-95 active:opacity-80 ease-in rounded-lg'>
+        <div onClick={() => router.push("/Progress")} className={`bg-green-500/90 group p-1 hover:shadow-md hover:shadow-green-900 cursor-pointer transition-all hover:scale-110 duration-150 active:scale-95 active:opacity-80 ease-in rounded-lg ${router.pathname == "/Progress" && "scale-110 translate-x-2 border-2"}`}>
           <MdAnalytics fill='white' className='mx-auto text-2xl' />
           <p className='text-gray-700 text-[16px] absolute bottom-1 opacity-0 group-hover:opacity-100 font-bold -right-[98px] rounded-lg px-3 bg-slate-300 shadow-md bg-opacity-95 shadow-black'>Progress</p>
         </div>
-        <div className='bg-blue-500 group p-1 hover:shadow-md hover:shadow-blue-900 cursor-pointer transition-all hover:scale-110 duration-150 active:scale-95 active:opacity-80 ease-in rounded-lg'>
+        <div onClick={() => router.push("/Profile")} className={`bg-blue-500 group p-1 hover:shadow-md hover:shadow-blue-900 cursor-pointer transition-all hover:scale-110 duration-150 active:scale-95 active:opacity-80 ease-in rounded-lg ${router.pathname == "/Profile" && "scale-110 translate-x-2 border-2"}`}>
           <MdPerson fill='white' className='mx-auto text-2xl' />
           <p className='text-gray-700 text-[16px] absolute bottom-1 hidden group-hover:block font-bold -right-[82px] rounded-lg px-3 bg-slate-300 shadow-md bg-opacity-95 shadow-black'>Profile</p>
         </div>
@@ -50,7 +50,7 @@ export default function index() {
             <MdVideoLibrary fill='white' className='mx-auto text-3xl' />
             <p className='text-gray-100 text-[10px] absolute bottom-[3px] opacity-0 group-hover:opacity-60 font-bold right-[3px]'>Immersive</p>
           </div>
-          <div className='bg-green-500/90 group p-3 hover:shadow-md hover:shadow-green-900 cursor-pointer transition-all hover:scale-110 duration-150 active:scale-95 active:opacity-80 ease-in rounded-lg'>
+          <div onClick={() => router.push("/Progress")} className={`bg-green-500/90 group p-3 hover:shadow-md hover:shadow-green-900 cursor-pointer transition-all hover:scale-110 duration-150 active:scale-95 active:opacity-80 ease-in rounded-lg ${router.pathname == "/Progress" && "scale-110 translate-x-2 border-2"}`}>
             <MdAnalytics fill='white' className='mx-auto text-3xl' />
             <p className='text-gray-100 text-[9px] absolute bottom-[1px] opacity-0 group-hover:opacity-60 font-bold right-[8px]'>Progress</p>
           </div>

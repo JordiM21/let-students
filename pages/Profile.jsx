@@ -14,6 +14,8 @@ import Modal from '@mui/material/Modal';
 import letPet from '@/public/letPet.png'
 import ProgressLesson from '@/components/ProgressLesson';
 import ListOfUsers from '@/components/ListOfUsers';
+import YourProfile from '@/components/YourProfile';
+import { TbEdit } from 'react-icons/tb'
 
 const style = {
   position: 'absolute',
@@ -36,7 +38,6 @@ export default function Profile() {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-
 
   const { user, logout } = useAuth();
   const [authUid, setAuthUid] = useState(user.uid)
@@ -70,15 +71,22 @@ export default function Profile() {
           userMatched != "" &&
           (
             <>
-              <div className='bg-gradient-to-r from-cyan-500 to-blue-500 h-32 relative rounded-t-xl'>
-                {
+              <div className='bg-gradient-to-r flex justify-center items-center from-cyan-500 to-blue-500 h-64 relative rounded-t-xl'>
+                {/* {
                   userMatched.role == "Student" && (
                     <div onClick={() => router.push(`/Niveles/${userMatched.level}`)} className='absolute right-4 top-8 pb-4'>
                       <button class="btn-cta"> Continua en tu Nivel</button>
                     </div>
                   )
-                }
-                <div className='bg-transparent shadow-2xl hover:shadow-none transition ease-in 1s cursor-pointer absolute h-24 rounded-full left-8 flex items-center justify-center w-24 text-4xl font-extrabold border-8 border-[var(--color3Shadow)] -bottom-10 hover:brightness-90 z-20'><Image src={letPet} className='w-20 h-20 object-cover rounded-full' /><div className='bg-green-500 h-6 w-6 rounded-full absolute left-14 -bottom-2'></div></div>
+                } */}
+                {/* <div onClick={() => router.push(`/selectCharacter/${userMatched.id}`)} className='bg-transparent shadow-2xl hover:shadow-none transition ease-in 1s cursor-pointer absolute h-24 rounded-full left-8 flex items-center justify-center text-4xl font-extrabold border-8 border-[var(--color3Shadow)] -bottom-10 hover:brightness-90 z-20'> */}
+                <div className='cursor-pointer rounded-full hover:opacity-90 relative active:scale-95 active:opacity-100 transition-all 1s ease-in' onClick={() => router.push(`/selectCharacter/${userMatched.id}`)} >
+                  <YourProfile char={userMatched.profileImg} />
+                  <div className='bg-gray-800 flex absolute rounded-full p-1 right-0 bottom-4'>
+                    <TbEdit fill='white' size={40} />
+                  </div>
+                </div>
+                {/* <div className='bg-green-500 h-6 w-6 rounded-full absolute left-14 -bottom-2'></div></div> */}
               </div>
               <div className='flex justify-center gap-4 items-center pt-8'>
                 <h1 className='text-center text-2xl md:text-4xl text-white font-semibold py-4'>{userMatched.firstName} {userMatched.lastName} </h1>
