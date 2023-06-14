@@ -10,6 +10,7 @@ import YourProfile from '@/components/YourProfile'
 import BackHeader from '@/components/BackHeader'
 import { useSpringCarousel } from 'react-spring-carousel';
 import { ChevronLeftRounded, ChevronRightRounded } from '@mui/icons-material'
+import LoadingScreen from '@/components/LoadingScreen'
 
 export default function selectCharacter() {
   const carouselRef = useRef(null);
@@ -63,6 +64,12 @@ export default function selectCharacter() {
 
   return (
     <div className='px-8 pt-20 h-screen bg-[var(--color2Shadow)]'>
+      {
+        !userMatched &&
+        (
+          <LoadingScreen />
+        )
+      }
       <BackHeader parentTitle={"My Profile"} largeTitle={"Change Character"} />
       <div className='flex justify-center'>
         <YourProfile char={userMatched.profileImg} />

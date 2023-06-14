@@ -90,6 +90,12 @@ export default function VideoDetails() {
 
   return (
     <div>
+      {
+        !data &&
+        (
+          <LoadingScreen />
+        )
+      }
       <div className='flex bg-[var(--color2Shadow)] items-center gap-4 md:gap-8 px-4 py-2'>
         <MdArrowBackIosNew onClick={() => router.back()} size={40} className='active:-translate-y-1 transition-all 1s ease-in hover:opacity-80 hover:fill-white cursor-pointer bg-white rounded-full p-2 fill-[var(--color2Shadow)]' />
         <p className='text-2xl font-bold text-white'>{data.title}</p>

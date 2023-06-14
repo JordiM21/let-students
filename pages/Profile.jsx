@@ -60,8 +60,8 @@ export default function Profile() {
           <LoadingScreen />
         )
       }
-      <div className='bg-gray-200 min-h-screen object-cover absolute -z-10'></div>
-      <div className='bg-[var(--bluebg)] shadow-2xl mx-auto mt-0 pb-28 md:pb-0'>
+      <div className='bg-gray-200 object-cover absolute -z-10'></div>
+      <div className='bg-[var(--bluebg)] h-screen shadow-2xl mx-auto mt-0 pb-28 md:pb-0'>
         {
           userMatched != "" &&
           (

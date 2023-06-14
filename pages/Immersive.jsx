@@ -1,3 +1,4 @@
+import LoadingScreen from '@/components/LoadingScreen';
 import Nota from '@/components/Nota';
 import { db } from '@/config/firebase';
 import { useAuth } from '@/context/AuthContext';
@@ -46,6 +47,12 @@ export default function Immersive() {
 
   return (
     <div>
+      {
+        !data &&
+        (
+          <LoadingScreen />
+        )
+      }
       <h1 className='px-4 text-3xl text-center my-4 font-bold text-[var(--color1)]'>Immersive page</h1>
       {
         role == "Admin" && (

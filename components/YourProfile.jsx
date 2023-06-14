@@ -28,7 +28,7 @@ export default function YourProfile({ char }) {
     <div>
       {
         !char && (
-          <Image src={boy5} className='rounded-full object-cover h-52 w-52' />
+          <Image src={deafult} className='rounded-full object-cover h-52 w-52' />
         )
       }
       {

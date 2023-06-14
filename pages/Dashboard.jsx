@@ -16,7 +16,6 @@ export default function Dashboard() {
   const [progress, setProgress] = useState("")
   const router = useRouter()
 
-
   const { user } = useAuth();
   const [authUid, setAuthUid] = useState(user.uid)
   const [allUsers, setAllUsers] = useState([])
