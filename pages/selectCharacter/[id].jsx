@@ -9,6 +9,7 @@ import { toast } from 'react-toastify'
 import YourProfile from '@/components/YourProfile'
 import BackHeader from '@/components/BackHeader'
 import { useSpringCarousel } from 'react-spring-carousel';
+import { ChevronLeftRounded, ChevronRightRounded } from '@mui/icons-material'
 
 export default function selectCharacter() {
   const carouselRef = useRef(null);
@@ -39,7 +40,7 @@ export default function selectCharacter() {
     }).then(() => toast.success("Character changed succesfully!"))
     setTimeout(() => {
       router.reload()
-    }, 1500)
+    }, 1000)
   }
 
   const { carouselFragment, slideToPrevItem, slideToNextItem } = useSpringCarousel({
@@ -53,7 +54,7 @@ export default function selectCharacter() {
         <div key={char.value} className='w-[170px] relative'>
           <div className='h-[150px] w-[150px] absolute opacity-0'></div>
           <Image src={char.name} alt={`Character ${char.value}`} className='w-[150px]  h-[150px] object-cover rounded-lg' />
-          <button onClick={() => updateSelect(char.value)} className={`active:scale-95 border-2 rounded-full py-2 w-[150px] my-2 font-bold ${userMatched.profileImg == char.value ? "bg-black text-white border-white" : "border-black text-black bg-white hover:bg-black hover:text-white"}`}>{userMatched.profileImg == char.value ? "Selected" : "Select"}</button>
+          <button onClick={() => updateSelect(char.value)} className={`active:scale-90 border-2 rounded-full py-2 w-[150px] my-2 font-bold ${userMatched.profileImg == char.value ? "bg-black text-white border-white" : "border-black text-black bg-white hover:bg-black hover:text-white"}`}>{userMatched.profileImg == char.value ? "Selected" : "Select"}</button>
         </div>
       ),
     })),
@@ -69,35 +70,14 @@ export default function selectCharacter() {
       <div className='flex mt-4 gap-2'>
         <div className='w-full'>
           <div>
-            <div className='flex justify-between'>
-              <button onClick={slideToPrevItem}>Prev item</button>
-              <button onClick={slideToNextItem}>Next item</button>
+            <div className='flex justify-between relative'>
+              <button className='absolute z-50 top-0 h-[150px] -left-5 bg-black hover:bg-slate-950 rounded-l-lg' onClick={slideToPrevItem}><ChevronLeftRounded className='stroke-white text-lg' /></button>
+              <button className='absolute z-50 top-0 h-[150px] -right-5 bg-black hover:bg-slate-950 rounded-r-lg' onClick={slideToNextItem}><ChevronRightRounded className='stroke-white text-lg' /></button>
             </div>
             <div ref={carouselRef}>{carouselFragment}</div>
           </div>
-          {/* <InputLabel id="demo-simple-select-filled-label">Select a New Character</InputLabel>
-          <Select
-            className='w-full flex justify-center items-center flex-wrap bg-opacity-80 gap-2'
-            labelId="demo-simple-select-filled-label"
-            id="demo-simple-select-filled"
-            value={selectedCharacter}
-            onChange={(e) => setSelectedCharacter(e.target.value)}
-          >
-            <MenuItem value={selectedCharacter}>
-              <em>None</em>
-            </MenuItem>
-            {
-              characters.map((char) => (
-                <MenuItem className='mx-auto hover:bg-red-200' value={char.value}>
-                  <Image src={char.name} className='rounded-full object-cover h-28 w-28' />
-                </MenuItem>
-              ))
-            }
-          </Select> */}
         </div>
-        {/* <div className='bg-[var(--color2)] py-2 mt-6 rounded-full px-4 flex justify-center max-h-14 items-center transition-all 1s ease-in shadow-md hover:opacity-80 hover cursor-pointer hover:shadow-xl active:scale-95 '>
-          <button onClick={updateSelect} className='text-white'>Select</button>
-        </div> */}
+
       </div>
     </div >
   )
