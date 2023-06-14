@@ -30,7 +30,7 @@ export default function createVideo() {
   }
 
   return (
-    <div className='bg-[var(--color3Shadow)] min-h-screen'>
+    <div className='bg-[var(--bluebg)] min-h-screen'>
       <div>
         <h1 className='text-white text-xl text-center font-bold'>Add a video</h1>
         <p className='opacity-50 font-bold text-sm text-center'>This video will appear automatically on the immersive section of the students</p>

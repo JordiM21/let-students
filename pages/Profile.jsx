@@ -60,13 +60,13 @@ export default function Profile() {
           <LoadingScreen />
         )
       }
-      <div className='bg-gray-200 w-full h-full object-cover absolute -z-10'></div>
-      <div className='bg-[var(--color3Shadow)] shadow-2xl mx-auto mt-0 pb-28'>
+      <div className='bg-gray-200 min-h-screen object-cover absolute -z-10'></div>
+      <div className='bg-[var(--bluebg)] shadow-2xl mx-auto mt-0 pb-28 md:pb-0'>
         {
           userMatched != "" &&
           (
             <>
-              <div className='bg-gradient-to-r flex justify-center items-center from-cyan-500 to-blue-500 h-64 relative rounded-b-2xl'>
+              <div className='bg-gradient-to-r flex justify-center items-center from-cyan-500 to-blue-500 h-64 md:h-80 relative rounded-b-2xl'>
                 <div className='cursor-pointer rounded-full hover:opacity-90 relative active:scale-95 active:opacity-100 transition-all 1s ease-in' onClick={() => router.push(`/selectCharacter/${userMatched.id}`)} >
                   <YourProfile char={userMatched.profileImg} />
                   <div className='bg-gray-800 flex absolute rounded-full p-1 right-0 bottom-4'>
@@ -78,8 +78,8 @@ export default function Profile() {
 
                 </div>
               </div>
-              <div className='w-11/12 mx-auto space-y-3 my-4'>
-                <div className='bg-black cursor-pointer hover:bg-opacity-70 w-full flex items-center rounded-xl justify-between py-2 px-4'>
+              <div className='w-11/12 md:w-1/2 mx-auto space-y-3 my-4'>
+                <div className='bg-[var(--blueDarkbg)] cursor-pointer hover:bg-slate-800 w-full flex items-center rounded-xl justify-between py-2 px-4'>
                   <p className='text-white'>Name</p>
                   <div className='flex items-center justify-center'>
                     <p className='text-gray-400 opacity-80'>{userMatched.firstName} {userMatched.lastName} </p>
@@ -87,25 +87,25 @@ export default function Profile() {
                   </div>
                 </div>
                 <div className=''>
-                  <div className='bg-black cursor-pointer hover:bg-opacity-70 w-full flex items-center rounded-t-xl justify-between py-2 px-4'>
+                  <div className='bg-[var(--blueDarkbg)] cursor-pointer hover:bg-slate-800 w-full flex items-center rounded-t-xl justify-between py-2 px-4'>
                     <p className='text-white'>Level</p>
                     <div className='flex items-center justify-center'>
                       <p className='text-gray-400 opacity-80'>{userMatched.level}</p>
                     </div>
                   </div>
-                  <div className='bg-black cursor-pointer hover:bg-opacity-70 w-full flex items-center justify-between py-2 px-4'>
+                  <div className='bg-[var(--blueDarkbg)] cursor-pointer hover:bg-slate-800 w-full flex items-center justify-between py-2 px-4'>
                     <p className='text-white'>Email</p>
                     <div className='flex items-center justify-center'>
                       <p className='text-gray-400 opacity-80'>{userMatched.email}</p>
                     </div>
                   </div>
-                  <div className='bg-black cursor-pointer hover:bg-opacity-70 w-full flex items-center justify-between py-2 px-4'>
+                  <div className='bg-[var(--blueDarkbg)] cursor-pointer hover:bg-slate-800 w-full flex items-center justify-between py-2 px-4'>
                     <p className='text-white'>Phone</p>
                     <div className='flex items-center justify-center'>
                       <p className='text-gray-400 opacity-80'>{userMatched.phone}</p>
                     </div>
                   </div>
-                  <div className='bg-black cursor-pointer hover:bg-opacity-70 w-full flex items-center rounded-b-xl justify-between py-2 px-4'>
+                  <div className='bg-[var(--blueDarkbg)] cursor-pointer hover:bg-slate-800 w-full flex items-center rounded-b-xl justify-between py-2 px-4'>
                     <p className='text-white'>Age</p>
                     <div className='flex items-center justify-center'>
                       <p className='text-gray-400 opacity-80'>{userMatched.age}</p>
@@ -113,7 +113,7 @@ export default function Profile() {
                   </div>
                 </div>
               </div>
-              <div className='flex justify-around'>
+              <div className='flex justify-around md:w-1/2 md:mx-auto'>
                 <div className='w-full'>
                   <button onClick={() => {
                     logout()

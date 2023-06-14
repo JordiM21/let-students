@@ -74,7 +74,7 @@ export default function index() {
       }
       <div>
         <div>
-          <div className='max-w-3xl mx-auto bg-[var(--color3Shadow)]'>
+          <div className='max-w-3xl mx-auto bg-[var(--bluebg)]'>
             <Image src={image1} className='w-full h-48 md:h-72 object-cover' />
             <Stack spacing={2}>
               <Breadcrumbs separator="›" aria-label="breadcrumb">

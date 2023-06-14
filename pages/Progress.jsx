@@ -45,7 +45,7 @@ export default function Progress() {
   const colorScale = ['rgb(10, 132, 255)', 'rgb(255, 159, 10)', 'rgb(255, 59, 48)'];
 
   return (
-    <div className='pt-32 bg-[var(--color3Shadow)] h-full md:min-h-screen'>
+    <div className='pt-32 bg-[var(--bluebg)] h-full md:min-h-screen'>
       {
         !userMatched &&
         (
