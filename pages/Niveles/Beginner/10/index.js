@@ -41,7 +41,7 @@ export default function index() {
       <Breadcrumbs separator="›" aria-label="breadcrumb">
         {breadcrumbs}
       </Breadcrumbs>
-      <p className='opacity-60 font-bold text-lg md:text-4xl text-[var(--color2)]'>VERBS - LESSON 10</p>
+      <p className='opacity-60 font-bold text-lg text-[var(--color2)]'>VERBS - LESSON 10</p>
       <CustomTitle title="Verbs" titleSpanish="LOS VERBOS" />
       <ReactPlayer
         width={"100%"}

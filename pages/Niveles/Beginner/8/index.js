@@ -41,7 +41,7 @@ export default function index() {
       <Breadcrumbs separator="›" aria-label="breadcrumb">
         {breadcrumbs}
       </Breadcrumbs>
-      <p className='opacity-60 font-bold text-lg md:text-4xl text-[var(--color2)]'>NOUNS - LESSON 8</p>
+      <p className='opacity-60 font-bold text-lg text-[var(--color2)]'>NOUNS - LESSON 8</p>
       <CustomTitle title="Countable and Uncountable Nouns" titleSpanish="LOS NOMBRES/SUSTANTIVOS CONTABLES E INCONTABLES" />
       <ReactPlayer
         width={"100%"}

@@ -41,7 +41,7 @@ export default function index() {
       <Breadcrumbs separator="›" aria-label="breadcrumb">
         {breadcrumbs}
       </Breadcrumbs>
-      <p className='opacity-60 font-bold text-lg md:text-4xl text-[var(--color2)]'>DEMONSTRATIVE - LESSON 3</p>
+      <p className='opacity-60 font-bold text-lg text-[var(--color2)]'>DEMONSTRATIVE - LESSON 3</p>
       <CustomTitle title="Demonstrative Pronouns" titleSpanish="LOS PRONOMBRES DEMOSTRATIVOS" />
       <ReactPlayer
         width={"100%"}

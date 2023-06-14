@@ -82,33 +82,33 @@ export default function Profile() {
                 <div className='bg-black cursor-pointer hover:bg-opacity-70 w-full flex items-center rounded-xl justify-between py-2 px-4'>
                   <p className='text-white'>Name</p>
                   <div className='flex items-center justify-center'>
-                    <p>{userMatched.firstName} {userMatched.lastName} </p>
-                    <ChevronRightOutlined />
+                    <p className='text-gray-400 opacity-80'>{userMatched.firstName} {userMatched.lastName} </p>
+                    <ChevronRightOutlined className='stroke-gray-400 opacity-80' />
                   </div>
                 </div>
                 <div className=''>
                   <div className='bg-black cursor-pointer hover:bg-opacity-70 w-full flex items-center rounded-t-xl justify-between py-2 px-4'>
                     <p className='text-white'>Level</p>
                     <div className='flex items-center justify-center'>
-                      <p>{userMatched.level}</p>
+                      <p className='text-gray-400 opacity-80'>{userMatched.level}</p>
                     </div>
                   </div>
                   <div className='bg-black cursor-pointer hover:bg-opacity-70 w-full flex items-center justify-between py-2 px-4'>
                     <p className='text-white'>Email</p>
                     <div className='flex items-center justify-center'>
-                      <p>{userMatched.email}</p>
+                      <p className='text-gray-400 opacity-80'>{userMatched.email}</p>
                     </div>
                   </div>
                   <div className='bg-black cursor-pointer hover:bg-opacity-70 w-full flex items-center justify-between py-2 px-4'>
                     <p className='text-white'>Phone</p>
                     <div className='flex items-center justify-center'>
-                      <p>{userMatched.phone}</p>
+                      <p className='text-gray-400 opacity-80'>{userMatched.phone}</p>
                     </div>
                   </div>
                   <div className='bg-black cursor-pointer hover:bg-opacity-70 w-full flex items-center rounded-b-xl justify-between py-2 px-4'>
                     <p className='text-white'>Age</p>
                     <div className='flex items-center justify-center'>
-                      <p>{userMatched.age}</p>
+                      <p className='text-gray-400 opacity-80'>{userMatched.age}</p>
                     </div>
                   </div>
                 </div>
@@ -144,21 +144,6 @@ export default function Profile() {
                 </Modal>
               </div>
             </>
-          )
-        }
-        {
-          userMatched.role == "Admin" && (
-            <div className='mx-14'>
-              <h1 className='text-3xl text-white font-bold text-center'>Your students</h1>
-              {
-                students.map((student) => (
-                  <div onClick={() => router.push(`/adminCreate/studentDetails/${student.id}`)} className='p-2 flex justify-end pr-16 gap-4 items-center  bg-gray-300 rounded-md my-2 max-w-md mx-auto hover:scale-110 hover:opacity-60 transition-all 1s ease-in cursor-pointer'>
-                    <p className='text-center font-bold text-xl py-1 cursor-pointer'>{student.firstName}</p>
-                    <YourFlag country={student.country} />
-                  </div>
-                ))
-              }
-            </div>
           )
         }
       </div >

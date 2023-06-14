@@ -41,7 +41,7 @@ export default function index() {
       <Breadcrumbs separator="›" aria-label="breadcrumb">
         {breadcrumbs}
       </Breadcrumbs>
-      <p className='opacity-60 font-bold text-lg md:text-4xl text-[var(--color2)]'>Pronouns - LESSON 1.1</p>
+      <p className='opacity-60 font-bold text-lg text-[var(--color2)]'>Pronouns - LESSON 1.1</p>
       <h1 className='text-gray-800 font-bold text-4xl'>Personal Pronouns</h1>
       <p className='text-sm opacity-60 font-semibold'>(Los pronombres personales)</p>
       <ReactPlayer

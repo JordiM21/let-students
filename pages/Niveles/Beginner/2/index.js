@@ -41,7 +41,7 @@ export default function index() {
       <Breadcrumbs separator="›" aria-label="breadcrumb">
         {breadcrumbs}
       </Breadcrumbs>
-      <p className='opacity-60 font-bold text-lg md:text-4xl text-[var(--color2)]'>POSSESIVES PRONOUNS - LESSON 2</p>
+      <p className='opacity-60 font-bold text-lg text-[var(--color2)]'>POSSESIVES PRONOUNS - LESSON 2</p>
       <CustomTitle title="Possesives" titleSpanish="Los posesivos" />
       <ReactPlayer
         width={"100%"}

@@ -41,7 +41,7 @@ export default function index() {
       <Breadcrumbs separator="›" aria-label="breadcrumb">
         {breadcrumbs}
       </Breadcrumbs>
-      <p className='opacity-60 font-bold text-lg md:text-4xl text-[var(--color2)]'>PREPOSITIONS - LESSON 6</p>
+      <p className='opacity-60 font-bold md:text-4xl text-[var(--color2)]'>PREPOSITIONS - LESSON 6</p>
       <CustomTitle title="The Prepositions" titleSpanish="Las preposiciones" />
       <ReactPlayer
         width={"100%"}
