@@ -1,3 +1,5 @@
+import BackHeader from '@/components/BackHeader'
+import YourProfile from '@/components/YourProfile'
 import { db } from '@/config/firebase'
 import { Plans } from '@/models/Plans'
 import { FormControl, FormHelperText, InputLabel, MenuItem, Select, TextField } from '@mui/material'
@@ -96,9 +98,11 @@ export default function () {
 
 
   return (
-    <div className='mx-4 max-w-xl md:mx-auto'>
-      <h1 className='text-center text-[var(--color3)] text-3xl font-bold'>Changes page</h1>
-      <small className='text-gray-500 text-center'>Here, as an admin you can modify the information of your students (be careful the changes can't be reverted)</small>
+    <div className='mx-4 max-w-xl pt-20 max-md:pb-32 md:pb-4 md:mx-auto'>
+      <BackHeader largeTitle={"Changes page"} parentTitle="Back" />
+      <div className='flex justify-center'>
+        <YourProfile char={user.profileImg} />
+      </div>
       <h2>Currently Modifying <span className='text-[var(--color3)] font-semibold'>{user.firstName} {user.lastName}</span> </h2>
       <form onSubmit={updateLevel} className='my-8'>
         <FormControl variant="filled" className='w-full'>

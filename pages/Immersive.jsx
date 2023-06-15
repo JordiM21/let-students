@@ -1,3 +1,4 @@
+import BackHeader from '@/components/BackHeader';
 import LoadingScreen from '@/components/LoadingScreen';
 import Nota from '@/components/Nota';
 import { db } from '@/config/firebase';
@@ -46,14 +47,14 @@ export default function Immersive() {
   const router = useRouter()
 
   return (
-    <div>
+    <div className='bg-[var(--color2Shadow)] m-0 py-20'>
       {
         !data &&
         (
           <LoadingScreen />
         )
       }
-      <h1 className='px-4 text-3xl text-center my-4 font-bold text-[var(--color1)]'>Immersive page</h1>
+      <BackHeader largeTitle={"Immersive Videos"} parentTitle={"Back"} />
       {
         role == "Admin" && (
           <div className='w-10/12 my-8 transition-all 1s ease-in hover:opacity-80 hover:scale-105 mx-auto max-w-md'>
@@ -82,7 +83,7 @@ export default function Immersive() {
       <div className='md:flex md:mx-8 gap-4 flex-wrap space-y-8 py-8 md:space-y-0'>
         {
           data.map((video) => (
-            <div onClick={() => router.push(`/immersiveActivities/${video.id}`)} className='shadow-gray-600 shadow-xl hover:opacity-70 transition-all 1s ease-in hover:scale-110 cursor-pointer w-[280px] mx-auto bg-blue-950 rounded-md relative'>
+            <div onClick={() => router.push(`/immersiveActivities/${video.id}`)} className='shadow-blue-900 shadow-xl hover:opacity-70 transition-all 1s ease-in hover:scale-110 cursor-pointer w-[280px] mx-auto bg-[var(--blueDarkbg)] rounded-md relative'>
               <ReactPlayer
                 width={"100%"}
                 height={"150px"}

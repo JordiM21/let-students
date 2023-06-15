@@ -1,21 +1,54 @@
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import ProgressLesson from './ProgressLesson'
 import { useRouter } from 'next/router'
 import Image from 'next/image'
 import image1 from '@/public/cambridgeandlet.png'
 import image3 from '@/public/enviroments.png'
-import Accordion from '@mui/material/Accordion';
-import AccordionSummary from '@mui/material/AccordionSummary';
-import AccordionDetails from '@mui/material/AccordionDetails';
-import Typography from '@mui/material/Typography';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { AiOutlineCopy } from 'react-icons/ai'
 import { MdArrowForwardIos } from 'react-icons/md'
+import ReactPlayer from 'react-player'
+import { useSpringCarousel } from 'react-spring-carousel'
 
-export default function StudentDashboard({ firstName, level, role, progress }) {
+export default function StudentDashboard({ firstName, level, likedVideos, progress }) {
+  const carouselRef = useRef(null);
+
   const learnedWords = progress * 23
   const router = useRouter()
-  const [details, setDetails] = useState(false)
+
+  const { carouselFragment, slideToPrevItem, slideToNextItem } = useSpringCarousel({
+    slideType: 'fluid',
+    // slideAmount: 350,
+    freeScroll: true,
+    enableFreeScrollDrag: true,
+    items: likedVideos.map((char) => ({
+      id: char,
+      renderItem: (
+        <div key={char} className='w-[170px] relative'>
+          <div className='h-[120px] mx-auto w-[180px] absolute bg-gray-100 opacity-0'></div>
+          <ReactPlayer
+            width={150}
+            height={120}
+            className="mx-auto md:my-4 rounded-md"
+            url={char}
+            controls={false}
+            light={true}
+          />
+        </div>
+        // <div className='w-[80%] mx-auto my-4 rounded-md'>
+        //   <ReactPlayer
+        //     width={"100%"}
+        //     height={"180px"}
+        //     className="mx-auto md:my-4 rounded-md"
+        //     url={char}
+        //     controls={false}
+        //     light={true}
+        //   />
+        // </div>
+      ),
+    })),
+    // Customize other options as needed
+  });
+
   return (
     <div>
       <h1 className='text-center text-2xl py-2 font-bold text-[var(--color2)]'>Welcome {firstName}!</h1>
@@ -33,6 +66,9 @@ export default function StudentDashboard({ firstName, level, role, progress }) {
             <button onClick={() => router.push(`/Niveles/${level}/${progress + 1}`)} className='my-2 bg-[var(--color2)] w-full text-white font-bold text-2xl py-4 rounded-md hover:bg-[var(--color1)] transition-all 1s ease-in'>Go to my current Lesson</button>
           </div>
         </div>
+      </div>
+      <div className='md:flex md:gap-4 mx-8'>
+        <div ref={carouselRef}>{carouselFragment}</div>
       </div>
       <div className='mx-4 py-8 md:flex gap-8 items-center max-md:space-y-6 justify-center'>
         <div className='rounded-lg bg-black'>

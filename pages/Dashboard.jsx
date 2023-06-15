@@ -12,7 +12,7 @@ export default function Dashboard() {
   const [firstName, setFirstName] = useState("")
   const [level, setLevel] = useState("")
   const [role, setRole] = useState("")
-  const [plan, setPlan] = useState("")
+  const [likedVideos, setLikedVideos] = useState("")
   const [progress, setProgress] = useState("")
   const router = useRouter()
 
@@ -24,21 +24,22 @@ export default function Dashboard() {
       .then((querySnapshot) => {
         const newData = querySnapshot.docs
           .map((doc) => ({ ...doc.data(), id: doc.id }));
-        const userMatched = newData.filter(item => item.uid == authUid);
+        const userMatched = newData.find(item => item.uid == authUid);
         const allStudents = newData.filter(item => item.role == "Student")
         setAllUsers(allStudents)
-        setFirstName(userMatched[0].firstName);
-        setLevel(userMatched[0].level);
-        setRole(userMatched[0].role);
-        setId(userMatched[0].uid);
+        setFirstName(userMatched.firstName);
+        setLevel(userMatched.level);
+        setLikedVideos(userMatched.likedVideos)
+        setRole(userMatched.role);
+        setId(userMatched.uid);
         if (level == "Beginner") {
-          setProgress(userMatched[0].progressBeginner);
+          setProgress(userMatched.progressBeginner);
         }
         if (level == "Intermediate") {
-          setProgress(userMatched[0].progressIntermediate);
+          setProgress(userMatched.progressIntermediate);
         }
         if (level == "Advanced") {
-          setProgress(userMatched[0].progressAdvanced);
+          setProgress(userMatched.progressAdvanced);
         }
       })
   }
@@ -63,6 +64,7 @@ export default function Dashboard() {
             level={level}
             allUsers={allUsers}
             role={role}
+            likedVideos={likedVideos}
           />
         )
       }
@@ -74,6 +76,7 @@ export default function Dashboard() {
             level={level}
             role={role}
             progress={progress}
+            likedVideos={likedVideos}
           />
         )
       }

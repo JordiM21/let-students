@@ -3,7 +3,6 @@ import { collection, doc, getDocs, updateDoc } from 'firebase/firestore'
 import { useRouter } from 'next/router'
 import React, { useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
-import { InputLabel, MenuItem, Select } from '@mui/material'
 import { characters } from '@/models/Characters'
 import { toast } from 'react-toastify'
 import YourProfile from '@/components/YourProfile'
@@ -17,7 +16,6 @@ export default function selectCharacter() {
 
 
   const router = useRouter()
-  const menuRef = useRef(null);
   const id = router.query.id
   const [userMatched, setUserMatched] = useState({})
   const fetchPost = async () => {
@@ -40,7 +38,7 @@ export default function selectCharacter() {
       profileImg: e,
     }).then(() => toast.success("Character changed succesfully!"))
     setTimeout(() => {
-      router.reload()
+      router.back()
     }, 1000)
   }
 
@@ -78,8 +76,8 @@ export default function selectCharacter() {
         <div className='w-full'>
           <div>
             <div className='flex justify-between relative'>
-              <button className='absolute z-50 top-0 h-[150px] -left-5 bg-black hover:bg-slate-950 rounded-l-lg' onClick={slideToPrevItem}><ChevronLeftRounded className='stroke-white text-lg' /></button>
-              <button className='absolute z-50 top-0 h-[150px] -right-5 bg-black hover:bg-slate-950 rounded-r-lg' onClick={slideToNextItem}><ChevronRightRounded className='stroke-white text-lg' /></button>
+              <button className='absolute z-10 top-0 h-[150px] -left-5 bg-black hover:bg-slate-950 rounded-l-lg' onClick={slideToPrevItem}><ChevronLeftRounded className='stroke-white text-lg' /></button>
+              <button className='absolute z-10 top-0 h-[150px] -right-5 bg-black hover:bg-slate-950 rounded-r-lg' onClick={slideToNextItem}><ChevronRightRounded className='stroke-white text-lg' /></button>
             </div>
             <div ref={carouselRef}>{carouselFragment}</div>
           </div>
