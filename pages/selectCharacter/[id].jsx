@@ -45,17 +45,17 @@ export default function selectCharacter() {
   }
 
   const { carouselFragment, slideToPrevItem, slideToNextItem } = useSpringCarousel({
-    // slideType: 'fluid',
-    withLoop: false,
+    slideType: 'fluid',
+    slideAmount: 350,
     freeScroll: true,
-    // enableFreeScrollDrag: true,
+    enableFreeScrollDrag: true,
     items: characters.map((char) => ({
       id: char.value,
       renderItem: (
         <div key={char.value} className='w-[170px] relative'>
           <div className='h-[150px] w-[150px] absolute opacity-0'></div>
           <Image src={char.name} alt={`Character ${char.value}`} className='w-[150px]  h-[150px] object-cover rounded-lg' />
-          <button onClick={() => updateSelect(char.value)} className={`active:scale-90 border-2 rounded-full py-2 w-[150px] my-2 font-bold ${userMatched.profileImg == char.value ? "bg-black text-white border-white" : "border-black text-black bg-white hover:bg-black hover:text-white"}`}>{userMatched.profileImg == char.value ? "Selected" : "Select"}</button>
+          <button onClick={() => updateSelect(char.value)} className={`active:scale-90 border-2 rounded-full py-2 w-[150px] my-2 font-bold ${userMatched?.profileImg == char.value ? "bg-black text-white border-white" : "border-black text-black bg-white hover:bg-black hover:text-white"}`}>{userMatched?.profileImg == char.value ? "Selected" : "Select"}</button>
         </div>
       ),
     })),
@@ -72,7 +72,7 @@ export default function selectCharacter() {
       }
       <BackHeader parentTitle={"My Profile"} largeTitle={"Change Character"} />
       <div className='flex justify-center'>
-        <YourProfile char={userMatched.profileImg} />
+        <YourProfile char={userMatched?.profileImg} />
       </div>
       <div className='flex mt-4 gap-2'>
         <div className='w-full'>
@@ -84,7 +84,6 @@ export default function selectCharacter() {
             <div ref={carouselRef}>{carouselFragment}</div>
           </div>
         </div>
-
       </div>
     </div >
   )
