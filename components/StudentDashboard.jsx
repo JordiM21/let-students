@@ -69,13 +69,13 @@ export default function StudentDashboard({ firstName, level, role, progress }) {
             {
               level == "Intermediate" && (
                 <div className='flex justify-between items-center mb-4'>
-                  <div className='flex items-center gap-2 hover:gap-4 transition-all 1s ease-in cursor-pointer hover:opacity-90 bg-[var(--color1)] text-white font-bold px-6 rounded-md py-2'>
-                    <a href='https://writeandimprove.com/workbooks#/memberships/e405a0c1-8025-4fbb-ad94-bc0eefada543/workbooks/647f2ef1-cb66-4f4d-87ae-a842fbc28e33' target='_blank'>Go to the page</a>
-                    <MdArrowForwardIos />
-                  </div>
                   <div className='flex bg-white items-center px-6 py-2 rounded-md'>
                     <p>R2PMQGRC</p>
                     <AiOutlineCopy />
+                  </div>
+                  <div className='flex items-center gap-2 hover:gap-4 transition-all 1s ease-in cursor-pointer hover:opacity-90 text-white border-4 border-white font-bold px-6 rounded-full py-2'>
+                    <a href='https://writeandimprove.com/workbooks#/memberships/e405a0c1-8025-4fbb-ad94-bc0eefada543/workbooks/647f2ef1-cb66-4f4d-87ae-a842fbc28e33' target='_blank'>Go to page</a>
+                    <MdArrowForwardIos fill='white' />
                   </div>
                 </div>
               )
