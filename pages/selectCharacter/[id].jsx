@@ -46,7 +46,7 @@ export default function selectCharacter() {
 
   const { carouselFragment, slideToPrevItem, slideToNextItem } = useSpringCarousel({
     slideType: 'fluid',
-    slideAmount: 350,
+    // slideAmount: 350,
     freeScroll: true,
     enableFreeScrollDrag: true,
     items: characters.map((char) => ({
