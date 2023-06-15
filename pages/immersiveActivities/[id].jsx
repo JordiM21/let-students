@@ -1,3 +1,4 @@
+import BackHeader from '@/components/BackHeader';
 import RelatedVideos from '@/components/RelatedVideos';
 import { db } from '@/config/firebase';
 import { useAuth } from '@/context/AuthContext';
@@ -89,17 +90,14 @@ export default function VideoDetails() {
   };
 
   return (
-    <div>
+    <div className='pt-20 bg-[var(--blueDarkbg)]'>
       {
         !data &&
         (
           <LoadingScreen />
         )
       }
-      <div className='flex bg-[var(--color2Shadow)] items-center gap-4 md:gap-8 px-4 py-2'>
-        <MdArrowBackIosNew onClick={() => router.back()} size={40} className='active:-translate-y-1 transition-all 1s ease-in hover:opacity-80 hover:fill-white cursor-pointer bg-white rounded-full p-2 fill-[var(--color2Shadow)]' />
-        <p className='text-2xl font-bold text-white'>{data.title}</p>
-      </div>
+      <BackHeader largeTitle={data.title} parentTitle={"Back"} />
       <div className='md:flex'>
         <div className='flex-1'>
           <div className='h-[260px] md:h-[432px] w-full max-w-3xl mx-auto'>
@@ -112,7 +110,7 @@ export default function VideoDetails() {
               controls={true}
             />
           </div>
-          <div className='bg-[var(--color2)] p-2 max-w-3xl mx-auto mb-2'>
+          <div className='bg-[var(--color2)] p-2 rounded-b-md max-w-3xl mx-auto mb-2'>
             <div onClick={handleLike} className={`group transition-all 1s max-w-[50%] ease-in cursor-pointer flex w-full border-green-600 border-4 rounded-md py-2 justify-around ${liked ? 'bg-green-600 text-white opacity-90' : 'active:translate-y-2 bg-white hover:bg-green-600 hover:border-white '}`}>
               <p className={`text-sm  transition-all 1s ease-in font-bold ${liked ? 'text-white' : 'group-hover:text-white text-green-600 group-hover:scale-110'}`}>{liked ? 'Video on your list' : 'Save video'}</p>
               <MdFavoriteBorder className={`transition-all 1s ease-in ${liked ? 'fill-white scale-125' : 'group-hover:scale-125 group-hover:fill-white fill-green-600'}`} />

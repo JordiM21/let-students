@@ -64,9 +64,10 @@ export default function Immersive() {
       }
       {/* <Nota text="Recuerda que los videos son necesarios para tu aprendizaje pero no es necesario que entiendas todo lo que dice en el video para aprender, siempre puedes volver a mirarlo de nuevo y aprender cada vez mas cosas" /> */}
       <div className='w-full flex justify-center px-4 mt-4'>
-        <FormControl variant="filled" className='w-full md:max-w-md'>
+        <FormControl variant="filled" className='w-full md:max-w-md bg-gray-100 rounded-md'>
           <InputLabel id="demo-simple-select-filled-label">Search by Level</InputLabel>
           <Select
+            className='bg-white'
             required
             labelId="demo-simple-select-filled-label"
             id="demo-simple-select-filled"
@@ -89,11 +90,11 @@ export default function Immersive() {
                 height={"150px"}
                 className="mx-auto md:my-4 rounded-md"
                 url={video.url}
-                controls={false}
+                controls={true}
                 light={true}
               />
-              <div className={`absolute top-4 px-1 rounded-l-md font-bold text-white right-0 ${video.level == 'Advanced' && 'bg-red-600'} ${video.level == 'Intermediate' && 'bg-orange-600'} ${video.level == 'Beginner' && 'bg-blue-600'}`}>
-                <p>{video.level}</p>
+              <div className={`absolute top-4 px-2 py-1 rounded-l-md font-bold right-0 ${video.level == 'Advanced' && 'bg-red-600'} ${video.level == 'Intermediate' && 'bg-orange-600'} ${video.level == 'Beginner' && 'bg-blue-600'}`}>
+                <p className='text-white'>{video.level}</p>
               </div>
               <p className='text-white font-bold text-xl p-2'>{video.title}</p>
             </div>

@@ -3,18 +3,20 @@ import ProgressLesson from '@/components/ProgressLesson';
 import YourFlag from '@/components/YourFlag';
 import { db } from '@/config/firebase';
 import { useAuth } from '@/context/AuthContext';
-import { ChevronRightRounded } from '@mui/icons-material';
 import { collection, getDocs } from 'firebase/firestore';
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react'
 import {
-  VictoryBar, VictoryChart, VictoryAxis,
+  VictoryBar, VictoryChart,
   VictoryTheme
 } from 'victory';
+import ReactPlayer from 'react-player'
+import LoadingScreen from '@/components/LoadingScreen';
 
 export default function Progress() {
   const [userMatched, setUserMatched] = useState({})
   const [students, setStudents] = useState([])
+  const [likedVideos, setLikedVideos] = useState([])
 
   const router = useRouter()
 
@@ -26,6 +28,7 @@ export default function Progress() {
         const newData = querySnapshot.docs
           .map((doc) => ({ ...doc.data(), id: doc.id }));
         const userMatch = newData.find(item => item.uid == authUid);
+        setLikedVideos(userMatch.likedVideos.reverse())
         setUserMatched(userMatch)
         const studentsAsigned = newData.filter(item => item.asignedTutor == authUid)
         setStudents(studentsAsigned)
@@ -43,6 +46,8 @@ export default function Progress() {
   ];
 
   const colorScale = ['rgb(10, 132, 255)', 'rgb(255, 159, 10)', 'rgb(255, 59, 48)'];
+
+
 
   return (
     <div className='pt-20 bg-[var(--bluebg)] h-full md:min-h-screen'>
@@ -73,6 +78,7 @@ export default function Progress() {
       </div>
       <div className='md:flex'>
         <div className='max-w-sm mx-auto md:fixed md:ml-20 md:mt-20 bg-white my-4 rounded-xl'>
+          <div className='h-[400px] opacity-0 w-[350px] bg-gray-300 absolute'></div>
           <h2 className='text-lg font-bold pt-2 pl-8 text-gray-600'>Lessons Completed</h2>
           <VictoryChart
             theme={VictoryTheme.material}
@@ -95,6 +101,28 @@ export default function Progress() {
           </VictoryChart>
         </div>
         <div className='max-w-2xl md:w-[40%] mx-auto md:ml-[60%] lg:ml-[50%] pb-24'>
+          {
+            userMatched.role == "Student" && (
+              <div>
+                <h1 className='text-3xl text-white font-bold text-center'>Your <span className='text-green-500'>Liked</span> Videos</h1>
+                <p className='text-gray-300 w-[90%] mx-auto text-center'>Acá encuentras todos los videos que has <span className='text-green-500'>dado like</span>, prueba seleccionando cualquiera para reproducirlo. </p>
+                {
+                  likedVideos.map((video) => (
+                    <div className='my-6'>
+                      <ReactPlayer
+                        width={"90%"}
+                        height={220}
+                        className="mx-auto rounded-md"
+                        url={video}
+                        controls={true}
+                        light={false}
+                      />
+                    </div>
+                  ))
+                }
+              </div>
+            )
+          }
           {
             userMatched.role == "Admin" && (
               <div className='mx-8 md:mx-1'>
