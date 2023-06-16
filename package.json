@@ -21,7 +21,6 @@
 		"dashify": "^2.0.0",
 		"firebase": "^9.22.0",
 		"next": "13.4.3",
-		"next-videos": "^1.4.1",
 		"nextjs-progressbar": "^0.0.16",
 		"postcss": "8.4.23",
 		"react": "18.2.0",
