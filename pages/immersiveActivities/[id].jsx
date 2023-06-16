@@ -49,7 +49,6 @@ export default function VideoDetails() {
       try {
         const querySnapshot = await getDocs(collection(db, 'users'));
         const newData = querySnapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
-
         const user = newData.find((user) => user.id === userMatched.id);
         if (user && user.likedVideos.includes(data.url)) {
           setLiked(true);
@@ -58,8 +57,6 @@ export default function VideoDetails() {
         console.error('Error fetching user data:', error);
       }
     };
-
-
     checkLikedStatus();
   }, [data.url, liked]);
 
@@ -73,8 +70,7 @@ export default function VideoDetails() {
   const handleLike = async () => {
     if (!liked) {
       try {
-        //     const nameRef = doc(db, "users", userMatched.id);
-        const userRef = doc(db, "users", userMatched.id); // Replace USER_ID with the actual user ID
+        const userRef = doc(db, "users", userMatched.id);
         await updateDoc(userRef, {
           likedVideos: [...userMatched.likedVideos, data.url],
         }).then(() => toast.success("Saved succesfully!"))

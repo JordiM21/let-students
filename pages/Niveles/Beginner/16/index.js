@@ -142,6 +142,7 @@ export default function index() {
             className="max-w-2xl mx-auto my-8 border-8 rounded-md bg-blue-600 border-blue-600"
             url="https://www.youtube.com/watch?v=7uY2HrQ9qQ8"
             controls={true} />
+          <UnitWithTroubleBtn unit={16} />
           <div className='my-8 rounded-md p-4 bg-blue-200 '>
             <UnitTest level={"Beginner"} unit={16} />
           </div>

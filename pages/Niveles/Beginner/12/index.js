@@ -233,6 +233,7 @@ When would you like to go to the movies?"
             spanish="¿Cuándo te gustaría ir al cine?"
           />
 
+          <UnitWithTroubleBtn unit={12} />
           <div className='my-8 rounded-md p-4 bg-blue-200 '>
             <UnitTest level={"Beginner"} unit={12} />
           </div>

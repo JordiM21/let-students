@@ -217,6 +217,7 @@ You must drive around the city center to reach the cinema."
           spanish="Entramos en la tienda de la esquina." />
         <p>These are not all of the prepositions but we will see more soon!</p>
         <p className='text-xs'>Estos no son todas las preposiciones pero, veremos mas muy pronto!</p>
+        <UnitWithTroubleBtn unit={6} />
         <div className='my-8 rounded-md p-4 bg-blue-200 '>
           <UnitTest level={"Beginner"} unit={6} />
         </div>

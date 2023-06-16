@@ -136,6 +136,7 @@ export default function index() {
             english="water"
             spanish="agua"
           />
+          <UnitWithTroubleBtn unit={8} />
           <div className='my-8 rounded-md p-4 bg-blue-200 '>
             <UnitTest level={"Beginner"} unit={8} />
           </div>

@@ -74,6 +74,7 @@ export default function index() {
           <Nota text="Así hacemos preguntas intercambiando el verbo to be al inicio, no te preocupes lo veremos a detalle mas adelante" />
 
         </div>
+        <UnitWithTroubleBtn unit={3} />
         <div className='my-8 rounded-md p-4 bg-blue-200 '>
           <UnitTest level={"Beginner"} unit={3} />
         </div>

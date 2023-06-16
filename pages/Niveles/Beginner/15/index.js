@@ -120,6 +120,7 @@ export default function index() {
             english="Does he work hard?"
             spanish="¿El trabaja duro?"
           />
+          <UnitWithTroubleBtn unit={15} />
           <div className='my-8 rounded-md p-4 bg-blue-200 '>
             <UnitTest level={"Beginner"} unit={15} />
           </div>

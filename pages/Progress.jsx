@@ -28,7 +28,7 @@ export default function Progress() {
         const newData = querySnapshot.docs
           .map((doc) => ({ ...doc.data(), id: doc.id }));
         const userMatch = newData.find(item => item.uid == authUid);
-        setLikedVideos(userMatch.likedVideos.reverse())
+        setLikedVideos(userMatch.likedVideos?.reverse())
         setUserMatched(userMatch)
         const studentsAsigned = newData.filter(item => item.asignedTutor == authUid)
         setStudents(studentsAsigned)

@@ -167,6 +167,7 @@ export default function index() {
             spanish1="pie"
             english2="feet"
             spanish2="pies" />
+          <UnitWithTroubleBtn unit={7} />
           <div className='my-8 rounded-md p-4 bg-blue-200 '>
             <UnitTest level={"Beginner"} unit={7} />
           </div>

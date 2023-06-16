@@ -102,6 +102,7 @@ a happy child"
             english="The delicious pizza"
             spanish="La pizza deliciosa"
           />
+          <UnitWithTroubleBtn unit={9} />
           <div className='my-8 rounded-md p-4 bg-blue-200 '>
             <UnitTest level={"Beginner"} unit={9} />
           </div>

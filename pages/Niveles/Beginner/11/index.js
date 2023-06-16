@@ -173,6 +173,7 @@ export default function index() {
             english="You are busy"
             spanish="Tu estás ocupado"
           />
+          <UnitWithTroubleBtn unit={11} />
           <div className='my-8 rounded-md p-4 bg-blue-200 '>
             <UnitTest level={"Beginner"} unit={11} />
           </div>

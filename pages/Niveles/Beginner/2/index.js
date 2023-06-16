@@ -225,6 +225,7 @@ export default function index() {
             spanish="los exámenes de los estudiantes…"
           />
         </div>
+        <UnitWithTroubleBtn unit={2} />
         <div className='my-8 rounded-md p-4 bg-blue-200 '>
           <UnitTest level={"Beginner"} unit={2} />
         </div>

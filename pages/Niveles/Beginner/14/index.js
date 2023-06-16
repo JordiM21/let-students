@@ -108,6 +108,7 @@ export default function index() {
             english="She’s currently looking for a job."
             spanish="Actualmente está buscando un trabajo."
           />
+          <UnitWithTroubleBtn unit={14} />
           <div className='my-8 rounded-md p-4 bg-blue-200 '>
             <UnitTest level={"Beginner"} unit={14} />
           </div>
