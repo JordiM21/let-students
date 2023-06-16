@@ -86,7 +86,7 @@ export default function Beginner() {
                 }
                 {
                   progress < index && (
-                    <div onClick={() => router.push(`/Niveles/${data.level}/${data.number}`)} className='grayscale opacity-70 transition-all 1s ease-in cursor-pointer flex justify-between items-center bg-gray-300 px-4 py-2 rounded-md'>
+                    <div className='grayscale opacity-70 transition-all 1s ease-in cursor-pointer flex justify-between items-center bg-gray-300 px-4 py-2 rounded-md'>
                       <div className='w-4/5'>
                         <small className='text-xs text-[var(--color3)] font-semibold'>UNIT {data.number}</small>
                         <p className='font-bold text-[var(--color2)]'>{data.title}</p>
