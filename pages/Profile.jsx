@@ -37,6 +37,7 @@ export default function Profile() {
 
   const { user, logout } = useAuth();
   const [authUid, setAuthUid] = useState(user.uid)
+  const [tutor, setTutor] = useState({})
   const fetchPost = async () => {
     await getDocs(collection(db, "users"))
       .then((querySnapshot) => {
@@ -46,23 +47,13 @@ export default function Profile() {
         setUserMatched(userMatch)
         const studentsAsigned = newData.filter(item => item.asignedTutor == authUid)
         setStudents(studentsAsigned)
-      })
-  }
-  const [tutor, setTutor] = useState({})
-
-  const fetchTutor = async () => {
-    await getDocs(collection(db, "users"))
-      .then((querySnapshot) => {
-        const newData = querySnapshot.docs
-          .map((doc) => ({ ...doc.data(), id: doc.id }));
-        const userMatch = newData.find(item => item.uid == userMatched.asignedTutor);
-        setTutor(userMatch)
+        const tutorAsigned = newData.find(item => item.uid == userMatch.asignedTutor);
+        setTutor(tutorAsigned)
       })
   }
 
   useEffect(() => {
     fetchPost();
-    fetchTutor()
   }, [])
 
   return (
