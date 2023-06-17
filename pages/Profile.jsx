@@ -115,12 +115,16 @@ export default function Profile() {
                     </div>
                   </div>
                 </div>
-                <div className='bg-[var(--blueDarkbg)] cursor-pointer hover:bg-slate-800 w-full flex items-center rounded-xl justify-between py-2 px-4'>
-                  <p className='text-white'>Personal Tutor</p>
-                  <div className='flex items-center justify-center'>
-                    <p className='text-gray-400 opacity-80'>{tutor.firstName}  {tutor.lastName} </p>
-                  </div>
-                </div>
+                {
+                  userMatched.role == "Student" && (
+                    <div className='bg-[var(--blueDarkbg)] cursor-pointer hover:bg-slate-800 w-full flex items-center rounded-xl justify-between py-2 px-4'>
+                      <p className='text-white'>Personal Tutor</p>
+                      <div className='flex items-center justify-center'>
+                        <p className='text-gray-400 opacity-80'>{tutor.firstName}  {tutor.lastName} </p>
+                      </div>
+                    </div>
+                  )
+                }
               </div>
               <div className='flex justify-around md:w-1/2 md:mx-auto'>
                 <div className='w-full'>

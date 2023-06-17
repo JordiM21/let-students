@@ -3,7 +3,7 @@ import ProgressLesson from '@/components/ProgressLesson';
 import YourFlag from '@/components/YourFlag';
 import { db } from '@/config/firebase';
 import { useAuth } from '@/context/AuthContext';
-import { collection, getDocs } from 'firebase/firestore';
+import { collection, doc, getDocs, updateDoc } from 'firebase/firestore';
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react'
 import {
@@ -14,6 +14,7 @@ import ReactPlayer from 'react-player'
 import LoadingScreen from '@/components/LoadingScreen';
 import { BsQuestionCircle } from 'react-icons/bs';
 import { AiFillCloseCircle } from 'react-icons/ai';
+import { toast } from 'react-toastify';
 
 export default function Progress() {
   const [userMatched, setUserMatched] = useState({})
@@ -51,11 +52,21 @@ export default function Progress() {
 
   const [question, setQuestion] = useState(false)
 
+  const updateUnitInTrouble = async (id) => {
+    const nameRef = doc(db, "users", id);
+    await updateDoc(nameRef, {
+      unitInTrouble: [],
+    });
+    toast.success("Well Done! Resolviste todas las dudas de tu estudiante")
+    setTimeout(() => {
+      router.reload()
+    }, 3000)
+  }
 
   return (
     <div className='pt-20 bg-[var(--bluebg)] h-full md:min-h-screen'>
       {
-        likedVideos.length < 1 &&
+        likedVideos?.length < 1 &&
         (
           <LoadingScreen />
         )
@@ -145,48 +156,76 @@ export default function Progress() {
                 <h1 className='text-3xl text-white font-bold text-center'>Your students</h1>
                 {
                   students.map((student) => (
-                    <div className='relative p-4 bg-gray-300 rounded-md my-4 w-full mx-auto transition-all 1s ease-in cursor-pointer'>
-                      <div className='flex justify-start gap-4 items-center'>
-                        <YourFlag country={student.country} />
-                        <p className='text-center font-bold text-xl py-1 cursor-pointer'>{student.firstName} {student.lastName}</p>
-                        <div className='absolute right-4'>
-                          <p className='text-sm text-gray-600 font-bold'>({student.level})</p>
+                    <>
+                      {
+                        student.unitInTrouble?.length > 0 && (
+                          <div className='bg-yellow-300 py-4 -mb-2 px-4 rounded-lg'>
+                            <p>{student.firstName} ha solicitado tu ayuda!</p>
+                            <p className='text-xs text-gray-800'>Ayudale en la leccion {student.unitInTrouble[0]} del nivel {student.level} </p>
+                            <div className='flex items-center justify-around py-2'>
+                              <button onClick={() => router.push(`/Niveles/${student.level}/${student.unitInTrouble[0]}`)} className='py-2 border-[var(--color2)] border-4 rounded-full px-3'>
+                                <p>Ir a la leccion</p>
+                              </button>
+                              <button onClick={() => updateUnitInTrouble(student.id)} className='py-2 border-4 border-[var(--color2)] bg-[var(--color2)] rounded-full px-3'>
+                                <p className='text-white'>Marcar como completa</p>
+                              </button>
+                            </div>
+                          </div>
+                        )
+                      }
+                      <div className='relative p-4 bg-gray-300 rounded-md mb-4 w-full mx-auto transition-all 1s ease-in cursor-pointer'>
+                        {
+                          student.unitInTrouble?.length > 0 && (
+                            <div class="loader">
+                              <div class="circle circle-1"></div>
+                              <div class="circle circle-2"></div>
+                              <div class="circle circle-3"></div>
+                              <div class="circle circle-4"></div>
+                            </div>
+                          )
+                        }
+                        <div className='flex justify-start gap-4 items-center'>
+                          <YourFlag country={student.country} />
+                          <p className='text-center font-bold text-xl py-1 cursor-pointer'>{student.firstName} {student.lastName}</p>
+                          <div className='absolute right-4'>
+                            <p className='text-sm text-gray-600 font-bold'>({student.level})</p>
+                          </div>
                         </div>
-                      </div>
-                      <div className='bg-[var(--blueDarkbg)] cursor-pointer hover:bg-slate-800 w-full flex items-center rounded-t-xl mt-4 justify-between py-2 px-4'>
-                        <p className='text-white'>Email</p>
-                        <div className='flex items-center justify-center'>
-                          <p className='text-gray-400 opacity-80'>{student.email}</p>
+                        <div className='bg-[var(--blueDarkbg)] cursor-pointer hover:bg-slate-800 w-full flex items-center rounded-t-xl mt-4 justify-between py-2 px-4'>
+                          <p className='text-white'>Email</p>
+                          <div className='flex items-center justify-center'>
+                            <p className='text-gray-400 opacity-80'>{student.email}</p>
+                          </div>
                         </div>
-                      </div>
-                      <div className='bg-[var(--blueDarkbg)] cursor-pointer hover:bg-slate-800 w-full flex items-center justify-between py-2 px-4'>
-                        <p className='text-white'>Phone</p>
-                        <div className='flex items-center justify-center'>
-                          <p className='text-gray-400 opacity-80'>{student.phone}</p>
+                        <div className='bg-[var(--blueDarkbg)] cursor-pointer hover:bg-slate-800 w-full flex items-center justify-between py-2 px-4'>
+                          <p className='text-white'>Phone</p>
+                          <div className='flex items-center justify-center'>
+                            <p className='text-gray-400 opacity-80'>{student.phone}</p>
+                          </div>
                         </div>
-                      </div>
-                      <div className='bg-[var(--blueDarkbg)] cursor-pointer hover:bg-slate-800 w-full flex items-center rounded-b-xl mb-4 justify-between py-2 px-4'>
-                        <p className='text-white'>Age</p>
-                        <div className='flex items-center justify-center'>
-                          <p className='text-gray-400 opacity-80'>{student.age}</p>
+                        <div className='bg-[var(--blueDarkbg)] cursor-pointer hover:bg-slate-800 w-full flex items-center rounded-b-xl mb-4 justify-between py-2 px-4'>
+                          <p className='text-white'>Age</p>
+                          <div className='flex items-center justify-center'>
+                            <p className='text-gray-400 opacity-80'>{student.age}</p>
+                          </div>
                         </div>
+                        <div className=''>
+                          <p>Beginner: </p>
+                          <ProgressLesson progress={student.progressBeginner} />
+                        </div>
+                        <div className=''>
+                          <p>Intermediate: </p>
+                          <ProgressLesson progress={student.progressIntermediate} />
+                        </div>
+                        <div className=''>
+                          <p>Advanced: </p>
+                          <ProgressLesson progress={student.progressAdvanced} />
+                        </div>
+                        <button onClick={() => router.push(`StudentDetail/${student.id}`)} className='w-full py-4 rounded-full my-4 bg-[var(--blueDarkbg)] hover:bg-white border-4 hover:text-[var(--blueDarkbg)] border-[var(--blueDarkbg)] text-white'>
+                          MODIFY
+                        </button>
                       </div>
-                      <div className=''>
-                        <p>Beginner: </p>
-                        <ProgressLesson progress={student.progressBeginner} />
-                      </div>
-                      <div className=''>
-                        <p>Intermediate: </p>
-                        <ProgressLesson progress={student.progressIntermediate} />
-                      </div>
-                      <div className=''>
-                        <p>Advanced: </p>
-                        <ProgressLesson progress={student.progressAdvanced} />
-                      </div>
-                      <button onClick={() => router.push(`StudentDetail/${student.id}`)} className='w-full py-4 rounded-full my-4 bg-[var(--blueDarkbg)] hover:bg-white border-4 hover:text-[var(--blueDarkbg)] border-[var(--blueDarkbg)] text-white'>
-                        MODIFY
-                      </button>
-                    </div>
+                    </>
                   ))
                 }
               </div>
