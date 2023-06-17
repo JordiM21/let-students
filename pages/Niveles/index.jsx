@@ -8,6 +8,8 @@ import { collection, getDocs } from 'firebase/firestore'
 import { db } from '@/config/firebase'
 import LoadingScreen from '@/components/LoadingScreen'
 import { useRouter } from 'next/router'
+import { BsQuestionCircle } from 'react-icons/bs'
+import { AiFillCloseCircle } from 'react-icons/ai'
 
 export default function Niveles() {
 
@@ -35,6 +37,7 @@ export default function Niveles() {
     fetchPost();
   }, [])
 
+  const [question, setQuestion] = useState(false)
 
 
   return (
@@ -59,7 +62,20 @@ export default function Niveles() {
       }
       {
         role == "Student" && (
-          <h1 className='text-center text-3xl font-semibold py-5 text-white'>¡Comienza a aprender ahora!</h1>
+          <div className='flex items-center justify-center gap-2'>
+            <h1 className='text-center text-3xl font-semibold py-5 text-white'>¡Comienza a aprender ahora!</h1>
+            <div onClick={() => setQuestion(!question)} className='bg-gray-200 rounded-full cursor-pointer'>
+              <BsQuestionCircle className="w-5 h-5" />
+            </div>
+          </div>
+        )
+      }
+      {
+        question && (
+          <div className='bg-gray-200 backdrop-blur-sm bg-opacity-80 p-6 shadow-gray-500 z-50 rounded-md shadow-lg max-w-[250px] absolute right-0'>
+            <AiFillCloseCircle className='absolute top-2 cursor-pointer right-2 w-6 h-6' onClick={() => setQuestion(!question)} />
+            <p>Recuerda seguir tu plan de estudios y no atrasarte ni adelantarte mucho, esto es indispensable para tu aprendizaje!. <br /> Al final de cada Unit tienes un test donde verificamos tus conocimientos. <br /> al hacer el test se actualiza tu progreso y se notifica a tu profesor</p>
+          </div>
         )
       }
       {
@@ -71,15 +87,15 @@ export default function Niveles() {
               <p className='bg-gradient-to-t text-white from-[var(--bluebg)] to-transparent absolute z-10 transition-all .2s backdrop-blur-lg font-semibold px-4 bg-opacity-70 ease-in bottom-0 right-0 w-full'>Poquisima info aca solo para aclarar el objetivo</p>
             </div>
             <div className='group rounded-md relative max-w-sm h-72 md:h-full mx-auto bg-red-200 overflow-hidden transition-all .1s ease-in cursor-pointer'>
-              <div className='bg-gray-400 bg-opacity-80 backdrop-blur-lg absolute w-full h-full top-0 right-0 z-40'></div>
-              <div className='absolute z-50 top-32 font-bold right-0 w-full bg-white text-center text-2xl bg-opacity-60 py-4'>Nivel no disponible</div>
+              <div className='bg-gray-400 bg-opacity-80 backdrop-blur-lg absolute w-full h-full top-0 right-0 z-20|'></div>
+              <div className='absolute z-30 top-32 font-bold right-0 w-full bg-white text-center text-2xl bg-opacity-60 py-4'>Nivel no disponible</div>
               <p className='bg-sky-200 absolute z-10 -top-16 transition-all .2s backdrop-blur-md font-semibold px-4 bg-opacity-30 ease-in group-hover:top-0 right-0'>Pie de foto colocado en cada nivel del curso para dar una pequeña información</p>
               <Image src={image2} className='w-full object-cover group-hover:scale-110 transition-all .1s ease-in' />
               <p className='bg-gradient-to-t text-white from-[var(--bluebg)] to-transparent absolute z-10 transition-all .2s backdrop-blur-lg font-semibold px-4 bg-opacity-70 ease-in bottom-0 right-0 w-full'>Poquisima info aca solo para aclarar el objetivo</p>
             </div>
             <div className='group rounded-md relative max-w-sm h-72 md:h-full mx-auto bg-red-200 overflow-hidden transition-all .1s ease-in cursor-pointer'>
-              <div className='bg-gray-400 bg-opacity-80 backdrop-blur-lg absolute w-full h-full top-0 right-0 z-40'></div>
-              <div className='absolute z-50 top-32 font-bold right-0 w-full bg-white text-center text-2xl bg-opacity-60 py-4'>Nivel no disponible</div>
+              <div className='bg-gray-400 bg-opacity-80 backdrop-blur-lg absolute w-full h-full top-0 right-0 z-20'></div>
+              <div className='absolute z-30 top-32 font-bold right-0 w-full bg-white text-center text-2xl bg-opacity-60 py-4'>Nivel no disponible</div>
               <p className='bg-sky-200 absolute z-10 -top-16 transition-all .2s backdrop-blur-md font-semibold px-4 bg-opacity-30 ease-in group-hover:top-0 right-0'>Pie de foto colocado en cada nivel del curso para dar una pequeña información</p>
               <Image src={image3} className='w-full object-cover group-hover:scale-110 transition-all .1s ease-in' />
               <p className='bg-gradient-to-t text-white from-[var(--bluebg)] to-transparent absolute z-10 transition-all .2s backdrop-blur-lg font-semibold px-4 bg-opacity-70 ease-in bottom-0 right-0 w-full'>Poquisima info aca solo para aclarar el objetivo</p>
@@ -101,8 +117,8 @@ export default function Niveles() {
               <p className='bg-gradient-to-t text-white from-[var(--bluebg)] to-transparent absolute z-10 transition-all .2s backdrop-blur-lg font-semibold px-4 bg-opacity-70 ease-in bottom-0 right-0 w-full'>Poquisima info aca solo para aclarar el objetivo</p>
             </div>
             <div className='group rounded-md relative max-w-sm h-72 md:h-full mx-auto bg-red-200 overflow-hidden transition-all .1s ease-in cursor-pointer'>
-              <div className='bg-gray-400 bg-opacity-80 backdrop-blur-lg absolute w-full h-full top-0 right-0 z-40'></div>
-              <div className='absolute z-50 top-32 font-bold right-0 w-full bg-white text-center text-2xl bg-opacity-60 py-4'>Nivel no disponible</div>
+              <div className='bg-gray-400 bg-opacity-80 backdrop-blur-lg absolute w-full h-full top-0 right-0 z-20'></div>
+              <div className='absolute z-30 top-32 font-bold right-0 w-full bg-white text-center text-2xl bg-opacity-60 py-4'>Nivel no disponible</div>
               <p className='bg-sky-200 absolute z-10 -top-16 transition-all .2s backdrop-blur-md font-semibold px-4 bg-opacity-30 ease-in group-hover:top-0 right-0'>Pie de foto colocado en cada nivel del curso para dar una pequeña información</p>
               <Image src={image3} className='w-full object-cover group-hover:scale-110 transition-all .1s ease-in' />
               <p className='bg-gradient-to-t text-white from-[var(--bluebg)] to-transparent absolute z-10 transition-all .2s backdrop-blur-lg font-semibold px-4 bg-opacity-70 ease-in bottom-0 right-0 w-full'>Poquisima info aca solo para aclarar el objetivo</p>

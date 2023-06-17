@@ -12,6 +12,8 @@ import {
 } from 'victory';
 import ReactPlayer from 'react-player'
 import LoadingScreen from '@/components/LoadingScreen';
+import { BsQuestionCircle } from 'react-icons/bs';
+import { AiFillCloseCircle } from 'react-icons/ai';
 
 export default function Progress() {
   const [userMatched, setUserMatched] = useState({})
@@ -47,6 +49,7 @@ export default function Progress() {
 
   const colorScale = ['rgb(10, 132, 255)', 'rgb(255, 159, 10)', 'rgb(255, 59, 48)'];
 
+  const [question, setQuestion] = useState(false)
 
 
   return (
@@ -59,7 +62,20 @@ export default function Progress() {
       }
       <BackHeader largeTitle={"Student Progress"} parentTitle={"back"} />
       <div className=' md:fixed md:ml-24'>
-        <p className='text-center text-2xl text-gray-200 py-2'>Current Level: {userMatched.level}</p>
+        <div className='flex items-center justify-center gap-2'>
+          <p className='text-center text-2xl text-gray-200 py-2'>Current Level: {userMatched.level}</p>
+          <div onClick={() => setQuestion(!question)} className='bg-gray-200 rounded-full cursor-pointer'>
+            <BsQuestionCircle className='w-5 h-5' />
+          </div>
+        </div>
+        {
+          question && (
+            <div className='bg-gray-200 backdrop-blur-sm bg-opacity-60 p-6 shadow-gray-500 z-50 rounded-md shadow-lg max-w-[250px] absolute right-0'>
+              <AiFillCloseCircle className='absolute top-2 cursor-pointer right-2 w-6 h-6' onClick={() => setQuestion(!question)} />
+              <p>En este cuadro encuentras tus estadisticas por nivel, a medida que completes units y sus tests se actualizara tu progreso al igual que le notificaremos a tu profesor. <br />Por cierto, tambien encuentras los videos que te han gustado para verlos mas facilmente </p>
+            </div>
+          )
+        }
         {
           userMatched.level == "Beginner" && (
             <ProgressLesson progress={userMatched.progressBeginner} />

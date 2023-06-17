@@ -11,6 +11,7 @@ import Modal from '@mui/material/Modal';
 import YourProfile from '@/components/YourProfile';
 import { TbEdit } from 'react-icons/tb'
 import { ChevronRightOutlined } from '@mui/icons-material';
+import TutorInfo from '@/components/tutorInfo';
 
 const style = {
   position: 'absolute',
@@ -47,9 +48,21 @@ export default function Profile() {
         setStudents(studentsAsigned)
       })
   }
+  const [tutor, setTutor] = useState({})
+
+  const fetchTutor = async () => {
+    await getDocs(collection(db, "users"))
+      .then((querySnapshot) => {
+        const newData = querySnapshot.docs
+          .map((doc) => ({ ...doc.data(), id: doc.id }));
+        const userMatch = newData.find(item => item.uid == userMatched.asignedTutor);
+        setTutor(userMatch)
+      })
+  }
 
   useEffect(() => {
     fetchPost();
+    fetchTutor()
   }, [])
 
   return (
@@ -61,7 +74,7 @@ export default function Profile() {
         )
       }
       <div className='bg-gray-200 object-cover absolute -z-10'></div>
-      <div className='bg-[var(--bluebg)] h-screen shadow-2xl mx-auto mt-0 pb-28 md:pb-0'>
+      <div className='bg-[var(--bluebg)] h-full shadow-2xl mx-auto  pb-24 md:pb-0'>
         {
           userMatched != "" &&
           (
@@ -110,6 +123,12 @@ export default function Profile() {
                     <div className='flex items-center justify-center'>
                       <p className='text-gray-400 opacity-80'>{userMatched.age}</p>
                     </div>
+                  </div>
+                </div>
+                <div className='bg-[var(--blueDarkbg)] cursor-pointer hover:bg-slate-800 w-full flex items-center rounded-xl justify-between py-2 px-4'>
+                  <p className='text-white'>Personal Tutor</p>
+                  <div className='flex items-center justify-center'>
+                    <p className='text-gray-400 opacity-80'>{tutor.firstName}  {tutor.lastName} </p>
                   </div>
                 </div>
               </div>

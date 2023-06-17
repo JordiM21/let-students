@@ -7,6 +7,8 @@ import { FormControl, InputLabel, MenuItem, Select } from '@mui/material';
 import { collection, getDocs } from 'firebase/firestore';
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react'
+import { AiFillCloseCircle } from 'react-icons/ai';
+import { BsQuestionCircle } from 'react-icons/bs';
 import ReactPlayer from 'react-player';
 
 export default function Immersive() {
@@ -46,6 +48,9 @@ export default function Immersive() {
 
   const router = useRouter()
 
+  const [question, setQuestion] = useState(false)
+
+
   return (
     <div className='bg-[var(--color2Shadow)] m-0 py-20'>
       {
@@ -63,8 +68,8 @@ export default function Immersive() {
         )
       }
       {/* <Nota text="Recuerda que los videos son necesarios para tu aprendizaje pero no es necesario que entiendas todo lo que dice en el video para aprender, siempre puedes volver a mirarlo de nuevo y aprender cada vez mas cosas" /> */}
-      <div className='w-full flex justify-center px-4 mt-4'>
-        <FormControl variant="filled" className='w-full md:max-w-md bg-gray-100 rounded-md'>
+      <div className='w-full flex justify-center px-4 mt-4 relative'>
+        <FormControl variant="filled" className='w-10/12 md:max-w-md bg-gray-100 rounded-md'>
           <InputLabel id="demo-simple-select-filled-label">Search by Level</InputLabel>
           <Select
             className='bg-white'
@@ -80,7 +85,18 @@ export default function Immersive() {
             <MenuItem value="Advanced">Advanced</MenuItem>
           </Select>
         </FormControl>
+        <div onClick={() => setQuestion(!question)} className='cursor-pointer absolute right-4 top-4 bg-slate-300 rounded-full'>
+          <BsQuestionCircle className='w-6 h-6 ' />
+        </div>
       </div>
+      {
+        question && (
+          <div className='bg-gray-100 backdrop-blur-sm bg-opacity-70 p-6 shadow-gray-500 z-50 rounded-md shadow-lg max-w-[350px] absolute right-4'>
+            <AiFillCloseCircle className='absolute top-2 cursor-pointer right-2 w-6 h-6' onClick={() => setQuestion(!question)} />
+            <p>La parte preferida de LET Academy y de muchos estudiantes! <br /> En esta pagina aprenderas viendo peliculas, series, historias cortas, documentales, tips interesantes y mucho mas! <br />Te recordamos que no es fundamental entender todo lo que dicen en el video, lo importante es que escuches y relaciones con lo que ves, recuerda darles like para verlos mas tarde! </p>
+          </div>
+        )
+      }
       <div className='md:flex md:mx-8 gap-4 flex-wrap space-y-8 py-8 md:space-y-0'>
         {
           data.map((video) => (

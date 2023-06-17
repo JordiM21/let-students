@@ -3,6 +3,8 @@ import { useAuth } from '@/context/AuthContext';
 import { collection, doc, getDocs, updateDoc } from 'firebase/firestore';
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react'
+import { AiFillCloseCircle } from 'react-icons/ai';
+import { BsQuestionCircle } from 'react-icons/bs';
 import { toast } from 'react-toastify';
 
 export default function UnitWithTroubleBtn({ unit, level }) {
@@ -59,10 +61,27 @@ export default function UnitWithTroubleBtn({ unit, level }) {
       toast.info("This video is already on your list!")
     }
   };
+  const [question, setQuestion] = useState(false)
 
   return (
-    <button className={`w-full rounded-full mt-4 hover:bg-opacity-75 border-4 border-[var(--color3)] py-3 ${clicked ? "bg-[var(--color3)] " : ""}`} onClick={handleClick}>
-      <p>{clicked ? 'Listo, lo veremos pronto' : 'Pide ayuda a tu tutor'}</p>
-    </button>
+    <div className='my-4'>
+      <p className='text-gray-700 text-xl font-bold text-center'>Hey! ¿No entendiste muy bien todo o necesitas ayuda?</p>
+      <button className={`w-11/12 relative mt-4`}>
+        <div className={`w-full mt-4 py-4 rounded-full border-4 border-[var(--color3)]  ${clicked ? "bg-[var(--color3)] " : ""}`} onClick={handleClick}>
+          <p>{clicked ? 'Listo, lo veremos pronto' : 'Pide ayuda a tu tutor'}</p>
+        </div>
+        <div onClick={() => setQuestion(!question)} className='absolute -right-8 top-9 hover:bg-slate-300 rounded-full'>
+          <BsQuestionCircle className='w-6 h-6 ' />
+        </div>
+      </button >
+      {
+        question && (
+          <div className='bg-gray-200 backdrop-blur-sm bg-opacity-60 p-6 shadow-gray-500 z-50 rounded-md shadow-lg max-w-[250px] absolute right-0'>
+            <AiFillCloseCircle className='absolute top-2 cursor-pointer right-2 w-6 h-6' onClick={() => setQuestion(!question)} />
+            <p>No te preocupes si no entiendes todo a la primera, es normal!. <br /> Con esta opción tu profesor podrá ver tu solicitud y te lo explicará la proxima clase</p>
+          </div>
+        )
+      }
+    </div >
   )
 }
