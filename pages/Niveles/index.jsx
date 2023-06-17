@@ -41,9 +41,9 @@ export default function Niveles() {
 
 
   return (
-    <div className='bg-[var(--bluebg)] min-h-screen'>
+    <div className='bg-[var(--bluebg)] min-h-screen max-md:pb-28'>
       {
-        !level &&
+        role != "Admin" && role != "Student" &&
         (
           <LoadingScreen />
         )
@@ -87,7 +87,7 @@ export default function Niveles() {
               <p className='bg-gradient-to-t text-white from-[var(--bluebg)] to-transparent absolute z-10 transition-all .2s backdrop-blur-lg font-semibold px-4 bg-opacity-70 ease-in bottom-0 right-0 w-full'>Poquisima info aca solo para aclarar el objetivo</p>
             </div>
             <div className='group rounded-md relative max-w-sm h-72 md:h-full mx-auto bg-red-200 overflow-hidden transition-all .1s ease-in cursor-pointer'>
-              <div className='bg-gray-400 bg-opacity-80 backdrop-blur-lg absolute w-full h-full top-0 right-0 z-20|'></div>
+              <div className='bg-gray-400 bg-opacity-80 backdrop-blur-lg absolute w-full h-full top-0 right-0 z-20'></div>
               <div className='absolute z-30 top-32 font-bold right-0 w-full bg-white text-center text-2xl bg-opacity-60 py-4'>Nivel no disponible</div>
               <p className='bg-sky-200 absolute z-10 -top-16 transition-all .2s backdrop-blur-md font-semibold px-4 bg-opacity-30 ease-in group-hover:top-0 right-0'>Pie de foto colocado en cada nivel del curso para dar una pequeña información</p>
               <Image src={image2} className='w-full object-cover group-hover:scale-110 transition-all .1s ease-in' />

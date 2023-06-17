@@ -1,4 +1,5 @@
 import BackHeader from '@/components/BackHeader';
+import LoadingScreen from '@/components/LoadingScreen';
 import RelatedVideos from '@/components/RelatedVideos';
 import { db } from '@/config/firebase';
 import { useAuth } from '@/context/AuthContext';
@@ -86,9 +87,9 @@ export default function VideoDetails() {
   };
 
   return (
-    <div className='pt-20 bg-[var(--blueDarkbg)]'>
+    <div className='pt-28 bg-[var(--blueDarkbg)]'>
       {
-        !data &&
+        !data.title &&
         (
           <LoadingScreen />
         )

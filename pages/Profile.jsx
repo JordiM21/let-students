@@ -11,7 +11,6 @@ import Modal from '@mui/material/Modal';
 import YourProfile from '@/components/YourProfile';
 import { TbEdit } from 'react-icons/tb'
 import { ChevronRightOutlined } from '@mui/icons-material';
-import TutorInfo from '@/components/tutorInfo';
 
 const style = {
   position: 'absolute',
@@ -59,7 +58,7 @@ export default function Profile() {
   return (
     <>
       {
-        !userMatched &&
+        !tutor.firstName &&
         (
           <LoadingScreen />
         )

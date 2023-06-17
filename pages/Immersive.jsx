@@ -54,7 +54,7 @@ export default function Immersive() {
   return (
     <div className='bg-[var(--color2Shadow)] m-0 py-20'>
       {
-        !data &&
+        role != "Admin" && role != "Student" &&
         (
           <LoadingScreen />
         )

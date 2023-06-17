@@ -14,7 +14,7 @@ export default function App({ Component, pageProps }) {
   return (
     <AuthContextProvider>
       <NavBar />
-      <NextNProgress />
+      {/* <NextNProgress /> */}
       <ToastContainer />
       {allowedUrl.includes(router.pathname) ? (
         <div className='md:pl-[50px]'>

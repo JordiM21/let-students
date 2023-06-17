@@ -13,6 +13,7 @@ import { useAuth } from '@/context/AuthContext';
 import { BsCircle } from 'react-icons/bs'
 import { toast } from 'react-toastify';
 import BackHeader from '@/components/BackHeader';
+import LoadingScreen from '@/components/LoadingScreen';
 
 export default function Beginner() {
   const router = useRouter()
@@ -52,6 +53,12 @@ export default function Beginner() {
 
   return (
     <div className='bg-[var(--bluebg)] py-24'>
+      {
+        level != "Beginner" && level != "Intermediate" && level != "Advanced" &&
+        (
+          <LoadingScreen />
+        )
+      }
       <BackHeader largeTitle="Beginner" parentTitle="Levels" />
       <div className='md:w-2/5 max-md:w-10/12 mx-8 md:fixed bg-[var(--bluebg)]'>
         <Image src={image1} className='w-full h-48 md:h-80 object-cover rounded-md' />

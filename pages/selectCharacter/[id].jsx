@@ -63,7 +63,7 @@ export default function selectCharacter() {
   return (
     <div className='px-8 pt-20 h-screen bg-[var(--color2Shadow)]'>
       {
-        !userMatched &&
+        !userMatched.profileImg &&
         (
           <LoadingScreen />
         )
