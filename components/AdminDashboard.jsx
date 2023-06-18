@@ -5,7 +5,7 @@ import FormsCheck from './FormsCheck'
 import Image from 'next/image'
 import image3 from '@/public/cambridgeandlet.png'
 import enviroment from '@/public/enviromentsAdmin.png'
-import allStudents from '@/public/allStudents.png'
+import allStudents from '@/public/AllStudents.png'
 import { AiOutlineCopy } from 'react-icons/ai'
 import copy from 'clipboard-copy';
 import { toast } from 'react-toastify'
