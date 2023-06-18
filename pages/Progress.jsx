@@ -66,7 +66,7 @@ export default function Progress() {
   return (
     <div className='pt-20 bg-[var(--bluebg)] h-full md:min-h-screen'>
       {
-        likedVideos?.length < 1 &&
+        !userMatched &&
         (
           <LoadingScreen />
         )
