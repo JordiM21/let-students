@@ -44,7 +44,7 @@ export default function AdminDashboard({ allUsers, firstName, email }) {
         )
       }
       <div className='flex justify-center my-8'>
-        <div className='bg-black rounded-md md:flex'>
+        <div className='bg-black rounded-md'>
           <Image src={allStudents} className='rounded-t-md w-full object-cover' />
           <div>
             <div className='flex items-center justify-start gap-2 p-4'>

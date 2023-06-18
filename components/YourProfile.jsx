@@ -19,12 +19,14 @@ import boy7 from '@/public/Characters/boy7.jpeg'
 import boy8 from '@/public/Characters/boy8.jpeg'
 import boy9 from '@/public/Characters/boy9.jpeg'
 import boy10 from '@/public/Characters/boy10.jpeg'
-// import plus1 from "@/pulic/plus1.jpeg"
-// import plus2 from "@/pulic/plus2.jpeg"
-// import plus3 from "@/pulic/plus3.jpeg"
-// import plus4 from "@/pulic/plus4.jpeg"
-// import plus5 from "@/pulic/plus5.jpeg"
-// import plus6 from "@/pulic/plus6.jpeg"
+// import boy11 from '@/pulic/Characters/boy11.jpeg'
+// import plus2 from "@/pulic/Characters/plus2.jpeg"
+// import plus3 from "@/pulic/Characters/plus3.jpeg"
+// import plus4 from "@/pulic/Characters/plus4.jpeg"
+// import plus5 from "@/pulic/Characters/plus5.jpeg"
+// import plus6 from "@/pulic/Characters/plus6.jpeg"
+// import plus7 from "@/pulic/Characters/plus7.jpeg"
+// import plus8 from "@/pulic/Characters/plus8.jpeg"
 import deafult from '@/public/Characters/default.png'
 
 import Image from 'next/image'
@@ -143,28 +145,43 @@ export default function YourProfile({ char, size }) {
         )
       }
       {/* {
-        char == "plus1" && (
-          <Image src={plus1} className={`rounded-full object-cover ${size == "small" ? "h-20 w-20" : "h-52 w-52"}`} />
+        char == "boy11" && (
+          <Image src={boy11} className={`rounded-full object-cover ${size == "small" ? "h-20 w-20" : "h-52 w-52"}`} />
         )
       }
       {
         char == "plus2" && (
-          <Image src={plus1} className={`rounded-full object-cover ${size == "small" ? "h-20 w-20" : "h-52 w-52"}`} />
+          <Image src={plus2} className={`rounded-full object-cover ${size == "small" ? "h-20 w-20" : "h-52 w-52"}`} />
         )
       }
       {
         char == "plus3" && (
-          <Image src={plus1} className={`rounded-full object-cover ${size == "small" ? "h-20 w-20" : "h-52 w-52"}`} />
+          <Image src={plus3} className={`rounded-full object-cover ${size == "small" ? "h-20 w-20" : "h-52 w-52"}`} />
         )
       }
       {
         char == "plus4" && (
-          <Image src={plus1} className={`rounded-full object-cover ${size == "small" ? "h-20 w-20" : "h-52 w-52"}`} />
+          <Image src={plus4} className={`rounded-full object-cover ${size == "small" ? "h-20 w-20" : "h-52 w-52"}`} />
         )
       }
       {
         char == "plus5" && (
-          <Image src={plus1} className={`rounded-full object-cover ${size == "small" ? "h-20 w-20" : "h-52 w-52"}`} />
+          <Image src={plus5} className={`rounded-full object-cover ${size == "small" ? "h-20 w-20" : "h-52 w-52"}`} />
+        )
+      }
+      {
+        char == "plus6" && (
+          <Image src={plus6} className={`rounded-full object-cover ${size == "small" ? "h-20 w-20" : "h-52 w-52"}`} />
+        )
+      }
+      {
+        char == "plus7" && (
+          <Image src={plus7} className={`rounded-full object-cover ${size == "small" ? "h-20 w-20" : "h-52 w-52"}`} />
+        )
+      }
+      {
+        char == "plus8" && (
+          <Image src={plus8} className={`rounded-full object-cover ${size == "small" ? "h-20 w-20" : "h-52 w-52"}`} />
         )
       } */}
     </div>
