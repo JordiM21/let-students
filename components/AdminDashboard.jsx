@@ -44,32 +44,34 @@ export default function AdminDashboard({ allUsers, firstName, email }) {
         )
       }
       <div className='flex justify-center my-8'>
-        <div className='bg-black rounded-md'>
-          <Image src={allStudents} className='rounded-t-md' />
-          <div className='flex items-center justify-start gap-2 p-4'>
-            <FcBullish size={24} />
-            <p className='text-white'>Check your students progress</p>
-          </div>
-          <div className='flex items-center justify-start gap-2 p-4'>
-            <FcAutomatic size={24} />
-            <p className='text-white'>Modify their information</p>
-          </div>
-          <div className='flex items-center justify-start gap-2 p-4'>
-            <FcContacts size={24} />
-            <p className='text-white'>Access to contact data</p>
-          </div>
-          <div className='flex items-center justify-start gap-2 p-4'>
-            <FcHighPriority size={24} />
-            <p className='text-white'>Help your students in trouble in real time</p>
-          </div>
-          <div className='flex items-center justify-start gap-2 p-4'>
-            <FcCalendar size={24} />
-            <p className='text-white'>See the student schedule and disponibility</p>
-          </div>
-          <div className='flex justify-center pb-6'>
-            <button onClick={() => router.push("/Progress")} className='w-11/12 py-4 rounded-full border-4 border-white text-white hover:bg-gray-700'>
-              Check it out
-            </button>
+        <div className='bg-black rounded-md md:flex'>
+          <Image src={allStudents} className='rounded-t-md w-full object-cover' />
+          <div>
+            <div className='flex items-center justify-start gap-2 p-4'>
+              <FcBullish size={24} />
+              <p className='text-white'>Check your students progress</p>
+            </div>
+            <div className='flex items-center justify-start gap-2 p-4'>
+              <FcAutomatic size={24} />
+              <p className='text-white'>Modify their information</p>
+            </div>
+            <div className='flex items-center justify-start gap-2 p-4'>
+              <FcContacts size={24} />
+              <p className='text-white'>Access to contact data</p>
+            </div>
+            <div className='flex items-center justify-start gap-2 p-4'>
+              <FcHighPriority size={24} />
+              <p className='text-white'>Help your students in trouble in real time</p>
+            </div>
+            <div className='flex items-center justify-start gap-2 p-4'>
+              <FcCalendar size={24} />
+              <p className='text-white'>See the student schedule and disponibility</p>
+            </div>
+            <div className='flex justify-center pb-6'>
+              <button onClick={() => router.push("/Progress")} className='w-11/12 py-4 rounded-full border-4 border-white text-white hover:bg-gray-700'>
+                Check it out
+              </button>
+            </div>
           </div>
         </div>
       </div>

@@ -58,13 +58,13 @@ export default function Profile() {
   return (
     <>
       {
-        !tutor.firstName &&
+        !userMatched.firstName &&
         (
           <LoadingScreen />
         )
       }
       <div className='bg-gray-200 object-cover absolute -z-10'></div>
-      <div className='bg-[var(--bluebg)] h-full shadow-2xl mx-auto  pb-24 md:pb-0'>
+      <div className='bg-[var(--bluebg)] h-full md:min-h-screen shadow-2xl mx-auto  pb-24 md:pb-0'>
         {
           userMatched != "" &&
           (

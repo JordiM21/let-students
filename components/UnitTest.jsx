@@ -297,11 +297,11 @@ export default function UnitTest({ level, unit }) {
         <div className='flex w-full pb-10 justify-center'>
           {
             progress >= unit && (
-              <div className='w-[200px]'>
-                <button disabled className='bg-green-500 w-full opacity-60 py-3 my-4 text-white font-bold transition-all 1s ease-in hover:shadow-xl rounded-md' type='submit'>Well Done!</button>
+              <div className='w-11/12'>
+                <button disabled className='bg-green-500 w-full opacity-60 py-4 my-4 text-white font-bold transition-all 1s ease-in hover:shadow-xl rounded-full' type='submit'>Well Done!</button>
                 {
                   unit < 20 && (
-                    <button type='button' onClick={() => router.push(`/Niveles/${level}/${unit + 1}`)} className='bg-sky-600 hover: relative w-full py-3  rounded-md'>
+                    <button type='button' onClick={() => router.push(`/Niveles/${level}/${unit + 1}`)} className='bg-sky-600 hover:opacity-80 relative w-full py-4  rounded-full'>
                       <p className='text-white text-xl'>Next Lesson</p>
                       <BsChevronRight fill='white' size={32} className='absolute right-2 top-3' />
                     </button>
@@ -313,7 +313,7 @@ export default function UnitTest({ level, unit }) {
           }
           {
             progress < unit && (
-              <button className='bg-[var(--color3)] w-10/12 py-3 my-4 text-white font-bold transition-all 1s ease-in hover:-translate-y-1 hover:shadow-xl rounded-md' type='submit'>Submit</button>
+              <button className='bg-[var(--color3)] w-10/12 py-4 my-4 text-white font-bold transition-all 1s ease-in hover:-translate-y-1 hover:shadow-xl rounded-full' type='submit'>Submit</button>
             )
           }
         </div>
