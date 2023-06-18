@@ -25,6 +25,9 @@ export default function Register() {
         if (userMatched[0].role != "Admin") {
           router.push("/Dashboard")
         }
+        if (userMatched[0].email != "jordimantilla21@gmail.com") {
+          router.push("/Dashboard")
+        }
       })
   }
   useEffect(() => {

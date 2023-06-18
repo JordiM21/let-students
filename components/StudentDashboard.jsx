@@ -6,11 +6,32 @@ import image1 from '@/public/cambridgeandlet.png'
 import image3 from '@/public/enviroments.png'
 import { AiOutlineCopy } from 'react-icons/ai'
 import { MdArrowForwardIos } from 'react-icons/md'
+import copy from 'clipboard-copy';
+import { toast } from 'react-toastify'
+
 
 export default function StudentDashboard({ firstName, level, likedVideos, progress }) {
 
   const learnedWords = progress * 23
+  const [beginnerCode] = useState("Z8M2D7GG")
+  const [intermediateCode] = useState("R2PMQGRC")
+  const [advancedCode] = useState("2DG2QZ9C")
   const router = useRouter()
+
+  const handleCopyBeginner = () => {
+    copy(beginnerCode)
+    toast.success("Copied the Beginner Code")
+  }
+
+  const handleCopyIntermediate = () => {
+    copy(intermediateCode)
+    toast.success("Copied the Intermediate Code")
+  }
+
+  const handleCopyAdvanced = () => {
+    copy(advancedCode)
+    toast.success("Copied the Advanced Code")
+  }
 
 
   return (
@@ -52,13 +73,13 @@ export default function StudentDashboard({ firstName, level, likedVideos, progre
             {
               level == "Beginner" && (
                 <div className='flex justify-between items-center mb-4'>
+                  <div onClick={handleCopyBeginner} className='flex bg-white items-center px-6 py-2 rounded-md cursor-pointer hover:bg-opacity-80'>
+                    <p>{beginnerCode} </p>
+                    <AiOutlineCopy />
+                  </div>
                   <div className='flex items-center gap-2 hover:gap-4 transition-all 1s ease-in cursor-pointer hover:opacity-90 bg-[var(--color1)] text-white font-bold px-6 rounded-md py-2'>
                     <a href='https://writeandimprove.com/workbooks#/memberships/e405a0c1-8025-4fbb-ad94-bc0eefada543/workbooks/647f2ecc-604b-4a24-bbf9-4851f980cb85' target='_blank'>Go to the page</a>
                     <MdArrowForwardIos />
-                  </div>
-                  <div className='flex bg-white items-center px-6 py-2 rounded-md'>
-                    <p>Z8M2D7GG</p>
-                    <AiOutlineCopy />
                   </div>
                 </div>
               )
@@ -66,8 +87,8 @@ export default function StudentDashboard({ firstName, level, likedVideos, progre
             {
               level == "Intermediate" && (
                 <div className='flex justify-between items-center mb-4'>
-                  <div className='flex bg-white items-center px-6 py-2 rounded-md'>
-                    <p>R2PMQGRC</p>
+                  <div onClick={handleCopyIntermediate} className='flex bg-white items-center px-6 py-2 rounded-md cursor-pointer hover:bg-opacity-80'>
+                    <p>{intermediateCode} </p>
                     <AiOutlineCopy />
                   </div>
                   <div className='flex items-center gap-2 hover:gap-4 transition-all 1s ease-in cursor-pointer hover:opacity-90 text-white border-4 border-white font-bold px-6 rounded-full py-2'>
@@ -80,17 +101,18 @@ export default function StudentDashboard({ firstName, level, likedVideos, progre
             {
               level == "Advanced" && (
                 <div className='flex justify-between items-center mb-4'>
+                  <div onClick={handleCopyAdvanced} className='flex bg-white items-center px-6 py-2 rounded-md cursor-pointer hover:bg-opacity-80'>
+                    <p>{advancedCode} </p>
+                    <AiOutlineCopy />
+                  </div>
                   <div className='flex items-center gap-2 hover:gap-4 transition-all 1s ease-in cursor-pointer hover:opacity-90 bg-[var(--color1)] text-white font-bold px-6 rounded-md py-2'>
                     <a href='https://writeandimprove.com/workbooks#/memberships/e405a0c1-8025-4fbb-ad94-bc0eefada543/workbooks/647f2eff-931c-4d46-84f9-2a866f69831d' target='_blank'>Go to the page</a>
                     <MdArrowForwardIos />
                   </div>
-                  <div className='flex bg-white items-center px-6 py-2 rounded-md'>
-                    <p>2DG2QZ9C</p>
-                    <AiOutlineCopy />
-                  </div>
                 </div>
               )
             }
+            <p className='text-white text-center opacity-90'>Recuerda Registrarte con el mismo correo que tienes registrado aca</p>
           </div>
         </div>
       </div>

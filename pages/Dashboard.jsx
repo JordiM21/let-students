@@ -14,6 +14,7 @@ export default function Dashboard() {
   const [role, setRole] = useState("")
   const [likedVideos, setLikedVideos] = useState("")
   const [progress, setProgress] = useState("")
+  const [email, setEmail] = useState("")
   const router = useRouter()
 
   const { user } = useAuth();
@@ -32,6 +33,7 @@ export default function Dashboard() {
         setLikedVideos(userMatched.likedVideos)
         setRole(userMatched.role);
         setId(userMatched.uid);
+        setEmail(userMatched.email)
         if (level == "Beginner") {
           setProgress(userMatched.progressBeginner);
         }
@@ -65,6 +67,7 @@ export default function Dashboard() {
             allUsers={allUsers}
             role={role}
             likedVideos={likedVideos}
+            email={email}
           />
         )
       }
@@ -77,6 +80,7 @@ export default function Dashboard() {
             role={role}
             progress={progress}
             likedVideos={likedVideos}
+            email={email}
           />
         )
       }
