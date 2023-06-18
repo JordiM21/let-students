@@ -64,7 +64,7 @@ export default function UnitWithTroubleBtn({ unit, level }) {
   const [question, setQuestion] = useState(false)
 
   return (
-    <div className='my-4'>
+    <div className='my-4 relative'>
       <p className='text-gray-700 text-xl font-bold text-center'>Hey! ¿No entendiste muy bien todo o necesitas ayuda?</p>
       <button className={`w-11/12 relative mt-4`}>
         <div className={`w-full mt-4 py-4 rounded-full border-4 border-[var(--color3)]  ${clicked ? "bg-[var(--color3)] " : ""}`} onClick={handleClick}>
@@ -78,7 +78,7 @@ export default function UnitWithTroubleBtn({ unit, level }) {
         question && (
           <div className='bg-gray-200 backdrop-blur-sm bg-opacity-60 p-6 shadow-gray-500 z-50 rounded-md shadow-lg max-w-[250px] absolute right-0'>
             <AiFillCloseCircle className='absolute top-2 cursor-pointer right-2 w-6 h-6' onClick={() => setQuestion(!question)} />
-            <p>No te preocupes si no entiendes todo a la primera, es normal!. <br /> Con esta opción tu profesor podrá ver tu solicitud y te lo explicará la proxima clase</p>
+            <p>No te preocupes si no entiendes todo a la primera, es normal!. <br /> Con esta opción tu profesor podrá ver tu solicitud y te lo explicará la proxima clase <br /> <span className='text-[var(--color3)]'>RECUERDA PEDIR AYUDA CON UNA A LA VEZ, NO PUEDES SOLICITAR AYUDA CON 2 AL MISMO TIEMPO</span>, debes esperar a resolver las dudas con la clase actual y luego podras hacerlo con otras</p>
           </div>
         )
       }

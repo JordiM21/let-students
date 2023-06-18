@@ -9,6 +9,7 @@ import { db } from '@/config/firebase';
 import { toast } from 'react-toastify';
 import { useAuth } from '@/context/AuthContext';
 import { useRouter } from 'next/router';
+import { BsChevronCompactRight, BsChevronDoubleRight, BsChevronRight } from 'react-icons/bs';
 
 
 export default function UnitTest({ level, unit }) {
@@ -293,13 +294,21 @@ export default function UnitTest({ level, unit }) {
             </>
           )
         }
-        <p>
-          progress: {progress}
-        </p>
-        <div className='flex w-full justify-center'>
+        <div className='flex w-full pb-10 justify-center'>
           {
             progress >= unit && (
-              <button disabled className='bg-green-500 w-10/12 opacity-60 py-3 my-4 text-white font-bold transition-all 1s ease-in hover:shadow-xl rounded-md' type='submit'>Well Done!</button>
+              <div className='w-[200px]'>
+                <button disabled className='bg-green-500 w-full opacity-60 py-3 my-4 text-white font-bold transition-all 1s ease-in hover:shadow-xl rounded-md' type='submit'>Well Done!</button>
+                {
+                  unit < 20 && (
+                    <button type='button' onClick={() => router.push(`/Niveles/${level}/${unit + 1}`)} className='bg-sky-600 hover: relative w-full py-3  rounded-md'>
+                      <p className='text-white text-xl'>Next Lesson</p>
+                      <BsChevronRight fill='white' size={32} className='absolute right-2 top-3' />
+                    </button>
+                  )
+                }
+              </div>
+
             )
           }
           {
