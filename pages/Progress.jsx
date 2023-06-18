@@ -135,14 +135,15 @@ export default function Progress() {
                 <p className='text-gray-300 w-[90%] mx-auto text-center'>Acá encuentras todos los videos que has <span className='text-green-500'>dado like</span>, prueba seleccionando cualquiera para reproducirlo. </p>
                 {
                   likedVideos.map((video) => (
-                    <div className='my-6'>
+                    <div className=' hover:opacity-70 transition-all 1s ease-in cursor-pointer mx-auto rounded-md relative my-4'>
+                      <div onClick={() => router.push(`/immersiveActivities/${video.id}`)} className='bg-gray-200 h-[220px] absolute z-20 w-[100%] opacity-0'></div>
                       <ReactPlayer
                         width={"90%"}
                         height={220}
                         className="mx-auto rounded-md"
-                        url={video}
+                        url={video.url}
                         controls={true}
-                        light={false}
+                        light={true}
                       />
                     </div>
                   ))
@@ -233,6 +234,6 @@ export default function Progress() {
           }
         </div>
       </div>
-    </div>
+    </div >
   )
 }

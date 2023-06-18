@@ -51,7 +51,7 @@ export default function VideoDetails() {
         const querySnapshot = await getDocs(collection(db, 'users'));
         const newData = querySnapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
         const user = newData.find((user) => user.id === userMatched.id);
-        if (user && user.likedVideos.includes(data.url)) {
+        if (user && user.likedVideos.some((video) => video.id === data.id)) {
           setLiked(true);
         }
       } catch (error) {
@@ -73,7 +73,10 @@ export default function VideoDetails() {
       try {
         const userRef = doc(db, "users", userMatched.id);
         await updateDoc(userRef, {
-          likedVideos: [...userMatched.likedVideos, data.url],
+          likedVideos: [...userMatched.likedVideos, {
+            url: data.url,
+            id: data.id
+          }],
         }).then(() => toast.success("Saved succesfully!"))
 
         setLiked(true);

@@ -33,7 +33,7 @@ export default function createVideo() {
     <div className='bg-[var(--bluebg)] min-h-screen'>
       <div>
         <h1 className='text-white text-xl text-center font-bold'>Add a video</h1>
-        <p className='opacity-50 font-bold text-sm text-center'>This video will appear automatically on the immersive section of the students</p>
+        <p className='opacity-50 text-gray-300 font-bold text-sm text-center'>This video will appear automatically on the immersive section of the students</p>
       </div>
       <div className='w-10/12 mx-auto max-w-2xl my-2'>
         <form className='space-y-4' onSubmit={createVideo}>

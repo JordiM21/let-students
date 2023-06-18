@@ -27,7 +27,7 @@ export default function Immersive() {
           .map((doc) => ({ ...doc.data(), id: doc.id }));
         if (currentLevel == "all") {
           const dataFound = newData.filter(item => item.level != "");
-          setData(dataFound.sort((a, b) => a.level - b.level))
+          setData(dataFound.sort(() => Math.random() - 0.5));
         } else {
           const dataFound = newData.filter(item => item.level == currentLevel);
           setData(dataFound)

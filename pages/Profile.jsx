@@ -64,7 +64,7 @@ export default function Profile() {
         )
       }
       <div className='bg-gray-200 object-cover absolute -z-10'></div>
-      <div className='bg-[var(--bluebg)] h-full md:h-screen shadow-2xl mx-auto  pb-24 md:pb-0'>
+      <div className='bg-[var(--bluebg)] h-full shadow-2xl mx-auto  pb-24 md:pb-0'>
         {
           userMatched != "" &&
           (
@@ -119,8 +119,9 @@ export default function Profile() {
                   userMatched.role == "Student" && (
                     <div className='bg-[var(--blueDarkbg)] cursor-pointer hover:bg-slate-800 w-full flex items-center rounded-xl justify-between py-2 px-4'>
                       <p className='text-white'>Personal Tutor</p>
-                      <div className='flex items-center justify-center'>
+                      <div className='flex items-center gap-2 justify-end'>
                         <p className='text-gray-400 opacity-80'>{tutor.firstName}  {tutor.lastName} </p>
+                        <YourProfile char={tutor.profileImg} size="small" />
                       </div>
                     </div>
                   )

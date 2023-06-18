@@ -35,8 +35,7 @@ export default function index() {
       .then((querySnapshot) => {
         const newData = querySnapshot.docs
           .map((doc) => ({ ...doc.data(), id: doc.id }));
-        const dataFound = newData.filter(item => item.level == "Beginner");
-        //REPLACE THIS WITH INTERMEDIATE CORRECT LEVEL 
+        const dataFound = newData.filter(item => item.level == "Intermediate");
         setData(dataFound.sort((a, b) => a.number - b.number))
       })
   }
