@@ -52,7 +52,7 @@ export default function createTests() {
   }
 
   return (
-    <div className='mx-4 max-w-xl md:mx-auto mb-20'>
+    <div className='mx-4 max-w-xl md:mx-auto mb-28'>
       <h1>Search Questions by Level</h1>
       <FormControl variant="filled" className='w-full'>
         <InputLabel id="demo-simple-select-filled-label">Search by Level</InputLabel>
@@ -106,9 +106,11 @@ export default function createTests() {
               <MenuItem value="13">13</MenuItem>
               <MenuItem value="14">14</MenuItem>
               <MenuItem value="15">15</MenuItem>
-              {/* <MenuItem value="16">16</MenuItem>
-              <MenuItem value="17">17</MenuItem> */}
-
+              <MenuItem value="16">16</MenuItem>
+              <MenuItem value="17">17</MenuItem>
+              <MenuItem value="18">18</MenuItem>
+              <MenuItem value="19">19</MenuItem>
+              <MenuItem value="20">20</MenuItem>
             </Select>
           </FormControl>
           <div className='my-4 flex flex-col md:flex-row space-y-4 md:space-y-0 justify-between w-full md:justify-center md:gap-8'>
@@ -124,9 +126,7 @@ export default function createTests() {
               type='text'
               onChange={(e) => setAnswer(e.target.value)}
             />
-          </div>
-          <p className='text-center'>Insert options to the question:</p>
-          <div className='space-y-2 md:space-y-0 flex flex-wrap justify-center items-center'>
+            <p className='text-center'>Insert options to the question:</p>
             <TextField id="filled-basic" label="1st Option" variant="filled"
               value={op1}
               required
