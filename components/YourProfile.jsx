@@ -148,8 +148,8 @@ export default function YourProfile({ char, size }) {
         char == "boy11" && (
           <Image src={boy11} className={`rounded-full object-cover ${size == "small" ? "h-20 w-20" : "h-52 w-52"}`} />
         )
-      }
-      {
+      } */}
+      {/* {
         char == "plus2" && (
           <Image src={plus2} className={`rounded-full object-cover ${size == "small" ? "h-20 w-20" : "h-52 w-52"}`} />
         )
