@@ -126,42 +126,46 @@ export default function UnitTest({ level, unit }) {
       <h3 className='font-bold text-[var(--color1)] text-3xl'>Test Unit <span className='text-[var(--color3)]'>{unit}</span></h3>
       <p>Completa los ejercicios para actualizar tus progresos</p>
       <form onSubmit={handleTest} className='py-8'>
-        <FormLabel id="demo-controlled-radio-buttons-group">
-          <span className='bg-sky-600 text-white font-bold px-2 py-1 rounded-full mr-2'>1</span>
-          {data[0]?.question}
-        </FormLabel>
-        <RadioGroup
-          required
-          aria-labelledby="demo-controlled-radio-buttons-group"
-          name="controlled-radio-buttons-group"
-          value={res1}
-          onChange={(e) => setRes1(e.target.value)}
-        >
-          {
-            data[0]?.options.map((option) => (
-              <FormControlLabel value={option} control={<Radio />} label={option} />
-            ))
-          }
-        </RadioGroup>
-        <FormLabel id="demo-controlled-radio-buttons-group">
-          <span className='bg-sky-600 text-white font-bold px-2 py-1 rounded-full mr-2'>2</span>
-          {data[1]?.question}</FormLabel>
-        <RadioGroup
-          required
-          aria-labelledby="demo-controlled-radio-buttons-group"
-          name="controlled-radio-buttons-group"
-          value={res2}
-          onChange={(e) => setRes2(e.target.value)}
-        >
-          {
-            data[1]?.options.map((option) => (
-              <FormControlLabel value={option} control={<Radio />} label={option} />
-            ))
-          }
-        </RadioGroup>
+        <div className='mb-8'>
+          <FormLabel id="demo-controlled-radio-buttons-group">
+            <span className='bg-sky-600 text-white font-bold px-2 py-1 rounded-full mr-2'>1</span>
+            {data[0]?.question}
+          </FormLabel>
+          <RadioGroup
+            required
+            aria-labelledby="demo-controlled-radio-buttons-group"
+            name="controlled-radio-buttons-group"
+            value={res1}
+            onChange={(e) => setRes1(e.target.value)}
+          >
+            {
+              data[0]?.options.map((option) => (
+                <FormControlLabel value={option} control={<Radio />} label={option} />
+              ))
+            }
+          </RadioGroup>
+        </div>
+        <div className='my-8'>
+          <FormLabel id="demo-controlled-radio-buttons-group">
+            <span className='bg-sky-600 text-white font-bold px-2 py-1 rounded-full mr-2'>2</span>
+            {data[1]?.question}</FormLabel>
+          <RadioGroup
+            required
+            aria-labelledby="demo-controlled-radio-buttons-group"
+            name="controlled-radio-buttons-group"
+            value={res2}
+            onChange={(e) => setRes2(e.target.value)}
+          >
+            {
+              data[1]?.options.map((option) => (
+                <FormControlLabel value={option} control={<Radio />} label={option} />
+              ))
+            }
+          </RadioGroup>
+        </div>
         {
           data.length > 2 && (
-            <>
+            <div className='my-8'>
               <FormLabel id="demo-controlled-radio-buttons-group">
                 <span className='bg-sky-600 text-white font-bold px-2 py-1 rounded-full mr-2'>3</span>
                 {data[2]?.question}</FormLabel>
@@ -178,12 +182,12 @@ export default function UnitTest({ level, unit }) {
                   ))
                 }
               </RadioGroup>
-            </>
+            </div>
           )
         }
         {
           data.length > 3 && (
-            <>
+            <div className='my-8'>
               <FormLabel id="demo-controlled-radio-buttons-group">
                 <span className='bg-sky-600 text-white font-bold px-2 py-1 rounded-full mr-2'>4</span>
                 {data[3]?.question}</FormLabel>
@@ -200,12 +204,12 @@ export default function UnitTest({ level, unit }) {
                   ))
                 }
               </RadioGroup>
-            </>
+            </div>
           )
         }
         {
           data.length > 4 && (
-            <>
+            <div className='my-8'>
               <FormLabel id="demo-controlled-radio-buttons-group">
                 <span className='bg-sky-600 text-white font-bold px-2 py-1 rounded-full mr-2'>5</span>
                 {data[4]?.question}</FormLabel>
@@ -222,12 +226,12 @@ export default function UnitTest({ level, unit }) {
                   ))
                 }
               </RadioGroup>
-            </>
+            </div>
           )
         }
         {
           data.length > 5 && (
-            <>
+            <div className='my-8'>
               <FormLabel id="demo-controlled-radio-buttons-group">
                 <span className='bg-sky-600 text-white font-bold px-2 py-1 rounded-full mr-2'>6</span>
 
@@ -245,12 +249,12 @@ export default function UnitTest({ level, unit }) {
                   ))
                 }
               </RadioGroup>
-            </>
+            </div>
           )
         }
         {
           data.length > 6 && (
-            <>
+            <div className='my-8'>
               <FormLabel id="demo-controlled-radio-buttons-group">
                 <span className='bg-sky-600 text-white font-bold px-2 py-1 rounded-full mr-2'>7</span>
 
@@ -268,15 +272,14 @@ export default function UnitTest({ level, unit }) {
                   ))
                 }
               </RadioGroup>
-            </>
+            </div>
           )
         }
         {
           data.length > 7 && (
-            <>
+            <div className='mt-8'>
               <FormLabel id="demo-controlled-radio-buttons-group">
                 <span className='bg-sky-600 text-white font-bold px-2 py-1 rounded-full mr-2'>8</span>
-
                 {data[7]?.question}</FormLabel>
               <RadioGroup
                 required
@@ -291,7 +294,7 @@ export default function UnitTest({ level, unit }) {
                   ))
                 }
               </RadioGroup>
-            </>
+            </div>
           )
         }
         <div className='flex w-full pb-10 justify-center'>

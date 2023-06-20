@@ -37,26 +37,26 @@ export default function index() {
       </div>
       {/* Small screen Iphone Design (bottom bar) */}
       <div className='flex justify-center'>
-        <div className='bg-slate-100 z-50 bg-opacity-30 backdrop-blur-xl fixed py-2 px-2 justify-around rounded-2xl bottom-3 md:hidden max-md:flex w-10/12'>
-          <div onClick={() => router.push("/Dashboard")} className={`bg-red-500 group p-3 hover:shadow-md hover:shadow-red-900 cursor-pointer transition-all hover:scale-105 hover:-translate-y-1 duration-150 active:scale-95 active:opacity-80 ease-in rounded-2xl ${router.pathname == "/Dashboard" && "scale-105 -translate-y-2 border-2 opacity-90"}`}>
-            <MdHome fill='white' className='mx-auto text-3xl' />
-            <p className='text-gray-300 text-[10px] absolute bottom-1 opacity-0 group-hover:opacity-60 font-bold right-[13px]'>Home</p>
+        <div className='bg-slate-100 z-50 bg-opacity-30 backdrop-blur-xl fixed p-2 justify-around rounded-2xl bottom-3 md:hidden max-md:flex w-10/12'>
+          <div onClick={() => router.push("/Dashboard")} className={`bg-red-500 group p-2 sm:p-3 hover:shadow-md hover:shadow-red-900 cursor-pointer transition-all hover:scale-105 hover:-translate-y-1 duration-150 active:scale-95 active:opacity-80 ease-in rounded-lg sm:rounded-2xl ${router.pathname == "/Dashboard" && "scale-105 -translate-y-2 border-2 opacity-90"}`}>
+            <MdHome fill='white' className='mx-auto text-2xl sm:text-3xl' />
+            {/* <p className='text-gray-300 text-[10px] absolute bottom-1 opacity-0 group-hover:opacity-60 font-bold right-[13px]'>Home</p> */}
           </div>
-          <div onClick={() => router.push("/Niveles")} className={`bg-orange-500/95 group p-3 hover:shadow-md hover:shadow-orange-800 cursor-pointer transition-all hover:scale-105 hover:-translate-y-1 duration-150 active:scale-95 active:opacity-80 ease-in rounded-2xl ${router.pathname == "/Niveles" && "scale-105 -translate-y-2 border-2 opacity-90"}`}>
-            <MdLibraryBooks fill='white' className='mx-auto text-3xl' />
-            <p className='text-gray-200 text-[10px] absolute bottom-[3px] opacity-0 group-hover:opacity-60 font-bold right-[9px]'>Lessons</p>
+          <div onClick={() => router.push("/Niveles")} className={`bg-orange-500/95 group p-2 sm:p-3 hover:shadow-md hover:shadow-orange-800 cursor-pointer transition-all hover:scale-105 hover:-translate-y-1 duration-150 active:scale-95 active:opacity-80 ease-in rounded-lg sm:rounded-2xl ${router.pathname == "/Niveles" && "scale-105 -translate-y-2 border-2 opacity-90"}`}>
+            <MdLibraryBooks fill='white' className='mx-auto text-2xl sm:text-3xl' />
+            {/* <p className='text-gray-200 text-[10px] absolute bottom-[3px] opacity-0 group-hover:opacity-60 font-bold right-[9px]'>Lessons</p> */}
           </div>
-          <div onClick={() => router.push("/Immersive")} className={`bg-yellow-400/90 group p-3 hover:shadow-md hover:shadow-yellow-700 cursor-pointer transition-all hover:scale-105 hover:-translate-y-1 duration-150 active:scale-95 active:opacity-80 ease-in rounded-2xl ${router.pathname == "/Immersive" && "scale-105 -translate-y-2 border-2 opacity-90"}`}>
-            <MdVideoLibrary fill='white' className='mx-auto text-3xl' />
-            <p className='text-gray-100 text-[10px] absolute bottom-[3px] opacity-0 group-hover:opacity-60 font-bold right-[11px]'>Videos</p>
+          <div onClick={() => router.push("/Immersive")} className={`bg-yellow-400/90 group p-2 sm:p-3 hover:shadow-md hover:shadow-yellow-700 cursor-pointer transition-all hover:scale-105 hover:-translate-y-1 duration-150 active:scale-95 active:opacity-80 ease-in rounded-lg sm:rounded-2xl ${router.pathname == "/Immersive" && "scale-105 -translate-y-2 border-2 opacity-90"}`}>
+            <MdVideoLibrary fill='white' className='mx-auto text-2xl sm:text-3xl' />
+            {/* <p className='text-gray-100 text-[10px] absolute bottom-[3px] opacity-0 group-hover:opacity-60 font-bold right-[11px]'>Videos</p> */}
           </div>
-          <div onClick={() => router.push("/Progress")} className={`bg-green-500/90 group p-3 hover:shadow-md hover:shadow-green-900 cursor-pointer transition-all hover:scale-105 hover:-translate-y-1 duration-150 active:scale-95 active:opacity-80 ease-in rounded-2xl ${router.pathname == "/Progress" && "scale-105 -translate-y-2 border-2"}`}>
-            <MdAnalytics fill='white' className='mx-auto text-3xl' />
-            <p className='text-gray-100 text-[9px] absolute bottom-[1px] opacity-0 group-hover:opacity-60 font-bold right-[8px]'>Progress</p>
+          <div onClick={() => router.push("/Progress")} className={`bg-green-500/90 group p-2 sm:p-3 hover:shadow-md hover:shadow-green-900 cursor-pointer transition-all hover:scale-105 hover:-translate-y-1 duration-150 active:scale-95 active:opacity-80 ease-in rounded-lg sm:rounded-2xl ${router.pathname == "/Progress" && "scale-105 -translate-y-2 border-2"}`}>
+            <MdAnalytics fill='white' className='mx-auto text-2xl sm:text-3xl' />
+            {/* <p className='text-gray-100 text-[9px] absolute bottom-[1px] opacity-0 group-hover:opacity-60 font-bold right-[8px]'>Progress</p> */}
           </div>
-          <div onClick={() => router.push("/Profile")} className={`bg-blue-500 group p-3 hover:shadow-md hover:shadow-blue-900 cursor-pointer transition-all hover:scale-105 hover:-translate-y-1 duration-150 active:scale-95 active:opacity-80 ease-in rounded-2xl  ${router.pathname == "/Profile" && "scale-105 -translate-y-2 border-2 opacity-90"}`}>
-            <MdPerson fill='white' className='mx-auto text-3xl' />
-            <p className='text-gray-100 text-[10px] absolute bottom-[0.8px] opacity-0 group-hover:opacity-60 font-bold right-[11px]'>Profile</p>
+          <div onClick={() => router.push("/Profile")} className={`bg-blue-500 group p-2 sm:p-3 hover:shadow-md hover:shadow-blue-900 cursor-pointer transition-all hover:scale-105 hover:-translate-y-1 duration-150 active:scale-95 active:opacity-80 ease-in rounded-lg sm:rounded-2xl  ${router.pathname == "/Profile" && "scale-105 -translate-y-2 border-2 opacity-90"}`}>
+            <MdPerson fill='white' className='mx-auto text-2xl sm:text-3xl' />
+            {/* <p className='text-gray-100 text-[10px] absolute bottom-[0.8px] opacity-0 group-hover:opacity-60 font-bold right-[11px]'>Profile</p> */}
           </div>
 
         </div>

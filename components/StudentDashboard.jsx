@@ -99,7 +99,7 @@ export default function StudentDashboard({ firstName, level, likedVideos, progre
             <p className='text-white opacity-60 text-sm md:text-md mb-4' >herramienta desarrollada por la Universidad de Cambridge que ayuda a cada estudiante a mejorar mientras escribe. Desde el inicio eres asignado a un grupo de estudio en esta plataforma acorde a tu nivel, en este grupo podrás practicar tanto como quieras</p>
             {
               level == "Beginner" && (
-                <div className='flex justify-between items-center mb-4'>
+                <div className='flex justify-between items-center flex-col sm:flex-row gap-2 mb-4'>
                   <div onClick={handleCopyBeginner} className='flex bg-white items-center px-6 py-2 rounded-md cursor-pointer hover:bg-opacity-80'>
                     <p>{beginnerCode} </p>
                     <AiOutlineCopy />
