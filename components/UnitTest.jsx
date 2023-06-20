@@ -301,14 +301,15 @@ export default function UnitTest({ level, unit }) {
                 <button disabled className='bg-green-500 w-full opacity-60 py-4 my-4 text-white font-bold transition-all 1s ease-in hover:shadow-xl rounded-full' type='submit'>Well Done!</button>
                 {
                   unit < 20 && (
-                    <button type='button' onClick={() => router.push(`/Niveles/${level}/${unit + 1}`)} className='bg-sky-600 hover:opacity-80 relative w-full py-4  rounded-full'>
-                      <p className='text-white text-xl'>Next Lesson</p>
-                      <BsChevronRight fill='white' size={32} className='absolute right-2 top-3' />
-                    </button>
+                    <>
+                      <button type='button' onClick={() => router.push(`/Niveles/${level}/${unit + 1}`)} className='bg-sky-600 backdrop-blur-xl bg-opacity-60 fixed top-8 left-4 w-11/12 py-4 rounded-full mx-auto'>
+                        <p className='text-white text-xl'>Go to Next Lesson</p>
+                        <BsChevronRight fill='white' size={32} className='absolute right-2 top-3' />
+                      </button>
+                    </>
                   )
                 }
               </div>
-
             )
           }
           {

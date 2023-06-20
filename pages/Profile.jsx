@@ -96,7 +96,7 @@ export default function Profile() {
                       <p className='text-gray-400 opacity-80'>{userMatched.level}</p>
                     </div>
                   </div>
-                  <div className='bg-[var(--blueDarkbg)] cursor-pointer hover:bg-slate-800 w-full flex items-center justify-between py-2 px-4'>
+                  <div className='bg-[var(--blueDarkbg)] cursor-pointer hover:bg-slate-800 overflow-hidden w-full flex gap-8 items-center justify-between py-2 px-4'>
                     <p className='text-white'>Email</p>
                     <div className='flex items-center justify-center'>
                       <p className='text-gray-400 opacity-80'>{userMatched.email}</p>

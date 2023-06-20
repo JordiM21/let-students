@@ -81,21 +81,21 @@ export default function Niveles() {
       {
         level === "Beginner" && (
           <div className='space-y-4 md:space-y-0 md:flex md:py-8 justify-center items-center'>
-            <div onClick={() => router.push("/Niveles/Beginner")} className='group rounded-md relative max-w-sm h-72 md:h-full mx-auto overflow-hidden transition-all .1s ease-in cursor-pointer'>
-              <Image src={image1} className='w-full object-cover group-hover:scale-110 transition-all .1s ease-in' />
-              <p className='bg-gradient-to-t text-white from-[var(--bluebg)] to-transparent absolute z-10 transition-all .2s backdrop-blur-lg font-semibold px-4 bg-opacity-70 ease-in bottom-0 right-0 w-full text-center'>Nivel Principiante</p>
+            <div onClick={() => router.push("/Niveles/Beginner")} className="group rounded-md relative max-w-sm h-40 md:h-full mx-auto overflow-hidden transition-all .1s ease-in cursor-pointer flex items-center justify-center">
+              <Image src={image1} className="w-full h-full object-cover bg-center group-hover:scale-110 transition-all .1s ease-in" />
+              {/* <p className="bg-gradient-to-t text-white from-[var(--bluebg)] to-transparent absolute z-10 transition-all .2s backdrop-blur-lg font-semibold px-4 bg-opacity-70 ease-in bottom-0 right-0 w-full text-center">Nivel Principiante</p> */}
             </div>
-            <div className='group rounded-md relative max-w-sm h-72 md:h-full mx-auto bg-red-200 overflow-hidden transition-all .1s ease-in cursor-pointer'>
+            <div className='group rounded-md relative max-w-sm h-40 md:h-full mx-auto bg-red-200 overflow-hidden transition-all .1s ease-in cursor-pointer'>
               <div className='bg-gray-400 bg-opacity-80 backdrop-blur-lg absolute w-full h-full top-0 right-0 z-20'></div>
-              <div className='absolute z-30 top-32 font-bold right-0 w-full bg-white text-center text-2xl bg-opacity-60 py-4'>Nivel no disponible</div>
+              <div className='absolute z-30 top-12 md:top-32 font-bold right-0 w-full bg-white text-center text-2xl bg-opacity-60 py-4'>Nivel no disponible</div>
               <Image src={image2} className='w-full object-cover group-hover:scale-110 transition-all .1s ease-in' />
-              <p className='bg-gradient-to-t text-white from-[var(--bluebg)] to-transparent absolute z-10 transition-all .2s backdrop-blur-lg font-semibold px-4 bg-opacity-70 ease-in bottom-0 right-0 w-full text-center'>Nivel Intermedio</p>
+              {/* <p className='bg-gradient-to-t text-white from-[var(--bluebg)] to-transparent absolute z-10 transition-all .2s backdrop-blur-lg font-semibold px-4 bg-opacity-70 ease-in bottom-0 right-0 w-full text-center'>Nivel Intermedio</p> */}
             </div>
-            <div className='group rounded-md relative max-w-sm h-72 md:h-full mx-auto bg-red-200 overflow-hidden transition-all .1s ease-in cursor-pointer'>
+            <div className='group rounded-md relative max-w-sm h-40 md:h-full mx-auto bg-red-200 overflow-hidden transition-all .1s ease-in cursor-pointer'>
               <div className='bg-gray-400 bg-opacity-80 backdrop-blur-lg absolute w-full h-full top-0 right-0 z-20'></div>
-              <div className='absolute z-30 top-32 font-bold right-0 w-full bg-white text-center text-2xl bg-opacity-60 py-4'>Nivel no disponible</div>
+              <div className='absolute z-30 top-12 md:top-32 font-bold right-0 w-full bg-white text-center text-2xl bg-opacity-60 py-4'>Nivel no disponible</div>
               <Image src={image3} className='w-full object-cover group-hover:scale-110 transition-all .1s ease-in' />
-              <p className='bg-gradient-to-t text-white from-[var(--bluebg)] to-transparent absolute z-10 transition-all .2s backdrop-blur-lg font-semibold px-4 bg-opacity-70 ease-in bottom-0 right-0 w-full text-center'>Nivel Avanzado</p>
+              {/* <p className='bg-gradient-to-t text-white from-[var(--bluebg)] to-transparent absolute z-10 transition-all .2s backdrop-blur-lg font-semibold px-4 bg-opacity-70 ease-in bottom-0 right-0 w-full text-center'>Nivel Avanzado</p> */}
             </div>
           </div>
         )
@@ -103,19 +103,19 @@ export default function Niveles() {
       {
         level === "Intermediate" && (
           <div className='space-y-4 md:space-y-0 md:flex md:py-8 justify-center items-center'>
-            <div onClick={() => router.push("/Niveles/Beginner")} className='group rounded-md relative max-w-sm h-72 md:h-full mx-auto overflow-hidden transition-all .1s ease-in cursor-pointer'>
+            <div onClick={() => router.push("/Niveles/Beginner")} className='group rounded-md relative max-w-sm h-40 md:h-full mx-auto overflow-hidden transition-all .1s ease-in cursor-pointer flex items-center justify-center'>
               <Image src={image1} className='w-full object-cover group-hover:scale-110 transition-all .1s ease-in' />
-              <p className='bg-gradient-to-t text-white from-[var(--bluebg)] to-transparent absolute z-10 transition-all .2s backdrop-blur-lg font-semibold px-4 bg-opacity-70 ease-in bottom-0 right-0 w-full text-center'>Nivel Principiante</p>
+              {/* <p className='bg-gradient-to-t text-white from-[var(--bluebg)] to-transparent absolute z-10 transition-all .2s backdrop-blur-lg font-semibold px-4 bg-opacity-70 ease-in bottom-0 right-0 w-full text-center'>Nivel Principiante</p> */}
             </div>
-            <div onClick={() => router.push("/Niveles/Intermediate")} className='group rounded-md relative max-w-sm h-72 md:h-full mx-auto bg-red-200 overflow-hidden transition-all .1s ease-in cursor-pointer'>
+            <div onClick={() => router.push("/Niveles/Intermediate")} className='group rounded-md relative max-w-sm h-40 md:h-full mx-auto bg-red-200 overflow-hidden transition-all .1s ease-in cursor-pointer  flex items-center justify-center'>
               <Image src={image2} className='w-full object-cover group-hover:scale-110 transition-all .1s ease-in' />
-              <p className='bg-gradient-to-t text-white from-[var(--bluebg)] to-transparent absolute z-10 transition-all .2s backdrop-blur-lg font-semibold px-4 bg-opacity-70 ease-in bottom-0 right-0 w-full text-center'>Nivel Intermedio</p>
+              {/* <p className='bg-gradient-to-t text-white from-[var(--bluebg)] to-transparent absolute z-10 transition-all .2s backdrop-blur-lg font-semibold px-4 bg-opacity-70 ease-in bottom-0 right-0 w-full text-center'>Nivel Intermedio</p> */}
             </div>
-            <div className='group rounded-md relative max-w-sm h-72 md:h-full mx-auto bg-red-200 overflow-hidden transition-all .1s ease-in cursor-pointer'>
+            <div className='group rounded-md relative max-w-sm h-40 md:h-full mx-auto bg-red-200 overflow-hidden transition-all .1s ease-in cursor-pointer'>
               <div className='bg-gray-400 bg-opacity-80 backdrop-blur-lg absolute w-full h-full top-0 right-0 z-20'></div>
-              <div className='absolute z-30 top-32 font-bold right-0 w-full bg-white text-center text-2xl bg-opacity-60 py-4'>Nivel no disponible</div>
+              <div className='absolute z-30 top-12 md:top-32 font-bold right-0 w-full bg-white text-center text-2xl bg-opacity-60 py-4'>Nivel no disponible</div>
               <Image src={image3} className='w-full object-cover group-hover:scale-110 transition-all .1s ease-in' />
-              <p className='bg-gradient-to-t text-white from-[var(--bluebg)] to-transparent absolute z-10 transition-all .2s backdrop-blur-lg font-semibold px-4 bg-opacity-70 ease-in bottom-0 right-0 w-full text-center'>Nivel Avanzado</p>
+              {/* <p className='bg-gradient-to-t text-white from-[var(--bluebg)] to-transparent absolute z-10 transition-all .2s backdrop-blur-lg font-semibold px-4 bg-opacity-70 ease-in bottom-0 right-0 w-full text-center'>Nivel Avanzado</p> */}
             </div>
           </div>
         )
@@ -123,17 +123,17 @@ export default function Niveles() {
       {
         level === "Advanced" && (
           <div className='space-y-4 md:space-y-0 md:flex md:px-8 md:gap-4 justify-center items-center'>
-            <div onClick={() => router.push("/Niveles/Beginner")} className='group rounded-md relative max-w-sm h-72 md:h-full mx-auto overflow-hidden transition-all .1s ease-in cursor-pointer'>
+            <div onClick={() => router.push("/Niveles/Beginner")} className='group rounded-md relative max-w-sm h-40 md:h-full mx-auto overflow-hidden transition-all .1s ease-in cursor-pointer flex items-center justify-center'>
               <Image src={image1} className='w-full object-cover group-hover:scale-110 transition-all .1s ease-in' />
-              <p className='bg-gradient-to-t text-white from-[var(--bluebg)] to-transparent absolute z-10 transition-all .2s backdrop-blur-lg font-semibold px-4 bg-opacity-70 ease-in bottom-0 right-0 w-full text-center'>Nivel Principiante</p>
+              {/* <p className='bg-gradient-to-t text-white from-[var(--bluebg)] to-transparent absolute z-10 transition-all .2s backdrop-blur-lg font-semibold px-4 bg-opacity-70 ease-in bottom-0 right-0 w-full text-center'>Nivel Principiante</p> */}
             </div>
-            <div onClick={() => router.push("/Niveles/Intermediate")} className='group rounded-md relative max-w-sm h-72 md:h-full mx-auto bg-red-200 overflow-hidden transition-all .1s ease-in cursor-pointer'>
+            <div onClick={() => router.push("/Niveles/Intermediate")} className='group rounded-md relative max-w-sm h-40 md:h-full mx-auto bg-red-200 overflow-hidden transition-all .1s ease-in cursor-pointer flex items-center justify-center'>
               <Image src={image2} className='w-full object-cover group-hover:scale-110 transition-all .1s ease-in' />
-              <p className='bg-gradient-to-t text-white from-[var(--bluebg)] to-transparent absolute z-10 transition-all .2s backdrop-blur-lg font-semibold px-4 bg-opacity-70 ease-in bottom-0 right-0 w-full text-center'>Nivel Intermedio</p>
+              {/* <p className='bg-gradient-to-t text-white from-[var(--bluebg)] to-transparent absolute z-10 transition-all .2s backdrop-blur-lg font-semibold px-4 bg-opacity-70 ease-in bottom-0 right-0 w-full text-center'>Nivel Intermedio</p> */}
             </div>
-            <div onClick={() => router.push("/Niveles/Advanced")} className='group rounded-md relative max-w-sm h-72 md:h-full mx-auto bg-red-200 overflow-hidden transition-all .1s ease-in cursor-pointer'>
+            <div onClick={() => router.push("/Niveles/Advanced")} className='group rounded-md relative max-w-sm h-40 md:h-full mx-auto bg-red-200 overflow-hidden transition-all .1s ease-in cursor-pointer flex items-center justify-center'>
               <Image src={image3} className='w-full object-cover group-hover:scale-110 transition-all .1s ease-in' />
-              <p className='bg-gradient-to-t text-white from-[var(--bluebg)] to-transparent absolute z-10 transition-all .2s backdrop-blur-lg font-semibold px-4 bg-opacity-70 ease-in bottom-0 right-0 w-full text-center'>Nivel Avanzado</p>
+              {/* <p className='bg-gradient-to-t text-white from-[var(--bluebg)] to-transparent absolute z-10 transition-all .2s backdrop-blur-lg font-semibold px-4 bg-opacity-70 ease-in bottom-0 right-0 w-full text-center'>Nivel Avanzado</p> */}
             </div>
           </div>
         )

@@ -105,7 +105,7 @@ export default function Progress() {
       </div>
       <div className='md:flex'>
         <div className='max-w-sm mx-auto md:fixed md:ml-20 md:mt-20 bg-white my-4 rounded-xl'>
-          <div className='h-[400px] opacity-0 w-[350px] bg-gray-300 absolute'></div>
+          <div className='h-[400px] w-full z-30 absolute bg-transparent'></div>
           <h2 className='text-lg font-bold pt-2 pl-8 text-gray-600'>Lessons Completed</h2>
           <VictoryChart
             theme={VictoryTheme.material}
