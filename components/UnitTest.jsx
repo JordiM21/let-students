@@ -10,6 +10,7 @@ import { toast } from 'react-toastify';
 import { useAuth } from '@/context/AuthContext';
 import { useRouter } from 'next/router';
 import { BsChevronCompactRight, BsChevronDoubleRight, BsChevronRight } from 'react-icons/bs';
+import Confetti from 'react-dom-confetti';
 
 
 export default function UnitTest({ level, unit }) {
@@ -19,6 +20,24 @@ export default function UnitTest({ level, unit }) {
   const [progress, setProgress] = useState(0)
   const router = useRouter()
   const [userMatched, setUserMatched] = useState({})
+  const [isConfettiVisible, setIsConfettiVisible] = React.useState(false);
+
+  const handleConfettiClick = () => {
+    setIsConfettiVisible(true);
+  };
+
+  const config = {
+    angle: 90,
+    spread: 40,
+    startVelocity: 50,
+    elementCount: 100,
+    dragFriction: 0.09,
+    duration: 5000,
+    stagger: 6,
+    width: '10px',
+    height: '10px',
+    colors: ['#ff0000', '#00ff00', '#0000ff'],
+  };
 
 
   const fetchPost = async () => {
@@ -46,7 +65,6 @@ export default function UnitTest({ level, unit }) {
         if (level == "Advanced") {
           setProgress(userMatched.progressAdvanced)
         }
-        console.log(userMatched)
       })
   }
 
@@ -75,7 +93,7 @@ export default function UnitTest({ level, unit }) {
     }
     setTimeout(() => {
       router.reload()
-    }, 3000)
+    }, 5000)
   }
 
 
@@ -117,7 +135,8 @@ export default function UnitTest({ level, unit }) {
     }
     setTimeout(() => {
       toast.success("Nice job! All of your answers are correct.")
-    }, 2500)
+      handleConfettiClick()
+    }, 500)
     updateProgress()
   }
 
@@ -305,7 +324,7 @@ export default function UnitTest({ level, unit }) {
                 {
                   unit < 20 && (
                     <>
-                      <button type='button' onClick={() => router.push(`/Niveles/${level}/${unit + 1}`)} className='bg-sky-600 backdrop-blur-xl bg-opacity-60 fixed top-8 left-4 w-11/12 py-4 rounded-full mx-auto'>
+                      <button type='button' onClick={() => router.push(`/Niveles/${level}/${unit + 1}`)} className='bg-sky-600 backdrop-blur-xl bg-opacity-60 fixed top-8 left-4 md:left-24 lg:w-6/12 lg:left-[30%] w-10/12 py-4 rounded-full'>
                         <p className='text-white text-xl'>Go to Next Lesson</p>
                         <BsChevronRight fill='white' size={32} className='absolute right-2 top-3' />
                       </button>
@@ -322,6 +341,9 @@ export default function UnitTest({ level, unit }) {
           }
         </div>
       </form>
+      <div className='flex justify-center'>
+        <Confetti active={isConfettiVisible} config={config} />
+      </div>
     </div>
   )
 }

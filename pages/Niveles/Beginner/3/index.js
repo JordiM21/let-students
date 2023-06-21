@@ -47,7 +47,7 @@ export default function index() {
       <ReactPlayer
         width={"100%"}
         className="max-w-2xl mx-auto my-8 border-8 rounded-md bg-blue-600 border-blue-600"
-        url="https://www.youtube.com/watch?v=ZBxF4wlXR0c"
+        url="https://www.youtube.com/watch?v=cnNB_ThNukc"
         controls={true} />
       <p className='font-bold text-gray-700'>Es importante comenzar señalando que los pronombres pueden estar en singular o plural y que pueden hacer referencia a la distancia.</p>
       <div className='my-4'>
