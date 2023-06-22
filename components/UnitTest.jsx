@@ -11,6 +11,7 @@ import { useAuth } from '@/context/AuthContext';
 import { useRouter } from 'next/router';
 import { BsChevronCompactRight, BsChevronDoubleRight, BsChevronRight } from 'react-icons/bs';
 import Confetti from 'react-dom-confetti';
+import UnitWithTroubleBtn from './UnitWithTroubleBtn';
 
 
 export default function UnitTest({ level, unit }) {
@@ -142,6 +143,7 @@ export default function UnitTest({ level, unit }) {
 
   return (
     <div>
+      <UnitWithTroubleBtn unit={unit} />
       <h3 className='font-bold text-[var(--color1)] text-3xl'>Test Unit <span className='text-[var(--color3)]'>{unit}</span></h3>
       <p>Completa los ejercicios para actualizar tus progresos</p>
       <form onSubmit={handleTest} className='py-8'>

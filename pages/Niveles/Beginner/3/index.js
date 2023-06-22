@@ -5,7 +5,6 @@ import ReactPlayer from 'react-player/youtube'
 import UnitTest from '@/components/UnitTest';
 import { useRouter } from 'next/router';
 import { Breadcrumbs, Link, Typography } from '@mui/material';
-import UnitWithTroubleBtn from '@/components/UnitWithTroubleBtn';
 
 export default function index() {
   const breadcrumbs = [
@@ -73,9 +72,7 @@ export default function index() {
           <SingleExample english="That is my father" spanish="Ese(lejos) es mi padre" />
           <SingleExample english="Is that your phone?" spanish="Es ese(lejos) tu celular?" />
           <Nota text="Así hacemos preguntas intercambiando el verbo to be al inicio, no te preocupes lo veremos a detalle mas adelante" />
-
         </div>
-        <UnitWithTroubleBtn unit={3} />
         <div className='my-8 rounded-md p-4 bg-blue-200 '>
           <UnitTest level={"Beginner"} unit={3} />
         </div>

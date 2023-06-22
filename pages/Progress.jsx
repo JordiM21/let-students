@@ -60,7 +60,7 @@ export default function Progress() {
     toast.success("Well Done! Resolviste todas las dudas de tu estudiante")
     setTimeout(() => {
       router.reload()
-    }, 3000)
+    }, 2000)
   }
 
   return (

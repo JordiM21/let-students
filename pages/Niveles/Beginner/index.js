@@ -3,7 +3,6 @@ import React, { useEffect, useState } from 'react'
 import image1 from '@/public/beginner-cover.png'
 import Breadcrumbs from '@mui/material/Breadcrumbs';
 import Typography from '@mui/material/Typography';
-import Link from '@mui/material/Link';
 import Stack from '@mui/material/Stack';
 import { AiFillCheckCircle } from 'react-icons/ai'
 import { collection, doc, getDocs, updateDoc } from 'firebase/firestore';
@@ -14,10 +13,12 @@ import { BsCircle } from 'react-icons/bs'
 import { toast } from 'react-toastify';
 import BackHeader from '@/components/BackHeader';
 import LoadingScreen from '@/components/LoadingScreen';
+import Link from 'next/link';
 
 export default function Beginner() {
   const router = useRouter()
   const [level, setLevel] = useState("")
+  const [role, setRole] = useState("")
 
   const [data, setData] = useState([])
   const { user } = useAuth();
@@ -43,6 +44,7 @@ export default function Beginner() {
         console.log(userMatched)
         setLevel(userMatched.level);
         setProgress(userMatched.progressBeginner);
+        setRole(userMatched.role)
       })
   }
 
@@ -72,7 +74,7 @@ export default function Beginner() {
               <>
                 {
                   progress >= index && (
-                    <div onClick={() => router.push(`/Niveles/${data.level}/${data.number}`)} className='hover:px-3 hover:opacity-80 transition-all 1s ease-in cursor-pointer flex justify-between items-center bg-gray-300 px-4 py-2 rounded-md'>
+                    <Link href={{ pathname: `/Niveles/${data.level}/${data.number}` }} className='hover:px-3 hover:opacity-80 transition-all 1s ease-in cursor-pointer flex justify-between items-center bg-gray-300 px-4 py-2 rounded-md'>
                       <div className='w-4/5'>
                         <small className='text-xs text-[var(--color3)] font-semibold'>UNIT {data.number}</small>
                         <p className='font-bold text-[var(--color2)]'>{data.title}</p>
@@ -88,11 +90,11 @@ export default function Beginner() {
                           <AiFillCheckCircle size={24} fill='green' />
                         )
                       }
-                    </div>
+                    </Link>
                   )
                 }
                 {
-                  progress < index && (
+                  progress < index && role == "Student" && (
                     <div className='grayscale opacity-70 transition-all 1s ease-in cursor-pointer flex justify-between items-center bg-gray-300 px-4 py-2 rounded-md'>
                       <div className='w-4/5'>
                         <small className='text-xs text-[var(--color3)] font-semibold'>UNIT {data.number}</small>
@@ -101,6 +103,18 @@ export default function Beginner() {
                       </div>
                       <BsCircle size={24} fill='green' />
                     </div>
+                  )
+                }
+                {
+                  progress < index && role == "Admin" && (
+                    <Link href={{ pathname: `/Niveles/${data.level}/${data.number}` }} className='hover:px-3 hover:opacity-80 transition-all 1s ease-in cursor-pointer flex justify-between items-center bg-gray-300 px-4 py-2 rounded-md'>
+                      <div className='w-4/5'>
+                        <small className='text-xs text-[var(--color3)] font-semibold'>UNIT {data.number}</small>
+                        <p className='font-bold text-[var(--color2)]'>{data.title}</p>
+                        <p className='text-gray-700 text-sm'>({data.titleSpanish})</p>
+                      </div>
+                      <BsCircle size={24} fill='green' />
+                    </Link>
                   )
                 }
               </>

@@ -5,7 +5,6 @@ import ReactPlayer from 'react-player/youtube'
 import UnitTest from '@/components/UnitTest';
 import { useRouter } from 'next/router';
 import { Breadcrumbs, Link, Typography } from '@mui/material';
-import UnitWithTroubleBtn from '@/components/UnitWithTroubleBtn';
 
 export default function index() {
   const breadcrumbs = [
@@ -222,7 +221,6 @@ export default function index() {
             spanish="cocinar"
           />
           <p>¿Que tal estuvo? tranquilo, si no entendiste el 100% del vide esta bien! es normal, lo importante es que lo hayas visto todo, como ves tampoco están todas las traducciones acá, seguramente los verás en unos días con tu Tutor.</p>
-          <UnitWithTroubleBtn unit={18} />
           <div className='my-8 rounded-md p-4 bg-blue-200 '>
             <UnitTest level={"Beginner"} unit={18} />
           </div>

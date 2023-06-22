@@ -5,7 +5,6 @@ import ReactPlayer from 'react-player/youtube'
 import UnitTest from '@/components/UnitTest';
 import { useRouter } from 'next/router';
 import { Breadcrumbs, Link, Typography } from '@mui/material';
-import UnitWithTroubleBtn from '@/components/UnitWithTroubleBtn';
 
 export default function index() {
   const breadcrumbs = [
@@ -127,7 +126,6 @@ export default function index() {
             spanish="Cual es tu helado favorito?"
           />
           <Nota text="Aquí vemos el uso de los dos, mientras which es elegir entre opciones, el what te pregunta en general, es por eso que no podemos decir en absolute: [WHICH IS YOUR NAME?] esto si es gramaticalmente incorrecto." />
-          <UnitWithTroubleBtn unit={13} />
           <div className='my-8 rounded-md p-4 bg-blue-200 '>
             <UnitTest level={"Beginner"} unit={13} />
           </div>

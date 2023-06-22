@@ -5,7 +5,6 @@ import ReactPlayer from 'react-player/youtube'
 import UnitTest from '@/components/UnitTest';
 import { useRouter } from 'next/router';
 import { Breadcrumbs, Link, Typography } from '@mui/material';
-import UnitWithTroubleBtn from '@/components/UnitWithTroubleBtn';
 
 export default function index() {
   const breadcrumbs = [
@@ -62,7 +61,6 @@ export default function index() {
             walks in the mountains. My sister likes to cook with my grandmother. On the weekends we all play
             board games together. We laugh and always have a good time. I love my family very much.
           </p>
-          <UnitWithTroubleBtn unit={19} />
           <div className='my-8 rounded-md p-4 bg-blue-200 '>
             <UnitTest level={"Beginner"} unit={19} />
           </div>

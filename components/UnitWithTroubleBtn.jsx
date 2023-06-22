@@ -6,13 +6,36 @@ import React, { useEffect, useState } from 'react'
 import { AiFillCloseCircle } from 'react-icons/ai';
 import { BsQuestionCircle } from 'react-icons/bs';
 import { toast } from 'react-toastify';
+import Backdrop from '@mui/material/Backdrop';
+import Box from '@mui/material/Box';
+import Modal from '@mui/material/Modal';
+import Fade from '@mui/material/Fade';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
 
 export default function UnitWithTroubleBtn({ unit, level }) {
   const [clicked, setClicked] = useState(false)
   const router = useRouter()
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
   const [userMatched, setUserMatched] = useState({})
   const { user } = useAuth();
   const [authUid, setAuthUid] = useState(user.uid)
+
+  const style = {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    width: "90%",
+    bgcolor: 'background.paper',
+    border: '2px solid #000',
+    borderRadius: "8px",
+    boxShadow: 24,
+    p: 4,
+  };
+
 
   const fetchUser = async () => {
     await getDocs(collection(db, "users"))
@@ -46,13 +69,18 @@ export default function UnitWithTroubleBtn({ unit, level }) {
 
 
   const handleClick = async () => {
+    if (userMatched.unitInTrouble?.length > 0) {
+      setOpen(false)
+      return toast.error("Ya pediste ayuda en una lecciòn, solo puedes pedir una a la vez!")
+    }
     if (!clicked) {
       try {
         const userRef = doc(db, "users", userMatched.id);
         await updateDoc(userRef, {
           unitInTrouble: [...userMatched.unitInTrouble, unit],
-        }).then(() => toast.success("Saved succesfully!"))
+        }).then(() => toast.success("Ya notificamos a tu tutor!"))
         setClicked(true);
+        setOpen(false)
       } catch (error) {
         console.error('Error updating liked videos:', error);
       }
@@ -67,7 +95,7 @@ export default function UnitWithTroubleBtn({ unit, level }) {
     <div className='my-4 relative'>
       <p className='text-gray-700 text-xl font-bold text-center'>Hey! ¿No entendiste muy bien todo o necesitas ayuda?</p>
       <button className={`w-11/12 relative mt-4`}>
-        <div className={`w-full mt-4 py-4 rounded-full border-4 border-[var(--color3)]  ${clicked ? "bg-[var(--color3)] " : ""}`} onClick={handleClick}>
+        <div className={`w-full mt-4 py-4 rounded-full border-4 border-[var(--color3)]  ${clicked ? "bg-[var(--color3)] " : ""}`} onClick={handleOpen}>
           <p>{clicked ? 'Listo, lo veremos pronto' : 'Pide ayuda a tu tutor'}</p>
         </div>
         <div onClick={() => setQuestion(!question)} className='absolute -right-8 top-9 hover:bg-slate-300 rounded-full'>
@@ -82,6 +110,38 @@ export default function UnitWithTroubleBtn({ unit, level }) {
           </div>
         )
       }
+      <Modal
+        aria-labelledby="transition-modal-title"
+        aria-describedby="transition-modal-description"
+        open={open}
+        onClose={handleClose}
+        closeAfterTransition
+        slots={{ backdrop: Backdrop }}
+        slotProps={{
+          backdrop: {
+            timeout: 500,
+          },
+        }}
+      >
+        <Fade in={open}>
+          <Box sx={style}>
+            <Typography id="transition-modal-title" variant="h6" component="h2">
+              Pide ayuda a tu tutor
+            </Typography>
+            <Typography id="transition-modal-description" sx={{ mt: 2 }}>
+              Tu tutor recibe una notificaciòn y en la pròxima clase lo veràn a profundidad y resolverà todas tus dudas, Recuerdo que si pides ayuda en esta lecciòn no puedes pedir en otra.
+            </Typography>
+            <div className='flex justify-around pt-4'>
+              <button className='py-2 text-blue-400 rounded-full border-4 border-blue-400 px-4' onClick={handleClose}>
+                Mejor no
+              </button>
+              <button className='py-2 text-white bg-blue-400 rounded-full border-4 border-blue-400 px-4' onClick={handleClick}>
+                Solicitar ayuda
+              </button>
+            </div>
+          </Box>
+        </Fade>
+      </Modal>
     </div >
   )
 }

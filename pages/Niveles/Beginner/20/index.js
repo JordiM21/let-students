@@ -5,7 +5,6 @@ import ReactPlayer from 'react-player/youtube'
 import UnitTest from '@/components/UnitTest';
 import { useRouter } from 'next/router';
 import { Breadcrumbs, Link, Typography } from '@mui/material';
-import UnitWithTroubleBtn from '@/components/UnitWithTroubleBtn';
 
 export default function index() {
   const breadcrumbs = [
@@ -52,7 +51,6 @@ export default function index() {
       <div className='my-4'>
         <p className='font-bold text-sm opacity-90'>A continuación vas a escuchar y ver todas las actividades mostradas en el video con mucha atención y luego responder las preguntas al final</p>
         <div className='space-y-4'>
-          <UnitWithTroubleBtn unit={20} />
           <div className='my-8 rounded-md p-4 bg-blue-200 '>
             <UnitTest level={"Beginner"} unit={20} />
           </div>
