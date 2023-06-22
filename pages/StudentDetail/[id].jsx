@@ -1,4 +1,5 @@
 import BackHeader from '@/components/BackHeader'
+import Schedule from '@/components/Schedule'
 import YourProfile from '@/components/YourProfile'
 import { db } from '@/config/firebase'
 import { Plans } from '@/models/Plans'
@@ -6,11 +7,11 @@ import { FormControl, FormHelperText, InputLabel, MenuItem, Select, TextField } 
 import { collection, doc, getDocs, updateDoc } from 'firebase/firestore'
 import { useRouter } from 'next/router'
 import React, { useEffect, useState } from 'react'
+import { BsTrashFill } from 'react-icons/bs'
 import { toast } from 'react-toastify'
 
 export default function () {
   const [user, setUser] = useState({})
-
   const router = useRouter()
   const id = router.query.id
   const [phone, setPhone] = useState(user.phone)
@@ -19,6 +20,9 @@ export default function () {
   const [plan, setPlan] = useState(user.plan)
   const [asignedTutor, setAsignedTutor] = useState(user.asignedTutor)
   const [admins, setAdmins] = useState([])
+  const [day, setDay] = useState("")
+  const [time, setTime] = useState("")
+  const [topic, setTopic] = useState("")
 
   const fetchPost = async () => {
     await getDocs(collection(db, "users"))
@@ -95,6 +99,40 @@ export default function () {
     }, 2500)
   }
 
+  const changeSchedule = async (e) => {
+    e.preventDefault()
+    try {
+      const userRef = doc(db, "users", user.id);
+      await updateDoc(userRef, {
+        schedule: [...user.schedule, {
+          day,
+          time,
+          topic,
+        }],
+      }).then(() => toast.success("Added succesfully!"))
+      setTimeout(() => {
+        router.reload()
+      }, 2500)
+    } catch (error) {
+      console.error('Error updating schedule:', error);
+    }
+  }
+
+  const deleteScheduleItem = async (day) => {
+    try {
+      const updatedSchedule = user.schedule.filter((item) => item.day !== day);
+      const userRef = doc(db, 'users', user.id);
+      await updateDoc(userRef, {
+        schedule: updatedSchedule,
+      });
+      toast.success('Day deleted successfully!');
+      setTimeout(() => {
+        router.reload()
+      }, 2500)
+    } catch (error) {
+      console.error('Error deleting schedule item:', error);
+    }
+  };
 
 
   return (
@@ -104,6 +142,70 @@ export default function () {
         <YourProfile char={user.profileImg} />
       </div>
       <h2>Currently Modifying <span className='text-[var(--color3)] font-semibold'>{user.firstName} {user.lastName}</span> </h2>
+      <p className='text-2xl'>Student's Schedule</p>
+      <ul className='space-y-3'>
+        {user.schedule?.map((item) => (
+          <li key={item.day} className='w-11/12 mx-auto py-3 px-8 rounded-lg bg-gray-400 flex justify-between items-center'>
+            <span>{item.day}</span>
+            <button className='bg-red-600 p-2 rounded-lg' onClick={() => deleteScheduleItem(item.day)}> <BsTrashFill fill='white' /> </button>
+          </li>
+        ))}
+      </ul>
+      <form onSubmit={changeSchedule} className='my-8 space-y-4'>
+        {
+          user.schedule?.length > 0 && (
+            <Schedule schedule={user.schedule} />
+          )
+        }
+        <p className='text-center text-gray-500 mt-4'>Add a day</p>
+        <FormControl variant="filled" className='w-full'>
+          <InputLabel id="demo-simple-select-standard-label">Modify the day</InputLabel>
+          <Select
+            labelId="demo-simple-select-standard-label"
+            id="demo-simple-select-helper"
+            value={day}
+            onChange={(e) => setDay(e.target.value)}
+          >
+            <MenuItem value="">
+              <em>Select a day</em>
+            </MenuItem>
+            <MenuItem value="Monday">Monday</MenuItem>
+            <MenuItem value="Tuesday">Tuesday</MenuItem>
+            <MenuItem value="Wednesday">Wednesday</MenuItem>
+            <MenuItem value="Thursday">Thursday</MenuItem>
+            <MenuItem value="Friday">Friday</MenuItem>
+            <MenuItem value="Saturday">Saturday</MenuItem>
+          </Select>
+        </FormControl>
+        <FormControl variant="filled" className='w-full'>
+          <InputLabel id="demo-simple-select-standard-label">Select a Topic</InputLabel>
+          <Select
+            labelId="demo-simple-select-standard-label"
+            id="demo-simple-select-helper"
+            value={topic}
+            onChange={(e) => setTopic(e.target.value)}
+          >
+            <MenuItem value="">
+              <em>Select a Topic</em>
+            </MenuItem>
+            <MenuItem value="Writing">Writing</MenuItem>
+            <MenuItem value="Listening">Listening</MenuItem>
+            <MenuItem value="Platform">Platform</MenuItem>
+            <MenuItem value="Speaking">Speaking</MenuItem>
+            <MenuItem value="Immersive">Immersive</MenuItem>
+          </Select>
+        </FormControl>
+        <FormControl variant="filled" className='w-full'>
+          <TextField
+            className='w-full'
+            variant='filled'
+            label="Modify the Time"
+            value={time}
+            onChange={(e) => setTime(e.target.value)}
+          />
+        </FormControl>
+        <button type='submit' className='w-full py-4 bg-[var(--color2)] text-white font-bold hover:opacity-75'>Add day to schedule</button>
+      </form>
       <form onSubmit={updateLevel} className='my-8'>
         <FormControl variant="filled" className='w-full'>
           <InputLabel id="demo-simple-select-standard-label">Modify the level</InputLabel>

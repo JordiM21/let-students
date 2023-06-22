@@ -15,6 +15,7 @@ import LoadingScreen from '@/components/LoadingScreen';
 import { BsQuestionCircle } from 'react-icons/bs';
 import { AiFillCloseCircle } from 'react-icons/ai';
 import { toast } from 'react-toastify';
+import Schedule from '@/components/Schedule';
 
 export default function Progress() {
   const [userMatched, setUserMatched] = useState({})
@@ -192,7 +193,7 @@ export default function Progress() {
                             <p className='text-sm text-gray-600 font-bold'>({student.level})</p>
                           </div>
                         </div>
-                        <div className='bg-[var(--blueDarkbg)] cursor-pointer hover:bg-slate-800 w-full flex items-center rounded-t-xl mt-4 justify-between py-2 px-4'>
+                        <div className='bg-[var(--blueDarkbg)] cursor-pointer hover:bg-slate-800 overflow-hidden w-full rounded-t-xl mt-4 flex gap-8 items-center justify-between py-2 px-4'>
                           <p className='text-white'>Email</p>
                           <div className='flex items-center justify-center'>
                             <p className='text-gray-400 opacity-80'>{student.email}</p>
@@ -222,6 +223,11 @@ export default function Progress() {
                           <p>Advanced: </p>
                           <ProgressLesson progress={student.progressAdvanced} />
                         </div>
+                        {
+                          student.schedule && (
+                            <Schedule schedule={student.schedule} />
+                          )
+                        }
                         <button onClick={() => router.push(`StudentDetail/${student.id}`)} className='w-full py-4 rounded-full my-4 bg-[var(--blueDarkbg)] hover:bg-white border-4 hover:text-[var(--blueDarkbg)] border-[var(--blueDarkbg)] text-white'>
                           MODIFY
                         </button>

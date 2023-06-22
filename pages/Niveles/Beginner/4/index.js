@@ -46,7 +46,7 @@ export default function index() {
       <ReactPlayer
         width={"100%"}
         className="max-w-2xl mx-auto my-8 border-8 rounded-md bg-blue-600 border-blue-600"
-        url="https://www.youtube.com/watch?v=ZBxF4wlXR0c"
+        url="https://www.youtube.com/watch?v=mhAQbRV8un0"
         controls={true} />
       <p className='font-bold text-gray-700'>Los pronombres reflexivos se usan cuando el sujeto y el complemento del verbo son lo mismo. El sujeto hace la acción a sí mismo. En inglés no se utilizan los verbos reflexivos tanto como en español. En vez de verbos reflexivos, utilizamos uno de los siguientes pronombres reflexivos.</p>
       <div className='my-4'>
