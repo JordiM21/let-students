@@ -8,9 +8,11 @@ import { AiOutlineCopy } from 'react-icons/ai'
 import { MdArrowForwardIos } from 'react-icons/md'
 import copy from 'clipboard-copy';
 import { toast } from 'react-toastify'
+import { FcCalendar } from 'react-icons/fc'
+import Schedule from './Schedule'
 
 
-export default function StudentDashboard({ firstName, level, likedVideos, progressB, progressI, progressA }) {
+export default function StudentDashboard({ firstName, level, likedVideos, schedule, progressB, progressI, progressA }) {
 
   const [beginnerCode] = useState("Z8M2D7GG")
   const [intermediateCode] = useState("R2PMQGRC")
@@ -36,6 +38,15 @@ export default function StudentDashboard({ firstName, level, likedVideos, progre
   return (
     <div>
       <h1 className='text-center text-4xl mx-4 py-2 font-bold text-white'>Welcome {firstName}!</h1>
+      <div className='bg-gray-900 mx-4 pb-4 my-6 rounded-md'>
+        <div className='flex justify-center gap-4 items-center rounded-t-md py-2 bg-[var(--color2)]'>
+          <p className='text-xl'>Student's Schedule</p>
+          <FcCalendar size={32} />
+        </div>
+        <div className='px-4'>
+          <Schedule schedule={schedule} />
+        </div>
+      </div>
       <div className='bg-yellow-400 mx-4 pb-4 rounded-md md:flex md:pb-0 max-w-4xl md:mx-auto'>
         <div className='bg-yellow-300 font-semibold text-lg md:text-2xl px-4 py-3 md:py-8 rounded-md shadow-md'>
           <span className='text-[var(--color2)] md:block text-3xl md:text-8xl'>{level == "Beginner" && progressB * 23}{level == "Intermediate" && progressI * 23}{level == "Advanced" && progressA * 23}</span> total words known on your level

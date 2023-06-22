@@ -16,6 +16,7 @@ export default function Dashboard() {
   const [progressB, setProgressB] = useState("")
   const [progressI, setProgressI] = useState("")
   const [progressA, setProgressA] = useState("")
+  const [schedule, setSchedule] = useState([])
 
   const [email, setEmail] = useState("")
   const router = useRouter()
@@ -40,6 +41,7 @@ export default function Dashboard() {
         setProgressB(userMatched.progressBeginner);
         setProgressI(userMatched.progressIntermediate);
         setProgressA(userMatched.progressAdvanced);
+        setSchedule(userMatched?.schedule)
       })
   }
 
@@ -72,6 +74,7 @@ export default function Dashboard() {
         role == "Student" &&
         (
           <StudentDashboard
+            schedule={schedule}
             firstName={firstName}
             level={level}
             role={role}
