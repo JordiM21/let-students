@@ -1,6 +1,5 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
-import SwipeableViews from 'react-swipeable-views';
 import { useTheme } from '@mui/material/styles';
 import AppBar from '@mui/material/AppBar';
 import Tabs from '@mui/material/Tabs';
@@ -11,7 +10,7 @@ import { styled } from '@mui/system';
 
 const StyledTabs = styled(Tabs)(({ theme }) => ({
   '& .MuiTabs-indicator': {
-    backgroundColor: '#000000', // Set the indicator color to black
+    backgroundColor: '#000000',
   },
 }));
 
@@ -77,20 +76,13 @@ export default function Schedule({ schedule }) {
           }
         </StyledTabs>
       </AppBar>
-      <SwipeableViews
-        axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
-        index={value}
-        onChangeIndex={handleChangeIndex}
-      >
-        {
-          schedule.map((data, index) => (
-            <TabPanel key={index} value={value} index={index} dir={theme.direction}>
-              <p>Time: {data.time} </p>
-              <p>Topic: {data.topic} </p>
-            </TabPanel>
-          ))
-        }
-      </SwipeableViews>
-    </Box>
+      {
+        schedule.map((data, index) => (
+          <TabPanel value={value} index={index} dir={theme.direction}>
+            <p>Time: {data.time} </p>
+            <p>Topic: {data.topic} </p>
+          </TabPanel>
+        ))
+      }    </Box>
   );
 }
