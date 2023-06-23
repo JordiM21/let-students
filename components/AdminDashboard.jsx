@@ -73,7 +73,7 @@ export default function AdminDashboard({ allUsers, firstName, email, id, url }) 
             <BsQuestionCircle className='w-6 h-6 ' />
           </div>
 
-          <a href={url} target='_blank' className='flex bg-blue-500 gap-8 hover:gap-10 hover:opacity-80 py-4 rounded-md w-full justify-center items-center'>
+          <a href={url} target='_blank' className='flex bg-green-500 gap-8 hover:gap-10 hover:opacity-80 py-4 rounded-full w-full justify-center items-center'>
             <p className='text-white'>Entra a la meeting</p>
             <BsFillCameraVideoFill fill='white' size={40} />
           </a>

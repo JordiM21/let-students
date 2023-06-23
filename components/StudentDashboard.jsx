@@ -46,10 +46,10 @@ export default function StudentDashboard({ firstName, level, tutor, schedule, pr
         <div onClick={() => setQuestion(!question)} className='absolute right-4 top-0 cursor-pointer bg-slate-300 rounded-full'>
           <BsQuestionCircle className='w-6 h-6 ' />
         </div>
-        <a href={tutor.urlMeet} target='_blank' className='flex bg-blue-500 gap-8 hover:gap-10 hover:opacity-80 py-4 rounded-md w-full justify-center items-center'>
+        <a href={tutor.urlMeet} target='_blank' className='flex bg-green-500 hover:opacity-80 py-2 my-3 rounded-full w-full justify-between pl-4 pr-12 items-center'>
           <YourProfile char={tutor.profileImg} size={"small"} />
-          <p className='text-white'>Entra a la meeting</p>
-          <BsFillCameraVideoFill fill='white' size={40} />
+          <p className='text-white text-xl'>Entra a la meeting</p>
+          <BsFillCameraVideoFill fill='white' size={36} />
         </a>
         {
           question && (
