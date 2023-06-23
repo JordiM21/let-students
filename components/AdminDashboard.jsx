@@ -6,18 +6,28 @@ import Image from 'next/image'
 import image3 from '@/public/cambridgeandlet.png'
 import enviroment from '@/public/enviromentsAdmin.png'
 import allStudents from '@/public/AllStudents.png'
-import { AiOutlineCopy } from 'react-icons/ai'
+import { AiFillCloseCircle, AiOutlineCopy } from 'react-icons/ai'
 import copy from 'clipboard-copy';
 import { toast } from 'react-toastify'
 import { useRouter } from 'next/router'
-import { FcAutomatic, FcBullish, FcCalendar, FcContacts, FcHighPriority } from 'react-icons/fc'
+import { FcAutomatic, FcBullish, FcCalendar, FcContacts, FcHighPriority, FcVideoCall } from 'react-icons/fc'
+import { TextField } from '@mui/material'
+import { doc, updateDoc } from 'firebase/firestore'
+import { db } from '@/config/firebase'
+import { BsFillCameraVideoFill, BsQuestionCircle } from 'react-icons/bs'
+import Accordion from '@mui/material/Accordion';
+import AccordionSummary from '@mui/material/AccordionSummary';
+import AccordionDetails from '@mui/material/AccordionDetails';
+import Typography from '@mui/material/Typography';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 
-export default function AdminDashboard({ allUsers, firstName, email }) {
+export default function AdminDashboard({ allUsers, firstName, email, id, url }) {
 
-  const [mail] = useState("learnenglishtogether21@gmail.com")
-  const [password] = useState("let-admin")
+  // const [mail] = useState("learnenglishtogether21@gmail.com")
+  // const [password] = useState("let-admin")
   const router = useRouter()
+  const [urlMeet, setUrlMeet] = useState("")
 
 
   const handleCopy = (mail) => {
@@ -28,6 +38,19 @@ export default function AdminDashboard({ allUsers, firstName, email }) {
   const [beginnerCode] = useState("Z8M2D7GG")
   const [intermediateCode] = useState("R2PMQGRC")
   const [advancedCode] = useState("2DG2QZ9C")
+
+  const changeUrl = async (e) => {
+    e.preventDefault()
+    const nameRef = doc(db, "users", id);
+    await updateDoc(nameRef, {
+      urlMeet: urlMeet,
+    }).then(() => toast.success("Link added succesfully!"))
+    setTimeout(() => {
+      router.reload()
+    }, 3000)
+  }
+
+  const [question, setQuestion] = useState(false)
 
   return (
     <div>
@@ -43,7 +66,49 @@ export default function AdminDashboard({ allUsers, firstName, email }) {
           </div>
         )
       }
-      <div className='flex justify-center my-8'>
+      <div className='md:flex justify-center md:gap-8 my-8 mx-4 md:mx-16'>
+        <div className='relative space-y-2 my-4 max-w-md'>
+          <p className='text-white text-xl'>Link for meetings </p>
+          <div onClick={() => setQuestion(!question)} className='absolute right-4 top-0 cursor-pointer bg-slate-300 rounded-full'>
+            <BsQuestionCircle className='w-6 h-6 ' />
+          </div>
+
+          <a href={url} target='_blank' className='flex bg-blue-500 gap-8 hover:gap-10 hover:opacity-80 py-4 rounded-md w-full justify-center items-center'>
+            <p className='text-white'>Entra a la meeting</p>
+            <BsFillCameraVideoFill fill='white' size={40} />
+          </a>
+          {
+            question && (
+              <div className='bg-gray-200 backdrop-blur-sm bg-opacity-80 p-6 shadow-gray-500 z-50 rounded-md shadow-lg max-w-[250px] absolute right-0'>
+                <AiFillCloseCircle className='absolute top-2 cursor-pointer right-2 w-6 h-6' onClick={() => setQuestion(!question)} />
+                <p>Lo primero que tienes que hacer es ir a este <a href='https://whereby.com/' className='text-sky-500 underline' target='_blank'>link</a> y crearte una cuenta con tu correo. <br />Luego debes crear un link personalizado en la pagina, recomendamos que este link tenga tu nombre ya que serà unico y siempre te conectaras con tus estudiantes por este link<br /> <span className='text-[var(--color3)]'>LISTO!</span>, ya tienes tu link personal el cual usaras con tus estudiantes para las clases.</p>
+              </div>
+            )
+          }
+          <Accordion>
+            <AccordionSummary
+              expandIcon={<ExpandMoreIcon />}
+              aria-controls="panel1a-content"
+              id="panel1a-header"
+            >
+              <Typography>Crea o modifica tu Link</Typography>
+            </AccordionSummary>
+            <AccordionDetails>
+              <small className='text-gray-500 text-xs'>Current Url: {url} </small>
+              <p>Este link serà donde te reuniràs con tus alumnos, serà visible para ellos en todo momento, recuerda que para tener tu link debes registrarte en la pagina <a href='https://whereby.com/' className='text-sky-500 underline' target='_blank'>WhereBy</a></p>
+              <form onSubmit={changeUrl} className='flex flex-col p-8 space-y-4'>
+                <TextField id="filled-basic" label="Link given by WhereBy" variant="filled"
+                  className='bg-gray-300 rounded-md w-full'
+                  value={urlMeet}
+                  type='text'
+                  placeholder='https://whereby.com/***********'
+                  onChange={(e) => setUrlMeet(e.target.value)}
+                />
+                <button type='submit' className='bg-[var(--color3)] py-4 text-lg text-white rounded-md'>Add link</button>
+              </form>
+            </AccordionDetails>
+          </Accordion>
+        </div>
         <div className='bg-black rounded-md'>
           <Image src={allStudents} className='rounded-t-md w-full object-cover' />
           <div>

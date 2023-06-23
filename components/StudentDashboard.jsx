@@ -4,15 +4,17 @@ import { useRouter } from 'next/router'
 import Image from 'next/image'
 import image1 from '@/public/cambridgeandlet.png'
 import image3 from '@/public/enviroments.png'
-import { AiOutlineCopy } from 'react-icons/ai'
+import { AiFillCloseCircle, AiOutlineCopy } from 'react-icons/ai'
 import { MdArrowForwardIos } from 'react-icons/md'
 import copy from 'clipboard-copy';
 import { toast } from 'react-toastify'
 import { FcCalendar } from 'react-icons/fc'
 import Schedule from './Schedule'
+import { BsFillCameraVideoFill, BsQuestionCircle } from 'react-icons/bs'
+import YourProfile from './YourProfile'
 
 
-export default function StudentDashboard({ firstName, level, likedVideos, schedule, progressB, progressI, progressA }) {
+export default function StudentDashboard({ firstName, level, tutor, schedule, progressB, progressI, progressA }) {
 
   const [beginnerCode] = useState("Z8M2D7GG")
   const [intermediateCode] = useState("R2PMQGRC")
@@ -34,11 +36,31 @@ export default function StudentDashboard({ firstName, level, likedVideos, schedu
     toast.success("Copied the Advanced Code")
   }
 
+  const [question, setQuestion] = useState(false)
 
   return (
     <div>
       <h1 className='text-center text-4xl mx-4 py-2 font-bold text-white'>Welcome {firstName}!</h1>
-      <div className='bg-gray-900 mx-4 pb-4 my-6 rounded-md'>
+      <div className='relative mx-4'>
+        <p className='text-white text-xl'>Link for meetings </p>
+        <div onClick={() => setQuestion(!question)} className='absolute right-4 top-0 cursor-pointer bg-slate-300 rounded-full'>
+          <BsQuestionCircle className='w-6 h-6 ' />
+        </div>
+        <a href={tutor.urlMeet} target='_blank' className='flex bg-blue-500 gap-8 hover:gap-10 hover:opacity-80 py-4 rounded-md w-full justify-center items-center'>
+          <YourProfile char={tutor.profileImg} size={"small"} />
+          <p className='text-white'>Entra a la meeting</p>
+          <BsFillCameraVideoFill fill='white' size={40} />
+        </a>
+        {
+          question && (
+            <div className='bg-gray-200 backdrop-blur-sm bg-opacity-80 p-6 shadow-gray-500 z-50 rounded-md shadow-lg max-w-[250px] absolute right-0 top-7'>
+              <AiFillCloseCircle className='absolute top-2 cursor-pointer right-2 w-6 h-6' onClick={() => setQuestion(!question)} />
+              <p>Para ingresar a la meeting con tu tutor solo tienes que asegurarte de agendar primero y que esten de acuerdo en un horario si los tienes establecidos mucho mejor, no necesitas iniciar sesiòn para entrar ni tener cuenta. Recuerda ser muy puntual con los horarios de tutor</p>
+            </div>
+          )
+        }
+      </div>
+      <div className='bg-gray-900 mx-4 pb-4 my-6 rounded-md max-w-2xl md:mx-auto'>
         <div className='flex justify-center gap-4 items-center rounded-t-md py-2 bg-[var(--color2)]'>
           <p className='text-xl'>Student's Schedule</p>
           <FcCalendar size={32} />

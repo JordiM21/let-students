@@ -12,6 +12,7 @@ export default function Dashboard() {
   const [firstName, setFirstName] = useState("")
   const [level, setLevel] = useState("")
   const [role, setRole] = useState("")
+  const [urlMeet, setUrlMeet] = useState("")
   const [likedVideos, setLikedVideos] = useState("")
   const [progressB, setProgressB] = useState("")
   const [progressI, setProgressI] = useState("")
@@ -20,6 +21,7 @@ export default function Dashboard() {
 
   const [email, setEmail] = useState("")
   const router = useRouter()
+  const [tutor, setTutor] = useState({})
 
   const { user } = useAuth();
   const [authUid, setAuthUid] = useState(user.uid)
@@ -30,18 +32,21 @@ export default function Dashboard() {
         const newData = querySnapshot.docs
           .map((doc) => ({ ...doc.data(), id: doc.id }));
         const userMatched = newData.find(item => item.uid == authUid);
+        const tutorMatched = newData.find(item => item.uid == userMatched.asignedTutor)
         const allStudents = newData.filter(item => item.role == "Student")
+        setTutor(tutorMatched)
         setAllUsers(allStudents)
         setFirstName(userMatched.firstName);
         setLevel(userMatched.level);
         setLikedVideos(userMatched.likedVideos)
         setRole(userMatched.role);
-        setId(userMatched.uid);
+        setId(userMatched.id);
         setEmail(userMatched.email)
         setProgressB(userMatched.progressBeginner);
         setProgressI(userMatched.progressIntermediate);
         setProgressA(userMatched.progressAdvanced);
         setSchedule(userMatched?.schedule)
+        setUrlMeet(userMatched?.urlMeet)
       })
   }
 
@@ -67,6 +72,8 @@ export default function Dashboard() {
             role={role}
             likedVideos={likedVideos}
             email={email}
+            id={id}
+            url={urlMeet}
           />
         )
       }
@@ -83,6 +90,7 @@ export default function Dashboard() {
             progressA={progressA}
             likedVideos={likedVideos}
             email={email}
+            tutor={tutor}
           />
         )
       }
