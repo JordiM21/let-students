@@ -72,7 +72,7 @@ export default function index() {
             spanish="ferry"
           /><SingleExample
             english="by bus"
-            spanish="en tren"
+            spanish="en bus"
           /><SingleExample
             english="I always go home by train"
             spanish="Yo siempre voy a casa en tren"
