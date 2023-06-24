@@ -324,7 +324,7 @@ export default function UnitTest({ level, unit }) {
               <div className='w-11/12'>
                 <button disabled className='bg-green-500 w-full opacity-60 py-4 my-4 text-white font-bold transition-all 1s ease-in hover:shadow-xl rounded-full' type='submit'>Well Done!</button>
                 {
-                  unit < 20 && (
+                  unit < 25 && (
                     <>
                       <button type='button' onClick={() => router.push(`/Niveles/${level}/${unit + 1}`)} className='bg-sky-600 backdrop-blur-xl bg-opacity-60 fixed top-8 left-4 md:left-24 lg:w-6/12 lg:left-[30%] w-10/12 py-4 rounded-full'>
                         <p className='text-white text-xl'>Go to Next Lesson</p>

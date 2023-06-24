@@ -110,7 +110,7 @@ export default function Progress() {
           <h2 className='text-lg font-bold pt-2 pl-8 text-gray-600'>Lessons Completed</h2>
           <VictoryChart
             theme={VictoryTheme.material}
-            domain={{ y: [0, 20] }}
+            domain={{ y: [0, 25] }}
             domainPadding={20}
           >
             <VictoryBar

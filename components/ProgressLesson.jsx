@@ -1,7 +1,7 @@
 import React from 'react'
 
 export default function ProgressLesson({ progress }) {
-  const maxLessons = 20
+  const maxLessons = 25
 
   console.log(progress)
   return (
