@@ -56,7 +56,7 @@ export default function index() {
   }, [])
 
   return (
-    <div className='bg-[var(--bluebg)] pt-24'>
+    <div className='bg-[var(--bluebg)] py-24'>
       {
         (level !== "Intermediate" && level !== "Advanced") &&
         (
