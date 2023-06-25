@@ -47,6 +47,7 @@ export default function index() {
         const userMatched = newData.find(item => item.uid == authUid);
         setLevel(userMatched.level);
         setProgress(userMatched.progressIntermediate);
+        setRole(userMatched.role)
       })
   }
 

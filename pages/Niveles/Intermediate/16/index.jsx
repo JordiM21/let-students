@@ -30,7 +30,7 @@ export default function index() {
     <Typography
       key="4"
       color="text.primary">
-      Unit []
+      Unit 16
     </Typography>,
   ];
 
@@ -42,22 +42,97 @@ export default function index() {
         <Breadcrumbs separator="›" aria-label="breadcrumb">
           {breadcrumbs}
         </Breadcrumbs>
-        <p className='opacity-60 font-bold text-lg text-[var(--color2)]'>[] - LESSON []</p>
-        <CustomTitle title={""} titleSpanish={""} />
+        <p className='opacity-60 font-bold text-lg text-[var(--color2)]'>FUTURE SIMPLE - LESSON 16</p>
+        <CustomTitle title={"Future Simple"} titleSpanish={"EL FUTURO SIMPLE"} />
         <ReactPlayer
           width={"100%"}
           className="max-w-2xl mx-auto my-8 border-8 rounded-md bg-blue-600 border-blue-600"
-          url="https://www.youtube.com/watch?v=QkYBiPEIwVE"
+          url="https://www.youtube.com/watch?v=L7y43hYxSkc"
           controls={true} />
-        <p className='font-bold text-gray-700'></p>
+        <p className='font-bold text-gray-700'>Hay dos formas principales para expresar el futuro. A veces son intercambiables, pero a menudo pueden tener significados diferentes.</p>
         <div className='my-4'>
           <div className='space-y-2'>
             <CustomTitle
-              title="Closed Questions"
-              titleSpanish="Preguntas Cerradas" />
+              title="Future: (Will)"
+              titleSpanish="Structure (Estructura)" />
+            <SingleExample
+              english="I will [I’ll] call you tonight."
+              spanish="Te llamaré esta noche." />
+            <SingleExample
+              english="I will not [won't] call you tonight"
+              spanish="Yo no te llamaré esta noche" />
+            <p className='font-bold text-gray-700'>Acabas de ver las abreviaciones que usamos en ingles para el will, examples: She'll [She will], They'll [They will], I'll [I will] o tambien la negacion usamos won't para decir will not </p>
+            <SingleExample
+              english="She will [She’ll] arrive late."
+              spanish="Ella llegará tarde" />
+            <SingleExample
+              english="They will [They’ll] be happy to see you."
+              spanish="Estarán felices de verte." />
+            <SingleExample
+              english="She will not [won’t] arrive late."
+              spanish=" Ella no llegará tarde." />
+            <SingleExample
+              english="They will not [won’t] be happy to see you."
+              spanish="No estarán felices de verte" />
+            <SingleExample
+              english="Will you call me tonight?"
+              spanish="¿Me llamarás esta noche?" />
+            <SingleExample
+              english="Will she arrive late?"
+              spanish="¿Ella llegará tarde?" />
+            <SingleExample
+              english="Will they be happy to see you?"
+              spanish="¿Estarán felices de verte?" />
+            <CustomTitle
+              title="Future: (Going to)"
+              titleSpanish="“Going to” equivale a “ir a” en español." />
+            <SingleExample
+              english="
+I am going to call you tonight."
+              spanish="Voy a llamarte esta noche." />
+            <SingleExample
+              english="She is going to arrive late."
+              spanish="Va a llegar tarde." />
+            <p className='font-bold text-gray-700'>Ahi te va un super tip, todos los nativos utilizamos going to en la forma abreviada que es "gonna" es bastante informal pero se usa en el ingles hablado y te harà sonar como un profesional!</p>
+            <SingleExample
+              english="I am not going to call you tonight."
+              spanish="No voy a llamarte esta noche." />
+            <SingleExample
+              english="She is not going to arrive late."
+              spanish="Ella no va a llegar tarde." />
+            <SingleExample
+              english="
+They are not going to be happy to see you."
+              spanish="Ellos no van a estar felices de verte." />
+            <SingleExample
+              english="Are you going to call me tonight?"
+              spanish="¿Vas a llamarme esta noche?" />
+            <SingleExample
+              english="
+Is she going to arrive late?"
+              spanish="¿Va a llegar tarde?" />
+            <SingleExample
+              english="Are they going to be happy to see you?"
+              spanish="¿Van a estar felices de verte?" />
+            <SingleExample
+              english="They will clean their rooms."
+              spanish="Limpiarán sus habitaciones." />
+            <SingleExample
+              english="She won’t work with Paul."
+              spanish="No trabajará con Paul." />
+            <SingleExample
+              english="We are going to have a party tonight."
+              spanish="Vamos a dar una fiesta esta noche." />
+            <SingleExample
+              english="Richard is going to take an English class."
+              spanish="Richard va a realizar un clase de inglés." />
+            <SingleExample
+              english="Are they going to play football later?"
+              spanish="¿Van a jugar a fútbol luego?" />
+
           </div>
           <div className='my-8 rounded-md p-4 bg-blue-200 '>
-            <UnitTest level={"Intermediate"} unit={""} />
+            <UnitTest level={"Intermediate"} unit={16} />
           </div>
         </div>
       </div>
