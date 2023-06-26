@@ -47,7 +47,7 @@ export default function index() {
         <ReactPlayer
           width={"100%"}
           className="max-w-2xl mx-auto my-8 border-8 rounded-md bg-blue-600 border-blue-600"
-          url="https://www.youtube.com/watch?v=cVkSndpZtN0"
+          url="https://www.youtube.com/watch?v=WC2tzXPIWMs"
           controls={true} />
         <p className='font-bold text-gray-700'>Un adverbio es una palabra que acompaña al verbo para modificar su significado. Un adverbio también puede modificar a los adjetivos, a los nombres o a otros adverbios.</p>
         <p className='text-gray-400 font-bold text-md'>EJEMPLO:</p>

@@ -46,9 +46,12 @@ export default function createTests() {
     }).then(() => (
       toast.success("Question created succesfuly!"))
     )
-    // setTimeout(() => {
-    //   router.reload()
-    // }, 2500)
+    setOp1("")
+    setOp2("")
+    setOp3("")
+    setOp4("")
+    setAnswer("")
+    setQuestion("")
   }
 
   return (
@@ -118,7 +121,7 @@ export default function createTests() {
               <MenuItem value="25">25</MenuItem>
             </Select>
           </FormControl>
-          <div className='my-4 flex flex-col md:flex-row space-y-4 md:space-y-0 justify-between w-full md:justify-center md:gap-8'>
+          <div className='my-4 flex flex-col space-y-4 md:space-y-0 justify-between w-full md:justify-center md:gap-8'>
             <TextField id="filled-basic" label="Insert question" variant="filled"
               value={question}
               required
