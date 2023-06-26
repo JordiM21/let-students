@@ -26,6 +26,12 @@ export default function ProgressLesson({ progress }) {
       <div className={`w-3 h-6 rounded-sm hover:opacity-60 cursor-pointer ${progress < 18 ? 'bg-white' : 'bg-[var(--color3)]'}`}></div>
       <div className={`w-3 h-6 rounded-sm hover:opacity-60 cursor-pointer ${progress < 19 ? 'bg-white' : 'bg-[var(--color3)]'}`}></div>
       <div className={`w-3 h-6 rounded-sm hover:opacity-60 cursor-pointer ${progress < 20 ? 'bg-white' : 'bg-[var(--color3)]'}`}></div>
+      <div className={`w-3 h-6 rounded-sm hover:opacity-60 cursor-pointer ${progress < 21 ? 'bg-white' : 'bg-[var(--color3)]'}`}></div>
+      <div className={`w-3 h-6 rounded-sm hover:opacity-60 cursor-pointer ${progress < 22 ? 'bg-white' : 'bg-[var(--color3)]'}`}></div>
+      <div className={`w-3 h-6 rounded-sm hover:opacity-60 cursor-pointer ${progress < 23 ? 'bg-white' : 'bg-[var(--color3)]'}`}></div>
+      <div className={`w-3 h-6 rounded-sm hover:opacity-60 cursor-pointer ${progress < 24 ? 'bg-white' : 'bg-[var(--color3)]'}`}></div>
+      <div className={`w-3 h-6 rounded-sm hover:opacity-60 cursor-pointer ${progress < 25 ? 'bg-white' : 'bg-[var(--color3)]'}`}></div>
+
     </div>
   )
 }

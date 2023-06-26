@@ -19,16 +19,14 @@ import boy7 from '@/public/Characters/boy7.jpeg'
 import boy8 from '@/public/Characters/boy8.jpeg'
 import boy9 from '@/public/Characters/boy9.jpeg'
 import boy10 from '@/public/Characters/boy10.jpeg'
-// import boy11 from "@/pulic/Characters/boy11.jpeg"
-// import plus2 from "@/pulic/Characters/plus2.jpeg"
-// import plus3 from "@/pulic/Characters/plus3.jpeg"
-// import plus4 from "@/pulic/Characters/plus4.jpeg"
-// import plus5 from "@/pulic/Characters/plus5.jpeg"
-// import plus6 from "@/pulic/Characters/plus6.jpeg"
-// import plus7 from "@/pulic/Characters/plus7.jpeg"
-// import plus8 from "@/pulic/Characters/plus8.jpeg"
-
-
+import boy11 from '@/pulic/Characters/boy11.jpeg'
+import plus2 from '@/pulic/Characters/plus2.jpeg'
+import plus3 from '@/pulic/Characters/plus3.jpeg'
+import plus4 from '@/pulic/Characters/plus4.jpeg'
+import plus5 from '@/pulic/Characters/plus5.jpeg'
+import plus6 from '@/pulic/Characters/plus6.jpeg'
+import plus7 from '@/pulic/Characters/plus7.jpeg'
+import plus8 from '@/pulic/Characters/plus8.jpeg'
 
 export const characters = [
   {
@@ -111,37 +109,36 @@ export const characters = [
     name: boy10,
     value: "boy10"
   },
-  // {
-  //   name: boy11,
-  //   value: "boy11"
-  // },
-  // {
-  //   name: plus2,
-  //   value: "plus2"
-  // },
-  // {
-  //   name: plus3,
-  //   value: "plus3"
-  // },
-  // {
-  //   name: plus4,
-  //   value: "plus4"
-  // },
-  // {
-  //   name: plus5,
-  //   value: "plus5"
-  // },
-  // {
-  //   name: plus6,
-  //   value: "plus6"
-  // },
-  // {
-  //   name: plus7,
-  //   value: "plus7"
-  // },
-  // {
-  //   name: plus8,
-  //   value: "plus8"
-  // },
-
+  {
+    name: boy11,
+    value: "boy11"
+  },
+  {
+    name: plus2,
+    value: "plus2"
+  },
+  {
+    name: plus3,
+    value: "plus3"
+  },
+  {
+    name: plus4,
+    value: "plus4"
+  },
+  {
+    name: plus5,
+    value: "plus5"
+  },
+  {
+    name: plus6,
+    value: "plus6"
+  },
+  {
+    name: plus7,
+    value: "plus7"
+  },
+  {
+    name: plus8,
+    value: "plus8"
+  },
 ]
