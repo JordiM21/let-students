@@ -33,10 +33,13 @@ export default function createTests() {
 
   useEffect(() => {
     fetchPost();
-  }, [currentLevel, unit])
+  }, [currentLevel, unit, answer])
 
   const createUnit = async (e) => {
     e.preventDefault()
+    if (allUnits.length >= 8) {
+      return toast.error("Solo puedes poner 8 preguntas por unidad")
+    }
     await addDoc(collection(db, "questions"), {
       question,
       answer,
