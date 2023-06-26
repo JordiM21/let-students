@@ -42,14 +42,14 @@ export default function index() {
         <Breadcrumbs separator="›" aria-label="breadcrumb">
           {breadcrumbs}
         </Breadcrumbs>
-        <p className='opacity-60 font-bold text-lg text-[var(--color2)]'>[] - LESSON 20</p>
-        <CustomTitle title={""} titleSpanish={""} />
+        <p className='opacity-60 font-bold text-lg text-[var(--color2)]'>Listening Comprehension - LESSON 20</p>
+        <CustomTitle title={"Listening Comprehension"} titleSpanish={"Comprension Auditiva"} />
         <ReactPlayer
           width={"100%"}
           className="max-w-2xl mx-auto my-8 border-8 rounded-md bg-blue-600 border-blue-600"
-          url=""
+          url="https://www.youtube.com/watch?v=O1iknZF-sk0"
           controls={true} />
-        <p className='font-bold text-gray-700'></p>
+        <p className='font-bold text-gray-700'>Escucha atentamente la historia de Ken y Louis, escucha las veces que quieras y fijate bien en lo que hacen. Luego responde las preguntas abajo</p>
         <div className='my-4'>
           <div className='space-y-2'>
             <CustomTitle

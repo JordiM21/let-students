@@ -129,7 +129,6 @@ Is she going to arrive late?"
             <SingleExample
               english="Are they going to play football later?"
               spanish="¿Van a jugar a fútbol luego?" />
-
           </div>
           <div className='my-8 rounded-md p-4 bg-blue-200 '>
             <UnitTest level={"Intermediate"} unit={16} />

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
@@ -10,8 +10,9 @@ import { toast } from 'react-toastify';
 import { useAuth } from '@/context/AuthContext';
 import { useRouter } from 'next/router';
 import { BsChevronCompactRight, BsChevronDoubleRight, BsChevronRight } from 'react-icons/bs';
-import Confetti from 'react-dom-confetti';
 import UnitWithTroubleBtn from './UnitWithTroubleBtn';
+import Lottie, { LottieRefCurrentProps } from 'lottie-react'
+import trophy from '@/public/animations/trophy.json'
 
 
 export default function UnitTest({ level, unit }) {
@@ -21,25 +22,6 @@ export default function UnitTest({ level, unit }) {
   const [progress, setProgress] = useState(0)
   const router = useRouter()
   const [userMatched, setUserMatched] = useState({})
-  const [isConfettiVisible, setIsConfettiVisible] = React.useState(false);
-
-  const handleConfettiClick = () => {
-    setIsConfettiVisible(true);
-  };
-
-  const config = {
-    angle: 90,
-    spread: 40,
-    startVelocity: 50,
-    elementCount: 100,
-    dragFriction: 0.09,
-    duration: 5000,
-    stagger: 6,
-    width: '10px',
-    height: '10px',
-    colors: ['#ff0000', '#00ff00', '#0000ff'],
-  };
-
 
   const fetchPost = async () => {
     await getDocs(collection(db, "questions"))
@@ -68,11 +50,13 @@ export default function UnitTest({ level, unit }) {
         }
       })
   }
+  const trophyAnimation = useRef < LottieRefCurrentProps > (null)
 
+  const [finished, setFinished] = useState(false)
   useEffect(() => {
     fetchPost();
     fetchUser();
-  }, [progress])
+  }, [progress, finished])
 
 
   const updateProgress = async (e) => {
@@ -92,11 +76,8 @@ export default function UnitTest({ level, unit }) {
         progressAdvanced: progress + 1,
       });
     }
-    setTimeout(() => {
-      router.reload()
-    }, 5000)
+    setFinished(true)
   }
-
 
   const [res1, setRes1] = useState('');
   const [res2, setRes2] = useState('');
@@ -134,16 +115,30 @@ export default function UnitTest({ level, unit }) {
     if (res8 != data[7]?.answer) {
       return toast.error("¡Ups! Algo esta mal, revisa la octava respuesta")
     }
-    setTimeout(() => {
-      toast.success("Nice job! All of your answers are correct.")
-      handleConfettiClick()
-    }, 500)
     updateProgress()
   }
 
   return (
     <div>
       <UnitWithTroubleBtn unit={unit} />
+      {
+        finished == true && (
+          <div className='fixed z-40 top-0 right-0 h-screen w-screen bg-blue-800'>
+            <div className='md:mx-auto md:max-w-lg mx-16 -mb-20 mt-8'>
+              <p className='text-center text-2xl text-white font-bold'>Congratulations! You did it amazing!</p>
+            </div>
+            <div className='mx-auto max-w-lg'>
+              <Lottie
+                lottieRef={trophyAnimation}
+                animationData={trophy} />
+            </div>
+            <div className='md:mx-auto -mt-20 md:max-w-lg mx-16 '>
+              <p className='text-center text-gray-300'>Completaste con éxito la unidad {unit} del nivel {level}, Sigue asi! </p>
+              <button onClick={() => router.push(`/Niveles/${level}/${unit + 1}`)} className='w-full py-6 text-center bg-white text-blue-800 rounded-full mt-5 hover:opacity-80 hover:scale-95 font-bold text-xl'>Go to the Next Lesson</button>
+            </div>
+          </div>
+        )
+      }
       <h3 className='font-bold text-[var(--color1)] text-3xl'>Test Unit <span className='text-[var(--color3)]'>{unit}</span></h3>
       <p>Completa los ejercicios para actualizar tus progresos</p>
       <form onSubmit={handleTest} className='py-8'>
@@ -323,16 +318,6 @@ export default function UnitTest({ level, unit }) {
             progress >= unit && (
               <div className='w-11/12'>
                 <button disabled className='bg-green-500 w-full opacity-60 py-4 my-4 text-white font-bold transition-all 1s ease-in hover:shadow-xl rounded-full' type='submit'>Well Done!</button>
-                {
-                  unit < 25 && (
-                    <>
-                      <button type='button' onClick={() => router.push(`/Niveles/${level}/${unit + 1}`)} className='bg-sky-600 backdrop-blur-xl bg-opacity-60 fixed top-8 left-4 md:left-24 lg:w-6/12 lg:left-[30%] w-10/12 py-4 rounded-full'>
-                        <p className='text-white text-xl'>Go to Next Lesson</p>
-                        <BsChevronRight fill='white' size={32} className='absolute right-2 top-3' />
-                      </button>
-                    </>
-                  )
-                }
               </div>
             )
           }
@@ -343,9 +328,6 @@ export default function UnitTest({ level, unit }) {
           }
         </div>
       </form>
-      <div className='flex justify-center'>
-        <Confetti active={isConfettiVisible} config={config} />
-      </div>
     </div>
   )
 }

@@ -78,7 +78,6 @@ export default function Profile() {
                   <div className='flex absolute rounded-full p-1 left-0 bottom-4'>
                     <YourFlag country={userMatched.country} />
                   </div>
-
                 </div>
               </div>
               <div className='w-11/12 md:w-1/2 mx-auto space-y-3 my-4'>
