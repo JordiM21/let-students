@@ -12,6 +12,9 @@ import Modal from '@mui/material/Modal';
 import Fade from '@mui/material/Fade';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import Lottie from 'lottie-react'
+import onlineClass from '@/public/animations/onlineClass3.json'
+import { useMediaQuery } from '@mui/material';
 
 export default function UnitWithTroubleBtn({ unit, level }) {
   const [clicked, setClicked] = useState(false)
@@ -23,12 +26,14 @@ export default function UnitWithTroubleBtn({ unit, level }) {
   const { user } = useAuth();
   const [authUid, setAuthUid] = useState(user.uid)
 
+  const isScreenBig = useMediaQuery('(min-width: 550px)');
+
   const style = {
     position: 'absolute',
     top: '50%',
     left: '50%',
+    width: isScreenBig ? '400px' : '90%',
     transform: 'translate(-50%, -50%)',
-    width: "90%",
     bgcolor: 'background.paper',
     border: '2px solid #000',
     borderRadius: "8px",
@@ -71,7 +76,7 @@ export default function UnitWithTroubleBtn({ unit, level }) {
   const handleClick = async () => {
     if (userMatched.unitInTrouble?.length > 0) {
       setOpen(false)
-      return toast.error("Ya pediste ayuda en una lecciòn, solo puedes pedir una a la vez!")
+      return toast.error("Ya pediste ayuda una vez, solo puedes solicitar una a la vez!")
     }
     if (!clicked) {
       try {
@@ -125,17 +130,19 @@ export default function UnitWithTroubleBtn({ unit, level }) {
       >
         <Fade in={open}>
           <Box sx={style}>
-            <Typography id="transition-modal-title" variant="h6" component="h2">
+            <Typography id="transition-modal-title" variant="h6" component="h2" className='text-blue-500 font-bold'>
               Pide ayuda a tu tutor
             </Typography>
             <Typography id="transition-modal-description" sx={{ mt: 2 }}>
-              Tu tutor recibe una notificaciòn y en la pròxima clase lo veràn a profundidad y resolverà todas tus dudas, Recuerdo que si pides ayuda en esta lecciòn no puedes pedir en otra.
+              Le envias una notificacion a tu tutor para que sepa que necesitas ayuda, luego se pondran de acuerdo via <span className='text-green-600'>WhatsApp</span> y resolveras todas tus dudas entrando al link de la <span className='text-green-600'>videollamada</span> en la Home.
             </Typography>
+            <Lottie
+              animationData={onlineClass} />
             <div className='flex justify-around pt-4'>
-              <button className='py-2 text-blue-400 rounded-full border-4 border-blue-400 px-4' onClick={handleClose}>
+              <button className='py-2 text-blue-400 rounded-full border-4 border-blue-400 px-8' onClick={handleClose}>
                 Mejor no
               </button>
-              <button className='py-2 text-white bg-blue-400 rounded-full border-4 border-blue-400 px-4' onClick={handleClick}>
+              <button className='py-2 text-white bg-blue-400 rounded-full border-4 border-blue-400 px-8' onClick={handleClick}>
                 Solicitar ayuda
               </button>
             </div>

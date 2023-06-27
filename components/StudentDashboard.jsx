@@ -12,6 +12,8 @@ import { FcCalendar } from 'react-icons/fc'
 import Schedule from './Schedule'
 import { BsFillCameraVideoFill, BsQuestionCircle } from 'react-icons/bs'
 import YourProfile from './YourProfile'
+import student from '@/public/animations/student.json'
+import CtaAnimationPage from './CtaAnimationPage'
 
 
 export default function StudentDashboard({ firstName, level, tutor, schedule, progressB, progressI, progressA }) {
@@ -37,6 +39,7 @@ export default function StudentDashboard({ firstName, level, tutor, schedule, pr
   }
 
   const [question, setQuestion] = useState(false)
+  const [meetingRoom, setMeetingRoom] = useState(false)
 
   return (
     <div>
@@ -46,11 +49,24 @@ export default function StudentDashboard({ firstName, level, tutor, schedule, pr
         <div onClick={() => setQuestion(!question)} className='absolute right-4 top-0 cursor-pointer bg-slate-300 rounded-full'>
           <BsQuestionCircle className='w-6 h-6 ' />
         </div>
-        <a href={tutor.urlMeet} target='_blank' className='flex bg-green-500 hover:opacity-80 py-2 my-3 rounded-full w-full justify-between pl-4 pr-12 items-center'>
+        {
+          meetingRoom == true && (
+            <CtaAnimationPage
+              title={"Conéctate con tu tutor personal y resuelve todas tus dudas!"}
+              subTitle={`Recuerda que antes de entrar en la meeting te debes poner de acuerdo con tu tutor en el horario del encuentro.`}
+              animation={student}
+              cta={"Enter in the meeting"}
+              btn="link"
+              link={tutor.urlMeet}
+              bg="green"
+            />
+          )
+        }
+        <div onClick={() => setMeetingRoom(true)} className='flex bg-green-500 cursor-pointer hover:opacity-80 py-2 my-3 rounded-full w-full justify-between pl-4 pr-12 items-center'>
           <YourProfile char={tutor.profileImg} size={"small"} />
           <p className='text-white text-xl'>Entra a la meeting</p>
           <BsFillCameraVideoFill fill='white' size={36} />
-        </a>
+        </div>
         {
           question && (
             <div className='bg-gray-200 backdrop-blur-sm bg-opacity-80 p-6 shadow-gray-500 z-50 rounded-md shadow-lg max-w-[250px] absolute right-0 top-7'>

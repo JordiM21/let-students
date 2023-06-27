@@ -9,9 +9,8 @@ import { db } from '@/config/firebase';
 import { toast } from 'react-toastify';
 import { useAuth } from '@/context/AuthContext';
 import { useRouter } from 'next/router';
-import { BsChevronCompactRight, BsChevronDoubleRight, BsChevronRight } from 'react-icons/bs';
 import UnitWithTroubleBtn from './UnitWithTroubleBtn';
-import Lottie, { LottieRefCurrentProps } from 'lottie-react'
+import CtaAnimationPage from './CtaAnimationPage';
 import trophy from '@/public/animations/trophy.json'
 
 
@@ -50,7 +49,6 @@ export default function UnitTest({ level, unit }) {
         }
       })
   }
-  const trophyAnimation = useRef < LottieRefCurrentProps > (null)
 
   const [finished, setFinished] = useState(false)
   useEffect(() => {
@@ -60,22 +58,22 @@ export default function UnitTest({ level, unit }) {
 
 
   const updateProgress = async (e) => {
-    const nameRef = doc(db, "users", userMatched.id);
-    if (level == "Beginner") {
-      await updateDoc(nameRef, {
-        progressBeginner: progress + 1,
-      });
-    }
-    if (level == "Intermediate") {
-      await updateDoc(nameRef, {
-        progressIntermediate: progress + 1,
-      });
-    }
-    if (level == "Advanced") {
-      await updateDoc(nameRef, {
-        progressAdvanced: progress + 1,
-      });
-    }
+    // const nameRef = doc(db, "users", userMatched.id);
+    // if (level == "Beginner") {
+    //   await updateDoc(nameRef, {
+    //     progressBeginner: progress + 1,
+    //   });
+    // }
+    // if (level == "Intermediate") {
+    //   await updateDoc(nameRef, {
+    //     progressIntermediate: progress + 1,
+    //   });
+    // }
+    // if (level == "Advanced") {
+    //   await updateDoc(nameRef, {
+    //     progressAdvanced: progress + 1,
+    //   });
+    // }
     setFinished(true)
   }
 
@@ -91,30 +89,30 @@ export default function UnitTest({ level, unit }) {
 
   const handleTest = (e) => {
     e.preventDefault()
-    if (res1 != data[0]?.answer) {
-      return toast.error("¡Ups! Algo esta mal, revisa la primera respuesta")
-    }
-    if (res2 != data[1]?.answer) {
-      return toast.error("¡Ups! Algo esta mal, revisa la segunda respuesta")
-    }
-    if (res3 != data[2]?.answer) {
-      return toast.error("¡Ups! Algo esta mal, revisa la tercera respuesta")
-    }
-    if (res4 != data[3]?.answer) {
-      return toast.error("¡Ups! Algo esta mal, revisa la cuarta respuesta")
-    }
-    if (res5 != data[4]?.answer) {
-      return toast.error("¡Ups! Algo esta mal, revisa la quinta respuesta")
-    }
-    if (res6 != data[5]?.answer) {
-      return toast.error("¡Ups! Algo esta mal, revisa la sexta respuesta")
-    }
-    if (res7 != data[6]?.answer) {
-      return toast.error("¡Ups! Algo esta mal, revisa la séptima respuesta")
-    }
-    if (res8 != data[7]?.answer) {
-      return toast.error("¡Ups! Algo esta mal, revisa la octava respuesta")
-    }
+    // if (res1 != data[0]?.answer) {
+    //   return toast.error("¡Ups! Algo esta mal, revisa la primera respuesta")
+    // }
+    // if (res2 != data[1]?.answer) {
+    //   return toast.error("¡Ups! Algo esta mal, revisa la segunda respuesta")
+    // }
+    // if (res3 != data[2]?.answer) {
+    //   return toast.error("¡Ups! Algo esta mal, revisa la tercera respuesta")
+    // }
+    // if (res4 != data[3]?.answer) {
+    //   return toast.error("¡Ups! Algo esta mal, revisa la cuarta respuesta")
+    // }
+    // if (res5 != data[4]?.answer) {
+    //   return toast.error("¡Ups! Algo esta mal, revisa la quinta respuesta")
+    // }
+    // if (res6 != data[5]?.answer) {
+    //   return toast.error("¡Ups! Algo esta mal, revisa la sexta respuesta")
+    // }
+    // if (res7 != data[6]?.answer) {
+    //   return toast.error("¡Ups! Algo esta mal, revisa la séptima respuesta")
+    // }
+    // if (res8 != data[7]?.answer) {
+    //   return toast.error("¡Ups! Algo esta mal, revisa la octava respuesta")
+    // }
     updateProgress()
   }
 
@@ -123,20 +121,14 @@ export default function UnitTest({ level, unit }) {
       <UnitWithTroubleBtn unit={unit} />
       {
         finished == true && (
-          <div className='fixed z-40 top-0 right-0 h-screen w-screen bg-blue-800'>
-            <div className='md:mx-auto md:max-w-lg mx-16 -mb-20 mt-8'>
-              <p className='text-center text-2xl text-white font-bold'>Congratulations! You did it amazing!</p>
-            </div>
-            <div className='mx-auto max-w-lg'>
-              <Lottie
-                lottieRef={trophyAnimation}
-                animationData={trophy} />
-            </div>
-            <div className='md:mx-auto -mt-20 md:max-w-lg mx-16 '>
-              <p className='text-center text-gray-300'>Completaste con éxito la unidad {unit} del nivel {level}, Sigue asi! </p>
-              <button onClick={() => router.push(`/Niveles/${level}/${unit + 1}`)} className='w-full py-6 text-center bg-white text-blue-800 rounded-full mt-5 hover:opacity-80 hover:scale-95 font-bold text-xl'>Go to the Next Lesson</button>
-            </div>
-          </div>
+          <CtaAnimationPage
+            title={"Congratulations! You did it amazing!"}
+            subTitle={`Completaste con éxito la unidad ${unit} del nivel ${level}, Sigue asi!`}
+            animation={trophy}
+            cta={"Go to the Next Lesson"}
+            btn="router"
+            link={`/Niveles/${level}/${unit + 1}`}
+          />
         )
       }
       <h3 className='font-bold text-[var(--color1)] text-3xl'>Test Unit <span className='text-[var(--color3)]'>{unit}</span></h3>
