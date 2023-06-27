@@ -58,22 +58,22 @@ export default function UnitTest({ level, unit }) {
 
 
   const updateProgress = async (e) => {
-    // const nameRef = doc(db, "users", userMatched.id);
-    // if (level == "Beginner") {
-    //   await updateDoc(nameRef, {
-    //     progressBeginner: progress + 1,
-    //   });
-    // }
-    // if (level == "Intermediate") {
-    //   await updateDoc(nameRef, {
-    //     progressIntermediate: progress + 1,
-    //   });
-    // }
-    // if (level == "Advanced") {
-    //   await updateDoc(nameRef, {
-    //     progressAdvanced: progress + 1,
-    //   });
-    // }
+    const nameRef = doc(db, "users", userMatched.id);
+    if (level == "Beginner") {
+      await updateDoc(nameRef, {
+        progressBeginner: progress + 1,
+      });
+    }
+    if (level == "Intermediate") {
+      await updateDoc(nameRef, {
+        progressIntermediate: progress + 1,
+      });
+    }
+    if (level == "Advanced") {
+      await updateDoc(nameRef, {
+        progressAdvanced: progress + 1,
+      });
+    }
     setFinished(true)
   }
 
@@ -89,30 +89,30 @@ export default function UnitTest({ level, unit }) {
 
   const handleTest = (e) => {
     e.preventDefault()
-    // if (res1 != data[0]?.answer) {
-    //   return toast.error("¡Ups! Algo esta mal, revisa la primera respuesta")
-    // }
-    // if (res2 != data[1]?.answer) {
-    //   return toast.error("¡Ups! Algo esta mal, revisa la segunda respuesta")
-    // }
-    // if (res3 != data[2]?.answer) {
-    //   return toast.error("¡Ups! Algo esta mal, revisa la tercera respuesta")
-    // }
-    // if (res4 != data[3]?.answer) {
-    //   return toast.error("¡Ups! Algo esta mal, revisa la cuarta respuesta")
-    // }
-    // if (res5 != data[4]?.answer) {
-    //   return toast.error("¡Ups! Algo esta mal, revisa la quinta respuesta")
-    // }
-    // if (res6 != data[5]?.answer) {
-    //   return toast.error("¡Ups! Algo esta mal, revisa la sexta respuesta")
-    // }
-    // if (res7 != data[6]?.answer) {
-    //   return toast.error("¡Ups! Algo esta mal, revisa la séptima respuesta")
-    // }
-    // if (res8 != data[7]?.answer) {
-    //   return toast.error("¡Ups! Algo esta mal, revisa la octava respuesta")
-    // }
+    if (res1 != data[0]?.answer) {
+      return toast.error("¡Ups! Algo esta mal, revisa la primera respuesta")
+    }
+    if (res2 != data[1]?.answer) {
+      return toast.error("¡Ups! Algo esta mal, revisa la segunda respuesta")
+    }
+    if (res3 != data[2]?.answer) {
+      return toast.error("¡Ups! Algo esta mal, revisa la tercera respuesta")
+    }
+    if (res4 != data[3]?.answer) {
+      return toast.error("¡Ups! Algo esta mal, revisa la cuarta respuesta")
+    }
+    if (res5 != data[4]?.answer) {
+      return toast.error("¡Ups! Algo esta mal, revisa la quinta respuesta")
+    }
+    if (res6 != data[5]?.answer) {
+      return toast.error("¡Ups! Algo esta mal, revisa la sexta respuesta")
+    }
+    if (res7 != data[6]?.answer) {
+      return toast.error("¡Ups! Algo esta mal, revisa la séptima respuesta")
+    }
+    if (res8 != data[7]?.answer) {
+      return toast.error("¡Ups! Algo esta mal, revisa la octava respuesta")
+    }
     updateProgress()
   }
 
