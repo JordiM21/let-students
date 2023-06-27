@@ -11,7 +11,7 @@ import copy from 'clipboard-copy';
 import { toast } from 'react-toastify'
 import { useRouter } from 'next/router'
 import { FcAutomatic, FcBullish, FcCalendar, FcContacts, FcHighPriority, FcVideoCall } from 'react-icons/fc'
-import { TextField } from '@mui/material'
+import { Box, Fade, Modal, TextField, useMediaQuery } from '@mui/material'
 import { doc, updateDoc } from 'firebase/firestore'
 import { db } from '@/config/firebase'
 import { BsFillCameraVideoFill, BsQuestionCircle } from 'react-icons/bs'
@@ -22,6 +22,7 @@ import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import CtaAnimationPage from './CtaAnimationPage'
 import student from '@/public/animations/student.json'
+import Backdrop from '@mui/material/Backdrop';
 
 export default function AdminDashboard({ allUsers, firstName, email, id, url }) {
 
@@ -29,7 +30,24 @@ export default function AdminDashboard({ allUsers, firstName, email, id, url }) 
   // const [password] = useState("let-admin")
   const router = useRouter()
   const [urlMeet, setUrlMeet] = useState("")
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
 
+  const isScreenBig = useMediaQuery('(min-width: 550px)');
+
+  const style = {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    width: isScreenBig ? '400px' : '90%',
+    transform: 'translate(-50%, -50%)',
+    bgcolor: 'background.paper',
+    border: '2px solid #000',
+    borderRadius: "8px",
+    boxShadow: 24,
+    p: 4,
+  };
 
   const handleCopy = (mail) => {
     copy(mail)
@@ -88,44 +106,52 @@ export default function AdminDashboard({ allUsers, firstName, email, id, url }) 
           <div onClick={() => setQuestion(!question)} className='absolute right-4 top-0 cursor-pointer bg-slate-300 rounded-full'>
             <BsQuestionCircle className='w-6 h-6 ' />
           </div>
-          <div onClick={() => setMeetingRoom(true)} className='flex bg-green-500 gap-8 hover:gap-10 hover:opacity-80 py-4 rounded-full w-full justify-center items-center'>
+          <div onClick={() => setMeetingRoom(true)} className='flex bg-green-500 cursor-pointer gap-8 hover:gap-10 hover:opacity-80 py-4 rounded-full w-full justify-center items-center'>
             <p className='text-white'>Entra a la meeting</p>
             <BsFillCameraVideoFill fill='white' size={40} />
           </div>
+          <small className='text-white'>Aun no tienes link? no sabes como crearlo? <span onClick={handleOpen} className='text-green-500 cursor-pointer underline'>Click aqui!</span></small>
           {
             question && (
               <div className='bg-gray-200 backdrop-blur-sm bg-opacity-80 p-6 shadow-gray-500 z-50 rounded-md shadow-lg max-w-[250px] absolute right-0'>
                 <AiFillCloseCircle className='absolute top-2 cursor-pointer right-2 w-6 h-6' onClick={() => setQuestion(!question)} />
-                <p>Lo primero que tienes que hacer es ir a este <a href='https://whereby.com/' className='text-sky-500 underline' target='_blank'>link</a> y crearte una cuenta con tu correo. <br />Luego debes crear un link personalizado en la pagina, recomendamos que este link tenga tu nombre ya que serà unico y siempre te conectaras con tus estudiantes por este link<br /> <span className='text-[var(--color3)]'>LISTO!</span>, ya tienes tu link personal el cual usaras con tus estudiantes para las clases.</p>
+                <p>Lo primero que tienes que hacer es ir a este <a href='https://whereby.com/' className='text-sky-500 underline' target='_blank'>link</a> y crearte una cuenta con tu correo. <br />Luego debes crear un link personalizado en la pagina, recomendamos que este link tenga tu nombre ya que es unico y siempre te conectaras con tus estudiantes por este link<br /> <span className='text-[var(--color3)]'>LISTO!</span>, agrega tu link aqui abajo para que tus estudiantes puedan acceder facilmente</p>
               </div>
             )
           }
-          <Accordion>
-            <AccordionSummary
-              expandIcon={<ExpandMoreIcon />}
-              aria-controls="panel1a-content"
-              id="panel1a-header"
-            >
-              <Typography>Crea o modifica tu Link</Typography>
-            </AccordionSummary>
-            <AccordionDetails>
-              <small className='text-gray-500 text-xs'>Current Url: {url} </small>
-              <p>Este link serà donde te reuniràs con tus alumnos, serà visible para ellos en todo momento, recuerda que para tener tu link debes registrarte en la pagina <a href='https://whereby.com/' className='text-sky-500 underline' target='_blank'>WhereBy</a></p>
-              <form onSubmit={changeUrl} className='flex flex-col p-8 space-y-4'>
-                <TextField id="filled-basic" label="Link given by WhereBy" variant="filled"
-                  className='bg-gray-300 rounded-md w-full'
-                  value={urlMeet}
-                  type='text'
-                  placeholder='https://whereby.com/***********'
-                  onChange={(e) => setUrlMeet(e.target.value)}
-                />
-                <button type='submit' className='bg-[var(--color3)] py-4 text-lg text-white rounded-md'>Add link</button>
-              </form>
-            </AccordionDetails>
-          </Accordion>
+          <Modal
+            aria-labelledby="transition-modal-title"
+            aria-describedby="transition-modal-description"
+            open={open}
+            onClose={handleClose}
+            closeAfterTransition
+            slots={{ backdrop: Backdrop }}
+            slotProps={{
+              backdrop: {
+                timeout: 500,
+              },
+            }}
+          >
+            <Fade in={open}>
+              <Box sx={style}>
+                <small className='text-gray-500 text-xs'>Current Url (link actual): {url} </small>
+                <p>Ingresa aqui el link proporcionado por WhereBy. si aun no tienes tu link entra a esta pagina <a href='https://whereby.com/' className='text-sky-500 underline' target='_blank'>WhereBy</a> y crea tu cuenta super rapido, cuando tengas tu link personal ingresalo aqui y listo! todos tus estudiantes lo tendran a disposicion.</p>
+                <form onSubmit={changeUrl} className='flex flex-col p-8 space-y-4'>
+                  <TextField id="filled-basic" label="Link given by WhereBy" variant="filled"
+                    className='bg-gray-300 rounded-md w-full'
+                    value={urlMeet}
+                    type='text'
+                    placeholder='https://whereby.com/***********'
+                    onChange={(e) => setUrlMeet(e.target.value)}
+                  />
+                  <button type='submit' className='bg-[var(--color3)] py-4 text-lg text-white rounded-md'>Add link</button>
+                </form>
+              </Box>
+            </Fade>
+          </Modal>
         </div>
         <div className='bg-black rounded-md'>
-          <Image src={allStudents} className='rounded-t-md w-full object-cover' />
+          <Image src={allStudents} className='rounded-t-md h-[150px] md:h-[250px] w-full object-cover' />
           <div>
             <div className='flex items-center justify-start gap-2 p-4'>
               <FcBullish size={24} />
@@ -135,15 +161,15 @@ export default function AdminDashboard({ allUsers, firstName, email, id, url }) 
               <FcAutomatic size={24} />
               <p className='text-white'>Modify their information</p>
             </div>
-            <div className='flex items-center justify-start gap-2 p-4'>
+            <div className='items-center hidden md:flex justify-start gap-2 p-4'>
               <FcContacts size={24} />
               <p className='text-white'>Access to contact data</p>
             </div>
-            <div className='flex items-center justify-start gap-2 p-4'>
+            <div className=' hidden md:flex items-center justify-start gap-2 p-4'>
               <FcHighPriority size={24} />
               <p className='text-white'>Help your students in trouble in real time</p>
             </div>
-            <div className='flex items-center justify-start gap-2 p-4'>
+            <div className='hidden md:flex items-center justify-start gap-2 p-4'>
               <FcCalendar size={24} />
               <p className='text-white'>See the student schedule and disponibility</p>
             </div>
@@ -157,7 +183,7 @@ export default function AdminDashboard({ allUsers, firstName, email, id, url }) 
       </div>
       <div className='max-md:space-y-8 md:flex items-start md:gap-4 md:mx-20 '>
         <div className='w-11/12 mx-auto rounded-md bg-black'>
-          <Image height={200} className='object-cover w-full rounded-t-md' src={enviroment} />
+          <Image className='object-cover w-full h-[120px] md:h-[200px] rounded-t-md' src={enviroment} />
           <div className='p-4'>
             <p className='text-white'>Add a new video</p>
             <p className='text-gray-600'>Only admins and tutors can create videos for the students, why don't you try iy? you only have to add the url for youtube, the name, put a level and a description. Try it!</p>
