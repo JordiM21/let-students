@@ -20,7 +20,8 @@ import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-
+import CtaAnimationPage from './CtaAnimationPage'
+import student from '@/public/animations/student.json'
 
 export default function AdminDashboard({ allUsers, firstName, email, id, url }) {
 
@@ -51,9 +52,24 @@ export default function AdminDashboard({ allUsers, firstName, email, id, url }) 
   }
 
   const [question, setQuestion] = useState(false)
+  const [meetingRoom, setMeetingRoom] = useState(false)
+
 
   return (
     <div>
+      {
+        meetingRoom == true && (
+          <CtaAnimationPage
+            title={"Resuelve las dudas de tus estudiantes!"}
+            subTitle={`Antes de entrar debes haber establecido un horario con tus estudiantes, recuerda ser muy puntual!`}
+            animation={student}
+            cta={"Enter in the meeting"}
+            btn="link"
+            link={url}
+            bg="green"
+          />
+        )
+      }
       <p className='text-center text-4xl py-4 font-bold text-[var(--color2)]'>Welcome {firstName}!</p>
       {
         email == "jordimantilla21@gmail.com" && (
@@ -72,11 +88,10 @@ export default function AdminDashboard({ allUsers, firstName, email, id, url }) 
           <div onClick={() => setQuestion(!question)} className='absolute right-4 top-0 cursor-pointer bg-slate-300 rounded-full'>
             <BsQuestionCircle className='w-6 h-6 ' />
           </div>
-
-          <a href={url} target='_blank' className='flex bg-green-500 gap-8 hover:gap-10 hover:opacity-80 py-4 rounded-full w-full justify-center items-center'>
+          <div onClick={() => setMeetingRoom(true)} className='flex bg-green-500 gap-8 hover:gap-10 hover:opacity-80 py-4 rounded-full w-full justify-center items-center'>
             <p className='text-white'>Entra a la meeting</p>
             <BsFillCameraVideoFill fill='white' size={40} />
-          </a>
+          </div>
           {
             question && (
               <div className='bg-gray-200 backdrop-blur-sm bg-opacity-80 p-6 shadow-gray-500 z-50 rounded-md shadow-lg max-w-[250px] absolute right-0'>
