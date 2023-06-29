@@ -42,19 +42,25 @@ export default function index() {
         <Breadcrumbs separator="›" aria-label="breadcrumb">
           {breadcrumbs}
         </Breadcrumbs>
-        <p className='opacity-60 font-bold text-lg text-[var(--color2)]'>[] - LESSON 23</p>
-        <CustomTitle title={""} titleSpanish={""} />
+        <p className='opacity-60 font-bold text-lg text-[var(--color2)]'>British Vocabulary - LESSON 23</p>
+        <CustomTitle title={"British Vocabulary"} titleSpanish={"Vocabulario Británico"} />
         <ReactPlayer
           width={"100%"}
           className="max-w-2xl mx-auto my-8 border-8 rounded-md bg-blue-600 border-blue-600"
-          url=""
+          url="https://www.youtube.com/watch?v=e33vwOw8jl0"
           controls={true} />
-        <p className='font-bold text-gray-700'></p>
+        <p className='font-bold text-gray-700'>Acá tienes algunas de las palabras que cambian un poco depende de la región en donde estés, recuerda que no hay favoritos, el unico favorito es el que a ti mas te gusto, no hay uno incorrecto! todos son geniales. Aprendamos un poco mas de ellos y sus culturas!</p>
         <div className='my-4'>
           <div className='space-y-2'>
             <CustomTitle
-              title="Closed Questions"
-              titleSpanish="Preguntas Cerradas" />
+              title="British Culture"
+              titleSpanish="Cultura Britanica" />
+            <ReactPlayer
+              width={"100%"}
+              className="max-w-2xl mx-auto my-8 border-8 rounded-md bg-blue-600 border-blue-600"
+              url="https://www.youtube.com/watch?v=wpjspHgHU9g"
+              controls={true} />
+            <p className='font-bold text-gray-700'>Mira este interesante video y presta atención a las cosas que hacen tipicamente las personas de United Kingdom [Reino Unido]</p>
           </div>
           <div className='my-8 rounded-md p-4 bg-blue-200 '>
             <UnitTest level={"Intermediate"} unit={23} />

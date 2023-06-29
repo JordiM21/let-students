@@ -104,7 +104,7 @@ tan pronto… como" />
               spanish="aun" />
             <SingleExample
               english="why you have not arrive yet?"
-              spanish="por que no has arrivado aun?" />
+              spanish="por que no has llegado aun?" />
             <SingleExample
               english="until"
               spanish="hasta que" />

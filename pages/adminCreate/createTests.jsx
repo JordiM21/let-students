@@ -31,9 +31,12 @@ export default function createTests() {
       })
   }
 
+  //only to update the useEffect each time it sends doesnt really matter at all
+  const [change, setChange] = useState(false)
+
   useEffect(() => {
     fetchPost();
-  }, [currentLevel, unit, answer])
+  }, [currentLevel, unit, change])
 
   const createUnit = async (e) => {
     e.preventDefault()
@@ -49,6 +52,7 @@ export default function createTests() {
     }).then(() => (
       toast.success("Question created succesfuly!"))
     )
+    setChange(!change)
     setOp1("")
     setOp2("")
     setOp3("")

@@ -57,36 +57,6 @@ export default function StudentDashboard({ firstName, level, tutor, schedule, pr
         )
       }
       <h1 className='text-center text-4xl mx-4 py-2 font-bold text-white'>Welcome {firstName}!</h1>
-      <div className='md:flex md:justify-center md:items-center md:mx-4'>
-        <div className='relative mx-4 md:w-1/2'>
-          <p className='text-white text-xl'>Link for meetings </p>
-          <div onClick={() => setQuestion(!question)} className='absolute right-4 top-0 cursor-pointer bg-slate-300 rounded-full'>
-            <BsQuestionCircle className='w-6 h-6 ' />
-          </div>
-          <div onClick={() => setMeetingRoom(true)} className='flex bg-green-500 cursor-pointer hover:opacity-80 py-2 my-3 rounded-full w-full justify-between pl-4 pr-12 items-center'>
-            <YourProfile char={tutor.profileImg} size={"small"} />
-            <p className='text-white text-xl'>Entra a la meeting</p>
-            <BsFillCameraVideoFill fill='white' size={36} />
-          </div>
-          {
-            question && (
-              <div className='bg-gray-200 backdrop-blur-sm bg-opacity-80 p-6 shadow-gray-500 z-50 rounded-md shadow-lg max-w-[250px] absolute right-0 top-7'>
-                <AiFillCloseCircle className='absolute top-2 cursor-pointer right-2 w-6 h-6' onClick={() => setQuestion(!question)} />
-                <p>Para ingresar a la meeting con tu tutor solo tienes que asegurarte de agendar primero y que esten de acuerdo en un horario si los tienes establecidos mucho mejor, no necesitas iniciar sesiòn para entrar ni tener cuenta. Recuerda ser muy puntual con los horarios de tutor</p>
-              </div>
-            )
-          }
-        </div>
-        <div className='bg-gray-900 mx-4 pb-4 my-6 rounded-md md:w-1/2 max-w-2xl md:mx-auto'>
-          <div className='flex justify-center gap-4 items-center rounded-t-md py-2 bg-[var(--color2)]'>
-            <p className='text-xl'>Student's Schedule</p>
-            <FcCalendar size={32} />
-          </div>
-          <div className='px-4'>
-            <Schedule schedule={schedule} />
-          </div>
-        </div>
-      </div>
       <div className='bg-yellow-400 mx-4 pb-4 rounded-md md:flex md:pb-0 max-w-4xl md:mx-auto'>
         <div className='bg-yellow-300 font-semibold text-lg md:text-2xl px-4 py-3 md:py-8 rounded-md shadow-md'>
           <span className='text-[var(--color2)] md:block text-3xl md:text-8xl'>{level == "Beginner" && progressB * 23}{level == "Intermediate" && progressI * 23}{level == "Advanced" && progressA * 23}</span> total words known on your level
@@ -127,6 +97,36 @@ export default function StudentDashboard({ firstName, level, tutor, schedule, pr
                 <button onClick={() => router.push(`/Niveles/${level}/${progressA + 1}`)} className='my-2 bg-[var(--color2)] w-full text-white font-bold text-2xl py-4 rounded-md hover:bg-[var(--color1)] transition-all 1s ease-in'>Go to my current Lesson</button>
               )
             }
+          </div>
+        </div>
+      </div>
+      <div className='md:flex md:justify-center md:items-center md:mx-4'>
+        <div className='relative mx-4 my-4 md:w-1/2'>
+          <p className='text-white text-xl'>Link for meetings </p>
+          <div onClick={() => setQuestion(!question)} className='absolute right-4 top-0 cursor-pointer bg-slate-300 rounded-full'>
+            <BsQuestionCircle className='w-6 h-6 ' />
+          </div>
+          <div onClick={() => setMeetingRoom(true)} className='flex bg-green-500 cursor-pointer hover:opacity-80 py-2 my-3 rounded-full w-full justify-between pl-4 pr-12 items-center'>
+            <YourProfile char={tutor.profileImg} size={"small"} />
+            <p className='text-white text-xl'>Entra a la meeting</p>
+            <BsFillCameraVideoFill fill='white' size={36} />
+          </div>
+          {
+            question && (
+              <div className='bg-gray-200 backdrop-blur-sm bg-opacity-80 p-6 shadow-gray-500 z-50 rounded-md shadow-lg max-w-[250px] absolute right-0 top-7'>
+                <AiFillCloseCircle className='absolute top-2 cursor-pointer right-2 w-6 h-6' onClick={() => setQuestion(!question)} />
+                <p>Para ingresar a la meeting con tu tutor solo tienes que asegurarte de agendar primero y que esten de acuerdo en un horario si los tienes establecidos mucho mejor, no necesitas iniciar sesiòn para entrar ni tener cuenta. Recuerda ser muy puntual con los horarios de tutor</p>
+              </div>
+            )
+          }
+        </div>
+        <div className='bg-gray-900 mx-4 pb-4 my-6 rounded-md md:w-1/2 max-w-2xl md:mx-auto'>
+          <div className='flex justify-center gap-4 items-center rounded-t-md py-2 bg-[var(--color2)]'>
+            <p className='text-xl'>Student's Schedule</p>
+            <FcCalendar size={32} />
+          </div>
+          <div className='px-4'>
+            <Schedule schedule={schedule} />
           </div>
         </div>
       </div>
