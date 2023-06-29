@@ -42,20 +42,15 @@ export default function index() {
         <Breadcrumbs separator="›" aria-label="breadcrumb">
           {breadcrumbs}
         </Breadcrumbs>
-        <p className='opacity-60 font-bold text-lg text-[var(--color2)]'>[] - LESSON 25</p>
-        <CustomTitle title={""} titleSpanish={""} />
+        <p className='opacity-60 font-bold text-lg text-[var(--color2)]'>Daily Routines - LESSON 25</p>
+        <CustomTitle title={"Daily Routines with Phrasal Verbs"} titleSpanish={"Rutinas diarias con verbos frasales"} />
         <ReactPlayer
           width={"100%"}
           className="max-w-2xl mx-auto my-8 border-8 rounded-md bg-blue-600 border-blue-600"
-          url=""
+          url="https://www.youtube.com/watch?v=NxyITVv_qbE"
           controls={true} />
-        <p className='font-bold text-gray-700'></p>
+        <p className='font-bold text-gray-700'>Escucha con atención las conversaciones del video, pausalo cuando sea necesario para analizar el contexto y entender el significado. Utilizaremos muuuchos Phrasal Verbs, muy atento!</p>
         <div className='my-4'>
-          <div className='space-y-2'>
-            <CustomTitle
-              title="Closed Questions"
-              titleSpanish="Preguntas Cerradas" />
-          </div>
           <div className='my-8 rounded-md p-4 bg-blue-200 '>
             <UnitTest level={"Intermediate"} unit={25} />
           </div>

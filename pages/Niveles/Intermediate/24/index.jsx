@@ -43,13 +43,20 @@ export default function index() {
           {breadcrumbs}
         </Breadcrumbs>
         <p className='opacity-60 font-bold text-lg text-[var(--color2)]'>American Vocabulary - LESSON 24</p>
-        <CustomTitle title={""} titleSpanish={""} />
+        <CustomTitle title={"American - British - Australian - Canadian English"} titleSpanish={"Inglés Americano - Britanico - Australiano - Candiense"} />
         <ReactPlayer
           width={"100%"}
           className="max-w-2xl mx-auto my-8 border-8 rounded-md bg-blue-600 border-blue-600"
           url="https://www.youtube.com/watch?v=ajmH5iXWUPU"
           controls={true} />
         <p className='font-bold text-gray-700'>Hey! En esta lección veremos las diferencias entre estos 4 paises de habla inglesa, Australia, Reino Unido, Canada y como se relacionan con Estados Unidos (USA), Escucha atentamente la conversacion de las chicas y responde las preguntas</p>
+        <CustomTitle title={"The different accents!"} titleSpanish={"Los diferentes acentos!"} />
+        <ReactPlayer
+          width={"100%"}
+          className="max-w-2xl mx-auto my-8 border-8 rounded-md bg-blue-600 border-blue-600"
+          url="https://www.youtube.com/watch?v=R1lmeSIhLxc"
+          controls={true} />
+        <p className='font-bold text-gray-700'>Al igual que en español tambien en inglés tenemos muchos acentos diferentes, mira este corto video con estas tres chicas y trata de imitar sus acentos e intenta entender lo que dicen.</p>
         <div className='my-8 rounded-md p-4 bg-blue-200 '>
           <UnitTest level={"Intermediate"} unit={24} />
         </div>
