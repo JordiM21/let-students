@@ -44,6 +44,9 @@ export default function createTests() {
     if (allUnits.length >= 8) {
       return toast.error("Solo puedes poner 8 preguntas por unidad")
     }
+
+    const options = [op1, op2, op3, op4];
+
     if (!options.includes(answer)) {
       return toast.error("La respuesta debe ser una de las opciones proporcionadas");
     }
@@ -58,7 +61,7 @@ export default function createTests() {
       question,
       answer,
       unit,
-      options: [op1, op2, op3, op4],
+      options,
       level: currentLevel,
     }).then(() => (
       toast.success("Question created succesfuly!"))
