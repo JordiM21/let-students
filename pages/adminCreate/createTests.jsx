@@ -1,10 +1,11 @@
 import { db } from '@/config/firebase';
 import { useAuth } from '@/context/AuthContext';
-import { addDoc, collection, getDocs } from 'firebase/firestore';
+import { addDoc, collection, deleteDoc, doc, getDocs, updateDoc } from 'firebase/firestore';
 import React, { useEffect, useState } from 'react'
 import { FormControl, InputLabel, MenuItem, Select, TextField } from '@mui/material'
 import { toast } from 'react-toastify';
 import { useRouter } from 'next/router';
+import { BsTrash, BsTrashFill } from 'react-icons/bs';
 
 export default function createTests() {
   const { user, logout } = useAuth();
@@ -43,6 +44,16 @@ export default function createTests() {
     if (allUnits.length >= 8) {
       return toast.error("Solo puedes poner 8 preguntas por unidad")
     }
+    if (!options.includes(answer)) {
+      return toast.error("La respuesta debe ser una de las opciones proporcionadas");
+    }
+
+    const duplicateOptions = options.filter((option) => option === answer);
+
+    if (duplicateOptions.length > 1) {
+      return toast.error("La respuesta no puede estar duplicada en las opciones");
+    }
+
     await addDoc(collection(db, "questions"), {
       question,
       answer,
@@ -60,6 +71,18 @@ export default function createTests() {
     setAnswer("")
     setQuestion("")
   }
+
+  const deleteQuestion = async (question) => {
+    try {
+      const questionRef = doc(db, 'questions', question.id);
+      await deleteDoc(questionRef);
+      toast.success('¡Pregunta eliminada exitosamente!');
+      setChange(!change)
+    } catch (error) {
+      console.error('Error al eliminar la pregunta:', error);
+    }
+  };
+
 
   return (
     <div className='mx-4 max-w-xl md:mx-auto mb-28'>
@@ -83,9 +106,10 @@ export default function createTests() {
       </div>
       {
         allUnits.map((unit) => (
-          <div className='flex justify-between bg-slate-300 my-2 px-8 py-2'>
+          <div className='flex gap-4 justify-between bg-slate-300 my-2 px-8 py-2'>
             <p>{unit.unit}</p>
             <p>{unit.question}</p>
+            <button className='bg-red-600 p-2 rounded-lg' onClick={() => deleteQuestion(unit)}> <BsTrashFill fill='white' /> </button>
           </div>
         ))
       }
