@@ -47,7 +47,7 @@ export default function index() {
         <ReactPlayer
           width={"100%"}
           className="max-w-2xl mx-auto my-8 border-8 rounded-md bg-blue-600 border-blue-600"
-          url=""
+          url="https://www.youtube.com/watch?v=OWuFkCPb9oE"
           controls={true} />
         <p className='font-bold text-gray-700'>El verbo “use” significa “usar” o “utilizar”. Sin embargo, cuando utilizamos este verbo en el pasado simple, más la preposición “to”, como verbo modal, el significado cambia. Además, se puede utilizar “used to” como adjetivo. A continuación tienes una explicación de los diferentes usos.</p>
         <div className='my-4'>

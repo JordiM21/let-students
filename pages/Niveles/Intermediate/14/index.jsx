@@ -92,7 +92,7 @@ Were they learning?"
             <SingleExample
               english="My son was reading while I was cooking."
               spanish="Mi hijo estaba leyendo mientras que yo estaba cocinando." />
-            <p className='font-bold text-gray-700'>WAIT WHAT? si no habias visto el "while" te lo presento, es muy util para hacer frases continuas y lo traducimos como "mientras" y se prenuncia [uail]</p>
+            <p className='font-bold text-gray-700'>WAIT WHAT? si no habias visto el "while" te lo presento, es muy util para hacer frases continuas y lo traducimos como "mientras" y se pronuncia [uail]</p>
             <SingleExample
               english="They were talking very loudly while we were trying to watch the movie."
               spanish="Estaban hablando muy alto mientras nosotros estábamos intentando mirar la película." />

@@ -57,7 +57,7 @@ export default function index() {
               titleSpanish="Entre" />
             <p className='font-bold text-gray-700'>Se usa normalmente para indicar que alguien o algo se encuentra entre varias personas, animales u objetos. Si alguno de ustedes ha jugado el juego que es muy divertido que se llama AMONG US, significa exactamente eso! Among us: Entre nosotros, porque hace referencia a que hay un impostor entre nostros! genial, no?</p>
             <SingleExample
-              english="There is an impostor between us"
+              english="There is an impostor among us"
               spanish="Hay un impostor entre nosotros" />
             <SingleExample
               english="Carla swims among the fish"
