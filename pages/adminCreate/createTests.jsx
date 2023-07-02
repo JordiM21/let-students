@@ -67,12 +67,6 @@ export default function createTests() {
       toast.success("Question created succesfuly!"))
     )
     setChange(!change)
-    setOp1("")
-    setOp2("")
-    setOp3("")
-    setOp4("")
-    setAnswer("")
-    setQuestion("")
   }
 
   const deleteQuestion = async (question) => {
@@ -85,6 +79,15 @@ export default function createTests() {
       console.error('Error al eliminar la pregunta:', error);
     }
   };
+
+  const cleanForm = () => {
+    setOp1("")
+    setOp2("")
+    setOp3("")
+    setOp4("")
+    setAnswer("")
+    setQuestion("")
+  }
 
 
   return (
@@ -155,6 +158,7 @@ export default function createTests() {
               <MenuItem value="25">25</MenuItem>
             </Select>
           </FormControl>
+          <button type='button' className='bg-red-500 text-white p-2 rounded-md my-4' onClick={cleanForm}>Clean</button>
           <div className='my-4 flex flex-col space-y-4 md:space-y-0 justify-between w-full md:justify-center md:gap-8'>
             <TextField id="filled-basic" label="Insert question" variant="filled"
               value={question}

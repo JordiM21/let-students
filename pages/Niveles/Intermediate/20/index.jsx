@@ -51,11 +51,6 @@ export default function index() {
           controls={true} />
         <p className='font-bold text-gray-700'>Escucha atentamente la historia de Ken y Louis, escucha las veces que quieras y fijate bien en lo que hacen. Luego responde las preguntas abajo</p>
         <div className='my-4'>
-          <div className='space-y-2'>
-            <CustomTitle
-              title="Closed Questions"
-              titleSpanish="Preguntas Cerradas" />
-          </div>
           <div className='my-8 rounded-md p-4 bg-blue-200 '>
             <UnitTest level={"Intermediate"} unit={20} />
           </div>
