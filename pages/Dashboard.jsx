@@ -18,6 +18,7 @@ export default function Dashboard() {
   const [progressI, setProgressI] = useState("")
   const [progressA, setProgressA] = useState("")
   const [schedule, setSchedule] = useState([])
+  const [profileImg, setProfileImg] = useState("")
 
   const [email, setEmail] = useState("")
   const router = useRouter()
@@ -34,6 +35,7 @@ export default function Dashboard() {
         const userMatched = newData.find(item => item.uid == authUid);
         const tutorMatched = newData.find(item => item.uid == userMatched.asignedTutor)
         const allStudents = newData.filter(item => item.role == "Student")
+        setProfileImg(userMatched.profileImg)
         setTutor(tutorMatched)
         setAllUsers(allStudents)
         setFirstName(userMatched.firstName);
@@ -66,6 +68,7 @@ export default function Dashboard() {
         role == "Admin" &&
         (
           <AdminDashboard
+            profileImg={profileImg}
             firstName={firstName}
             level={level}
             allUsers={allUsers}
@@ -81,6 +84,7 @@ export default function Dashboard() {
         role == "Student" &&
         (
           <StudentDashboard
+            profileImg={profileImg}
             schedule={schedule}
             firstName={firstName}
             level={level}

@@ -13,11 +13,24 @@ import { Autoplay, Pagination, Navigation } from "swiper";
 // Import Swiper styles
 import 'swiper/css';
 import { useRouter } from 'next/router'
+import { useAuth } from '@/context/AuthContext'
+import { useEffect } from 'react'
+import LoadingScreen from '@/components/LoadingScreen'
 
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
+
+  const { user } = useAuth()
+
+
   const router = useRouter()
+
+  useEffect(() => {
+    if (user) {
+      router.push("/Dashboard")
+    }
+  }, [router, user])
   return (
     <>
       <div className='relative'>

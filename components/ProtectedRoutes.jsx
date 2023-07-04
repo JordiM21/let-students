@@ -13,7 +13,5 @@ export default function ProtectedRoutes({ children }) {
     }
   }, [router, user])
 
-
-
   return <>{user ? children : null}</>
 }
