@@ -149,7 +149,17 @@ export default function StudentDashboard({ firstName, level, profileImg, tutor, 
             </button>
           </div>
         </div>
-        <div className='rounded-lg bg-black w-full'>
+        <div className='w-full mx-auto rounded-md bg-black'>
+          <Image className='object-cover w-full rounded-t-md' src={image1} />
+          <div className='p-4'>
+            <p className='text-white'>ADMIN ACCESS TO THE WRITE & IMPROVE PAGE</p>
+            <p className='text-gray-600'>You already have access as an administrator to the write & improve page to see the students results and tasks finished.</p>
+            <button className='cursor-pointer w-full rounded-full border-4 border-white my-2 py-3 text-white hover:bg-gray-800'>
+              <a href='https://writeandimprove.com/' target='_blank'>Go to the page</a>
+            </button>
+          </div>
+        </div>
+        {/* <div className='rounded-lg bg-black w-full'>
           <Image src={image1} className='rounded-t-lg h-[100px] md:h-[320px] object-cover' />
           <div className='p-4'>
             <p className='text-white text-xs md:text-sm font-bold opacity-30'>New Learning Tool</p>
@@ -199,7 +209,7 @@ export default function StudentDashboard({ firstName, level, profileImg, tutor, 
             }
             <p className='text-white text-center opacity-90'>Recuerda Registrarte con el mismo correo que tienes registrado aca</p>
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   )

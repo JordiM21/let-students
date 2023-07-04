@@ -124,9 +124,7 @@ export default function index() {
             ))
           }
         </div>
-
       </div>
-
     </div>
   )
 

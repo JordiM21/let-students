@@ -176,8 +176,7 @@ export default function AdminDashboard({ allUsers, profileImg, firstName, email,
             <div className='p-4'>
               <p className='text-white'>ADMIN ACCESS TO THE WRITE & IMPROVE PAGE</p>
               <p className='text-gray-600'>You already have access as an administrator to the write & improve page to see the students results and tasks finished.</p>
-              <p className='text-gray-200 text-xs '>LET Academy paga la subscripcion premium para que todos los administradores puedan ver los resultados de sus alumnos en tiempo real.</p>
-              <div className='flex gap-3 flex-col justify-center my-4'>
+              {/* <div className='flex gap-3 flex-col justify-center my-4'>
                 <p className='text-[var(--color3)] text-center'>Share the workbooks code with your students.</p>
                 <div onClick={() => handleCopy(beginnerCode)} className='flex bg-white justify-center gap-2 items-center px-6 py-2 rounded-md cursor-pointer hover:bg-opacity-80'>
                   <p>Beginner Code: {beginnerCode} </p>
@@ -191,8 +190,8 @@ export default function AdminDashboard({ allUsers, profileImg, firstName, email,
                   <p>Advanced Code: {advancedCode} </p>
                   <AiOutlineCopy />
                 </div>
-              </div>
-              <button className='cursor-pointer w-full rounded-full border-4 border-white py-3 text-white hover:bg-gray-800'>
+              </div> */}
+              <button className='cursor-pointer w-full rounded-full border-4 border-white my-2 py-3 text-white hover:bg-gray-800'>
                 <a href='https://writeandimprove.com/' target='_blank'>Go to the page</a>
               </button>
             </div>
@@ -229,9 +228,9 @@ export default function AdminDashboard({ allUsers, profileImg, firstName, email,
           </div>
         </div>
       </div>
-      <div>
+      {/* <div>
         <FormsCheck />
-      </div>
+      </div> */}
     </div>
   )
 }
