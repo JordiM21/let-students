@@ -57,7 +57,7 @@ export default function StudentDashboard({ firstName, level, profileImg, tutor, 
           />
         )
       }
-      <div className='flex justify-center items-center py-2'>
+      <div className='flex justify-center items-center pt-2'>
         <h1 className='text-center text-4xl mx-4 py-2 font-bold text-white'>Welcome {firstName}!</h1>
         <YourProfile char={profileImg} size={"small"} />
       </div>
@@ -81,7 +81,9 @@ export default function StudentDashboard({ firstName, level, profileImg, tutor, 
             )
           }
         </div>
-        <ExternalApps role="Student" />
+        <div className='md:pt-12'>
+          <ExternalApps role="Student" />
+        </div>
       </div>
       <div className='bg-yellow-400 mx-4 pb-4 rounded-md md:flex md:pb-0 max-w-4xl md:mx-auto'>
         <div className='bg-yellow-300 font-semibold text-lg md:text-2xl px-4 py-3 md:py-8 rounded-md shadow-md'>

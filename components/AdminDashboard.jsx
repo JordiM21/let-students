@@ -24,8 +24,9 @@ import CtaAnimationPage from './CtaAnimationPage'
 import student from '@/public/animations/student.json'
 import Backdrop from '@mui/material/Backdrop';
 import ExternalApps from './ExternalApps'
+import YourProfile from './YourProfile'
 
-export default function AdminDashboard({ allUsers, firstName, email, id, url }) {
+export default function AdminDashboard({ allUsers, profileImg, firstName, email, id, url }) {
 
   // const [mail] = useState("learnenglishtogether21@gmail.com")
   // const [password] = useState("let-admin")
@@ -89,8 +90,10 @@ export default function AdminDashboard({ allUsers, firstName, email, id, url }) 
           />
         )
       }
-      <p className='text-center text-4xl py-4 font-bold text-[var(--color2)]'>Welcome {firstName}!</p>
-      {
+      <div className='flex justify-center items-center pt-4'>
+        <h1 className='text-center text-4xl mx-4 py-2 font-bold text-white'>Welcome {firstName}!</h1>
+        <YourProfile char={profileImg} size={"small"} />
+      </div>      {
         email == "jordimantilla21@gmail.com" && (
           <div className='px-4 py-2'>
             <div className='flex justify-around items-center py-4'>
