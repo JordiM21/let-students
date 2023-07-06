@@ -176,21 +176,7 @@ export default function AdminDashboard({ allUsers, profileImg, firstName, email,
             <div className='p-4'>
               <p className='text-white'>ADMIN ACCESS TO THE WRITE & IMPROVE PAGE</p>
               <p className='text-gray-600'>You already have access as an administrator to the write & improve page to see the students results and tasks finished.</p>
-              {/* <div className='flex gap-3 flex-col justify-center my-4'>
-                <p className='text-[var(--color3)] text-center'>Share the workbooks code with your students.</p>
-                <div onClick={() => handleCopy(beginnerCode)} className='flex bg-white justify-center gap-2 items-center px-6 py-2 rounded-md cursor-pointer hover:bg-opacity-80'>
-                  <p>Beginner Code: {beginnerCode} </p>
-                  <AiOutlineCopy />
-                </div>
-                <div onClick={() => handleCopy(intermediateCode)} className='flex bg-white items-center px-6 py-2 justify-center gap-2 rounded-md cursor-pointer hover:bg-opacity-80'>
-                  <p>Intermediate Code: {intermediateCode} </p>
-                  <AiOutlineCopy />
-                </div>
-                <div onClick={() => handleCopy(advancedCode)} className='flex bg-white items-center px-6 py-2 justify-center gap-2 rounded-md cursor-pointer hover:bg-opacity-80'>
-                  <p>Advanced Code: {advancedCode} </p>
-                  <AiOutlineCopy />
-                </div>
-              </div> */}
+
               <button className='cursor-pointer w-full rounded-full border-4 border-white my-2 py-3 text-white hover:bg-gray-800'>
                 <a href='https://writeandimprove.com/' target='_blank'>Go to the page</a>
               </button>

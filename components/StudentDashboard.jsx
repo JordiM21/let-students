@@ -18,26 +18,7 @@ import ExternalApps from './ExternalApps'
 
 
 export default function StudentDashboard({ firstName, level, profileImg, tutor, schedule, progressB, progressI, progressA }) {
-
-  const [beginnerCode] = useState("Z8M2D7GG")
-  const [intermediateCode] = useState("R2PMQGRC")
-  const [advancedCode] = useState("2DG2QZ9C")
   const router = useRouter()
-
-  // const handleCopyBeginner = () => {
-  //   copy(beginnerCode)
-  //   toast.success("Copied the Beginner Code")
-  // }
-
-  // const handleCopyIntermediate = () => {
-  //   copy(intermediateCode)
-  //   toast.success("Copied the Intermediate Code")
-  // }
-
-  // const handleCopyAdvanced = () => {
-  //   copy(advancedCode)
-  //   toast.success("Copied the Advanced Code")
-  // }
 
   const [question, setQuestion] = useState(false)
   const [meetingRoom, setMeetingRoom] = useState(false)
