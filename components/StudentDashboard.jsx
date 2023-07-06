@@ -24,20 +24,20 @@ export default function StudentDashboard({ firstName, level, profileImg, tutor, 
   const [advancedCode] = useState("2DG2QZ9C")
   const router = useRouter()
 
-  const handleCopyBeginner = () => {
-    copy(beginnerCode)
-    toast.success("Copied the Beginner Code")
-  }
+  // const handleCopyBeginner = () => {
+  //   copy(beginnerCode)
+  //   toast.success("Copied the Beginner Code")
+  // }
 
-  const handleCopyIntermediate = () => {
-    copy(intermediateCode)
-    toast.success("Copied the Intermediate Code")
-  }
+  // const handleCopyIntermediate = () => {
+  //   copy(intermediateCode)
+  //   toast.success("Copied the Intermediate Code")
+  // }
 
-  const handleCopyAdvanced = () => {
-    copy(advancedCode)
-    toast.success("Copied the Advanced Code")
-  }
+  // const handleCopyAdvanced = () => {
+  //   copy(advancedCode)
+  //   toast.success("Copied the Advanced Code")
+  // }
 
   const [question, setQuestion] = useState(false)
   const [meetingRoom, setMeetingRoom] = useState(false)
