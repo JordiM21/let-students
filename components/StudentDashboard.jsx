@@ -18,6 +18,7 @@ import ExternalApps from './ExternalApps'
 
 
 export default function StudentDashboard({ firstName, level, profileImg, tutor, schedule, progressB, progressI, progressA }) {
+
   const router = useRouter()
 
   const [question, setQuestion] = useState(false)
