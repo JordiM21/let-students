@@ -16,6 +16,8 @@ import { BsQuestionCircle } from 'react-icons/bs';
 import { AiFillCloseCircle } from 'react-icons/ai';
 import { toast } from 'react-toastify';
 import Schedule from '@/components/Schedule';
+import { MdNotificationAdd } from 'react-icons/md';
+import SendNotifScreen from '@/components/SendNotifScreen';
 
 export default function Progress() {
   const [userMatched, setUserMatched] = useState({})
@@ -186,7 +188,7 @@ export default function Progress() {
                             </div>
                           )
                         }
-                        <div className='flex justify-start gap-4 items-center'>
+                        <div className='flex relative justify-start gap-4 items-center'>
                           <YourFlag country={student.country} />
                           <p className='text-center font-bold text-xl py-1 cursor-pointer'>{student.firstName} {student.lastName}</p>
                           <div className='absolute right-4'>
@@ -211,7 +213,12 @@ export default function Progress() {
                             <p className='text-gray-400 opacity-80'>{student.age}</p>
                           </div>
                         </div>
-                        <div className=''>
+                        <SendNotifScreen
+                          student={student.firstName}
+                          id={student.id}
+                          country={student.country}
+                        />
+                        <div>
                           <p>Beginner: </p>
                           <ProgressLesson progress={student.progressBeginner} />
                         </div>
