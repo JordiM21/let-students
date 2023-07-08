@@ -16,8 +16,12 @@ import student from '@/public/animations/student.json'
 import CtaAnimationPage from './CtaAnimationPage'
 import ExternalApps from './ExternalApps'
 
+const notifPage = ({ }) => {
 
-export default function StudentDashboard({ firstName, appNotif, level, profileImg, tutor, schedule, progressB, progressI, progressA }) {
+}
+
+
+export default function StudentDashboard({ firstName, id, setAppNotif, appNotif, level, profileImg, tutor, schedule, progressB, progressI, progressA }) {
 
   const router = useRouter()
 
@@ -64,7 +68,7 @@ export default function StudentDashboard({ firstName, appNotif, level, profileIm
           }
         </div>
         <div className='md:pt-12'>
-          <ExternalApps appNotif={appNotif} role="Student" />
+          <ExternalApps appNotif={appNotif} userId={id} setAppNotif={setAppNotif} role="Student" />
         </div>
       </div>
       <div className='bg-yellow-400 mx-4 pb-4 rounded-md md:flex md:pb-0 max-w-4xl md:mx-auto'>

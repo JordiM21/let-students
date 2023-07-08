@@ -98,6 +98,8 @@ export default function Dashboard() {
             email={email}
             tutor={tutor}
             appNotif={appNotif}
+            setAppNotif={setAppNotif}
+            id={id}
           />
         )
       }

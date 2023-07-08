@@ -7,70 +7,62 @@ import ESLIcon from '@/public/ESLIcon.png'
 import linguaIcon from '@/public/linguaIcon.png'
 import youGlishIcon from '@/public/youGlishIcon.png'
 import Link from 'next/link'
-import Lottie from 'lottie-react'
-import notifBell from '@/public/animations/notifBell.json'
+import { updateDoc, doc } from 'firebase/firestore';
+import { db } from '@/config/firebase'
 
-export default function ExternalApps({ role, appNotif }) {
+export default function ExternalApps({ role, appNotif, setAppNotif, userId }) {
 
-  const [flip, setFlip] = useState(false)
-  const [kahoot, setKahoot] = useState(false)
-  const [padlet, setPadlet] = useState(false)
+  const [flip, setFlip] = useState(appNotif.includes('Flip'))
+  const [kahoot, setKahoot] = useState(appNotif.includes('Kahoot'))
+  const [padlet, setPadlet] = useState(appNotif.includes('Padlet'))
 
   useEffect(() => {
-    const keywords = ["Flip", "Kahoot", "Padlet"];
-    appNotif.forEach(app => {
-      if (keywords.includes(app)) {
-        switch (app) {
-          case "Flip":
-            setFlip(true);
-            break;
-          case "Kahoot":
-            setKahoot(true);
-            break;
-          case "Padlet":
-            setPadlet(true);
-            break;
-          default:
-            break;
-        }
-      }
-    });
-  }, [appNotif]);
+    setFlip(appNotif.includes('Flip'))
+    setKahoot(appNotif.includes('Kahoot'))
+    setPadlet(appNotif.includes('Padlet'))
+  }, [appNotif])
 
-  //delete the string of the array when you click on the icon
+  const handleNotificationClick = async (appName) => {
+    const updatedAppNotif = appNotif.filter(app => app !== appName);
+    setAppNotif(updatedAppNotif);
+    await updateAppNotifInFirestore(updatedAppNotif);
+  }
+
+  const updateAppNotifInFirestore = async (updatedAppNotif) => {
+    const userDocRef = doc(db, 'users', userId);
+    await updateDoc(userDocRef, { appNotif: updatedAppNotif });
+  }
+
   return (
     <>
       <div className='flex justify-around my-6 md:w-[400px]'>
-        <Link href="https://flip.com/" target='_blank'>
+        <Link href="https://flip.com/groups/" target='_blank' onClick={() => handleNotificationClick("Flip")}>
           <div className={`rounded-xl relative`}>
             {
               flip && (
-                <Lottie className='w-12 absolute -right-5 -top-4 z-10'
-                  animationData={notifBell} />
+                <div class="ping"></div>
               )
             }
             <Image src={flipIcon} className='w-[80px] rounded-xl active:opacity-80 active:scale-95 hover:scale-110 cursor-pointer hover:-rotate-2 shadow-xl shadow-gray-800' />
           </div>
           <p className='text-center text-gray-300'>Flip</p>
         </Link>
-        <Link href="https://kahoot.com/" target='_blank'>
+        <Link href="https://kahoot.com/" target='_blank' onClick={() => handleNotificationClick("Kahoot")}>
           <div className={`rounded-xl relative`}>
             {
               kahoot && (
-                <Lottie className='w-12 absolute -right-5 -top-4 z-10'
-                  animationData={notifBell} />
+                <div class="ping"></div>
               )
             }
             <Image src={kahootIcon} className='w-[80px] rounded-xl active:opacity-80 active:scale-95  hover:scale-110 cursor-pointer hover:rotate-1 shadow-xl shadow-gray-800' />
           </div>
           <p className='text-center text-gray-300'>Kahoot</p>
         </Link>
-        <Link href="https://padlet.com/dashboard" target='_blank'>
+        <Link href="https://padlet.com/dashboard" target='_blank' onClick={() => handleNotificationClick("Padlet")}>
           <div className={`rounded-xl relative`}>
             {
               padlet && (
-                <Lottie className='w-12 absolute -right-5 -top-4 z-10'
-                  animationData={notifBell} />
+                <div class="ping"></div>
               )
             }
             <Image src={padletIcon} className='w-[80px] rounded-xl active:opacity-80 active:scale-95  bg-gray-200 hover:scale-110 cursor-pointer shadow-xl shadow-gray-800 hover:rotate-2' />
@@ -79,7 +71,7 @@ export default function ExternalApps({ role, appNotif }) {
         </Link>
       </div>
       {
-        role == "admin" && (
+        role === "admin" && (
           <>
             <div className='flex justify-around my-6 md:w-[400px]'>
               <Link href="https://www.esl-lab.com/easy/" target='_blank'>
