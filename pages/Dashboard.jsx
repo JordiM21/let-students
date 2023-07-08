@@ -19,6 +19,7 @@ export default function Dashboard() {
   const [progressA, setProgressA] = useState("")
   const [schedule, setSchedule] = useState([])
   const [profileImg, setProfileImg] = useState("")
+  const [appNotif, setAppNotif] = useState([])
 
   const [email, setEmail] = useState("")
   const router = useRouter()
@@ -49,6 +50,7 @@ export default function Dashboard() {
         setProgressA(userMatched.progressAdvanced);
         setSchedule(userMatched?.schedule)
         setUrlMeet(userMatched?.urlMeet)
+        setAppNotif(userMatched?.appNotif)
       })
   }
 
@@ -95,6 +97,7 @@ export default function Dashboard() {
             likedVideos={likedVideos}
             email={email}
             tutor={tutor}
+            appNotif={appNotif}
           />
         )
       }

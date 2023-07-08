@@ -17,7 +17,7 @@ import CtaAnimationPage from './CtaAnimationPage'
 import ExternalApps from './ExternalApps'
 
 
-export default function StudentDashboard({ firstName, level, profileImg, tutor, schedule, progressB, progressI, progressA }) {
+export default function StudentDashboard({ firstName, appNotif, level, profileImg, tutor, schedule, progressB, progressI, progressA }) {
 
   const router = useRouter()
 
@@ -64,7 +64,7 @@ export default function StudentDashboard({ firstName, level, profileImg, tutor, 
           }
         </div>
         <div className='md:pt-12'>
-          <ExternalApps role="Student" />
+          <ExternalApps appNotif={appNotif} role="Student" />
         </div>
       </div>
       <div className='bg-yellow-400 mx-4 pb-4 rounded-md md:flex md:pb-0 max-w-4xl md:mx-auto'>
