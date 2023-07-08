@@ -37,8 +37,7 @@ export default function ExternalApps({ role, appNotif }) {
     });
   }, [appNotif]);
 
-  console.log(appNotif)
-  console.log(flip)
+  //delete the string of the array when you click on the icon
   return (
     <>
       <div className='flex justify-around my-6 md:w-[400px]'>
@@ -46,7 +45,7 @@ export default function ExternalApps({ role, appNotif }) {
           <div className={`rounded-xl relative`}>
             {
               flip && (
-                <Lottie className='w-16 absolute -right-8 -top-6 z-10'
+                <Lottie className='w-12 absolute -right-5 -top-4 z-10'
                   animationData={notifBell} />
               )
             }
@@ -58,7 +57,7 @@ export default function ExternalApps({ role, appNotif }) {
           <div className={`rounded-xl relative`}>
             {
               kahoot && (
-                <Lottie className='w-16 absolute -right-8 -top-6 z-10'
+                <Lottie className='w-12 absolute -right-5 -top-4 z-10'
                   animationData={notifBell} />
               )
             }
@@ -70,7 +69,7 @@ export default function ExternalApps({ role, appNotif }) {
           <div className={`rounded-xl relative`}>
             {
               padlet && (
-                <Lottie className='w-16 absolute -right-8 -top-6 z-10'
+                <Lottie className='w-12 absolute -right-5 -top-4 z-10'
                   animationData={notifBell} />
               )
             }
