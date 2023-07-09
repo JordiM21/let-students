@@ -12,23 +12,27 @@ import { db } from '@/config/firebase'
 
 export default function ExternalApps({ role, appNotif, setAppNotif, userId }) {
 
-  const [flip, setFlip] = useState(appNotif.includes('Flip'))
-  const [kahoot, setKahoot] = useState(appNotif.includes('Kahoot'))
-  const [padlet, setPadlet] = useState(appNotif.includes('Padlet'))
+  const [flip, setFlip] = useState(false)
+  const [kahoot, setKahoot] = useState(false)
+  const [padlet, setPadlet] = useState(false)
 
   useEffect(() => {
-    setFlip(appNotif.includes('Flip'))
-    setKahoot(appNotif.includes('Kahoot'))
-    setPadlet(appNotif.includes('Padlet'))
+    if (role == "Student") {
+      setFlip(appNotif.includes('Flip'))
+      setKahoot(appNotif.includes('Kahoot'))
+      setPadlet(appNotif.includes('Padlet'))
+    }
   }, [appNotif])
 
   const handleNotificationClick = async (appName) => {
+    if (role == "admin") { return }
     const updatedAppNotif = appNotif.filter(app => app !== appName);
     setAppNotif(updatedAppNotif);
     await updateAppNotifInFirestore(updatedAppNotif);
   }
 
   const updateAppNotifInFirestore = async (updatedAppNotif) => {
+    if (role == "admin") { return }
     const userDocRef = doc(db, 'users', userId);
     await updateDoc(userDocRef, { appNotif: updatedAppNotif });
   }

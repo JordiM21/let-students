@@ -35,7 +35,7 @@ export default function Dashboard() {
           .map((doc) => ({ ...doc.data(), id: doc.id }));
         const userMatched = newData.find(item => item.uid == authUid);
         const tutorMatched = newData.find(item => item.uid == userMatched.asignedTutor)
-        const allStudents = newData.filter(item => item.role == "Student")
+        const allStudents = newData.filter(item => item.role == "Student" || item.role == "Admin")
         setProfileImg(userMatched.profileImg)
         setTutor(tutorMatched)
         setAllUsers(allStudents)

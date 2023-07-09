@@ -26,7 +26,7 @@ import Backdrop from '@mui/material/Backdrop';
 import ExternalApps from './ExternalApps'
 import YourProfile from './YourProfile'
 
-export default function AdminDashboard({ allUsers, profileImg, firstName, email, id, url }) {
+export default function AdminDashboard({ allUsers, profileImg, firstName, role, email, id, url }) {
 
   // const [mail] = useState("learnenglishtogether21@gmail.com")
   // const [password] = useState("let-admin")
@@ -55,10 +55,6 @@ export default function AdminDashboard({ allUsers, profileImg, firstName, email,
     copy(mail)
     toast.success("Copied!")
   }
-
-  const [beginnerCode] = useState("Z8M2D7GG")
-  const [intermediateCode] = useState("R2PMQGRC")
-  const [advancedCode] = useState("2DG2QZ9C")
 
   const changeUrl = async (e) => {
     e.preventDefault()
