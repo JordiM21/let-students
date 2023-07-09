@@ -8,11 +8,6 @@ import { doc, getDoc, updateDoc } from 'firebase/firestore'
 import { db } from '@/config/firebase'
 
 export default function SendNotifScreen({ student, id, country }) {
-  // stablish the changes on the db with this information and shows the student photo if necessary
-  // josue has already the field appNotif that is an object with the properties name: name of the app, and notif is a boolean on false by default
-
-
-
   const [app, setApp] = useState("")
   const [modal, setModal] = useState(false)
 
@@ -59,7 +54,7 @@ export default function SendNotifScreen({ student, id, country }) {
                 <MenuItem value="Padlet">Padlet</MenuItem>
               </Select>
             </FormControl>
-            <p className='text-sm text-gray-700'>This is going to notify the student about the activity, do it only if you have already asign the activity</p>
+            <p className='text-sm my-2 text-gray-400'>This will show a notification to the student in the icon that you select, only to show that the student have something to do there</p>
             <button onClick={handleClick} className='group w-full py-4 flex justify-center gap-4 items-center rounded-full my-4 bg-[var(--color3)] hover:bg-black border-4 border-[var(--color3)] text-white'>
               <p className='text-black group-hover:text-[var(--color3)]'>Send it</p>
             </button>

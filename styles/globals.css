@@ -6,6 +6,7 @@
 	font-weight: 700;
 	transition: all 0.2s ease-in;
 }
+
 .ping {
 	--uib-size: 50px;
 	--uib-speed: 1s;
