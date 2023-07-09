@@ -51,7 +51,6 @@ export default function ListOfUsers({ allUsers }) {
               <TableCell align="center">{row.email}</TableCell>
               <TableCell align="center">{row.country}</TableCell>
               <TableCell align="center">{row.phone}</TableCell>
-
             </TableRow>
           ))}
         </TableBody>

@@ -40,7 +40,7 @@ export default function ExternalApps({ role, appNotif, setAppNotif, userId }) {
   return (
     <>
       <div className='flex justify-around my-6 md:w-[400px]'>
-        <Link href="https://flip.com/groups/" target='_blank' onClick={() => handleNotificationClick("Flip")}>
+        <Link href="https://flip.com/" target='_blank' onClick={() => handleNotificationClick("Flip")}>
           <div className={`rounded-xl relative`}>
             {
               flip && (
