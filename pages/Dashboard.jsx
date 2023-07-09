@@ -67,6 +67,24 @@ export default function Dashboard() {
         )
       }
       {
+        role == "Admin" && (
+          <div className='flex justify-center'>
+            <div className='bg-black px-8 py-2 cursor-pointer hover:bg-opacity-70 rounded-b-lg'>
+              <p className='text-white text-sm'>Asigna Actividades</p>
+            </div>
+          </div>
+        )
+      }
+      {
+        role == "Student" && (
+          <div className='flex justify-center'>
+            <div className='bg-black px-8 py-2 cursor-pointer hover:bg-opacity-70 rounded-b-lg'>
+              <p className='text-white text-sm'>Mis Actividades</p>
+            </div>
+          </div>
+        )
+      }
+      {
         role == "Admin" &&
         (
           <AdminDashboard
