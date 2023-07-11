@@ -20,6 +20,8 @@ export default function Dashboard() {
   const [schedule, setSchedule] = useState([])
   const [profileImg, setProfileImg] = useState("")
   const [appNotif, setAppNotif] = useState([])
+  const [isPending, setIsPending] = useState(false)
+  const [activities, setActivities] = useState([])
 
   const [email, setEmail] = useState("")
   const router = useRouter()
@@ -51,12 +53,22 @@ export default function Dashboard() {
         setSchedule(userMatched?.schedule)
         setUrlMeet(userMatched?.urlMeet)
         setAppNotif(userMatched?.appNotif)
+        setActivities(userMatched?.activities)
       })
   }
 
   useEffect(() => {
     fetchPost();
   }, [])
+
+  useEffect(() => {
+    const hasPendingActivity = activities?.some(activity => activity.status === "pending");
+    if (hasPendingActivity) {
+      setIsPending(true)
+    } else {
+      setIsPending(false)
+    }
+  }, [activities, router.pathname])
 
   return (
     <div className='bg-[var(--bluebg)] pb-16'>
@@ -78,8 +90,13 @@ export default function Dashboard() {
       {
         role == "Student" && (
           <div className='flex justify-center'>
-            <div onClick={() => router.push("/Activities")} className='bg-black px-8 py-2 cursor-pointer hover:bg-opacity-70 rounded-b-xl'>
+            <div onClick={() => router.push("/Activities")} className='bg-black relative px-8 py-2 cursor-pointer hover:bg-opacity-70 rounded-b-xl'>
               <p className='text-white text-sm'>Mis Actividades</p>
+              {
+                isPending && (
+                  <div className='h-4 w-4 bg-yellow-400 absolute -bottom-0 -right-1 rounded-full'></div>
+                )
+              }
             </div>
           </div>
         )

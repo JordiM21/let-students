@@ -52,6 +52,7 @@ export const AuthContextProvider = ({ children }) => {
             unitInTrouble: [],
             schedule: [],
             appNotif: [],
+            activities: []
           })
         } catch (error) {
           console.log("error adding document",)

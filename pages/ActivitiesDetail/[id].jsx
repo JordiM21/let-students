@@ -1,4 +1,5 @@
 import BackHeader from '@/components/BackHeader'
+import LoadingScreen from '@/components/LoadingScreen'
 import YourProfile from '@/components/YourProfile'
 import { db } from '@/config/firebase'
 import { FormControl, TextField } from '@mui/material'
@@ -50,6 +51,10 @@ export default function ActivitiesDetail() {
           status: "pending",
         }],
       }).then(() => toast.success("Added succesfully!"))
+      setText("")
+      setTopic("")
+      setLink("")
+      setLimitDate("")
       setSubmit(!submit)
     } catch (error) {
       console.error('Error updating schedule:', error);
@@ -95,12 +100,18 @@ export default function ActivitiesDetail() {
 
   return (
     <div className='bg-[var(--bluebg)] pb-20 h-full min-h-screen'>
+      {
+        userMatched.role != "Admin" && userMatched.role != "Student" &&
+        (
+          <LoadingScreen />
+        )
+      }
       <BackHeader largeTitle={userMatched.firstName} parentTitle={"Back"} />
       <div className='mx-8 pt-20 max-w-lg md:mx-auto'>
         <div className='bg-black rounded-lg p-4 mb-8 flex items-center justify-around'>
           <YourProfile char={userMatched.profileImg} size={"small"} />
           <p className='text-xl text-white'>{userMatched.firstName} {userMatched.lastName}</p>
-        </div>scale
+        </div>
         <h1 className='text-2xl'>Crea nueva actividad</h1>
         <form onSubmit={handleSubmit} className='mb-8'>
           <FormControl variant="filled" className='w-full rounded-lg space-y-3'>
@@ -143,7 +154,7 @@ export default function ActivitiesDetail() {
           <button type='submit' className='w-full bg-[var(--color2)] py-4 rounded-full mt-4 font-bold text-lg hover:scale-105'>Asigna a {userMatched.firstName}</button>
         </form>
         {
-          activities.map((activity) => (
+          activities?.map((activity) => (
             activity.status === "pending" && (
               <div className='mb-4 hover:scale-[102%]'>
                 <div className='bg-black cursor-pointer rounded-t-xl py-2 px-4 relative'>
@@ -173,7 +184,7 @@ export default function ActivitiesDetail() {
           ))
         }
         {
-          activities.map((activity) => (
+          activities?.map((activity) => (
             activity.status === "done" && (
               <div className='mb-4 hover:scale-[100%] opacity-75 '>
                 <div className='bg-black cursor-pointer rounded-t-xl py-2 px-4 relative'>

@@ -89,17 +89,7 @@ export default function AdminDashboard({ allUsers, profileImg, firstName, role, 
       <div className='flex justify-center items-center pt-4'>
         <h1 className='text-center text-4xl mx-4 py-2 font-bold text-white'>Welcome {firstName}!</h1>
         <YourProfile char={profileImg} size={"small"} />
-      </div>      {
-        email == "jordimantilla21@gmail.com" && (
-          <div className='px-4 py-2'>
-            <div className='flex justify-around items-center py-4'>
-              <p className='text-white text-xl sm:text-3xl font-bold'>General View Students</p>
-              <AddButton text={"Registrar Estudiante"} link={"/Register"} />
-            </div>
-            <ListOfUsers allUsers={allUsers} />
-          </div>
-        )
-      }
+      </div>
       <div className='md:gap-8 my-8 mx-4 md:mx-16'>
         <div className='md:flex justify-around w-full'>
           <div className='relative space-y-2 my-4 md:w-[400px]'>
@@ -210,6 +200,17 @@ export default function AdminDashboard({ allUsers, profileImg, firstName, role, 
           </div>
         </div>
       </div>
+      {
+        email == "jordimantilla21@gmail.com" && (
+          <div className='px-4 py-2'>
+            <div className='flex justify-around items-center py-4'>
+              <p className='text-white text-xl sm:text-3xl font-bold'>General View Students</p>
+              <AddButton text={"Registrar Estudiante"} link={"/Register"} />
+            </div>
+            <ListOfUsers allUsers={allUsers} />
+          </div>
+        )
+      }
       {/* <div>
         <FormsCheck />
       </div> */}

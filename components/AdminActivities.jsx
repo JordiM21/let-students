@@ -9,23 +9,21 @@ export default function AdminActivities({ allUsers, userMatched }) {
   const router = useRouter()
   const [link, setLink] = useState("")
 
-
   return (
     <div className='mx-8 pt-20 max-w-lg md:mx-auto'>
       <BackHeader largeTitle={"Create Activities"} parentTitle={"Back"} />
-      <div className='flex justify-between items-center px-6 py-2 rounded-xl bg-black'>
+      {/* <div className='flex justify-between items-center px-6 py-2 rounded-xl bg-black'>
         <p className='text-white'>Tutor</p>
         <div className='flex items-center gap-4'>
           <p className='text-gray-400'>{userMatched.firstName} {userMatched.lastName}</p>
           <YourProfile char={userMatched.profileImg} size={"small"} />
         </div>
-      </div>
-
-      <div className='my-8'>
-        <h1>Asigna actividades a tus estudiantes</h1>
+      </div> */}
+      <div className='mb-4'>
+        <h1 className='text-3xl'>Tus estudiantes</h1>
         {
           allUsers.map((student) => (
-            <div onClick={() => router.push(`/ActivitiesDetail/${student.id}`)} className='bg-black mb-4 hover:scale-105 hover:opacity-80 cursor-pointer rounded-xl py-2 px-4 relative'>
+            <div onClick={() => router.push(`/ActivitiesDetail/${student.id}`)} className='bg-black mb-4 hover:scale-[102%] hover:opacity-80 cursor-pointer rounded-xl py-2 px-4 relative'>
               <div className='flex items-center justify-start gap-4'>
                 <YourProfile char={student.profileImg} size={"small"} />
                 <p className='text-xl text-white'>{student.firstName} {student.lastName} </p>
