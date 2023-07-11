@@ -38,7 +38,7 @@ export default function Activities() {
   }, [])
 
   return (
-    <div className='bg-[var(--bluebg)] pb-16 h-screen'>
+    <div className='bg-[var(--bluebg)] pb-20 h-full min-h-screen'>
       {
         userMatched.role != "Admin" && userMatched.role != "Student" &&
         (

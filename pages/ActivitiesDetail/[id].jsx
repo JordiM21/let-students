@@ -1,22 +1,39 @@
+import BackHeader from '@/components/BackHeader'
+import YourProfile from '@/components/YourProfile'
+import { db } from '@/config/firebase'
+import { collection, getDocs } from 'firebase/firestore'
+import { useRouter } from 'next/router'
 import React from 'react'
-import YourProfile from './YourProfile'
+import { useEffect } from 'react'
+import { useState } from 'react'
 import { AiFillCheckCircle, AiFillInfoCircle } from 'react-icons/ai'
-import BackHeader from './BackHeader'
-import { IoCheckmarkDoneCircle } from 'react-icons/Io'
 
-export default function StudentActivities({ tutor, userMatched }) {
+export default function ActivitiesDetail() {
+  const router = useRouter()
+  const id = router.query.id
+  const [userMatched, setUserMatched] = useState({})
+  const fetchPost = async () => {
+    await getDocs(collection(db, "users"))
+      .then((querySnapshot) => {
+        const newData = querySnapshot.docs
+          .map((doc) => ({ ...doc.data(), id: doc.id }));
+        const userMatch = newData.find(item => item.id == id);
+        setUserMatched(userMatch)
+      })
+  }
+  console.log(userMatched)
+
+  useEffect(() => {
+    fetchPost();
+  }, [])
   return (
-    <div className='mx-8 pt-20 max-w-lg md:mx-auto'>
-      <BackHeader largeTitle={"Your Activities"} parentTitle={"Back"} />
-      <div className='flex justify-between items-center px-6 py-2 rounded-xl bg-black'>
-        <p className='text-white'>Tu tutor</p>
-        <div className='flex items-center gap-4'>
-          <p className='text-gray-400'>{tutor.firstName} {tutor.lastName}</p>
-          <YourProfile char={tutor.profileImg} size={"small"} />
+    <div className='bg-[var(--bluebg)] pb-20 h-full min-h-screen'>
+      <BackHeader largeTitle={userMatched.firstName} parentTitle={"Back"} />
+      <div className='mx-8 pt-20 max-w-lg md:mx-auto'>
+        <div className='bg-black rounded-lg p-4 mb-8 flex items-center justify-around'>
+          <YourProfile char={userMatched.profileImg} size={"small"} />
+          <p className='text-xl text-white'>{userMatched.firstName} {userMatched.lastName}</p>
         </div>
-      </div>
-      <div className='my-8'>
-        <h1>Your Activities</h1>
         {
           userMatched.activities.map((activity) => (
             activity.status === "pending" && (
@@ -40,7 +57,7 @@ export default function StudentActivities({ tutor, userMatched }) {
         {
           userMatched.activities.map((activity) => (
             activity.status === "done" && (
-              <div className='bg-gray-900 opacity-80 mb-4 rounded-xl py-2 px-4 relative'>
+              <div className='bg-black mb-4 hover:scale-105 cursor-pointer rounded-xl py-2 px-4 relative'>
                 <div>
                   <p className='text-xl text-white'>{activity.text}</p>
                 </div>
@@ -57,6 +74,7 @@ export default function StudentActivities({ tutor, userMatched }) {
             )
           ))
         }
+        {id}
       </div>
     </div>
   )
