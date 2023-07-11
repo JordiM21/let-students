@@ -1,11 +1,14 @@
-import React from 'react'
+import React, { useState } from 'react'
 import BackHeader from './BackHeader'
 import YourProfile from './YourProfile'
 import { BsChevronRight } from 'react-icons/bs'
 import { useRouter } from 'next/router'
+import { FormControl, TextField } from '@mui/material'
 
 export default function AdminActivities({ allUsers, userMatched }) {
   const router = useRouter()
+  const [link, setLink] = useState("")
+
 
   return (
     <div className='mx-8 pt-20 max-w-lg md:mx-auto'>
@@ -17,6 +20,7 @@ export default function AdminActivities({ allUsers, userMatched }) {
           <YourProfile char={userMatched.profileImg} size={"small"} />
         </div>
       </div>
+
       <div className='my-8'>
         <h1>Asigna actividades a tus estudiantes</h1>
         {
