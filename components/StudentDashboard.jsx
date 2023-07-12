@@ -36,7 +36,7 @@ export default function StudentDashboard({ firstName, id, setAppNotif, appNotif,
             title={"Conéctate con tu tutor personal y resuelve todas tus dudas!"}
             subTitle={`Recuerda que antes de entrar en la meeting te debes poner de acuerdo con tu tutor en el horario del encuentro.`}
             animation={student}
-            cta={"Enter in the meeting"}
+            cta={"Go to the meeting"}
             btn="link"
             link={tutor.urlMeet}
             bg="green"
@@ -55,7 +55,7 @@ export default function StudentDashboard({ firstName, id, setAppNotif, appNotif,
           </div>
           <div onClick={() => setMeetingRoom(true)} className='flex bg-green-500 cursor-pointer hover:opacity-80 py-2 my-3 rounded-full w-full justify-between pl-4 pr-12 items-center'>
             <YourProfile char={tutor.profileImg} size={"small"} />
-            <p className='text-white text-xl'>Entra a la meeting</p>
+            <p className='text-white text-xl'>Enter in the meeting</p>
             <BsFillCameraVideoFill fill='white' size={36} />
           </div>
           {
@@ -71,11 +71,11 @@ export default function StudentDashboard({ firstName, id, setAppNotif, appNotif,
           <ExternalApps appNotif={appNotif} userId={id} setAppNotif={setAppNotif} role="Student" />
         </div>
       </div>
-      <div className='bg-yellow-400 mx-4 pb-4 rounded-md md:flex md:pb-0 max-w-4xl md:mx-auto'>
+      <div className='bg-yellow-400 mx-4 pb-8 rounded-md md:flex md:pb-0 max-w-5xl md:mx-auto'>
         <div className='bg-yellow-300 font-semibold text-lg md:text-2xl px-4 py-3 md:py-8 rounded-md shadow-md'>
           <span className='text-[var(--color2)] md:block text-3xl md:text-8xl'>{level == "Beginner" && progressB * 23}{level == "Intermediate" && progressI * 23}{level == "Advanced" && progressA * 23}</span> total words known on your level
         </div>
-        <div className='px-4 md:px-8'>
+        <div className='px-4 md:px-20 md:py-4'>
           <div className='my-4 space-y-2'>
             <p className='text-center text-xl md:text-2xl'>Your progress in the <span className='text-[var(--color2)] font-bold md:text-3xl text-2xl'>{level}</span> Level</p>
             {

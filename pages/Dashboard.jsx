@@ -6,6 +6,7 @@ import { useRouter } from 'next/router';
 import AdminDashboard from '@/components/AdminDashboard';
 import StudentDashboard from '@/components/StudentDashboard';
 import LoadingScreen from '@/components/LoadingScreen';
+import { AiFillInfoCircle } from 'react-icons/ai';
 
 export default function Dashboard() {
   const [id, setId] = useState("")
@@ -82,7 +83,7 @@ export default function Dashboard() {
         role == "Admin" && (
           <div className='flex justify-center'>
             <div onClick={() => router.push("/Activities")} className='bg-black px-8 py-2 cursor-pointer hover:bg-opacity-70 rounded-b-xl'>
-              <p className='text-white text-sm'>Asigna Actividades</p>
+              <p className='text-white text-sm'>Asign Activities</p>
             </div>
           </div>
         )
@@ -91,10 +92,12 @@ export default function Dashboard() {
         role == "Student" && (
           <div className='flex justify-center'>
             <div onClick={() => router.push("/Activities")} className='bg-black relative px-8 py-2 cursor-pointer hover:bg-opacity-70 rounded-b-xl'>
-              <p className='text-white text-sm'>Mis Actividades</p>
+              <p className='text-white text-sm'>My Activities</p>
               {
                 isPending && (
-                  <div className='h-4 w-4 bg-yellow-400 absolute -bottom-0 -right-1 rounded-full'></div>
+                  <div className='bg-black absolute -bottom-0 -right-1 rounded-full'>
+                    <AiFillInfoCircle className='fill-yellow-400 text-lg' />
+                  </div>
                 )
               }
             </div>

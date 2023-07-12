@@ -8,7 +8,7 @@ import { useRouter } from 'next/router'
 import React from 'react'
 import { useEffect } from 'react'
 import { useState } from 'react'
-import { AiFillCheckCircle, AiFillInfoCircle } from 'react-icons/ai'
+import { AiFillCheckCircle, AiFillInfoCircle, AiFillSetting } from 'react-icons/ai'
 import { toast } from 'react-toastify'
 
 export default function ActivitiesDetail() {
@@ -98,6 +98,17 @@ export default function ActivitiesDetail() {
     }
   };
 
+  const [openSettings, setOpenSettings] = useState({})
+
+  const toggleSettings = (activityText) => {
+    setOpenSettings((prevState) => ({
+      ...prevState,
+      [activityText]: !prevState[activityText]
+    }));
+  };
+  console.log(activities)
+
+
   return (
     <div className='bg-[var(--bluebg)] pb-20 h-full min-h-screen'>
       {
@@ -156,9 +167,23 @@ export default function ActivitiesDetail() {
         {
           activities?.map((activity) => (
             activity.status === "pending" && (
-              <div className='mb-4 hover:scale-[102%]'>
-                <div className='bg-black cursor-pointer rounded-t-xl py-2 px-4 relative'>
-                  <div className='my-2'>
+              <div className='mb-4 hover:scale-[102%] relative'>
+                <div className='bg-yellow-400 rounded-md px-2 z-10 absolute gap-1 -top-2 flex items-center -right-2'>
+                  <AiFillInfoCircle />
+                  <p>Pending</p>
+                </div>
+                <div className='bg-black cursor-pointer rounded-t-xl py-2 px-4 relative overflow-hidden'>
+                  <div onClick={() => toggleSettings(activity.text)} className='absolute top-5 right-4 hover:rotate-90'>
+                    <AiFillSetting className='fill-gray-200 text-3xl' />
+                  </div>
+                  <div className={`absolute top-0 bg-gray-400 backdrop-blur-md bg-opacity-40 pt-3 h-fit rounded-bl-lg ${openSettings[activity.text] ? "right-0" : " -right-20"}`}>
+                    <p className='bg-green-400 py-1 px-1 flex items-center gap-1'>Done
+                      <AiFillCheckCircle className='text-sm' />
+                    </p>
+                    <p className='bg-red-400 py-1 px-1'>Delete</p>
+                    <p className='p-1' onClick={() => toggleSettings(activity.text)}>Close</p>
+                  </div>
+                  <div className='my-2 pr-10'>
                     <p className='text-xl text-white'>{activity.text}</p>
                   </div>
                   <div className='flex justify-between'>
@@ -168,17 +193,13 @@ export default function ActivitiesDetail() {
                   <div className='overflow-hidden'>
                     <a href={activity.link} target='_blank' className='text-blue-700 text-xs underline cursor-pointer hover:text-orange-500'>{activity.link}</a>
                   </div>
-                  <div className='bg-yellow-400 rounded-md px-2 absolute gap-1 -top-2 flex items-center -right-2'>
-                    <AiFillInfoCircle />
-                    <p>Pending</p>
-                  </div>
                 </div>
-                <div onClick={(e) => markDone(e, activity)} className='bg-green-400 cursor-pointer hover:bg-green-700 rounded-b-xl py-2 flex justify-center items-center gap-2'>
+                {/* <div onClick={(e) => markDone(e, activity)} className='bg-green-400 cursor-pointer hover:bg-green-700 rounded-b-xl py-2 flex justify-center items-center gap-2'>
                   <p className='text-center'>
                     Mark as Done
                   </p>
                   <AiFillCheckCircle className='text-xl' />
-                </div>
+                </div> */}
               </div>
             )
           ))
@@ -186,10 +207,22 @@ export default function ActivitiesDetail() {
         {
           activities?.map((activity) => (
             activity.status === "done" && (
-              <div className='mb-4 hover:scale-[100%] opacity-75 '>
-                <div className='bg-black cursor-pointer rounded-t-xl py-2 px-4 relative'>
+              <div className='mb-4 hover:scale-[100%] opacity-75 relative'>
+                <div className='bg-green-400 rounded-md z-10 px-2 absolute -top-2 flex gap-1 items-center -right-2'>
+                  <AiFillCheckCircle />
+                  <p>Done</p>
+                </div>
+                <div className='bg-black cursor-pointer rounded-t-xl py-2 px-4 relative overflow-hidden'>
+                  <div onClick={() => toggleSettings(activity.text)} className='absolute top-5 right-4 hover:rotate-90'>
+                    <AiFillSetting className='fill-gray-200 text-3xl' />
+                  </div>
+                  <div className={`absolute top-0 bg-gray-400 backdrop-blur-md bg-opacity-40 py-3 h-full ${openSettings[activity.text] ? "right-0" : " -right-20"}`}>
+                    <p className='bg-yellow-400 py-1 px-1'>Pending</p>
+                    <p className='bg-red-400 py-1 px-1'>Delete</p>
+                    <p onClick={() => toggleSettings(activity.text)}>Close</p>
+                  </div>
                   <div className='my-2'>
-                    <p className='text-xl text-white'>{activity.text}</p>
+                    <p className='text-xl text-white pr-10'>{activity.text}</p>
                   </div>
                   <div className='flex justify-between'>
                     <p className='text-gray-500 text-sm'>Tema: <span className='text-white'>{activity.topic}</span></p>
@@ -198,17 +231,13 @@ export default function ActivitiesDetail() {
                   <div className='overflow-hidden'>
                     <a href={activity.link} target='_blank' className='text-blue-700 text-xs underline cursor-pointer hover:text-orange-500'>{activity.link}</a>
                   </div>
-                  <div className='bg-green-400 rounded-md px-2 absolute -top-2 flex gap-1 items-center -right-2'>
-                    <AiFillCheckCircle />
-                    <p>Done</p>
-                  </div>
                 </div>
-                <div onClick={(e) => markPending(e, activity)} className='bg-yellow-400 cursor-pointer hover:bg-yellow-600 rounded-b-xl py-2 flex justify-center items-center gap-2'>
+                {/* <div onClick={(e) => markPending(e, activity)} className='bg-yellow-400 cursor-pointer hover:bg-yellow-600 rounded-b-xl py-2 flex justify-center items-center gap-2'>
                   <p className='text-center'>
                     Mark as Pending
                   </p>
                   <AiFillCheckCircle className='text-xl' />
-                </div>
+                </div> */}
               </div>
             )
           ))
