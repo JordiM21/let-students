@@ -8,7 +8,8 @@ import { useRouter } from 'next/router'
 import React from 'react'
 import { useEffect } from 'react'
 import { useState } from 'react'
-import { AiFillCheckCircle, AiFillInfoCircle, AiFillSetting } from 'react-icons/ai'
+import { AiFillCheckCircle, AiFillCloseCircle, AiFillInfoCircle, AiFillSetting } from 'react-icons/ai'
+import { BsFillTrashFill } from 'react-icons/bs'
 import { toast } from 'react-toastify'
 
 export default function ActivitiesDetail() {
@@ -106,8 +107,19 @@ export default function ActivitiesDetail() {
       [activityText]: !prevState[activityText]
     }));
   };
-  console.log(activities)
 
+  const deleteActivity = async (e, activity) => {
+    e.preventDefault();
+    try {
+      const userRef = doc(db, "users", id);
+      const updatedActivities = userMatched.activities.filter(act => act !== activity);
+      await updateDoc(userRef, { activities: updatedActivities });
+      toast.success("¡Actividad eliminada exitosamente!");
+      setSubmit(!submit);
+    } catch (error) {
+      console.error('Error al eliminar la actividad:', error);
+    }
+  };
 
   return (
     <div className='bg-[var(--bluebg)] pb-20 h-full min-h-screen'>
@@ -172,16 +184,20 @@ export default function ActivitiesDetail() {
                   <AiFillInfoCircle />
                   <p>Pending</p>
                 </div>
-                <div className='bg-black cursor-pointer rounded-t-xl py-2 px-4 relative overflow-hidden'>
+                <div className='bg-black cursor-pointer rounded-xl py-2 px-4 relative overflow-hidden'>
                   <div onClick={() => toggleSettings(activity.text)} className='absolute top-5 right-4 hover:rotate-90'>
                     <AiFillSetting className='fill-gray-200 text-3xl' />
                   </div>
-                  <div className={`absolute top-0 bg-gray-400 backdrop-blur-md bg-opacity-40 pt-3 h-fit rounded-bl-lg ${openSettings[activity.text] ? "right-0" : " -right-20"}`}>
-                    <p className='bg-green-400 py-1 px-1 flex items-center gap-1'>Done
-                      <AiFillCheckCircle className='text-sm' />
-                    </p>
-                    <p className='bg-red-400 py-1 px-1'>Delete</p>
-                    <p className='p-1' onClick={() => toggleSettings(activity.text)}>Close</p>
+                  <div className={`absolute top-0 bg-gray-400 backdrop-blur-md bg-opacity-40 pt-3 h-fit rounded-bl-lg ${openSettings[activity.text] ? "-right-1" : " -right-20"}`}>
+                    <div className='pt-[3px] px-4 flex items-center hover:bg-gray-200 gap-1' onClick={() => toggleSettings(activity.text)}>
+                      <AiFillCloseCircle className='text-2xl' />
+                    </div>
+                    <div onClick={(e) => markDone(e, activity)} className='bg-green-400 hover:bg-green-600 px-4 py-1 flex items-center gap-1'>
+                      <AiFillCheckCircle className='text-2xl' />
+                    </div>
+                    <div onClick={(e) => deleteActivity(e, activity)} className='bg-red-400 hover:bg-red-600 p-1 justify-center rounded-bl-lg flex items-center'>
+                      <BsFillTrashFill className='text-xl' />
+                    </div>
                   </div>
                   <div className='my-2 pr-10'>
                     <p className='text-xl text-white'>{activity.text}</p>
@@ -194,12 +210,6 @@ export default function ActivitiesDetail() {
                     <a href={activity.link} target='_blank' className='text-blue-700 text-xs underline cursor-pointer hover:text-orange-500'>{activity.link}</a>
                   </div>
                 </div>
-                {/* <div onClick={(e) => markDone(e, activity)} className='bg-green-400 cursor-pointer hover:bg-green-700 rounded-b-xl py-2 flex justify-center items-center gap-2'>
-                  <p className='text-center'>
-                    Mark as Done
-                  </p>
-                  <AiFillCheckCircle className='text-xl' />
-                </div> */}
               </div>
             )
           ))
@@ -208,18 +218,24 @@ export default function ActivitiesDetail() {
           activities?.map((activity) => (
             activity.status === "done" && (
               <div className='mb-4 hover:scale-[100%] opacity-75 relative'>
-                <div className='bg-green-400 rounded-md z-10 px-2 absolute -top-2 flex gap-1 items-center -right-2'>
+                <div className='bg-green-400 rounded-md z-10 px-5 absolute -top-2 flex gap-1 items-center -right-2'>
                   <AiFillCheckCircle />
                   <p>Done</p>
                 </div>
-                <div className='bg-black cursor-pointer rounded-t-xl py-2 px-4 relative overflow-hidden'>
+                <div className='bg-black cursor-pointer rounded-xl py-4 px-4 relative overflow-hidden'>
                   <div onClick={() => toggleSettings(activity.text)} className='absolute top-5 right-4 hover:rotate-90'>
                     <AiFillSetting className='fill-gray-200 text-3xl' />
                   </div>
-                  <div className={`absolute top-0 bg-gray-400 backdrop-blur-md bg-opacity-40 py-3 h-full ${openSettings[activity.text] ? "right-0" : " -right-20"}`}>
-                    <p className='bg-yellow-400 py-1 px-1'>Pending</p>
-                    <p className='bg-red-400 py-1 px-1'>Delete</p>
-                    <p onClick={() => toggleSettings(activity.text)}>Close</p>
+                  <div className={`absolute top-0 bg-gray-400 backdrop-blur-md bg-opacity-40 pt-3 h-fit rounded-bl-lg ${openSettings[activity.text] ? "-right-1" : " -right-20"}`}>
+                    <div className='py-2 px-4 flex items-center hover:bg-gray-200 gap-1' onClick={() => toggleSettings(activity.text)}>
+                      <AiFillCloseCircle className='text-2xl' />
+                    </div>
+                    <div onClick={(e) => markPending(e, activity)} className='bg-yellow-400 hover:bg-yellow-600 px-4 py-1 flex items-center gap-1'>
+                      <AiFillInfoCircle className='text-2xl' />
+                    </div>
+                    <div onClick={(e) => deleteActivity(e, activity)} className='bg-red-400 hover:bg-red-600 py-1 px-4 rounded-bl-lg flex items-center'>
+                      <BsFillTrashFill className='text-2xl' />
+                    </div>
                   </div>
                   <div className='my-2'>
                     <p className='text-xl text-white pr-10'>{activity.text}</p>
@@ -232,12 +248,6 @@ export default function ActivitiesDetail() {
                     <a href={activity.link} target='_blank' className='text-blue-700 text-xs underline cursor-pointer hover:text-orange-500'>{activity.link}</a>
                   </div>
                 </div>
-                {/* <div onClick={(e) => markPending(e, activity)} className='bg-yellow-400 cursor-pointer hover:bg-yellow-600 rounded-b-xl py-2 flex justify-center items-center gap-2'>
-                  <p className='text-center'>
-                    Mark as Pending
-                  </p>
-                  <AiFillCheckCircle className='text-xl' />
-                </div> */}
               </div>
             )
           ))
