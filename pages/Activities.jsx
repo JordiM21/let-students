@@ -27,8 +27,9 @@ export default function Activities() {
         const userMatched = newData.find(item => item.uid == authUid);
         const tutorMatched = newData.find(item => item.uid == userMatched.asignedTutor)
         const allStudents = newData.filter(item => item.role == "Student")
+        const studentsAsigned = allStudents.filter(item => item.asignedTutor == authUid)
         setTutor(tutorMatched)
-        setAllUsers(allStudents)
+        setAllUsers(studentsAsigned)
         setUserMatched(userMatched)
       })
   }

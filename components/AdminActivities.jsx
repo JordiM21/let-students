@@ -12,13 +12,6 @@ export default function AdminActivities({ allUsers, userMatched }) {
   return (
     <div className='mx-8 pt-20 max-w-lg md:mx-auto'>
       <BackHeader largeTitle={"Create Activities"} parentTitle={"Back"} />
-      {/* <div className='flex justify-between items-center px-6 py-2 rounded-xl bg-black'>
-        <p className='text-white'>Tutor</p>
-        <div className='flex items-center gap-4'>
-          <p className='text-gray-400'>{userMatched.firstName} {userMatched.lastName}</p>
-          <YourProfile char={userMatched.profileImg} size={"small"} />
-        </div>
-      </div> */}
       <div className='mb-4'>
         <h1 className='text-3xl'>Tus estudiantes</h1>
         {

@@ -17,6 +17,11 @@ export default function StudentActivities({ tutor, userMatched }) {
       <div className='my-8'>
         <h1>Your Activities</h1>
         {
+          userMatched.activities.length < 1 && (
+            <p className='text-center text-gray-500 text-sm'>Aún no tienes actividades</p>
+          )
+        }
+        {
           userMatched.activities.map((activity) => (
             activity.status === "pending" && (
               <div className='bg-black mb-4 hover:scale-105 cursor-pointer rounded-xl py-2 px-4 relative'>
