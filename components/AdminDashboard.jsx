@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import AddButton from './AddButton'
 import ListOfUsers from './ListOfUsers'
 import FormsCheck from './FormsCheck'
@@ -15,16 +15,14 @@ import { Box, Fade, Modal, TextField, useMediaQuery } from '@mui/material'
 import { doc, updateDoc } from 'firebase/firestore'
 import { db } from '@/config/firebase'
 import { BsFillCameraVideoFill, BsQuestionCircle } from 'react-icons/bs'
-import Accordion from '@mui/material/Accordion';
-import AccordionSummary from '@mui/material/AccordionSummary';
-import AccordionDetails from '@mui/material/AccordionDetails';
-import Typography from '@mui/material/Typography';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import CtaAnimationPage from './CtaAnimationPage'
 import student from '@/public/animations/student.json'
 import Backdrop from '@mui/material/Backdrop';
 import ExternalApps from './ExternalApps'
 import YourProfile from './YourProfile'
+import ReactPlayer from 'react-player'
+import { ReplayOutlined } from '@mui/icons-material'
+import { MdReplay } from 'react-icons/md'
 
 export default function AdminDashboard({ allUsers, profileImg, firstName, role, email, id, url }) {
 
@@ -69,7 +67,19 @@ export default function AdminDashboard({ allUsers, profileImg, firstName, role, 
 
   const [question, setQuestion] = useState(false)
   const [meetingRoom, setMeetingRoom] = useState(false)
+  const [isFinished, setIsFinished] = useState(false)
 
+  const [key, setKey] = useState(0);
+
+  const handleReset = () => {
+    setKey(prevKey => prevKey + 1);
+    setIsFinished(false)
+  };
+
+  const showAlert = () => {
+    //se sobrepone un elemento para volver a escuchar
+    setIsFinished(true)
+  }
 
   return (
     <div>
@@ -90,6 +100,34 @@ export default function AdminDashboard({ allUsers, profileImg, firstName, role, 
         <h1 className='text-center text-4xl mx-4 py-2 font-bold text-white'>Welcome {firstName}!</h1>
         <YourProfile char={profileImg} size={"small"} />
       </div>
+
+      {/* FUNCTION OF RANDOM PHRASE ON ENGLISH TO PRACTICE, SHOULD BE AN ARRAY ON THE DB THAT SHOWS RANDOMLY OBJECTS WITH THIS URL WITH THE MINUTES, LEVEL, ETC. */}
+      {/* Should be on the immersive page with a switch between videos / practice to pass this way, also we should track the progress on this for each student */}
+
+      {/* <div className='relative'>
+        <div className={`bg-green-400 flex justify-center items-center h-[250px] w-full absolute ${isFinished ? "opacity-100" : "opacity-0"}`}>
+          <MdReplay onClick={handleReset} className='text-8xl fill-white' />
+        </div>
+        <ReactPlayer
+          key={key}
+          width={"100%"}
+          height={"250px"}
+          className="mx-auto md:my-4 bg-green-400 rounded-md"
+          url="https://www.youtube.com/watch?v=2UXpZPqjOIM&start=60&end=70"
+          muted={true} //MODIFY TO FALSE
+          autoplay={true}
+          loop={false}
+          playing={true}
+          onEnded={showAlert}
+          light={false}
+          config={{
+            youtube: {
+              playerVars: { showinfo: -1 }
+            }
+          }}
+        />
+      </div> */}
+
       <div className='md:gap-8 my-8 mx-4 md:mx-16'>
         <div className='md:flex justify-around w-full'>
           <div className='relative space-y-2 my-4 md:w-[400px]'>
@@ -162,10 +200,11 @@ export default function AdminDashboard({ allUsers, profileImg, firstName, role, 
             <div className='p-4'>
               <p className='text-white'>ADMIN ACCESS TO THE WRITE & IMPROVE PAGE</p>
               <p className='text-gray-600'>You already have access as an administrator to the write & improve page to see the students results and tasks finished.</p>
-
-              <button className='cursor-pointer w-full rounded-full border-4 border-white my-2 py-3 text-white hover:bg-gray-800'>
-                <a href='https://writeandimprove.com/' target='_blank'>Go to the page</a>
-              </button>
+              <a href='https://writeandimprove.com/' target='_blank'>
+                <button className='cursor-pointer w-full rounded-full border-4 border-white my-2 py-3 text-white hover:bg-gray-800'>
+                  Go to the page
+                </button>
+              </a>
             </div>
           </div>
         </div>

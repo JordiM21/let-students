@@ -58,18 +58,33 @@ export default function Dashboard() {
       })
   }
 
+  const [quotes, setQuotes] = useState([]);
+  const [randomQuote, setRandomQuote] = useState(null);
+
+  const fetchQuotes = async () => {
+    await getDocs(collection(db, "quotes"))
+      .then((querySnapshot) => {
+        const quotesData = querySnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+        setQuotes(quotesData);
+      })
+  }
   useEffect(() => {
     fetchPost();
+    fetchQuotes();
   }, [])
 
+  const getRandomQuote = () => {
+    const randomIndex = Math.floor(Math.random() * quotes.length);
+    return quotes[randomIndex];
+  }
+
+  // Llamada a la función para obtener una cita aleatoria.
   useEffect(() => {
-    const hasPendingActivity = activities?.some(activity => activity.status === "pending");
-    if (hasPendingActivity) {
-      setIsPending(true)
-    } else {
-      setIsPending(false)
+    if (quotes.length > 0) {
+      const quote = getRandomQuote();
+      setRandomQuote(quote);
     }
-  }, [activities, router.pathname])
+  }, [quotes]);
 
   return (
     <div className='bg-[var(--bluebg)] pb-16'>
@@ -124,6 +139,7 @@ export default function Dashboard() {
         role == "Student" &&
         (
           <StudentDashboard
+            quote={randomQuote}
             profileImg={profileImg}
             schedule={schedule}
             firstName={firstName}

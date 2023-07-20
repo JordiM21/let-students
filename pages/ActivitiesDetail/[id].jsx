@@ -206,7 +206,7 @@ export default function ActivitiesDetail() {
                     <p className='text-gray-500 text-sm'>Tema: <span className='text-white'>{activity.topic}</span></p>
                     <p className='text-gray-500 text-sm'>Fecha Límite: <span className='text-white'>{activity.limitDate}</span></p>
                   </div>
-                  <div className='overflow-hidden'>
+                  <div className='overflow-hidden block'>
                     <a href={activity.link} target='_blank' className='text-blue-700 text-xs underline cursor-pointer hover:text-orange-500'>{activity.link}</a>
                   </div>
                 </div>

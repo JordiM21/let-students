@@ -10,7 +10,7 @@ import copy from 'clipboard-copy';
 import { toast } from 'react-toastify'
 import { FcCalendar } from 'react-icons/fc'
 import Schedule from './Schedule'
-import { BsFillCameraVideoFill, BsQuestionCircle } from 'react-icons/bs'
+import { BsFillCameraVideoFill, BsQuestionCircle, BsQuote } from 'react-icons/bs'
 import YourProfile from './YourProfile'
 import student from '@/public/animations/student.json'
 import CtaAnimationPage from './CtaAnimationPage'
@@ -21,7 +21,7 @@ const notifPage = ({ }) => {
 }
 
 
-export default function StudentDashboard({ firstName, id, setAppNotif, appNotif, level, profileImg, tutor, schedule, progressB, progressI, progressA }) {
+export default function StudentDashboard({ firstName, quote, id, setAppNotif, appNotif, level, profileImg, tutor, schedule, progressB, progressI, progressA }) {
 
   const router = useRouter()
 
@@ -114,13 +114,20 @@ export default function StudentDashboard({ firstName, id, setAppNotif, appNotif,
           </div>
         </div>
       </div>
-      <div className='bg-gray-900 mx-4 pb-4 my-6 rounded-md md:w-1/2 max-w-2xl md:mx-auto'>
-        <div className='flex justify-center gap-4 items-center rounded-t-md py-2 bg-[var(--color2)]'>
-          <p className='text-xl'>Student's Schedule</p>
-          <FcCalendar size={32} />
+      <div className='md:flex max-w-5xl mx-auto md:justify-center'>
+        <div className='bg-gray-900 mx-4 pb-4 my-6 rounded-md md:w-1/2 max-w-2xl'>
+          <div className='flex justify-center gap-4 items-center rounded-t-md py-2 bg-[var(--color2)]'>
+            <p className='text-xl'>Student's Schedule</p>
+            <FcCalendar size={32} />
+          </div>
+          <div className='px-4'>
+            <Schedule schedule={schedule} />
+          </div>
         </div>
-        <div className='px-4'>
-          <Schedule schedule={schedule} />
+        <div className='md:w-1/2 flex justify-center items-center'>
+          <BsQuote className='text-5xl fill-[var(--color2)]' />
+          <p className='text-center max-w-sm'>{quote ? quote.text : "Cargando cita..."}</p>
+          <BsQuote className='rotate-180 text-5xl fill-[var(--color2)]' />
         </div>
       </div>
       <div className='mx-4 py-8 md:flex gap-8 items-center max-md:space-y-6 justify-center'>
@@ -140,62 +147,13 @@ export default function StudentDashboard({ firstName, id, setAppNotif, appNotif,
           <div className='p-4'>
             <p className='text-white'>ADMIN ACCESS TO THE WRITE & IMPROVE PAGE</p>
             <p className='text-gray-600'>You already have access as an administrator to the write & improve page to see the students results and tasks finished.</p>
-            <button className='cursor-pointer w-full rounded-full border-4 border-white my-2 py-3 text-white hover:bg-gray-800'>
-              <a href='https://writeandimprove.com/' target='_blank'>Go to the page</a>
-            </button>
+            <a href='https://writeandimprove.com/' target='_blank'>
+              <button className='cursor-pointer w-full rounded-full border-4 border-white my-2 py-3 text-white hover:bg-gray-800'>
+                Go to the page
+              </button>
+            </a>
           </div>
         </div>
-        {/* <div className='rounded-lg bg-black w-full'>
-          <Image src={image1} className='rounded-t-lg h-[100px] md:h-[320px] object-cover' />
-          <div className='p-4'>
-            <p className='text-white text-xs md:text-sm font-bold opacity-30'>New Learning Tool</p>
-            <h2 className='text-white font-bold text-lg'>WRITE & IMPROVE BY CAMBRIDGE</h2>
-            <p className='text-white opacity-60 text-sm md:text-md mb-4' >herramienta desarrollada por la Universidad de Cambridge que ayuda a cada estudiante a mejorar mientras escribe. Desde el inicio eres asignado a un grupo de estudio en esta plataforma acorde a tu nivel, en este grupo podrás practicar tanto como quieras</p>
-            {
-              level == "Beginner" && (
-                <div className='flex justify-between items-center flex-col sm:flex-row gap-2 mb-4'>
-                  <div onClick={handleCopyBeginner} className='flex bg-white items-center px-6 py-2 rounded-md cursor-pointer hover:bg-opacity-80'>
-                    <p>{beginnerCode} </p>
-                    <AiOutlineCopy />
-                  </div>
-                  <div className='flex items-center gap-2 hover:gap-4 transition-all 1s ease-in cursor-pointer hover:opacity-90 bg-[var(--color1)] text-white font-bold px-6 rounded-md py-2'>
-                    <a href='https://writeandimprove.com/workbooks#/memberships/e405a0c1-8025-4fbb-ad94-bc0eefada543/workbooks/647f2ecc-604b-4a24-bbf9-4851f980cb85' target='_blank'>Go to the page</a>
-                    <MdArrowForwardIos />
-                  </div>
-                </div>
-              )
-            }
-            {
-              level == "Intermediate" && (
-                <div className='flex justify-between items-center mb-4'>
-                  <div onClick={handleCopyIntermediate} className='flex bg-white items-center px-6 py-2 rounded-md cursor-pointer hover:bg-opacity-80'>
-                    <p>{intermediateCode} </p>
-                    <AiOutlineCopy />
-                  </div>
-                  <div className='flex items-center gap-2 hover:gap-4 transition-all 1s ease-in cursor-pointer hover:opacity-90 text-white border-4 border-white font-bold px-6 rounded-full py-2'>
-                    <a href='https://writeandimprove.com/workbooks#/memberships/e405a0c1-8025-4fbb-ad94-bc0eefada543/workbooks/647f2ef1-cb66-4f4d-87ae-a842fbc28e33' target='_blank'>Go to page</a>
-                    <MdArrowForwardIos fill='white' />
-                  </div>
-                </div>
-              )
-            }
-            {
-              level == "Advanced" && (
-                <div className='flex justify-between items-center mb-4'>
-                  <div onClick={handleCopyAdvanced} className='flex bg-white items-center px-6 py-2 rounded-md cursor-pointer hover:bg-opacity-80'>
-                    <p>{advancedCode} </p>
-                    <AiOutlineCopy />
-                  </div>
-                  <div className='flex items-center gap-2 hover:gap-4 transition-all 1s ease-in cursor-pointer hover:opacity-90 bg-[var(--color1)] text-white font-bold px-6 rounded-md py-2'>
-                    <a href='https://writeandimprove.com/workbooks#/memberships/e405a0c1-8025-4fbb-ad94-bc0eefada543/workbooks/647f2eff-931c-4d46-84f9-2a866f69831d' target='_blank'>Go to the page</a>
-                    <MdArrowForwardIos />
-                  </div>
-                </div>
-              )
-            }
-            <p className='text-white text-center opacity-90'>Recuerda Registrarte con el mismo correo que tienes registrado aca</p>
-          </div>
-        </div> */}
       </div>
     </div>
   )
