@@ -171,140 +171,116 @@ export default function UnitTest({ level, unit }) {
             }
           </RadioGroup>
         </div>
-        {
-          data.length > 2 && (
-            <div className='my-8'>
-              <FormLabel id="demo-controlled-radio-buttons-group">
-                <span className='bg-sky-600 text-white font-bold px-2 py-1 rounded-full mr-2'>3</span>
-                {data[2]?.question}</FormLabel>
-              <RadioGroup
-                required
-                aria-labelledby="demo-controlled-radio-buttons-group"
-                name="controlled-radio-buttons-group"
-                value={res3}
-                onChange={(e) => setRes3(e.target.value)}
-              >
-                {
-                  data[2]?.options.map((option) => (
-                    <FormControlLabel value={option} control={<Radio />} label={option} />
-                  ))
-                }
-              </RadioGroup>
-            </div>
-          )
-        }
-        {
-          data.length > 3 && (
-            <div className='my-8'>
-              <FormLabel id="demo-controlled-radio-buttons-group">
-                <span className='bg-sky-600 text-white font-bold px-2 py-1 rounded-full mr-2'>4</span>
-                {data[3]?.question}</FormLabel>
-              <RadioGroup
-                required
-                aria-labelledby="demo-controlled-radio-buttons-group"
-                name="controlled-radio-buttons-group"
-                value={res4}
-                onChange={(e) => setRes4(e.target.value)}
-              >
-                {
-                  data[3]?.options.map((option) => (
-                    <FormControlLabel value={option} control={<Radio />} label={option} />
-                  ))
-                }
-              </RadioGroup>
-            </div>
-          )
-        }
-        {
-          data.length > 4 && (
-            <div className='my-8'>
-              <FormLabel id="demo-controlled-radio-buttons-group">
-                <span className='bg-sky-600 text-white font-bold px-2 py-1 rounded-full mr-2'>5</span>
-                {data[4]?.question}</FormLabel>
-              <RadioGroup
-                required
-                aria-labelledby="demo-controlled-radio-buttons-group"
-                name="controlled-radio-buttons-group"
-                value={res5}
-                onChange={(e) => setRes5(e.target.value)}
-              >
-                {
-                  data[4]?.options.map((option) => (
-                    <FormControlLabel value={option} control={<Radio />} label={option} />
-                  ))
-                }
-              </RadioGroup>
-            </div>
-          )
-        }
-        {
-          data.length > 5 && (
-            <div className='my-8'>
-              <FormLabel id="demo-controlled-radio-buttons-group">
-                <span className='bg-sky-600 text-white font-bold px-2 py-1 rounded-full mr-2'>6</span>
+        <div className='my-8'>
+          <FormLabel id="demo-controlled-radio-buttons-group">
+            <span className='bg-sky-600 text-white font-bold px-2 py-1 rounded-full mr-2'>3</span>
+            {data[2]?.question}</FormLabel>
+          <RadioGroup
+            required
+            aria-labelledby="demo-controlled-radio-buttons-group"
+            name="controlled-radio-buttons-group"
+            value={res3}
+            onChange={(e) => setRes3(e.target.value)}
+          >
+            {
+              data[2]?.options.map((option) => (
+                <FormControlLabel value={option} control={<Radio />} label={option} />
+              ))
+            }
+          </RadioGroup>
+        </div>
+        <div className='my-8'>
+          <FormLabel id="demo-controlled-radio-buttons-group">
+            <span className='bg-sky-600 text-white font-bold px-2 py-1 rounded-full mr-2'>4</span>
+            {data[3]?.question}</FormLabel>
+          <RadioGroup
+            required
+            aria-labelledby="demo-controlled-radio-buttons-group"
+            name="controlled-radio-buttons-group"
+            value={res4}
+            onChange={(e) => setRes4(e.target.value)}
+          >
+            {
+              data[3]?.options.map((option) => (
+                <FormControlLabel value={option} control={<Radio />} label={option} />
+              ))
+            }
+          </RadioGroup>
+        </div>
+        <div className='my-8'>
+          <FormLabel id="demo-controlled-radio-buttons-group">
+            <span className='bg-sky-600 text-white font-bold px-2 py-1 rounded-full mr-2'>5</span>
+            {data[4]?.question}</FormLabel>
+          <RadioGroup
+            required
+            aria-labelledby="demo-controlled-radio-buttons-group"
+            name="controlled-radio-buttons-group"
+            value={res5}
+            onChange={(e) => setRes5(e.target.value)}
+          >
+            {
+              data[4]?.options.map((option) => (
+                <FormControlLabel value={option} control={<Radio />} label={option} />
+              ))
+            }
+          </RadioGroup>
+        </div>
+        <div className='my-8'>
+          <FormLabel id="demo-controlled-radio-buttons-group">
+            <span className='bg-sky-600 text-white font-bold px-2 py-1 rounded-full mr-2'>6</span>
 
-                {data[5]?.question}</FormLabel>
-              <RadioGroup
-                required
-                aria-labelledby="demo-controlled-radio-buttons-group"
-                name="controlled-radio-buttons-group"
-                value={res6}
-                onChange={(e) => setRes6(e.target.value)}
-              >
-                {
-                  data[5]?.options.map((option) => (
-                    <FormControlLabel value={option} control={<Radio />} label={option} />
-                  ))
-                }
-              </RadioGroup>
-            </div>
-          )
-        }
-        {
-          data.length > 6 && (
-            <div className='my-8'>
-              <FormLabel id="demo-controlled-radio-buttons-group">
-                <span className='bg-sky-600 text-white font-bold px-2 py-1 rounded-full mr-2'>7</span>
+            {data[5]?.question}</FormLabel>
+          <RadioGroup
+            required
+            aria-labelledby="demo-controlled-radio-buttons-group"
+            name="controlled-radio-buttons-group"
+            value={res6}
+            onChange={(e) => setRes6(e.target.value)}
+          >
+            {
+              data[5]?.options.map((option) => (
+                <FormControlLabel value={option} control={<Radio />} label={option} />
+              ))
+            }
+          </RadioGroup>
+        </div>
+        <div className='my-8'>
+          <FormLabel id="demo-controlled-radio-buttons-group">
+            <span className='bg-sky-600 text-white font-bold px-2 py-1 rounded-full mr-2'>7</span>
 
-                {data[6]?.question}</FormLabel>
-              <RadioGroup
-                required
-                aria-labelledby="demo-controlled-radio-buttons-group"
-                name="controlled-radio-buttons-group"
-                value={res7}
-                onChange={(e) => setRes7(e.target.value)}
-              >
-                {
-                  data[6]?.options.map((option) => (
-                    <FormControlLabel value={option} control={<Radio />} label={option} />
-                  ))
-                }
-              </RadioGroup>
-            </div>
-          )
-        }
-        {
-          data.length > 7 && (
-            <div className='mt-8'>
-              <FormLabel id="demo-controlled-radio-buttons-group">
-                <span className='bg-sky-600 text-white font-bold px-2 py-1 rounded-full mr-2'>8</span>
-                {data[7]?.question}</FormLabel>
-              <RadioGroup
-                required
-                aria-labelledby="demo-controlled-radio-buttons-group"
-                name="controlled-radio-buttons-group"
-                value={res8}
-                onChange={(e) => setRes8(e.target.value)}
-              >
-                {
-                  data[7]?.options.map((option) => (
-                    <FormControlLabel value={option} control={<Radio />} label={option} />
-                  ))
-                }
-              </RadioGroup>
-            </div>
-          )
-        }
+            {data[6]?.question}</FormLabel>
+          <RadioGroup
+            required
+            aria-labelledby="demo-controlled-radio-buttons-group"
+            name="controlled-radio-buttons-group"
+            value={res7}
+            onChange={(e) => setRes7(e.target.value)}
+          >
+            {
+              data[6]?.options.map((option) => (
+                <FormControlLabel value={option} control={<Radio />} label={option} />
+              ))
+            }
+          </RadioGroup>
+        </div>
+        <div className='mt-8'>
+          <FormLabel id="demo-controlled-radio-buttons-group">
+            <span className='bg-sky-600 text-white font-bold px-2 py-1 rounded-full mr-2'>8</span>
+            {data[7]?.question}</FormLabel>
+          <RadioGroup
+            required
+            aria-labelledby="demo-controlled-radio-buttons-group"
+            name="controlled-radio-buttons-group"
+            value={res8}
+            onChange={(e) => setRes8(e.target.value)}
+          >
+            {
+              data[7]?.options.map((option) => (
+                <FormControlLabel value={option} control={<Radio />} label={option} />
+              ))
+            }
+          </RadioGroup>
+        </div>
         <div className='flex w-full pb-10 justify-center'>
           {
             progress >= unit && (

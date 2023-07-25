@@ -46,7 +46,7 @@ export default function index() {
           .map((doc) => ({ ...doc.data(), id: doc.id }));
         const userMatched = newData.find(item => item.uid == authUid);
         setLevel(userMatched.level);
-        setProgress(userMatched.progressIntermediate);
+        setProgress(userMatched.progressAdvanced);
         setRole(userMatched.role)
       })
   }
@@ -67,8 +67,8 @@ export default function index() {
       <BackHeader largeTitle="Advanced" parentTitle="Levels" />
       <div className='md:w-2/5 max-md:w-10/12 mx-8 my-4 md:fixed bg-[var(--bluebg)]'>
         <Image src={image1} className='w-full h-48 md:h-80 object-cover rounded-md' />
-        <h3 className='text-2xl font-bold text-white'>Curso intermedio de inglés para los que dominan los conceptos básicos del lenguaje.</h3>
-        <p>El curso intermedio es para los que dominan los conceptos básicos del lenguaje. Al finalizar este curso, el estudiante será capaz de entender y formar oraciones más complejas y comunicarse en inglés con mayor confianza.</p>
+        <h3 className='text-2xl font-bold text-white'>Curso Avanzado de inglés para los que ya dominan la mayoría de conceptos de la lengua inglesa.</h3>
+        <p>El curso avanzado es para los que dominan ya la lengua y pueden hablar y tener conversaciones fluidas, en este modulo perfeccionaremos esas frases y oraciones. Al finalizar este curso, el estudiante será capaz de formular oraciones mucho más complejas y comunicarse en inglés con mayor confianza.</p>
       </div>
       <div className='md:ml-[46%] max-md:w-10/12 mx-auto md:w-1/2 space-y-4'>
         <div className='space-y-2'>

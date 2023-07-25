@@ -31,8 +31,14 @@ export function CustomTitle({ title, titleSpanish }) {
     <div className='my-4'>
       <h1 className='font-bold text-4xl text-blue-700'>{title}</h1>
       <p className='text-sm opacity-60 font-semibold'>({titleSpanish})</p>
-
     </div>
   )
 }
 
+export function CustomSubTitle({ title }) {
+  return (
+    <div className='my-4'>
+      <h1 className='font-bold text-2xl text-blue-700'>{title}</h1>
+    </div>
+  )
+}
