@@ -1,6 +1,7 @@
 import BackHeader from '@/components/BackHeader';
 import LoadingScreen from '@/components/LoadingScreen';
 import RelatedVideos from '@/components/RelatedVideos';
+import withUserData from '@/components/WithUserData';
 import { db } from '@/config/firebase';
 import { useAuth } from '@/context/AuthContext';
 import { collection, doc, getDocs, updateDoc } from 'firebase/firestore';
@@ -10,26 +11,17 @@ import { MdArrowBackIosNew, MdFavoriteBorder } from 'react-icons/md';
 import ReactPlayer from 'react-player';
 import { toast } from 'react-toastify';
 
-export default function VideoDetails() {
+const VideoDetails = ({ userData }) => {
+  if (!userData) {
+    return <LoadingScreen />;
+  }
 
   const router = useRouter()
   const id = router.query.id
   const [data, setData] = useState({})
   const [related, setRelated] = useState([])
-  const [userMatched, setUserMatched] = useState({})
+  const [userMatched, setUserMatched] = useState(userData)
   const { user } = useAuth();
-  const [authUid, setAuthUid] = useState(user.uid)
-  const [isLiked, setIsLiked] = useState("")
-
-  const fetchUser = async () => {
-    await getDocs(collection(db, "users"))
-      .then((querySnapshot) => {
-        const newData = querySnapshot.docs
-          .map((doc) => ({ ...doc.data(), id: doc.id }));
-        const userFound = newData.find(item => item.uid == authUid);
-        setUserMatched(userFound)
-      })
-  }
 
   const fetchPost = async () => {
     await getDocs(collection(db, "Immersive"))
@@ -64,7 +56,6 @@ export default function VideoDetails() {
 
 
   useEffect(() => {
-    fetchUser();
     fetchPost();
   }, [])
 
@@ -123,3 +114,5 @@ export default function VideoDetails() {
     </div>
   )
 }
+
+export default withUserData(VideoDetails)

@@ -10,46 +10,24 @@ import React, { useEffect, useState } from 'react'
 import { AiFillCloseCircle } from 'react-icons/ai';
 import { BsQuestionCircle } from 'react-icons/bs';
 import ReactPlayer from 'react-player';
-
-export default function Immersive() {
-
-  const [data, setData] = useState([])
-  const [currentLevel, setCurrentLevel] = useState("all")
-  const { user } = useAuth();
-  const [authUid, setAuthUid] = useState(user.uid)
-  const [role, setRole] = useState("")
+import withUserData from '@/components/WithUserData';
+import WithImmersiveInfo from '@/components/WithImmersiveInfo';
 
 
-  const fetchPost = async () => {
-    await getDocs(collection(db, "Immersive"))
-      .then((querySnapshot) => {
-        const newData = querySnapshot.docs
-          .map((doc) => ({ ...doc.data(), id: doc.id }));
-        if (currentLevel == "all") {
-          const dataFound = newData.filter(item => item.level != "");
-          setData(dataFound.sort(() => Math.random() - 0.5));
-        } else {
-          const dataFound = newData.filter(item => item.level == currentLevel);
-          setData(dataFound)
-        }
-      })
-    await getDocs(collection(db, "users"))
-      .then((querySnapshot) => {
-        const newData = querySnapshot.docs
-          .map((doc) => ({ ...doc.data(), id: doc.id }));
-        const userMatched = newData.find(item => item.uid == authUid);
-        setRole(userMatched.role)
-      })
+const Immersive = ({
+  userData,
+  data,
+  currentLevel,
+  setCurrentLevel,
+  question,
+  setQuestion
+}) => {
+  if (!userData) {
+    return <LoadingScreen />;
   }
-
-  useEffect(() => {
-    fetchPost()
-  }, [currentLevel])
+  const { role } = userData
 
   const router = useRouter()
-
-  const [question, setQuestion] = useState(false)
-
 
   return (
     <div className='bg-[var(--color2Shadow)] m-0 py-20'>
@@ -62,8 +40,22 @@ export default function Immersive() {
       <BackHeader largeTitle={"Immersive Videos"} parentTitle={"Back"} />
       {
         role == "Admin" && (
-          <div className='w-10/12 my-8 transition-all 1s ease-in hover:opacity-80 hover:scale-105 mx-auto max-w-md'>
-            <button onClick={() => router.push("/adminCreate/createVideo")} className='text-white hover:opacity-80 font-bold w-full py-2 rounded-md bg-[var(--color3)]'>{role} Function: CREATE VIDEOS </button>
+          <div className='flex justify-center'>
+            <button onClick={() => router.push("/adminCreate/createVideo")} className="group cursor-pointer lg:cursor-pointer hover:bg-opacity-20 font-bold font-sans transition-all duration-200 px-5 py-2 rounded-full bg-[var(--color3)] border border-transparent flex items-center text-base active:scale-95">
+              <span className="mr-2">Admin Feature: Add Video</span>
+              <svg
+                className="w-9 h-9 transform transition-transform ease-in-out group-hover:translate-x-2"
+                viewBox="0 0 74 74"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <circle cx="37" cy="37" r="35.5" stroke="black" strokeWidth="3"></circle>
+                <path
+                  d="M25 35.5C24.1716 35.5 23.5 36.1716 23.5 37C23.5 37.8284 24.1716 38.5 25 38.5V35.5ZM49.0607 38.0607C49.6464 37.4749 49.6464 36.5251 49.0607 35.9393L39.5147 26.3934C38.9289 25.8076 37.9792 25.8076 37.3934 26.3934C36.8076 26.9792 36.8076 27.9289 37.3934 28.5147L45.8787 37L37.3934 45.4853C36.8076 46.0711 36.8076 47.0208 37.3934 47.6066C37.9792 48.1924 38.9289 48.1924 39.5147 47.6066L49.0607 38.0607ZM25 38.5L48 38.5V35.5L25 35.5V38.5Z"
+                  fill="black"
+                ></path>
+              </svg>
+            </button>
           </div>
         )
       }
@@ -97,10 +89,10 @@ export default function Immersive() {
           </div>
         )
       }
-      <div className='md:flex md:mx-8 gap-4 flex-wrap space-y-8 py-8 md:space-y-0'>
+      <div className='sm:flex md:mx-8 gap-4 flex-wrap space-y-8 py-8 sm:space-y-0'>
         {
           data.map((video) => (
-            <div onClick={() => router.push(`/immersiveActivities/${video.id}`)} className='shadow-blue-900 shadow-xl hover:opacity-70 transition-all 1s ease-in hover:scale-110 cursor-pointer w-[280px] mx-auto bg-[var(--blueDarkbg)] rounded-md relative'>
+            <div onClick={() => router.push(`/immersiveActivities/${video.id}`)} className='shadow-black shadow-md hover:opacity-80 transition-all 1s ease-in hover:scale-105 cursor-pointer w-[280px] mx-auto bg-[var(--blueDarkbg)] rounded-md relative'>
               <ReactPlayer
                 width={"100%"}
                 height={"150px"}
@@ -120,3 +112,5 @@ export default function Immersive() {
     </div >
   )
 }
+
+export default WithImmersiveInfo(withUserData(Immersive))

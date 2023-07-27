@@ -10,27 +10,15 @@ import BackHeader from '@/components/BackHeader'
 import { useSpringCarousel } from 'react-spring-carousel';
 import { ChevronLeftRounded, ChevronRightRounded } from '@mui/icons-material'
 import LoadingScreen from '@/components/LoadingScreen'
+import withUserData from '@/components/WithUserData';
 
-export default function selectCharacter() {
-  const carouselRef = useRef(null);
-
-
-  const router = useRouter()
-  const id = router.query.id
-  const [userMatched, setUserMatched] = useState({})
-  const fetchPost = async () => {
-    await getDocs(collection(db, "users"))
-      .then((querySnapshot) => {
-        const newData = querySnapshot.docs
-          .map((doc) => ({ ...doc.data(), id: doc.id }));
-        const userMatch = newData.find(item => item.id == id);
-        setUserMatched(userMatch)
-      })
+const selectCharacter = ({ userData }) => {
+  if (!userData) {
+    return <LoadingScreen />;
   }
-
-  useEffect(() => {
-    fetchPost();
-  }, [])
+  const carouselRef = useRef(null);
+  const router = useRouter()
+  const [userMatched, setUserMatched] = useState(userData)
 
   const updateSelect = async (e) => {
     const nameRef = doc(db, "users", userMatched.id);
@@ -86,3 +74,5 @@ export default function selectCharacter() {
     </div >
   )
 }
+
+export default withUserData(selectCharacter)
