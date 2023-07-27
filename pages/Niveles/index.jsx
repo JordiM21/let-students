@@ -3,39 +3,20 @@ import React, { useEffect, useState } from 'react'
 import image1 from '@/public/beginner-cover.png'
 import image2 from '@/public/intermediate-cover.png'
 import image3 from '@/public/advanced-cover.png'
-import { useAuth } from '@/context/AuthContext'
-import { collection, getDocs } from 'firebase/firestore'
-import { db } from '@/config/firebase'
 import LoadingScreen from '@/components/LoadingScreen'
 import { useRouter } from 'next/router'
 import { BsQuestionCircle } from 'react-icons/bs'
 import { AiFillCloseCircle } from 'react-icons/ai'
+import withUserData from '@/components/WithUserData'
 
-export default function Niveles() {
-
-  const router = useRouter()
-
-  const [level, setLevel] = useState("")
-  const [role, setRole] = useState("")
-  const [plan, setPlan] = useState("")
-
-  const { user } = useAuth();
-  const [authUid, setAuthUid] = useState(user.uid)
-  const fetchPost = async () => {
-    await getDocs(collection(db, "users"))
-      .then((querySnapshot) => {
-        const newData = querySnapshot.docs
-          .map((doc) => ({ ...doc.data(), id: doc.id }));
-        const userMatched = newData.filter(item => item.uid == authUid);
-        setLevel(userMatched[0].level);
-        setRole(userMatched[0].role);
-        setPlan(userMatched[0].plan)
-      })
+const Niveles = ({ userData }) => {
+  if (!userData) {
+    return <LoadingScreen />;
   }
 
-  useEffect(() => {
-    fetchPost();
-  }, [])
+  const { level, role, plan } = userData;
+
+  const router = useRouter()
 
   const [question, setQuestion] = useState(false)
 
@@ -142,3 +123,5 @@ export default function Niveles() {
     </div>
   )
 }
+
+export default withUserData(Niveles)

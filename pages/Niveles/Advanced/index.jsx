@@ -14,47 +14,33 @@ import BackHeader from '@/components/BackHeader';
 import { BsCircle } from 'react-icons/bs';
 import { AiFillCheckCircle } from 'react-icons/ai';
 import Link from 'next/link';
+import withLevelAndLessonsData from '@/components/WithLevelData';
+import withUserData from '@/components/WithUserData';
 
-export default function index() {
-  const router = useRouter()
+const Advanced = ({ levelData, userData }) => {
+  if (!levelData) {
+    return <LoadingScreen />;
+  }
 
-  const [level, setLevel] = useState("")
-  const [role, setRole] = useState("")
+  const { level, progressBeginner, role } = userData
+  const [progress, setProgress] = useState(progressBeginner)
+
   const [data, setData] = useState([])
 
+  const router = useRouter()
 
-  const toastId = "customId"
+  const filterAndSetData = () => {
+    const dataFound = levelData.filter((item) => item.level === "Advanced");
+    setData(dataFound.sort((a, b) => a.number - b.number));
+  };
 
   const { user } = useAuth();
   const [authUid, setAuthUid] = useState(user.uid)
-  const [progress, setProgress] = useState("")
-
-
-  const fetchPost = async () => {
-    await getDocs(collection(db, "units"))
-      .then((querySnapshot) => {
-        const newData = querySnapshot.docs
-          .map((doc) => ({ ...doc.data(), id: doc.id }));
-        const dataFound = newData.filter(item => item.level == "Advanced");
-        setData(dataFound.sort((a, b) => a.number - b.number))
-      })
-  }
-  const fetchUser = async () => {
-    await getDocs(collection(db, "users"))
-      .then((querySnapshot) => {
-        const newData = querySnapshot.docs
-          .map((doc) => ({ ...doc.data(), id: doc.id }));
-        const userMatched = newData.find(item => item.uid == authUid);
-        setLevel(userMatched.level);
-        setProgress(userMatched.progressAdvanced);
-        setRole(userMatched.role)
-      })
-  }
 
   useEffect(() => {
-    fetchPost()
-    fetchUser()
+    filterAndSetData();
   }, [])
+
 
   return (
     <div className='bg-[var(--bluebg)] py-24'>
@@ -127,6 +113,7 @@ export default function index() {
       </div>
     </div>
   )
-
 }
 
+
+export default withLevelAndLessonsData(withUserData(Advanced))

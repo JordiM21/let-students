@@ -14,43 +14,31 @@ import { toast } from 'react-toastify';
 import BackHeader from '@/components/BackHeader';
 import LoadingScreen from '@/components/LoadingScreen';
 import Link from 'next/link';
+import withLevelAndLessonsData from '@/components/WithLevelData';
+import withUserData from '@/components/WithUserData';
 
-export default function Beginner() {
-  const router = useRouter()
-  const [level, setLevel] = useState("")
-  const [role, setRole] = useState("")
+const Beginner = ({ levelData, userData }) => {
+  if (!levelData) {
+    return <LoadingScreen />;
+  }
+
+  const { level, progressBeginner, role } = userData
+  const [progress, setProgress] = useState(progressBeginner)
 
   const [data, setData] = useState([])
+
+  const router = useRouter()
+
+  const filterAndSetData = () => {
+    const dataFound = levelData.filter((item) => item.level === "Beginner");
+    setData(dataFound.sort((a, b) => a.number - b.number));
+  };
+
   const { user } = useAuth();
   const [authUid, setAuthUid] = useState(user.uid)
-  const [progress, setProgress] = useState("")
-
-
-  const fetchPost = async () => {
-    await getDocs(collection(db, "units"))
-      .then((querySnapshot) => {
-        const newData = querySnapshot.docs
-          .map((doc) => ({ ...doc.data(), id: doc.id }));
-        const dataFound = newData.filter(item => item.level == "Beginner");
-        setData(dataFound.sort((a, b) => a.number - b.number))
-      })
-  }
-  const fetchUser = async () => {
-    await getDocs(collection(db, "users"))
-      .then((querySnapshot) => {
-        const newData = querySnapshot.docs
-          .map((doc) => ({ ...doc.data(), id: doc.id }));
-        const userMatched = newData.find(item => item.uid == authUid);
-        console.log(userMatched)
-        setLevel(userMatched.level);
-        setProgress(userMatched.progressBeginner);
-        setRole(userMatched.role)
-      })
-  }
 
   useEffect(() => {
-    fetchPost()
-    fetchUser()
+    filterAndSetData();
   }, [])
 
   return (
@@ -125,3 +113,4 @@ export default function Beginner() {
     </div>
   )
 }
+export default withLevelAndLessonsData(withUserData(Beginner))
