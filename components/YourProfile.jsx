@@ -28,160 +28,192 @@ import plus6 from '@/public/Characters/plus6.jpeg'
 import plus7 from '@/public/Characters/plus7.jpeg'
 import plus8 from '@/public/Characters/plus8.jpeg'
 import deafult from '@/public/Characters/default.png'
-
 import Image from 'next/image'
 
 export default function YourProfile({ char, size }) {
+  const isSmall = size === "small";
+  const isUltraSmall = size === "super-small";
+
   return (
     <div>
       {
         !char && (
-          <Image src={deafult} className={`rounded-full object-cover ${size == "small" ? "h-20 w-20" : "h-52 w-52"}`} />
+          <Image src={deafult} className={`rounded-full object-cover ${isSmall ? "h-20 w-20" : isUltraSmall ? "h-8 w-8" : "h-52 w-52"
+            } bg-red-500`} />
         )
       }
       {
         char == "" && (
-          <Image src={deafult} className={`rounded-full object-cover ${size == "small" ? "h-20 w-20" : "h-52 w-52"}`} />
+          <Image src={deafult} className={`rounded-full object-cover ${isSmall ? "h-20 w-20" : isUltraSmall ? "h-8 w-8" : "h-52 w-52"
+            } bg-red-500`} />
         )
       }
       {
         char == "girl1" && (
-          <Image src={girl1} className={`rounded-full object-cover ${size == "small" ? "h-20 w-20" : "h-52 w-52"}`} />
+          <Image src={girl1} className={`rounded-full object-cover ${isSmall ? "h-20 w-20" : isUltraSmall ? "h-8 w-8" : "h-52 w-52"
+            } bg-red-500`} />
         )
       }
       {
         char == "girl2" && (
-          <Image src={girl2} className={`rounded-full object-cover ${size == "small" ? "h-20 w-20" : "h-52 w-52"}`} />
+          <Image src={girl2} className={`rounded-full object-cover ${isSmall ? "h-20 w-20" : isUltraSmall ? "h-8 w-8" : "h-52 w-52"
+            } bg-red-500`} />
         )
       }
       {
         char == "girl3" && (
-          <Image src={girl3} className={`rounded-full object-cover ${size == "small" ? "h-20 w-20" : "h-52 w-52"}`} />
+          <Image src={girl3} className={`rounded-full object-cover ${isSmall ? "h-20 w-20" : isUltraSmall ? "h-8 w-8" : "h-52 w-52"
+            } bg-red-500`} />
         )
       }
       {
         char == "girl4" && (
-          <Image src={girl4} className={`rounded-full object-cover ${size == "small" ? "h-20 w-20" : "h-52 w-52"}`} />
+          <Image src={girl4} className={`rounded-full object-cover ${isSmall ? "h-20 w-20" : isUltraSmall ? "h-8 w-8" : "h-52 w-52"
+            } bg-red-500`} />
         )
       }
       {
         char == "girl5" && (
-          <Image src={girl5} className={`rounded-full object-cover ${size == "small" ? "h-20 w-20" : "h-52 w-52"}`} />
+          <Image src={girl5} className={`rounded-full object-cover ${isSmall ? "h-20 w-20" : isUltraSmall ? "h-8 w-8" : "h-52 w-52"
+            } bg-red-500`} />
         )
       }
       {
         char == "girl6" && (
-          <Image src={girl6} className={`rounded-full object-cover ${size == "small" ? "h-20 w-20" : "h-52 w-52"}`} />
+          <Image src={girl6} className={`rounded-full object-cover ${isSmall ? "h-20 w-20" : isUltraSmall ? "h-8 w-8" : "h-52 w-52"
+            } bg-red-500`} />
         )
       }
       {
         char == "girl7" && (
-          <Image src={girl7} className={`rounded-full object-cover ${size == "small" ? "h-20 w-20" : "h-52 w-52"}`} />
+          <Image src={girl7} className={`rounded-full object-cover ${isSmall ? "h-20 w-20" : isUltraSmall ? "h-8 w-8" : "h-52 w-52"
+            } bg-red-500`} />
         )
       }
       {
         char == "girl8" && (
-          <Image src={girl8} className={`rounded-full object-cover ${size == "small" ? "h-20 w-20" : "h-52 w-52"}`} />
+          <Image src={girl8} className={`rounded-full object-cover ${isSmall ? "h-20 w-20" : isUltraSmall ? "h-8 w-8" : "h-52 w-52"
+            } bg-red-500`} />
         )
       }
       {
         char == "girl9" && (
-          <Image src={girl9} className={`rounded-full object-cover ${size == "small" ? "h-20 w-20" : "h-52 w-52"}`} />
+          <Image src={girl9} className={`rounded-full object-cover ${isSmall ? "h-20 w-20" : isUltraSmall ? "h-8 w-8" : "h-52 w-52"
+            } bg-red-500`} />
         )
       }
       {
         char == "girl10" && (
-          <Image src={girl10} className={`rounded-full object-cover ${size == "small" ? "h-20 w-20" : "h-52 w-52"}`} />
+          <Image src={girl10} className={`rounded-full object-cover ${isSmall ? "h-20 w-20" : isUltraSmall ? "h-8 w-8" : "h-52 w-52"
+            } bg-red-500`} />
         )
       }
       {
         char == "boy1" && (
-          <Image src={boy1} className={`rounded-full object-cover ${size == "small" ? "h-20 w-20" : "h-52 w-52"}`} />
+          <Image src={boy1} className={`rounded-full object-cover ${isSmall ? "h-20 w-20" : isUltraSmall ? "h-8 w-8" : "h-52 w-52"
+            } bg-red-500`} />
         )
       }
       {
         char == "boy2" && (
-          <Image src={boy2} className={`rounded-full object-cover ${size == "small" ? "h-20 w-20" : "h-52 w-52"}`} />
+          <Image src={boy2} className={`rounded-full object-cover ${isSmall ? "h-20 w-20" : isUltraSmall ? "h-8 w-8" : "h-52 w-52"
+            } bg-red-500`} />
         )
       }
       {
         char == "boy3" && (
-          <Image src={boy3} className={`rounded-full object-cover ${size == "small" ? "h-20 w-20" : "h-52 w-52"}`} />
+          <Image src={boy3} className={`rounded-full object-cover ${isSmall ? "h-20 w-20" : isUltraSmall ? "h-8 w-8" : "h-52 w-52"
+            } bg-red-500`} />
         )
       }
       {
         char == "boy4" && (
-          <Image src={boy4} className={`rounded-full object-cover ${size == "small" ? "h-20 w-20" : "h-52 w-52"}`} />
+          <Image src={boy4} className={`rounded-full object-cover ${isSmall ? "h-20 w-20" : isUltraSmall ? "h-8 w-8" : "h-52 w-52"
+            } bg-red-500`} />
         )
       }
       {
         char == "boy5" && (
-          <Image src={boy5} className={`rounded-full object-cover ${size == "small" ? "h-20 w-20" : "h-52 w-52"}`} />
+          <Image src={boy5} className={`rounded-full object-cover ${isSmall ? "h-20 w-20" : isUltraSmall ? "h-8 w-8" : "h-52 w-52"
+            } bg-red-500`} />
         )
       }
       {
         char == "boy6" && (
-          <Image src={boy6} className={`rounded-full object-cover ${size == "small" ? "h-20 w-20" : "h-52 w-52"}`} />
+          <Image src={boy6} className={`rounded-full object-cover ${isSmall ? "h-20 w-20" : isUltraSmall ? "h-8 w-8" : "h-52 w-52"
+            } bg-red-500`} />
         )
       }
       {
         char == "boy7" && (
-          <Image src={boy7} className={`rounded-full object-cover ${size == "small" ? "h-20 w-20" : "h-52 w-52"}`} />
+          <Image src={boy7} className={`rounded-full object-cover ${isSmall ? "h-20 w-20" : isUltraSmall ? "h-8 w-8" : "h-52 w-52"
+            } bg-red-500`} />
         )
       }
       {
         char == "boy8" && (
-          <Image src={boy8} className={`rounded-full object-cover ${size == "small" ? "h-20 w-20" : "h-52 w-52"}`} />
+          <Image src={boy8} className={`rounded-full object-cover ${isSmall ? "h-20 w-20" : isUltraSmall ? "h-8 w-8" : "h-52 w-52"
+            } bg-red-500`} />
         )
       }
       {
         char == "boy9" && (
-          <Image src={boy9} className={`rounded-full object-cover ${size == "small" ? "h-20 w-20" : "h-52 w-52"}`} />
+          <Image src={boy9} className={`rounded-full object-cover ${isSmall ? "h-20 w-20" : isUltraSmall ? "h-8 w-8" : "h-52 w-52"
+            } bg-red-500`} />
         )
       }
       {
         char == "boy10" && (
-          <Image src={boy10} className={`rounded-full object-cover ${size == "small" ? "h-20 w-20" : "h-52 w-52"}`} />
+          <Image src={boy10} className={`rounded-full object-cover ${isSmall ? "h-20 w-20" : isUltraSmall ? "h-8 w-8" : "h-52 w-52"
+            } bg-red-500`} />
         )
       }
       {
         char == "boy11" && (
-          <Image src={boy11} className={`rounded-full object-cover ${size == "small" ? "h-20 w-20" : "h-52 w-52"}`} />
+          <Image src={boy11} className={`rounded-full object-cover ${isSmall ? "h-20 w-20" : isUltraSmall ? "h-8 w-8" : "h-52 w-52"
+            } bg-red-500`} />
         )
       }
       {
         char == "plus2" && (
-          <Image src={plus2} className={`rounded-full object-cover ${size == "small" ? "h-20 w-20" : "h-52 w-52"}`} />
+          <Image src={plus2} className={`rounded-full object-cover ${isSmall ? "h-20 w-20" : isUltraSmall ? "h-8 w-8" : "h-52 w-52"
+            } bg-red-500`} />
         )
       }
       {
         char == "plus3" && (
-          <Image src={plus3} className={`rounded-full object-cover ${size == "small" ? "h-20 w-20" : "h-52 w-52"}`} />
+          <Image src={plus3} className={`rounded-full object-cover ${isSmall ? "h-20 w-20" : isUltraSmall ? "h-8 w-8" : "h-52 w-52"
+            } bg-red-500`} />
         )
       }
       {
         char == "plus4" && (
-          <Image src={plus4} className={`rounded-full object-cover ${size == "small" ? "h-20 w-20" : "h-52 w-52"}`} />
+          <Image src={plus4} className={`rounded-full object-cover ${isSmall ? "h-20 w-20" : isUltraSmall ? "h-8 w-8" : "h-52 w-52"
+            } bg-red-500`} />
         )
       }
       {
         char == "plus5" && (
-          <Image src={plus5} className={`rounded-full object-cover ${size == "small" ? "h-20 w-20" : "h-52 w-52"}`} />
+          <Image src={plus5} className={`rounded-full object-cover ${isSmall ? "h-20 w-20" : isUltraSmall ? "h-8 w-8" : "h-52 w-52"
+            } bg-red-500`} />
         )
       }
       {
         char == "plus6" && (
-          <Image src={plus6} className={`rounded-full object-cover ${size == "small" ? "h-20 w-20" : "h-52 w-52"}`} />
+          <Image src={plus6} className={`rounded-full object-cover ${isSmall ? "h-20 w-20" : isUltraSmall ? "h-8 w-8" : "h-52 w-52"
+            } bg-red-500`} />
         )
       }
       {
         char == "plus7" && (
-          <Image src={plus7} className={`rounded-full object-cover ${size == "small" ? "h-20 w-20" : "h-52 w-52"}`} />
+          <Image src={plus7} className={`rounded-full object-cover ${isSmall ? "h-20 w-20" : isUltraSmall ? "h-8 w-8" : "h-52 w-52"
+            } bg-red-500`} />
         )
       }
       {
         char == "plus8" && (
-          <Image src={plus8} className={`rounded-full object-cover ${size == "small" ? "h-20 w-20" : "h-52 w-52"}`} />
+          <Image src={plus8} className={`rounded-full object-cover ${isSmall ? "h-20 w-20" : isUltraSmall ? "h-8 w-8" : "h-52 w-52"
+            } bg-red-500`} />
         )
       }
     </div>

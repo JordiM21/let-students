@@ -4,24 +4,19 @@ import { useRouter } from 'next/router'
 import Image from 'next/image'
 import image1 from '@/public/cambridgeandlet.png'
 import image3 from '@/public/enviroments.png'
-import { AiFillCloseCircle, AiOutlineCopy } from 'react-icons/ai'
-import { MdArrowForwardIos } from 'react-icons/md'
-import copy from 'clipboard-copy';
-import { toast } from 'react-toastify'
+import { AiFillCloseCircle, AiFillPieChart, AiOutlineCopy } from 'react-icons/ai'
+import { MdArrowForwardIos, MdFaceRetouchingNatural, MdTaskAlt } from 'react-icons/md'
 import { FcCalendar } from 'react-icons/fc'
 import Schedule from './Schedule'
-import { BsFillCameraVideoFill, BsQuestionCircle, BsQuote } from 'react-icons/bs'
+import { BsFillCameraVideoFill, BsQuestionCircle, BsQuote, BsYoutube } from 'react-icons/bs'
 import YourProfile from './YourProfile'
 import student from '@/public/animations/student.json'
 import CtaAnimationPage from './CtaAnimationPage'
 import ExternalApps from './ExternalApps'
+import { AiFillYoutube } from 'react-icons/ai'
+import { TbBrandYoutubeKids } from 'react-icons/tb'
 
-const notifPage = ({ }) => {
-
-}
-
-
-export default function StudentDashboard({ firstName, quote, id, setAppNotif, appNotif, level, profileImg, tutor, schedule, progressB, progressI, progressA }) {
+export default function StudentDashboard({ firstName, id, setAppNotif, appNotif, level, profileImg, tutor, schedule, progressB, progressI, progressA }) {
 
   const router = useRouter()
 
@@ -29,7 +24,14 @@ export default function StudentDashboard({ firstName, quote, id, setAppNotif, ap
   const [meetingRoom, setMeetingRoom] = useState(false)
 
   return (
-    <div>
+    <div className='mt-6'>
+      <div onClick={() => setMeetingRoom(true)} className='flex bg-green-500 py-1 px-3 absolute top-1 left-2 md:left-20 cursor-pointer hover:opacity-80 rounded-full w-[100px] md:w-[200px] justify-between items-center'>
+        <YourProfile char={tutor.profileImg} size={"super-small"} />
+        <p className={`hidden md:block text-white text-lg`}>
+          MEETING
+        </p>
+        <BsFillCameraVideoFill fill='white' size={28} />
+      </div>
       {
         meetingRoom == true && (
           <CtaAnimationPage
@@ -43,34 +45,6 @@ export default function StudentDashboard({ firstName, quote, id, setAppNotif, ap
           />
         )
       }
-      <div className='flex justify-center items-center pt-2'>
-        <h1 className='text-center text-4xl mx-4 py-2 font-bold text-white'>Welcome {firstName}!</h1>
-        <YourProfile char={profileImg} size={"small"} />
-      </div>
-      <div className='md:flex items-center justify-center gap-4'>
-        <div className='relative mx-4 my-4 md:w-1/2'>
-          <p className='text-white text-xl'>Link for meetings </p>
-          <div onClick={() => setQuestion(!question)} className='absolute right-4 top-0 cursor-pointer bg-slate-300 rounded-full'>
-            <BsQuestionCircle className='w-6 h-6 ' />
-          </div>
-          <div onClick={() => setMeetingRoom(true)} className='flex bg-green-500 cursor-pointer hover:opacity-80 py-2 my-3 rounded-full w-full justify-between pl-4 pr-12 items-center'>
-            <YourProfile char={tutor.profileImg} size={"small"} />
-            <p className='text-white text-xl'>Enter in the meeting</p>
-            <BsFillCameraVideoFill fill='white' size={36} />
-          </div>
-          {
-            question && (
-              <div className='bg-gray-200 backdrop-blur-sm bg-opacity-80 p-6 shadow-gray-500 z-50 rounded-md shadow-lg max-w-[250px] absolute right-0 top-7'>
-                <AiFillCloseCircle className='absolute top-2 cursor-pointer right-2 w-6 h-6' onClick={() => setQuestion(!question)} />
-                <p>Para ingresar a la meeting con tu tutor solo tienes que asegurarte de agendar primero y que esten de acuerdo en un horario si los tienes establecidos mucho mejor, no necesitas iniciar sesiòn para entrar ni tener cuenta. Recuerda ser muy puntual con los horarios de tutor</p>
-              </div>
-            )
-          }
-        </div>
-        <div className='md:pt-12'>
-          <ExternalApps appNotif={appNotif} userId={id} setAppNotif={setAppNotif} role="Student" />
-        </div>
-      </div>
       <div className='bg-yellow-400 mx-4 pb-8 rounded-md md:flex md:pb-0 max-w-5xl md:mx-auto'>
         <div className='bg-yellow-300 font-semibold text-lg md:text-2xl px-4 py-3 md:py-8 rounded-md shadow-md'>
           <span className='text-[var(--color2)] md:block text-3xl md:text-8xl'>{level == "Beginner" && progressB * 23}{level == "Intermediate" && progressI * 23}{level == "Advanced" && progressA * 23}</span> total words known on your level
@@ -98,23 +72,26 @@ export default function StudentDashboard({ firstName, quote, id, setAppNotif, ap
             <p className='font-bold text-xl hidden md:block'>Learn more words and complete lessons now!</p>
             {
               level == "Beginner" && (
-                <button onClick={() => router.push(`/Niveles/${level}/${progressB + 1}`)} className='my-2 bg-[var(--color2)] w-full text-white font-bold text-2xl py-4 rounded-md hover:bg-[var(--color1)] transition-all 1s ease-in'>Go to my current Lesson</button>
+                <button onClick={() => router.push(`/Niveles/${level}/${progressB + 1}`)} className='my-2 bg-[var(--color2)] w-full text-white font-bold text-2xl py-4 rounded-md hover:shadow-xl shadow-black hover:translate-y-1 transition-all 1s ease-in'>Go to my current Lesson</button>
               )
             }
             {
               level == "Intermediate" && (
-                <button onClick={() => router.push(`/Niveles/${level}/${progressI + 1}`)} className='my-2 bg-[var(--color2)] w-full text-white font-bold text-2xl py-4 rounded-md hover:bg-[var(--color1)] transition-all 1s ease-in'>Go to my current Lesson</button>
+                <button onClick={() => router.push(`/Niveles/${level}/${progressI + 1}`)} className='my-2 bg-[var(--color2)] w-full text-white font-bold text-2xl py-4 rounded-md hover:shadow-xl shadow-black hover:translate-y-1 transition-all 1s ease-in'>Go to my current Lesson</button>
               )
             }
             {
               level == "Advanced" && (
-                <button onClick={() => router.push(`/Niveles/${level}/${progressA + 1}`)} className='my-2 bg-[var(--color2)] w-full text-white font-bold text-2xl py-4 rounded-md hover:bg-[var(--color1)] transition-all 1s ease-in'>Go to my current Lesson</button>
+                <button onClick={() => router.push(`/Niveles/${level}/${progressA + 1}`)} className='my-2 bg-[var(--color2)] w-full text-white font-bold text-2xl py-4 rounded-md hover:shadow-xl shadow-black hover:translate-y-1 transition-all 1s ease-in'>Go to my current Lesson</button>
               )
             }
           </div>
         </div>
       </div>
-      <div className='md:flex max-w-5xl mx-auto md:justify-center'>
+      <div className='md:flex items-center justify-center gap-4'>
+        <div className='md:pt-12'>
+          <ExternalApps appNotif={appNotif} userId={id} setAppNotif={setAppNotif} role="Student" />
+        </div>
         <div className='bg-gray-900 mx-4 pb-4 my-6 rounded-md md:w-1/2 max-w-2xl'>
           <div className='flex justify-center gap-4 items-center rounded-t-md py-2 bg-[var(--color2)]'>
             <p className='text-xl'>Student's Schedule</p>
@@ -124,25 +101,52 @@ export default function StudentDashboard({ firstName, quote, id, setAppNotif, ap
             <Schedule schedule={schedule} />
           </div>
         </div>
-        <div className='md:w-1/2 flex justify-center items-center'>
-          <BsQuote className='text-5xl fill-[var(--color2)]' />
-          <p className='text-center max-w-sm'>{quote ? quote.text : "Cargando cita..."}</p>
-          <BsQuote className='rotate-180 text-5xl fill-[var(--color2)]' />
+      </div>
+      <div className='w-full max-w-5xl mx-auto space-y-6 md:space-y-0 md:flex justify-evenly'>
+        <div className='group bg-white relative overflow-hidden flex gap-2 justify-center items-center py-6 md:py-2 md:w-36 rounded-md hover:shadow-lg shadow-black cursor-pointer hover:-translate-y-1 md:h-40 md:flex-col mx-4'>
+          <MdFaceRetouchingNatural className='z-10' size={50} />
+          <p className='z-10 group-hover:text-white'>
+            Change
+          </p>
+          <p className='z-10 group-hover:text-white'>
+            Character
+          </p>
+          <div className='h-20 group-hover:scale-[700%] w-20 bg-blue-300 rounded-full left-32 md:left-16 absolute'></div>
+        </div>
+        <div className='group bg-white relative overflow-hidden flex gap-2 justify-center items-center py-6 md:py-2 md:w-36 rounded-md hover:shadow-lg shadow-black cursor-pointer hover:-translate-y-1 md:h-40 md:flex-col mx-4'>
+          <TbBrandYoutubeKids className='z-10' size={50} />
+          <p className='z-10'>
+            Immersive
+          </p>
+          <p className='z-10'>
+            Videos
+          </p>
+          <div className='h-20 group-hover:scale-[700%] w-20 bg-red-300 rounded-full left-28 md:left-20 absolute'></div>
+        </div>
+        <div className='group bg-white relative overflow-hidden flex gap-2 justify-center items-center py-6 md:py-2 md:w-36 rounded-md hover:shadow-lg shadow-black cursor-pointer hover:-translate-y-1 md:h-40 md:flex-col mx-4'>
+          <AiFillPieChart className='z-10' size={50} />
+          <p className='z-10'>
+            My
+          </p>
+          <p className='z-10'>
+            Progress
+          </p>
+          <div className='h-20 group-hover:scale-[800%] w-20 bg-red-300 rounded-full left-24 md:left-24 absolute'></div>
+        </div>
+        <div className='group bg-white relative overflow-hidden flex gap-2 justify-center items-center py-6 md:py-2 md:w-36 rounded-md hover:shadow-lg shadow-black cursor-pointer hover:-translate-y-1 md:h-40 md:flex-col mx-4'>
+          <MdTaskAlt className='z-10' size={50} />
+          <p className='z-10'>
+            My
+          </p>
+          <p className='z-10'>
+            Tasks
+          </p>
+          <div className='h-20 group-hover:scale-[900%] w-20 bg-red-300 rounded-full left-20 md:left-28 absolute'></div>
         </div>
       </div>
-      <div className='mx-4 py-8 md:flex gap-8 items-center max-md:space-y-6 justify-center'>
-        <div className='rounded-lg bg-black'>
-          <Image src={image3} className='rounded-t-lg h-[100px] md:h-[350px] object-cover bg-left' />
-          <div className='p-4'>
-            <p className='text-white text-xs md:text-sm font-bold opacity-30'>New Immersive activities</p>
-            <h2 className='text-white font-bold text-lg'>A NEW WAY TO LEARN</h2>
-            <p className='text-white opacity-60 text-sm md:text-md' >Actividades didácticas en video que te ayudarán a mejorar tu inglés y aprender muchas cosas nuevas, diviértete mientras aprendes y practicas inglés.</p>
-            <button onClick={() => router.push("/Immersive")} className='w-full bg-white mt-2 rounded-full py-3 hover:opacity-80 active:scale-95'>
-              Start Learning
-            </button>
-          </div>
-        </div>
-        <div className='w-full mx-auto rounded-md bg-black'>
+
+      <div className='mx-4 py-8 justify-center'>
+        <div className='md:w-[80%] w-full  mx-auto rounded-md bg-black'>
           <Image className='object-cover w-full rounded-t-md' src={image1} />
           <div className='p-4'>
             <p className='text-white'>ADMIN ACCESS TO THE WRITE & IMPROVE PAGE</p>

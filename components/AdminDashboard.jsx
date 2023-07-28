@@ -24,7 +24,7 @@ import ReactPlayer from 'react-player'
 import { ReplayOutlined } from '@mui/icons-material'
 import { MdReplay } from 'react-icons/md'
 
-export default function AdminDashboard({ allUsers, profileImg, firstName, role, email, id, url }) {
+export default function AdminDashboard({ profileImg, firstName, role, email, id, url }) {
 
   // const [mail] = useState("learnenglishtogether21@gmail.com")
   // const [password] = useState("let-admin")
@@ -239,20 +239,6 @@ export default function AdminDashboard({ allUsers, profileImg, firstName, role, 
           </div>
         </div>
       </div>
-      {
-        email == "jordimantilla21@gmail.com" && (
-          <div className='px-4 py-2'>
-            <div className='flex justify-around items-center py-4'>
-              <p className='text-white text-xl sm:text-3xl font-bold'>General View Students</p>
-              <AddButton text={"Registrar Estudiante"} link={"/Register"} />
-            </div>
-            <ListOfUsers allUsers={allUsers} />
-          </div>
-        )
-      }
-      {/* <div>
-        <FormsCheck />
-      </div> */}
     </div>
   )
 }
