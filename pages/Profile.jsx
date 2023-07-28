@@ -11,6 +11,9 @@ import Modal from '@mui/material/Modal';
 import YourProfile from '@/components/YourProfile';
 import { TbEdit } from 'react-icons/tb'
 import { ChevronRightOutlined } from '@mui/icons-material';
+import { BsFillTrophyFill } from 'react-icons/bs';
+import { GiLaurelsTrophy } from "react-icons/gi"
+import Rewards from '@/components/Rewards';
 
 const style = {
   position: 'absolute',
@@ -95,11 +98,15 @@ export default function Profile() {
                       <p className='text-gray-400 opacity-80'>{userMatched.level}</p>
                     </div>
                   </div>
-                  <div className='bg-[var(--blueDarkbg)] cursor-pointer hover:bg-slate-800 overflow-hidden w-full flex gap-8 items-center justify-between py-2 px-4'>
+                  <div className='bg-[var(--blueDarkbg)] cursor-pointer hover:bg-slate-800 overflow-visible w-full flex gap-8 items-center justify-between py-2 px-4'>
                     <p className='text-white'>Rewards</p>
-                    <div className='flex items-center justify-center'>
-                      <p className='text-gray-400 opacity-80'>Images of the rewards, react icons, work with a component similar to progressLevel that receives the progress, idea react-icons: ninja, trophy, winner, put the number up there and show a smooth hover to see what is that</p>
-                    </div>
+                    <Rewards
+                      user={userMatched}
+                      likes={userMatched.likedVideos?.length}
+                      progressB={userMatched.progressBeginner}
+                      progressI={userMatched.progressIntermediate}
+                      progressA={userMatched.progressAdvanced}
+                    />
                   </div>
                   <div className='bg-[var(--blueDarkbg)] cursor-pointer hover:bg-slate-800 overflow-hidden w-full flex gap-8 items-center justify-between py-2 px-4'>
                     <p className='text-white'>Email</p>
