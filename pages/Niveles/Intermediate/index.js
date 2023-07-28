@@ -22,8 +22,8 @@ const Intermediate = ({ levelData, userData }) => {
     return <LoadingScreen />;
   }
 
-  const { level, progressBeginner, role } = userData
-  const [progress, setProgress] = useState(progressBeginner)
+  const { level, progressIntermediate, role } = userData
+  const [progress, setProgress] = useState(progressIntermediate)
 
   const [data, setData] = useState([])
 

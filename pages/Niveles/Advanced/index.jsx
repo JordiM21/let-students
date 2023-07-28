@@ -22,8 +22,8 @@ const Advanced = ({ levelData, userData }) => {
     return <LoadingScreen />;
   }
 
-  const { level, progressBeginner, role } = userData
-  const [progress, setProgress] = useState(progressBeginner)
+  const { level, progressAdvanced, role } = userData
+  const [progress, setProgress] = useState(progressAdvanced)
 
   const [data, setData] = useState([])
 

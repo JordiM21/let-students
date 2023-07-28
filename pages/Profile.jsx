@@ -96,6 +96,12 @@ export default function Profile() {
                     </div>
                   </div>
                   <div className='bg-[var(--blueDarkbg)] cursor-pointer hover:bg-slate-800 overflow-hidden w-full flex gap-8 items-center justify-between py-2 px-4'>
+                    <p className='text-white'>Rewards</p>
+                    <div className='flex items-center justify-center'>
+                      <p className='text-gray-400 opacity-80'>Images of the rewards, react icons, work with a component similar to progressLevel that receives the progress, idea react-icons: ninja, trophy, winner, put the number up there and show a smooth hover to see what is that</p>
+                    </div>
+                  </div>
+                  <div className='bg-[var(--blueDarkbg)] cursor-pointer hover:bg-slate-800 overflow-hidden w-full flex gap-8 items-center justify-between py-2 px-4'>
                     <p className='text-white'>Email</p>
                     <div className='flex items-center justify-center'>
                       <p className='text-gray-400 opacity-80'>{userMatched.email}</p>

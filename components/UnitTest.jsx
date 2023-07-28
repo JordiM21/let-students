@@ -12,15 +12,19 @@ import { useRouter } from 'next/router';
 import UnitWithTroubleBtn from './UnitWithTroubleBtn';
 import CtaAnimationPage from './CtaAnimationPage';
 import trophy from '@/public/animations/trophy.json'
+import LoadingScreen from './LoadingScreen';
+import withUserData from './WithUserData';
 
 
-export default function UnitTest({ level, unit }) {
+const UnitTest = ({ userData, level, unit }) => {
+  if (!userData) {
+    return <LoadingScreen />;
+  }
+  const { progressBeginner, progressIntermediate, progressAdvanced } = userData
   const [data, setData] = useState([])
-  const { user } = useAuth();
-  const [authUid, setAuthUid] = useState(user.uid)
   const [progress, setProgress] = useState(0)
   const router = useRouter()
-  const [userMatched, setUserMatched] = useState({})
+  const [userMatched, setUserMatched] = useState(userData)
 
   const fetchPost = async () => {
     await getDocs(collection(db, "questions"))
@@ -31,29 +35,24 @@ export default function UnitTest({ level, unit }) {
         setData(dataFound)
       })
   }
-  const fetchUser = async () => {
-    await getDocs(collection(db, "users"))
-      .then((querySnapshot) => {
-        const newData = querySnapshot.docs
-          .map((doc) => ({ ...doc.data(), id: doc.id }));
-        const userFound = newData.find(item => item.uid == authUid);
-        setUserMatched(userFound)
-        if (level == "Beginner") {
-          setProgress(userMatched.progressBeginner)
-        }
-        if (level == "Intermediate") {
-          setProgress(userMatched.progressIntermediate)
-        }
-        if (level == "Advanced") {
-          setProgress(userMatched.progressAdvanced)
-        }
-      })
+  const fetchUser = () => {
+    if (level == "Beginner") {
+      setProgress(progressBeginner)
+    }
+    if (level == "Intermediate") {
+      setProgress(progressIntermediate)
+    }
+    if (level == "Advanced") {
+      setProgress(progressAdvanced)
+    }
+    return;
   }
 
   const [finished, setFinished] = useState(false)
   useEffect(() => {
     fetchPost();
     fetchUser();
+    console.log(progress)
   }, [progress, finished])
 
 
@@ -128,6 +127,7 @@ export default function UnitTest({ level, unit }) {
             cta={"Go to the Next Lesson"}
             btn="router"
             link={`/Niveles/${level}/${unit + 1}`}
+            test={true}
           />
         )
       }
@@ -228,7 +228,6 @@ export default function UnitTest({ level, unit }) {
         <div className='my-8'>
           <FormLabel id="demo-controlled-radio-buttons-group">
             <span className='bg-sky-600 text-white font-bold px-2 py-1 rounded-full mr-2'>6</span>
-
             {data[5]?.question}</FormLabel>
           <RadioGroup
             required
@@ -299,3 +298,5 @@ export default function UnitTest({ level, unit }) {
     </div>
   )
 }
+
+export default withUserData(UnitTest)
