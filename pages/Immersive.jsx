@@ -92,20 +92,29 @@ const Immersive = ({
       <div className='sm:flex md:mx-8 gap-4 flex-wrap space-y-8 py-8 sm:space-y-0'>
         {
           data.map((video) => (
-            <div onClick={() => router.push(`/immersiveActivities/${video.id}`)} className='shadow-black shadow-md hover:opacity-80 transition-all 1s ease-in hover:scale-105 cursor-pointer w-[280px] mx-auto bg-[var(--blueDarkbg)] rounded-md relative'>
-              <ReactPlayer
-                width={"100%"}
-                height={"150px"}
-                className="mx-auto md:my-4 rounded-md"
-                url={video.url}
-                controls={true}
-                light={true}
-              />
-              <div className={`absolute top-4 px-2 py-1 rounded-l-md font-bold right-0 ${video.level == 'Advanced' && 'bg-red-600'} ${video.level == 'Intermediate' && 'bg-orange-600'} ${video.level == 'Beginner' && 'bg-blue-600'}`}>
-                <p className='text-white'>{video.level}</p>
+            <article onClick={() => router.push(`/immersiveActivities/${video.id}`)} class="article-wrapper">
+              <div class="rounded-lg container-project">
+                <ReactPlayer
+                  width={"100%"}
+                  height={"150px"}
+                  className="mx-auto md:my-4 rounded-md"
+                  url={video.url}
+                  controls={true}
+                  light={true}
+                />
               </div>
-              <p className='text-white font-bold text-xl p-2'>{video.title}</p>
-            </div>
+              <div class="project-info">
+                <div class="flex-pr">
+                  <div class="project-title">{video.title}</div>
+                  <div class="project-hover">
+                    <svg style={{ color: "black" }} xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" color="black" stroke-linejoin="round" stroke-linecap="round" viewBox="0 0 24 24" stroke-width="2" fill="none" stroke="currentColor"><line y2="12" x2="19" y1="12" x1="5"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                  </div>
+                </div>
+              </div>
+              <div className={`absolute top-0 py-1 pl-2 pr-5 rounded-full font-bold -right-4 ${video.level == 'Advanced' && 'bg-red-600'} ${video.level == 'Intermediate' && 'bg-orange-600'} ${video.level == 'Beginner' && 'bg-blue-600'}`}>
+                <p className='text-white text-xs'>{video.level}</p>
+              </div>
+            </article>
           ))
         }
       </div>
