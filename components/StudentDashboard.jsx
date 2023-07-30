@@ -20,7 +20,6 @@ export default function StudentDashboard({ firstName, id, setAppNotif, appNotif,
 
   const router = useRouter()
 
-  const [question, setQuestion] = useState(false)
   const [meetingRoom, setMeetingRoom] = useState(false)
 
   return (
@@ -103,57 +102,63 @@ export default function StudentDashboard({ firstName, id, setAppNotif, appNotif,
         </div>
       </div>
       <div className='w-full max-w-5xl mx-auto space-y-6 md:space-y-0 md:flex justify-evenly'>
-        <div className='group bg-white relative overflow-hidden flex gap-2 justify-center items-center py-6 md:py-2 md:w-36 rounded-md hover:shadow-lg shadow-black cursor-pointer hover:-translate-y-1 md:h-40 md:flex-col mx-4'>
-          <MdFaceRetouchingNatural className='z-10' size={50} />
+        <div onClick={() => router.push(`/selectCharacter/${id}`)} className='group active:scale-90 bg-white relative overflow-hidden flex gap-2 justify-center items-center py-6 md:py-2 md:w-56 rounded-md hover:shadow-lg shadow-black cursor-pointer hover:-translate-y-1 md:h-40 md:flex-col mx-4'>
+          <MdFaceRetouchingNatural className='z-10 text-5xl md:text-7xl' />
           <p className='z-10 group-hover:text-white'>
             Change
           </p>
           <p className='z-10 group-hover:text-white'>
             Character
           </p>
-          <div className='h-20 group-hover:scale-[700%] w-20 bg-blue-300 rounded-full left-32 md:left-16 absolute'></div>
+          <div className='h-20 group-hover:scale-[100%] scale-0 w-20 z-[5] bg-white rounded-full -left-8 md:left-[72px] md:top-2 absolute'></div>
+          <div className='h-32 md:h-24 md:w-24 group-hover:scale-[1000%] md:group-hover:scale-[350%] w-32 bg-gradient-to-tl from-cyan-300 to-blue-700 rounded-full -left-12 md:left-16 md:top-1 absolute'></div>
         </div>
-        <div className='group bg-white relative overflow-hidden flex gap-2 justify-center items-center py-6 md:py-2 md:w-36 rounded-md hover:shadow-lg shadow-black cursor-pointer hover:-translate-y-1 md:h-40 md:flex-col mx-4'>
-          <TbBrandYoutubeKids className='z-10' size={50} />
-          <p className='z-10'>
+        <div onClick={() => router.push("/Immersive/")} className='group active:scale-90 bg-white relative overflow-hidden flex gap-2 justify-center items-center py-6 md:py-2 md:w-56 rounded-md hover:shadow-lg shadow-black cursor-pointer hover:-translate-y-1 md:h-40 md:flex-col mx-4'>
+          <TbBrandYoutubeKids className='z-10 text-5xl md:text-7xl' />
+          <p className='z-10 group-hover:text-white'>
             Immersive
           </p>
-          <p className='z-10'>
+          <p className='z-10 group-hover:text-white'>
             Videos
           </p>
-          <div className='h-20 group-hover:scale-[700%] w-20 bg-red-300 rounded-full left-28 md:left-20 absolute'></div>
+          <div className='h-20 group-hover:scale-[100%] scale-0 w-20 z-[5] bg-white rounded-full -left-8 md:left-[72px] md:top-2 absolute'></div>
+          <div className='h-32 md:h-24 md:w-24 group-hover:scale-[1000%] md:group-hover:scale-[350%] w-32 bg-gradient-to-tl from-red-300 to-red-600 rounded-full -left-12 md:left-16 md:top-1 absolute'></div>
         </div>
-        <div className='group bg-white relative overflow-hidden flex gap-2 justify-center items-center py-6 md:py-2 md:w-36 rounded-md hover:shadow-lg shadow-black cursor-pointer hover:-translate-y-1 md:h-40 md:flex-col mx-4'>
-          <AiFillPieChart className='z-10' size={50} />
-          <p className='z-10'>
+        <div onClick={() => router.push("/Progress/")} className='group active:scale-90 bg-white relative overflow-hidden flex gap-2 justify-center items-center py-6 md:py-2 md:w-56 rounded-md hover:shadow-lg shadow-black cursor-pointer hover:-translate-y-1 md:h-40 md:flex-col mx-4'>
+          <AiFillPieChart className='z-10 text-5xl md:text-7xl' />
+          <p className='z-10 group-hover:text-white'>
             My
           </p>
-          <p className='z-10'>
+          <p className='z-10 group-hover:text-white'>
             Progress
           </p>
-          <div className='h-20 group-hover:scale-[800%] w-20 bg-red-300 rounded-full left-24 md:left-24 absolute'></div>
+          <div className='h-20 group-hover:scale-[100%] scale-0 w-20 z-[5] bg-white rounded-full -left-8 md:left-[72px] md:top-2 absolute'></div>
+          <div className='h-32 md:h-24 md:w-24 group-hover:scale-[1000%] md:group-hover:scale-[350%] w-32 bg-gradient-to-tl from-green-300 to-green-700 rounded-full -left-12 md:left-16 md:top-1 absolute'></div>
         </div>
-        <div className='group bg-white relative overflow-hidden flex gap-2 justify-center items-center py-6 md:py-2 md:w-36 rounded-md hover:shadow-lg shadow-black cursor-pointer hover:-translate-y-1 md:h-40 md:flex-col mx-4'>
-          <MdTaskAlt className='z-10' size={50} />
-          <p className='z-10'>
+        <div onClick={() => router.push("/Activities/")} className='group active:scale-90 bg-white relative overflow-hidden flex gap-2 justify-center items-center py-6 md:py-2 md:w-56 rounded-md hover:shadow-lg shadow-black cursor-pointer hover:-translate-y-1 md:h-40 md:flex-col mx-4'>
+          <MdTaskAlt className='z-10 text-5xl md:text-7xl' />
+          <p className='z-10 group-hover:text-white'>
             My
           </p>
-          <p className='z-10'>
+          <p className='z-10 group-hover:text-white '>
             Tasks
           </p>
-          <div className='h-20 group-hover:scale-[900%] w-20 bg-red-300 rounded-full left-20 md:left-28 absolute'></div>
+          <div className='h-20 group-hover:scale-[100%] scale-0 w-20 z-[5] bg-white rounded-full -left-8 md:left-[72px] md:top-2 absolute'></div>
+          <div className='h-32 md:h-24 md:w-24 group-hover:scale-[1000%] md:group-hover:scale-[350%] w-32 bg-gradient-to-tl from-yellow-200 to-yellow-600 rounded-full -left-12 md:left-16 md:top-1 absolute'></div>
         </div>
       </div>
-
       <div className='mx-4 py-8 justify-center'>
         <div className='md:w-[80%] w-full  mx-auto rounded-md bg-black'>
           <Image className='object-cover w-full rounded-t-md' src={image1} />
           <div className='p-4'>
-            <p className='text-white'>ADMIN ACCESS TO THE WRITE & IMPROVE PAGE</p>
-            <p className='text-gray-600'>You already have access as an administrator to the write & improve page to see the students results and tasks finished.</p>
+            <p className='text-white'>Working with Write & Improve</p>
+            <p className='text-gray-600'>Cuando estés listo, empezarás a estudiar con actividades de escritura en la plataforma Write and Improve, en la colaboración con University of Cambridge.</p>
             <a href='https://writeandimprove.com/' target='_blank'>
-              <button className='cursor-pointer w-full rounded-full border-4 border-white my-2 py-3 text-white hover:bg-gray-800'>
-                Go to the page
+              <button class="learn-more">
+                <span class="circle bg-[var(--color2)]" aria-hidden="true">
+                  <span class="icon arrow"></span>
+                </span>
+                <span class="button-text text-[var(--color2)]">Go to the Page</span>
               </button>
             </a>
           </div>

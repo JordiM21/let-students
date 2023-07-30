@@ -1,67 +1,34 @@
 import AdminActivities from '@/components/AdminActivities';
 import LoadingScreen from '@/components/LoadingScreen';
 import StudentActivities from '@/components/StudentActivities';
-import { db } from '@/config/firebase';
-import { useAuth } from '@/context/AuthContext';
-import { collection, getDocs } from 'firebase/firestore';
-import { useRouter } from 'next/router';
+import withUserData from '@/components/WithUserData';
 import React from 'react'
-import { useEffect } from 'react';
-import { useState } from 'react';
 
-export default function Activities() {
-
-  const router = useRouter()
-
-  const { user } = useAuth();
-  const [authUid, setAuthUid] = useState(user.uid)
-  const [allUsers, setAllUsers] = useState([])
-  const [tutor, setTutor] = useState({})
-  const [userMatched, setUserMatched] = useState({})
-
-  const fetchPost = async () => {
-    await getDocs(collection(db, "users"))
-      .then((querySnapshot) => {
-        const newData = querySnapshot.docs
-          .map((doc) => ({ ...doc.data(), id: doc.id }));
-        const userMatched = newData.find(item => item.uid == authUid);
-        const tutorMatched = newData.find(item => item.uid == userMatched.asignedTutor)
-        const allStudents = newData.filter(item => item.role == "Student")
-        const studentsAsigned = allStudents.filter(item => item.asignedTutor == authUid)
-        setTutor(tutorMatched)
-        setAllUsers(studentsAsigned)
-        setUserMatched(userMatched)
-      })
+const Activities = ({ tutor, allUsers, userData }) => {
+  if (!userData) {
+    return <LoadingScreen />;
   }
-
-  useEffect(() => {
-    fetchPost();
-  }, [])
 
   return (
     <div className='bg-[var(--bluebg)] pb-20 h-full min-h-screen'>
       {
-        userMatched.role != "Admin" && userMatched.role != "Student" &&
-        (
-          <LoadingScreen />
-        )
-      }
-      {
-        userMatched.role == "Admin" && (
+        userData.role == "Admin" && (
           <AdminActivities
             allUsers={allUsers}
-            userMatched={userMatched}
+            userMatched={userData}
           />
         )
       }
       {
-        userMatched.role == "Student" && (
+        userData.role == "Student" && (
           <StudentActivities
             tutor={tutor}
-            userMatched={userMatched}
+            userMatched={userData}
           />
         )
       }
     </div>
   )
 }
+
+export default withUserData(Activities)

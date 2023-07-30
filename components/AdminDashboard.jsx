@@ -1,12 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react'
-import AddButton from './AddButton'
-import ListOfUsers from './ListOfUsers'
-import FormsCheck from './FormsCheck'
 import Image from 'next/image'
 import image3 from '@/public/cambridgeandlet.png'
 import enviroment from '@/public/enviromentsAdmin.png'
 import allStudents from '@/public/AllStudents.png'
-import { AiFillCloseCircle, AiOutlineCopy } from 'react-icons/ai'
+import { AiFillCloseCircle, AiFillPieChart, AiOutlineCopy } from 'react-icons/ai'
 import copy from 'clipboard-copy';
 import { toast } from 'react-toastify'
 import { useRouter } from 'next/router'
@@ -14,7 +11,7 @@ import { FcAutomatic, FcBullish, FcCalendar, FcContacts, FcHighPriority, FcVideo
 import { Box, Fade, Modal, TextField, useMediaQuery } from '@mui/material'
 import { doc, updateDoc } from 'firebase/firestore'
 import { db } from '@/config/firebase'
-import { BsFillCameraVideoFill, BsQuestionCircle } from 'react-icons/bs'
+import { BsFillCameraVideoFill, BsHeartFill, BsQuestionCircle } from 'react-icons/bs'
 import CtaAnimationPage from './CtaAnimationPage'
 import student from '@/public/animations/student.json'
 import Backdrop from '@mui/material/Backdrop';
@@ -22,12 +19,14 @@ import ExternalApps from './ExternalApps'
 import YourProfile from './YourProfile'
 import ReactPlayer from 'react-player'
 import { ReplayOutlined } from '@mui/icons-material'
-import { MdReplay } from 'react-icons/md'
+import { MdFaceRetouchingNatural, MdReplay, MdTaskAlt } from 'react-icons/md'
+import { TbBrandYoutubeKids } from 'react-icons/tb'
+import { FaTasks } from 'react-icons/fa'
 
-export default function AdminDashboard({ profileImg, firstName, role, email, id, url }) {
+export default function AdminDashboard({ allUsers, id, url }) {
 
-  // const [mail] = useState("learnenglishtogether21@gmail.com")
-  // const [password] = useState("let-admin")
+  console.log(allUsers)
+
   const router = useRouter()
   const [urlMeet, setUrlMeet] = useState("")
   const [open, setOpen] = React.useState(false);
@@ -49,11 +48,6 @@ export default function AdminDashboard({ profileImg, firstName, role, email, id,
     p: 4,
   };
 
-  const handleCopy = (mail) => {
-    copy(mail)
-    toast.success("Copied!")
-  }
-
   const changeUrl = async (e) => {
     e.preventDefault()
     const nameRef = doc(db, "users", id);
@@ -65,22 +59,7 @@ export default function AdminDashboard({ profileImg, firstName, role, email, id,
     }, 3000)
   }
 
-  const [question, setQuestion] = useState(false)
   const [meetingRoom, setMeetingRoom] = useState(false)
-  const [isFinished, setIsFinished] = useState(false)
-
-  const [key, setKey] = useState(0);
-
-  const handleReset = () => {
-    setKey(prevKey => prevKey + 1);
-    setIsFinished(false)
-  };
-
-  const showAlert = () => {
-    //se sobrepone un elemento para volver a escuchar
-    setIsFinished(true)
-  }
-
   return (
     <div>
       {
@@ -93,17 +72,12 @@ export default function AdminDashboard({ profileImg, firstName, role, email, id,
             btn="link"
             link={url}
             bg="green"
+            setMeetingRoom={setMeetingRoom}
           />
         )
       }
-      <div className='flex justify-center items-center pt-4'>
-        <h1 className='text-center text-4xl mx-4 py-2 font-bold text-white'>Welcome {firstName}!</h1>
-        <YourProfile char={profileImg} size={"small"} />
-      </div>
-
       {/* FUNCTION OF RANDOM PHRASE ON ENGLISH TO PRACTICE, SHOULD BE AN ARRAY ON THE DB THAT SHOWS RANDOMLY OBJECTS WITH THIS URL WITH THE MINUTES, LEVEL, ETC. */}
       {/* Should be on the immersive page with a switch between videos / practice to pass this way, also we should track the progress on this for each student */}
-
       {/* <div className='relative'>
         <div className={`bg-green-400 flex justify-center items-center h-[250px] w-full absolute ${isFinished ? "opacity-100" : "opacity-0"}`}>
           <MdReplay onClick={handleReset} className='text-8xl fill-white' />
@@ -127,114 +101,227 @@ export default function AdminDashboard({ profileImg, firstName, role, email, id,
           }}
         />
       </div> */}
-
+      <div onClick={() => setMeetingRoom(true)} className='flex bg-green-500 py-1 px-3 absolute top-2 left-2 md:left-20 cursor-pointer hover:opacity-80 rounded-full w-[100px] md:w-[170px] justify-between items-center'>
+        <BsFillCameraVideoFill fill='white' size={20} />
+        <p className={`text-white text-xs`}>
+          <span className='hidden text-white md:inline'>
+            Enter in the {" "}
+          </span>
+          Meeting
+        </p>
+      </div>
       <div className='md:gap-8 my-8 mx-4 md:mx-16'>
-        <div className='md:flex justify-around w-full'>
-          <div className='relative space-y-2 my-4 md:w-[400px]'>
-            <p className='text-white text-xl'>Link for meetings</p>
-            <div onClick={() => setQuestion(!question)} className='absolute right-4 top-0 cursor-pointer bg-slate-300 rounded-full'>
-              <BsQuestionCircle className='w-6 h-6 ' />
-            </div>
-            <div onClick={() => setMeetingRoom(true)} className='flex bg-green-500 cursor-pointer gap-8 hover:gap-10 hover:opacity-80 py-4 rounded-full w-full justify-center items-center'>
-              <p className='text-white'>Entra a la meeting</p>
-              <BsFillCameraVideoFill fill='white' size={40} />
-            </div>
-            <small className='text-white'>Aun no tienes link? no sabes como crearlo? <span onClick={handleOpen} className='text-green-500 cursor-pointer underline'>Click aqui!</span></small>
-            {
-              question && (
-                <div className='bg-gray-200 backdrop-blur-sm bg-opacity-80 p-6 shadow-gray-500 z-50 rounded-md shadow-lg max-w-[250px] absolute right-0'>
-                  <AiFillCloseCircle className='absolute top-2 cursor-pointer right-2 w-6 h-6' onClick={() => setQuestion(!question)} />
-                  <p>Lo primero que tienes que hacer es ir a este <a href='https://whereby.com/' className='text-sky-500 underline' target='_blank'>link</a> y crearte una cuenta con tu correo. <br />Luego debes crear un link personalizado en la pagina, recomendamos que este link tenga tu nombre ya que es unico y siempre te conectaras con tus estudiantes por este link<br /> <span className='text-[var(--color3)]'>LISTO!</span>, agrega tu link aqui abajo para que tus estudiantes puedan acceder facilmente</p>
-                </div>
-              )
-            }
-            <Modal
-              aria-labelledby="transition-modal-title"
-              aria-describedby="transition-modal-description"
-              open={open}
-              onClose={handleClose}
-              closeAfterTransition
-              slots={{ backdrop: Backdrop }}
-              slotProps={{
-                backdrop: {
-                  timeout: 500,
-                },
-              }}
-            >
-              <Fade in={open}>
-                <Box sx={style}>
-                  <small className='text-gray-500 text-xs'>Current Url (link actual): {url} </small>
-                  <p>Ingresa aqui el link proporcionado por WhereBy. si aun no tienes tu link entra a esta pagina <a href='https://whereby.com/' className='text-sky-500 underline' target='_blank'>WhereBy</a> y crea tu cuenta super rapido, cuando tengas tu link personal ingresalo aqui y listo! todos tus estudiantes lo tendran a disposicion.</p>
-                  <form onSubmit={changeUrl} className='flex flex-col p-8 space-y-4'>
-                    <TextField id="filled-basic" label="Link given by WhereBy" variant="filled"
-                      className='bg-gray-300 rounded-md w-full'
-                      value={urlMeet}
-                      type='text'
-                      placeholder='https://whereby.com/***********'
-                      onChange={(e) => setUrlMeet(e.target.value)}
-                    />
-                    <button type='submit' className='bg-[var(--color3)] py-4 text-lg text-white rounded-md'>Add link</button>
-                  </form>
-                </Box>
-              </Fade>
-            </Modal>
+        <small className='text-white'>Problemas con tu meeting link? <span onClick={handleOpen} className='text-green-500 cursor-pointer underline'>Click aqui!</span></small>
+        <Modal
+          aria-labelledby="transition-modal-title"
+          aria-describedby="transition-modal-description"
+          open={open}
+          onClose={handleClose}
+          closeAfterTransition
+          slots={{ backdrop: Backdrop }}
+          slotProps={{
+            backdrop: {
+              timeout: 500,
+            },
+          }}
+        >
+          <Fade in={open}>
+            <Box sx={style}>
+              <small className='text-gray-500 text-xs'>Current Url (link actual): {url} </small>
+              <p>Ingresa aqui el link proporcionado por WhereBy. si aun no tienes tu link entra a esta pagina <a href='https://whereby.com/' className='text-sky-500 underline' target='_blank'>WhereBy</a> y crea tu cuenta super rapido, cuando tengas tu link personal ingresalo aqui y listo! todos tus estudiantes lo tendran a disposicion.</p>
+              <form onSubmit={changeUrl} className='flex flex-col p-8 space-y-4'>
+                <TextField id="filled-basic" label="Link given by WhereBy" variant="filled"
+                  className='bg-gray-300 rounded-md w-full'
+                  value={urlMeet}
+                  type='text'
+                  placeholder='https://whereby.com/***********'
+                  onChange={(e) => setUrlMeet(e.target.value)}
+                />
+                <button type='submit' className='bg-[var(--color3)] py-4 text-lg text-white rounded-md'>Add link</button>
+              </form>
+            </Box>
+          </Fade>
+        </Modal>
+        <ExternalApps role={"admin"} />
+        <div className='bg-yellow-400 mx-4 mb-6 pb-8 rounded-md md:flex md:pb-0 max-w-5xl md:mx-auto'>
+          <div className='bg-yellow-300 font-semibold text-lg md:text-2xl px-4 py-3 md:py-8 rounded-md shadow-md'>
+            <span className='text-[var(--color2)] md:block text-3xl md:text-7xl'>Advices for Teachers!</span>
           </div>
-          <ExternalApps role={"admin"} />
-        </div>
-        <div className='max-md:space-y-8 md:flex items-start md:gap-4 md:mx-20 '>
-          <div className='w-11/12 mx-auto rounded-md bg-black'>
-            <Image className='object-cover w-full h-[120px] md:h-[200px] rounded-t-md' src={enviroment} />
-            <div className='p-4'>
-              <p className='text-white'>Add a new video</p>
-              <p className='text-gray-600'>Only admins and tutors can create videos for the students, why don't you try iy? you only have to add the url for youtube, the name, put a level and a description. Try it!</p>
-              <div className='flex gap-3 flex-col justify-center my-4'>
-                <p className='text-[var(--color3)] text-center'>Remember to put the level correctly</p>
-              </div>
-              <button onClick={() => router.push("/adminCreate/createVideo")} className='cursor-pointer w-full rounded-full border-4 border-white py-3 text-white hover:bg-gray-800'>
-                <a>Create a Video</a>
+          <div className='px-4 md:px-20 md:py-2'>
+            <div className='my-4 space-y-2'>
+              <p className='text-center text-md'>Recuerda preparar todas las lecciones <span className='text-[var(--color2)] font-bold text-xl'>Una Semana Antes</span></p>
+              <p className='text-center text-md'>Tienes 24 horas para responder las dudas del <span className='text-[var(--color2)] font-bold text-xl'>Apoyo Academico</span></p>
+              <p className='text-center text-md'>Asisna Actividades claras cuando no hagas <span className='text-[var(--color2)] font-bold text-xl'>Clase en Tiempo Real</span></p>
+            </div>
+            <div className='max-w-[90%] mx-auto'>
+              <button onClick={() => router.push(`/Activities/`)} class="learn-more">
+                <span class="circle bg-blue-950" aria-hidden="true">
+                  <span class="icon arrow"></span>
+                </span>
+                <span class="button-text text-blue-950">Asignar Actividades</span>
               </button>
             </div>
           </div>
-          <div className='w-11/12 mx-auto rounded-md bg-black'>
+        </div>
+        <div className='w-full max-w-5xl mx-auto space-y-6 md:my-12 md:space-y-0 md:flex justify-evenly'>
+          <div onClick={() => router.push(`/selectCharacter/${id}`)} className='group active:scale-90 bg-white relative overflow-hidden flex gap-2 justify-center items-center py-6 md:py-2 md:w-56 rounded-md hover:shadow-lg shadow-black cursor-pointer hover:-translate-y-1 md:h-40 md:flex-col mx-4'>
+            <MdFaceRetouchingNatural className='z-10 text-5xl md:text-7xl' />
+            <p className='z-10 group-hover:text-white'>
+              Change
+            </p>
+            <p className='z-10 group-hover:text-white'>
+              Character
+            </p>
+            <div className='h-20 group-hover:scale-[100%] scale-0 w-20 z-[5] bg-white rounded-full -left-8 md:left-[72px] md:top-2 absolute'></div>
+            <div className='h-32 md:h-24 md:w-24 group-hover:scale-[1000%] md:group-hover:scale-[350%] w-32 bg-gradient-to-tl from-cyan-300 to-blue-700 rounded-full -left-12 md:left-16 md:top-1 absolute'></div>
+          </div>
+          <div onClick={() => router.push("/Immersive/")} className='group active:scale-90 bg-white relative overflow-hidden flex gap-2 justify-center items-center py-6 md:py-2 md:w-56 rounded-md hover:shadow-lg shadow-black cursor-pointer hover:-translate-y-1 md:h-40 md:flex-col mx-4'>
+            <TbBrandYoutubeKids className='z-10 text-5xl md:text-7xl' />
+            <p className='z-10 group-hover:text-white'>
+              Immersive
+            </p>
+            <p className='z-10 group-hover:text-white'>
+              Videos
+            </p>
+            <div className='h-20 group-hover:scale-[100%] scale-0 w-20 z-[5] bg-white rounded-full -left-8 md:left-[72px] md:top-2 absolute'></div>
+            <div className='h-32 md:h-24 md:w-24 group-hover:scale-[1000%] md:group-hover:scale-[350%] w-32 bg-gradient-to-tl from-red-300 to-red-600 rounded-full -left-12 md:left-16 md:top-1 absolute'></div>
+          </div>
+          <div onClick={() => router.push("/Progress/")} className='group active:scale-90 bg-white relative overflow-hidden flex gap-2 justify-center items-center py-6 md:py-2 md:w-56 rounded-md hover:shadow-lg shadow-black cursor-pointer hover:-translate-y-1 md:h-40 md:flex-col mx-4'>
+            <AiFillPieChart className='z-10 text-5xl md:text-7xl' />
+            <p className='z-10 group-hover:text-white'>
+              My
+            </p>
+            <p className='z-10 group-hover:text-white'>
+              Progress
+            </p>
+            <div className='h-20 group-hover:scale-[100%] scale-0 w-20 z-[5] bg-white rounded-full -left-8 md:left-[72px] md:top-2 absolute'></div>
+            <div className='h-32 md:h-24 md:w-24 group-hover:scale-[1000%] md:group-hover:scale-[350%] w-32 bg-gradient-to-tl from-green-300 to-green-700 rounded-full -left-12 md:left-16 md:top-1 absolute'></div>
+          </div>
+          <div onClick={() => router.push("/Activities/")} className='group active:scale-90 bg-white relative overflow-hidden flex gap-2 justify-center items-center py-6 md:py-2 md:w-56 rounded-md hover:shadow-lg shadow-black cursor-pointer hover:-translate-y-1 md:h-40 md:flex-col mx-4'>
+            <MdTaskAlt className='z-10 text-5xl md:text-7xl' />
+            <p className='z-10 group-hover:text-white'>
+              My
+            </p>
+            <p className='z-10 group-hover:text-white '>
+              Tasks
+            </p>
+            <div className='h-20 group-hover:scale-[100%] scale-0 w-20 z-[5] bg-white rounded-full -left-8 md:left-[72px] md:top-2 absolute'></div>
+            <div className='h-32 md:h-24 md:w-24 group-hover:scale-[1000%] md:group-hover:scale-[350%] w-32 bg-gradient-to-tl from-yellow-200 to-yellow-600 rounded-full -left-12 md:left-16 md:top-1 absolute'></div>
+          </div>
+        </div>
+        <div className='mx-4 flex justify-center flex-wrap gap-4 my-4'>
+          {
+            allUsers.length < 2 && (
+              <div className='hover:-translate-y-1 cursor-pointer shadow-xl hover:shadow-black flex items-center flex-col bg-slate-300 rounded-lg p-2 w-72'>
+                <YourProfile />
+                <p className='text-2xl'>
+                  Future Student
+                </p>
+                <div className='flex justify-between w-full px-4'>
+                  <div className='group cursor-pointer flex gap-1 items-center'>
+                    <BsHeartFill size={30} className='group-hover:fill-red-600 group-hover:-translate-y-1' />
+                    <p className='group-hover:text-red-600 group-hover:-translate-y-1'>
+                      0
+                    </p>
+                  </div>
+                  <div className='group cursor-pointer flex gap-2 items-center'>
+                    <FaTasks size={30} className='group-hover:fill-yellow-500 group-hover:-translate-y-1' />
+                    <p className='group-hover:text-yellow-500 group-hover:-translate-y-1'>
+                      0
+                    </p>
+                  </div>
+                </div>
+                <div className='w-[90%] mx-auto'>
+                  <button class="learn-more my-2">
+                    <span class="circle bg-gray-400" aria-hidden="true">
+                      <span class="icon arrow"></span>
+                    </span>
+                    <span class="button-text text-gray-400">No Disponible</span>
+                  </button>
+                </div>
+              </div>
+            )
+          }
+          {
+            allUsers.map((student) => (
+              <div className='hover:-translate-y-1 cursor-pointer shadow-xl hover:shadow-black flex items-center flex-col bg-slate-300 rounded-lg p-2 w-72'>
+                <YourProfile char={student.profileImg} size={""} />
+                <p className='text-2xl'>
+                  {student.firstName}
+                </p>
+                <div className='flex justify-between w-full px-4'>
+                  <div className='group cursor-pointer flex gap-1 items-center'>
+                    <BsHeartFill size={30} className='group-hover:fill-red-600 group-hover:-translate-y-1' />
+                    <p className='group-hover:text-red-600 group-hover:-translate-y-1'>
+                      {student.likedVideos.length}
+                    </p>
+                  </div>
+                  <div className='group cursor-pointer flex gap-2 items-center'>
+                    <FaTasks size={30} className='group-hover:fill-yellow-500 group-hover:-translate-y-1' />
+                    <p className='group-hover:text-yellow-500 group-hover:-translate-y-1'>
+                      {student.activities.length}
+                    </p>
+                  </div>
+                </div>
+                <div className='w-[90%] mx-auto'>
+                  <button onClick={() => router.push(`/ActivitiesDetail/${student.id}`)} class="learn-more my-2">
+                    <span class="circle bg-[var(--color3)]" aria-hidden="true">
+                      <span class="icon arrow"></span>
+                    </span>
+                    <span class="button-text text-[var(--color3)]">Ver Actividades</span>
+                  </button>
+                </div>
+              </div>
+            ))
+          }
+          {
+            allUsers.length < 3 && (
+              <div className='hover:-translate-y-1 cursor-pointer shadow-xl hover:shadow-black flex items-center flex-col bg-slate-300 rounded-lg p-2 w-72'>
+                <YourProfile />
+                <p className='text-2xl'>
+                  Future Student
+                </p>
+                <div className='flex justify-between w-full px-4'>
+                  <div className='group cursor-pointer flex gap-1 items-center'>
+                    <BsHeartFill size={30} className='group-hover:fill-red-600 group-hover:-translate-y-1' />
+                    <p className='group-hover:text-red-600 group-hover:-translate-y-1'>
+                      0
+                    </p>
+                  </div>
+                  <div className='group cursor-pointer flex gap-2 items-center'>
+                    <FaTasks size={30} className='group-hover:fill-yellow-500 group-hover:-translate-y-1' />
+                    <p className='group-hover:text-yellow-500 group-hover:-translate-y-1'>
+                      0
+                    </p>
+                  </div>
+                </div>
+                <div className='w-[90%] mx-auto'>
+                  <button class="learn-more my-2">
+                    <span class="circle bg-gray-400" aria-hidden="true">
+                      <span class="icon arrow"></span>
+                    </span>
+                    <span class="button-text text-gray-400">No Disponible</span>
+                  </button>
+                </div>
+              </div>
+            )
+          }
+
+        </div>
+        <div className='mx-4 py-8 justify-center'>
+          <div className='md:w-[80%] w-full  mx-auto rounded-md bg-black'>
             <Image className='object-cover w-full rounded-t-md' src={image3} />
             <div className='p-4'>
-              <p className='text-white'>ADMIN ACCESS TO THE WRITE & IMPROVE PAGE</p>
-              <p className='text-gray-600'>You already have access as an administrator to the write & improve page to see the students results and tasks finished.</p>
+              <p className='text-white'>Working with Write & Improve</p>
+              <p className='text-gray-600'>Cuando veas a un estudiante listo tambien puedes empezar a practicar su Writing con la herramienta de la colaboración University of Cambridge</p>
               <a href='https://writeandimprove.com/' target='_blank'>
-                <button className='cursor-pointer w-full rounded-full border-4 border-white my-2 py-3 text-white hover:bg-gray-800'>
-                  Go to the page
+                <button class="learn-more my-2">
+                  <span class="circle bg-[var(--color2)]" aria-hidden="true">
+                    <span class="icon arrow"></span>
+                  </span>
+                  <span class="button-text text-[var(--color2)]">Go to the Page</span>
                 </button>
               </a>
-            </div>
-          </div>
-        </div>
-        <div className='bg-black rounded-md md:max-w-3xl my-8 mx-auto'>
-          <Image src={allStudents} className='rounded-t-md h-[150px] md:h-[250px] w-full object-cover' />
-          <div>
-            <div className='flex items-center justify-start gap-2 p-4'>
-              <FcBullish size={24} />
-              <p className='text-white'>Check your students progress</p>
-            </div>
-            <div className='flex items-center justify-start gap-2 p-4'>
-              <FcAutomatic size={24} />
-              <p className='text-white'>Modify their information</p>
-            </div>
-            <div className='items-center hidden md:flex justify-start gap-2 p-4'>
-              <FcContacts size={24} />
-              <p className='text-white'>Access to contact data</p>
-            </div>
-            <div className=' hidden md:flex items-center justify-start gap-2 p-4'>
-              <FcHighPriority size={24} />
-              <p className='text-white'>Help your students in trouble in real time</p>
-            </div>
-            <div className='hidden md:flex items-center justify-start gap-2 p-4'>
-              <FcCalendar size={24} />
-              <p className='text-white'>See the student schedule and disponibility</p>
-            </div>
-            <div className='flex justify-center pb-6'>
-              <button onClick={() => router.push("/Progress")} className='w-11/12 py-4 rounded-full border-4 border-white text-white hover:bg-gray-700'>
-                Check it out
-              </button>
             </div>
           </div>
         </div>

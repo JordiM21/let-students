@@ -38,8 +38,8 @@ export default function ExternalApps({ role, appNotif, setAppNotif, userId }) {
   }
 
   return (
-    <>
-      <div className='flex justify-around my-6 md:w-[400px]'>
+    <div className='md:flex justify-center'>
+      <div className='flex justify-around my-6 md:w-[500px]'>
         <Link href="https://flip.com/" target='_blank' onClick={() => handleNotificationClick("Flip")}>
           <div className={`rounded-xl relative`}>
             {
@@ -77,7 +77,7 @@ export default function ExternalApps({ role, appNotif, setAppNotif, userId }) {
       {
         role === "admin" && (
           <>
-            <div className='flex justify-around my-6 md:w-[400px]'>
+            <div className='flex justify-around my-6 md:w-[500px]'>
               <Link href="https://www.esl-lab.com/easy/" target='_blank'>
                 <div>
                   <Image src={ESLIcon} className='w-[80px] h-[80px] object-cover rounded-xl hover:scale-110 cursor-pointer hover:-rotate-2 shadow-xl shadow-gray-800' />
@@ -100,6 +100,6 @@ export default function ExternalApps({ role, appNotif, setAppNotif, userId }) {
           </>
         )
       }
-    </>
+    </div>
   )
 }

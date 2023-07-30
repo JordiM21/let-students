@@ -10,7 +10,7 @@ import { AiFillInfoCircle } from 'react-icons/ai';
 import withUserData from '@/components/WithUserData';
 import YourProfile from '@/components/YourProfile';
 
-const Dashboard = ({ userData, tutor }) => {
+const Dashboard = ({ userData, tutor, allUsers }) => {
   if (!userData) {
     return <LoadingScreen />;
   }
@@ -69,6 +69,7 @@ const Dashboard = ({ userData, tutor }) => {
             email={email}
             id={id}
             url={urlMeet}
+            allUsers={allUsers}
           />
         )
       }
