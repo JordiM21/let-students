@@ -82,51 +82,53 @@ export default function index() {
             />
             <SingleExample
               english="He told me that he was making dinner."
-              spanish=""
+              spanish="El me dijo que estaba preparando la cena"
             />
             <SingleExample
-              english=""
-              spanish=""
+              english="He asked if I’d been sleeping when he called."
+              spanish="El pregunto si yo estaba durmiendo cuando llamó"
             />
             <SingleExample
-              english=""
-              spanish=""
+              english="He said he’d been studying English for two years."
+              spanish="El dijo que habia estado estudiando Ingles por dos años"
             />
             <SingleExample
-              english=""
-              spanish=""
+              english="Steve told me that they’d been dating for a year."
+              spanish="Steve me dijo que ellos habian estado saliendo por un año"
             />
             <SingleExample
-              english=""
-              spanish=""
+              english="He said that he’d been to Chicago before for work."
+              spanish="El dijo que había estado en Chicago antes por trabajo"
             />
             <SingleExample
-              english=""
-              spanish=""
+              english="She said she’d been dancing for years before the accident."
+              spanish="Ella dijo que ha estado bailando años antes del accidente"
             />
             <SingleExample
-              english=""
-              spanish=""
+              english="(Direct) “I’ll go to the movies tomorrow,” John said."
+              spanish="(Indirect) John said he would go to the movies the next day."
             />
             <SingleExample
-              english=""
-              spanish=""
+              english="(Direct) “Will you help me move?” she asked."
+              spanish="(Indirect) She asked me if I would help her move."
             />
             <SingleExample
-              english=""
-              spanish=""
+              english="(Direct) Debra said, “Allen can work tomorrow.”"
+              spanish="(Indirect) Debra said Allen could work the next day."
             />
             <SingleExample
-              english=""
-              spanish=""
+              english="(Direct) “Can you open the window, please?”, he asked."
+              spanish="(Indirect) He asked me if I could open the window."
             />
             <SingleExample
-              english=""
-              spanish=""
+              english="(Direct) “You must wear your seat belt,” mom said."
+              spanish="(Direct) My mom said I had to wear my seat belt."
             />
-
-            <small className='text-sm opacity-60'></small>
-
+            <SingleExample
+              english="(Direct) She said, “You must work tomorrow.”"
+              spanish="(Indirect) She said I had to work the next day."
+            />
+            <small className='text-sm opacity-60'>Veamos como los tiempos cambian en el INDIRECT SPEECH. pasamos de Will a Would, de Can a Could y de Must a Had to (Todos pasan a su forma pasada). Esto por que el tiempo verbal cambia, debemos estar atentos a estos cambios en el tiempo indirecto</small>
           </div>
           <div className='my-8 rounded-md p-4 bg-blue-200 '>
             <UnitTest level={"Advanced"} unit={13} />

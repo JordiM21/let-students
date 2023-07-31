@@ -35,7 +35,6 @@ export default function index() {
   ];
 
   const router = useRouter()
-
   return (
     <div className='bg-gray-100'>
       <div className='mx-6 md:max-w-xl md:mx-auto'>
