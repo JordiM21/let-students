@@ -24,7 +24,7 @@ export default function StudentDashboard({ firstName, id, setAppNotif, appNotif,
 
   return (
     <div className='mt-6'>
-      <div onClick={() => setMeetingRoom(true)} className='flex bg-green-500 py-1 px-3 absolute top-1 left-2 md:left-20 cursor-pointer hover:opacity-80 rounded-full w-[100px] md:w-[200px] justify-between items-center'>
+      <div onClick={() => setMeetingRoom(true)} className='flex bg-green-500 py-1 px-2 sm:px-3 absolute top-1 left-2 md:left-20 cursor-pointer hover:opacity-80 rounded-full w-[90px] sm:w-[100px] md:w-[200px] justify-between items-center'>
         <YourProfile char={tutor.profileImg} size={"super-small"} />
         <p className={`hidden md:block text-white text-lg`}>
           MEETING

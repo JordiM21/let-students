@@ -12,7 +12,7 @@ export default function LevelPreview({ image, url, description, title, disabled,
       {
         disabled == false && (
           <div className='max-w-sm mx-auto group'>
-            <div className='overflow-hidden h-2 bg-gray-800'>
+            <div className='overflow-hidden h-2 bg-transparent'>
               <ProgressLesson progress={progress} />
             </div>
             <div onClick={() => router.push(url)} className='rounded-md relative max-w-sm h-40 md:h-full mx-auto overflow-hidden transition-all .1s ease-in cursor-pointer flex items-center justify-center'>

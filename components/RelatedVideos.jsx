@@ -16,12 +16,14 @@ export default function RelatedVideos({ relatedVideos, level }) {
       <div className='md:flex md:mx-14 max-w-lg gap-2 space-y-8 flex-wrap py-8 md:py-2'>
         {
           relatedVideos.map((video) => (
-            <VideoCard
-              id={video.id}
-              url={video.url}
-              title={video.title}
-              level={video.level}
-            />
+            <a href={`/immersiveActivities/${video.id}`}>
+              <VideoCard
+                id={video.id}
+                url={video.url}
+                title={video.title}
+                level={video.level}
+              />
+            </a>
           ))
         }
       </div>

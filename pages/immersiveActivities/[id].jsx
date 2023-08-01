@@ -7,7 +7,7 @@ import { useAuth } from '@/context/AuthContext';
 import { collection, doc, getDocs, updateDoc } from 'firebase/firestore';
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react'
-import { MdArrowBackIosNew, MdFavoriteBorder } from 'react-icons/md';
+import { MdArrowBackIosNew, MdFavoriteBorder, MdReplay } from 'react-icons/md';
 import ReactPlayer from 'react-player';
 import { toast } from 'react-toastify';
 
@@ -80,6 +80,24 @@ const VideoDetails = ({ userData }) => {
     }
   };
 
+
+  const [isFinished, setIsFinished] = useState(false);
+  const [key, setKey] = useState(0);
+
+  useEffect(() => {
+    setIsFinished(false);
+    setKey(key + 1);
+  }, []);
+
+  const handleReset = () => {
+    setIsFinished(false);
+    setKey(key + 1);
+  };
+
+  const showAlert = () => {
+    setIsFinished(true);
+  };
+
   return (
     <div className='pt-28 bg-[var(--blueDarkbg)]'>
       {
@@ -91,7 +109,30 @@ const VideoDetails = ({ userData }) => {
       <BackHeader largeTitle={data.title} parentTitle={"Back"} />
       <div className='md:flex'>
         <div className='flex-1'>
-          <div className='h-[260px] md:h-[432px] w-full max-w-3xl mx-auto'>
+          <div className='relative h-[260px] md:h-[432px] mx-auto max-w-3xl'>
+            <div className={`bg-green-400 flex justify-center items-center h-[260px] md:h-[432px] w-full absolute ${isFinished ? "opacity-100" : "opacity-10"}`}>
+              <MdReplay onClick={handleReset} className='text-8xl fill-white' />
+            </div>
+            <ReactPlayer
+              key={key}
+              width={"100%"}
+              height={"100%"}
+              className="mx-auto md:my-4 bg-green-400 rounded-md"
+              url={data.url}
+              muted={false} //MODIFY TO FALSE
+              autoplay={true}
+              loop={false}
+              playing={true}
+              onEnded={showAlert}
+              light={false}
+              config={{
+                youtube: {
+                  playerVars: { showinfo: -1 }
+                }
+              }}
+            />
+          </div>
+          {/* <div className='h-[260px] md:h-[432px] w-full max-w-3xl mx-auto'>
             <ReactPlayer
               width={"100%"}
               height={"100%"}
@@ -100,7 +141,7 @@ const VideoDetails = ({ userData }) => {
               playing={true}
               controls={true}
             />
-          </div>
+          </div> */}
           <div className='bg-[var(--color2)] p-2 rounded-b-md max-w-3xl mx-auto mb-2'>
             <div onClick={handleLike} className={`group transition-all 1s max-w-[50%] ease-in cursor-pointer flex w-full border-green-600 border-4 rounded-md py-2 justify-around ${liked ? 'bg-green-600 text-white opacity-90' : 'active:translate-y-2 bg-white hover:bg-green-600 hover:border-white '}`}>
               <p className={`text-sm  transition-all 1s ease-in font-bold ${liked ? 'text-white' : 'group-hover:text-white text-green-600 group-hover:scale-110'}`}>{liked ? 'Video on your list' : 'Save video'}</p>

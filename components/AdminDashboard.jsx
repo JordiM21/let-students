@@ -59,6 +59,23 @@ export default function AdminDashboard({ allUsers, id, url }) {
     }, 3000)
   }
 
+  const [isFinished, setIsFinished] = useState(false);
+  const [key, setKey] = useState(0);
+
+  useEffect(() => {
+    setIsFinished(false);
+    setKey(key + 1);
+  }, []);
+
+  const handleReset = () => {
+    setIsFinished(false);
+    setKey(key + 1);
+  };
+
+  const showAlert = () => {
+    setIsFinished(true);
+  };
+
   const [meetingRoom, setMeetingRoom] = useState(false)
   return (
     <div>
@@ -88,7 +105,7 @@ export default function AdminDashboard({ allUsers, id, url }) {
           height={"250px"}
           className="mx-auto md:my-4 bg-green-400 rounded-md"
           url="https://www.youtube.com/watch?v=2UXpZPqjOIM&start=60&end=70"
-          muted={true} //MODIFY TO FALSE
+          muted={false} //MODIFY TO FALSE
           autoplay={true}
           loop={false}
           playing={true}

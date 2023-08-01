@@ -53,8 +53,8 @@ const Dashboard = ({ userData, tutor, allUsers }) => {
           </div>
         )
       }
-      <div className='flex justify-start absolute -top-0 right-2 items-start pt-1'>
-        <h1 className='text-center text-md mx-4 py-2 font-bold text-black'>Hi {firstName}!</h1>
+      <div className='flex justify-start absolute -top-0 right-1 sm:right-2 items-start pt-1'>
+        <h1 className='text-center text-xs sm:text-sm md:text-md mx-1 sm:mx-4 py-2 font-bold text-gray-300'>Hi {firstName}!</h1>
         <YourProfile char={profileImg} size={"super-small"} />
       </div>
       {
