@@ -42,22 +42,16 @@ export default function index() {
         <Breadcrumbs separator="›" aria-label="breadcrumb">
           {breadcrumbs}
         </Breadcrumbs>
-        <p className='opacity-60 font-bold text-lg text-[var(--color2)]'> - LESSON 25</p>
-        <CustomTitle title={""} titleSpanish={""} />
+        <p className='opacity-60 font-bold text-lg text-[var(--color2)]'>Accent and Pronunciation - LESSON 25</p>
+        <CustomTitle title={"Accent and Pronunciation"} titleSpanish={"Acentos y Pronunciación"} />
         <ReactPlayer
           width={"100%"}
           className="max-w-2xl mx-auto my-8 border-8 rounded-md bg-blue-600 border-blue-600"
-          url=""
+          url="https://www.youtube.com/watch?v=-P-5RC17BHw"
           controls={true} />
         <div className='my-4'>
           <div className='space-y-2'>
-            <small className='text-sm opacity-60'></small>
-            <SingleExample
-              english=""
-              spanish=""
-            />
-            <small className='text-sm opacity-60'></small>
-
+            <p className='text-sm opacity-60'>En esta clase te enfocarás en mejorar tu acento y en crear rutinas para mejorar tu pronunciación</p>
           </div>
           <div className='my-8 rounded-md p-4 bg-blue-200 '>
             <UnitTest level={"Advanced"} unit={25} />
