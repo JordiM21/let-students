@@ -3,13 +3,14 @@ import LoadingScreen from '@/components/LoadingScreen';
 import RelatedVideos from '@/components/RelatedVideos';
 import withUserData from '@/components/WithUserData';
 import { db } from '@/config/firebase';
-import { useAuth } from '@/context/AuthContext';
 import { collection, doc, getDocs, updateDoc } from 'firebase/firestore';
 import { useRouter } from 'next/router';
-import React, { useEffect, useState } from 'react'
-import { MdArrowBackIosNew, MdFavoriteBorder, MdReplay } from 'react-icons/md';
+import React, { useEffect, useState, useRef } from 'react'
+import { AiFillPauseCircle, AiFillPlayCircle } from 'react-icons/ai';
+import { MdFavoriteBorder, MdForward10, MdReplay, MdReplay10, MdReplayCircleFilled } from 'react-icons/md';
 import ReactPlayer from 'react-player';
 import { toast } from 'react-toastify';
+import { GrBackTen, GrForwardTen } from 'react-icons/gr'
 
 const VideoDetails = ({ userData }) => {
   if (!userData) {
@@ -21,7 +22,6 @@ const VideoDetails = ({ userData }) => {
   const [data, setData] = useState({})
   const [related, setRelated] = useState([])
   const [userMatched, setUserMatched] = useState(userData)
-  const { user } = useAuth();
 
   const fetchPost = async () => {
     await getDocs(collection(db, "Immersive"))
@@ -53,8 +53,6 @@ const VideoDetails = ({ userData }) => {
     checkLikedStatus();
   }, [data.url, liked]);
 
-
-
   useEffect(() => {
     fetchPost();
   }, [])
@@ -83,6 +81,15 @@ const VideoDetails = ({ userData }) => {
 
   const [isFinished, setIsFinished] = useState(false);
   const [key, setKey] = useState(0);
+  const playerRef = useRef(null);
+
+  const handleForward = () => {
+    playerRef.current.seekTo(playerRef.current.getCurrentTime() + 10, 'seconds');
+  };
+
+  const handleBackward = () => {
+    playerRef.current.seekTo(playerRef.current.getCurrentTime() - 10, 'seconds');
+  };
 
   useEffect(() => {
     setIsFinished(false);
@@ -97,6 +104,7 @@ const VideoDetails = ({ userData }) => {
   const showAlert = () => {
     setIsFinished(true);
   };
+  const [isPlaying, setIsPlaying] = useState(false);
 
   return (
     <div className='pt-28 bg-[var(--blueDarkbg)]'>
@@ -110,19 +118,19 @@ const VideoDetails = ({ userData }) => {
       <div className='md:flex'>
         <div className='flex-1'>
           <div className='relative h-[260px] md:h-[432px] mx-auto max-w-3xl'>
-            <div className={`bg-green-400 flex justify-center items-center h-[260px] md:h-[432px] w-full absolute ${isFinished ? "opacity-100" : "opacity-10"}`}>
-              <MdReplay onClick={handleReset} className='text-8xl fill-white' />
+            <div onClick={() => setIsPlaying(!isPlaying)} className={`bg-green-400 cursor-pointer flex justify-center items-center h-[260px] md:h-[432px] w-full absolute ${isFinished ? "opacity-100" : "opacity-0"}`}>
             </div>
             <ReactPlayer
+              ref={playerRef}
               key={key}
               width={"100%"}
               height={"100%"}
               className="mx-auto md:my-4 bg-green-400 rounded-md"
               url={data.url}
-              muted={false} //MODIFY TO FALSE
+              muted={true} //MODIFY TO FALSE
               autoplay={true}
               loop={false}
-              playing={true}
+              playing={isPlaying}
               onEnded={showAlert}
               light={false}
               config={{
@@ -132,20 +140,38 @@ const VideoDetails = ({ userData }) => {
               }}
             />
           </div>
-          {/* <div className='h-[260px] md:h-[432px] w-full max-w-3xl mx-auto'>
-            <ReactPlayer
-              width={"100%"}
-              height={"100%"}
-              className="mx-auto my-0 rounded-md"
-              url={data.url}
-              playing={true}
-              controls={true}
-            />
-          </div> */}
-          <div className='bg-[var(--color2)] p-2 rounded-b-md max-w-3xl mx-auto mb-2'>
-            <div onClick={handleLike} className={`group transition-all 1s max-w-[50%] ease-in cursor-pointer flex w-full border-green-600 border-4 rounded-md py-2 justify-around ${liked ? 'bg-green-600 text-white opacity-90' : 'active:translate-y-2 bg-white hover:bg-green-600 hover:border-white '}`}>
-              <p className={`text-sm  transition-all 1s ease-in font-bold ${liked ? 'text-white' : 'group-hover:text-white text-green-600 group-hover:scale-110'}`}>{liked ? 'Video on your list' : 'Save video'}</p>
-              <MdFavoriteBorder className={`transition-all 1s ease-in ${liked ? 'fill-white scale-125' : 'group-hover:scale-125 group-hover:fill-white fill-green-600'}`} />
+          <div className='bg-[var(--color2)] pb-2 rounded-b-md max-w-3xl mx-auto mb-2'>
+            <div className='w-full flex justify-between px-2'>
+              <div onClick={handleLike} className={`group transition-all 1s p-2 m-1 ease-in cursor-pointer flex border-green-600 rounded-full justify-around ${liked ? 'bg-green-600 text-white opacity-90' : 'active:translate-y-2 bg-white hover:bg-green-600 hover:border-white '}`}>
+                <MdFavoriteBorder size={24} className={`transition-all 1s ease-in ${liked ? 'fill-white scale-125' : 'group-hover:scale-125 group-hover:fill-white fill-green-600'}`} />
+              </div>
+              <div className=''>
+                <button
+                  className="group hover:bg-red-400 bg-red-600 rounded-full p-2 shadow-md m-1"
+                  onClick={handleBackward}
+                >
+                  <MdReplay10 className='fill-white group-hover:fill-red-600' size={24} />
+                </button>
+                <button
+                  className="group bg-red-600 hover:bg-red-400 rounded-full p-2 shadow-md m-1"
+                  onClick={() => setIsPlaying(!isPlaying)}
+                >
+                  {isPlaying ?
+                    <AiFillPauseCircle className='group-hover:fill-red-600 fill-white' size={24} /> : <AiFillPlayCircle className='group-hover:fill-red-600 fill-white' size={24} />}
+                </button>
+                <button
+                  className="group hover:bg-red-400 bg-red-600 rounded-full p-2 shadow-md m-1"
+                  onClick={handleForward}
+                >
+                  <MdForward10 className='fill-white group-hover:fill-red-600' size={24} />
+                </button>
+              </div>
+              <button
+                className="group hover:bg-blue-700 bg-white rounded-full p-2 shadow-md m-1"
+                onClick={handleReset}
+              >
+                <MdReplay className='fill-blue-700 group-hover:fill-white group-hover:scale-125' size={24} />
+              </button>
             </div>
             <p className='p-2 text-white opacity-80 font-bold'>{data.description}</p>
           </div>
