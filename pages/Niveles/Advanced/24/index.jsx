@@ -47,7 +47,7 @@ export default function index() {
         <ReactPlayer
           width={"100%"}
           className="max-w-2xl mx-auto my-8 border-8 rounded-md bg-blue-600 border-blue-600"
-          url=""
+          url="https://www.youtube.com/watch?v=N2Au0UdymCU"
           controls={true} />
         <div className='my-4'>
           <div className='space-y-2'>
@@ -67,6 +67,11 @@ export default function index() {
               english="i likapples"
               spanish="i like apples"
             />
+            <ReactPlayer
+              width={"100%"}
+              className="max-w-2xl mx-auto my-8 border-8 rounded-md bg-blue-600 border-blue-600"
+              url="https://www.youtube.com/watch?v=uzlIcTJyJ1s"
+              controls={true} />
             <p className='text-sm opacity-60'>Now let's see some examples with the pronunciation or sounds</p>
             <SingleExample
               english="We gotta start the meeting [ui gora star-ta-miting]"

@@ -44,11 +44,7 @@ export default function index() {
         </Breadcrumbs>
         <p className='opacity-60 font-bold text-lg text-[var(--color2)]'>Phrasal and Prepositional Verbs - LESSON 17</p>
         <CustomTitle title={"Phrasal and Prepositional Verbs"} titleSpanish={"PHRASAL VERBS Y VERBOS PREPOSICIONALES"} />
-        <ReactPlayer
-          width={"100%"}
-          className="max-w-2xl mx-auto my-8 border-8 rounded-md bg-blue-600 border-blue-600"
-          url=""
-          controls={true} />
+
         <div className='my-4'>
           <div className='space-y-2'>
             <p className='text-sm opacity-60'>En inglés hay muchos verbos que constan de dos partes: el verbo y una preposición o partícula adverbial.</p>

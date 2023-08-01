@@ -44,11 +44,6 @@ export default function index() {
         </Breadcrumbs>
         <p className='opacity-60 font-bold text-lg text-[var(--color2)]'>Do vs. Make - LESSON 14</p>
         <CustomTitle title={"Do vs. Make"} titleSpanish={"HACER"} />
-        <ReactPlayer
-          width={"100%"}
-          className="max-w-2xl mx-auto my-8 border-8 rounded-md bg-blue-600 border-blue-600"
-          url=""
-          controls={true} />
         <div className='my-4'>
           <div className='space-y-2'>
             <small className='text-sm opacity-60'>“Do” y “make” son dos verbos que se confunden frecuentemente en inglés. Ambos se pueden traducir como “hacer”, pero hay algunas diferencias en su significado. En general, “do” considera más la acción, mientras que utilizando “make” nos referimos más al resultado de la acción.</small>

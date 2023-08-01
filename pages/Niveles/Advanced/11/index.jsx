@@ -44,15 +44,15 @@ export default function index() {
         </Breadcrumbs>
         <p className='opacity-60 font-bold text-lg text-[var(--color2)]'>Conditional Sentences - LESSON 11</p>
         <CustomTitle title={"Conditional Sentences"} titleSpanish={"LAS FRASES CONDICIONALES"} />
-        <ReactPlayer
-          width={"100%"}
-          className="max-w-2xl mx-auto my-8 border-8 rounded-md bg-blue-600 border-blue-600"
-          url=""
-          controls={true} />
         <div className='my-4'>
           <div className='space-y-2'>
             <small className='text-sm opacity-60'>El uso del condicional significa que una acción depende de otra. Los condicionales se utilizan para hablar sobre situaciones reales o irreales. En general, las frases condicionales llevan la palabra “if” (si). Ten en cuenta que no existe un tiempo verbal para el condicional en inglés como existe en español. A la vez, se usa el verbo auxiliar “would” para formar el condicional en inglés. Hay cuatro tipos de frases condicionales y el uso de uno u otro refleja la probabilidad de la acción.</small>
             <CustomTitle title={"Zero Conditional (Tipo 0)"} titleSpanish={"Se usa este tipo de condicional cuando la condición y el resultado siempre es verdad, como por ejemplo los hechos científicos."} />
+            <ReactPlayer
+              width={"100%"}
+              className="max-w-2xl mx-auto my-8 border-8 rounded-md bg-blue-600 border-blue-600"
+              url="https://www.youtube.com/watch?v=LLam0xSFLe8"
+              controls={true} />
             <SingleExample
               english="if + present simple + present simple"
               spanish="id + condition + result"
@@ -71,6 +71,11 @@ export default function index() {
               spanish="¿Si no llamas a tu madre, se enoja?"
             />
             <CustomTitle title={"First Conditional (Tipo 1)"} titleSpanish={"Este tipo de condicional se utiliza para el futuro y en los casos en que es muy probable que la condición pasará."} />
+            <ReactPlayer
+              width={"100%"}
+              className="max-w-2xl mx-auto my-8 border-8 rounded-md bg-blue-600 border-blue-600"
+              url="https://www.youtube.com/watch?v=rvmcGCDYhvQ"
+              controls={true} />
             <SingleExample
               english="if + present simple + will"
               spanish="if + condfition + result"
@@ -89,6 +94,11 @@ export default function index() {
               spanish="¿Cogerás el tren si pierdes el bus?"
             />
             <CustomTitle title={"Second Conditional (Tipo 2)"} titleSpanish={"Se utiliza el tipo 2 para expresar una posibilidad irreal en el presente, como un deseo o un sueño, o para una acción en el futuro no tan probable."} />
+            <ReactPlayer
+              width={"100%"}
+              className="max-w-2xl mx-auto my-8 border-8 rounded-md bg-blue-600 border-blue-600"
+              url="https://www.youtube.com/watch?v=PAHBHVycKVU"
+              controls={true} />
             <SingleExample
               english="if + past simple + would + infinitivo"
               spanish="if + condition + result"

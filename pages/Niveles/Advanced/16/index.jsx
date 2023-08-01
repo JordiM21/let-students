@@ -47,7 +47,7 @@ export default function index() {
         <ReactPlayer
           width={"100%"}
           className="max-w-2xl mx-auto my-8 border-8 rounded-md bg-blue-600 border-blue-600"
-          url=""
+          url="https://www.youtube.com/watch?v=GftTPjgpUNo"
           controls={true} />
         <div className='my-4'>
           <div className='space-y-2'>

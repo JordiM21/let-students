@@ -44,11 +44,6 @@ export default function index() {
         </Breadcrumbs>
         <p className='opacity-60 font-bold text-lg text-[var(--color2)]'>Delexical Verbs - LESSON 15</p>
         <CustomTitle title={"Delexical Verbs"} titleSpanish={"DELEXICAL VERBS"} />
-        <ReactPlayer
-          width={"100%"}
-          className="max-w-2xl mx-auto my-8 border-8 rounded-md bg-blue-600 border-blue-600"
-          url=""
-          controls={true} />
         <div className='my-4'>
           <div className='space-y-2'>
             <small className='text-sm opacity-60'>Delexical verbs son verbos comunes como “have”, “take”, “make” o “give” que cuando se usan con sustantivos particulares tienen muy poco significado propio. En estas estructuras la mayor parte del significado se encuentra en el sustantivo, no en el verbo. En la mayoría de casos, hay un verbo que tiene un significado similar o igual a la estructura “delexical”. En muchos casos, hay verbos y estructuras equivalentes en español (ver los ejemplos). Estas estructuras son muy comunes en inglés y una comprensión de ellas enriquecerá la fluidez de la lengua.</small>

@@ -44,11 +44,6 @@ export default function index() {
         </Breadcrumbs>
         <p className='opacity-60 font-bold text-lg text-[var(--color2)]'>Passive Voice 2 - LESSON 22</p>
         <CustomTitle title={"Passive Voice 2"} titleSpanish={"Voz Pasiva 2"} />
-        <ReactPlayer
-          width={"100%"}
-          className="max-w-2xl mx-auto my-8 border-8 rounded-md bg-blue-600 border-blue-600"
-          url=""
-          controls={true} />
         <div className='my-4'>
           <div className='space-y-2'>
             <p className='text-sm opacity-60'> En esta segunda clase sobre la voz pasiva, profundizaremos en el uso de la voz pasiva en diferentes tiempos verbales y cómo cambiar una oración activa a voz pasiva puede cambiar el enfoque y la estructura de la frase.</p>

@@ -44,11 +44,6 @@ export default function index() {
         </Breadcrumbs>
         <p className='opacity-60 font-bold text-lg text-[var(--color2)]'>Perfect Conditional 2 - LESSON 21</p>
         <CustomTitle title={"Perfect Conditional 2"} titleSpanish={"Condicional Perfecto 2"} />
-        <ReactPlayer
-          width={"100%"}
-          className="max-w-2xl mx-auto my-8 border-8 rounded-md bg-blue-600 border-blue-600"
-          url=""
-          controls={true} />
         <div className='my-4'>
           <div className='space-y-2'>
             <p className='text-sm opacity-60'>En esta segunda clase, profundizaremos en el uso del condicional perfecto para hablar sobre acciones condicionales en el pasado y cómo estas acciones pueden haber afectado eventos posteriores. También veremos cómo se puede combinar el condicional perfecto con el condicional simple para expresar situaciones hipotéticas más complejas.</p>

@@ -44,11 +44,6 @@ export default function index() {
         </Breadcrumbs>
         <p className='opacity-60 font-bold text-lg text-[var(--color2)]'>PRONOUNS & DETERMINERS  - LESSON 19</p>
         <CustomTitle title={"PRONOUNS & DETERMINERS "} titleSpanish={"Pronombres y Determinantes"} />
-        <ReactPlayer
-          width={"100%"}
-          className="max-w-2xl mx-auto my-8 border-8 rounded-md bg-blue-600 border-blue-600"
-          url=""
-          controls={true} />
         <div className='my-4'>
           <div className='space-y-2'>
             <CustomTitle title={"Either vs. Neither"} titleSpanish={"Podemos utilizar “either” y “neither” como pronombres, determinantes o adverbios. A continuación tienes una explicación de las diferencias entre estas dos palabras."} />
