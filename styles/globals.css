@@ -954,7 +954,7 @@
 	border: 4px solid transparent;
 	cursor: pointer;
 	background-color: rgb(225, 225, 225);
-	margin: 0 auto;
+	margin: 4px auto;
 	position: relative;
 	overflow: hidden;
 }

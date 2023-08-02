@@ -60,7 +60,6 @@ const Immersive = ({
           </div>
         )
       }
-      {/* <Nota text="Recuerda que los videos son necesarios para tu aprendizaje pero no es necesario que entiendas todo lo que dice en el video para aprender, siempre puedes volver a mirarlo de nuevo y aprender cada vez mas cosas" /> */}
       <div className='w-full flex justify-center px-4 mt-4 relative'>
         <FormControl variant="filled" className='w-10/12 md:max-w-md bg-gray-100 rounded-md'>
           <InputLabel id="demo-simple-select-filled-label">Search by Level</InputLabel>

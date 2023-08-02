@@ -82,6 +82,7 @@ const VideoDetails = ({ userData }) => {
   const [isFinished, setIsFinished] = useState(false);
   const [key, setKey] = useState(0);
   const playerRef = useRef(null);
+  const [videoDuration, setVideoDuration] = useState(0);
 
   const handleForward = () => {
     playerRef.current.seekTo(playerRef.current.getCurrentTime() + 10, 'seconds');
@@ -105,6 +106,16 @@ const VideoDetails = ({ userData }) => {
     setIsFinished(true);
   };
   const [isPlaying, setIsPlaying] = useState(false);
+
+  const formatDuration = (duration) => {
+    const minutes = Math.floor(duration / 60);
+    const seconds = Math.floor(duration % 60);
+    return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+  };
+
+  const handleVideoDuration = (duration) => {
+    setVideoDuration(duration);
+  };
 
   return (
     <div className='pt-28 bg-[var(--blueDarkbg)]'>
@@ -133,6 +144,7 @@ const VideoDetails = ({ userData }) => {
               playing={isPlaying}
               onEnded={showAlert}
               light={false}
+              onDuration={handleVideoDuration}
               config={{
                 youtube: {
                   playerVars: { showinfo: -1 }
@@ -141,6 +153,14 @@ const VideoDetails = ({ userData }) => {
             />
           </div>
           <div className='bg-[var(--color2)] pb-2 rounded-b-md max-w-3xl mx-auto mb-2'>
+            <div className='w-full flex justify-between'>
+              <small className="text-gray-300 pl-4 mr-12 text-start text-sm">
+                {data.title}
+              </small>
+              <small className="text-gray-300 pr-4 text-end text-sm">
+                {formatDuration(videoDuration)} min.
+              </small>
+            </div>
             <div className='w-full flex justify-between px-2'>
               <div onClick={handleLike} className={`group transition-all 1s p-2 m-1 ease-in cursor-pointer flex border-green-600 rounded-full justify-around ${liked ? 'bg-green-600 text-white opacity-90' : 'active:translate-y-2 bg-white hover:bg-green-600 hover:border-white '}`}>
                 <MdFavoriteBorder size={24} className={`transition-all 1s ease-in ${liked ? 'fill-white scale-125' : 'group-hover:scale-125 group-hover:fill-white fill-green-600'}`} />
@@ -173,7 +193,6 @@ const VideoDetails = ({ userData }) => {
                 <MdReplay className='fill-blue-700 group-hover:fill-white group-hover:scale-125' size={24} />
               </button>
             </div>
-            <p className='p-2 text-white opacity-80 font-bold'>{data.description}</p>
           </div>
         </div>
         <RelatedVideos relatedVideos={related} level={data.level} />
