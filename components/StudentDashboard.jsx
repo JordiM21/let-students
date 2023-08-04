@@ -16,7 +16,7 @@ import ExternalApps from './ExternalApps'
 import { AiFillYoutube } from 'react-icons/ai'
 import { TbBrandYoutubeKids } from 'react-icons/tb'
 
-export default function StudentDashboard({ firstName, id, setAppNotif, appNotif, level, profileImg, tutor, schedule, progressB, progressI, progressA }) {
+export default function StudentDashboard({ id, setAppNotif, appNotif, level, tutor, schedule, progressB, progressI, progressA }) {
 
   const router = useRouter()
 
@@ -35,11 +35,12 @@ export default function StudentDashboard({ firstName, id, setAppNotif, appNotif,
         meetingRoom == true && (
           <CtaAnimationPage
             title={"Conéctate con tu tutor personal y resuelve todas tus dudas!"}
-            subTitle={`Recuerda que antes de entrar en la meeting te debes poner de acuerdo con tu tutor en el horario del encuentro.`}
+            subTitle={`Recuerda solo entrar en los horarios establecidos con tu tutor. Este botón te llevará directamente a su sala de reuniones en WhereBy`}
             animation={student}
-            cta={"Go to the meeting"}
+            cta={"Entrar a la Reunión"}
             btn="link"
             link={tutor.urlMeet}
+            setMeetingRoom={setMeetingRoom}
             bg="green"
           />
         )

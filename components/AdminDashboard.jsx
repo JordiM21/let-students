@@ -25,8 +25,6 @@ import { FaTasks } from 'react-icons/fa'
 
 export default function AdminDashboard({ allUsers, id, url }) {
 
-  console.log(allUsers)
-
   const router = useRouter()
   const [urlMeet, setUrlMeet] = useState("")
   const [open, setOpen] = React.useState(false);
@@ -82,10 +80,10 @@ export default function AdminDashboard({ allUsers, id, url }) {
       {
         meetingRoom == true && (
           <CtaAnimationPage
-            title={"Resuelve las dudas de tus estudiantes!"}
-            subTitle={`Antes de entrar debes haber establecido un horario con tus estudiantes, recuerda ser muy puntual!`}
+            title={"Entra en tu sala de reuniones con tus estudiantes"}
+            subTitle={`Antes de entrar debes haber establecido un horario, Este botón te llevará a tu sala de reuniones en WhereBy ¡Recuerda ser muy puntual! `}
             animation={student}
-            cta={"Enter in the meeting"}
+            cta={"Ir a WhereBy"}
             btn="link"
             link={url}
             bg="green"
@@ -93,31 +91,6 @@ export default function AdminDashboard({ allUsers, id, url }) {
           />
         )
       }
-      {/* FUNCTION OF RANDOM PHRASE ON ENGLISH TO PRACTICE, SHOULD BE AN ARRAY ON THE DB THAT SHOWS RANDOMLY OBJECTS WITH THIS URL WITH THE MINUTES, LEVEL, ETC. */}
-      {/* Should be on the immersive page with a switch between videos / practice to pass this way, also we should track the progress on this for each student */}
-      {/* <div className='relative'>
-        <div className={`bg-green-400 flex justify-center items-center h-[250px] w-full absolute ${isFinished ? "opacity-100" : "opacity-0"}`}>
-          <MdReplay onClick={handleReset} className='text-8xl fill-white' />
-        </div>
-        <ReactPlayer
-          key={key}
-          width={"100%"}
-          height={"250px"}
-          className="mx-auto md:my-4 bg-green-400 rounded-md"
-          url="https://www.youtube.com/watch?v=2UXpZPqjOIM&start=60&end=70"
-          muted={false} //MODIFY TO FALSE
-          autoplay={true}
-          loop={false}
-          playing={true}
-          onEnded={showAlert}
-          light={false}
-          config={{
-            youtube: {
-              playerVars: { showinfo: -1 }
-            }
-          }}
-        />
-      </div> */}
       <div onClick={() => setMeetingRoom(true)} className='flex bg-green-500 py-1 px-3 absolute top-2 left-2 md:left-20 cursor-pointer hover:opacity-80 rounded-full w-[100px] md:w-[170px] justify-between items-center'>
         <BsFillCameraVideoFill fill='white' size={20} />
         <p className={`text-white text-xs`}>
@@ -192,13 +165,13 @@ export default function AdminDashboard({ allUsers, id, url }) {
             <div className='h-20 group-hover:scale-[100%] scale-0 w-20 z-[5] bg-white rounded-full -left-8 md:left-[72px] md:top-2 absolute'></div>
             <div className='h-32 md:h-24 md:w-24 group-hover:scale-[1000%] md:group-hover:scale-[350%] w-32 bg-gradient-to-tl from-cyan-300 to-blue-700 rounded-full -left-12 md:left-16 md:top-1 absolute'></div>
           </div>
-          <div onClick={() => router.push("/Immersive/")} className='group active:scale-90 bg-white relative overflow-hidden flex gap-2 justify-center items-center py-6 md:py-2 md:w-56 rounded-md hover:shadow-lg shadow-black cursor-pointer hover:-translate-y-1 md:h-40 md:flex-col mx-4'>
+          <div onClick={() => router.push("/adminCreate/createVideo/")} className='group active:scale-90 bg-white relative overflow-hidden flex gap-2 justify-center items-center py-6 md:py-2 md:w-56 rounded-md hover:shadow-lg shadow-black cursor-pointer hover:-translate-y-1 md:h-40 md:flex-col mx-4'>
             <TbBrandYoutubeKids className='z-10 text-5xl md:text-7xl' />
             <p className='z-10 group-hover:text-white'>
-              Immersive
+              Add a
             </p>
             <p className='z-10 group-hover:text-white'>
-              Videos
+              Video
             </p>
             <div className='h-20 group-hover:scale-[100%] scale-0 w-20 z-[5] bg-white rounded-full -left-8 md:left-[72px] md:top-2 absolute'></div>
             <div className='h-32 md:h-24 md:w-24 group-hover:scale-[1000%] md:group-hover:scale-[350%] w-32 bg-gradient-to-tl from-red-300 to-red-600 rounded-full -left-12 md:left-16 md:top-1 absolute'></div>
@@ -209,7 +182,7 @@ export default function AdminDashboard({ allUsers, id, url }) {
               My
             </p>
             <p className='z-10 group-hover:text-white'>
-              Progress
+              Students
             </p>
             <div className='h-20 group-hover:scale-[100%] scale-0 w-20 z-[5] bg-white rounded-full -left-8 md:left-[72px] md:top-2 absolute'></div>
             <div className='h-32 md:h-24 md:w-24 group-hover:scale-[1000%] md:group-hover:scale-[350%] w-32 bg-gradient-to-tl from-green-300 to-green-700 rounded-full -left-12 md:left-16 md:top-1 absolute'></div>
@@ -217,7 +190,7 @@ export default function AdminDashboard({ allUsers, id, url }) {
           <div onClick={() => router.push("/Activities/")} className='group active:scale-90 bg-white relative overflow-hidden flex gap-2 justify-center items-center py-6 md:py-2 md:w-56 rounded-md hover:shadow-lg shadow-black cursor-pointer hover:-translate-y-1 md:h-40 md:flex-col mx-4'>
             <MdTaskAlt className='z-10 text-5xl md:text-7xl' />
             <p className='z-10 group-hover:text-white'>
-              My
+              Asign
             </p>
             <p className='z-10 group-hover:text-white '>
               Tasks

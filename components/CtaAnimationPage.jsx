@@ -7,7 +7,7 @@ import { useEffect } from 'react'
 import { useState } from 'react'
 import emoji from "@/public/animations/emoji.json"
 
-export default function CtaAnimationPage({ title, subTitle, animation, cta, bg, btn, link, test }) {
+export default function CtaAnimationPage({ title, setMeetingRoom, subTitle, animation, cta, bg, btn, link, test }) {
   const router = useRouter()
   const congrats = ["excellent", "well done", "amazing", "so cool", "great job", "Too Easy?", "hilarious!", "You're good!", "stellar", "incredible", "remarkable", "phenomenal", "wonderful", "impressive",
     "spectacular", "marvelous", "great job", "good work", "perfect", "top-notch", "fabulous", "beautiful",
@@ -109,11 +109,11 @@ export default function CtaAnimationPage({ title, subTitle, animation, cta, bg, 
       {
         !test && (
           <div>
-            <AiFillCloseCircle onClick={() => router.reload()} className='text-white cursor-pointer right-2 top-2 absolute text-2xl fill-white' />
+            <AiFillCloseCircle onClick={() => setMeetingRoom(false)} className='text-white cursor-pointer right-2 top-2 absolute text-2xl fill-white' />
             <div className='md:mx-auto md:max-w-lg mx-8 -mb-16 mt-8'>
               <p className='text-center text-2xl text-white font-bold'>{title}</p>
             </div>
-            <div className='mx-auto max-w-[350px] mt-8'>
+            <div className='mx-auto max-w-[350px] mt-16 mb-8'>
               <Lottie
                 animationData={animation} />
             </div>

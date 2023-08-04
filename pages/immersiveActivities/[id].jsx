@@ -105,7 +105,7 @@ const VideoDetails = ({ userData }) => {
   const showAlert = () => {
     setIsFinished(true);
   };
-  const [isPlaying, setIsPlaying] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(true);
 
   const formatDuration = (duration) => {
     const minutes = Math.floor(duration / 60);
@@ -138,7 +138,7 @@ const VideoDetails = ({ userData }) => {
               height={"100%"}
               className="mx-auto md:my-4 bg-green-400 rounded-md"
               url={data.url}
-              muted={true} //MODIFY TO FALSE
+              muted={false} //MODIFY TO FALSE
               autoplay={true}
               loop={false}
               playing={isPlaying}
