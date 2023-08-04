@@ -1,5 +1,3 @@
-import { collection, getDocs } from "firebase/firestore";
-import { db } from '@/config/firebase';
 import { useEffect, useState } from 'react';
 import { useAuth } from '@/context/AuthContext';
 import { useRouter } from 'next/router';
@@ -11,9 +9,8 @@ import Modal from '@mui/material/Modal';
 import YourProfile from '@/components/YourProfile';
 import { TbEdit } from 'react-icons/tb'
 import { ChevronRightOutlined } from '@mui/icons-material';
-import { BsFillTrophyFill } from 'react-icons/bs';
-import { GiLaurelsTrophy } from "react-icons/gi"
 import Rewards from '@/components/Rewards';
+import withUserData from '@/components/WithUserData';
 
 const style = {
   position: 'absolute',
@@ -28,44 +25,21 @@ const style = {
   borderRadius: 4,
 };
 
-export default function Profile() {
-  const [userMatched, setUserMatched] = useState({})
-  const [students, setStudents] = useState([])
+const Profile = ({ userData, tutor }) => {
+  if (!userData) {
+    return <LoadingScreen />;
+  }
+  const [userMatched, setUserMatched] = useState(userData)
 
   const router = useRouter()
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-  const { user, logout } = useAuth();
-  const [authUid, setAuthUid] = useState(user.uid)
-  const [tutor, setTutor] = useState({})
-  const fetchPost = async () => {
-    await getDocs(collection(db, "users"))
-      .then((querySnapshot) => {
-        const newData = querySnapshot.docs
-          .map((doc) => ({ ...doc.data(), id: doc.id }));
-        const userMatch = newData.find(item => item.uid == authUid);
-        setUserMatched(userMatch)
-        const studentsAsigned = newData.filter(item => item.asignedTutor == authUid)
-        setStudents(studentsAsigned)
-        const tutorAsigned = newData.find(item => item.uid == userMatch.asignedTutor);
-        setTutor(tutorAsigned)
-      })
-  }
-
-  useEffect(() => {
-    fetchPost();
-  }, [])
+  const { logout } = useAuth();
 
   return (
     <>
-      {
-        !userMatched.firstName &&
-        (
-          <LoadingScreen />
-        )
-      }
       <div className='bg-gray-200 object-cover absolute -z-10'></div>
       <div className='bg-[var(--bluebg)] h-full min-h-screen shadow-2xl mx-auto  pb-24 md:pb-0'>
         {
@@ -157,7 +131,6 @@ export default function Profile() {
                   </button>
                 </div>
               </div>
-
               <div>
                 <Modal
                   open={open}
@@ -176,3 +149,5 @@ export default function Profile() {
     </>
   )
 }
+
+export default withUserData(Profile)

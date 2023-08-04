@@ -5,7 +5,6 @@ import { db } from '@/config/firebase'
 const withLevelAndLessonsData = (WrappedComponent, level) => {
   const WithLevelAndLessonsData = (props) => {
     const [levelData, setLevelData] = useState(null);
-
     useEffect(() => {
       const fetchData = async () => {
         await getDocs(collection(db, "units"))
@@ -15,7 +14,6 @@ const withLevelAndLessonsData = (WrappedComponent, level) => {
             setLevelData(newData)
           })
       };
-
       fetchData();
     }, [level]);
 

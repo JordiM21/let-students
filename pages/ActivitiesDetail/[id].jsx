@@ -1,5 +1,6 @@
 import BackHeader from '@/components/BackHeader'
 import LoadingScreen from '@/components/LoadingScreen'
+import withUserData from '@/components/WithUserData'
 import YourProfile from '@/components/YourProfile'
 import { db } from '@/config/firebase'
 import { FormControl, TextField } from '@mui/material'
@@ -12,32 +13,20 @@ import { AiFillCheckCircle, AiFillCloseCircle, AiFillInfoCircle, AiFillSetting }
 import { BsFillTrashFill } from 'react-icons/bs'
 import { toast } from 'react-toastify'
 
-export default function ActivitiesDetail() {
+const ActivitiesDetail = ({ userData }) => {
+  if (!userData) {
+    return <LoadingScreen />;
+  }
   const router = useRouter()
   const id = router.query.id
-  const [userMatched, setUserMatched] = useState({})
+  const [userMatched, setUserMatched] = useState(userData)
   // const [status, setStatus] = useState("") status is always pending when you create it
   const [text, setText] = useState("")
   const [topic, setTopic] = useState("")
   const [link, setLink] = useState("")
   const [limitDate, setLimitDate] = useState("")
-  const [activities, setActivities] = useState([])
+  const [activities, setActivities] = useState(userData.activities)
   const [submit, setSubmit] = useState(false)
-
-  const fetchPost = async () => {
-    await getDocs(collection(db, "users"))
-      .then((querySnapshot) => {
-        const newData = querySnapshot.docs
-          .map((doc) => ({ ...doc.data(), id: doc.id }));
-        const userMatch = newData.find(item => item.id == id);
-        setUserMatched(userMatch)
-        setActivities(userMatch.activities)
-      })
-  }
-
-  useEffect(() => {
-    fetchPost();
-  }, [submit])
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -256,3 +245,5 @@ export default function ActivitiesDetail() {
     </div>
   )
 }
+
+export default withUserData(ActivitiesDetail)

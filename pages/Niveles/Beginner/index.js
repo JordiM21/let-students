@@ -33,10 +33,6 @@ const Beginner = ({ levelData, userData }) => {
     const dataFound = levelData.filter((item) => item.level === "Beginner");
     setData(dataFound.sort((a, b) => a.number - b.number));
   };
-
-  const { user } = useAuth();
-  const [authUid, setAuthUid] = useState(user.uid)
-
   useEffect(() => {
     filterAndSetData();
   }, [])

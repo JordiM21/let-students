@@ -2,8 +2,7 @@ import BackHeader from '@/components/BackHeader';
 import ProgressLesson from '@/components/ProgressLesson';
 import YourFlag from '@/components/YourFlag';
 import { db } from '@/config/firebase';
-import { useAuth } from '@/context/AuthContext';
-import { collection, doc, getDocs, updateDoc } from 'firebase/firestore';
+import { updateDoc } from 'firebase/firestore';
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react'
 import {
@@ -16,34 +15,18 @@ import { BsQuestionCircle } from 'react-icons/bs';
 import { AiFillCloseCircle } from 'react-icons/ai';
 import { toast } from 'react-toastify';
 import Schedule from '@/components/Schedule';
-import { MdNotificationAdd } from 'react-icons/md';
 import SendNotifScreen from '@/components/SendNotifScreen';
+import withUserData from '@/components/WithUserData';
 
-export default function Progress() {
-  const [userMatched, setUserMatched] = useState({})
-  const [students, setStudents] = useState([])
-  const [likedVideos, setLikedVideos] = useState([])
-
-  const router = useRouter()
-
-  const { user, logout } = useAuth();
-  const [authUid, setAuthUid] = useState(user.uid)
-  const fetchPost = async () => {
-    await getDocs(collection(db, "users"))
-      .then((querySnapshot) => {
-        const newData = querySnapshot.docs
-          .map((doc) => ({ ...doc.data(), id: doc.id }));
-        const userMatch = newData.find(item => item.uid == authUid);
-        setLikedVideos(userMatch.likedVideos?.reverse())
-        setUserMatched(userMatch)
-        const studentsAsigned = newData.filter(item => item.asignedTutor == authUid)
-        setStudents(studentsAsigned)
-      })
+const Progress = ({ allUsers, likedVideos, userData }) => {
+  if (!userData) {
+    return <LoadingScreen />;
   }
 
-  useEffect(() => {
-    fetchPost();
-  }, [])
+  const [userMatched, setUserMatched] = useState(userData)
+  const [students, setStudents] = useState(allUsers)
+
+  const router = useRouter()
 
   const data = [
     { x: 'Beginner', y: userMatched.progressBeginner, y0: 0 },
@@ -68,12 +51,6 @@ export default function Progress() {
 
   return (
     <div className='pt-20 bg-[var(--bluebg)] h-full md:min-h-screen'>
-      {
-        !userMatched &&
-        (
-          <LoadingScreen />
-        )
-      }
       <BackHeader largeTitle={"Student Progress"} parentTitle={"back"} />
       <div className=' md:fixed md:ml-24'>
         <div className='flex items-center justify-center gap-2'>
@@ -250,3 +227,4 @@ export default function Progress() {
     </div >
   )
 }
+export default withUserData(Progress) 

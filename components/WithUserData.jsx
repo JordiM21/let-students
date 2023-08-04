@@ -10,6 +10,8 @@ const withUserData = (WrappedComponent) => {
     const [userData, setUserData] = useState(null);
     const [tutor, setTutor] = useState({})
     const [allUsers, setAllUsers] = useState([])
+    const [admins, setAdmins] = useState([])
+    const [likedVideos, setLikedVideos] = useState([])
 
     useEffect(() => {
       const fetchUserData = async () => {
@@ -20,9 +22,12 @@ const withUserData = (WrappedComponent) => {
           const tutorMatched = newData.find(item => item.uid == userMatched.asignedTutor)
           const allStudents = newData.filter(item => item.role == "Student")
           const studentsAsigned = allStudents.filter(item => item.asignedTutor == authUid)
+          const adminsFound = newData.filter(item => item.role == "Admin")
+          setAdmins(adminsFound)
           setUserData(userMatched);
           setTutor(tutorMatched)
           setAllUsers(studentsAsigned)
+          setLikedVideos(userMatched.likedVideos?.reverse())
         } catch (error) {
           console.error('Error al obtener los datos del usuario', error);
         }
@@ -30,7 +35,7 @@ const withUserData = (WrappedComponent) => {
       fetchUserData();
     }, [authUid]);
 
-    return <WrappedComponent {...props} tutor={tutor} allUsers={allUsers} userData={userData} />;
+    return <WrappedComponent {...props} tutor={tutor} likedVideos={likedVideos} admins={admins} allUsers={allUsers} userData={userData} />;
   };
 
   return WithUserData;

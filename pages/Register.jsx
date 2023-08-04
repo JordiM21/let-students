@@ -6,32 +6,21 @@ import { Plans } from '@/models/Plans'
 import { useRouter } from 'next/router'
 import { db } from '@/config/firebase'
 import { collection, getDocs } from 'firebase/firestore'
+import withUserData from '@/components/WithUserData'
+import LoadingScreen from '@/components/LoadingScreen'
 
-export default function Register() {
-  const { user, register } = useAuth()
-  const [authUid, setAuthUid] = useState(user.uid)
-  const [admins, setAdmins] = useState([])
+const Register = ({ userData, admins }) => {
+  if (!userData) {
+    return <LoadingScreen />;
+  }
 
+  const { register } = useAuth()
   const router = useRouter()
 
-  const fetchPost = async () => {
-    await getDocs(collection(db, "users"))
-      .then((querySnapshot) => {
-        const newData = querySnapshot.docs
-          .map((doc) => ({ ...doc.data(), id: doc.id }));
-        const userMatched = newData.filter(item => item.uid == authUid);
-        const adminsFound = newData.filter(item => item.role == "Admin")
-        setAdmins(adminsFound)
-        if (userMatched[0].role != "Admin") {
-          router.push("/Dashboard")
-        }
-        if (userMatched[0].email != "jordimantilla21@gmail.com") {
-          router.push("/Dashboard")
-        }
-      })
-  }
   useEffect(() => {
-    fetchPost();
+    if (userData.role != "Admin") {
+      router.push("/Dashboard")
+    }
   }, [])
 
 
@@ -267,3 +256,4 @@ export default function Register() {
     </div>
   )
 }
+export default withUserData(Register)
