@@ -20,7 +20,6 @@ const ActivitiesDetail = ({ userData }) => {
   const router = useRouter()
   const id = router.query.id
   const [userMatched, setUserMatched] = useState(userData)
-  // const [status, setStatus] = useState("") status is always pending when you create it
   const [text, setText] = useState("")
   const [topic, setTopic] = useState("")
   const [link, setLink] = useState("")

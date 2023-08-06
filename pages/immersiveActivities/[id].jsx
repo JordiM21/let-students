@@ -10,7 +10,6 @@ import { AiFillPauseCircle, AiFillPlayCircle } from 'react-icons/ai';
 import { MdFavoriteBorder, MdForward10, MdReplay, MdReplay10, MdReplayCircleFilled } from 'react-icons/md';
 import ReactPlayer from 'react-player';
 import { toast } from 'react-toastify';
-import { GrBackTen, GrForwardTen } from 'react-icons/gr'
 
 const VideoDetails = ({ userData }) => {
   if (!userData) {
@@ -117,6 +116,13 @@ const VideoDetails = ({ userData }) => {
     setVideoDuration(duration);
   };
 
+  const [isVideoReady, setIsVideoReady] = useState(false);
+
+  const handleVideoReady = () => {
+    setIsVideoReady(true);
+  };
+
+
   return (
     <div className='pt-28 bg-[var(--blueDarkbg)]'>
       {
@@ -131,6 +137,11 @@ const VideoDetails = ({ userData }) => {
           <div className='relative h-[260px] md:h-[432px] mx-auto max-w-3xl'>
             <div onClick={() => setIsPlaying(!isPlaying)} className={`bg-green-400 cursor-pointer flex justify-center items-center h-[260px] md:h-[432px] w-full absolute ${isFinished ? "opacity-100" : "opacity-0"}`}>
             </div>
+            {isVideoReady ? null : (
+              <div className="absolute inset-0 flex items-center justify-center bg-black opacity-100">
+                <span className="text-white text-xl animate-pulse">Estamos preparando tu video...</span>
+              </div>
+            )}
             <ReactPlayer
               ref={playerRef}
               key={key}
@@ -145,6 +156,7 @@ const VideoDetails = ({ userData }) => {
               onEnded={showAlert}
               light={false}
               onDuration={handleVideoDuration}
+              onReady={handleVideoReady}
               config={{
                 youtube: {
                   playerVars: { showinfo: -1 }
@@ -154,10 +166,10 @@ const VideoDetails = ({ userData }) => {
           </div>
           <div className='bg-[var(--color2)] pb-2 rounded-b-md max-w-3xl mx-auto mb-2'>
             <div className='w-full flex justify-between'>
-              <small className="text-gray-300 pl-4 mr-12 text-start text-sm">
+              <small className="text-gray-300 pl-4 mr-12 text-start text-xl">
                 {data.title}
               </small>
-              <small className="text-gray-300 pr-4 text-end text-sm">
+              <small className="text-gray-300 pr-4 min-w-[100px] text-end text-sm">
                 {formatDuration(videoDuration)} min.
               </small>
             </div>
@@ -170,27 +182,27 @@ const VideoDetails = ({ userData }) => {
                   className="group hover:bg-red-400 bg-red-600 rounded-full p-2 shadow-md m-1"
                   onClick={handleBackward}
                 >
-                  <MdReplay10 className='fill-white group-hover:fill-red-600' size={24} />
+                  <MdReplay10 className='fill-white ' size={24} />
                 </button>
                 <button
                   className="group bg-red-600 hover:bg-red-400 rounded-full p-2 shadow-md m-1"
                   onClick={() => setIsPlaying(!isPlaying)}
                 >
                   {isPlaying ?
-                    <AiFillPauseCircle className='group-hover:fill-red-600 fill-white' size={24} /> : <AiFillPlayCircle className='group-hover:fill-red-600 fill-white' size={24} />}
+                    <AiFillPauseCircle className=' fill-white' size={24} /> : <AiFillPlayCircle className=' fill-white' size={24} />}
                 </button>
                 <button
                   className="group hover:bg-red-400 bg-red-600 rounded-full p-2 shadow-md m-1"
                   onClick={handleForward}
                 >
-                  <MdForward10 className='fill-white group-hover:fill-red-600' size={24} />
+                  <MdForward10 className='fill-white' size={24} />
                 </button>
               </div>
               <button
-                className="group hover:bg-blue-700 bg-white rounded-full p-2 shadow-md m-1"
+                className="group hover:bg-blue-200 bg-white rounded-full p-2 shadow-md m-1"
                 onClick={handleReset}
               >
-                <MdReplay className='fill-blue-700 group-hover:fill-white group-hover:scale-125' size={24} />
+                <MdReplay className='fill-blue-700 group-hover:-rotate-180 group-hover:scale-125' size={24} />
               </button>
             </div>
           </div>

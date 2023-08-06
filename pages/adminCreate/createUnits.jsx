@@ -7,8 +7,6 @@ import { toast } from 'react-toastify';
 import { useRouter } from 'next/router';
 
 export default function createUnits() {
-  const { user, logout } = useAuth();
-  const [authUid, setAuthUid] = useState(user.uid)
   const [allUnits, setAllUnits] = useState([])
   const [currentLevel, setCurrentLevel] = useState("Beginner")
   const [title, setTitle] = useState("")

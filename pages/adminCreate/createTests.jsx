@@ -8,8 +8,6 @@ import { useRouter } from 'next/router';
 import { BsTrash, BsTrashFill } from 'react-icons/bs';
 
 export default function createTests() {
-  const { user, logout } = useAuth();
-  const [authUid, setAuthUid] = useState(user.uid)
   const [allUnits, setAllUnits] = useState([])
   const [currentLevel, setCurrentLevel] = useState("Beginner")
   const [question, setQuestion] = useState("")
@@ -19,8 +17,6 @@ export default function createTests() {
   const [op3, setOp3] = useState("")
   const [op4, setOp4] = useState("")
   const [unit, setUnit] = useState(1)
-
-  const router = useRouter()
 
   const fetchPost = async () => {
     await getDocs(collection(db, "questions"))

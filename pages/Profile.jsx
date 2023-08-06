@@ -29,6 +29,7 @@ const Profile = ({ userData, tutor }) => {
   if (!userData) {
     return <LoadingScreen />;
   }
+
   const [userMatched, setUserMatched] = useState(userData)
 
   const router = useRouter()
@@ -72,7 +73,7 @@ const Profile = ({ userData, tutor }) => {
                       <p className='text-gray-400 opacity-80'>{userMatched.level}</p>
                     </div>
                   </div>
-                  <div className='bg-[var(--blueDarkbg)] cursor-pointer hover:bg-slate-800 overflow-visible w-full flex gap-8 items-center justify-between py-2 px-4'>
+                  <div className='bg-[var(--blueDarkbg)] cursor-pointer  hover:bg-slate-800 ovef overflow-visible w-full flex gap-8 items-center justify-between py-2 px-4'>
                     <p className='text-white'>Rewards</p>
                     <Rewards
                       user={userMatched}
