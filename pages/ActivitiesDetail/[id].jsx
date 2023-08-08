@@ -13,19 +13,33 @@ import { AiFillCheckCircle, AiFillCloseCircle, AiFillInfoCircle, AiFillSetting }
 import { BsFillTrashFill } from 'react-icons/bs'
 import { toast } from 'react-toastify'
 
-const ActivitiesDetail = ({ userData }) => {
-  if (!userData) {
-    return <LoadingScreen />;
-  }
+export default function ActivitiesDetail() {
+
   const router = useRouter()
   const id = router.query.id
-  const [userMatched, setUserMatched] = useState(userData)
+  const [userMatched, setUserMatched] = useState({})
+  const [description, setDescription] = useState("")
   const [text, setText] = useState("")
   const [topic, setTopic] = useState("")
   const [link, setLink] = useState("")
   const [limitDate, setLimitDate] = useState("")
-  const [activities, setActivities] = useState(userData.activities)
+  const [activities, setActivities] = useState()
   const [submit, setSubmit] = useState(false)
+
+  const fetchPost = async () => {
+    await getDocs(collection(db, "users"))
+      .then((querySnapshot) => {
+        const newData = querySnapshot.docs
+          .map((doc) => ({ ...doc.data(), id: doc.id }));
+        const userMatch = newData.find(item => item.id == id);
+        setUserMatched(userMatch)
+        setActivities(userMatch.activities)
+      })
+  }
+
+  useEffect(() => {
+    fetchPost();
+  }, [submit])
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -34,6 +48,7 @@ const ActivitiesDetail = ({ userData }) => {
       await updateDoc(userRef, {
         activities: [...userMatched.activities, {
           text,
+          description,
           topic,
           link,
           limitDate,
@@ -41,6 +56,7 @@ const ActivitiesDetail = ({ userData }) => {
         }],
       }).then(() => toast.success("Added succesfully!"))
       setText("")
+      setDescription("")
       setTopic("")
       setLink("")
       setLimitDate("")
@@ -134,6 +150,17 @@ const ActivitiesDetail = ({ userData }) => {
               placeholder='ej: Past Tense 1'
               value={text}
               onChange={(e) => setText(e.target.value)}
+            />
+            <TextField
+              required
+              className='w-full bg-white rounded-sm'
+              variant='filled'
+              label="Description of the activity"
+              placeholder='ej: Watch the video and understand all of the shown elements, then start recording your own video which you´d have to opload, you can also upload only one for each.'
+              multiline
+              rows={5}
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
             />
             <TextField
               required
@@ -244,5 +271,3 @@ const ActivitiesDetail = ({ userData }) => {
     </div>
   )
 }
-
-export default withUserData(ActivitiesDetail)

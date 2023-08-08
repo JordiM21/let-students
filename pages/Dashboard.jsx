@@ -1,7 +1,4 @@
-import { collection, getDocs } from "firebase/firestore";
-import { db } from '@/config/firebase';
 import { useEffect, useState } from 'react';
-import { useAuth } from '@/context/AuthContext';
 import { useRouter } from 'next/router';
 import AdminDashboard from '@/components/AdminDashboard';
 import StudentDashboard from '@/components/StudentDashboard';
@@ -10,15 +7,15 @@ import { AiFillInfoCircle } from 'react-icons/ai';
 import withUserData from '@/components/WithUserData';
 import YourProfile from '@/components/YourProfile';
 
-const Dashboard = ({ userData, tutor, allUsers }) => {
+const Dashboard = ({ userData, tutor, allUsers, isPending }) => {
   if (!userData) {
     return <LoadingScreen />;
   }
   const { id, firstName, level, role, urlMeet, likedVideos, progressBeginner, progressIntermediate, progressAdvanced, schedule, profileImg, appNotif, activities, email } = userData
 
   const router = useRouter()
-  const [isPending, setIsPending] = useState(false)
   const [appNoti, setAppNoti] = useState(appNotif)
+  const { hasPending, count } = isPending
 
   return (
     <div className='bg-[var(--bluebg)] pb-16'>
@@ -43,10 +40,14 @@ const Dashboard = ({ userData, tutor, allUsers }) => {
             <div onClick={() => router.push("/Activities")} className='bg-black relative px-8 lg:px-20 py-2 cursor-pointer hover:bg-opacity-70 rounded-b-xl'>
               <p className='text-white text-sm'>My Activities</p>
               {
-                isPending && (
-                  <div className='bg-black absolute -bottom-0 -right-1 rounded-full'>
-                    <AiFillInfoCircle className='fill-yellow-400 text-lg' />
-                  </div>
+                hasPending && (
+                  <>
+                    <div className='bg-yellow-400 animate-bounce anima absolute w-7 flex justify-center items-center -right-2 -bottom-2 h-7 rounded-full'>
+                      <p>
+                        {count}
+                      </p>
+                    </div>
+                  </>
                 )
               }
             </div>
