@@ -5,6 +5,7 @@ import ReactPlayer from 'react-player/youtube'
 import UnitTest from '@/components/UnitTest';
 import { useRouter } from 'next/router';
 import { Breadcrumbs, Link, Typography } from '@mui/material';
+import VideoPlayer from '@/components/VideoPlayer';
 
 export default function index() {
   const breadcrumbs = [
@@ -44,11 +45,7 @@ export default function index() {
         </Breadcrumbs>
         <p className='opacity-60 font-bold text-lg text-[var(--color2)]'>The Passive Voice - LESSON 12</p>
         <CustomTitle title={"The Passive Voice"} titleSpanish={"LA VOZ PASIVA"} />
-        <ReactPlayer
-          width={"100%"}
-          className="max-w-2xl mx-auto my-8 border-8 rounded-md bg-blue-600 border-blue-600"
-          url="https://www.youtube.com/watch?v=e5XiIOybips"
-          controls={true} />
+        <VideoPlayer url={"https://www.youtube.com/watch?v=e5XiIOybips"} />
         <div className='my-4'>
           <div className='space-y-2'>
             <small className='text-sm opacity-60'>Hasta ahora hemos hablado de la voz activa donde enfocamos la acción del verbo en el sujeto. Pero cuando queremos dar más importancia a la acción y no a quien la ha realizado, utilizamos la voz pasiva.</small>

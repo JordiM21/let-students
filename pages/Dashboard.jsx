@@ -3,7 +3,6 @@ import { useRouter } from 'next/router';
 import AdminDashboard from '@/components/AdminDashboard';
 import StudentDashboard from '@/components/StudentDashboard';
 import LoadingScreen from '@/components/LoadingScreen';
-import { AiFillInfoCircle } from 'react-icons/ai';
 import withUserData from '@/components/WithUserData';
 import YourProfile from '@/components/YourProfile';
 

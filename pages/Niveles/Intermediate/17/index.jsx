@@ -5,6 +5,7 @@ import ReactPlayer from 'react-player/youtube'
 import UnitTest from '@/components/UnitTest';
 import { useRouter } from 'next/router';
 import { Breadcrumbs, Link, Typography } from '@mui/material';
+import VideoPlayer from '@/components/VideoPlayer';
 
 export default function index() {
   const breadcrumbs = [
@@ -44,11 +45,7 @@ export default function index() {
         </Breadcrumbs>
         <p className='opacity-60 font-bold text-lg text-[var(--color2)]'>FUTURE CONTINUOUS - LESSON 17</p>
         <CustomTitle title={"Future Continuous"} titleSpanish={"EL FUTURO CONTINUO"} />
-        <ReactPlayer
-          width={"100%"}
-          className="max-w-2xl mx-auto my-8 border-8 rounded-md bg-blue-600 border-blue-600"
-          url="https://www.youtube.com/watch?v=eOs0cZ12Fhk"
-          controls={true} />
+        <VideoPlayer url={"https://www.youtube.com/watch?v=eOs0cZ12Fhk"} />
         <p className='font-bold text-gray-700'>Escucha el video atentamente y mira las palabras subrayadas en rojo y entiende el contexto. Para formar el futuro continuo se utilizan “will be” o “be going to” y el verbo+ing.</p>
         <div className='my-4'>
           <div className='space-y-2'>

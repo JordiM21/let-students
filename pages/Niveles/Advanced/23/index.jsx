@@ -44,11 +44,7 @@ export default function index() {
         </Breadcrumbs>
         <p className='opacity-60 font-bold text-lg text-[var(--color2)]'>Indirect Questions - LESSON 23</p>
         <CustomTitle title={"Indirect Questions"} titleSpanish={"Preguntas Indirectas"} />
-        <ReactPlayer
-          width={"100%"}
-          className="max-w-2xl mx-auto my-8 border-8 rounded-md bg-blue-600 border-blue-600"
-          url="https://www.youtube.com/watch?v=6muaUJHMnFg"
-          controls={true} />
+        <VideoPlayer url={"https://www.youtube.com/watch?v=6muaUJHMnFg"} />
         <div className='my-4'>
           <div className='space-y-2'>
             <p className='text-sm opacity-60'>Ahora aprenderemos acerca de las "indirect questions" o "preguntas indirectas". Las preguntas indirectas son una forma más educada y formal de hacer una pregunta en inglés. En lugar de usar la estructura de pregunta directa con el verbo auxiliar antes del sujeto, en las preguntas indirectas, el verbo auxiliar se coloca después del sujeto, como en una oración afirmativa. Las preguntas indirectas suelen usarse en situaciones más formales, en escritura académica, en entrevistas, y cuando queremos ser más corteses o menos directos.</p>

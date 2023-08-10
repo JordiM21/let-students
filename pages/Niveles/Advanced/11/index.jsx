@@ -5,6 +5,7 @@ import ReactPlayer from 'react-player/youtube'
 import UnitTest from '@/components/UnitTest';
 import { useRouter } from 'next/router';
 import { Breadcrumbs, Link, Typography } from '@mui/material';
+import VideoPlayer from '@/components/VideoPlayer';
 
 export default function index() {
   const breadcrumbs = [
@@ -48,11 +49,7 @@ export default function index() {
           <div className='space-y-2'>
             <small className='text-sm opacity-60'>El uso del condicional significa que una acción depende de otra. Los condicionales se utilizan para hablar sobre situaciones reales o irreales. En general, las frases condicionales llevan la palabra “if” (si). Ten en cuenta que no existe un tiempo verbal para el condicional en inglés como existe en español. A la vez, se usa el verbo auxiliar “would” para formar el condicional en inglés. Hay cuatro tipos de frases condicionales y el uso de uno u otro refleja la probabilidad de la acción.</small>
             <CustomTitle title={"Zero Conditional (Tipo 0)"} titleSpanish={"Se usa este tipo de condicional cuando la condición y el resultado siempre es verdad, como por ejemplo los hechos científicos."} />
-            <ReactPlayer
-              width={"100%"}
-              className="max-w-2xl mx-auto my-8 border-8 rounded-md bg-blue-600 border-blue-600"
-              url="https://www.youtube.com/watch?v=LLam0xSFLe8"
-              controls={true} />
+            <VideoPlayer url={"https://www.youtube.com/watch?v=LLam0xSFLe8"} />
             <SingleExample
               english="if + present simple + present simple"
               spanish="id + condition + result"

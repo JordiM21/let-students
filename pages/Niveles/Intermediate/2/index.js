@@ -1,10 +1,10 @@
 import { CustomTitle, DoubleExample, SingleExample } from '@/components/DoubleExample'
-import Nota from '@/components/Nota'
 import React, { useEffect, useState } from 'react'
 import ReactPlayer from 'react-player/youtube'
 import UnitTest from '@/components/UnitTest';
 import { useRouter } from 'next/router';
 import { Breadcrumbs, Link, Typography } from '@mui/material';
+import VideoPlayer from '@/components/VideoPlayer';
 
 export default function index() {
   const breadcrumbs = [
@@ -44,11 +44,7 @@ export default function index() {
         </Breadcrumbs>
         <p className='opacity-60 font-bold text-lg text-[var(--color2)]'>INDEFINITE PRONOUNS - LESSON 2</p>
         <CustomTitle title={"Indefinite Pronouns"} titleSpanish={"Pronombres indefinidos"} />
-        <ReactPlayer
-          width={"100%"}
-          className="max-w-2xl mx-auto my-8 border-8 rounded-md bg-blue-600 border-blue-600"
-          url="https://www.youtube.com/watch?v=pN6SSSlAhoI"
-          controls={true} />
+        <VideoPlayer url={"https://www.youtube.com/watch?v=pN6SSSlAhoI"} />
         <p className='font-bold text-gray-700'>Los pronombres indefinidos no se refieren a ninguna persona, cosa, lugar, ni cantidad específica. Por eso, se llaman “indefinidos”. Ya hemos visto algunos de los indefinidos relacionados a cantidad en la lección de los cuantificadores. A continuación, tienes una lista completa con ejemplos de los pronombres indefinidos y las reglas gramaticales de su uso.</p>
         <div className='my-4'>
           <div className='space-y-2'>

@@ -4,8 +4,6 @@ import React, { useEffect, useState } from 'react'
 import { countries } from '@/models/Countries'
 import { Plans } from '@/models/Plans'
 import { useRouter } from 'next/router'
-import { db } from '@/config/firebase'
-import { collection, getDocs } from 'firebase/firestore'
 import withUserData from '@/components/WithUserData'
 import LoadingScreen from '@/components/LoadingScreen'
 

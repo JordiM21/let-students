@@ -10,7 +10,6 @@ import people6 from '@/public/covers/people6.jpg'
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination, Navigation } from "swiper";
-// Import Swiper styles
 import 'swiper/css';
 import { useRouter } from 'next/router'
 import { useAuth } from '@/context/AuthContext'

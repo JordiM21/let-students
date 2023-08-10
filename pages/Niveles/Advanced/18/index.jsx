@@ -44,11 +44,7 @@ export default function index() {
         </Breadcrumbs>
         <p className='opacity-60 font-bold text-lg text-[var(--color2)]'>Prefixes and Suffixes - LESSON 18</p>
         <CustomTitle title={"Prefixes and Suffixes"} titleSpanish={"LOS PREFIJOS Y SUFIJOS"} />
-        <ReactPlayer
-          width={"100%"}
-          className="max-w-2xl mx-auto my-8 border-8 rounded-md bg-blue-600 border-blue-600"
-          url="https://www.youtube.com/watch?v=RPqxNqO8u-A"
-          controls={true} />
+        <VideoPlayer url={"https://www.youtube.com/watch?v=RPqxNqO8u-A"} />
         <div className='my-4'>
           <div className='space-y-2'>
             <small className='text-sm opacity-60'>Los prefijos y sufijos son letras o grupos de letras que se añaden al principio de una palabra (prefijo) o al final de una palabra (sufijo) para cambiar el significado y/o función de la palabra. Muchos prefijos y sufijos tienen raíces latinas. La comprensión de los diversos significados de prefijos y sufijos puede ayudarnos a determinar el significado de palabras nuevas que nos encontremos.</small>

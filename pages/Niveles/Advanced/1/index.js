@@ -5,6 +5,7 @@ import ReactPlayer from 'react-player/youtube'
 import UnitTest from '@/components/UnitTest';
 import { useRouter } from 'next/router';
 import { Breadcrumbs, Link, Typography } from '@mui/material';
+import VideoPlayer from '@/components/VideoPlayer';
 
 export default function index() {
   const breadcrumbs = [
@@ -44,11 +45,7 @@ export default function index() {
         </Breadcrumbs>
         <p className='opacity-60 font-bold text-lg text-[var(--color2)]'>Present Perfect - LESSON 1</p>
         <CustomTitle title={"Present Perfect"} titleSpanish={"El presente perfecto"} />
-        <ReactPlayer
-          width={"100%"}
-          className="max-w-2xl mx-auto my-8 border-8 rounded-md bg-blue-600 border-blue-600"
-          url="https://www.youtube.com/watch?v=7aw7bQtPYCE"
-          controls={true} />
+        <VideoPlayer url={"https://www.youtube.com/watch?v=7aw7bQtPYCE"} />
         <p className='font-bold text-gray-700'>El presente perfecto equivale más o menos al pretérito perfecto del español. Veremos las diferencias en la sección sobre usos. En general, es una mezcla entre el presente y el pasado. Lo usamos para acciones en el pasado que tienen importancia en el presente.</p>
         <div className='my-4'>
           <div className='space-y-2'>

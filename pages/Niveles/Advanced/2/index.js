@@ -5,6 +5,7 @@ import ReactPlayer from 'react-player/youtube'
 import UnitTest from '@/components/UnitTest';
 import { useRouter } from 'next/router';
 import { Breadcrumbs, Link, Typography } from '@mui/material';
+import VideoPlayer from '@/components/VideoPlayer';
 
 export default function index() {
   const breadcrumbs = [
@@ -44,11 +45,7 @@ export default function index() {
         </Breadcrumbs>
         <p className='opacity-60 font-bold text-lg text-[var(--color2)]'>Present Perfect Continuous - LESSON 2</p>
         <CustomTitle title={"Present Perfect Continuous"} titleSpanish={"El presente perfecto continuo"} />
-        <ReactPlayer
-          width={"100%"}
-          className="max-w-2xl mx-auto my-8 border-8 rounded-md bg-blue-600 border-blue-600"
-          url="https://www.youtube.com/watch?v=tBkP83OYtKg"
-          controls={true} />
+        <VideoPlayer url={"https://www.youtube.com/watch?v=tBkP83OYtKg"} />
         <p className='font-bold text-gray-700'>El presente perfecto continuo, muchas veces tiene la equivalencia a la traducción “llevar + gerundio” en español, pero el uso de esta forma es más frecuente en inglés. Se utiliza para acciones que han empezado en el pasado pero continúan en el presente.</p>
         <div className='my-4'>
           <small className='text-sm opacity-60'>Como en el presente perfecto, usamos el verbo auxiliar “to have” además de “been” (el participio pasado del verbo “to be”) más el verbo+ing.</small>

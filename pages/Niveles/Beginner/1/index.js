@@ -5,6 +5,7 @@ import ReactPlayer from 'react-player/youtube'
 import UnitTest from '@/components/UnitTest';
 import { useRouter } from 'next/router';
 import { Breadcrumbs, Link, Typography } from '@mui/material';
+import VideoPlayer from '@/components/VideoPlayer';
 
 export default function index() {
   const breadcrumbs = [
@@ -45,11 +46,7 @@ export default function index() {
         <p className='opacity-60 font-bold text-lg text-[var(--color2)]'>Pronouns - LESSON 1.1</p>
         <h1 className='text-gray-800 font-bold text-4xl'>Personal Pronouns</h1>
         <p className='text-sm opacity-60 font-semibold'>(Los pronombres personales)</p>
-        <ReactPlayer
-          width={"100%"}
-          className="max-w-2xl mx-auto my-8 border-8 rounded-md bg-blue-600 border-blue-600"
-          url="https://www.youtube.com/watch?v=cVkSndpZtN0"
-          controls={true} />
+        <VideoPlayer url={"https://www.youtube.com/watch?v=cVkSndpZtN0"} />
         <p className='font-bold text-gray-700'>Dentro de los pronombres personales, la lengua inglesa distingue entre pronombres en función de sujeto (subject pronouns) y pronombres en función de objeto (object pronouns).</p>
         <div className='my-4'>
           <small className='text-sm opacity-60'>Pronombres (En función de sujeto) osea que, ¡reemplazan a el sujeto!</small>

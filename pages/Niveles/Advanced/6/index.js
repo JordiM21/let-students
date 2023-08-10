@@ -5,6 +5,7 @@ import ReactPlayer from 'react-player/youtube'
 import UnitTest from '@/components/UnitTest';
 import { useRouter } from 'next/router';
 import { Breadcrumbs, Link, Typography } from '@mui/material';
+import VideoPlayer from '@/components/VideoPlayer';
 
 export default function index() {
   const breadcrumbs = [
@@ -44,11 +45,7 @@ export default function index() {
         </Breadcrumbs>
         <p className='opacity-60 font-bold text-lg text-[var(--color2)]'>Modal Perfects - LESSON 6</p>
         <CustomTitle title={"Modal Perfects"} titleSpanish={"LOS MODALES PERFECTOS"} />
-        <ReactPlayer
-          width={"100%"}
-          className="max-w-2xl mx-auto my-8 border-8 rounded-md bg-blue-600 border-blue-600"
-          url="https://www.youtube.com/watch?v=OVV9y9JnZx0"
-          controls={true} />
+        <VideoPlayer url={"https://www.youtube.com/watch?v=OVV9y9JnZx0"} />
         <p className='font-bold text-gray-700'>Los verbos modales, como vimos en la lección anterior, expresan posibilidad o probabilidad. Cuando se utilizan con la forma infinitiva del perfecto (“have” + participio pasado), los verbos modales indican especulación sobre cosas en el pasado.</p>
         <div className='my-4'>
           <div className='space-y-2'>

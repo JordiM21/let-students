@@ -1,6 +1,5 @@
 import BackHeader from '@/components/BackHeader'
 import LoadingScreen from '@/components/LoadingScreen'
-import withUserData from '@/components/WithUserData'
 import YourProfile from '@/components/YourProfile'
 import { db } from '@/config/firebase'
 import { FormControl, TextField } from '@mui/material'

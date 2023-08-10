@@ -1,10 +1,10 @@
 import { CustomTitle, DoubleExample, SingleExample } from '@/components/DoubleExample'
 import Nota from '@/components/Nota'
 import React, { useEffect, useState } from 'react'
-import ReactPlayer from 'react-player/youtube'
 import UnitTest from '@/components/UnitTest';
 import { useRouter } from 'next/router';
 import { Breadcrumbs, Link, Typography } from '@mui/material';
+import VideoPlayer from '@/components/VideoPlayer';
 
 export default function index() {
   const breadcrumbs = [
@@ -43,11 +43,7 @@ export default function index() {
       </Breadcrumbs>
       <p className='opacity-60 font-bold text-lg text-[var(--color2)]'>DEMONSTRATIVE - LESSON 3</p>
       <CustomTitle title="Demonstrative Pronouns" titleSpanish="LOS PRONOMBRES DEMOSTRATIVOS" />
-      <ReactPlayer
-        width={"100%"}
-        className="max-w-2xl mx-auto my-8 border-8 rounded-md bg-blue-600 border-blue-600"
-        url="https://www.youtube.com/watch?v=cnNB_ThNukc"
-        controls={true} />
+      <VideoPlayer url={"https://www.youtube.com/watch?v=cnNB_ThNukc"} />
       <p className='font-bold text-gray-700'>Es importante comenzar señalando que los pronombres pueden estar en singular o plural y que pueden hacer referencia a la distancia.</p>
       <div className='my-4'>
         <p className='text-sm opacity-60 mt-8'>Singular/Cerca</p>

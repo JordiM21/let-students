@@ -5,6 +5,7 @@ import ReactPlayer from 'react-player/youtube'
 import UnitTest from '@/components/UnitTest';
 import { useRouter } from 'next/router';
 import { Breadcrumbs, Link, Typography } from '@mui/material';
+import VideoPlayer from '@/components/VideoPlayer';
 
 export default function index() {
   const breadcrumbs = [
@@ -44,11 +45,7 @@ export default function index() {
         </Breadcrumbs>
         <p className='opacity-60 font-bold text-lg text-[var(--color2)]'>PAST CONTINUOUS - LESSON 14</p>
         <CustomTitle title={"Past Continuous"} titleSpanish={"EL PASADO CONTINUO"} />
-        <ReactPlayer
-          width={"100%"}
-          className="max-w-2xl mx-auto my-8 border-8 rounded-md bg-blue-600 border-blue-600"
-          url="https://www.youtube.com/watch?v=WdhwwqVaFLc"
-          controls={true} />
+        <VideoPlayer url={"https://www.youtube.com/watch?v=WdhwwqVaFLc"} />
         <p className='font-bold text-gray-700'>Esta lecciòn es genial asi que presta mucha atenciòn, el pasado continuo es muy importante que, para resumirte te hago el ejemplo: [Yo estaba jugando] (Significa algo que estabamos haci"endo") lo mismo que vimos en el nivel anterior, recuerdas? I am playing! [Yo estoy jugando] El pasado continuo se utiliza para acciones que estaban pasando en un momento específico en el pasado. Como el presente continuo, se forma con el verbo auxiliar “to be” y el verbo+ing.</p>
         <div className='my-4'>
           <div className='space-y-2'>

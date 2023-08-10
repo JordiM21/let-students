@@ -1,10 +1,10 @@
 import { CustomTitle, DoubleExample, SingleExample } from '@/components/DoubleExample'
 import Nota from '@/components/Nota'
 import React, { useEffect, useState } from 'react'
-import ReactPlayer from 'react-player/youtube'
 import UnitTest from '@/components/UnitTest';
 import { useRouter } from 'next/router';
 import { Breadcrumbs, Link, Typography } from '@mui/material';
+import VideoPlayer from '@/components/VideoPlayer';
 
 export default function index() {
   const breadcrumbs = [
@@ -43,11 +43,7 @@ export default function index() {
       </Breadcrumbs>
       <p className='opacity-60 font-bold text-lg text-[var(--color2)]'>REFLEXIVE - LESSON 4</p>
       <CustomTitle title="Reflexive Pronouns" titleSpanish="LOS PRONOMBRES REFLEXIVOS" />
-      <ReactPlayer
-        width={"100%"}
-        className="max-w-2xl mx-auto my-8 border-8 rounded-md bg-blue-600 border-blue-600"
-        url="https://www.youtube.com/watch?v=mhAQbRV8un0"
-        controls={true} />
+      <VideoPlayer url={"https://www.youtube.com/watch?v=mhAQbRV8un0"} />
       <p className='font-bold text-gray-700'>Los pronombres reflexivos se usan cuando el sujeto y el complemento del verbo son lo mismo. El sujeto hace la acción a sí mismo. En inglés no se utilizan los verbos reflexivos tanto como en español. En vez de verbos reflexivos, utilizamos uno de los siguientes pronombres reflexivos.</p>
       <div className='my-4'>
         <p className='text-[var(--color2)] font-bold text-lg opacity-75'>EXAMPLES:</p>

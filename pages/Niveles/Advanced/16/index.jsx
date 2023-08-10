@@ -5,6 +5,7 @@ import ReactPlayer from 'react-player/youtube'
 import UnitTest from '@/components/UnitTest';
 import { useRouter } from 'next/router';
 import { Breadcrumbs, Link, Typography } from '@mui/material';
+import VideoPlayer from '@/components/VideoPlayer';
 
 export default function index() {
   const breadcrumbs = [
@@ -44,11 +45,7 @@ export default function index() {
         </Breadcrumbs>
         <p className='opacity-60 font-bold text-lg text-[var(--color2)]'>Linking Words - LESSON 16</p>
         <CustomTitle title={"Linking Words"} titleSpanish={"Palabras Conectoras"} />
-        <ReactPlayer
-          width={"100%"}
-          className="max-w-2xl mx-auto my-8 border-8 rounded-md bg-blue-600 border-blue-600"
-          url="https://www.youtube.com/watch?v=GftTPjgpUNo"
-          controls={true} />
+        <VideoPlayer url={"https://www.youtube.com/watch?v=GftTPjgpUNo"} />
         <div className='my-4'>
           <div className='space-y-2'>
             <small className='text-sm opacity-60'>Linking words, también conocidos como “connectors”, son palabras que vinculan o relacionan dos ideas, dentro de una oración (conectando dos cláusulas) o dentro de un párrafo (conectando dos frases). Ya hemos introducido este concepto en una lección anterior (Conjunctions), ahora profundizaremos más en ellas.</small>

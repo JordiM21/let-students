@@ -5,6 +5,7 @@ import ReactPlayer from 'react-player/youtube'
 import UnitTest from '@/components/UnitTest';
 import { useRouter } from 'next/router';
 import { Breadcrumbs, Link, Typography } from '@mui/material';
+import VideoPlayer from '@/components/VideoPlayer';
 
 export default function index() {
   const breadcrumbs = [
@@ -44,11 +45,7 @@ export default function index() {
         </Breadcrumbs>
         <p className='opacity-60 font-bold text-lg text-[var(--color2)]'>Like vs. As - LESSON 7</p>
         <CustomTitle title={"Like vs. As"} titleSpanish={"Como"} />
-        <ReactPlayer
-          width={"100%"}
-          className="max-w-2xl mx-auto my-8 border-8 rounded-md bg-blue-600 border-blue-600"
-          url="https://www.youtube.com/watch?v=wkQYbZHAYac"
-          controls={true} />
+        <VideoPlayer url={"https://www.youtube.com/watch?v=wkQYbZHAYac"} />
         <p className='font-bold text-gray-700'>“Like” y “as” a menudo se confunden en inglés. Ambas se pueden utilizar para hacer comparaciones o hablar de similitudes. Es muy común en inglés americano utilizar “like” en lugar de “as”. Sin embargo, es generalmente considerado informal utilizarla en esta forma. La siguiente es una explicación de los diversos usos de estas dos palabras.</p>
         <div className='my-4'>
           <div className='space-y-2'>

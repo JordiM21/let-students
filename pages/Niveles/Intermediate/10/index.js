@@ -5,6 +5,7 @@ import ReactPlayer from 'react-player/youtube'
 import UnitTest from '@/components/UnitTest';
 import { useRouter } from 'next/router';
 import { Breadcrumbs, Link, Typography } from '@mui/material';
+import VideoPlayer from '@/components/VideoPlayer';
 
 export default function index() {
   const breadcrumbs = [
@@ -44,11 +45,7 @@ export default function index() {
         </Breadcrumbs>
         <p className='opacity-60 font-bold text-lg text-[var(--color2)]'>QUESTIONS - LESSON 10</p>
         <CustomTitle title={"Question Tags"} titleSpanish={"LAS PREGUNTAS COLETILLA"} />
-        <ReactPlayer
-          width={"100%"}
-          className="max-w-2xl mx-auto my-8 border-8 rounded-md bg-blue-600 border-blue-600"
-          url="https://www.youtube.com/watch?v=QkYBiPEIwVE"
-          controls={true} />
+        <VideoPlayer url={"https://www.youtube.com/watch?v=QkYBiPEIwVE"} />
         <p className='font-bold text-gray-700'>En inglés es frecuente terminar las frases con otra frase corta, de signo contrario, la cual tiene la intención de pedir la opinión o buscar la aprobación del interlocutor: son las llamadas question tags (preguntas coletillas). Estas frases equivalen a: ¿verdad?, ¿no es verdad?, ¿no?, ¿no es así? ¿en serio?</p>
         <div className='my-4'>
           <div className='space-y-2'>

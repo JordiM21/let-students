@@ -5,6 +5,7 @@ import ReactPlayer from 'react-player/youtube'
 import UnitTest from '@/components/UnitTest';
 import { useRouter } from 'next/router';
 import { Breadcrumbs, Link, Typography } from '@mui/material';
+import VideoPlayer from '@/components/VideoPlayer';
 
 export default function index() {
   const breadcrumbs = [
@@ -43,11 +44,7 @@ export default function index() {
       </Breadcrumbs>
       <p className='opacity-60 font-bold text-lg text-[var(--color2)]'>W-H Questions - LESSON 13</p>
       <CustomTitle title="WH Questions" titleSpanish="Preguntas con WH" />
-      <ReactPlayer
-        width={"100%"}
-        className="max-w-2xl mx-auto my-8 border-8 rounded-md bg-blue-600 border-blue-600"
-        url="https://www.youtube.com/watch?v=x_4AjSwTXdc"
-        controls={true} />
+      <VideoPlayer url={"https://www.youtube.com/watch?v=x_4AjSwTXdc"} />
       <div className='my-4'>
         <p className='font-bold text-sm opacity-90'>Las preguntas con WH son muy sencillas y forman parte de los dos tipos de pregunta en inglés, tenemos las preguntas con respuesta sí o no, por ejemplo: Do you like coffe?/¿Te gusta el café? esta pregunta es una Yes/No question. Pero en esta lección hablaremos de las WH Questions que es el segundo tipo de pregunta mejor conocida como PREGUNTAS ABIERTAS</p>
         <div className='space-y-4'>

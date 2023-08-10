@@ -5,6 +5,7 @@ import ReactPlayer from 'react-player/youtube'
 import UnitTest from '@/components/UnitTest';
 import { useRouter } from 'next/router';
 import { Breadcrumbs, Link, Typography } from '@mui/material';
+import VideoPlayer from '@/components/VideoPlayer';
 
 export default function index() {
   const breadcrumbs = [
@@ -44,11 +45,7 @@ export default function index() {
         </Breadcrumbs>
         <p className='opacity-60 font-bold text-lg text-[var(--color2)]'>Phrasal Verbs - LESSON 21</p>
         <CustomTitle title={"Phrasal Verbs"} titleSpanish={"Verbos Frasales"} />
-        <ReactPlayer
-          width={"100%"}
-          className="max-w-2xl mx-auto my-8 border-8 rounded-md bg-blue-600 border-blue-600"
-          url="https://www.youtube.com/watch?v=B6lnuHd8XIk"
-          controls={true} />
+        <VideoPlayer url={"https://www.youtube.com/watch?v=B6lnuHd8XIk"} />
         <p className='font-bold text-gray-700'>Los phrasal verbs son uno de los temas mas avanzados y complejos del ingles asi que, no te preocupes si no los entiendes a la primera, los estaremos viendo mucho mejor mas adelante. Por ahora te daremos algunos basicos para usar en las rutinas diarias</p>
         <div className='my-4'>
           <div className='space-y-2'>

@@ -5,6 +5,7 @@ import ReactPlayer from 'react-player/youtube'
 import UnitTest from '@/components/UnitTest';
 import { useRouter } from 'next/router';
 import { Breadcrumbs, Link, Typography } from '@mui/material';
+import VideoPlayer from '@/components/VideoPlayer';
 
 export default function index() {
   const breadcrumbs = [
@@ -44,11 +45,8 @@ export default function index() {
         </Breadcrumbs>
         <p className='opacity-60 font-bold text-lg text-[var(--color2)]'>Future Perfect - LESSON 9</p>
         <CustomTitle title={"Future Perfect"} titleSpanish={"El futuro perfecto"} />
-        <ReactPlayer
-          width={"100%"}
-          className="max-w-2xl mx-auto my-8 border-8 rounded-md bg-blue-600 border-blue-600"
-          url="https://www.youtube.com/watch?v=W7SApy1D4YU"
-          controls={true} />
+        <VideoPlayer url={"https://www.youtube.com/watch?v=W7SApy1D4YU"} />
+
         <p className='font-bold text-gray-700'>Como hemos visto en las lecciones anteriores, hay dos maneras principales para expresar el futuro. A diferencia del futuro simple, en el tiempo perfecto, el uso de ellas es en general intercambiable.</p>
         <div className='my-4'>
           <div className='space-y-2'>

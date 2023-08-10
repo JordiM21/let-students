@@ -5,6 +5,7 @@ import ReactPlayer from 'react-player/youtube'
 import UnitTest from '@/components/UnitTest';
 import { useRouter } from 'next/router';
 import { Breadcrumbs, Link, Typography } from '@mui/material';
+import VideoPlayer from '@/components/VideoPlayer';
 
 export default function index() {
   const breadcrumbs = [
@@ -44,11 +45,7 @@ export default function index() {
         </Breadcrumbs>
         <p className='opacity-60 font-bold text-lg text-[var(--color2)]'>Past Perfect Continuous - LESSON 8</p>
         <CustomTitle title={"Past Perfect Continuous"} titleSpanish={"El pasado perfecto continuo"} />
-        <ReactPlayer
-          width={"100%"}
-          className="max-w-2xl mx-auto my-8 border-8 rounded-md bg-blue-600 border-blue-600"
-          url="https://www.youtube.com/watch?v=dbZp385yYvk"
-          controls={true} />
+        <VideoPlayer url={"https://www.youtube.com/watch?v=dbZp385yYvk"} />
         <p className='font-bold text-gray-700'>El pasado perfecto continuo en inglés corresponde al pluscuamperfecto de español en el que se usa el indicativo del verbo “estar” y el verbo+ing. En general, lo usamos para acciones en proceso de realización en el pasado antes de otra acción ocurrida.</p>
         <div className='my-4'>
           <div className='space-y-2'>

@@ -5,6 +5,7 @@ import ReactPlayer from 'react-player/youtube'
 import UnitTest from '@/components/UnitTest';
 import { useRouter } from 'next/router';
 import { Breadcrumbs, Link, Typography } from '@mui/material';
+import VideoPlayer from '@/components/VideoPlayer';
 
 export default function index() {
   const breadcrumbs = [
@@ -44,11 +45,7 @@ export default function index() {
         </Breadcrumbs>
         <p className='opacity-60 font-bold text-lg text-[var(--color2)]'>Present Perfect vs Past Simple - LESSON 3</p>
         <CustomTitle title={"Present Perfect vs Past Simple"} titleSpanish={"EL PRESENTE PERFECTO Y EL PASADO SIMPLE"} />
-        <ReactPlayer
-          width={"100%"}
-          className="max-w-2xl mx-auto my-8 border-8 rounded-md bg-blue-600 border-blue-600"
-          url="https://www.youtube.com/watch?v=D9sxDL0HbnY"
-          controls={true} />
+        <VideoPlayer url={"https://www.youtube.com/watch?v=D9sxDL0HbnY"} />
         <p className='font-bold text-gray-700'>Se utiliza el pasado simple para acciones que han terminado en el pasado, incluso si han ocurrido en un pasado reciente. Con el presente perfecto la acción está relacionada con el presente.</p>
         <div className='my-4'>
           <small className='text-sm opacity-60'>PASADO SIMPLE (EJEMPLOS)</small>

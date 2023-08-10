@@ -5,6 +5,7 @@ import ReactPlayer from 'react-player/youtube'
 import UnitTest from '@/components/UnitTest';
 import { useRouter } from 'next/router';
 import { Breadcrumbs, Link, Typography } from '@mui/material';
+import VideoPlayer from '@/components/VideoPlayer';
 
 export default function index() {
   const breadcrumbs = [
@@ -44,11 +45,7 @@ export default function index() {
         </Breadcrumbs>
         <p className='opacity-60 font-bold text-lg text-[var(--color2)]'>Daily Routines - LESSON 25</p>
         <CustomTitle title={"Daily Routines with Phrasal Verbs"} titleSpanish={"Rutinas diarias con verbos frasales"} />
-        <ReactPlayer
-          width={"100%"}
-          className="max-w-2xl mx-auto my-8 border-8 rounded-md bg-blue-600 border-blue-600"
-          url="https://www.youtube.com/watch?v=NxyITVv_qbE"
-          controls={true} />
+        <VideoPlayer url={"https://www.youtube.com/watch?v=NxyITVv_qbE"} />
         <p className='font-bold text-gray-700'>Escucha con atención las conversaciones del video, pausalo cuando sea necesario para analizar el contexto y entender el significado. Utilizaremos muuuchos Phrasal Verbs, muy atento!</p>
         <div className='my-4'>
           <div className='my-8 rounded-md p-4 bg-blue-200 '>

@@ -5,6 +5,7 @@ import ReactPlayer from 'react-player/youtube'
 import UnitTest from '@/components/UnitTest';
 import { useRouter } from 'next/router';
 import { Breadcrumbs, Link, Typography } from '@mui/material';
+import VideoPlayer from '@/components/VideoPlayer';
 
 export default function index() {
   const breadcrumbs = [
@@ -43,11 +44,7 @@ export default function index() {
         </Breadcrumbs>
         <p className='opacity-60 font-bold text-lg text-[var(--color2)]'>Perfect Conditional - LESSON 20</p>
         <CustomTitle title={"Perfect Conditional"} titleSpanish={"Condicional Perfecto"} />
-        <ReactPlayer
-          width={"100%"}
-          className="max-w-2xl mx-auto my-8 border-8 rounded-md bg-blue-600 border-blue-600"
-          url="https://www.youtube.com/watch?v=kGv_mGUCFJE"
-          controls={true} />
+        <VideoPlayer url={"https://www.youtube.com/watch?v=kGv_mGUCFJE"} />
         <div className='my-4'>
           <div className='space-y-2'>
             <p className='text-sm opacity-60'>El condicional perfecto en inglés se forma usando "would have" seguido del participio pasado de un verbo. Se utiliza para hablar acerca de situaciones hipotéticas en el pasado, es decir, para expresar acciones que podrían haber ocurrido, pero que en realidad no sucedieron.</p>

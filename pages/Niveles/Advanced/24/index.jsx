@@ -5,6 +5,7 @@ import ReactPlayer from 'react-player/youtube'
 import UnitTest from '@/components/UnitTest';
 import { useRouter } from 'next/router';
 import { Breadcrumbs, Link, Typography } from '@mui/material';
+import VideoPlayer from '@/components/VideoPlayer';
 
 export default function index() {
   const breadcrumbs = [
@@ -44,11 +45,7 @@ export default function index() {
         </Breadcrumbs>
         <p className='opacity-60 font-bold text-lg text-[var(--color2)]'>Connected Speech - LESSON 24</p>
         <CustomTitle title={"Connected Speech"} titleSpanish={"Oraciones Conectadas"} />
-        <ReactPlayer
-          width={"100%"}
-          className="max-w-2xl mx-auto my-8 border-8 rounded-md bg-blue-600 border-blue-600"
-          url="https://www.youtube.com/watch?v=N2Au0UdymCU"
-          controls={true} />
+        <VideoPlayer url={"https://www.youtube.com/watch?v=N2Au0UdymCU"} />
         <div className='my-4'>
           <div className='space-y-2'>
             <p className='text-sm opacity-60'>El "connected speech" o "habla conectada" se refiere a cómo los sonidos y las palabras se modifican cuando hablamos de manera fluida y natural en lugar de pronunciar cada palabra de forma aislada. Esto ocurre para que las palabras se enlacen y fluyan con mayor facilidad, lo que mejora la comprensión y la fluidez del habla. Algunas de las formas más comunes de cambiar las oraciones y los sonidos en el "connected speech" son:</p>

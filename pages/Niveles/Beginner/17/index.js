@@ -234,10 +234,6 @@ export default function index() {
           <p>En español serían: primero, segundo, tercero, cuarto, quinto, sexto, séptimo, etc... Tenemos abreviaturas de los numeros ordinales las cuales se utilizan comunmente en fechas, por ejemplo [May 1st], significa [primero de Mayo]</p>
           <p className='text-gray-600 font-bold text-xl'>EJEMPLOS:</p>
           <SingleExample
-            english=""
-            spanish=""
-          />
-          <SingleExample
             english="1st"
             spanish="first (primero)"
           />

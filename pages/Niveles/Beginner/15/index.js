@@ -5,6 +5,7 @@ import ReactPlayer from 'react-player/youtube'
 import UnitTest from '@/components/UnitTest';
 import { useRouter } from 'next/router';
 import { Breadcrumbs, Link, Typography } from '@mui/material';
+import VideoPlayer from '@/components/VideoPlayer';
 
 export default function index() {
   const breadcrumbs = [
@@ -43,11 +44,7 @@ export default function index() {
       </Breadcrumbs>
       <p className='opacity-60 font-bold text-lg text-[var(--color2)]'>SENTENCE STRUCTURE - LESSON 15</p>
       <CustomTitle title="Constructing Sentences" titleSpanish="Construir Frases" />
-      <ReactPlayer
-        width={"100%"}
-        className="max-w-2xl mx-auto my-8 border-8 rounded-md bg-blue-600 border-blue-600"
-        url="https://www.youtube.com/watch?v=nvVdIJ0las0"
-        controls={true} />
+      <VideoPlayer url={"https://www.youtube.com/watch?v=nvVdIJ0las0"} />
       <div className='my-4'>
         <p className='font-bold text-sm opacity-90'>A continuación se presenta una revisión de la estructura básica de las frases afirmativas, negativas e interrogativas. Para más información sobre la estructura de frases, ver las lecciones de los tiempos verbales.</p>
         <div className='space-y-4'>

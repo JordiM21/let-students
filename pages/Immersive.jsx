@@ -1,15 +1,10 @@
 import BackHeader from '@/components/BackHeader';
 import LoadingScreen from '@/components/LoadingScreen';
-import Nota from '@/components/Nota';
-import { db } from '@/config/firebase';
-import { useAuth } from '@/context/AuthContext';
 import { FormControl, InputLabel, MenuItem, Select } from '@mui/material';
-import { collection, getDocs } from 'firebase/firestore';
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react'
 import { AiFillCloseCircle } from 'react-icons/ai';
 import { BsQuestionCircle } from 'react-icons/bs';
-import ReactPlayer from 'react-player';
 import withUserData from '@/components/WithUserData';
 import WithImmersiveInfo from '@/components/WithImmersiveInfo';
 import VideoCard from '@/components/VideoCard';

@@ -5,6 +5,7 @@ import ReactPlayer from 'react-player/youtube'
 import UnitTest from '@/components/UnitTest';
 import { useRouter } from 'next/router';
 import { Breadcrumbs, Link, Typography } from '@mui/material';
+import VideoPlayer from '@/components/VideoPlayer';
 
 export default function index() {
   const breadcrumbs = [
@@ -43,11 +44,7 @@ export default function index() {
       </Breadcrumbs>
       <p className='opacity-60 font-bold text-lg text-[var(--color2)]'>ADJECTIVES - LESSON 9</p>
       <CustomTitle title="Adjectives" titleSpanish="LOS ADJETIVOS" />
-      <ReactPlayer
-        width={"100%"}
-        className="max-w-2xl mx-auto my-8 border-8 rounded-md bg-blue-600 border-blue-600"
-        url="https://www.youtube.com/watch?v=LiYxv0vudmc"
-        controls={true} />
+      <VideoPlayer url={"https://www.youtube.com/watch?v=LiYxv0vudmc"} />
       <div className='my-4'>
         <p className='font-bold text-xs opacity-90'>Un adjetivo es una palabra que acompaña y modifica al nombre. Puede ampliar, complementar o cuantificar su tamaño. Son palabras que nombran o indican cualidades, rasgos y propiedades de los nombres o sustantivos a los que acompañan.</p>
         <div className='space-y-4'>

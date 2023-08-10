@@ -1,6 +1,6 @@
 import React from 'react'
 import YourProfile from './YourProfile'
-import { AiFillCheckCircle, AiFillInfoCircle, AiFillSetting } from 'react-icons/ai'
+import { AiFillCheckCircle, AiFillInfoCircle } from 'react-icons/ai'
 import BackHeader from './BackHeader'
 import Link from 'next/link'
 import { FaMagic } from 'react-icons/fa'
