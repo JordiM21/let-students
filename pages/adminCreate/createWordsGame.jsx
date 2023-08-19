@@ -45,7 +45,6 @@ export default function createUnits() {
       setTextEng("")
       setTextSpa("")
       setDescription("")
-      setLevel("")
       setUrl("")
     }
     )
