@@ -10,7 +10,7 @@ const Dashboard = ({ userData, tutor, allUsers, isPending }) => {
   if (!userData) {
     return <LoadingScreen />;
   }
-  const { id, firstName, level, role, urlMeet, likedVideos, progressBeginner, progressIntermediate, progressAdvanced, schedule, profileImg, appNotif, activities, email } = userData
+  const { id, wordsGameProgress, firstName, level, role, urlMeet, likedVideos, progressBeginner, progressIntermediate, progressAdvanced, schedule, profileImg, appNotif, activities, email } = userData
 
   const router = useRouter()
   const [appNoti, setAppNoti] = useState(appNotif)
@@ -61,6 +61,7 @@ const Dashboard = ({ userData, tutor, allUsers, isPending }) => {
         role == "Admin" &&
         (
           <AdminDashboard
+            wordsGameProgress={wordsGameProgress}
             profileImg={profileImg}
             firstName={firstName}
             level={level}
@@ -77,6 +78,7 @@ const Dashboard = ({ userData, tutor, allUsers, isPending }) => {
         role == "Student" &&
         (
           <StudentDashboard
+            wordsGameProgress={wordsGameProgress}
             profileImg={profileImg}
             schedule={schedule}
             firstName={firstName}

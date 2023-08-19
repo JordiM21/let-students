@@ -1,5 +1,5 @@
 import { db } from '@/config/firebase'
-import { collection, doc, getDocs, updateDoc } from 'firebase/firestore'
+import { doc, updateDoc } from 'firebase/firestore'
 import { useRouter } from 'next/router'
 import React, { useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
@@ -45,7 +45,6 @@ const selectCharacter = ({ userData }) => {
         </div>
       ),
     })),
-    // Customize other options as needed
   });
 
   return (

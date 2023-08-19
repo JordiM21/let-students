@@ -17,11 +17,13 @@ import { toast } from 'react-toastify';
 import Schedule from '@/components/Schedule';
 import SendNotifScreen from '@/components/SendNotifScreen';
 import withUserData from '@/components/WithUserData';
+import { PiGameControllerFill } from 'react-icons/pi';
 
 const Progress = ({ allUsers, likedVideos, userData }) => {
   if (!userData) {
     return <LoadingScreen />;
   }
+
 
   const [userMatched, setUserMatched] = useState(userData)
   const [students, setStudents] = useState(allUsers)
@@ -59,14 +61,14 @@ const Progress = ({ allUsers, likedVideos, userData }) => {
             <BsQuestionCircle className='w-5 h-5' />
           </div>
         </div>
-        {
+        {/* {
           question && (
-            <div className='bg-gray-200 backdrop-blur-sm bg-opacity-60 p-6 shadow-gray-500 z-50 rounded-md shadow-lg max-w-[250px] absolute right-0'>
+            <div className='bg-gray-200 backdrop-blur-sm bg-opacity-100 p-6 shadow-gray-500 z-50 rounded-md shadow-lg max-w-[250px] absolute right-0 md:-right-72'>
               <AiFillCloseCircle className='absolute top-2 cursor-pointer right-2 w-6 h-6' onClick={() => setQuestion(!question)} />
               <p>En este cuadro encuentras tus estadisticas por nivel, a medida que completes units y sus tests se actualizara tu progreso al igual que le notificaremos a tu profesor. <br />Por cierto, tambien encuentras los videos que te han gustado para verlos mas facilmente </p>
             </div>
           )
-        }
+        } */}
         {
           userMatched.level == "Beginner" && userMatched.role == "Student" && (
             <ProgressLesson progress={userMatched.progressBeginner} />
@@ -206,6 +208,14 @@ const Progress = ({ allUsers, likedVideos, userData }) => {
                         <div className=''>
                           <p>Advanced: </p>
                           <ProgressLesson progress={student.progressAdvanced} />
+                        </div>
+                        <div className='my-2 flex flex-wrap'>
+                          <PiGameControllerFill className=" text-3xl items-center gap-2 fill-gray-500" />
+                          {student.wordsGameProgress?.map((game) => (
+                            <span className='bg-gray-500 px-2 py-1 m-1 rounded-lg'>
+                              {game}
+                            </span>
+                          ))}
                         </div>
                         {
                           student.schedule && (

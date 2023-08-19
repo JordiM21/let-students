@@ -3,7 +3,7 @@ import ProgressLesson from './ProgressLesson'
 import { useRouter } from 'next/router'
 import Image from 'next/image'
 import image1 from '@/public/cambridgeandlet.png'
-import { AiFillPieChart } from 'react-icons/ai'
+import { AiFillPieChart, AiFillYoutube } from 'react-icons/ai'
 import { MdFaceRetouchingNatural, MdTaskAlt } from 'react-icons/md'
 import { FcCalendar } from 'react-icons/fc'
 import Schedule from './Schedule'
@@ -13,8 +13,10 @@ import student from '@/public/animations/student.json'
 import CtaAnimationPage from './CtaAnimationPage'
 import ExternalApps from './ExternalApps'
 import { TbBrandYoutubeKids } from 'react-icons/tb'
+import { PiGameControllerFill } from 'react-icons/pi'
+import { GiBrain, GiGamepadCross } from 'react-icons/gi'
 
-export default function StudentDashboard({ id, setAppNotif, appNotif, level, tutor, schedule, progressB, progressI, progressA }) {
+export default function StudentDashboard({ id, wordsGameProgress, setAppNotif, appNotif, level, tutor, schedule, progressB, progressI, progressA }) {
 
   const router = useRouter()
 
@@ -98,6 +100,25 @@ export default function StudentDashboard({ id, setAppNotif, appNotif, level, tut
           <div className='px-4'>
             <Schedule schedule={schedule} />
           </div>
+        </div>
+      </div>
+      <div className='group bg-gray-100 mx-4 pb-0 relative overflow-hidden my-4 rounded-md md:flex md:justify-between md:pb-0 max-w-5xl md:mx-auto'>
+        <div className='px-4 md:px-20 md:py-4'>
+          <div>
+            <PiGameControllerFill className="opacity-80 group-hover:scale-125 absolute text-7xl -rotate-12 -right-2 -bottom-4 md:-left-2 md:-top-2 fill-gray-500" />
+            <AiFillYoutube className="opacity-0 md:opacity-80 group-hover:scale-110 absolute text-7xl -rotate-6 -left-4 -bottom-3 fill-gray-500" />
+            <PiGameControllerFill className="opacity-0 md:opacity-80 group-hover:scale-110 absolute text-7xl -rotate-6 right-96 -bottom-5 fill-gray-500" />
+            <GiGamepadCross className="opacity-0 md:opacity-80 group-hover:scale-110 absolute text-7xl rotate-6 right-60 -top-4 fill-gray-500" />
+            <AiFillYoutube className="opacity-0 md:opacity-80 group-hover:scale-110 absolute text-7xl rotate-12 -right-4 top-3 fill-gray-500" />
+            <p className='text-center text-[var(--color2)] text-2xl py-2'>
+              WORDS GAME (Juego de Palabras)
+            </p>
+            <p className='font-bold text-md hidden md:block'>Learn new words and phrases by listening to native people</p>
+            <button onClick={() => router.push(`/wordsGame/`)} className='my-2 bg-[var(--color2)] w-full text-white font-bold text-2xl py-4 rounded-md hover:shadow-xl shadow-black hover:translate-y-1 transition-all 1s ease-in'>Go to Words Game</button>
+          </div>
+        </div>
+        <div className='bg-white font-semibold text-lg md:text-2xl px-4 md:px-16 py-3 md:py-8 rounded-md shadow-md'>
+          <span className='text-[var(--color2)] text-end md:block text-3xl md:text-8xl'>{wordsGameProgress.length}</span> Modules Complete in Total
         </div>
       </div>
       <div className='w-full max-w-5xl mx-auto space-y-6 md:space-y-0 md:flex justify-evenly'>

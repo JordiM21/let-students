@@ -44,7 +44,7 @@ export default function createUnits() {
 
   return (
     <div className='mx-4 max-w-xl md:mx-auto mb-20'>
-      <h1>Search Units per level</h1>
+      <h1>Search Units by level</h1>
       <FormControl variant="filled" className='w-full'>
         <InputLabel id="demo-simple-select-filled-label">Search by Level</InputLabel>
         <Select
