@@ -5,6 +5,7 @@ import { AiFillCheckCircle } from 'react-icons/ai';
 import { MdReplay } from 'react-icons/md';
 import ReactPlayer from 'react-player'
 import LoadingScreen from './LoadingScreen';
+import { BsFillVolumeMuteFill, BsFillVolumeUpFill } from 'react-icons/bs';
 
 export default function VideoPlayer({ url }) {
 
@@ -26,11 +27,15 @@ export default function VideoPlayer({ url }) {
     setIsFinished(true);
   };
   const [isPlaying, setIsPlaying] = useState(true);
-
+  const [isMuted, setIsMuted] = useState(true);
   const [isVideoReady, setIsVideoReady] = useState(false);
 
   const handleVideoReady = () => {
     setIsVideoReady(true);
+  };
+
+  const handleMuteToggle = () => {
+    setIsMuted(!isMuted);
   };
 
   return (
@@ -53,7 +58,7 @@ export default function VideoPlayer({ url }) {
           height={"100%"}
           className="bg-[var(--color2)] max-w-xl rounded-md border-[var(--color2)]"
           url={url}
-          muted={false}
+          muted={isMuted}
           autoplay={true}
           loop={false}
           playing={isPlaying}
@@ -67,6 +72,14 @@ export default function VideoPlayer({ url }) {
           }}
         />
       </div>
+      {isVideoReady && (
+        <button
+          className="absolute top-2 right-2 z-50 text-white bg-black bg-opacity-50 rounded-full p-2"
+          onClick={handleMuteToggle}
+        >
+          {isMuted ? <BsFillVolumeMuteFill className='fill-white text-3xl' /> : <BsFillVolumeUpFill className='fill-white text-3xl' />}
+        </button>
+      )}
     </div>
   )
 }
