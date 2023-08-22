@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
 import { useEffect } from 'react';
 import { useRef } from 'react';
-import { AiFillCheckCircle } from 'react-icons/ai';
+import { AiFillCheckCircle, AiFillPauseCircle, AiFillPlayCircle } from 'react-icons/ai';
 import { MdReplay } from 'react-icons/md';
 import ReactPlayer from 'react-player'
 import LoadingScreen from './LoadingScreen';
-import { BsFillVolumeMuteFill, BsFillVolumeUpFill } from 'react-icons/bs';
+import { BsFillVolumeMuteFill, BsFillVolumeUpFill, BsPlayBtn } from 'react-icons/bs';
 
 export default function VideoPlayer({ url }) {
 
@@ -21,13 +21,15 @@ export default function VideoPlayer({ url }) {
   const handleReset = () => {
     setIsFinished(false);
     setKey(key + 1);
+    setIsPlaying(true)
   };
 
+  const [isPlaying, setIsPlaying] = useState(false);
   const showAlert = () => {
     setIsFinished(true);
+    setIsPlaying(false)
   };
-  const [isPlaying, setIsPlaying] = useState(true);
-  const [isMuted, setIsMuted] = useState(true);
+  const [isMuted, setIsMuted] = useState(false);
   const [isVideoReady, setIsVideoReady] = useState(false);
 
   const handleVideoReady = () => {
@@ -46,7 +48,7 @@ export default function VideoPlayer({ url }) {
         </div>
       )}
       <div className='h-[237px] md:h-[332px] w-full mx-auto'>
-        <div onClick={handleReset} className={`group bg-[var(--color2Shadow)] max-w-xl cursor-pointer flex mx-auto justify-center items-center h-[237px] md:h-[332px] w-11/12 absolute ${isFinished ? "opacity-100" : "opacity-0"}`}>
+        <div onClick={handleReset} className={`group bg-[var(--color2Shadow)] lg:max-w-[34.8rem] cursor-pointer flex justify-center items-center h-[237px] md:h-[332px] w-11/12 sm:w-full absolute ${isFinished ? "opacity-100" : "opacity-0"}`}>
           <div className='bg-white p-8 rounded-full'>
             <MdReplay className='fill-sky-600 group-hover:-rotate-180 group-hover:scale-125' size={48} />
           </div>
@@ -80,6 +82,28 @@ export default function VideoPlayer({ url }) {
           {isMuted ? <BsFillVolumeMuteFill className='fill-white text-3xl' /> : <BsFillVolumeUpFill className='fill-white text-3xl' />}
         </button>
       )}
+      <div className='w-full bg-black rounded-b-full max-w-xl flex justify-center'>
+        {
+          isFinished ?
+            <button>
+              {
+                isPlaying ?
+                  <AiFillPauseCircle size={40} className='fill-white' />
+                  :
+                  <AiFillPlayCircle size={40} className='fill-white' />
+              }
+            </button>
+            :
+            <button onClick={() => setIsPlaying(!isPlaying)}>
+              {
+                isPlaying ?
+                  <AiFillPauseCircle size={40} className='fill-white' />
+                  :
+                  <AiFillPlayCircle size={40} className='fill-white' />
+              }
+            </button>
+        }
+      </div>
     </div>
   )
 }

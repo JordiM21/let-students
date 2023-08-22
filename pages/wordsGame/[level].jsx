@@ -84,16 +84,16 @@ const wordsGamePage = ({ data, userData }) => {
           <p className='xl:text-md text-sm text-gray-900'>{currentItem?.description}</p>
         </div>
       </div>
-      <div className='flex px-8 justify-between w-full right-0 xl:px-20 overflow-hidden bg-[var(--color2Shadow)] absolute pb-24 md:pb-4 xl:pb-6 pt-4 xl:pt-6 rounded-t-xl bottom-0'>
-        <button onClick={currentIndex === 0 ? noPrev : handlePrev} className={`group w-[45%] xl:w-[30%] xl:py-7 py-4 px-4 flex gap-4 items-center justify-center rounded-xl bg-white hover:shadow-md hover:shadow-gray-700 hover:-translate-y-1 ${currentIndex == 0 && "disabled grayscale hover:translate-y-0"}`}>
-          <p className='text-[var(--color3)] xl:text-3xl'>
+      <div className='flex px-8 justify-between w-full right-0 xl:px-20 overflow-hidden bg-[var(--color2Shadow)] absolute pb-20 sm:pb-24 md:pb-4 xl:pb-6 pt-2 sm:pt-4 xl:pt-6 rounded-t-xl bottom-0'>
+        <button onClick={currentIndex === 0 ? noPrev : handlePrev} className={`group w-[20%] sm:w-[45%] xl:w-[30%] xl:py-7 sm:py-3 py-2 px-1 flex gap-4 items-center justify-center rounded-xl bg-white hover:shadow-md hover:shadow-gray-700 hover:-translate-y-1 ${currentIndex == 0 && "disabled grayscale hover:translate-y-0"}`}>
+          <p className='text-[var(--color3)] xl:text-3xl hidden sm:block'>
             ANTERIOR
           </p>
           <BsFillArrowLeftCircleFill className='text-3xl fill-[var(--color3)] group-hover:-translate-x-1' />
         </button>
-        <button onClick={currentIndex === filteredData.length - 1 ? handleOpen : handleNext} className='group w-[45%] xl:w-[30%] xl:py-7 py-4 px-4 flex gap-4 items-center justify-center rounded-xl bg-[var(--color3)] hover:shadow-md hover:shadow-gray-700 hover:-translate-y-1'>
+        <button onClick={currentIndex === filteredData.length - 1 ? handleOpen : handleNext} className='group w-[20%] sm:w-[45%] xl:w-[30%] xl:py-7 sm:py-3 py-2 px-1 flex gap-4 items-center justify-center rounded-xl bg-[var(--color3)] hover:shadow-md hover:shadow-gray-700 hover:-translate-y-1'>
           <BsFillArrowRightCircleFill className='group-hover:translate-x-1 text-3xl fill-white' />
-          <p className='text-white xl:text-3xl'>
+          <p className='text-white xl:text-3xl hidden sm:block'>
             SIGUIENTE
           </p>
         </button>
