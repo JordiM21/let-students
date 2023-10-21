@@ -61,14 +61,6 @@ const Progress = ({ allUsers, likedVideos, userData }) => {
             <BsQuestionCircle className='w-5 h-5' />
           </div>
         </div>
-        {/* {
-          question && (
-            <div className='bg-gray-200 backdrop-blur-sm bg-opacity-100 p-6 shadow-gray-500 z-50 rounded-md shadow-lg max-w-[250px] absolute right-0 md:-right-72'>
-              <AiFillCloseCircle className='absolute top-2 cursor-pointer right-2 w-6 h-6' onClick={() => setQuestion(!question)} />
-              <p>En este cuadro encuentras tus estadisticas por nivel, a medida que completes units y sus tests se actualizara tu progreso al igual que le notificaremos a tu profesor. <br />Por cierto, tambien encuentras los videos que te han gustado para verlos mas facilmente </p>
-            </div>
-          )
-        } */}
         {
           userMatched.level == "Beginner" && userMatched.role == "Student" && (
             <ProgressLesson progress={userMatched.progressBeginner} />
@@ -167,13 +159,21 @@ const Progress = ({ allUsers, likedVideos, userData }) => {
                             </div>
                           )
                         }
-                        <div className='flex relative justify-start gap-4 items-center'>
+                        <div className='flex relative justify-start gap-4 pb-4 items-center'>
                           <YourFlag country={student.country} />
                           <p className='text-center font-bold text-xl py-1 cursor-pointer'>{student.firstName} {student.lastName}</p>
                           <div className='absolute right-4'>
                             <p className='text-sm text-gray-600 font-bold'>({student.level})</p>
                           </div>
                         </div>
+                        <a href={"https://let-students.vercel.app/ActivitiesDetail/" + student.id} target='_blank'>
+                          <button class="learn-more">
+                            <span class="circle bg-[var(--color3)]" aria-hidden="true">
+                              <span class="icon arrow"></span>
+                            </span>
+                            <span class="button-text text-[var(--color3)]">Go to the Activities</span>
+                          </button>
+                        </a>
                         <div className='bg-[var(--blueDarkbg)] cursor-pointer hover:bg-slate-800 overflow-hidden w-full rounded-t-xl mt-4 flex gap-8 items-center justify-between py-2 px-4'>
                           <p className='text-white'>Email</p>
                           <div className='flex items-center justify-center'>
