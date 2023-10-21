@@ -44,6 +44,11 @@ export default function ActivitiesDetail() {
     e.preventDefault()
     try {
       const userRef = doc(db, "users", id);
+      const currentTime = new Date();
+      const timestamp = currentTime.toISOString(); // Convert the Date to an ISO string
+      const getYearMonthDay = (timestamp) => {
+        return timestamp.slice(0, 10);
+      };
       await updateDoc(userRef, {
         activities: [...userMatched.activities, {
           text,
@@ -52,6 +57,7 @@ export default function ActivitiesDetail() {
           link,
           limitDate,
           status: "pending",
+          assignedDay: getYearMonthDay(timestamp),
         }],
       }).then(() => toast.success("Added succesfully!"))
       setText("")
@@ -193,7 +199,8 @@ export default function ActivitiesDetail() {
         {
           activities?.map((activity) => (
             activity.status === "pending" && (
-              <div className='mb-4 hover:scale-[102%] relative'>
+              <div className='mb-4 hover:scale-[102%] relative mt-6'>
+                <small className='text-white absolute z-50 -top-4 text-[11px] opacity-50'>{activity.assignedDay}</small>
                 <div className='bg-yellow-400 rounded-md px-2 z-10 absolute gap-1 -top-2 flex items-center -right-2'>
                   <AiFillInfoCircle />
                   <p>Pending</p>
@@ -231,7 +238,8 @@ export default function ActivitiesDetail() {
         {
           activities?.map((activity) => (
             activity.status === "done" && (
-              <div className='mb-4 hover:scale-[100%] opacity-75 relative'>
+              <div className='mb-4 hover:scale-[100%] opacity-75 mt-6 relative'>
+                <small className='text-white absolute z-50 -top-4 text-[11px] opacity-50'>{activity.assignedDay}</small>
                 <div className='bg-green-400 rounded-md z-10 px-5 absolute -top-2 flex gap-1 items-center -right-2'>
                   <AiFillCheckCircle />
                   <p>Done</p>

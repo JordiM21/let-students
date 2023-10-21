@@ -60,11 +60,20 @@ const wordsGamePage = ({ data, userData }) => {
   }
 
   const completeModule = async (e) => {
-    const nameRef = doc(db, "users", userData.id);
-    await updateDoc(nameRef, {
-      wordsGameProgress: [...userData.wordsGameProgress, level],
-    }).then(() => toast.success("Progress updated succesfully!"))
-  }
+    if (userData.wordsGameProgress.includes(level)) {
+      toast.info("Ya completaste este modulo");
+      router.back()
+    } else {
+      const nameRef = doc(db, "users", userData.id);
+      await updateDoc(nameRef, {
+        wordsGameProgress: [...userData.wordsGameProgress, level],
+      }).then(() => {
+        toast.success("Progress updated successfully!");
+        router.back();
+      });
+    }
+  };
+
 
   return (
     <div className='bg-[var(--color2)] pt-20 h-screen'>

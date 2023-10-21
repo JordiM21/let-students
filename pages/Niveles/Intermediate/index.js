@@ -49,7 +49,7 @@ const Intermediate = ({ levelData, userData }) => {
           <LoadingScreen />
         )
       }
-      <BackHeader largeTitle="Intermediate" parentTitle="Levels" />
+      <BackHeader largeTitle="Intermediate" parentTitle="Back" />
       <div className='md:w-2/5 max-md:w-10/12 mx-8 my-4 md:fixed bg-[var(--bluebg)]'>
         <Image src={image1} className='w-full h-48 md:h-80 object-cover rounded-md' />
         <h3 className='text-2xl font-bold text-white'>Curso intermedio de inglés para los que dominan los conceptos básicos del lenguaje.</h3>

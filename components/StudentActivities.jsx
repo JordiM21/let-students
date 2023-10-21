@@ -19,7 +19,7 @@ export default function StudentActivities({ tutor, userMatched }) {
         </div>
         <div className='my-2'>
           <p className='text-gray-600 text-sm'>
-            Estas actividades son asignadas por tu tutor personal y son <span className='text-white'>solo para ti</span>, no las tiene ningún otro estudiante, asegúrate de terminarlas <span className='text-white'>antes</span> de la fecha límite, cuando la termines, avísale para que la revise y la <span className='text-white'>actualice a completada</span>
+            Estas actividades son asignadas por tu <span className='text-white'>tutor personal</span>, asegúrate de terminarlas <span className='text-white'>antes</span> de la fecha límite, cuando la termines, avísale para que la revise y la <span className='text-white'>actualice a completada</span>
           </p>
         </div>
       </div>
@@ -67,7 +67,8 @@ export default function StudentActivities({ tutor, userMatched }) {
         {
           userMatched.activities.map((activity) => (
             activity.status === "done" && (
-              <div className='bg-gray-950 mb-4 opacity-50 cursor-pointer rounded-xl py-2 px-4 relative'>
+              <div className='bg-gray-950 mb-4 opacity-50 cursor-pointer rounded-xl mt-6 py-2 px-4 relative'>
+                <small className='text-white absolute z-50 -top-4 text-[11px] opacity-50'>{activity.assignedDay}</small>
                 <div className='my-2'>
                   <p className='text-xl text-white'>{activity.text}</p>
                 </div>

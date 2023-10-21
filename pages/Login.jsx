@@ -62,7 +62,7 @@ export default function Login() {
   return (
     <div className='w-11/12 sm:max-w-md bg-sky-300/40 p-4 rounded-md mx-auto mt-[10vh]'>
       <h1 className='text-4xl my-4 text-center'>Inicia Sesión</h1>
-      <div className='w-10/12 mx-auto'>Si ya eres estudiante y tienes tus credenciales puedes iniciar sesión, si aún no tienes cuenta <a className='text-orange-500'>Únete a nosotros</a></div>
+      <div className='w-10/12 mx-auto'>Si aún no eres estudiante puedes aplicar ahora, tenemos nuevos cupos disponibles cada mes. <a className='text-orange-500 underline hover:no-underline cursor-pointer'>¡Postúlate Ahora!</a></div>
       <form onSubmit={handleLogin} className='flex flex-col p-8 space-y-4'>
         <TextField id="filled-basic" label="Email" variant="filled"
           value={data.email}

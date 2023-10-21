@@ -53,7 +53,7 @@ const Progress = ({ allUsers, likedVideos, userData }) => {
 
   return (
     <div className='pt-20 bg-[var(--bluebg)] h-full md:min-h-screen'>
-      <BackHeader largeTitle={"Student Progress"} parentTitle={"back"} />
+      <BackHeader largeTitle={"Student Progress"} parentTitle={"Back"} />
       <div className=' md:fixed md:ml-24'>
         <div className='flex items-center justify-center gap-2'>
           <p className='text-center text-2xl text-gray-200 py-2'>Current Level: {userMatched.level}</p>

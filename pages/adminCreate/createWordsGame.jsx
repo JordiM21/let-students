@@ -107,7 +107,7 @@ export default function createUnits() {
               type='text'
               onChange={(e) => setTextSpa(e.target.value)}
             />
-            <TextField id="filled-basic" label="Insert url with start and end time" variant="filled"
+            <TextField id="filled-basic" label="Ex: https://www.youtube.com/watch?v=n3UOSYvFic8&t&start=167&end=170" variant="filled"
               value={url}
               required
               type='text'
