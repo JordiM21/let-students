@@ -60,14 +60,14 @@ export default function VideoPlayer({ url }) {
         </div>
       )}
       <div className='h-[237px] md:h-[332px]'>
-        <div onClick={() => setIsPlaying(!isPlaying)} className={`bg-green-400 max-w-2xl cursor-pointer flex justify-center items-center h-[237px] md:h-[332px] w-full absolute ${isFinished ? "opacity-100" : "opacity-0"}`}>
+        <div onClick={() => setIsPlaying(!isPlaying)} className={`max-w-md sm:max-w-2xl cursor-pointer flex justify-center items-center h-[235px] md:h-[332px] absolute ${isFinished ? "opacity-100" : "opacity-0"}`}>
         </div>
         <ReactPlayer
           ref={playerRef}
           key={key}
           width={"100%"}
           height={"100%"}
-          className="mx-autoS bg-[var(--color2)] max-w-2xl border-t-8 rounded-md border-[var(--color2)]"
+          className="mx-autoS bg-[var(--color2)] max-w-md sm:max-w-2xl border-t-8 rounded-md border-[var(--color2)]"
           url={url}
           muted={false}
           autoplay={true}
@@ -83,7 +83,7 @@ export default function VideoPlayer({ url }) {
             }
           }}
         />
-        <div className='bg-[var(--color2)] pb-2 rounded-b-md max-w-3xl mx-auto mb-2'>
+        <div className='bg-[var(--color2)] pb-2 rounded-b-md max-w-md sm:max-w-2xl mb-2'>
           <div className='w-full flex justify-between px-2'>
             <div>
               <button
