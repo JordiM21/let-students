@@ -3,11 +3,12 @@ import LoadingScreen from '@/components/LoadingScreen';
 import { FormControl, InputLabel, MenuItem, Select } from '@mui/material';
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react'
-import { AiFillCloseCircle } from 'react-icons/ai';
+import { AiFillCloseCircle, AiFillHeart } from 'react-icons/ai';
 import { BsQuestionCircle } from 'react-icons/bs';
 import withUserData from '@/components/WithUserData';
 import WithImmersiveInfo from '@/components/WithImmersiveInfo';
 import VideoCard from '@/components/VideoCard';
+import { MdVideoLibrary } from 'react-icons/md';
 
 
 const Immersive = ({
@@ -34,6 +35,12 @@ const Immersive = ({
         )
       }
       <BackHeader largeTitle={"Immersive Videos"} parentTitle={"Back"} />
+      <div className='w-[200px] ml-10'>
+        <button onClick={() => router.push("/Progress")} className='group flex bg-green-500 hover:shadow-gray-900 hover:shadow-md hover:bg-white w-full px-2 items-center justify-center gap-2 py-2 rounded-full'>
+          <AiFillHeart className='text-2xl group-hover:-rotate-12 group-hover:scale-110' />
+          <p>Your Liked Videos</p>
+        </button>
+      </div>
       {
         role == "Admin" && (
           <div className='flex justify-center'>

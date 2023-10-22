@@ -13,6 +13,7 @@ const withUserData = (WrappedComponent) => {
     const [admins, setAdmins] = useState([]);
     const [likedVideos, setLikedVideos] = useState([]);
     const [activityPendingInfo, setActivityPendingInfo] = useState({ hasPending: false, count: 0 }); // Nuevo estado
+    const [submit, setSubmit] = useState(false)
 
     useEffect(() => {
       const fetchUserData = async () => {
@@ -38,7 +39,7 @@ const withUserData = (WrappedComponent) => {
         }
       };
       fetchUserData();
-    }, [authUid]);
+    }, [authUid, submit]);
 
     return (
       <WrappedComponent
@@ -49,6 +50,8 @@ const withUserData = (WrappedComponent) => {
         allUsers={allUsers}
         userData={userData}
         isPending={activityPendingInfo}
+        setSubmit={setSubmit}
+        submit={submit}
       />
     );
   };

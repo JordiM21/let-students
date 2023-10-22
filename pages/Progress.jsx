@@ -1,8 +1,8 @@
 import BackHeader from '@/components/BackHeader';
 import ProgressLesson from '@/components/ProgressLesson';
 import YourFlag from '@/components/YourFlag';
-import { db } from '@/config/firebase';
-import { updateDoc } from 'firebase/firestore';
+import { db } from '@/config/firebase'
+import { collection, doc, getDocs, updateDoc } from 'firebase/firestore'
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react'
 import {
@@ -11,19 +11,17 @@ import {
 } from 'victory';
 import ReactPlayer from 'react-player'
 import LoadingScreen from '@/components/LoadingScreen';
-import { BsQuestionCircle } from 'react-icons/bs';
-import { AiFillCloseCircle } from 'react-icons/ai';
 import { toast } from 'react-toastify';
 import Schedule from '@/components/Schedule';
 import SendNotifScreen from '@/components/SendNotifScreen';
 import withUserData from '@/components/WithUserData';
 import { PiGameControllerFill } from 'react-icons/pi';
+import { BsTrashFill } from 'react-icons/bs';
 
-const Progress = ({ allUsers, likedVideos, userData }) => {
+const Progress = ({ allUsers, likedVideos, userData, setSubmit, submit }) => {
   if (!userData) {
     return <LoadingScreen />;
   }
-
 
   const [userMatched, setUserMatched] = useState(userData)
   const [students, setStudents] = useState(allUsers)
@@ -51,15 +49,26 @@ const Progress = ({ allUsers, likedVideos, userData }) => {
     }, 2000)
   }
 
+  const deleteActivity = async (e, video) => {
+    e.preventDefault();
+    const { id } = userMatched
+    try {
+      const userRef = doc(db, "users", id);
+      const updatedActivities = userMatched.likedVideos.filter(act => act !== video);
+      await updateDoc(userRef, { likedVideos: updatedActivities });
+      toast.success("¡Este video ya no te gusta!");
+      setSubmit(!submit);
+    } catch (error) {
+      console.error('Error al eliminar la actividad:', error);
+    }
+  };
+
   return (
     <div className='pt-20 bg-[var(--bluebg)] h-full md:min-h-screen'>
       <BackHeader largeTitle={"Student Progress"} parentTitle={"Back"} />
       <div className=' md:fixed md:ml-24'>
         <div className='flex items-center justify-center gap-2'>
           <p className='text-center text-2xl text-gray-200 py-2'>Current Level: {userMatched.level}</p>
-          <div onClick={() => setQuestion(!question)} className='bg-gray-200 rounded-full cursor-pointer'>
-            <BsQuestionCircle className='w-5 h-5' />
-          </div>
         </div>
         {
           userMatched.level == "Beginner" && userMatched.role == "Student" && (
@@ -101,7 +110,7 @@ const Progress = ({ allUsers, likedVideos, userData }) => {
             />
           </VictoryChart>
         </div>
-        <div className='max-w-2xl md:w-[40%] mx-auto md:ml-[60%] lg:ml-[50%] pb-24'>
+        <div className='max-w-lg md:w-[40%] mx-auto md:ml-[60%] lg:ml-[50%] pb-24'>
           {
             userMatched.role == "Student" && (
               <div>
@@ -109,7 +118,7 @@ const Progress = ({ allUsers, likedVideos, userData }) => {
                 <p className='text-gray-300 w-[90%] mx-auto text-center'>Acá encuentras todos los videos que has <span className='text-green-500'>dado like</span>, prueba seleccionando cualquiera para reproducirlo. </p>
                 {
                   likedVideos.map((video) => (
-                    <div className=' hover:opacity-70 transition-all 1s ease-in cursor-pointer mx-auto rounded-md relative my-4'>
+                    <div className=' hover:opacity-80 transition-all 1s ease-in cursor-pointer mx-auto rounded-md relative my-4'>
                       <div onClick={() => router.push(`/immersiveActivities/${video.id}`)} className='bg-gray-200 h-[220px] absolute z-20 w-[100%] opacity-0'></div>
                       <ReactPlayer
                         width={"90%"}
@@ -119,6 +128,9 @@ const Progress = ({ allUsers, likedVideos, userData }) => {
                         controls={true}
                         light={true}
                       />
+                      <button className='bg-red-500 hover:scale-125 p-2 rounded-md absolute right-6 bottom-0 z-50' onClick={(e) => deleteActivity(e, video)}>
+                        <BsTrashFill className='text-xl fill-white' />
+                      </button>
                     </div>
                   ))
                 }
