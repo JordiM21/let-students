@@ -128,7 +128,7 @@ const Progress = ({ allUsers, likedVideos, userData, setSubmit, submit }) => {
                         controls={true}
                         light={true}
                       />
-                      <button className='bg-red-500 hover:scale-125 p-2 rounded-md absolute right-6 bottom-0 z-50' onClick={(e) => deleteActivity(e, video)}>
+                      <button className='bg-red-500 hover:scale-110 p-2 rounded-md absolute right-6 bottom-0 z-30' onClick={(e) => deleteActivity(e, video)}>
                         <BsTrashFill className='text-xl fill-white' />
                       </button>
                     </div>
