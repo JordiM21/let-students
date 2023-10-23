@@ -88,7 +88,7 @@ const wordsGamePage = ({ data, userData }) => {
           <VideoWordsGame url={currentItem?.url} />
         </div>
         <div className='px-4 xl:w-1/2 xl:px-0'>
-          <p onClick={handleOpen} className='text-3xl xl:text-6xl text-white'>{currentItem?.textEng}</p>
+          <p className='text-3xl xl:text-6xl text-white'>{currentItem?.textEng}</p>
           <p className='text-gray-300 xl:text-2xl'>{currentItem?.textSpa}</p>
           <p className='xl:text-md text-sm text-gray-900'>{currentItem?.description}</p>
         </div>
