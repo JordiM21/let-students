@@ -202,10 +202,10 @@ export default function Home() {
             <h1 className='text-6xl md:text-8xl shadow-black drop-shadow-lg my-4 text-center text-white font-black'>English for <br/> Children</h1>
             <p className='text-md md:text-xl drop-shadow-lg text-center text-white'>Haz que tu hijo sea <span className='text-[#F17024] text-md font-black'>bilingüe</span> <br/> y regálale un mundo de posibilidades</p>
             <div className='flex w-10/12 md:w-1/2 mx-auto justify-evenly my-6'>
-            <div onClick={() => router.push("/Login")} className='px-6 py-4 rounded-md bg-white shadow-black/30 shadow-lg'>
-              <a className='font-black text-lg text-[#F17024]'>Solicitar Info</a>
+            <div onClick={() => router.push("/Login")} className='px-6 py-4 rounded-md bg-white shadow-black/30 shadow-lg cursor-pointer hover:scale-105 ease-in 1s active:scale-95'>
+              <a className='font-black text-lg text-[#173330]'>Solicitar Info</a>
             </div>
-            <div onClick={() => router.push("/Login")} className='px-6 py-4 rounded-md bg-[#F17024] shadow-black/30 shadow-lg'>
+            <div onClick={() => router.push("/Login")} className='px-6 py-4 rounded-md bg-[#F17024] shadow-black/30 shadow-lg cursor-pointer  hover:scale-105 ease-in 1s active:scale-95'>
               <a className='font-black text-lg text-white'>Soy Estudiante</a>
             </div>
             </div>
@@ -217,8 +217,14 @@ export default function Home() {
             priority
             ref={imageRef}
           />
-          <div className='py-10 bg-cyan-950'>
-            <h2 className='my-10 text-5xl text-center font-black text-white'>¿Como le haremos Bilingüe?</h2>
+          <div className='py-10 md:py-20 bg-[#173330] flex flex-wrap'>
+            <div className='lg:w-[40%] my-3 max-md:mx-10 md:ml-16'>
+            <h2 className=' text-5xl text-start font-black text-[#F9F1D2]'>¿Como le haremos Bilingüe?</h2>
+<p className='text-start font-bold text-[#F9F1D2] my-6 opacity-80'>El Progama está diseñado especialmente para que los más pequeños de la casa puedan adquirir un nuevo idioma. Nos especializamos en la enseñanza a estudiantes desde los 6 hasta los 14 años y destacamos por ofrecer acompañamiento personalizado y una participación activa de padres y representantes.</p>
+<div className='px-6 py-4 rounded-md bg-white text-[#173330] shadow-black/30 shadow-lg w-[250px] font-black text-lg cursor-pointer  hover:scale-105 ease-in 1s active:scale-95'>
+  Solicitar Información
+</div>
+            </div>
           <Swiper
             spaceBetween={10}
             centeredSlides={true}
@@ -231,7 +237,7 @@ export default function Home() {
             }}
             navigation={true}
             modules={[Autoplay, Pagination, Navigation]}
-            className="w-9/12 md:w-7/12 mx-auto"
+            className="w-11/12 lg:w-[45%] mx-auto"
           >
             <SwiperSlide>
               <NextImage src={slide1} className='w-full h-full object-cover bg-gray-600 rounded-md' />
