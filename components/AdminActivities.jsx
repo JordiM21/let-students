@@ -13,7 +13,7 @@ export default function AdminActivities({ allUsers, userMatched }) {
     <div className='mx-8 pt-20 max-w-lg md:mx-auto'>
       <BackHeader largeTitle={"Create Activities"} parentTitle={"Back"} />
       <div className='mb-4'>
-        <h1 className='text-3xl'>Tus estudiantes</h1>
+        <h1 className='text-3xl text-[var(--lightBlue)]'>Tus estudiantes</h1>
         {
           allUsers.map((student) => (
             <div onClick={() => router.push(`/ActivitiesDetail/${student.id}`)} className='bg-black mb-4 hover:scale-[102%] hover:opacity-80 cursor-pointer rounded-xl py-2 px-4 relative'>

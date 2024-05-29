@@ -128,26 +128,7 @@ export default function AdminDashboard({ allUsers, id, url, wordsGameProgress })
           </Fade>
         </Modal>
         <ExternalApps role={"admin"} />
-        <div className='bg-yellow-400 mx-4 mb-6 pb-8 rounded-md md:flex md:pb-0 max-w-5xl md:mx-auto'>
-          <div className='bg-yellow-300 font-semibold text-lg md:text-2xl px-4 py-3 md:py-8 rounded-md shadow-md'>
-            <span className='text-[var(--color2)] md:block text-3xl md:text-7xl'>Advices for Teachers!</span>
-          </div>
-          <div className='px-4 md:px-20 md:py-2'>
-            <div className='my-4 space-y-2'>
-              <p className='text-center text-md'>Recuerda preparar todas las lecciones <span className='text-[var(--color2)] font-bold text-xl'>Una Semana Antes</span></p>
-              <p className='text-center text-md'>Tienes 24 horas para responder las dudas del <span className='text-[var(--color2)] font-bold text-xl'>Apoyo Academico</span></p>
-              <p className='text-center text-md'>Asisna Actividades claras cuando no hagas <span className='text-[var(--color2)] font-bold text-xl'>Clase en Tiempo Real</span></p>
-            </div>
-            <div className='max-w-[90%] mx-auto'>
-              <button onClick={() => router.push(`/Activities/`)} class="learn-more">
-                <span class="circle bg-blue-950" aria-hidden="true">
-                  <span class="icon arrow"></span>
-                </span>
-                <span class="button-text text-blue-950">Asignar Actividades</span>
-              </button>
-            </div>
-          </div>
-        </div>
+        
         <div className='w-full max-w-5xl mx-auto space-y-6 md:my-12 md:space-y-0 md:flex justify-evenly'>
           <div onClick={() => router.push(`/selectCharacter/${id}`)} className='group active:scale-90 bg-white relative overflow-hidden flex gap-2 justify-center items-center py-6 md:py-2 md:w-56 rounded-md hover:shadow-lg shadow-black cursor-pointer hover:-translate-y-1 md:h-40 md:flex-col mx-4'>
             <MdFaceRetouchingNatural className='z-10 text-5xl md:text-7xl' />

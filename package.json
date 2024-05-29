@@ -1,41 +1,64 @@
 {
-	"name": "let-students",
-	"version": "0.1.0",
-	"private": true,
-	"scripts": {
-		"dev": "next dev -p 3005",
-		"build": "next build",
-		"start": "next start",
-		"lint": "next lint"
-	},
-	"dependencies": {
-		"@emotion/react": "^11.11.0",
-		"@emotion/styled": "^11.11.0",
-		"@headlessui/react": "^1.7.14",
-		"@heroicons/react": "^2.0.18",
-		"@mui/icons-material": "^5.11.16",
-		"@mui/material": "^5.13.1",
-		"apexcharts": "^3.41.0",
-		"autoprefixer": "10.4.14",
-		"axios": "^1.4.0",
-		"clipboard-copy": "^4.0.1",
-		"dashify": "^2.0.0",
-		"firebase": "^9.22.0",
-		"gsap": "^3.12.1",
-		"lottie-react": "^2.4.0",
-		"next": "13.4.3",
-		"nextjs-progressbar": "^0.0.16",
-		"postcss": "8.4.23",
-		"react": "18.0.0",
-		"react-dom": "18.2.0",
-		"react-dom-confetti": "^0.2.0",
-		"react-icons": "^4.10.1",
-		"react-player": "^2.12.0",
-		"react-spring-carousel": "^2.0.19",
-		"react-toastify": "^9.1.3",
-		"swiper": "^9.3.2",
-		"tailwindcss": "3.3.2",
-		"uglify-es": "^3.3.9",
-		"victory": "^36.6.11"
-	}
+  "name": "let-students",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev -p 3005",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.11.0",
+    "@emotion/styled": "^11.11.0",
+    "@headlessui/react": "^1.7.14",
+    "@heroicons/react": "^2.0.18",
+    "@mui/icons-material": "^5.11.16",
+    "@mui/material": "^5.13.1",
+    "@radix-ui/react-icons": "^1.3.0",
+    "apexcharts": "^3.41.0",
+    "autoprefixer": "10.4.14",
+    "axios": "^1.4.0",
+    "clipboard-copy": "^4.0.1",
+    "dashify": "^2.0.0",
+    "firebase": "^9.22.0",
+    "gsap": "^3.12.1",
+    "lottie-react": "^2.4.0",
+    "next": "^14.0.4",
+    "nextjs-progressbar": "^0.0.16",
+    "postcss": "8.4.23",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-dom-confetti": "^0.2.0",
+    "react-icons": "^4.10.1",
+    "react-player": "^2.12.0",
+    "react-spring-carousel": "^2.0.19",
+    "react-toastify": "^9.1.3",
+    "swiper": "^9.3.2",
+    "tr46": "^5.0.0",
+    "uglify-es": "^3.3.9",
+    "victory": "^36.6.11"
+  },
+  "devDependencies": {
+    "clsx": "^2.1.1",
+    "framer-motion": "^11.2.6",
+    "tailwind-merge": "^2.3.0",
+    "tailwindcss": "^3.4.3"
+  },
+  "description": "This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).",
+  "main": "next.config.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JordiM21/let-students.git"
+  },
+  "keywords": [
+    "let",
+    "students"
+  ],
+  "author": "LET Academy",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JordiM21/let-students/issues"
+  },
+  "homepage": "https://github.com/JordiM21/let-students#readme"
 }

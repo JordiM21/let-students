@@ -62,7 +62,7 @@ const Niveles = ({ userData }) => {
       }
       {
         level === "Beginner" && (
-          <div className='space-y-4 md:space-y-0 md:flex md:px-8 md:gap-4 justify-center items-start'>
+          <div className='space-y-4 md:space-y-0 xl:flex flex-wrap md:px-8 md:gap-4 justify-center items-start'>
             <LevelPreview
               image={image1}
               url={"Niveles/Beginner"}
@@ -92,7 +92,7 @@ const Niveles = ({ userData }) => {
       }
       {
         level === "Intermediate" && (
-          <div className='space-y-4 md:space-y-0 md:flex md:px-8 md:gap-4 justify-center items-start'>
+          <div className='space-y-4 md:space-y-0 xl:flex flex-wrap md:px-8 md:gap-4 justify-center items-start'>
             <LevelPreview
               image={image1}
               url={"Niveles/Beginner"}
@@ -122,7 +122,7 @@ const Niveles = ({ userData }) => {
       }
       {
         level === "Advanced" && (
-          <div className='space-y-4 md:space-y-0 md:flex md:px-8 md:gap-4 justify-center items-start'>
+          <div className='space-y-4 md:space-y-0 xl:flex flex-wrap md:px-8 md:gap-4 justify-center items-start'>
             <LevelPreview
               image={image1}
               url={"Niveles/Beginner"}

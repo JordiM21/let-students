@@ -6,7 +6,6 @@ export default function VideoCard({ id, url, title, level }) {
 
   const router = useRouter()
   return (
-    // <article onClick={() => router.push(`/immersiveActivities/${id}`)} class="article-wrapper">
     <article class="article-wrapper">
       <a href={`/immersiveActivities/${id}`}>
         <div class="rounded-lg container-project">

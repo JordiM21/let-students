@@ -36,7 +36,7 @@ const Immersive = ({
       }
       <BackHeader largeTitle={"Immersive Videos"} parentTitle={"Back"} />
       <div className='w-[200px] ml-10'>
-        <button onClick={() => router.push("/Progress")} className='group flex bg-green-500 hover:shadow-gray-900 hover:shadow-md hover:bg-white w-full px-2 items-center justify-center gap-2 py-2 rounded-full'>
+        <button onClick={() => router.push("/likedVideos")} className='group flex bg-green-500 hover:shadow-gray-900 hover:shadow-md hover:bg-white w-full px-2 items-center justify-center gap-2 py-2 rounded-full'>
           <AiFillHeart className='text-2xl group-hover:-rotate-12 group-hover:scale-110' />
           <p>Your Liked Videos</p>
         </button>
