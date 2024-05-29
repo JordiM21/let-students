@@ -8,8 +8,23 @@ import { BsQuestionCircle } from 'react-icons/bs';
 import withUserData from '@/components/WithUserData';
 import WithImmersiveInfo from '@/components/WithImmersiveInfo';
 import VideoCard from '@/components/VideoCard';
-import { MdVideoLibrary } from 'react-icons/md';
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
+import Modal from '@mui/material/Modal';
 
+const style = {
+  position: 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  width: 400,
+  borderRadius: "10px",
+  bgcolor: 'background.paper',
+  border: '2px solid #000',
+  boxShadow: 24,
+  p: 4,
+};
 
 const Immersive = ({
   userData,
@@ -25,6 +40,9 @@ const Immersive = ({
   const { role } = userData
 
   const router = useRouter()
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
 
   return (
     <div className='bg-[var(--color2Shadow)] m-0 py-20'>
@@ -79,18 +97,25 @@ const Immersive = ({
             <MenuItem value="Advanced">Advanced</MenuItem>
           </Select>
         </FormControl>
-        <div onClick={() => setQuestion(!question)} className='cursor-pointer absolute right-4 top-4 bg-slate-300 rounded-full'>
+        <div onClick={handleOpen} className='cursor-pointer absolute right-4 top-4 bg-slate-300 rounded-full'>
           <BsQuestionCircle className='w-6 h-6 ' />
         </div>
       </div>
-      {
-        question && (
-          <div className='bg-gray-100 backdrop-blur-sm bg-opacity-70 p-6 shadow-gray-500 z-50 rounded-md shadow-lg max-w-[350px] absolute right-4'>
-            <AiFillCloseCircle className='absolute top-2 cursor-pointer right-2 w-6 h-6' onClick={() => setQuestion(!question)} />
-            <p>La parte preferida de LET Academy y de muchos estudiantes! <br /> En esta pagina aprenderas viendo peliculas, series, historias cortas, documentales, tips interesantes y mucho mas! <br />Te recordamos que no es fundamental entender todo lo que dicen en el video, lo importante es que escuches y relaciones con lo que ves, recuerda darles like para verlos mas tarde! </p>
-          </div>
-        )
-      }
+      <Modal
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box sx={style}>
+          <Typography id="modal-modal-title" variant="h6" component="h2">
+            ¿Como funciona esta sección?
+          </Typography>
+          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+           Puedes ver videos de tus pelis y series favoritas para aprender inglés, no olvides darles like para que tu tutor pueda ver tu progreso. Puedes filtrar según tu nivel y si te gustaría otra peli, no dudes en hacernos la sugerencia para que la añadamos
+          </Typography>
+        </Box>
+      </Modal>
       <div className='sm:flex md:mx-8 gap-4 flex-wrap space-y-8 py-8 sm:space-y-0'>
         {
           data.map((video) => (

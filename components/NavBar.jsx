@@ -36,10 +36,10 @@ export default function index() {
           <MdPerson fill='white' className='mx-auto text-2xl' />
           <p className='text-gray-700 text-[16px] absolute bottom-1 opacity-0 group-hover:opacity-90 font-bold -right-[82px] rounded-lg px-3 bg-slate-300 shadow-md bg-opacity-95 shadow-black'>Profile</p>
         </div>
-        <div onClick={() => router.push("/wordsGame")} className={`bg-blue-900/90 group p-1 hover:shadow-md hover:shadow-gray-800 cursor-pointer transition-all hover:scale-110 duration-150 active:scale-95 active:opacity-80 ease-in rounded-lg ${router.pathname == "/wordsGame" && "scale-110 translate-x-2 border-2"}`}>
+        {/* <div onClick={() => router.push("/wordsGame")} className={`bg-blue-900/90 group p-1 hover:shadow-md hover:shadow-gray-800 cursor-pointer transition-all hover:scale-110 duration-150 active:scale-95 active:opacity-80 ease-in rounded-lg ${router.pathname == "/wordsGame" && "scale-110 translate-x-2 border-2"}`}>
           <PiGameControllerFill fill='white' className='mx-auto text-2xl' />
           <p className='text-gray-700 text-[16px] absolute bottom-1 opacity-0 group-hover:opacity-90 font-bold -right-[84px] rounded-lg px-3 bg-slate-300 shadow-md bg-opacity-95 shadow-black'>Games</p>
-        </div>
+        </div> */}
       </div>
       {/* Small screen Iphone Design (bottom bar) */}
       <div className='flex justify-center'>

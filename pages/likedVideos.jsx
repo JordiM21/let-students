@@ -14,7 +14,6 @@ const likedVideos = ({ likedVideos, userData, submit, setSubmit }) => {
   if (!userData || !likedVideos) {
     return <LoadingScreen />
   }
-  console.log(likedVideos)
 
   const router = useRouter()
 
@@ -49,7 +48,7 @@ console.log('LikedVideos array:', likedVideosRef.current);
     <div className="bg-[var(--blueDarkbg)] min-h-screen pt-20">
       <BackHeader largeTitle={'Liked Videos'} parentTitle={'Back'} />
       <h3 className="text-center text-xl md:text-3xl text-[var(--lightBlue)]">Aquí puedes ver los todos videos que has dado like</h3>
-      <div className="md:flex md:mx-8 gap-4 justify-center items-center flex-wrap space-y-8 py-8 sm:space-y-0">
+      <div className="md:flex md:mx-8 gap-4 justify-center items-center flex-wrap space-y-8 py-8 sm:space-y-2">
         {likedVideos.map((video, e) => (
           <div className=" hover:opacity-80 h-[220px] w-[400px] bg-[var(--blueSuperDark)] transition-all 1s ease-in cursor-pointer mx-auto rounded-md relative my-4">
             <div
@@ -65,7 +64,7 @@ console.log('LikedVideos array:', likedVideosRef.current);
               light={true}
             />
             <button
-              className="bg-red-500 hover:scale-110 p-2 rounded-md absolute right-6 bottom-0 z-30"
+              className="bg-red-500 hover:scale-110 p-2 rounded-md absolute right-6 bottom-4 z-30"
               onClick={(e) => deleteActivity(e, video)}
             >
               <BsTrashFill className="text-xl fill-white" />

@@ -124,7 +124,7 @@ const VideoDetails = ({ userData }) => {
 
 
   return (
-    <div className='pt-28 bg-[var(--blueDarkbg)]'>
+    <div className='pt-16 bg-[var(--blueDarkbg)]'>
       {
         !data.title &&
         (
@@ -164,7 +164,7 @@ const VideoDetails = ({ userData }) => {
               }}
             />
           </div>
-          <div className='bg-[var(--color2)] pb-2 rounded-b-md max-w-3xl mx-auto mb-2'>
+          <div className='bg-[var(--bluebg)] pb-2 rounded-b-md max-w-3xl mx-auto mb-2'>
             <div className='w-full flex justify-between'>
               <small className="text-gray-300 pl-4 mr-12 text-start text-xl">
                 {data.title}
@@ -179,20 +179,20 @@ const VideoDetails = ({ userData }) => {
               </div>
               <div className=''>
                 <button
-                  className="group hover:bg-red-400 bg-red-600 rounded-full p-2 shadow-md m-1"
+                  className="group hover:bg-blue-400 bg-blue-600 rounded-full p-2 shadow-md m-1"
                   onClick={handleBackward}
                 >
                   <MdReplay10 className='fill-white ' size={24} />
                 </button>
                 <button
-                  className="group bg-red-600 hover:bg-red-400 rounded-full p-2 shadow-md m-1"
+                  className="group bg-blue-600 hover:bg-blue-400 rounded-full p-2 shadow-md m-1"
                   onClick={() => setIsPlaying(!isPlaying)}
                 >
                   {isPlaying ?
                     <AiFillPauseCircle className=' fill-white' size={24} /> : <AiFillPlayCircle className=' fill-white' size={24} />}
                 </button>
                 <button
-                  className="group hover:bg-red-400 bg-red-600 rounded-full p-2 shadow-md m-1"
+                  className="group hover:bg-blue-400 bg-blue-600 rounded-full p-2 shadow-md m-1"
                   onClick={handleForward}
                 >
                   <MdForward10 className='fill-white' size={24} />
