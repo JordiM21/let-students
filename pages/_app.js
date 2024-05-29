@@ -13,15 +13,15 @@ export default function App({ Component, pageProps }) {
   const router = useRouter()
   return (
     <AuthContextProvider>
-      <NavBar />
       {/* <NextNProgress /> */}
       <ToastContainer />
       {allowedUrl.includes(router.pathname) ? (
-        <div className='md:pl-[50px]'>
+        <div className=''>
           < Component  {...pageProps} />
         </div>
       ) : (
         <ProtectedRoutes>
+          <NavBar />
           <div className='md:pl-[50px]'>
             < Component {...pageProps} />
           </div>

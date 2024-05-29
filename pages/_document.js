@@ -6,7 +6,7 @@ export default class MyDocument extends Document {
       <Html lang="en">
         <Head>
           <title> LET Students | Official Students Platform </title>
-          <link rel="icon" href="./Icon.png" />
+          <link rel="icon" href="./Icon2.png" className='object-contain w-10' />
           <script
             type="text/javascript"
             dangerouslySetInnerHTML={{

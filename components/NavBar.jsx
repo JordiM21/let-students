@@ -14,7 +14,7 @@ export default function index() {
       {/* BIG SCREEN MacOs Design (Sidebar) */}
       <div className='bg-gray-900 bg-opacity-40 px-1 py-4 backdrop-blur-md fixed left-0 h-full max-md:hidden z-50 w-[50px] flex gap-2 flex-col'>
         <div>
-          <Image src={Icon} className='w-7 h-7 p-1 mx-auto' />
+          <Image src={Icon} className='w-10 p-1 mx-auto object-contain' />
         </div>
         <div className={`bg-red-500 group p-1 hover:shadow-md hover:shadow-red-900 cursor-pointer transition-all hover:scale-110 duration-150 active:scale-95 active:opacity-80 ease-in rounded-lg ${router.pathname == "/Dashboard" && "scale-110 translate-x-2 border-2"}`}>
           <MdHome onClick={() => router.push("/Dashboard")} fill='white' className='mx-auto text-2xl' />
