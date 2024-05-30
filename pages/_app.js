@@ -7,7 +7,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-toastify';
 import NextNProgress from 'nextjs-progressbar';
 
-const allowedUrl = ["/Login", "/"]
+const allowedUrl = ["/Login", "/", "/Info"]
 
 export default function App({ Component, pageProps }) {
   const router = useRouter()
