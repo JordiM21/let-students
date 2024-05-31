@@ -15,9 +15,6 @@ import backgroundFooter from '@/public/background-footer.svg'
 import niños from '@/public/niños.png'
 import padres from '@/public/padres.png'
 import estudiantes from '@/public/estudiantes.png'
-import { Swiper, SwiperSlide } from 'swiper/react'
-import { Autoplay, Pagination, Navigation } from 'swiper'
-import 'swiper/css'
 import { useRouter } from 'next/router'
 import { useAuth } from '@/context/AuthContext'
 import { useEffect, useState, useRef } from 'react'
@@ -77,14 +74,18 @@ export default function Home() {
 
   useEffect(() => {
     if (dataLoaded) {
-      gsap.fromTo(imageRef.current, { opacity: 0, y: 100 }, { opacity: 1, y: 0, duration: 1.5, ease: 'power2.out' })
-      gsap.fromTo(textRef.current, { opacity: 0, y: -50 }, { opacity: 1, y: 0, duration: 1, ease: 'power2.out' })
+      gsap.fromTo(
+        imageRef.current,
+        { opacity: 0, y: 0 }, 
+        { opacity: 1, y: 0, duration: 1, ease: 'power2.out' } 
+      );
+      gsap.fromTo(textRef.current, { opacity: 0, y: 0 }, { opacity: 1, y: 10, duration: 1, ease: 'power2.out' })
       gsap.fromTo(
         sticker1Ref.current,
-        { opacity: 0, x: 50 },
+        { opacity: 0, x: 0 },
         {
           opacity: 1,
-          x: 0,
+          x: -30,
           ease: 'power1.out',
           duration: 0.5,
           scrollTrigger: {
@@ -97,15 +98,14 @@ export default function Home() {
       )
       gsap.fromTo(
         sticker2Ref.current,
-        { opacity: 0, x: 50, y: 50 },
+        { opacity: 0, x: 0, y: 0 },
         {
           opacity: 1,
-          x: 0,
-          y: 0,
+          x: -20,
+          y: -40,
           ease: 'power1.out',
           duration: 0.5,
           opacity: 1,
-          duration: 1,
           scrollTrigger: {
             trigger: sticker1Ref.current,
             start: '100px 80%',
@@ -116,10 +116,10 @@ export default function Home() {
       )
       gsap.fromTo(
         sticker3Ref.current,
-        { opacity: 0, x: -50 },
+        { opacity: 0, x: 0 },
         {
           opacity: 1,
-          x: 0,
+          x: 50,
           ease: 'power1.out',
           duration: 0.5,
           scrollTrigger: {
@@ -132,11 +132,11 @@ export default function Home() {
       )
       gsap.fromTo(
         sticker4Ref.current,
-        { opacity: 0, x: -50, y: 50 },
+        { opacity: 0, x: 0, y: 0 },
         {
           opacity: 1,
-          x: 0,
-          y: 0,
+          x: 50,
+          y: -50,
           ease: 'power1.out',
           duration: 0.5,
           scrollTrigger: {
@@ -248,7 +248,10 @@ export default function Home() {
                 idioma. Nos especializamos en la enseñanza a estudiantes desde los 6 hasta los 14 años y destacamos por
                 ofrecer acompañamiento personalizado y una participación activa de padres y representantes.
               </p>
-              <div onClick={() => router.replace("/Info")} className="px-6 py-4 rounded-md bg-white text-[#173330] shadow-black/30 shadow-lg w-[250px] font-black text-lg cursor-pointer  hover:scale-105 ease-in 1s active:scale-95">
+              <div
+                onClick={() => router.replace('/Info')}
+                className="px-6 py-4 rounded-md bg-white text-[#173330] shadow-black/30 shadow-lg w-[250px] font-black text-lg cursor-pointer  hover:scale-105 ease-in 1s active:scale-95"
+              >
                 Ver Planes Disponibles
               </div>
             </div>
@@ -265,22 +268,22 @@ export default function Home() {
             <NextImage
               ref={sticker1Ref}
               src={sticker1}
-              className="h-[180px] w-[180px] md:h-[250px] md:w-[250px] rounded-full absolute top-20 md:top-10 right-12 rotate-6"
+              className="h-[180px] w-[180px] md:h-[250px] md:w-[250px] rounded-full absolute top-10 md:top-10 right-2 rotate-6"
             />
             <NextImage
               src={sticker2}
               ref={sticker2Ref}
-              className="h-[180px] w-[180px] md:h-[250px] md:w-[250px] rounded-full absolute bottom-10 right-12 rotate-12"
+              className="h-[180px] w-[180px] md:h-[250px] md:w-[250px] rounded-full absolute bottom-2 right-2 rotate-12"
             />
             <NextImage
               src={sticker3}
               ref={sticker3Ref}
-              className="h-[180px] w-[180px] md:h-[250px] md:w-[250px] rounded-full absolute top-10 left-12 -rotate-12"
+              className="h-[180px] w-[180px] md:h-[250px] md:w-[250px] rounded-full absolute top-2 left-2 -rotate-12"
             />
             <NextImage
               src={sticker4}
               ref={sticker4Ref}
-              className="h-[160px] w-[160px] md:h-[250px] md:w-[250px] rounded-full absolute bottom-16 left-24 md:left-16 -rotate-6"
+              className="h-[160px] w-[160px] md:h-[250px] md:w-[250px] rounded-full absolute bottom-2 left-6 md:left-16 -rotate-6"
             />
             <h2 className="text-center font-black text-6xl md:text-8xl">
               Tu Hijo disfrutará <br /> Aprender Inglés
@@ -420,35 +423,33 @@ export default function Home() {
               </div>
               <div className="bg-white-500 flex gap-4">
                 <div>
-                
-                  <p
-                    className="text-md md:text-xl shadow-black drop-shadow-lg text-start md:text-end text-white font-black"
-                  >
+                  <p className="text-md md:text-xl shadow-black drop-shadow-lg text-start md:text-end text-white font-black">
                     Terms of Use
                   </p>
-                  <p
-                    className="text-md md:text-xl shadow-black drop-shadow-lg text-start md:text-end text-white font-black"
-                  >
+                  <p className="text-md md:text-xl shadow-black drop-shadow-lg text-start md:text-end text-white font-black">
                     Privacy Policy
                   </p>
-                  <p
-                    className="text-md md:text-xl shadow-black drop-shadow-lg text-start md:text-end text-white font-black"
-                  >
+                  <p className="text-md md:text-xl shadow-black drop-shadow-lg text-start md:text-end text-white font-black">
                     2023 LET Academy Ltd
                   </p>
-                  <p
-                    className="text-md md:text-xl shadow-black drop-shadow-lg text-start md:text-end text-white font-black"
-                  >
+                  <p className="text-md md:text-xl shadow-black drop-shadow-lg text-start md:text-end text-white font-black">
                     Company no. 14569152
                   </p>
-                  <div className='py-4 flex gap-2 justify-around'>
-<Link href={"https://www.tiktok.com/@letacademy"} target='_blank' className='p-2 bg-transparent rounded-full w-[150px] text-center border-4 border-white text-white '>
-  TikTok
-</Link>
-<Link href={"https://www.youtube.com/@let_academy"} target='_blank' className='p-2 bg-transparent rounded-full w-[150px] text-center border-4 border-white text-white '>
-  YouTube
-</Link>
-
+                  <div className="py-4 flex gap-2 justify-around">
+                    <Link
+                      href={'https://www.tiktok.com/@letacademy'}
+                      target="_blank"
+                      className="p-2 bg-transparent rounded-full w-[150px] text-center border-4 border-white text-white "
+                    >
+                      TikTok
+                    </Link>
+                    <Link
+                      href={'https://www.youtube.com/@let_academy'}
+                      target="_blank"
+                      className="p-2 bg-transparent rounded-full w-[150px] text-center border-4 border-white text-white "
+                    >
+                      YouTube
+                    </Link>
                   </div>
                 </div>
               </div>

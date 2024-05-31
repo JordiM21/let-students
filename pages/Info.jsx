@@ -1,9 +1,9 @@
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
 import Icon from '@/public/Icon.png'
 import background from '@/public/background-landing.svg'
 import NextImage from 'next/image'
 import { Router, useRouter } from 'next/router'
-import Box from '@mui/material/Box'
+import BuyButton from '@/components/BuyButton'
 import List from '@mui/material/List'
 import ListItem from '@mui/material/ListItem'
 import ListItemButton from '@mui/material/ListItemButton'
@@ -16,9 +16,27 @@ import AssessmentTwoToneIcon from '@mui/icons-material/AssessmentTwoTone'
 import CalendarMonthTwoToneIcon from '@mui/icons-material/CalendarMonthTwoTone'
 import GroupsTwoToneIcon from '@mui/icons-material/GroupsTwoTone'
 import SchoolTwoToneIcon from '@mui/icons-material/SchoolTwoTone'
+import BuyButton2 from '@/components/BuyButton2'
+import gsap from 'gsap'
 
 export default function Info() {
   const router = useRouter()
+  const card1 = useRef(null)
+  const card2 = useRef(null)
+  const title = useRef(null)
+
+  useEffect(() => {
+    // Set initial opacity and y position
+    gsap.set(title.current, { opacity: 0, y: 0 });
+    gsap.set(card1.current, { opacity: 0, y: 0 });
+    gsap.set(card2.current, { opacity: 0, y: 0 });
+  
+    // Animate elements
+    gsap.to(title.current, { opacity: 1, y: 5, duration: 1, ease: 'power2.out' });
+    gsap.to(card1.current, { opacity: 1, y: -10, duration: 1, ease: 'power2.out' });
+    gsap.to(card2.current, { opacity: 1, y: -10, duration: 1, ease: 'power2.out', delay: 0.3 });
+  }, [router]);
+  
 
   return (
     <>
@@ -31,12 +49,12 @@ export default function Info() {
         </div>
         <NextImage src={background} className="-z-10 bg-[#2D878D] h-screen object-cover absolute" />
         <div className="absolute top-[5vh] w-11/12 left-1/2 transform -translate-x-1/2">
-          <h1 className="text-6xl lg:text-8xl shadow-black drop-shadow-lg text-center text-white font-black">
+          <h1 ref={title} className="text-6xl lg:text-8xl shadow-black drop-shadow-lg text-center text-white font-black">
             Planes Disponibles
           </h1>
         </div>
         <div className="absolute w-11/12 lg:w-8/12 flex gap-6 justify-evenly flex-wrap top-[25vh] left-1/2 transform -translate-x-1/2">
-          <div className="bg-[#f9f3d39d] backdrop-blur-lg min-w-[350px] p-4 rounded-md">
+          <div ref={card1} className="bg-[#f9f3d39d] backdrop-blur-lg min-w-[350px] p-4 rounded-md">
             <p className="text-center text-4xl md:pb-6 font-black">Plan Standard</p>
             <List>
               <ListItem disablePadding>
@@ -137,13 +155,17 @@ export default function Info() {
               </ListItem>
             </List>
             <Divider />
-            <script async src="https://js.stripe.com/v3/buy-button.js"></script>
-            <stripe-buy-button
-              buy-button-id="buy_btn_1PMUJsBjLDLVBoAyn0CYijd4"
-              publishable-key="pk_live_51NYA5oBjLDLVBoAyxLUTxwdvl60uIrTsKAeruXWEGSTwyPH7O4xASxGWXqfnSMst1B0Ba2n0nNqlyQlceCTdt9Mf00QbSeCsVd"
-            ></stripe-buy-button>
+            <div className="my-4 px-4 flex items-end justify-between">
+              <p>
+                $<span className="text-4xl font-black">60/</span>mes
+              </p>
+              <p>Todo Incluído</p>
+            </div>
+            <div className="flex justify-center">
+              <BuyButton2 />
+            </div>
           </div>
-          <div className="bg-[#f9f3d39d] backdrop-blur-lg min-w-[350px] p-4 rounded-md">
+          <div ref={card2} className="bg-[#f9f3d39d] backdrop-blur-lg min-w-[350px] p-4 rounded-md">
             <p className="text-center text-4xl pb-1 md:pb-6 font-black">Plan Intensivo</p>
             <List>
               <ListItem disablePadding>
@@ -213,7 +235,7 @@ export default function Info() {
               <ListItem disablePadding>
                 <ListItemButton>
                   <ListItemIcon>
-                    <CalendarMonthTwoToneIcon sx={{ fontSize: 30, fill: '#F46F21' }} />
+                    <CalendarMonthTwoToneIcon sx={{ fontSize: 30, fill: '#0074d4' }} />
                   </ListItemIcon>
                   <ListItemText
                     sx={{ my: 0 }}
@@ -221,7 +243,7 @@ export default function Info() {
                       fontSize: 20,
                       fontWeight: 'bold',
                       letterSpacing: 0,
-                      color: '#F46F21',
+                      // color: '#0074d4',
                     }}
                     primary="6 Horas semanales"
                   />
@@ -230,7 +252,7 @@ export default function Info() {
               <ListItem disablePadding>
                 <ListItemButton>
                   <ListItemIcon>
-                    <SchoolTwoToneIcon sx={{ fontSize: 30, fill: '#F46F21' }} />
+                    <SchoolTwoToneIcon sx={{ fontSize: 30, fill: '#0074d4' }} />
                   </ListItemIcon>
                   <ListItemText
                     sx={{ my: 0 }}
@@ -238,7 +260,7 @@ export default function Info() {
                       fontSize: 20,
                       fontWeight: 'bold',
                       letterSpacing: 0,
-                      color: '#F46F21',
+                      // color: '#0074d4',
                     }}
                     primary="Apoyo Académico"
                   />
@@ -246,12 +268,15 @@ export default function Info() {
               </ListItem>
             </List>
             <Divider />
-            <script async src="https://js.stripe.com/v3/buy-button.js"></script>
-
-            <stripe-buy-button
-              buy-button-id="buy_btn_1PMUJsBjLDLVBoAyn0CYijd4"
-              publishable-key="pk_live_51NYA5oBjLDLVBoAyxLUTxwdvl60uIrTsKAeruXWEGSTwyPH7O4xASxGWXqfnSMst1B0Ba2n0nNqlyQlceCTdt9Mf00QbSeCsVd"
-            ></stripe-buy-button>
+            <div className="my-4 px-4 flex items-end justify-between">
+              <p>
+                $<span className="text-4xl font-black">99/</span>mes
+              </p>
+              <p>Todo Incluído</p>
+            </div>
+            <div className="flex justify-center">
+              <BuyButton />
+            </div>
           </div>
         </div>
       </div>

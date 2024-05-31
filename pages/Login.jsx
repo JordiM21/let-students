@@ -10,6 +10,7 @@ import background from '@/public/background-landing.svg';
 import NextImage from 'next/image';
 import { Inter } from 'next/font/google';
 import Icon from '@/public/Icon.png';
+import gsap from 'gsap'
 
 const inter = Inter({ subsets: ['latin'] });
 
