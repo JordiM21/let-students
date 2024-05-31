@@ -48,7 +48,7 @@ export default function Info() {
           <NextImage src={Icon} className="z-50 object-contain w-[40px] h-[40px]" />
         </div>
         <NextImage src={background} className="-z-10 bg-[#2D878D] h-screen object-cover absolute" />
-        <div className="absolute top-[5vh] w-11/12 left-1/2 transform -translate-x-1/2">
+        <div className="absolute top-[2vh] md:top-[5vh] w-11/12 left-1/2 transform -translate-x-1/2">
           <h1 ref={title} className="text-6xl lg:text-8xl shadow-black drop-shadow-lg text-center text-white font-black">
             Planes Disponibles
           </h1>
