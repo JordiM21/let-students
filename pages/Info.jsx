@@ -28,13 +28,13 @@ export default function Info() {
   useEffect(() => {
     // Set initial opacity and y position
     gsap.set(title.current, { opacity: 0, y: 0 });
-    gsap.set(card1.current, { opacity: 0, y: 0 });
-    gsap.set(card2.current, { opacity: 0, y: 0 });
+    gsap.set(card1.current, { opacity: .7, y: 0 });
+    gsap.set(card2.current, { opacity: .7, y: 0 });
   
     // Animate elements
     gsap.to(title.current, { opacity: 1, y: 5, duration: 1, ease: 'power2.out' });
     gsap.to(card1.current, { opacity: 1, y: -10, duration: 1, ease: 'power2.out' });
-    gsap.to(card2.current, { opacity: 1, y: -10, duration: 1, ease: 'power2.out', delay: 0.3 });
+    gsap.to(card2.current, { opacity: 1, y: -10, duration: 1, ease: 'power2.out', delay: 0.5 });
   }, [router]);
   
 

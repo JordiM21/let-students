@@ -34,6 +34,7 @@ export default function StudentDashboard({
   progressB,
   progressI,
   progressA,
+  count,
 }) {
   const router = useRouter()
 
@@ -59,11 +60,6 @@ export default function StudentDashboard({
     month: 'long',
   }).format(currentDate)
 
-  const previousMonthDate = new Date(currentDate)
-  previousMonthDate.setMonth(currentDate.getMonth() - 1)
-  const previousMonth = new Intl.DateTimeFormat('en-US', {
-    month: 'long',
-  }).format(previousMonthDate)
 
   const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth < 700)
 
@@ -98,14 +94,12 @@ export default function StudentDashboard({
           bg="green"
         />
       )}
-      <section className="mx-4 max-w-5xl md:mx-auto my-4 flex gap-2">
+      <section className="mx-4 max-w-5xl md:mx-auto my-4 flex gap-1 md:gap-2">
         <div onClick={() => router.push(`/likedVideos`)} className=" h-36 lg:h-56 w-[36%] flex gap-2 flex-wrap rounded-lg">
           <div className="group active:scale-95 relative overflow-hidden h-16 lg:h-[6.5rem] w-[45%] flex items-center justify-center rounded-lg bg-[var(--blueDarkbg)] hover:scale-105 hover:opacity-80 hover:-translate-y-1 cursor-pointer">
             <div className="absolute bg-[var(--blueSuperDark)] text-[var(--lightBlue)] text-xs w-full text-center rounded-md py-1 -bottom-10 group-hover:bottom-0 z-10">
               Liked Videos
             </div>
-            {/* <div className="bg-white h-20 rotate-6 opacity-20 -left-6 group-hover:left-10 w-4 absolute "></div>
-            <div className="bg-white h-20 rotate-6 opacity-10 -left-4 group-hover:left-16 w-4 absolute "></div> */}
             <AiFillLike className="fill-blue-700 text-5xl group-hover:-rotate-6" />
           </div>
           <Link href={"https://sso.prodigygame.com/login"} className='h-16 lg:h-[6.5rem] w-[50%]' target="blank">
@@ -146,7 +140,7 @@ export default function StudentDashboard({
                 <FaTasks className="text-xl text-center -rotate-180 text-[var(--blueSuperDark)]" />
               </button>
               <div className="bg-[var(--blueSuperDark)] opacity-40 rounded-md px-3 lg:py-3 text-[var(--lightBlue)] w-11/12">
-                {previousMonth}
+                {count} Pending Tasks 
               </div>
               <div className="bg-[var(--blueSuperDark)] rounded-md px-3 lg:py-3 text-[var(--lightBlue)] w-11/12">
                 {currentMonth}

@@ -78,6 +78,7 @@ const Dashboard = ({ userData, tutor, allUsers, isPending }) => {
         role == "Student" &&
         (
           <StudentDashboard
+            count={count}
             wordsGameProgress={wordsGameProgress}
             profileImg={profileImg}
             schedule={schedule}

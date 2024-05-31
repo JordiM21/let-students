@@ -8,6 +8,52 @@
 	transition: all 0.1s ease-in;
 }
 
+@keyframes slide {
+	0% {
+	  transform: translateX(0);
+	}
+	100% {
+	  transform: translateX(-110%);
+	}
+  }
+  
+  .logos {
+	overflow: hidden;
+	padding: 20px 0;
+	background-color: #173330f5; 
+	cursor: pointer;
+  }
+  .logos:before,
+.logos:after {
+  position: absolute;
+  top: 0;
+  width: 100px;
+  height: 100%;
+  content: "";
+  z-index: 2;
+}
+
+.logos:before {
+  left: 0;
+  background: linear-gradient(to left, rgba(255, 255, 255, 0), #173330);
+}
+
+.logos:after {
+  right: 0;
+  background: linear-gradient(to right, rgba(255, 255, 255, 0), #173330);
+}
+
+.logos:hover .logos-slide {
+  animation-play-state: paused;
+}
+  
+  .logos-slide {
+	display: flex;
+	gap: 40px;
+	animation: slide 30s linear infinite;
+	will-change: transform;
+  }
+  
 .ping {
 	--uib-size: 50px;
 	--uib-speed: 1s;
@@ -179,7 +225,7 @@
 	--color2Soft: #0090ad1b;
 	--color2Shadow: #01697e;
 	--color3: #ff9900;
-	--bluebg: #00102bc4;
+	--bluebg: #00102b;
 	--blueDarkbg: #001942;
 	--blueSuperDark: #000817;
 	--color4: #db162f;

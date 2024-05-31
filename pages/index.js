@@ -1,5 +1,16 @@
 import NextImage from 'next/image'
 import { Inter } from 'next/font/google'
+import argentina from '@/public/flags/argentina.png'
+import bolivia from '@/public/flags/bolivia.png'
+import brazil from '@/public/flags/brazil.png'
+import chile from '@/public/flags/chile.png'
+import colombia from '@/public/flags/colombia.png'
+import ecuador from '@/public/flags/ecuador.png'
+import italy from '@/public/flags/italy.png'
+import mexico from '@/public/flags/mexico.png'
+import spain from '@/public/flags/spain.png'
+import venezuela from '@/public/flags/venezuela.png'
+
 import slide1 from '@/public/slide1.png'
 import slide2 from '@/public/slide2.png'
 import slide3 from '@/public/slide3.png'
@@ -74,11 +85,7 @@ export default function Home() {
 
   useEffect(() => {
     if (dataLoaded) {
-      gsap.fromTo(
-        imageRef.current,
-        { opacity: 0, y: 0 }, 
-        { opacity: 1, y: 0, duration: 1, ease: 'power2.out' } 
-      );
+      gsap.fromTo(imageRef.current, { opacity: 0, y: 0 }, { opacity: 1, y: 0, duration: 1, ease: 'power2.out' })
       gsap.fromTo(textRef.current, { opacity: 0, y: 0 }, { opacity: 1, y: 10, duration: 1, ease: 'power2.out' })
       gsap.fromTo(
         sticker1Ref.current,
@@ -102,7 +109,7 @@ export default function Home() {
         {
           opacity: 1,
           x: -20,
-          y: -40,
+          y: -10,
           ease: 'power1.out',
           duration: 0.5,
           opacity: 1,
@@ -135,7 +142,7 @@ export default function Home() {
         { opacity: 0, x: 0, y: 0 },
         {
           opacity: 1,
-          x: 50,
+          x: -10,
           y: -50,
           ease: 'power1.out',
           duration: 0.5,
@@ -230,7 +237,7 @@ export default function Home() {
                 onClick={() => router.push('/Info')}
                 className="px-6 py-4 rounded-md bg-[#F17024] shadow-black/30 shadow-lg cursor-pointer  hover:scale-105 ease-in 1s active:scale-95"
               >
-                <a className="font-black text-lg text-white">Nuevo Ingreso</a>
+                <a className="font-black text-lg text-white">Comienza Ahora</a>
               </div>
             </div>
           </div>
@@ -240,6 +247,53 @@ export default function Home() {
             priority
             ref={imageRef}
           />
+          <div className='relative'>
+
+          <div className="logos">
+            <div className="logos-slide">
+              <NextImage src={argentina} className="w-10 h-10 object-contain mx-8" />
+              <NextImage src={spain} className="w-10 h-10 object-contain mx-8" />
+              <NextImage src={colombia} className="w-10 h-10 object-contain mx-8" />
+              <NextImage src={chile} className="w-10 h-10 object-contain mx-8" />
+              <NextImage src={italy} className="w-10 h-10 object-contain mx-8" />
+              <NextImage src={ecuador} className="w-10 h-10 object-contain mx-8" />
+              <NextImage src={bolivia} className="w-10 h-10 object-contain mx-8" />
+              <NextImage src={mexico} className="w-10 h-10 object-contain mx-8" />
+              <NextImage src={venezuela} className="w-10 h-10 object-contain mx-8" />
+              <NextImage src={brazil} className="w-10 h-10 object-contain mx-8" />
+              <NextImage src={argentina} className="w-10 h-10 object-contain mx-8" />
+              <NextImage src={spain} className="w-10 h-10 object-contain mx-8" />
+              <NextImage src={colombia} className="w-10 h-10 object-contain mx-8" />
+              <NextImage src={chile} className="w-10 h-10 object-contain mx-8" />
+              <NextImage src={italy} className="w-10 h-10 object-contain mx-8" />
+              <NextImage src={ecuador} className="w-10 h-10 object-contain mx-8" />
+              <NextImage src={bolivia} className="w-10 h-10 object-contain mx-8" />
+              <NextImage src={mexico} className="w-10 h-10 object-contain mx-8" />
+              <NextImage src={venezuela} className="w-10 h-10 object-contain mx-8" />
+              <NextImage src={brazil} className="w-10 h-10 object-contain mx-8" />
+              <NextImage src={argentina} className="w-10 h-10 object-contain mx-8" />
+              <NextImage src={spain} className="w-10 h-10 object-contain mx-8" />
+              <NextImage src={colombia} className="w-10 h-10 object-contain mx-8" />
+              <NextImage src={chile} className="w-10 h-10 object-contain mx-8" />
+              <NextImage src={italy} className="w-10 h-10 object-contain mx-8" />
+              <NextImage src={ecuador} className="w-10 h-10 object-contain mx-8" />
+              <NextImage src={bolivia} className="w-10 h-10 object-contain mx-8" />
+              <NextImage src={mexico} className="w-10 h-10 object-contain mx-8" />
+              <NextImage src={venezuela} className="w-10 h-10 object-contain mx-8" />
+              <NextImage src={brazil} className="w-10 h-10 object-contain mx-8" />
+              <NextImage src={argentina} className="w-10 h-10 object-contain mx-8" />
+              <NextImage src={spain} className="w-10 h-10 object-contain mx-8" />
+              <NextImage src={colombia} className="w-10 h-10 object-contain mx-8" />
+              <NextImage src={chile} className="w-10 h-10 object-contain mx-8" />
+              <NextImage src={italy} className="w-10 h-10 object-contain mx-8" />
+              <NextImage src={ecuador} className="w-10 h-10 object-contain mx-8" />
+              <NextImage src={bolivia} className="w-10 h-10 object-contain mx-8" />
+              <NextImage src={mexico} className="w-10 h-10 object-contain mx-8" />
+              <NextImage src={venezuela} className="w-10 h-10 object-contain mx-8" />
+              <NextImage src={brazil} className="w-10 h-10 object-contain mx-8" />
+            </div>
+          </div>
+          </div>
           <div className="py-10 md:py-20 bg-[#173330] flex flex-wrap">
             <div className="lg:w-[40%] my-3 max-md:mx-10 md:ml-16">
               <h2 className=" text-5xl text-start font-black text-[#F9F1D2]">¿Como le haremos Bilingüe?</h2>
@@ -285,7 +339,7 @@ export default function Home() {
               ref={sticker4Ref}
               className="h-[160px] w-[160px] md:h-[250px] md:w-[250px] rounded-full absolute bottom-2 left-6 md:left-16 -rotate-6"
             />
-            <h2 className="text-center font-black text-6xl md:text-8xl">
+            <h2 className="text-center font-black text-6xl md:text-8xl z-50">
               Tu Hijo disfrutará <br /> Aprender Inglés
             </h2>
           </div>
