@@ -58,6 +58,30 @@ export default function AccordionUsage() {
         <p className='text-white/50'>Las clases regulares tienen una duración de 1 Hora al día, sin embargo el Plan intensivo duplica las horas de estudio y en este caso el estudiante hará 2 horas diarias.</p>
         </AccordionDetails>
       </Accordion>
+      <Accordion  sx={{ backgroundColor: '#173330'}}>
+        <AccordionSummary
+          expandIcon={<ExpandMoreIcon />}
+          aria-controls="panel2-content"
+          id="panel2-header"
+        >
+          <p className='text-white text-2xl md:text-3xl font-extrabold'>¿Cuanto tiempo dura el Programa?</p>
+        </AccordionSummary>
+        <AccordionDetails>
+        <p className='text-white/50'>El tiempo varía según la edad del estudiante y su compromiso con el programa, sin embargo la duración promedio de los estudiantes en la academia es 8-12 meses.</p>
+        </AccordionDetails>
+      </Accordion>
+      <Accordion  sx={{ backgroundColor: '#173330'}}>
+        <AccordionSummary
+          expandIcon={<ExpandMoreIcon />}
+          aria-controls="panel2-content"
+          id="panel2-header"
+        >
+          <p className='text-white text-2xl md:text-3xl font-extrabold'>¿Mi hijo necesita conocimientos previos?</p>
+        </AccordionSummary>
+        <AccordionDetails>
+        <p className='text-white/50'>De ninguna manera, incluso es mejor si iniciamos desde cero, esto nos permitirá establecer correctamente las bases de la gramática inglesa y evitaremos procesos de aprendizaje erróneos en el pasado.</p>
+        </AccordionDetails>
+      </Accordion>
     </div>
   );
 }

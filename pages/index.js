@@ -234,7 +234,6 @@ export default function Home() {
               </div>
             </div>
           </div>
-          {/* <button className='absolute text-[#F17024] top-2 right-2 px-2 py-1 z-50 rounded-md bg-white shadow-black/30 shadow-lg'><a className='font-black text-sm text-[#F17024]'>¿Como Funiona?</a></button> */}
           <NextImage
             src={background}
             className="w-full h-screen object-cover pt-0 bg-[#2D878D] overflow-hidden"
@@ -249,8 +248,8 @@ export default function Home() {
                 idioma. Nos especializamos en la enseñanza a estudiantes desde los 6 hasta los 14 años y destacamos por
                 ofrecer acompañamiento personalizado y una participación activa de padres y representantes.
               </p>
-              <div className="px-6 py-4 rounded-md bg-white text-[#173330] shadow-black/30 shadow-lg w-[250px] font-black text-lg cursor-pointer  hover:scale-105 ease-in 1s active:scale-95">
-                Solicitar Información
+              <div onClick={() => router.replace("/Info")} className="px-6 py-4 rounded-md bg-white text-[#173330] shadow-black/30 shadow-lg w-[250px] font-black text-lg cursor-pointer  hover:scale-105 ease-in 1s active:scale-95">
+                Ver Planes Disponibles
               </div>
             </div>
             <iframe
@@ -337,7 +336,7 @@ export default function Home() {
                 <p className="text-3xl text-[] font-black">3</p>
               </div>
               <div className="lg:max-w-[40%]">
-                <h3 className="text-6xl font-black">Refuerza tu Aprendizaje</h3>
+                <h3 className="text-6xl font-black">Refuerza su Aprendizaje</h3>
                 <p className="py-2 opacity-80 text-start">
                   Cada estudiante es asignado a un Tutor Personal, el cual se encargará de hacerle entender todos los
                   temas y no dejar ninguna pregunta sin responder.
@@ -378,7 +377,7 @@ export default function Home() {
               onClick={() => router.push('/Info')}
               className="px-6 w-[240px] mx-auto py-4 rounded-md bg-[#F17024] shadow-black/30 shadow-lg cursor-pointer  hover:scale-105 ease-in 1s active:scale-95"
             >
-              <a className="font-black text-lg text-white">Solicitar Información</a>
+              <p className="font-black text-lg text-white">Solicitar Información</p>
             </div>
           </div>
           <div className="bg-[#173330]">
