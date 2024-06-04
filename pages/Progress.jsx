@@ -99,7 +99,8 @@ const Progress = ({ allUsers, likedVideos, userData, setSubmit, submit }) => {
   return (
     <div className="pt-20 bg-[var(--bluebg)] h-full md:min-h-screen">
       <BackHeader largeTitle={'Student Progress'} parentTitle={'Back'} />
-      <div className="flex flex-wrap gap-4 mx-8 justify-center">
+      {userMatched.role == 'Student' && (
+        <div className="flex flex-wrap gap-4 mx-8 justify-center">
         <div className="h-40 w-full flex gap-4 rounded-lg shadow-lg p-4 hover:-translate-y-1 cursor-pointer max-w-[500px] bg-[var(--blueDarkbg)]">
           <div className="w-[25%] relative h-full overflow-hidden bg-[var(--blueSuperDark)] rounded-lg p-6 sm:p-8">
             <Image src={lego1} className="scale-[2] absolute bottom-4 left-0" />
@@ -178,6 +179,7 @@ const Progress = ({ allUsers, likedVideos, userData, setSubmit, submit }) => {
           </div>
         </div>
       </div>
+      )}
       <div className="max-w-2xl mx-auto pb-24">
         {userMatched.role == 'Admin' && (
           <div className="mx-16 md:mx-8">
@@ -250,16 +252,15 @@ const Progress = ({ allUsers, likedVideos, userData, setSubmit, submit }) => {
                       <p className="text-gray-400 opacity-80">{student.age}</p>
                     </div>
                   </div>
-                  <SendNotifScreen student={student.firstName} id={student.id} country={student.country} />
-                  <div>
+                  <div className=' flex justify-center items-center my-2'>
                     <p>Beginner: </p>
                     <ProgressLesson progress={student.progressBeginner} />
                   </div>
-                  <div className="">
+                  <div className=" flex justify-center items-center my-2">
                     <p>Intermediate: </p>
                     <ProgressLesson progress={student.progressIntermediate} />
                   </div>
-                  <div className="">
+                  <div className=" flex justify-center items-center my-2">
                     <p>Advanced: </p>
                     <ProgressLesson progress={student.progressAdvanced} />
                   </div>

@@ -39,6 +39,8 @@ const Profile = ({ userData, tutor }) => {
 
   const { logout } = useAuth();
 
+  console.log(userMatched)
+
   return (
     <>
       <div className='bg-gray-200 object-cover absolute -z-10'></div>
@@ -104,6 +106,7 @@ const Profile = ({ userData, tutor }) => {
                 </div>
                 {
                   userMatched.role == "Student" && (
+                    <>
                     <div className='bg-[var(--blueDarkbg)] cursor-pointer hover:bg-slate-800 w-full flex items-center rounded-xl justify-between py-2 px-4'>
                       <p className='text-white'>Personal Tutor</p>
                       <div className='flex items-center gap-2 justify-end'>
@@ -111,6 +114,15 @@ const Profile = ({ userData, tutor }) => {
                         <YourProfile char={tutor.profileImg} size="small" />
                       </div>
                     </div>
+                    <div className='bg-[var(--blueSuperDark)] cursor-pointer w-full flex items-center rounded-xl justify-between py-2 px-4'>
+                    <div className='cursor-pointer w-full flex items-center justify-between py-2 px-4'>
+                    <p className='text-white'>Plan</p>
+                    <div className='flex items-center justify-center'>
+                      <p className='text-gray-400 opacity-80'>{userMatched.plan}</p>
+                    </div>
+                  </div>
+                    </div>
+                    </>
                   )
                 }
               </div>

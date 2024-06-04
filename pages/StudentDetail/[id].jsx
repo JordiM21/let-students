@@ -193,6 +193,7 @@ export default function () {
             <MenuItem value="Platform">Platform</MenuItem>
             <MenuItem value="Speaking">Speaking</MenuItem>
             <MenuItem value="Immersive">Immersive</MenuItem>
+            <MenuItem value="Gaming">Gaming</MenuItem>
           </Select>
         </FormControl>
         <FormControl variant="filled" className='w-full'>
