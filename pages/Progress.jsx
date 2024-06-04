@@ -101,8 +101,8 @@ const Progress = ({ allUsers, likedVideos, userData, setSubmit, submit }) => {
       <BackHeader largeTitle={'Student Progress'} parentTitle={'Back'} />
       <div className="flex flex-wrap gap-4 mx-8 justify-center">
         <div className="h-40 w-full flex gap-4 rounded-lg shadow-lg p-4 hover:-translate-y-1 cursor-pointer max-w-[500px] bg-[var(--blueDarkbg)]">
-          <div className="w-[25%] overflow-hidden bg-[var(--blueSuperDark)] rounded-lg p-8">
-            <Image src={lego1} className="scale-[3]" />
+          <div className="w-[25%] relative h-full overflow-hidden bg-[var(--blueSuperDark)] rounded-lg p-6 sm:p-8">
+            <Image src={lego1} className="scale-[2] absolute bottom-4 left-0" />
           </div>
           <div className="w-[70%]">
             <h2 className="text-[var(--lightBlue)] text-3xl mb-2">Aprendíz</h2>
@@ -111,8 +111,8 @@ const Progress = ({ allUsers, likedVideos, userData, setSubmit, submit }) => {
           </div>
         </div>
         <div className="h-40 w-full flex gap-4 rounded-lg shadow-lg p-4 hover:-translate-y-1 cursor-pointer max-w-[500px] bg-[var(--blueDarkbg)]">
-          <div className="w-[25%] overflow-hidden bg-[var(--blueSuperDark)] rounded-lg p-8">
-            <Image src={lego4} className="scale-[3]" />
+          <div className="w-[25%] relative overflow-hidden bg-[var(--blueSuperDark)] rounded-lg p-6 sm:p-8">
+            <Image src={lego4} className="scale-[2] absolute bottom-4 left-0" />{' '}
           </div>
           <div className="w-[70%]">
             <h2 className="text-[var(--lightBlue)] text-3xl mb-2">Aventurero</h2>
@@ -121,8 +121,8 @@ const Progress = ({ allUsers, likedVideos, userData, setSubmit, submit }) => {
           </div>
         </div>
         <div className="h-40 w-full flex gap-4 rounded-lg shadow-lg p-4 hover:-translate-y-1 cursor-pointer max-w-[500px] bg-[var(--blueDarkbg)]">
-          <div className="w-[25%] overflow-hidden bg-[var(--blueSuperDark)] rounded-lg p-8">
-            <Image src={lego3} className="scale-[3]" />
+          <div className="w-[25%] relative overflow-hidden bg-[var(--blueSuperDark)] rounded-lg p-6 sm:p-8">
+            <Image src={lego3} className="scale-[2] absolute bottom-4 left-0" />{' '}
           </div>
           <div className="w-[70%]">
             <h2 className="text-[var(--lightBlue)] text-3xl mb-2">Prodigio</h2>
@@ -131,8 +131,8 @@ const Progress = ({ allUsers, likedVideos, userData, setSubmit, submit }) => {
           </div>
         </div>
         <div className="h-40 w-full flex gap-4 rounded-lg shadow-lg p-4 hover:-translate-y-1 cursor-pointer max-w-[500px] bg-[var(--blueDarkbg)]">
-          <div className="w-[25%] overflow-hidden bg-[var(--blueSuperDark)] rounded-lg p-8">
-            <Image src={lego7} className="scale-[3]" />
+          <div className="w-[25%] relative overflow-hidden bg-[var(--blueSuperDark)] rounded-lg p-6 sm:p-8">
+            <Image src={lego7} className="scale-[2] absolute bottom-4 left-0" />{' '}
           </div>
           <div className="w-[70%]">
             <h2 className="text-[var(--lightBlue)] text-3xl mb-2">Video Fan</h2>
@@ -141,8 +141,8 @@ const Progress = ({ allUsers, likedVideos, userData, setSubmit, submit }) => {
           </div>
         </div>
         <div className="h-40 w-full flex gap-4 rounded-lg shadow-lg p-4 hover:-translate-y-1 cursor-pointer max-w-[500px] bg-[var(--blueDarkbg)]">
-          <div className="w-[25%] overflow-hidden bg-[var(--blueSuperDark)] rounded-lg p-8">
-            <Image src={lego6} className="scale-[3]" />
+          <div className="w-[25%] relative overflow-hidden bg-[var(--blueSuperDark)] rounded-lg p-6 sm:p-8">
+            <Image src={lego6} className="scale-[2] absolute bottom-4 left-0" />{' '}
           </div>
           <div className="w-[70%]">
             <h2 className="text-[var(--lightBlue)] text-3xl mb-2">Video Pro</h2>
@@ -151,9 +151,8 @@ const Progress = ({ allUsers, likedVideos, userData, setSubmit, submit }) => {
           </div>
         </div>
         <div className="h-40 w-full flex gap-4 rounded-lg shadow-lg p-4 hover:-translate-y-1 cursor-pointer max-w-[500px] bg-[var(--blueDarkbg)]">
-          <div className="w-[25%] overflow-hidden bg-[var(--blueSuperDark)] rounded-lg p-8">
-            <Image src={lego5} className="scale-[3]" />
-          </div>
+          <div className="w-[25%] relative overflow-hidden bg-[var(--blueSuperDark)] rounded-lg p-6 sm:p-8">
+          <Image src={lego5} className="scale-[2] absolute bottom-4 left-0" />          </div>
           <div className="w-[70%]">
             <h2 className="text-[var(--lightBlue)] text-3xl mb-2">Estrella</h2>
             {progressB < 24 ? <ProgressBar25 value={progressB} /> : <ProgressBar25 value={25} />}
@@ -161,9 +160,8 @@ const Progress = ({ allUsers, likedVideos, userData, setSubmit, submit }) => {
           </div>
         </div>
         <div className="h-40 w-full flex gap-4 rounded-lg shadow-lg p-4 hover:-translate-y-1 cursor-pointer max-w-[500px] bg-[var(--blueDarkbg)]">
-          <div className="w-[25%] overflow-hidden bg-[var(--blueSuperDark)] rounded-lg p-8">
-            <Image src={final1} className="scale-[3]" />
-          </div>
+          <div className="w-[25%] relative overflow-hidden bg-[var(--blueSuperDark)] rounded-lg p-6 sm:p-8">
+          <Image src={final1} className="scale-[2] absolute bottom-4 left-0" />          </div>
           <div className="w-[70%]">
             <h2 className="text-[var(--lightBlue)] text-3xl mb-2">Experto</h2>
             {progressI < 24 ? <ProgressBar25 value={progressI} /> : <ProgressBar25 value={25} />}
@@ -171,9 +169,8 @@ const Progress = ({ allUsers, likedVideos, userData, setSubmit, submit }) => {
           </div>
         </div>
         <div className="h-40 w-full flex gap-4 rounded-lg shadow-lg p-4 hover:-translate-y-1 cursor-pointer max-w-[500px] bg-[var(--blueDarkbg)]">
-          <div className="w-[25%] overflow-hidden bg-[var(--blueSuperDark)] rounded-lg p-8">
-            <Image src={lego8} className="scale-[3]" />
-          </div>
+          <div className="w-[25%] relative overflow-hidden bg-[var(--blueSuperDark)] rounded-lg p-6 sm:p-8">
+          <Image src={lego8} className="scale-[2] absolute bottom-4 left-0" />          </div>
           <div className="w-[70%]">
             <h2 className="text-[var(--lightBlue)] text-3xl mb-2">Genio</h2>
             {progressA < 24 ? <ProgressBar25 value={progressA} /> : <ProgressBar25 value={25} />}
@@ -181,111 +178,111 @@ const Progress = ({ allUsers, likedVideos, userData, setSubmit, submit }) => {
           </div>
         </div>
       </div>
-        <div className="max-w-2xl mx-auto pb-24">
-          {userMatched.role == 'Admin' && (
-            <div className="mx-16 md:mx-8">
-              <h1 className="text-3xl text-white font-bold my-10 text-center">Your students</h1>
-              {students.map((student) => (
-                <>
+      <div className="max-w-2xl mx-auto pb-24">
+        {userMatched.role == 'Admin' && (
+          <div className="mx-16 md:mx-8">
+            <h1 className="text-3xl text-white font-bold my-10 text-center">Your students</h1>
+            {students.map((student) => (
+              <>
+                {student.unitInTrouble?.length > 0 && (
+                  <div className="bg-yellow-300 py-4 -mb-2 px-4 rounded-lg">
+                    <p>{student.firstName} ha solicitado tu ayuda!</p>
+                    <p className="text-xs text-gray-800">
+                      Ayudale en la leccion {student.unitInTrouble[0]} del nivel {student.level}{' '}
+                    </p>
+                    <div className="flex items-center justify-around py-2">
+                      <button
+                        onClick={() => router.push(`/Niveles/${student.level}/${student.unitInTrouble[0]}`)}
+                        className="py-2 border-[var(--color2)] border-4 rounded-full px-3"
+                      >
+                        <p>Ir a la leccion</p>
+                      </button>
+                      <button
+                        onClick={() => updateUnitInTrouble(student.id)}
+                        className="py-2 border-4 border-[var(--color2)] bg-[var(--color2)] rounded-full px-3"
+                      >
+                        <p className="text-white">Marcar como completa</p>
+                      </button>
+                    </div>
+                  </div>
+                )}
+                <div className="relative p-4 bg-gray-300 rounded-md mb-4 w-full mx-auto transition-all 1s ease-in cursor-pointer">
                   {student.unitInTrouble?.length > 0 && (
-                    <div className="bg-yellow-300 py-4 -mb-2 px-4 rounded-lg">
-                      <p>{student.firstName} ha solicitado tu ayuda!</p>
-                      <p className="text-xs text-gray-800">
-                        Ayudale en la leccion {student.unitInTrouble[0]} del nivel {student.level}{' '}
-                      </p>
-                      <div className="flex items-center justify-around py-2">
-                        <button
-                          onClick={() => router.push(`/Niveles/${student.level}/${student.unitInTrouble[0]}`)}
-                          className="py-2 border-[var(--color2)] border-4 rounded-full px-3"
-                        >
-                          <p>Ir a la leccion</p>
-                        </button>
-                        <button
-                          onClick={() => updateUnitInTrouble(student.id)}
-                          className="py-2 border-4 border-[var(--color2)] bg-[var(--color2)] rounded-full px-3"
-                        >
-                          <p className="text-white">Marcar como completa</p>
-                        </button>
-                      </div>
+                    <div class="loader">
+                      <div class="circle circle-1"></div>
+                      <div class="circle circle-2"></div>
+                      <div class="circle circle-3"></div>
+                      <div class="circle circle-4"></div>
                     </div>
                   )}
-                  <div className="relative p-4 bg-gray-300 rounded-md mb-4 w-full mx-auto transition-all 1s ease-in cursor-pointer">
-                    {student.unitInTrouble?.length > 0 && (
-                      <div class="loader">
-                        <div class="circle circle-1"></div>
-                        <div class="circle circle-2"></div>
-                        <div class="circle circle-3"></div>
-                        <div class="circle circle-4"></div>
-                      </div>
-                    )}
-                    <div className="flex relative justify-start gap-4 pb-4 items-center">
-                      <YourFlag country={student.country} />
-                      <p className="text-center font-bold text-xl py-1 cursor-pointer">
-                        {student.firstName} {student.lastName}
-                      </p>
-                      <div className="absolute right-4">
-                        <p className="text-sm text-gray-600 font-bold">({student.level})</p>
-                      </div>
+                  <div className="flex relative justify-start gap-4 pb-4 items-center">
+                    <YourFlag country={student.country} />
+                    <p className="text-center font-bold text-xl py-1 cursor-pointer">
+                      {student.firstName} {student.lastName}
+                    </p>
+                    <div className="absolute right-4">
+                      <p className="text-sm text-gray-600 font-bold">({student.level})</p>
                     </div>
-                    <a href={'https://let-students.vercel.app/ActivitiesDetail/' + student.id} target="_blank">
-                      <button class="learn-more">
-                        <span class="circle bg-[var(--color3)]" aria-hidden="true">
-                          <span class="icon arrow"></span>
-                        </span>
-                        <span class="button-text text-[var(--color3)]">Go to the Activities</span>
-                      </button>
-                    </a>
-                    <div className="bg-[var(--blueDarkbg)] cursor-pointer hover:bg-slate-800 overflow-hidden w-full rounded-t-xl mt-4 flex gap-8 items-center justify-between py-2 px-4">
-                      <p className="text-white">Email</p>
-                      <div className="flex items-center justify-center">
-                        <p className="text-gray-400 opacity-80">{student.email}</p>
-                      </div>
-                    </div>
-                    <div className="bg-[var(--blueDarkbg)] cursor-pointer hover:bg-slate-800 w-full flex items-center justify-between py-2 px-4">
-                      <p className="text-white">Phone</p>
-                      <div className="flex items-center justify-center">
-                        <p className="text-gray-400 opacity-80">{student.phone}</p>
-                      </div>
-                    </div>
-                    <div className="bg-[var(--blueDarkbg)] cursor-pointer hover:bg-slate-800 w-full flex items-center rounded-b-xl mb-4 justify-between py-2 px-4">
-                      <p className="text-white">Age</p>
-                      <div className="flex items-center justify-center">
-                        <p className="text-gray-400 opacity-80">{student.age}</p>
-                      </div>
-                    </div>
-                    <SendNotifScreen student={student.firstName} id={student.id} country={student.country} />
-                    <div>
-                      <p>Beginner: </p>
-                      <ProgressLesson progress={student.progressBeginner} />
-                    </div>
-                    <div className="">
-                      <p>Intermediate: </p>
-                      <ProgressLesson progress={student.progressIntermediate} />
-                    </div>
-                    <div className="">
-                      <p>Advanced: </p>
-                      <ProgressLesson progress={student.progressAdvanced} />
-                    </div>
-                    <div className="my-2 flex flex-wrap">
-                      <PiGameControllerFill className=" text-3xl items-center gap-2 fill-gray-500" />
-                      {student.wordsGameProgress?.map((game) => (
-                        <span className="bg-gray-500 px-2 py-1 m-1 rounded-lg">{game}</span>
-                      ))}
-                    </div>
-                    {student.schedule && <Schedule schedule={student.schedule} />}
-                    <button
-                      onClick={() => router.push(`StudentDetail/${student.id}`)}
-                      className="w-full py-4 rounded-full my-4 bg-[var(--blueDarkbg)] hover:bg-white border-4 hover:text-[var(--blueDarkbg)] border-[var(--blueDarkbg)] text-white"
-                    >
-                      MODIFY
-                    </button>
                   </div>
-                </>
-              ))}
-            </div>
-          )}
-        </div>
+                  <a href={'https://let-students.vercel.app/ActivitiesDetail/' + student.id} target="_blank">
+                    <button class="learn-more">
+                      <span class="circle bg-[var(--color3)]" aria-hidden="true">
+                        <span class="icon arrow"></span>
+                      </span>
+                      <span class="button-text text-[var(--color3)]">Go to the Activities</span>
+                    </button>
+                  </a>
+                  <div className="bg-[var(--blueDarkbg)] cursor-pointer hover:bg-slate-800 overflow-hidden w-full rounded-t-xl mt-4 flex gap-8 items-center justify-between py-2 px-4">
+                    <p className="text-white">Email</p>
+                    <div className="flex items-center justify-center">
+                      <p className="text-gray-400 opacity-80">{student.email}</p>
+                    </div>
+                  </div>
+                  <div className="bg-[var(--blueDarkbg)] cursor-pointer hover:bg-slate-800 w-full flex items-center justify-between py-2 px-4">
+                    <p className="text-white">Phone</p>
+                    <div className="flex items-center justify-center">
+                      <p className="text-gray-400 opacity-80">{student.phone}</p>
+                    </div>
+                  </div>
+                  <div className="bg-[var(--blueDarkbg)] cursor-pointer hover:bg-slate-800 w-full flex items-center rounded-b-xl mb-4 justify-between py-2 px-4">
+                    <p className="text-white">Age</p>
+                    <div className="flex items-center justify-center">
+                      <p className="text-gray-400 opacity-80">{student.age}</p>
+                    </div>
+                  </div>
+                  <SendNotifScreen student={student.firstName} id={student.id} country={student.country} />
+                  <div>
+                    <p>Beginner: </p>
+                    <ProgressLesson progress={student.progressBeginner} />
+                  </div>
+                  <div className="">
+                    <p>Intermediate: </p>
+                    <ProgressLesson progress={student.progressIntermediate} />
+                  </div>
+                  <div className="">
+                    <p>Advanced: </p>
+                    <ProgressLesson progress={student.progressAdvanced} />
+                  </div>
+                  <div className="my-2 flex flex-wrap">
+                    <PiGameControllerFill className=" text-3xl items-center gap-2 fill-gray-500" />
+                    {student.wordsGameProgress?.map((game) => (
+                      <span className="bg-gray-500 px-2 py-1 m-1 rounded-lg">{game}</span>
+                    ))}
+                  </div>
+                  {student.schedule && <Schedule schedule={student.schedule} />}
+                  <button
+                    onClick={() => router.push(`StudentDetail/${student.id}`)}
+                    className="w-full py-4 rounded-full my-4 bg-[var(--blueDarkbg)] hover:bg-white border-4 hover:text-[var(--blueDarkbg)] border-[var(--blueDarkbg)] text-white"
+                  >
+                    MODIFY
+                  </button>
+                </div>
+              </>
+            ))}
+          </div>
+        )}
       </div>
+    </div>
   )
 }
 export default withUserData(Progress)

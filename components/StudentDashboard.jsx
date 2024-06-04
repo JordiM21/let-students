@@ -21,6 +21,7 @@ import { FaTasks } from 'react-icons/fa'
 import { TbPlayerTrackNextFilled } from 'react-icons/tb'
 import ReactPlayer from 'react-player'
 import Link from 'next/link'
+import bg from '@/public/bg-square.png'
 
 export default function StudentDashboard({
   id,
@@ -60,7 +61,6 @@ export default function StudentDashboard({
     month: 'long',
   }).format(currentDate)
 
-
   const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth < 700)
 
   useEffect(() => {
@@ -76,11 +76,11 @@ export default function StudentDashboard({
     <div className="my-7 ">
       <div
         onClick={() => setMeetingRoom(true)}
-        className="flex bg-green-500 py-1 px-2 sm:px-3 absolute top-1 left-2 md:left-20 cursor-pointer hover:opacity-80 rounded-full w-[90px] sm:w-[100px] md:w-[200px] justify-between items-center"
+        className="flex bg-green-500 px-2 py-1 sm:px-3 absolute top-1 left-1 md:left-16 cursor-pointer hover:opacity-80 rounded-full w-[50px] sm:w-[150px]   justify-center sm:justify-between items-center "
       >
-        <YourProfile char={tutor.profileImg} size={'super-small'} />
-        <p className={`hidden md:block text-white text-lg`}>MEETING</p>
-        <BsFillCameraVideoFill fill="white" size={28} />
+        {/* <YourProfile char={tutor.profileImg} size={'super-small'} /> */}
+        <p className={`hidden md:block text-white text-lg`}>Call Tutor</p>
+        <BsFillCameraVideoFill fill="white" size={20} />
       </div>
       {meetingRoom == true && (
         <CtaAnimationPage
@@ -94,39 +94,11 @@ export default function StudentDashboard({
           bg="green"
         />
       )}
-      <section className="mx-4 max-w-5xl md:mx-auto my-4 flex gap-1 md:gap-2">
-        <div onClick={() => router.push(`/likedVideos`)} className=" h-36 lg:h-56 w-[36%] flex gap-2 flex-wrap rounded-lg">
-          <div className="group active:scale-95 relative overflow-hidden h-16 lg:h-[6.5rem] w-[45%] flex items-center justify-center rounded-lg bg-[var(--blueDarkbg)] hover:scale-105 hover:opacity-80 hover:-translate-y-1 cursor-pointer">
-            <div className="absolute bg-[var(--blueSuperDark)] text-[var(--lightBlue)] text-xs w-full text-center rounded-md py-1 -bottom-10 group-hover:bottom-0 z-10">
-              Liked Videos
-            </div>
-            <AiFillLike className="fill-blue-700 text-5xl group-hover:-rotate-6" />
-          </div>
-          <Link href={"https://sso.prodigygame.com/login"} className='h-16 lg:h-[6.5rem] w-[50%]' target="blank">
-          <div className="group relative overflow-hidden active:scale-95 h-16 lg:h-[6.5rem] w-[90%] flex items-center justify-center rounded-lg bg-[var(--blueDarkbg)] hover:scale-105 hover:opacity-80 hover:-translate-y-1 cursor-pointer">
-            <div className="absolute bg-[var(--blueSuperDark)] text-[var(--lightBlue)] text-xs w-full text-center rounded-md py-1 -bottom-10 group-hover:bottom-0 z-10">
-              LET Junior
-            </div>
-            <PiGameControllerFill className="fill-blue-700 text-5xl group-hover:rotate-6" />
-          </div>
-          </Link>
-          <div onClick={() => router.push(`/selectCharacter/${id}`)} className="group relative overflow-hidden active:scale-95 h-16 lg:h-[6.5rem] w-[45%] flex items-center justify-center rounded-lg bg-[var(--blueDarkbg)] hover:scale-105 hover:opacity-80 hover:-translate-y-1 cursor-pointer">
-            <div className="absolute bg-[var(--blueSuperDark)] text-[var(--lightBlue)] text-xs w-full text-center rounded-md py-1 -bottom-10 group-hover:bottom-0 z-10">
-              Edit Profile
-            </div>
-            <FaUserEdit className="fill-blue-700 text-5xl group-hover:rotate-6" />
-          </div>
-          <div onClick={() => router.push(`/Progress`)}  className="group relative overflow-hidden active:scale-95 h-16 lg:h-[6.5rem] w-[45%] flex items-center justify-center rounded-lg bg-[var(--blueDarkbg)] hover:scale-105 hover:opacity-80 hover:-translate-y-1 cursor-pointer">
-            <div className="absolute bg-[var(--blueSuperDark)] text-[var(--lightBlue)] text-xs w-full text-center rounded-md py-1 -bottom-10 group-hover:bottom-0 z-10">
-              My Rewards
-            </div>
-            <FaTrophy className="fill-blue-700 text-5xl group-hover:-rotate-6" />
-          </div>
-        </div>
-        <div className="bg-[var(--blueDarkbg)] h-36 lg:h-56 w-[72%] rounded-lg flex items-start justify-around">
-          <div className=" flex items-center flex-col p-2">
-            <p className="text-2xl text-[var(--yellowElectric)]">{dayOfWeek}</p>
-            <p className="text-8xl lg:text-[10rem] text-[var(--lightBlue)]">{dayOfMonth}</p>
+      <section className="mx-4 max-w-5xl md:mx-auto my-4 flex justify-between gap-1 md:gap-2">
+        <div className="bg-[var(--blueDarkbg)] h-36 lg:h-56 w-[70%] rounded-lg flex items-start justify-around">
+          <div className=" flex items-center flex-col p-2 md:p-4">
+            <p className="md:text-2xl text-[var(--yellowElectric)]">{dayOfWeek}</p>
+            <p className="text-6xl md:text-8xl lg:text-[10rem] text-[var(--lightBlue)]">{dayOfMonth}</p>
           </div>
           <div className="p-2 w-11/12">
             <div className="bg-[var(--bluebg)] h-[7.8rem] lg:h-[12rem] w-full rounded-lg flex flex-col-reverse items-center gap-2 pb-2">
@@ -134,19 +106,23 @@ export default function StudentDashboard({
                 onClick={() => router.push('/Activities')}
                 className="bg-[var(--yellowElectric)] flex justify-center items-center gap-2 rounded-md text-[var(--blueSuperDark)] w-11/12 p-2.5 lg:p-4 lg:mt-2 hover:opacity-80 active:scale-95"
               >
-                <p className="text-center whitespace-nowrap">
-                  Check My Tasks
-                  </p>
+                <p className="text-center whitespace-nowrap">My Activities</p>
                 <FaTasks className="text-xl text-center -rotate-180 text-[var(--blueSuperDark)]" />
               </button>
               <div className="bg-[var(--blueSuperDark)] opacity-40 rounded-md px-3 lg:py-3 text-[var(--lightBlue)] w-11/12">
-                {count} Pending Tasks 
+                {count} Pending Tasks
               </div>
               <div className="bg-[var(--blueSuperDark)] rounded-md px-3 lg:py-3 text-[var(--lightBlue)] w-11/12">
                 {currentMonth}
               </div>
             </div>
           </div>
+        </div>
+        <div className=" h-36 lg:h-56 bg-[var(--blueDarkbg)] group cursor-pointer relative w-[28%] overflow-hidden rounded-lg">
+        <Link href={"https://sso.prodigygame.com/game/login?rid=6d9c384f-52f8-4b96-adcb-4378e942b743"} target='_blank'>
+          <div className='absolute bg-[var(--blueSuperDark)] md:text-3xl font-black w-full z-30 text-center p-2 bottom-0 text-white'>Play</div>
+          <Image src={bg} className="w-full object-cover absolute top-0 sm:-top-8 group-hover:scale-110" />
+        </Link>
         </div>
       </section>
       {/* Call Tutor section  */}
@@ -160,8 +136,11 @@ export default function StudentDashboard({
           <p className="absolute bg-[var(--blueSuperDark)] text-[var(--lightBlue)] px-3 rounded-md text-sm lg:text-lg right-2 ">
             {tutor.firstName}
           </p>
-          <button onClick={() => setMeetingRoom(true)} className="bg-[var(--yellowElectric)] lg:absolute lg:bottom-0 mb-2 max-lg:hover:opacity-70 lg:hover:shadow-xl shadow-black active:scale-95 w-11/12 rounded-md h-10 flex gap-2 items-center justify-center">
-            <p className=" text-lg text-center">Call Tutor</p>
+          <button
+            onClick={() => setMeetingRoom(true)}
+            className="bg-[var(--yellowElectric)] lg:absolute lg:bottom-0 mb-2 max-lg:hover:opacity-70 lg:hover:shadow-xl shadow-black active:scale-95 w-11/12 rounded-md h-10 flex gap-2 items-center justify-center"
+          >
+            <p className="md:text-lg text-center">Call</p>
             <PiPhoneCallFill className="text-xl text-center -rotate-180 text-[var(--blueSuperDark)]" />
           </button>
         </div>
@@ -171,7 +150,7 @@ export default function StudentDashboard({
           <div className="flex gap-2 py-2">
             {/* MONDAY */}
             <div
-              className={`w-1/6 h-16 lg:h-36 rounded-md ${
+              className={`w-1/6 h-16 lg:h-36 overflow-hidden rounded-md ${
                 schedule.some((item) => item.day === 'Monday')
                   ? 'bg-[var(--yellowElectric)]'
                   : 'bg-[var(--blueSuperDark)] opacity-60'
@@ -195,7 +174,7 @@ export default function StudentDashboard({
             </div>
             {/* TUESDAY */}
             <div
-              className={`w-1/6 h-16 lg:h-36 rounded-md ${
+              className={`w-1/6 overflow-hidden h-16 lg:h-36 rounded-md ${
                 schedule.some((item) => item.day === 'Tuesday')
                   ? 'bg-[var(--yellowElectric)]'
                   : 'bg-[var(--blueSuperDark)] opacity-60'
@@ -219,7 +198,7 @@ export default function StudentDashboard({
             </div>
 
             <div
-              className={`w-1/6 h-16 lg:h-36 rounded-md ${
+              className={`w-1/6 overflow-hidden h-16 lg:h-36 rounded-md ${
                 schedule.some((item) => item.day === 'Wednesday')
                   ? 'bg-[var(--yellowElectric)]'
                   : 'bg-[var(--blueSuperDark)] opacity-60'
@@ -243,7 +222,7 @@ export default function StudentDashboard({
             </div>
 
             <div
-              className={`w-1/6 h-16 lg:h-36 rounded-md ${
+              className={`w-1/6  overflow-hidden h-16 lg:h-36 rounded-md ${
                 schedule.some((item) => item.day === 'Thursday')
                   ? 'bg-[var(--yellowElectric)]'
                   : 'bg-[var(--blueSuperDark)] opacity-60'
@@ -267,7 +246,7 @@ export default function StudentDashboard({
             </div>
 
             <div
-              className={`w-1/6 h-16 lg:h-36 rounded-md ${
+              className={`w-1/6  overflow-hidden h-16 lg:h-36 rounded-md ${
                 schedule.some((item) => item.day === 'Friday')
                   ? 'bg-[var(--yellowElectric)]'
                   : 'bg-[var(--blueSuperDark)] opacity-60'
@@ -291,7 +270,7 @@ export default function StudentDashboard({
             </div>
 
             <div
-              className={`w-1/6 h-16 lg:h-36 rounded-md ${
+              className={`w-1/6 overflow-hidden h-16 lg:h-36 rounded-md ${
                 schedule.some((item) => item.day === 'Saturday')
                   ? 'bg-[var(--yellowElectric)]'
                   : 'bg-[var(--blueSuperDark)] opacity-60'
@@ -330,20 +309,22 @@ export default function StudentDashboard({
             {level == 'Advanced' && <ProgressLesson progress={progressA} />}
           </div>
           <div className="flex justify-center items-center mt-3">
-            <button  onClick={() => router.push(`/Niveles/${level}`)}  className="bg-[var(--yellowElectric)] flex items-center justify-center gap-2 hover:opacity-80 active:scale-95 rounded-lg w-10/12 p-2 lg:p-5">
+            <button
+              onClick={() => router.push(`/Niveles/${level}`)}
+              className="bg-[var(--yellowElectric)] flex items-center justify-center gap-2 hover:opacity-80 active:scale-95 rounded-lg w-10/12 p-2 lg:p-5"
+            >
               <p className=" text-lg text-center">Check Next Lesson</p>
               <TbPlayerTrackNextFilled className="text-2xl text-center text-[var(--blueSuperDark)]" />
             </button>
           </div>
         </div>
-        {/* 4 little apps */}
         <div className="bg-[var(--blueDarkbg)] h-36 lg:h-56 w-1/3 rounded-lg">
-          <div className="w-full bg-[var(--blueSuperDark)] rounded-t-lg p-2 flex items-center gap-2">
-            <p className="text-[var(--lightBlue)]">New Words</p>
+          <div className="w-full bg-[var(--blueSuperDark)] rounded-t-lg p-2 flex justify-between items-center gap-1">
+            <p className="text-[var(--lightBlue)] text-xs md:text-xl">New Words</p>
             <PiMagicWandFill className="fill-[var(--lightBlue)]" />
           </div>
           <div>
-            <p className="text-7xl lg:text-9xl text-center text-[var(--lightBlue)] opacity-40">
+            <p className="text-5xl md:text-7xl lg:text-9xl text-center text-[var(--lightBlue)] opacity-40">
               {level == 'Beginner' && progressB * 18}
               {level == 'Intermediate' && progressI * 23}
               {level == 'Advanced' && progressA * 23}
@@ -354,12 +335,15 @@ export default function StudentDashboard({
         </div>
       </section>
       <section className="mx-4 max-w-5xl md:mx-auto my-4 flex gap-4">
-        <div  className="bg-[var(--blueDarkbg)] h-36 w-full relative rounded-lg">
-          <div  className="w-full bg-[var(--blueSuperDark)] rounded-t-lg p-2 flex items-center gap-2">
+        <div className="bg-[var(--blueDarkbg)] h-36 w-full relative rounded-lg">
+          <div className="w-full bg-[var(--blueSuperDark)] rounded-t-lg p-2 flex items-center gap-2">
             <p className="text-[var(--lightBlue)] lg:text-lg">My Liked Videos</p>
             <AiFillLike className="fill-[var(--lightBlue)]" />
           </div>
-          <button onClick={() => router.push(`/Immersive`)} className="bg-[var(--yellowElectric)] w-20 lg:w-40 text-center rounded-md hover:opacity-80 active:scale-95 absolute lg:top-16 lg:p-5 right-2 lg:right-4 top-2">
+          <button
+            onClick={() => router.push(`/Immersive`)}
+            className="bg-[var(--yellowElectric)] w-20 lg:w-40 text-center rounded-md hover:opacity-80 active:scale-95 absolute lg:top-16 lg:p-5 right-2 lg:right-4 top-2"
+          >
             See All
           </button>
           <div className="flex mt-0">
@@ -368,18 +352,20 @@ export default function StudentDashboard({
             ) : (
               firstThreeLikedVideos.map((video) => (
                 <div className=" hover:opacity-80 hover:scale-110 flex ease-in cursor-pointer lg:mx-16 mx-auto rounded-md my-4">
-                  <div
-                    onClick={() => router.push(`/immersiveActivities/${video.id}`)}
-                    className="bg-gray-200 absolute h-[75px] z-20 w-[140px] opacity-0"
-                  ></div>
-                  <ReactPlayer
-                    width={'140px'}
-                    height={75}
-                    className="rounded-md"
-                    url={video.url}
-                    controls={true}
-                    light={true}
-                  />
+                  <div className="relative bg-gray-200 w-[80px] md:w-[120px] rounded-md overflow-hidden">
+                    <div
+                      onClick={() => router.push(`/immersiveActivities/${video.id}`)}
+                      className="absolute inset-0 z-20 opacity-0 hover:opacity-40 transition-opacity duration-300"
+                    ></div>
+                    <ReactPlayer
+                      width="100%"
+                      height="100%"
+                      className="rounded-md"
+                      url={video.url}
+                      controls={true}
+                      light={true}
+                    />
+                  </div>
                 </div>
               ))
             )}

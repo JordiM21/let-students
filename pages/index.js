@@ -218,7 +218,7 @@ export default function Home() {
           >
             <NextImage src={Icon} className="object-contain  w-[40px] h-[40px]" />
           </div>
-          <div className="w-full absolute top-10 z-20" ref={textRef}>
+          <div className="w-full absolute top-20 md:top-10 z-20" ref={textRef}>
             <h1 className="text-6xl md:text-8xl shadow-black drop-shadow-lg my-4 text-center text-white font-black">
               English for <br /> Children
             </h1>
@@ -226,18 +226,18 @@ export default function Home() {
               Haz que tu hijo sea <span className="text-[#0F3F3F] text-md font-black">Bilingüe</span> <br /> y regálale
               un mundo de oportunidades
             </p>
-            <div className="flex w-10/12 md:w-1/2 mx-auto justify-evenly my-6">
+            <div className="flex w-11/12 md:w-1/2 mx-auto justify-evenly my-6">
               <div
                 onClick={() => router.push('/Login')}
-                className="px-6 py-4 rounded-md bg-white shadow-black/30 shadow-lg cursor-pointer hover:scale-105 ease-in 1s active:scale-95"
+                className="p-3 md:px-6 md:py-4 rounded-md bg-white shadow-black/30 shadow-lg cursor-pointer hover:scale-105 ease-in 1s active:scale-95"
               >
-                <a className="font-black text-lg text-[#173330]">Soy Estudiante</a>
+                <a className="font-black text-md md:text-lg text-[#173330]">Soy Estudiante</a>
               </div>
               <div
                 onClick={() => router.push('/Info')}
-                className="px-6 py-4 rounded-md bg-[#F17024] shadow-black/30 shadow-lg cursor-pointer  hover:scale-105 ease-in 1s active:scale-95"
+                className="p-3 md:px-6 md:py-4 rounded-md bg-[#F17024] shadow-black/30 shadow-lg cursor-pointer  hover:scale-105 ease-in 1s active:scale-95"
               >
-                <a className="font-black text-lg text-white">Comienza Ahora</a>
+                <a className="font-black text-md md:text-lg text-white">Comienza Ahora</a>
               </div>
             </div>
           </div>
@@ -304,13 +304,13 @@ export default function Home() {
               </p>
               <div
                 onClick={() => router.replace('/Info')}
-                className="px-6 py-4 rounded-md bg-white text-[#173330] shadow-black/30 shadow-lg w-[250px] font-black text-lg cursor-pointer  hover:scale-105 ease-in 1s active:scale-95"
+                className="px-4 md:px-6 py-4 rounded-md bg-[#F9F1D2] text-[#173330] shadow-black/30 shadow-lg w-[250px] font-black text-md md:text-lg cursor-pointer  hover:scale-105 ease-in 1s active:scale-95"
               >
                 Ver Planes Disponibles
               </div>
             </div>
             <iframe
-              className="sm:w-[600px] rounded-lg w-[400px] h-[225px] sm:h-[337px] mx-auto"
+              className="sm:w-[600px] my-8 rounded-lg w-[400px] h-[225px] sm:h-[337px] mx-auto"
               src="https://www.youtube.com/embed/_aNfPuIO5eI"
               frameBorder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -357,7 +357,7 @@ export default function Home() {
                 <p className="text-3xl text-[] font-black">1</p>
               </div>
               <div className="lg:max-w-[40%] xl:max-w-[45%]">
-                <h3 className="text-6xl font-black">Aprende las bases del Inglés.</h3>
+                <h3 className="text-4xl md:text-6xl font-black">Aprende las bases del Inglés.</h3>
                 <p className="py-2 opacity-80 text-start">
                   El primer paso es establecer unas bases del sólidas y duraderas del idioma. Que lograremos con ayuda
                   del material didáctico y clases de refuerzo en cada área
@@ -375,7 +375,7 @@ export default function Home() {
                 <p className="text-3xl text-[] font-black">2</p>
               </div>
               <div className="lg:max-w-[40%]">
-                <h3 className="text-6xl font-black">Practica lo aprendido.</h3>
+                <h3 className="text-4xl md:text-6xl font-black">Practica lo aprendido.</h3>
                 <p className="py-2 opacity-80 text-start">
                   Una vez establecidas las bases, el estudiante podrá empezar a afianzar su conocimiento mientras juega
                   y se divierte explorando cada rincón de la aldea.
@@ -393,7 +393,7 @@ export default function Home() {
                 <p className="text-3xl text-[] font-black">3</p>
               </div>
               <div className="lg:max-w-[40%]">
-                <h3 className="text-6xl font-black">Refuerza su Aprendizaje</h3>
+                <h3 className="text-4xl md:text-6xl font-black">Refuerza su Aprendizaje</h3>
                 <p className="py-2 opacity-80 text-start">
                   Cada estudiante es asignado a un Tutor Personal, el cual se encargará de hacerle entender todos los
                   temas y no dejar ninguna pregunta sin responder.
