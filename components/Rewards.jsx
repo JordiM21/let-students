@@ -13,7 +13,7 @@ export default function Rewards({ user, progressB, progressI, progressA, likes }
 
   return (
     <div>
-      <div className='flex items-center flex-wrap gap-1 justify-center'>
+      <div className='flex items-center flex-wrap gap-1 justify-end'>
         <div className={`group border-2 ${totalProgress >= 5 ? "bg-green-400 border-green-700" : "bg-gray-700 border-gray-700"} hover:bg-white relative h-10 w-10 rounded-full flex items-center justify-center flex-col`}>
           <p className='text-xs font-extrabold'>5</p>
           <FaMedal />

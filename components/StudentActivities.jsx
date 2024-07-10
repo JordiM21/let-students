@@ -13,13 +13,13 @@ export default function StudentActivities({ tutor, userMatched }) {
         <div className='flex justify-between items-center '>
           <div className='flex items-center gap-4'>
             <YourProfile char={tutor.profileImg} size={"super-small"} />
-            <p className='text-gray-400'>{tutor.firstName} {tutor.lastName}</p>
+            <p className='text-gray-400'>{tutor.firstName} (English Teacher)</p>
           </div>
           <p className='text-white'>Tutor Personal</p>
         </div>
         <div className='my-2'>
           <p className='text-gray-600 text-sm'>
-            Estas actividades son asignadas por tu <span className='text-white'>tutor personal</span>, asegúrate de terminarlas <span className='text-white'>antes</span> de la fecha límite, cuando la termines, avísale para que la revise y la <span className='text-white'>actualice a completada</span>
+            Estas actividades son asignadas por tu Tutor y tienes que terminarlas antes de la fecha límite, apenas la termines debes notificarle a el tutor para que pueda verificarlo.
           </p>
         </div>
       </div>
@@ -40,7 +40,7 @@ export default function StudentActivities({ tutor, userMatched }) {
                     {activity.description}
                   </p>
                 </div>
-                <p className='text-gray-500 bg-gray-900 w-min p-2 rounded-md'>
+                <p className='text-gray-500 bg-gray-900 w-max p-2 rounded-md'>
                   <span className='text-white flex gap-3'>
                     <FaMagic className='fill-blue-400' />
                     {activity.topic}

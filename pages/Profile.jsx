@@ -110,7 +110,7 @@ const Profile = ({ userData, tutor }) => {
                     <div className='bg-[var(--blueDarkbg)] cursor-pointer hover:bg-slate-800 w-full flex items-center rounded-xl justify-between py-2 px-4'>
                       <p className='text-white'>Personal Tutor</p>
                       <div className='flex items-center gap-2 justify-end'>
-                        <p className='text-gray-400 opacity-80'>{tutor.firstName}  {tutor.lastName} </p>
+                        <p className='text-gray-400 opacity-80'>{tutor.firstName} (Italy) </p>
                         <YourProfile char={tutor.profileImg} size="small" />
                       </div>
                     </div>

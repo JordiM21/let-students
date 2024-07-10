@@ -76,9 +76,9 @@ export default function AdminDashboard({ allUsers, id, url, wordsGameProgress })
         meetingRoom == true && (
           <CtaAnimationPage
             title={"Entra en tu sala de reuniones con tus estudiantes"}
-            subTitle={`Antes de entrar debes haber establecido un horario, Este botón te llevará a tu sala de reuniones en WhereBy ¡Recuerda ser muy puntual! `}
+            subTitle={`Antes de entrar debes haber establecido un horario, Este botón te llevará a tu sala de reuniones en zoom ¡Recuerda ser muy puntual! `}
             animation={student}
-            cta={"Ir a WhereBy"}
+            cta={"Ir a Zoom"}
             btn="link"
             link={url}
             bg="green"
@@ -113,13 +113,13 @@ export default function AdminDashboard({ allUsers, id, url, wordsGameProgress })
           <Fade in={open}>
             <Box sx={style}>
               <small className='text-gray-500 text-xs'>Current Url (link actual): {url} </small>
-              <p>Ingresa aqui el link proporcionado por WhereBy. si aun no tienes tu link entra a esta pagina <a href='https://whereby.com/' className='text-sky-500 underline' target='_blank'>WhereBy</a> y crea tu cuenta super rapido, cuando tengas tu link personal ingresalo aqui y listo! todos tus estudiantes lo tendran a disposicion.</p>
+              <p>Ingresa aqui el link proporcionado por Zoom. cuando tengas tu link personal ingresalo aqui y listo! todos tus estudiantes lo tendran a disposición.</p>
               <form onSubmit={changeUrl} className='flex flex-col p-8 space-y-4'>
-                <TextField id="filled-basic" label="Link given by WhereBy" variant="filled"
+                <TextField id="filled-basic" label="Link given by Zoom" variant="filled"
                   className='bg-gray-300 rounded-md w-full'
                   value={urlMeet}
                   type='text'
-                  placeholder='https://whereby.com/***********'
+                  placeholder='https://us05web.zoom.us/******'
                   onChange={(e) => setUrlMeet(e.target.value)}
                 />
                 <button type='submit' className='bg-[var(--color3)] py-4 text-lg text-white rounded-md'>Add link</button>

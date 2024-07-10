@@ -3,6 +3,8 @@ import ProgressLesson from './ProgressLesson'
 import { useRouter } from 'next/router'
 import Image from 'next/image'
 import { AiFillPieChart, AiFillYoutube, AiFillLike } from 'react-icons/ai'
+import { FcLike } from "react-icons/fc";
+
 import { MdFaceRetouchingNatural, MdTaskAlt } from 'react-icons/md'
 import { FcCalendar } from 'react-icons/fc'
 import Schedule from './Schedule'
@@ -22,6 +24,13 @@ import { TbPlayerTrackNextFilled } from 'react-icons/tb'
 import ReactPlayer from 'react-player'
 import Link from 'next/link'
 import bg from '@/public/bg-square.png'
+import cover1 from '@/public/miro_covers/1.png'
+import cover2 from '@/public/miro_covers/2.png'
+import cover3 from '@/public/miro_covers/3.png'
+import cover4 from '@/public/miro_covers/4.png'
+import cover5 from '@/public/miro_covers/5.png'
+
+
 
 export default function StudentDashboard({
   id,
@@ -79,13 +88,13 @@ export default function StudentDashboard({
         className="flex bg-green-500 px-2 py-1 sm:px-3 absolute top-1 left-1 md:left-16 cursor-pointer hover:opacity-80 rounded-full w-[50px] sm:w-[150px]   justify-center sm:justify-between items-center "
       >
         {/* <YourProfile char={tutor.profileImg} size={'super-small'} /> */}
-        <p className={`hidden md:block text-white text-lg`}>Call Tutor</p>
+        <p className={`hidden md:block text-white text-lg`}>Meeting</p>
         <BsFillCameraVideoFill fill="white" size={20} />
       </div>
       {meetingRoom == true && (
         <CtaAnimationPage
-          title={'Conéctate con tu tutor personal y resuelve todas tus dudas!'}
-          subTitle={`Recuerda solo entrar en los horarios establecidos con tu tutor. Este botón te llevará directamente a su sala de reuniones en WhereBy`}
+          title={'Entra en la reunión con tu Tutor Personal'}
+          subTitle={`Recuerda solo entrar en los horarios establecidos con tu tutor. Haz click en este botón para entrar a la reunión en Zoom`}
           animation={student}
           cta={'Entrar a la Reunión'}
           btn="link"
@@ -103,11 +112,10 @@ export default function StudentDashboard({
           <div className="p-2 w-11/12">
             <div className="bg-[var(--bluebg)] h-[7.8rem] lg:h-[12rem] w-full rounded-lg flex flex-col-reverse items-center gap-2 pb-2">
               <button
-                onClick={() => router.push('/Activities')}
-                className="bg-[var(--yellowElectric)] flex justify-center items-center gap-2 rounded-md text-[var(--blueSuperDark)] w-11/12 p-2.5 lg:p-4 lg:mt-2 hover:opacity-80 active:scale-95"
+              onClick={() => router.reload()}
+                className="bg-[var(--yellowElectric)] flex justify-center items-center gap-2 rounded-md text-[var(--blueSuperDark)] w-11/12 p-2.5 lg:p-3 lg:mt-2 hover:opacity-80 active:scale-95"
               >
-                <p className="text-center whitespace-nowrap">My Activities</p>
-                <FaTasks className="text-xl text-center -rotate-180 text-[var(--blueSuperDark)]" />
+                <p className="text-center lg:text-2xl whitespace-nowrap">Update Information</p>
               </button>
               <div className="bg-[var(--blueSuperDark)] opacity-40 rounded-md px-3 lg:py-3 text-[var(--lightBlue)] w-11/12">
                 {count} Pending Tasks
@@ -119,9 +127,30 @@ export default function StudentDashboard({
           </div>
         </div>
         <div className=" h-36 lg:h-56 bg-[var(--blueDarkbg)] group cursor-pointer relative w-[28%] overflow-hidden rounded-lg">
-        <Link href={"https://sso.prodigygame.com/game/login?rid=6d9c384f-52f8-4b96-adcb-4378e942b743"} target='_blank'>
-          <div className='absolute bg-[var(--blueSuperDark)] md:text-3xl font-black w-full z-30 text-center p-2 bottom-0 text-white'>Play</div>
-          <Image src={bg} className="w-full object-cover absolute top-0 sm:-top-8 group-hover:scale-110" />
+        <Link href={"/Activities"}>
+          <div className='absolute bg-[var(--blueSuperDark)] md:text-3xl font-black w-full z-30 text-center p-2 bottom-0 text-white'>Activities</div>
+          <Image src={cover3} className="w-full object-cover absolute top-0 sm:-top-8 group-hover:scale-110" />
+        </Link>
+        </div>
+      </section>
+      {/* New Section */}
+      <section className='mx-4 max-w-5xl md:mx-auto my-4 justify-between flex gap-4'>
+        <div className=" h-36 lg:h-56 bg-[var(--blueDarkbg)] group cursor-pointer relative w-[32%] overflow-hidden rounded-lg">
+        <Link href={tutor.urlMeet} target='_blank'>
+          <div className='absolute bg-[var(--blueSuperDark)] md:text-3xl font-black w-full z-30 text-center p-2 bottom-0 text-white'>Meeting</div>
+          <Image src={cover1} className="w-full object-cover absolute top-0 sm:-top-8 group-hover:scale-110" />
+        </Link>
+        </div>
+        <div className=" h-36 lg:h-56 bg-[var(--blueDarkbg)] group cursor-pointer relative w-[32%] overflow-hidden rounded-lg">
+        <Link href={"/Niveles"} target='_blank'>
+          <div className='absolute bg-[var(--blueSuperDark)] md:text-3xl font-black w-full z-30 text-center p-2 bottom-0 text-white'>Lessons</div>
+          <Image src={cover2} className="w-full object-cover absolute top-0 sm:-top-8 group-hover:scale-110" />
+        </Link>
+        </div>
+        <div className=" h-36 lg:h-56 bg-[var(--blueDarkbg)] group cursor-pointer relative w-[32%] overflow-hidden rounded-lg">
+        <Link href={"/Immersive"}>
+          <div className='absolute bg-[var(--blueSuperDark)] md:text-3xl font-black w-full z-30 text-center p-2 bottom-0 text-white'>Watch</div>
+          <Image src={cover5} className="w-full object-cover absolute top-0 sm:-top-8 group-hover:scale-110" />
         </Link>
         </div>
       </section>
@@ -140,7 +169,7 @@ export default function StudentDashboard({
             onClick={() => setMeetingRoom(true)}
             className="bg-[var(--yellowElectric)] lg:absolute lg:bottom-0 mb-2 max-lg:hover:opacity-70 lg:hover:shadow-xl shadow-black active:scale-95 w-11/12 rounded-md h-10 flex gap-2 items-center justify-center"
           >
-            <p className="md:text-lg text-center">Call</p>
+            <p className="md:text-lg text-center">Zoom</p>
             <PiPhoneCallFill className="text-xl text-center -rotate-180 text-[var(--blueSuperDark)]" />
           </button>
         </div>
@@ -373,7 +402,11 @@ export default function StudentDashboard({
         </div>
       </section>
       <section>
-        <h2 className="text-[var(--lightBlue)] text-2xl text-center">¿Quieres seguir aprendiendo?</h2>
+        <div className='flex items-center justify-center gap-4'>
+        <h2 className="text-[var(--lightBlue)] text-2xl text-center">You're the Best English Student 
+        </h2>
+        <FcLike size={"30px"} />
+        </div>
         {/* <div className="flex justify-evenly my-2">
           <ReactPlayer
             width={'135px'}
