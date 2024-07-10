@@ -4,7 +4,6 @@ import { useRouter } from 'next/router'
 import Image from 'next/image'
 import { AiFillPieChart, AiFillYoutube, AiFillLike } from 'react-icons/ai'
 import { FcLike } from "react-icons/fc";
-
 import { MdFaceRetouchingNatural, MdTaskAlt } from 'react-icons/md'
 import { FcCalendar } from 'react-icons/fc'
 import Schedule from './Schedule'
@@ -106,7 +105,7 @@ export default function StudentDashboard({
       <section className="mx-4 max-w-5xl md:mx-auto my-4 flex justify-between gap-1 md:gap-2">
         <div className="bg-[var(--blueDarkbg)] h-36 lg:h-56 w-[70%] rounded-lg flex items-start justify-around">
           <div className=" flex items-center flex-col p-2 md:p-4">
-            <p className="md:text-2xl text-[var(--yellowElectric)]">{dayOfWeek}</p>
+            <p className="text-sm md:text-2xl text-[var(--yellowElectric)]">{dayOfWeek}</p>
             <p className="text-6xl md:text-8xl lg:text-[10rem] text-[var(--lightBlue)]">{dayOfMonth}</p>
           </div>
           <div className="p-2 w-11/12">
@@ -115,12 +114,12 @@ export default function StudentDashboard({
               onClick={() => router.reload()}
                 className="bg-[var(--yellowElectric)] flex justify-center items-center gap-2 rounded-md text-[var(--blueSuperDark)] w-11/12 p-2.5 lg:p-3 lg:mt-2 hover:opacity-80 active:scale-95"
               >
-                <p className="text-center lg:text-2xl whitespace-nowrap">Update Information</p>
+                <p className="text-center text-sm lg:text-2xl whitespace-nowrap">Refresh Info</p>
               </button>
-              <div className="bg-[var(--blueSuperDark)] opacity-40 rounded-md px-3 lg:py-3 text-[var(--lightBlue)] w-11/12">
+              <div className="bg-[var(--blueSuperDark)] opacity-40 rounded-md px-3 py-1 lg:py-3 text-[var(--lightBlue)] w-11/12 text-sm lg:text-md">
                 {count} Pending Tasks
               </div>
-              <div className="bg-[var(--blueSuperDark)] rounded-md px-3 lg:py-3 text-[var(--lightBlue)] w-11/12">
+              <div className="bg-[var(--blueSuperDark)] rounded-md px-3 lg:py-3 py-1 text-[var(--lightBlue)] w-11/12 text-sm lg:text-md">
                 {currentMonth}
               </div>
             </div>
@@ -142,7 +141,7 @@ export default function StudentDashboard({
         </Link>
         </div>
         <div className=" h-36 lg:h-56 bg-[var(--blueDarkbg)] group cursor-pointer relative w-[32%] overflow-hidden rounded-lg">
-        <Link href={"/Niveles"} target='_blank'>
+        <Link href={"/Niveles"}>
           <div className='absolute bg-[var(--blueSuperDark)] md:text-3xl font-black w-full z-30 text-center p-2 bottom-0 text-white'>Lessons</div>
           <Image src={cover2} className="w-full object-cover absolute top-0 sm:-top-8 group-hover:scale-110" />
         </Link>

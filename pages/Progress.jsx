@@ -220,18 +220,18 @@ const Progress = ({ allUsers, likedVideos, userData, setSubmit, submit }) => {
                   <div className="flex relative justify-start gap-4 pb-4 items-center">
                     <YourFlag country={student.country} />
                     <p className="text-center font-bold text-xl py-1 cursor-pointer">
-                      {student.firstName} {student.lastName}
+                      {student.firstName}
                     </p>
                     <div className="absolute right-4">
                       <p className="text-sm text-gray-600 font-bold">({student.level})</p>
                     </div>
                   </div>
-                  <a href={'https://let-students.vercel.app/ActivitiesDetail/' + student.id} target="_blank">
-                    <button class="learn-more">
-                      <span class="circle bg-[var(--color3)]" aria-hidden="true">
-                        <span class="icon arrow"></span>
+                  <a href={'https://let-students.vercel.app/ActivitiesDetail/' + student.id}>
+                    <button className="learn-more w-full md:w-60">
+                      <span className="circle bg-[var(--color3)]" aria-hidden="true">
+                        <span className="icon arrow"></span>
                       </span>
-                      <span class="button-text text-[var(--color3)]">Go to the Activities</span>
+                      <span className="button-text text-[var(--color3)]">Check Activities</span>
                     </button>
                   </a>
                   <div className="bg-[var(--blueDarkbg)] cursor-pointer hover:bg-slate-800 overflow-hidden w-full rounded-t-xl mt-4 flex gap-8 items-center justify-between py-2 px-4">
@@ -252,17 +252,14 @@ const Progress = ({ allUsers, likedVideos, userData, setSubmit, submit }) => {
                       <p className="text-gray-400 opacity-80">{student.age}</p>
                     </div>
                   </div>
-                  <div className=' flex justify-center items-center my-2'>
-                    <p>Beginner: </p>
-                    <ProgressLesson progress={student.progressBeginner} />
+                  <div className=' flex justify-start items-center my-2'>
+                    <p>Beginner: {student.progressBeginner} </p>
                   </div>
-                  <div className=" flex justify-center items-center my-2">
-                    <p>Intermediate: </p>
-                    <ProgressLesson progress={student.progressIntermediate} />
+                  <div className=" flex justify-start items-center my-2">
+                    <p>Intermediate: {student.progressIntermediate}</p>
                   </div>
-                  <div className=" flex justify-center items-center my-2">
-                    <p>Advanced: </p>
-                    <ProgressLesson progress={student.progressAdvanced} />
+                  <div className=" flex justify-start items-center my-2">
+                    <p>Advanced: {student.progressAdvanced}</p>
                   </div>
                   <div className="my-2 flex flex-wrap">
                     <PiGameControllerFill className=" text-3xl items-center gap-2 fill-gray-500" />

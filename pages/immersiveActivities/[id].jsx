@@ -122,9 +122,8 @@ const VideoDetails = ({ userData }) => {
     setIsVideoReady(true);
   };
 
-
   return (
-    <div className='pt-16 bg-[var(--blueDarkbg)]'>
+    <div className='pt-24 md:pt-16 bg-[var(--blueDarkbg)]'>
       {
         !data.title &&
         (
@@ -135,7 +134,7 @@ const VideoDetails = ({ userData }) => {
       <div className='md:flex'>
         <div className='flex-1'>
           <div className='relative h-[260px] md:h-[432px] mx-auto max-w-3xl'>
-            <div onClick={() => setIsPlaying(!isPlaying)} className={`bg-green-400 cursor-pointer flex justify-center items-center h-[260px] md:h-[432px] w-full absolute ${isFinished ? "opacity-100" : "opacity-0"}`}>
+            <div onClick={() => setIsPlaying(!isPlaying)} className={`bg-black cursor-pointer flex justify-center items-center h-[260px] md:h-[432px] w-full absolute ${isFinished ? "opacity-100" : "opacity-0"}`}>
             </div>
             {isVideoReady ? null : (
               <div className="absolute inset-0 flex items-center justify-center bg-black opacity-100">
@@ -147,7 +146,7 @@ const VideoDetails = ({ userData }) => {
               key={key}
               width={"100%"}
               height={"100%"}
-              className="mx-auto md:my-4 bg-green-400 rounded-md"
+              className="mx-auto md:my-4 bg-black rounded-md"
               url={data.url}
               muted={false} //MODIFY TO FALSE
               autoplay={true}

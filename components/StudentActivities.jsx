@@ -4,6 +4,8 @@ import { AiFillCheckCircle, AiFillInfoCircle } from 'react-icons/ai'
 import BackHeader from './BackHeader'
 import Link from 'next/link'
 import { FaMagic } from 'react-icons/fa'
+import { FcFinePrint } from "react-icons/fc";
+
 
 export default function StudentActivities({ tutor, userMatched }) {
   return (
@@ -13,7 +15,7 @@ export default function StudentActivities({ tutor, userMatched }) {
         <div className='flex justify-between items-center '>
           <div className='flex items-center gap-4'>
             <YourProfile char={tutor.profileImg} size={"super-small"} />
-            <p className='text-gray-400'>{tutor.firstName} (English Teacher)</p>
+            <p className='text-gray-400'>{tutor.firstName} (English)</p>
           </div>
           <p className='text-white'>Tutor Personal</p>
         </div>
@@ -24,10 +26,13 @@ export default function StudentActivities({ tutor, userMatched }) {
         </div>
       </div>
       <div className='my-8'>
-        <h1>Your Activities</h1>
+        <div className='flex items-center justify-start gap-2'>
+          <FcFinePrint size={"25px"} />
+        <h2 className='text-white'>Tus Actividades</h2>
+        </div>
         {
           userMatched.activities.length < 1 && (
-            <p className='text-center text-gray-500 text-sm'>Aún no tienes actividades</p>
+            <p className='text-center text-gray-500 opacity-60 my-10 text-sm'>Aún no tienes actividades</p>
           )
         }
         {
