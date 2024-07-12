@@ -43,13 +43,13 @@ export default function Info() {
       <div className="relative bg-[#2D878D] pt-[500px] md:pt-36">
         <div
           onClick={() => router.replace('/')}
-          className="absolute top-3 left-4 hover:scale-110 active:scale-95 cursor-pointer hover:shadow-[#255d61] shadow-sm hover:shadow-md bg-[#F9F3D3] rounded-full p-[5px]"
+          className="absolute top-3 left-4 hover:scale-110 active:scale-95 cursor-pointer hover:shadow-[#255d61] shadow-sm z-50 hover:shadow-md bg-[#F9F3D3] rounded-full p-[5px]"
         >
           <NextImage src={Icon} className="z-50 object-contain w-[40px] h-[40px]" />
         </div>
         <NextImage src={background} className="-z-10 bg-[#2D878D] h-screen object-cover absolute" />
-        <div className="absolute top-[2vh] md:top-[5vh] w-11/12 left-1/2 transform -translate-x-1/2">
-          <h1 ref={title} className="text-6xl lg:text-8xl shadow-black drop-shadow-lg text-center text-white font-black">
+        <div className="absolute top-[2vh] md:top-[5vh] w-10/12 left-1/2 transform -translate-x-1/2">
+          <h1 ref={title} className="text-5xl lg:text-8xl shadow-black drop-shadow-lg text-center text-white font-black">
             Planes Disponibles
           </h1>
         </div>

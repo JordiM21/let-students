@@ -10,7 +10,6 @@ import italy from '@/public/flags/italy.png'
 import mexico from '@/public/flags/mexico.png'
 import spain from '@/public/flags/spain.png'
 import venezuela from '@/public/flags/venezuela.png'
-
 import slide1 from '@/public/slide1.png'
 import slide2 from '@/public/slide2.png'
 import slide3 from '@/public/slide3.png'
@@ -21,6 +20,7 @@ import sticker4 from '@/public/sticker4.png'
 import step1 from '@/public/step1.png'
 import step2 from '@/public/step2.png'
 import step3 from '@/public/step3.png'
+import step4 from '@/public/step4.png'
 import background from '@/public/background-landing.svg'
 import backgroundFooter from '@/public/background-footer.svg'
 import niños from '@/public/niños.png'
@@ -299,7 +299,7 @@ export default function Home() {
               <h2 className=" text-5xl text-start font-black text-[#F9F1D2]">¿Como le haremos Bilingüe?</h2>
               <p className="text-start font-bold text-[#F9F1D2] my-6 opacity-80">
                 El Progama está diseñado especialmente para que los más pequeños de la casa puedan adquirir un nuevo
-                idioma. Nos especializamos en la enseñanza a estudiantes desde los 6 hasta los 14 años y destacamos por
+                idioma. Nos especializamos en la enseñanza a estudiantes desde los 6 hasta los 15 años y destacamos por
                 ofrecer acompañamiento personalizado y una participación activa de padres y representantes.
               </p>
               <div
@@ -311,7 +311,7 @@ export default function Home() {
             </div>
             <iframe
               className="sm:w-[600px] my-8 rounded-lg w-[400px] h-[225px] sm:h-[337px] mx-auto"
-              src="https://www.youtube.com/embed/_aNfPuIO5eI"
+              src="https://www.youtube.com/embed/veYDnCDTEbU?si=1l7TYJdeg_nnfgSt"
               frameBorder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
@@ -345,40 +345,32 @@ export default function Home() {
           </div>
           <div className="py-20 px-10 space-y-8">
             <h3 className="text-6xl md:text-8xl shadow-black drop-shadow-lg my-4 text-center text-white font-black">
-              Ruta de
+              Método de
               <br />
               Aprendizaje
             </h3>
             <div
               ref={step1Ref}
-              className="w-full flex items-center flex-wrap justify-between h-[500px] lg:h-[300px] rounded-md relative bg-[#ffffff] overflow-hidden px-12 pt-2"
+              className="w-full flex items-start flex-wrap justify-between h-[500px] lg:h-[300px] rounded-md relative bg-[#ffffff] overflow-hidden px-12 pt-2"
             >
-              <div className="absolute bg-white px-4 py-2  text-2xl top-2 left-2 rounded-full">
-                <p className="text-3xl text-[] font-black">1</p>
-              </div>
-              <div className="lg:max-w-[40%] xl:max-w-[45%]">
-                <h3 className="text-4xl md:text-6xl font-black">Aprende las bases del Inglés.</h3>
+              <div className="lg:max-w-[35%] xl:max-w-[45%]">
+                <h3 className="text-4xl md:text-6xl font-black">Plataforma Interáctiva.</h3>
                 <p className="py-2 opacity-80 text-start">
-                  El primer paso es establecer unas bases del sólidas y duraderas del idioma. Que lograremos con ayuda
-                  del material didáctico y clases de refuerzo en cada área
+                  Todos los estudiantes al entrar al programa tendrán su carnet estudiantil y acceso a la plataforma con su matrícula. Donde podrá resolver actividades, ver su progreso y acceder a los recursos de aprendizaje.
                 </p>
               </div>
               <div className="max-w-lg:w-full">
-                <NextImage src={step1} className="w-[450px] md:w-[550px] h-auto mx-auto" />
+                <NextImage src={step1} className="w-[400px] md:w-[450px] h-auto mx-auto" />
               </div>
             </div>
             <div
               ref={step2Ref}
-              className="w-full flex flex-row-reverse items-center flex-wrap justify-between h-[500px] lg:h-[300px] rounded-md relative bg-[#ffffff] overflow-hidden px-12 pt-2"
+              className="w-full flex flex-row-reverse items-start flex-wrap justify-between h-[500px] md:h-[300px] rounded-md relative bg-[#ffffff] overflow-hidden px-12 pt-2"
             >
-              <div className="absolute bg-white px-4 py-2  text-2xl top-2 left-2 rounded-full">
-                <p className="text-3xl text-[] font-black">2</p>
-              </div>
-              <div className="lg:max-w-[40%]">
-                <h3 className="text-4xl md:text-6xl font-black">Practica lo aprendido.</h3>
+              <div className="lg:max-w-[35%] xl:max-w-[45%]">
+              <h3 className="text-4xl md:text-6xl font-black">Aprendizaje Divertido</h3>
                 <p className="py-2 opacity-80 text-start">
-                  Una vez establecidas las bases, el estudiante podrá empezar a afianzar su conocimiento mientras juega
-                  y se divierte explorando cada rincón de la aldea.
+                  El estudiante aprenderá inglés con sus peliculas favoritas y temas que realmente le interesan, de esta manera le mantendremos concentrado y sin aburrirse como en las clases tradicionales. Pueden elegir de más de 1.000 películas animadas de Disney, Pixar y más!
                 </p>
               </div>
               <div className="max-w-lg:w-full">
@@ -387,16 +379,26 @@ export default function Home() {
             </div>
             <div
               ref={step3Ref}
-              className="w-full flex items-center flex-wrap justify-between h-[500px] lg:h-[300px] rounded-md relative bg-[#ffffff] overflow-hidden px-12 pt-2"
+              className="w-full flex items-start flex-wrap justify-between h-[500px] lg:h-[300px] rounded-md relative bg-[#ffffff] overflow-hidden px-12 pt-2"
             >
-              <div className="absolute bg-white px-4 py-2  text-2xl top-2 left-2 rounded-full">
-                <p className="text-3xl text-[] font-black">3</p>
-              </div>
-              <div className="lg:max-w-[40%]">
-                <h3 className="text-4xl md:text-6xl font-black">Refuerza su Aprendizaje</h3>
+              <div className="lg:max-w-[35%] xl:max-w-[45%]">
+              <h3 className="text-4xl md:text-6xl font-black">Clases Online </h3>
                 <p className="py-2 opacity-80 text-start">
-                  Cada estudiante es asignado a un Tutor Personal, el cual se encargará de hacerle entender todos los
-                  temas y no dejar ninguna pregunta sin responder.
+                  También tendrá clases en vivo donde participará en todo momento en las actividades del tutor para mantener un óptimo desempeño. Tableros virtuales y videos muy cortos ayudan a desarrollar sus habilidades lingüisticas.
+                </p>
+              </div>
+              <div className="max-w-lg:w-full">
+                <NextImage src={step4} className="w-[450px] md:w-[550px] h-auto mx-auto" />
+              </div>
+            </div>
+            <div
+              ref={step3Ref}
+              className="w-full flex-row-reverse flex items-start flex-wrap justify-between h-[500px] lg:h-[300px] rounded-md relative bg-[#ffffff] overflow-hidden px-12 pt-2"
+            >
+              <div className="lg:max-w-[35%] xl:max-w-[45%]">
+              <h3 className="text-4xl md:text-6xl font-black">Test de Habilidad</h3>
+                <p className="py-2 opacity-80 text-start">
+                  Validamos los conocimiento de los pequeños con tests divertidos y entretenidos (nada que ver con un exámen) son mucho más visuales y didácticos para que no se sienta presionado ni intimidado.
                 </p>
               </div>
               <div className="max-w-lg:w-full">
@@ -406,27 +408,27 @@ export default function Home() {
           </div>
           <div className="bg-[#173330]">
             <h3 className="text-5xl md:text-8xl shadow-black drop-shadow-lg py-12 text-center text-white font-black">
-              ¿Quien estudia con
+              ¿Quien hace parte
               <br />
-              Nosotros?
+              del Programa?
             </h3>
             <div className="flex flex-wrap pb-10 justify-center md:space-x-10 space-y-10 items-baseline w-[95%] mx-auto">
               <div className="w-[330px] lg:w-[370px] ">
                 <NextImage src={niños} className=" h-auto" />
                 <p className="text-white font-black opacity-80 text-center py-4">
-                  Es un método orientado a los más pequeños de la casa y funciona perfectamente en este rango.
+                  Es un método orientado a los más pequeños de la casa y funciona perfectamente en este rango de edades, los niños disfrutan un montón el dinamismo de las clases y la metodología.
                 </p>
               </div>
               <div className="w-[330px] lg:w-[370px] ">
                 <NextImage src={estudiantes} className=" h-auto" />
                 <p className="text-white font-black opacity-80 text-center py-4">
-                  Se complementa muy bien con el colegio y reciben ayuda en sus actividades escolares.
+                  Se complementa muy bien con el colegio y las actividades escolares ya que reciben ayuda adicional para tareas de inglés en el colegio y preparación para exámenes.
                 </p>
               </div>
               <div className="w-[330px] lg:w-[370px] ">
                 <NextImage src={padres} className=" h-auto" />
                 <p className="text-white font-black opacity-80 text-center py-4">
-                  Son parte activa del aprendizaje de su hijo y reciben reportes mensuales con su progreso.
+                  Los papitos son parte activa del aprendizaje de su hijo y reciben reportes mensuales con su progreso, de esta manera pueden estar al tanto en todo momento del avance de su pequeño
                 </p>
               </div>
             </div>
@@ -434,7 +436,7 @@ export default function Home() {
               onClick={() => router.push('/Info')}
               className="px-6 w-[240px] mx-auto py-4 rounded-md bg-[#F17024] shadow-black/30 shadow-lg cursor-pointer  hover:scale-105 ease-in 1s active:scale-95"
             >
-              <p className="font-black text-lg text-white">Solicitar Información</p>
+              <p className="font-black text-lg text-white">Planes y Precios</p>
             </div>
           </div>
           <div className="bg-[#173330]">

@@ -67,7 +67,7 @@ export default function AccordionUsage() {
           <p className='text-white text-2xl md:text-3xl font-extrabold'>¿Cuanto tiempo dura el Programa?</p>
         </AccordionSummary>
         <AccordionDetails>
-        <p className='text-white/50'>El tiempo varía según la edad del estudiante y su compromiso con el programa, sin embargo la duración promedio de los estudiantes en la academia es 8-12 meses.</p>
+        <p className='text-white/50'>El Programa completo tiene una duración de 20 Meses ya que está compuesto de 10 Niveles y cada Nivel es de aproximadamente 2 meses. Al final de este periodo harás un exámen final donde evaluaremos tus conocimientos y recibirás un certificado con validez internacional</p>
         </AccordionDetails>
       </Accordion>
       <Accordion  sx={{ backgroundColor: '#173330'}}>
