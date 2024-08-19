@@ -18,6 +18,7 @@ import GroupsTwoToneIcon from '@mui/icons-material/GroupsTwoTone'
 import SchoolTwoToneIcon from '@mui/icons-material/SchoolTwoTone'
 import BuyButton2 from '@/components/BuyButton2'
 import gsap from 'gsap'
+import { FaWhatsapp } from 'react-icons/fa'
 
 export default function Info() {
   const router = useRouter()
@@ -27,16 +28,15 @@ export default function Info() {
 
   useEffect(() => {
     // Set initial opacity and y position
-    gsap.set(title.current, { opacity: 0, y: 0 });
-    gsap.set(card1.current, { opacity: .7, y: 0 });
-    gsap.set(card2.current, { opacity: .7, y: 0 });
-  
+    gsap.set(title.current, { opacity: 0, y: 0 })
+    gsap.set(card1.current, { opacity: 0.7, y: 0 })
+    gsap.set(card2.current, { opacity: 0.7, y: 0 })
+
     // Animate elements
-    gsap.to(title.current, { opacity: 1, y: 5, duration: 1, ease: 'power2.out' });
-    gsap.to(card1.current, { opacity: 1, y: -10, duration: 1, ease: 'power2.out' });
-    gsap.to(card2.current, { opacity: 1, y: -10, duration: 1, ease: 'power2.out', delay: 0.5 });
-  }, [router]);
-  
+    gsap.to(title.current, { opacity: 1, y: 5, duration: 1, ease: 'power2.out' })
+    gsap.to(card1.current, { opacity: 1, y: -10, duration: 1, ease: 'power2.out' })
+    gsap.to(card2.current, { opacity: 1, y: -10, duration: 1, ease: 'power2.out', delay: 0.5 })
+  }, [router])
 
   return (
     <>
@@ -47,13 +47,25 @@ export default function Info() {
         >
           <NextImage src={Icon} className="z-50 object-contain w-[40px] h-[40px]" />
         </div>
+        <a
+          href="https://wa.me/+393792913474?text=Hola!%20Acabo%20de%20ver%20la%20página%20y%20me%20gustaría%20obtener%20más%20información%20por%20favor"
+          className="bg-red-200"
+          target="_blank"
+        >
+          <div className="absolute top-3 right-4 hover:scale-110 active:scale-95 cursor-pointer hover:shadow-[#255d61] shadow-sm z-50 hover:shadow-md bg-[#25D366] rounded-full p-[5px]">
+            <FaWhatsapp className="w-[40px] h-[40px] fill-white p-1" />
+          </div>
+        </a>
         <NextImage src={background} className="-z-10 bg-[#2D878D] h-screen object-cover absolute" />
         <div className="absolute top-[2vh] md:top-[5vh] w-10/12 left-1/2 transform -translate-x-1/2">
-          <h1 ref={title} className="text-5xl lg:text-8xl shadow-black drop-shadow-lg text-center text-white font-black">
+          <h1
+            ref={title}
+            className="text-5xl lg:text-7xl shadow-black drop-shadow-lg text-center text-white font-black"
+          >
             Planes Disponibles
           </h1>
         </div>
-        <div className="absolute w-11/12 lg:w-8/12 flex gap-6 justify-evenly flex-wrap top-[25vh] left-1/2 transform -translate-x-1/2">
+        <div className="absolute w-11/12 lg:w-9/12 flex gap-6 justify-evenly flex-wrap top-[25vh] left-1/2 transform -translate-x-1/2">
           <div ref={card1} className="bg-[#f9f3d39d] backdrop-blur-lg min-w-[350px] p-4 rounded-md">
             <p className="text-center text-4xl md:pb-6 font-black">Plan Standard</p>
             <List>
@@ -70,22 +82,6 @@ export default function Info() {
                       letterSpacing: 0,
                     }}
                     primary="Clases en vivo"
-                  />
-                </ListItemButton>
-              </ListItem>
-              <ListItem disablePadding>
-                <ListItemButton>
-                  <ListItemIcon>
-                    <SportsEsportsTwoToneIcon sx={{ fontSize: 30 }} />
-                  </ListItemIcon>
-                  <ListItemText
-                    sx={{ my: 0 }}
-                    primaryTypographyProps={{
-                      fontSize: 20,
-                      fontWeight: 'bold',
-                      letterSpacing: 0,
-                    }}
-                    primary="Acceso al Juego"
                   />
                 </ListItemButton>
               </ListItem>
@@ -133,7 +129,7 @@ export default function Info() {
                       fontWeight: 'bold',
                       letterSpacing: 0,
                     }}
-                    primary="3 Horas semanales"
+                    primary="3 Clases semanales"
                   />
                 </ListItemButton>
               </ListItem>
@@ -157,7 +153,7 @@ export default function Info() {
             <Divider />
             <div className="my-4 px-4 flex items-end justify-between">
               <p>
-                $<span className="text-4xl font-black">60/</span>mes
+                $<span className="text-4xl font-black">49/</span>mes
               </p>
               <p>Todo Incluído</p>
             </div>
@@ -181,22 +177,6 @@ export default function Info() {
                       letterSpacing: 0,
                     }}
                     primary="Clases en vivo"
-                  />
-                </ListItemButton>
-              </ListItem>
-              <ListItem disablePadding>
-                <ListItemButton>
-                  <ListItemIcon>
-                    <SportsEsportsTwoToneIcon sx={{ fontSize: 30 }} />
-                  </ListItemIcon>
-                  <ListItemText
-                    sx={{ my: 0 }}
-                    primaryTypographyProps={{
-                      fontSize: 20,
-                      fontWeight: 'bold',
-                      letterSpacing: 0,
-                    }}
-                    primary="Acceso al Juego"
                   />
                 </ListItemButton>
               </ListItem>
@@ -245,7 +225,7 @@ export default function Info() {
                       letterSpacing: 0,
                       // color: '#0074d4',
                     }}
-                    primary="6 Horas semanales"
+                    primary="6 Clases semanales"
                   />
                 </ListItemButton>
               </ListItem>
@@ -270,13 +250,19 @@ export default function Info() {
             <Divider />
             <div className="my-4 px-4 flex items-end justify-between">
               <p>
-                $<span className="text-4xl font-black">99/</span>mes
+                $<span className="text-4xl font-black">120/</span>mes
               </p>
               <p>Todo Incluído</p>
             </div>
             <div className="flex justify-center">
               <BuyButton />
             </div>
+          </div>
+          <div ref={card2} className="bg-[#f9f3d39d] backdrop-blur-lg min-w-[350px] max-w-[600px] p-4 rounded-md">
+            <p className="text-xl pb-1 md:pb-2 font-black text-orange-700">Prueba Gratuita</p>
+            Si te gustaría probar el programa antes de tomar una desición, tienes la posibilidad de empezar con un
+            periodo de prueba GRATUITO, el cual te permite disfrutar de todos los beneficios de la academia sin
+            compromiso.
           </div>
         </div>
       </div>

@@ -5,7 +5,6 @@ export default class MyDocument extends Document {
     return (
       <Html lang="en">
         <Head>
-          <title> LET Students | Official Students Platform </title>
           <link rel="icon" href="./Icon3.png" className='object-contain w-10' />
           <script
             type="text/javascript"
@@ -20,7 +19,7 @@ export default class MyDocument extends Document {
             }}
           />
           <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3796228577354213"
-     crossorigin="anonymous"/>
+     crossOrigin="anonymous"/>
         </Head>
         <body>
           <Main />

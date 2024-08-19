@@ -52,10 +52,10 @@ export default function AccordionUsage() {
           aria-controls="panel2-content"
           id="panel2-header"
         >
-          <p className='text-white text-2xl md:text-3xl font-extrabold'>¿Cuantas horas al día estudian?</p>
+          <p className='text-white text-2xl md:text-3xl font-extrabold'>¿Cual es la duración de las clases?</p>
         </AccordionSummary>
         <AccordionDetails>
-        <p className='text-white/50'>Las clases regulares tienen una duración de 1 Hora al día, sin embargo el Plan intensivo duplica las horas de estudio y en este caso el estudiante hará 2 horas diarias.</p>
+        <p className='text-white/50'>Cada clase tiene una duración de 45 Minutos en el Plan Standard y 90 Minutos en el Plan Intensivo</p>
         </AccordionDetails>
       </Accordion>
       <Accordion  sx={{ backgroundColor: '#173330'}}>

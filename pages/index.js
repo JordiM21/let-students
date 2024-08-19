@@ -35,6 +35,7 @@ import Icon from '@/public/Icon.png'
 import { Divider } from '@mui/material'
 import AccordionUsage from '@/components/Accordion'
 import Link from 'next/link'
+import { FaWhatsapp } from 'react-icons/fa'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -218,6 +219,15 @@ export default function Home() {
           >
             <NextImage src={Icon} className="object-contain  w-[40px] h-[40px]" />
           </div>
+          <a
+            href="https://wa.me/+393792913474?text=Hola!%20Acabo%20de%20ver%20la%20página%20y%20me%20gustaría%20obtener%20más%20información%20por%20favor"
+            className="bg-red-200"
+            target="_blank"
+          >
+            <div className="absolute top-3 right-4 hover:scale-110 active:scale-95 cursor-pointer hover:shadow-[#255d61] shadow-sm z-50 hover:shadow-md bg-[#25D366] rounded-full p-[5px]">
+              <FaWhatsapp className="w-[40px] h-[40px] fill-white p-1" />
+            </div>
+          </a>
           <div className="w-full absolute top-20 md:top-10 z-20" ref={textRef}>
             <h1 className="text-6xl md:text-8xl shadow-black drop-shadow-lg my-4 text-center text-white font-black">
               English for <br /> Children
@@ -247,52 +257,51 @@ export default function Home() {
             priority
             ref={imageRef}
           />
-          <div className='relative'>
-
-          <div className="logos">
-            <div className="logos-slide">
-              <NextImage src={argentina} className="w-10 h-10 object-contain mx-8" />
-              <NextImage src={spain} className="w-10 h-10 object-contain mx-8" />
-              <NextImage src={colombia} className="w-10 h-10 object-contain mx-8" />
-              <NextImage src={chile} className="w-10 h-10 object-contain mx-8" />
-              <NextImage src={italy} className="w-10 h-10 object-contain mx-8" />
-              <NextImage src={ecuador} className="w-10 h-10 object-contain mx-8" />
-              <NextImage src={bolivia} className="w-10 h-10 object-contain mx-8" />
-              <NextImage src={mexico} className="w-10 h-10 object-contain mx-8" />
-              <NextImage src={venezuela} className="w-10 h-10 object-contain mx-8" />
-              <NextImage src={brazil} className="w-10 h-10 object-contain mx-8" />
-              <NextImage src={argentina} className="w-10 h-10 object-contain mx-8" />
-              <NextImage src={spain} className="w-10 h-10 object-contain mx-8" />
-              <NextImage src={colombia} className="w-10 h-10 object-contain mx-8" />
-              <NextImage src={chile} className="w-10 h-10 object-contain mx-8" />
-              <NextImage src={italy} className="w-10 h-10 object-contain mx-8" />
-              <NextImage src={ecuador} className="w-10 h-10 object-contain mx-8" />
-              <NextImage src={bolivia} className="w-10 h-10 object-contain mx-8" />
-              <NextImage src={mexico} className="w-10 h-10 object-contain mx-8" />
-              <NextImage src={venezuela} className="w-10 h-10 object-contain mx-8" />
-              <NextImage src={brazil} className="w-10 h-10 object-contain mx-8" />
-              <NextImage src={argentina} className="w-10 h-10 object-contain mx-8" />
-              <NextImage src={spain} className="w-10 h-10 object-contain mx-8" />
-              <NextImage src={colombia} className="w-10 h-10 object-contain mx-8" />
-              <NextImage src={chile} className="w-10 h-10 object-contain mx-8" />
-              <NextImage src={italy} className="w-10 h-10 object-contain mx-8" />
-              <NextImage src={ecuador} className="w-10 h-10 object-contain mx-8" />
-              <NextImage src={bolivia} className="w-10 h-10 object-contain mx-8" />
-              <NextImage src={mexico} className="w-10 h-10 object-contain mx-8" />
-              <NextImage src={venezuela} className="w-10 h-10 object-contain mx-8" />
-              <NextImage src={brazil} className="w-10 h-10 object-contain mx-8" />
-              <NextImage src={argentina} className="w-10 h-10 object-contain mx-8" />
-              <NextImage src={spain} className="w-10 h-10 object-contain mx-8" />
-              <NextImage src={colombia} className="w-10 h-10 object-contain mx-8" />
-              <NextImage src={chile} className="w-10 h-10 object-contain mx-8" />
-              <NextImage src={italy} className="w-10 h-10 object-contain mx-8" />
-              <NextImage src={ecuador} className="w-10 h-10 object-contain mx-8" />
-              <NextImage src={bolivia} className="w-10 h-10 object-contain mx-8" />
-              <NextImage src={mexico} className="w-10 h-10 object-contain mx-8" />
-              <NextImage src={venezuela} className="w-10 h-10 object-contain mx-8" />
-              <NextImage src={brazil} className="w-10 h-10 object-contain mx-8" />
+          <div className="relative">
+            <div className="logos">
+              <div className="logos-slide">
+                <NextImage src={argentina} className="w-10 h-10 object-contain mx-8" />
+                <NextImage src={spain} className="w-10 h-10 object-contain mx-8" />
+                <NextImage src={colombia} className="w-10 h-10 object-contain mx-8" />
+                <NextImage src={chile} className="w-10 h-10 object-contain mx-8" />
+                <NextImage src={italy} className="w-10 h-10 object-contain mx-8" />
+                <NextImage src={ecuador} className="w-10 h-10 object-contain mx-8" />
+                <NextImage src={bolivia} className="w-10 h-10 object-contain mx-8" />
+                <NextImage src={mexico} className="w-10 h-10 object-contain mx-8" />
+                <NextImage src={venezuela} className="w-10 h-10 object-contain mx-8" />
+                <NextImage src={brazil} className="w-10 h-10 object-contain mx-8" />
+                <NextImage src={argentina} className="w-10 h-10 object-contain mx-8" />
+                <NextImage src={spain} className="w-10 h-10 object-contain mx-8" />
+                <NextImage src={colombia} className="w-10 h-10 object-contain mx-8" />
+                <NextImage src={chile} className="w-10 h-10 object-contain mx-8" />
+                <NextImage src={italy} className="w-10 h-10 object-contain mx-8" />
+                <NextImage src={ecuador} className="w-10 h-10 object-contain mx-8" />
+                <NextImage src={bolivia} className="w-10 h-10 object-contain mx-8" />
+                <NextImage src={mexico} className="w-10 h-10 object-contain mx-8" />
+                <NextImage src={venezuela} className="w-10 h-10 object-contain mx-8" />
+                <NextImage src={brazil} className="w-10 h-10 object-contain mx-8" />
+                <NextImage src={argentina} className="w-10 h-10 object-contain mx-8" />
+                <NextImage src={spain} className="w-10 h-10 object-contain mx-8" />
+                <NextImage src={colombia} className="w-10 h-10 object-contain mx-8" />
+                <NextImage src={chile} className="w-10 h-10 object-contain mx-8" />
+                <NextImage src={italy} className="w-10 h-10 object-contain mx-8" />
+                <NextImage src={ecuador} className="w-10 h-10 object-contain mx-8" />
+                <NextImage src={bolivia} className="w-10 h-10 object-contain mx-8" />
+                <NextImage src={mexico} className="w-10 h-10 object-contain mx-8" />
+                <NextImage src={venezuela} className="w-10 h-10 object-contain mx-8" />
+                <NextImage src={brazil} className="w-10 h-10 object-contain mx-8" />
+                <NextImage src={argentina} className="w-10 h-10 object-contain mx-8" />
+                <NextImage src={spain} className="w-10 h-10 object-contain mx-8" />
+                <NextImage src={colombia} className="w-10 h-10 object-contain mx-8" />
+                <NextImage src={chile} className="w-10 h-10 object-contain mx-8" />
+                <NextImage src={italy} className="w-10 h-10 object-contain mx-8" />
+                <NextImage src={ecuador} className="w-10 h-10 object-contain mx-8" />
+                <NextImage src={bolivia} className="w-10 h-10 object-contain mx-8" />
+                <NextImage src={mexico} className="w-10 h-10 object-contain mx-8" />
+                <NextImage src={venezuela} className="w-10 h-10 object-contain mx-8" />
+                <NextImage src={brazil} className="w-10 h-10 object-contain mx-8" />
+              </div>
             </div>
-          </div>
           </div>
           <div className="py-10 md:py-20 bg-[#173330] flex flex-wrap">
             <div className="lg:w-[40%] my-3 max-md:mx-10 md:ml-16">
@@ -356,7 +365,9 @@ export default function Home() {
               <div className="lg:max-w-[35%] xl:max-w-[45%]">
                 <h3 className="text-4xl md:text-6xl font-black">Plataforma Interáctiva.</h3>
                 <p className="py-2 opacity-80 text-start">
-                  Todos los estudiantes al entrar al programa tendrán su carnet estudiantil y acceso a la plataforma con su matrícula. Donde podrá resolver actividades, ver su progreso y acceder a los recursos de aprendizaje.
+                  Todos los estudiantes al entrar al programa tendrán su carnet estudiantil y acceso a la plataforma con
+                  su matrícula. Donde podrá resolver actividades, ver su progreso y acceder a los recursos de
+                  aprendizaje.
                 </p>
               </div>
               <div className="max-w-lg:w-full">
@@ -368,9 +379,11 @@ export default function Home() {
               className="w-full flex flex-row-reverse items-start flex-wrap justify-between h-[500px] md:h-[300px] rounded-md relative bg-[#ffffff] overflow-hidden px-12 pt-2"
             >
               <div className="lg:max-w-[35%] xl:max-w-[45%]">
-              <h3 className="text-4xl md:text-6xl font-black">Aprendizaje Divertido</h3>
+                <h3 className="text-4xl md:text-6xl font-black">Aprendizaje Divertido</h3>
                 <p className="py-2 opacity-80 text-start">
-                  El estudiante aprenderá inglés con sus peliculas favoritas y temas que realmente le interesan, de esta manera le mantendremos concentrado y sin aburrirse como en las clases tradicionales. Pueden elegir de más de 1.000 películas animadas de Disney, Pixar y más!
+                  El estudiante aprenderá inglés con sus peliculas favoritas y temas que realmente le interesan, de esta
+                  manera le mantendremos concentrado y sin aburrirse como en las clases tradicionales. Pueden elegir de
+                  más de 1.000 películas animadas de Disney, Pixar y más!
                 </p>
               </div>
               <div className="max-w-lg:w-full">
@@ -382,9 +395,11 @@ export default function Home() {
               className="w-full flex items-start flex-wrap justify-between h-[500px] lg:h-[300px] rounded-md relative bg-[#ffffff] overflow-hidden px-12 pt-2"
             >
               <div className="lg:max-w-[35%] xl:max-w-[45%]">
-              <h3 className="text-4xl md:text-6xl font-black">Clases Online </h3>
+                <h3 className="text-4xl md:text-6xl font-black">Clases Online </h3>
                 <p className="py-2 opacity-80 text-start">
-                  También tendrá clases en vivo donde participará en todo momento en las actividades del tutor para mantener un óptimo desempeño. Tableros virtuales y videos muy cortos ayudan a desarrollar sus habilidades lingüisticas.
+                  También tendrá clases en vivo donde participará en todo momento en las actividades del tutor para
+                  mantener un óptimo desempeño. Tableros virtuales y videos muy cortos ayudan a desarrollar sus
+                  habilidades lingüisticas.
                 </p>
               </div>
               <div className="max-w-lg:w-full">
@@ -396,9 +411,10 @@ export default function Home() {
               className="w-full flex-row-reverse flex items-start flex-wrap justify-between h-[500px] lg:h-[300px] rounded-md relative bg-[#ffffff] overflow-hidden px-12 pt-2"
             >
               <div className="lg:max-w-[35%] xl:max-w-[45%]">
-              <h3 className="text-4xl md:text-6xl font-black">Test de Habilidad</h3>
+                <h3 className="text-4xl md:text-6xl font-black">Test de Habilidad</h3>
                 <p className="py-2 opacity-80 text-start">
-                  Validamos los conocimiento de los pequeños con tests divertidos y entretenidos (nada que ver con un exámen) son mucho más visuales y didácticos para que no se sienta presionado ni intimidado.
+                  Validamos los conocimiento de los pequeños con tests divertidos y entretenidos (nada que ver con un
+                  exámen) son mucho más visuales y didácticos para que no se sienta presionado ni intimidado.
                 </p>
               </div>
               <div className="max-w-lg:w-full">
@@ -416,19 +432,22 @@ export default function Home() {
               <div className="w-[330px] lg:w-[370px] ">
                 <NextImage src={niños} className=" h-auto" />
                 <p className="text-white font-black opacity-80 text-center py-4">
-                  Es un método orientado a los más pequeños de la casa y funciona perfectamente en este rango de edades, los niños disfrutan un montón el dinamismo de las clases y la metodología.
+                  Es un método orientado a los más pequeños de la casa y funciona perfectamente en este rango de edades,
+                  los niños disfrutan un montón el dinamismo de las clases y la metodología.
                 </p>
               </div>
               <div className="w-[330px] lg:w-[370px] ">
                 <NextImage src={estudiantes} className=" h-auto" />
                 <p className="text-white font-black opacity-80 text-center py-4">
-                  Se complementa muy bien con el colegio y las actividades escolares ya que reciben ayuda adicional para tareas de inglés en el colegio y preparación para exámenes.
+                  Se complementa muy bien con el colegio y las actividades escolares ya que reciben ayuda adicional para
+                  tareas de inglés en el colegio y preparación para exámenes.
                 </p>
               </div>
               <div className="w-[330px] lg:w-[370px] ">
                 <NextImage src={padres} className=" h-auto" />
                 <p className="text-white font-black opacity-80 text-center py-4">
-                  Los papitos son parte activa del aprendizaje de su hijo y reciben reportes mensuales con su progreso, de esta manera pueden estar al tanto en todo momento del avance de su pequeño
+                  Los papitos son parte activa del aprendizaje de su hijo y reciben reportes mensuales con su progreso,
+                  de esta manera pueden estar al tanto en todo momento del avance de su pequeño
                 </p>
               </div>
             </div>

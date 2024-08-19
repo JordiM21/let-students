@@ -6,6 +6,7 @@ import ProtectedRoutes from '@/components/ProtectedRoutes'
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-toastify';
 import NextNProgress from 'nextjs-progressbar';
+import Head from 'next/head'
 
 const allowedUrl = ["/Login", "/", "/Info"]
 
@@ -13,6 +14,8 @@ export default function App({ Component, pageProps }) {
   const router = useRouter()
   return (
     <AuthContextProvider>
+      <Head>          <title> LET Students | Official Students Platform </title>
+      </Head>
       {/* <NextNProgress /> */}
       <ToastContainer />
       {allowedUrl.includes(router.pathname) ? (
