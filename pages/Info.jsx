@@ -19,6 +19,7 @@ import SchoolTwoToneIcon from '@mui/icons-material/SchoolTwoTone'
 import BuyButton2 from '@/components/BuyButton2'
 import gsap from 'gsap'
 import { FaWhatsapp } from 'react-icons/fa'
+import { VerifiedUserTwoTone, WatchOffTwoTone, WatchTwoTone } from '@mui/icons-material'
 
 export default function Info() {
   const router = useRouter()
@@ -72,6 +73,23 @@ export default function Info() {
               <ListItem disablePadding>
                 <ListItemButton>
                   <ListItemIcon>
+                    <VerifiedUserTwoTone sx={{ fontSize: 30, fill: '#ba7001' }} />
+                  </ListItemIcon>
+                  <ListItemText
+                    sx={{ my: 0 }}
+                    primaryTypographyProps={{
+                      fontSize: 20,
+                      fontWeight: 'bold',
+                      letterSpacing: 0,
+                      color: '#ba7001',
+                    }}
+                    primary="Primer Mes Gratis"
+                  />
+                </ListItemButton>
+              </ListItem>
+              <ListItem disablePadding>
+                <ListItemButton>
+                  <ListItemIcon>
                     <VoiceChatTwoToneIcon sx={{ fontSize: 30 }} />
                   </ListItemIcon>
                   <ListItemText
@@ -85,6 +103,7 @@ export default function Info() {
                   />
                 </ListItemButton>
               </ListItem>
+
               <ListItem disablePadding>
                 <ListItemButton>
                   <ListItemIcon>
@@ -134,9 +153,9 @@ export default function Info() {
                 </ListItemButton>
               </ListItem>
               <ListItem disablePadding>
-                <ListItemButton disabled>
+                <ListItemButton>
                   <ListItemIcon>
-                    <SchoolTwoToneIcon sx={{ fontSize: 30 }} />
+                    <WatchTwoTone sx={{ fontSize: 30 }} />
                   </ListItemIcon>
                   <ListItemText
                     sx={{ my: 0 }}
@@ -145,7 +164,7 @@ export default function Info() {
                       fontWeight: 'bold',
                       letterSpacing: 0,
                     }}
-                    primary="Apoyo Académico"
+                    primary="Clases de 45 Min"
                   />
                 </ListItemButton>
               </ListItem>
@@ -232,6 +251,22 @@ export default function Info() {
               <ListItem disablePadding>
                 <ListItemButton>
                   <ListItemIcon>
+                    <WatchTwoTone sx={{ fontSize: 30, fill: '#0074d4' }} />
+                  </ListItemIcon>
+                  <ListItemText
+                    sx={{ my: 0 }}
+                    primaryTypographyProps={{
+                      fontSize: 20,
+                      fontWeight: 'bold',
+                      letterSpacing: 0,
+                    }}
+                    primary="Clases de 90 Min"
+                  />
+                </ListItemButton>
+              </ListItem>
+              <ListItem disablePadding>
+                <ListItemButton>
+                  <ListItemIcon>
                     <SchoolTwoToneIcon sx={{ fontSize: 30, fill: '#0074d4' }} />
                   </ListItemIcon>
                   <ListItemText
@@ -258,12 +293,12 @@ export default function Info() {
               <BuyButton />
             </div>
           </div>
-          <div ref={card2} className="bg-[#f9f3d39d] backdrop-blur-lg min-w-[350px] max-w-[600px] p-4 rounded-md">
+          {/* <div ref={card2} className="bg-[#f9f3d39d] backdrop-blur-lg min-w-[350px] max-w-[600px] p-4 rounded-md">
             <p className="text-xl pb-1 md:pb-2 font-black text-orange-700">Prueba Gratuita</p>
             Si te gustaría probar el programa antes de tomar una desición, tienes la posibilidad de empezar con un
             periodo de prueba GRATUITO, el cual te permite disfrutar de todos los beneficios de la academia sin
             compromiso.
-          </div>
+          </div> */}
         </div>
       </div>
     </>
