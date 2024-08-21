@@ -153,7 +153,7 @@ export default function Info() {
             <Divider />
             <div className="my-4 px-4 flex items-end justify-between">
               <p>
-                $<span className="text-4xl font-black">49/</span>mes
+                $<span className="text-4xl font-black">45/</span>mes
               </p>
               <p>Todo Incluído</p>
             </div>
