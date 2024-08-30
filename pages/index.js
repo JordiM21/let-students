@@ -90,10 +90,11 @@ export default function Home() {
       gsap.fromTo(textRef.current, { opacity: 0, y: 0 }, { opacity: 1, y: 10, duration: 1, ease: 'power2.out' })
       gsap.fromTo(
         sticker1Ref.current,
-        { opacity: 0, x: 0 },
+        { opacity: 0, x: 0, y:0 },
         {
           opacity: 1,
-          x: -30,
+          x: 40,
+          y: -30,
           ease: 'power1.out',
           duration: 0.5,
           scrollTrigger: {
@@ -109,8 +110,8 @@ export default function Home() {
         { opacity: 0, x: 0, y: 0 },
         {
           opacity: 1,
-          x: -20,
-          y: -10,
+          x: 20,
+          y: 50,
           ease: 'power1.out',
           duration: 0.5,
           opacity: 1,
@@ -127,7 +128,7 @@ export default function Home() {
         { opacity: 0, x: 0 },
         {
           opacity: 1,
-          x: 50,
+          x: -40,
           ease: 'power1.out',
           duration: 0.5,
           scrollTrigger: {
@@ -143,8 +144,8 @@ export default function Home() {
         { opacity: 0, x: 0, y: 0 },
         {
           opacity: 1,
-          x: -10,
-          y: -50,
+          x: -40,
+          y: 100,
           ease: 'power1.out',
           duration: 0.5,
           scrollTrigger: {
@@ -214,6 +215,12 @@ export default function Home() {
       {dataLoaded ? (
         <div className="relative bg-[#2D878D] min-h-screen overflow-hidden">
           <div
+            onClick={() => router.replace('/info')}
+            className="absolute top-4 left-1/2 transform -translate-x-1/2 hover:scale-110 active:scale-95 cursor-pointer hover:shadow-[#255d61] shadow-sm hover:shadow-md bg-[#0f596fdf] rounded-full py-[8px] px-[20px] z-30"
+          >
+            <p className="font-bold text-lg text-white">Primer Mes Gratis</p>
+          </div>
+          <div
             onClick={() => router.replace('/')}
             className="absolute top-3 left-4 hover:scale-110 active:scale-95 cursor-pointer hover:shadow-[#255d61] shadow-sm hover:shadow-md bg-[#F9F3D3] rounded-full p-[5px] z-30"
           >
@@ -239,15 +246,15 @@ export default function Home() {
             <div className="flex w-11/12 md:w-1/2 mx-auto justify-evenly my-6">
               <div
                 onClick={() => router.push('/Login')}
-                className="p-3 md:px-6 md:py-4 rounded-md bg-white shadow-black/30 shadow-lg cursor-pointer hover:scale-105 ease-in 1s active:scale-95"
+                className="p-3 px-5 md:px-6 md:py-4 rounded-full bg-white shadow-black/30 shadow-lg cursor-pointer hover:scale-105 ease-in 1s active:scale-95"
               >
                 <a className="font-black text-md md:text-lg text-[#173330]">Soy Estudiante</a>
               </div>
               <div
                 onClick={() => router.push('/Info')}
-                className="p-3 md:px-6 md:py-4 rounded-md bg-[#F17024] shadow-black/30 shadow-lg cursor-pointer  hover:scale-105 ease-in 1s active:scale-95"
+                className="p-3 px-5 md:px-6 md:py-4 rounded-full bg-[#F17024] shadow-black/30 shadow-lg cursor-pointer  hover:scale-105 ease-in 1s active:scale-95"
               >
-                <a className="font-black text-md md:text-lg text-white">Comienza Ahora</a>
+                <a className="font-black text-md md:text-lg text-white">Planes Disponibles</a>
               </div>
             </div>
           </div>
@@ -313,7 +320,7 @@ export default function Home() {
               </p>
               <div
                 onClick={() => router.replace('/Info')}
-                className="px-4 md:px-6 py-4 rounded-md bg-[#F9F1D2] text-[#173330] shadow-black/30 shadow-lg w-[250px] font-black text-md md:text-lg cursor-pointer  hover:scale-105 ease-in 1s active:scale-95"
+                className="px-4 md:px-6 py-4 rounded-full bg-[#F9F1D2] text-[#173330] shadow-black/30 shadow-lg w-[250px] font-black text-md md:text-lg cursor-pointer  hover:scale-105 ease-in 1s active:scale-95"
               >
                 Ver Planes Disponibles
               </div>
@@ -327,30 +334,44 @@ export default function Home() {
               title="YouTube video player"
             ></iframe>
           </div>
-          <div className="bg-white relative py-60">
-            <NextImage
-              ref={sticker1Ref}
-              src={sticker1}
-              className="h-[180px] w-[180px] md:h-[250px] md:w-[250px] rounded-full absolute top-10 md:top-10 right-2 rotate-6"
-            />
-            <NextImage
-              src={sticker2}
-              ref={sticker2Ref}
-              className="h-[180px] w-[180px] md:h-[250px] md:w-[250px] rounded-full absolute bottom-2 right-2 rotate-12"
-            />
-            <NextImage
-              src={sticker3}
-              ref={sticker3Ref}
-              className="h-[180px] w-[180px] md:h-[250px] md:w-[250px] rounded-full absolute top-2 left-2 -rotate-12"
-            />
-            <NextImage
-              src={sticker4}
-              ref={sticker4Ref}
-              className="h-[160px] w-[160px] md:h-[250px] md:w-[250px] rounded-full absolute bottom-2 left-6 md:left-16 -rotate-6"
-            />
-            <h2 className="text-center font-black text-6xl md:text-8xl z-50">
-              Tu Hijo disfrutará <br /> Aprender Inglés
+          <div className="bg-white relative py-20">
+            <h2 className="text-center font-black text-5xl md:text-8xl z-50">
+              Nuestros <br /> Pequeños Bilingües
             </h2>
+            <p className='text-center py-6 opacity-60 px-20 '>
+              +120 estudiantes en Español - Italiano
+            </p>
+            <div className="flex flex-wrap gap-4 justify-center my-10">
+              <iframe
+                className="my-8 rounded-lg w-[400px] h-[225px] mx-auto"
+                src="https://www.youtube.com/embed/lx-8CqkN29I?si=SUL2LY92UCqP_j_h"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                title="YouTube video player"
+              ></iframe>
+              <iframe
+                className="my-8 rounded-lg w-[400px] h-[225px] mx-auto"
+                src="https://www.youtube.com/embed/U9k-LskUYf0?si=eMg2M6NszfNF83zU"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                title="YouTube video player"
+              ></iframe>
+              <iframe
+                className="my-8 rounded-lg w-[400px] h-[225px] mx-auto"
+                src="https://www.youtube.com/embed/rBQS6G-0p1s?si=BxtpL7bYljLkOWcm"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                title="YouTube video player"
+              ></iframe>
+            </div>
+            <div className="w-[320px] mx-auto rounded-full bg-[#F17024] shadow-black/30 shadow-lg cursor-pointer  hover:scale-105 ease-in 1s active:scale-95">
+              <Link href={'https://www.youtube.com/@let_academy'} target="_blank">
+                <p className="font-black text-lg text-center py-4 px-6 text-white">Ir a YouTube para más Clases</p>
+              </Link>
+            </div>
           </div>
           <div className="py-20 px-10 space-y-8">
             <h3 className="text-6xl md:text-8xl shadow-black drop-shadow-lg my-4 text-center text-white font-black">
@@ -413,8 +434,9 @@ export default function Home() {
               <div className="lg:max-w-[35%] xl:max-w-[45%]">
                 <h3 className="text-4xl md:text-6xl font-black">Test de Habilidad</h3>
                 <p className="py-2 opacity-80 text-start">
-                  Validamos los conocimiento de los pequeños con tests divertidos y entretenidos (nada que ver con un
-                  exámen) son mucho más visuales y didácticos para que no se sienta presionado ni intimidado.
+                  Validamos los conocimiento de los estudiantes con evaluaciones divertidas y entretenidas (muy
+                  diferentes a un exámen tradicional) son mucho más visuales y didácticos para fomentar su comprensión y
+                  aprendizaje.
                 </p>
               </div>
               <div className="max-w-lg:w-full">
@@ -422,44 +444,73 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <div className="bg-[#173330]">
+{/* 
+          <div className="bg-[#173330] py-20">
             <h3 className="text-5xl md:text-8xl shadow-black drop-shadow-lg py-12 text-center text-white font-black">
-              ¿Quien hace parte
+              Conoce a tus
               <br />
-              del Programa?
+              Futuros <span className="text-yellow-400">Teachers</span>
             </h3>
-            <div className="flex flex-wrap pb-10 justify-center md:space-x-10 space-y-10 items-baseline w-[95%] mx-auto">
-              <div className="w-[330px] lg:w-[370px] ">
-                <NextImage src={niños} className=" h-auto" />
-                <p className="text-white font-black opacity-80 text-center py-4">
-                  Es un método orientado a los más pequeños de la casa y funciona perfectamente en este rango de edades,
-                  los niños disfrutan un montón el dinamismo de las clases y la metodología.
-                </p>
-              </div>
-              <div className="w-[330px] lg:w-[370px] ">
-                <NextImage src={estudiantes} className=" h-auto" />
-                <p className="text-white font-black opacity-80 text-center py-4">
-                  Se complementa muy bien con el colegio y las actividades escolares ya que reciben ayuda adicional para
-                  tareas de inglés en el colegio y preparación para exámenes.
-                </p>
-              </div>
-              <div className="w-[330px] lg:w-[370px] ">
-                <NextImage src={padres} className=" h-auto" />
-                <p className="text-white font-black opacity-80 text-center py-4">
-                  Los papitos son parte activa del aprendizaje de su hijo y reciben reportes mensuales con su progreso,
-                  de esta manera pueden estar al tanto en todo momento del avance de su pequeño
-                </p>
-              </div>
+            <div className="flex flex-wrap gap-4 justify-center my-10">
+              <iframe
+                className="my-8 rounded-lg w-[400px] h-[225px] mx-auto"
+                src="https://www.youtube.com/embed/veYDnCDTEbU?si=1l7TYJdeg_nnfgSt"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                title="YouTube video player"
+              ></iframe>
+              <iframe
+                className="my-8 rounded-lg w-[400px] h-[225px] mx-auto"
+                src="https://www.youtube.com/embed/veYDnCDTEbU?si=1l7TYJdeg_nnfgSt"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                title="YouTube video player"
+              ></iframe>
+              <iframe
+                className="my-8 rounded-lg w-[400px] h-[225px] mx-auto"
+                src="https://www.youtube.com/embed/veYDnCDTEbU?si=1l7TYJdeg_nnfgSt"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                title="YouTube video player"
+              ></iframe>
             </div>
             <div
               onClick={() => router.push('/Info')}
-              className="px-6 w-[240px] mx-auto py-4 rounded-md bg-[#F17024] shadow-black/30 shadow-lg cursor-pointer  hover:scale-105 ease-in 1s active:scale-95"
+              className="px-6 w-[240px] mx-auto py-4 rounded-full bg-[#F17024] shadow-black/30 shadow-lg cursor-pointer  hover:scale-105 ease-in 1s active:scale-95"
             >
-              <p className="font-black text-lg text-white">Planes y Precios</p>
+              <p className="font-black text-lg text-white">Ver Planes y Precios</p>
             </div>
+          </div> */}
+          <div className="bg-white relative py-60">
+            <NextImage
+              ref={sticker1Ref}
+              src={sticker1}
+              className="h-[180px] w-[180px] md:h-[250px] md:w-[250px] rounded-full absolute top-10 md:top-10 right-2 rotate-6"
+            />
+            <NextImage
+              src={sticker2}
+              ref={sticker2Ref}
+              className="h-[180px] w-[180px] md:h-[250px] md:w-[250px] rounded-full absolute bottom-2 right-2 rotate-12"
+            />
+            <NextImage
+              src={sticker3}
+              ref={sticker3Ref}
+              className="h-[180px] w-[180px] md:h-[250px] md:w-[250px] rounded-full absolute top-2 left-2 -rotate-12"
+            />
+            <NextImage
+              src={sticker4}
+              ref={sticker4Ref}
+              className="h-[160px] w-[160px] md:h-[250px] md:w-[250px] rounded-full absolute bottom-2 left-6 md:left-16 -rotate-6"
+            />
+            <h2 className="text-center font-black text-6xl md:text-8xl z-50">
+              Tu Hijo disfrutará <br /> Aprender Inglés
+            </h2>
           </div>
           <div className="bg-[#173330]">
-            <h3 className="text-6xl md:text-8xl shadow-black drop-shadow-lg pt-44 pb-8 md:pb-20 text-center text-white font-black">
+            <h3 className="text-6xl md:text-8xl shadow-black drop-shadow-lg pt-20 pb-8 md:pb-20 text-center text-white font-black">
               Preguntas
               <br />
               Frecuentes
@@ -475,9 +526,9 @@ export default function Home() {
               </h3>
               <div
                 onClick={() => router.push('/Info')}
-                className="px-6 w-[240px] mx-auto py-4 rounded-md bg-[#F17024] shadow-black/30 shadow-lg cursor-pointer  hover:scale-105 ease-in 1s active:scale-95 mt-12"
+                className="px-6 w-[240px] mx-auto py-4 rounded-full bg-[#F17024] shadow-black/30 shadow-lg cursor-pointer  hover:scale-105 ease-in 1s active:scale-95 mt-12"
               >
-                <a className="font-black text-lg text-white">Solicitar Información</a>
+                <a className="font-black text-lg text-white">Empezar Mes Gratis</a>
               </div>
             </div>
             <div className="absolute bottom-0 w-full left-0 py-8 px-2 md:px-8 flex justify-between flex-wrap">
@@ -514,14 +565,14 @@ export default function Home() {
                     <Link
                       href={'https://www.tiktok.com/@letacademy'}
                       target="_blank"
-                      className="p-2 bg-transparent rounded-full w-[150px] text-center border-4 border-white text-white "
+                      className="p-2 bg-transparent rounded-full w-[150px] text-center hover:bg-blue-700/40 border-4 border-white text-white "
                     >
                       TikTok
                     </Link>
                     <Link
                       href={'https://www.youtube.com/@let_academy'}
                       target="_blank"
-                      className="p-2 bg-transparent rounded-full w-[150px] text-center border-4 border-white text-white "
+                      className="p-2 bg-transparent rounded-full w-[150px] text-center hover:bg-blue-700/40 border-4 border-white text-white "
                     >
                       YouTube
                     </Link>
