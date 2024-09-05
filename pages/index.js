@@ -1,6 +1,9 @@
 import NextImage from 'next/image'
 import { Inter } from 'next/font/google'
 import argentina from '@/public/flags/argentina.png'
+import greenSquare1 from '@/public/GreenSquares/GreeenSquare1.png'
+import greenSquare2 from '@/public/GreenSquares/GreenSquare2.png'
+import greenSquare3 from '@/public/GreenSquares/GreenSquare3.png'
 import bolivia from '@/public/flags/bolivia.png'
 import brazil from '@/public/flags/brazil.png'
 import chile from '@/public/flags/chile.png'
@@ -90,7 +93,7 @@ export default function Home() {
       gsap.fromTo(textRef.current, { opacity: 0, y: 0 }, { opacity: 1, y: 10, duration: 1, ease: 'power2.out' })
       gsap.fromTo(
         sticker1Ref.current,
-        { opacity: 0, x: 0, y:0 },
+        { opacity: 0, x: 0, y: 0 },
         {
           opacity: 1,
           x: 40,
@@ -215,7 +218,7 @@ export default function Home() {
       {dataLoaded ? (
         <div className="relative bg-[#2D878D] min-h-screen overflow-hidden">
           <div
-            onClick={() => router.replace('/info')}
+            onClick={() => router.replace('/Info')}
             className="absolute top-4 left-1/2 transform -translate-x-1/2 hover:scale-110 active:scale-95 cursor-pointer hover:shadow-[#255d61] shadow-sm hover:shadow-md bg-[#0f596fdf] rounded-full py-[8px] px-[20px] z-30"
           >
             <p className="font-bold text-lg text-white">Primer Mes Gratis</p>
@@ -338,9 +341,7 @@ export default function Home() {
             <h2 className="text-center font-black text-5xl md:text-8xl z-50">
               Nuestros <br /> Pequeños Bilingües
             </h2>
-            <p className='text-center py-6 opacity-60 px-20 '>
-              +120 estudiantes en Español - Italiano
-            </p>
+            <p className="text-center py-6 opacity-60 px-20 ">+300 estudiantes en Español - Italiano</p>
             <div className="flex flex-wrap gap-4 justify-center my-10">
               <iframe
                 className="my-8 rounded-lg w-[400px] h-[225px] mx-auto"
@@ -352,7 +353,7 @@ export default function Home() {
               ></iframe>
               <iframe
                 className="my-8 rounded-lg w-[400px] h-[225px] mx-auto"
-                src="https://www.youtube.com/embed/U9k-LskUYf0?si=eMg2M6NszfNF83zU"
+                src="https://www.youtube.com/embed/D9VMpriQXSI?si=87Fq0mjzqa2W1qpu"
                 frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
@@ -360,7 +361,7 @@ export default function Home() {
               ></iframe>
               <iframe
                 className="my-8 rounded-lg w-[400px] h-[225px] mx-auto"
-                src="https://www.youtube.com/embed/rBQS6G-0p1s?si=BxtpL7bYljLkOWcm"
+                src="https://www.youtube.com/embed/MhnOFnW-IJk?si=eWdkKn-BjTwGPMa7"
                 frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
@@ -444,38 +445,37 @@ export default function Home() {
               </div>
             </div>
           </div>
-{/* 
+
           <div className="bg-[#173330] py-20">
-            <h3 className="text-5xl md:text-8xl shadow-black drop-shadow-lg py-12 text-center text-white font-black">
-              Conoce a tus
-              <br />
-              Futuros <span className="text-yellow-400">Teachers</span>
+            <h3 className="text-5xl md:text-8xl shadow-black drop-shadow-lg py-8 text-center text-white font-black">
+              ¿Por que
+              <br />1 Mes <span className="text-yellow-400 font-black">GRATIS?</span>
             </h3>
+            <p className="mx-auto w-[90%] text-center text-white opacity-70">
+              Deseamos que todos los niños tengan la oportunidad de unirse a nuestra Academia sin ningún compromiso.
+              Somos conscientes de los riesgos asociados a confiar en algo desconocido. Por ello, hemos decidido
+              invertir primero en nuestros estudiantes, con el objetivo de establecer la confianza necesaria desde el
+              principio y ofrecerles una educación de calidad desde el primer momento
+            </p>
             <div className="flex flex-wrap gap-4 justify-center my-10">
-              <iframe
-                className="my-8 rounded-lg w-[400px] h-[225px] mx-auto"
-                src="https://www.youtube.com/embed/veYDnCDTEbU?si=1l7TYJdeg_nnfgSt"
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-                title="YouTube video player"
-              ></iframe>
-              <iframe
-                className="my-8 rounded-lg w-[400px] h-[225px] mx-auto"
-                src="https://www.youtube.com/embed/veYDnCDTEbU?si=1l7TYJdeg_nnfgSt"
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-                title="YouTube video player"
-              ></iframe>
-              <iframe
-                className="my-8 rounded-lg w-[400px] h-[225px] mx-auto"
-                src="https://www.youtube.com/embed/veYDnCDTEbU?si=1l7TYJdeg_nnfgSt"
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-                title="YouTube video player"
-              ></iframe>
+              <div className="w-[300px] mx-auto my-8">
+                <NextImage src={greenSquare1} className="my-2 rounded-lg mx-auto" />
+                <p className="text-white opacity-70 text-center">
+                  Aprende Inglés gratuitamente y descubre el potencial de la Academia
+                </p>
+              </div>
+              <div className="w-[300px] mx-auto my-8">
+                <NextImage src={greenSquare2} className="my-2 rounded-lg mx-auto" />
+                <p className="text-white opacity-70 text-center">
+                  Practica los conocimientos adquiridos con otros estudiantes
+                </p>
+              </div>
+              <div className="w-[300px] mx-auto my-8">
+                <NextImage src={greenSquare3} className="my-2 rounded-lg mx-auto" />
+                <p className="text-white opacity-70 text-center">
+                  Evalúa nuestro servicio y toma una decisión según tu criterio
+                </p>
+              </div>
             </div>
             <div
               onClick={() => router.push('/Info')}
@@ -483,7 +483,7 @@ export default function Home() {
             >
               <p className="font-black text-lg text-white">Ver Planes y Precios</p>
             </div>
-          </div> */}
+          </div>
           <div className="bg-white relative py-60">
             <NextImage
               ref={sticker1Ref}
