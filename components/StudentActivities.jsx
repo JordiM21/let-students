@@ -78,7 +78,7 @@ export default function StudentActivities({ tutor, userMatched }) {
                   <p className='text-xl text-white'>{activity.text}</p>
                 </div>
                 <div className='flex justify-between'>
-                  <p className='text-gray-500 bg-gray-900 w-min p-2 rounded-md'>
+                  <p className='text-gray-500 bg-gray-900 w-max p-2 rounded-md'>
                     <span className='text-white flex gap-3'>
                       <FaMagic className='fill-blue-400' />
                       {activity.topic}

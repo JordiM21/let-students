@@ -192,12 +192,9 @@ const wordsGame = ({ userData }) => {
         <BackHeader parentTitle={"Back"} largeTitle={"Words Game"} />
         {
           userData.role == "Admin" && (
-            <div className='max-w-[70%] md:max-w-[50%] lg:max-w-[30%] mx-auto'>
-              <button onClick={() => router.push(`/adminCreate/createWordsGame/`)} class="learn-more">
-                <span class="circle bg-[var(--color2Shadow)]" aria-hidden="true">
-                  <span class="icon arrow"></span>
-                </span>
-                <span class="button-text text-white">Añadir Actividades</span>
+            <div className='max-w-[70%] flex justify-center md:max-w-[50%] lg:max-w-[30%] mx-auto'>
+              <button onClick={() => router.push(`/adminCreate/createWordsGame/`)} className="bg-white px-4 py-2 rounded-full">
+                <span class="text-[var(--color2)]">Añadir Actividades</span>
               </button>
             </div>
           )
