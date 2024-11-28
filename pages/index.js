@@ -221,7 +221,7 @@ export default function Home() {
             onClick={() => router.replace('/Info')}
             className="absolute top-4 left-1/2 transform -translate-x-1/2 hover:scale-110 active:scale-95 cursor-pointer hover:shadow-[#255d61] shadow-sm hover:shadow-md bg-[#0f596fdf] rounded-full py-[8px] px-[20px] z-30"
           >
-            <p className="font-bold text-lg text-white">Primer Mes Gratis</p>
+            <p className="font-bold text-lg text-white">Matrículas Abiertas</p>
           </div>
           <div
             onClick={() => router.replace('/')}
@@ -318,7 +318,7 @@ export default function Home() {
               <h2 className=" text-5xl text-start font-black text-[#F9F1D2]">¿Como le haremos Bilingüe?</h2>
               <p className="text-start font-bold text-[#F9F1D2] my-6 opacity-80">
                 El Progama está diseñado especialmente para que los más pequeños de la casa puedan adquirir un nuevo
-                idioma. Nos especializamos en la enseñanza a estudiantes desde los 6 hasta los 15 años y destacamos por
+                idioma. Nos especializamos en la enseñanza a estudiantes desde los 7 hasta los 15 años y destacamos por
                 ofrecer acompañamiento personalizado y una participación activa de padres y representantes.
               </p>
               <div
@@ -341,7 +341,7 @@ export default function Home() {
             <h2 className="text-center font-black text-5xl md:text-8xl z-50">
               Nuestros <br /> Pequeños Bilingües
             </h2>
-            <p className="text-center py-6 opacity-60 px-20 ">+300 estudiantes en Español - Italiano</p>
+            <p className="text-center py-6 opacity-60 px-20 ">+180 estudiantes en Español - Italiano</p>
             <div className="flex flex-wrap gap-4 justify-center my-10">
               <iframe
                 className="my-8 rounded-lg w-[400px] h-[225px] mx-auto"
@@ -353,7 +353,7 @@ export default function Home() {
               ></iframe>
               <iframe
                 className="my-8 rounded-lg w-[400px] h-[225px] mx-auto"
-                src="https://www.youtube.com/embed/D9VMpriQXSI?si=87Fq0mjzqa2W1qpu"
+                src="https://www.youtube.com/embed/VHsooxnCpQM?si=WN0Q0WHKmOyGMjAk"
                 frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
@@ -361,7 +361,7 @@ export default function Home() {
               ></iframe>
               <iframe
                 className="my-8 rounded-lg w-[400px] h-[225px] mx-auto"
-                src="https://www.youtube.com/embed/MhnOFnW-IJk?si=eWdkKn-BjTwGPMa7"
+                src="https://youtube.com/embed/ykd3PAdTuTQ?si=Kwjc8TOSutyvlxF2"
                 frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
@@ -448,32 +448,32 @@ export default function Home() {
 
           <div className="bg-[#173330] py-20">
             <h3 className="text-5xl md:text-8xl shadow-black drop-shadow-lg py-8 text-center text-white font-black">
-              ¿Por que
-              <br />1 Mes <span className="text-yellow-400 font-black">GRATIS?</span>
+              Metodología
+              <br />
+              de <span className="text-yellow-400 font-black">Aprendizaje</span>
             </h3>
             <p className="mx-auto w-[90%] text-center text-white opacity-70">
-              Deseamos que todos los niños tengan la oportunidad de unirse a nuestra Academia sin ningún compromiso.
-              Somos conscientes de los riesgos asociados a confiar en algo desconocido. Por ello, hemos decidido
-              invertir primero en nuestros estudiantes, con el objetivo de establecer la confianza necesaria desde el
-              principio y ofrecerles una educación de calidad desde el primer momento
+              Queremos dar la oportunidad a todos los estudiantes de tener una educación de calidad donde puedan
+              participar libremente y aprender de sus errores. Es por eso que creamos un ambiente cómodo donde el
+              estudiante pueda desarrollar su vocabulario y exprimir sus ideas en inglés con confianza
             </p>
             <div className="flex flex-wrap gap-4 justify-center my-10">
               <div className="w-[300px] mx-auto my-8">
                 <NextImage src={greenSquare1} className="my-2 rounded-lg mx-auto" />
                 <p className="text-white opacity-70 text-center">
-                  Aprende Inglés gratuitamente y descubre el potencial de la Academia
+                  Tu hijo/a aprende inglés mientras se divierte y descubre su potencial.
                 </p>
               </div>
               <div className="w-[300px] mx-auto my-8">
                 <NextImage src={greenSquare2} className="my-2 rounded-lg mx-auto" />
                 <p className="text-white opacity-70 text-center">
-                  Practica los conocimientos adquiridos con otros estudiantes
+                  Usa el vocabulario aprendido con actividades grupales interáctivas.
                 </p>
               </div>
               <div className="w-[300px] mx-auto my-8">
                 <NextImage src={greenSquare3} className="my-2 rounded-lg mx-auto" />
                 <p className="text-white opacity-70 text-center">
-                  Evalúa nuestro servicio y toma una decisión según tu criterio
+                  El estudiante realiza la prueba final y tu recibes el reporte detallado
                 </p>
               </div>
             </div>
@@ -528,7 +528,7 @@ export default function Home() {
                 onClick={() => router.push('/Info')}
                 className="px-6 w-[240px] mx-auto py-4 rounded-full bg-[#F17024] shadow-black/30 shadow-lg cursor-pointer  hover:scale-105 ease-in 1s active:scale-95 mt-12"
               >
-                <a className="font-black text-lg text-white">Empezar Mes Gratis</a>
+                <a className="font-black text-lg text-white">Aprende Inglés Hoy</a>
               </div>
             </div>
             <div className="absolute bottom-0 w-full left-0 py-8 px-2 md:px-8 flex justify-between flex-wrap">

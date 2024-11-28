@@ -70,7 +70,7 @@ export default function Info() {
           <div ref={card1} className="bg-[#f9f3d39d] backdrop-blur-lg min-w-[350px] p-4 rounded-md">
             <p className="text-center text-4xl md:pb-6 font-black">Plan Standard</p>
             <List>
-              <ListItem disablePadding>
+              {/* <ListItem disablePadding>
                 <ListItemButton>
                   <ListItemIcon>
                     <VerifiedUserTwoTone sx={{ fontSize: 30, fill: '#ba7001' }} />
@@ -86,7 +86,7 @@ export default function Info() {
                     primary="Primer Mes Gratis"
                   />
                 </ListItemButton>
-              </ListItem>
+              </ListItem> */}
               <ListItem disablePadding>
                 <ListItemButton>
                   <ListItemIcon>
