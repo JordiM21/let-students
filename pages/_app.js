@@ -7,6 +7,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-toastify';
 import NextNProgress from 'nextjs-progressbar';
 import Head from 'next/head'
+import { SpeedInsights } from '@vercel/speed-insights/next'
 
 const allowedUrl = ["/Login", "/", "/Info"]
 
