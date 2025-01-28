@@ -13,7 +13,7 @@ const BuyButton = () => {
         script.async = true
         script.onload = () => {
           const stripeBuyButton = document.createElement('stripe-buy-button')
-          stripeBuyButton.setAttribute('buy-button-id', 'buy_btn_1PMUblBjLDLVBoAyfmnII6js')
+          stripeBuyButton.setAttribute('buy-button-id', 'buy_btn_1QmM8LBjLDLVBoAyfggZbU4X')
           stripeBuyButton.setAttribute(
             'publishable-key',
             'pk_live_51NYA5oBjLDLVBoAyxLUTxwdvl60uIrTsKAeruXWEGSTwyPH7O4xASxGWXqfnSMst1B0Ba2n0nNqlyQlceCTdt9Mf00QbSeCsVd'

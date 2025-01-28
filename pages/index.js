@@ -1,6 +1,12 @@
 import NextImage from 'next/image'
 import { Inter } from 'next/font/google'
 import argentina from '@/public/flags/argentina.png'
+import teacher1 from '@/public/teachers/teacher1.jpg'
+import teacher2 from '@/public/teachers/teacher2.jpg'
+import teacher3 from '@/public/teachers/teacher3.png'
+import teacher4 from '@/public/teachers/teacher4.jpg'
+import teacher5 from '@/public/teachers/teacher5.png'
+import teacher6 from '@/public/teachers/teacher6.png'
 import greenSquare1 from '@/public/GreenSquares/GreeenSquare1.png'
 import greenSquare2 from '@/public/GreenSquares/GreenSquare2.png'
 import greenSquare3 from '@/public/GreenSquares/GreenSquare3.png'
@@ -39,6 +45,7 @@ import { Divider } from '@mui/material'
 import AccordionUsage from '@/components/Accordion'
 import Link from 'next/link'
 import { FaWhatsapp } from 'react-icons/fa'
+import { MdArrowBackIos, MdArrowForwardIos } from 'react-icons/md'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -221,7 +228,7 @@ export default function Home() {
             onClick={() => router.replace('/Info')}
             className="absolute top-4 left-1/2 transform -translate-x-1/2 hover:scale-110 active:scale-95 cursor-pointer hover:shadow-[#255d61] shadow-sm hover:shadow-md bg-[#0f596fdf] rounded-full py-[8px] px-[20px] z-30"
           >
-            <p className="font-bold text-lg text-white">Matrículas Abiertas</p>
+            <p className="font-bold text-sm text-white">Matrículas Abiertas</p>
           </div>
           <div
             onClick={() => router.replace('/')}
@@ -341,10 +348,10 @@ export default function Home() {
             <h2 className="text-center font-black text-5xl md:text-8xl z-50">
               Nuestros <br /> Pequeños Bilingües
             </h2>
-            <p className="text-center py-6 opacity-60 px-20 ">+180 estudiantes en Español - Italiano</p>
-            <div className="flex flex-wrap gap-4 justify-center my-10">
+            <p className="text-center py-6 opacity-60 px-20 ">+80 estudiantes en Español - Italiano</p>
+            <div className="flex flex-wrap gap-0 justify-center my-10">
               <iframe
-                className="my-8 rounded-lg w-[400px] h-[225px] mx-auto"
+                className="my-8 rounded-lg w-[400px] h-[225px] mx-auto md:w-[600px] md:h-[337px]"
                 src="https://www.youtube.com/embed/lx-8CqkN29I?si=SUL2LY92UCqP_j_h"
                 frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -352,16 +359,8 @@ export default function Home() {
                 title="YouTube video player"
               ></iframe>
               <iframe
-                className="my-8 rounded-lg w-[400px] h-[225px] mx-auto"
-                src="https://www.youtube.com/embed/VHsooxnCpQM?si=WN0Q0WHKmOyGMjAk"
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-                title="YouTube video player"
-              ></iframe>
-              <iframe
-                className="my-8 rounded-lg w-[400px] h-[225px] mx-auto"
-                src="https://youtube.com/embed/ykd3PAdTuTQ?si=Kwjc8TOSutyvlxF2"
+                className="my-8 rounded-lg w-[400px] h-[225px] mx-auto md:w-[600px] md:h-[337px]"
+                src="https://www.youtube.com/embed/5YdG0L8UoQk?si=MjwVm74XFwAFnE0i"
                 frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
@@ -442,6 +441,101 @@ export default function Home() {
               </div>
               <div className="max-w-lg:w-full">
                 <NextImage src={step3} className="w-[450px] md:w-[550px] h-auto mx-auto" />
+              </div>
+            </div>
+          </div>
+          <div className="bg-white relative py-20">
+            <h2 className="text-center font-black text-5xl md:text-8xl z-50">Nuestros Teachers Certificados</h2>
+            <p className="text-center py-6 opacity-60 px-20">+20 docentes de Inglés - Italiano</p>
+            <div className="relative overflow-hidden">
+              {/* Buttons for navigation */}
+              <button
+                className="absolute top-1/2 -translate-y-1/2 left-4 z-10 bg-gray-200 bg-opacity-70 backdrop-blur-sm text-black rounded-full p-3 hover:bg-gray-300 transition"
+                onClick={() =>
+                  document.getElementById('carousel-container').scrollBy({
+                    left: -250,
+                    behavior: 'smooth',
+                  })
+                }
+              >
+                <MdArrowBackIos size={24} />
+              </button>
+              <button
+                className="absolute top-1/2 -translate-y-1/2 right-4 z-10 bg-gray-200 bg-opacity-70 backdrop-blur-sm text-black rounded-full p-3 hover:bg-gray-300 transition"
+                onClick={() =>
+                  document.getElementById('carousel-container').scrollBy({
+                    left: 250,
+                    behavior: 'smooth',
+                  })
+                }
+              >
+                <MdArrowForwardIos size={24} />
+              </button>
+              {/* Carousel Container */}
+              <div
+                id="carousel-container"
+                className="flex bg-gray-200 py-2 px-10 gap-4 overflow-x-auto scroll-smooth no-scrollbar"
+              >
+                {/* Teacher Cards */}
+                {[
+                  {
+                    img: teacher1,
+                    name: 'Jordi',
+                    sub: 'Online Teacher',
+                    description: 'Profesor certificado de Inglés e Italiano (B1-B2)',
+                  },
+                  {
+                    img: teacher4,
+                    name: 'Ersa',
+                    sub: 'Online Teacher',
+                    description: 'Profesora certificada de Inglés e Italiano (A1-A2)',
+                  },
+                  {
+                    img: teacher3,
+                    name: 'Luca',
+                    sub: 'Italian Teacher',
+                    description: 'Profesor presencial de Italiano en Español (A1+)',
+                  },
+                  {
+                    img: teacher2,
+                    name: 'Anna',
+                    sub: 'Children Teacher',
+                    description: 'Profesora de Inglés certificada (niños)',
+                  },
+                  {
+                    img: teacher5,
+                    name: 'Agostino',
+                    sub: 'Online Teacher',
+                    description: 'Profesor certificado de Inglés e Italiano (B1-B2)',
+                  },
+                  {
+                    img: teacher6,
+                    name: 'Vincenzo',
+                    sub: 'Business Teacher',
+                    description: 'Docente de Inglés para profesionales (C1)',
+                  },
+                ].map((teacher, index) => (
+                  <div key={index} className="bg-green-600 p-0 w-64 min-w-[256px] rounded-md flex-shrink-0">
+                    <div className="teacher-card-bg bg-green-800 rounded-md w-full h-20" />
+                    <div className="teacher-card-body relative">
+                      <div className="absolute -top-14 right-4">
+                        {/* Image Component */}
+                        <NextImage
+                          src={teacher.img}
+                          alt={`Photo of ${teacher.name}`}
+                          width={96}
+                          height={96}
+                          className="my-2 object-cover rounded-full mx-auto w-24 h-24"
+                        />
+                      </div>
+                      <div className="teacher-card-text px-8 py-4">
+                        <p className="text-2xl font-black">{teacher.name}</p>
+                        <p className="text-sm opacity-70">{teacher.sub}</p>
+                        <p className="py-2">{teacher.description}</p>
+                      </div>
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
           </div>

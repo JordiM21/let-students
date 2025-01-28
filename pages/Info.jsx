@@ -70,23 +70,6 @@ export default function Info() {
           <div ref={card1} className="bg-[#f9f3d39d] backdrop-blur-lg min-w-[350px] p-4 rounded-md">
             <p className="text-center text-4xl md:pb-6 font-black">Plan Standard</p>
             <List>
-              {/* <ListItem disablePadding>
-                <ListItemButton>
-                  <ListItemIcon>
-                    <VerifiedUserTwoTone sx={{ fontSize: 30, fill: '#ba7001' }} />
-                  </ListItemIcon>
-                  <ListItemText
-                    sx={{ my: 0 }}
-                    primaryTypographyProps={{
-                      fontSize: 20,
-                      fontWeight: 'bold',
-                      letterSpacing: 0,
-                      color: '#ba7001',
-                    }}
-                    primary="Primer Mes Gratis"
-                  />
-                </ListItemButton>
-              </ListItem> */}
               <ListItem disablePadding>
                 <ListItemButton>
                   <ListItemIcon>
@@ -172,12 +155,12 @@ export default function Info() {
             <Divider />
             <div className="my-4 px-4 flex items-end justify-between">
               <p>
-                $<span className="text-4xl font-black">49/</span>mes
+                Bs<span className="text-4xl font-black">350/</span>mes
               </p>
               <p>Todo Incluído</p>
             </div>
             <div className="flex justify-center">
-              <BuyButton2 />
+              <BuyButton />
             </div>
           </div>
           <div ref={card2} className="bg-[#f9f3d39d] backdrop-blur-lg min-w-[350px] p-4 rounded-md">
@@ -285,12 +268,12 @@ export default function Info() {
             <Divider />
             <div className="my-4 px-4 flex items-end justify-between">
               <p>
-                $<span className="text-4xl font-black">120/</span>mes
+                Bs<span className="text-4xl font-black">600/</span>mes
               </p>
               <p>Todo Incluído</p>
             </div>
             <div className="flex justify-center">
-              <BuyButton />
+              <BuyButton2 />
             </div>
           </div>
           {/* <div ref={card2} className="bg-[#f9f3d39d] backdrop-blur-lg min-w-[350px] max-w-[600px] p-4 rounded-md">
