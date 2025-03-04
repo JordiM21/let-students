@@ -350,17 +350,17 @@ export default function Home() {
             </h2>
             <p className="text-center py-6 opacity-60 px-20 ">+80 estudiantes en Español - Italiano</p>
             <div className="flex flex-wrap gap-0 justify-center my-10">
-              <iframe
+              {/* <iframe
                 className="my-8 rounded-lg w-[400px] h-[225px] mx-auto md:w-[480px] md:h-[270px]"
                 src="https://www.youtube.com/embed/lx-8CqkN29I?si=SUL2LY92UCqP_j_h"
                 frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
                 title="YouTube video player"
-              ></iframe>
+              ></iframe> */}
               <iframe
                 className="my-8 rounded-lg w-[400px] h-[225px] mx-auto md:w-[480px] md:h-[270px]"
-                src="https://www.youtube.com/embed/5YdG0L8UoQk?si=MjwVm74XFwAFnE0i"
+                src="https://www.youtube.com/embed/Cg2dbPF42uI?si=PDC0CXot5RZ9RhSn"
                 frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
