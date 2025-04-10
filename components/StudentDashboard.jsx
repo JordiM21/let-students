@@ -28,6 +28,8 @@ import cover2 from '@/public/miro_covers/2.png'
 import cover3 from '@/public/miro_covers/3.png'
 import cover4 from '@/public/miro_covers/4.png'
 import cover5 from '@/public/miro_covers/5.png'
+import coverFlash from '@/public/miro_covers/cover-flashcards.png'
+
 
 
 
@@ -111,7 +113,7 @@ export default function StudentDashboard({
           <div className="p-2 w-11/12">
             <div className="bg-[var(--bluebg)] h-[7.8rem] lg:h-[12rem] w-full rounded-lg flex flex-col-reverse items-center gap-2 pb-2">
               <button
-              onClick={() => router.reload()}
+                onClick={() => router.reload()}
                 className="bg-[var(--yellowElectric)] flex justify-center items-center gap-2 rounded-md text-[var(--blueSuperDark)] w-11/12 p-2.5 lg:p-3 lg:mt-2 hover:opacity-80 active:scale-95"
               >
                 <p className="text-center text-sm lg:text-2xl whitespace-nowrap">Refresh Info</p>
@@ -126,31 +128,39 @@ export default function StudentDashboard({
           </div>
         </div>
         <div className=" h-36 lg:h-56 bg-[var(--blueDarkbg)] group cursor-pointer relative w-[28%] overflow-hidden rounded-lg">
-        <Link href={"/Activities"}>
-          <div className='absolute bg-[var(--blueSuperDark)] md:text-3xl font-black w-full z-30 text-center p-2 bottom-0 text-white'>Activities</div>
-          <Image src={cover3} className="w-full object-cover absolute top-0 sm:-top-8 group-hover:scale-110" />
-        </Link>
+          <Link href={'/FlashCards'}>
+            <div className="absolute bg-[var(--blueSuperDark)] md:text-3xl font-black w-full z-30 text-center p-2 bottom-0 text-white">
+              Flash Cards
+            </div>
+            <Image src={coverFlash} className="w-full object-cover absolute top-0 sm:-top-8 group-hover:scale-110" />
+          </Link>
         </div>
       </section>
       {/* New Section */}
-      <section className='mx-4 max-w-5xl md:mx-auto my-4 justify-between flex gap-4'>
+      <section className="mx-4 max-w-5xl md:mx-auto my-4 justify-between flex gap-4">
         <div className=" h-36 lg:h-56 bg-[var(--blueDarkbg)] group cursor-pointer relative w-[32%] overflow-hidden rounded-lg">
-        <Link href={tutor.urlMeet} target='_blank'>
-          <div className='absolute bg-[var(--blueSuperDark)] md:text-3xl font-black w-full z-30 text-center p-2 bottom-0 text-white'>Meeting</div>
-          <Image src={cover1} className="w-full object-cover absolute top-0 sm:-top-8 group-hover:scale-110" />
-        </Link>
+          <Link href={tutor.urlMeet} target="_blank">
+            <div className="absolute bg-[var(--blueSuperDark)] md:text-3xl font-black w-full z-30 text-center p-2 bottom-0 text-white">
+              Meeting
+            </div>
+            <Image src={cover1} className="w-full object-cover absolute top-0 sm:-top-8 group-hover:scale-110" />
+          </Link>
         </div>
         <div className=" h-36 lg:h-56 bg-[var(--blueDarkbg)] group cursor-pointer relative w-[32%] overflow-hidden rounded-lg">
-        <Link href={"/Niveles"}>
-          <div className='absolute bg-[var(--blueSuperDark)] md:text-3xl font-black w-full z-30 text-center p-2 bottom-0 text-white'>Lessons</div>
-          <Image src={cover2} className="w-full object-cover absolute top-0 sm:-top-8 group-hover:scale-110" />
-        </Link>
+          <Link href={'/Niveles'}>
+            <div className="absolute bg-[var(--blueSuperDark)] md:text-3xl font-black w-full z-30 text-center p-2 bottom-0 text-white">
+              Lessons
+            </div>
+            <Image src={cover2} className="w-full object-cover absolute top-0 sm:-top-8 group-hover:scale-110" />
+          </Link>
         </div>
         <div className=" h-36 lg:h-56 bg-[var(--blueDarkbg)] group cursor-pointer relative w-[32%] overflow-hidden rounded-lg">
-        <Link href={"/Immersive"}>
-          <div className='absolute bg-[var(--blueSuperDark)] md:text-3xl font-black w-full z-30 text-center p-2 bottom-0 text-white'>Watch</div>
-          <Image src={cover5} className="w-full object-cover absolute top-0 sm:-top-8 group-hover:scale-110" />
-        </Link>
+          <Link href={'/Immersive'}>
+            <div className="absolute bg-[var(--blueSuperDark)] md:text-3xl font-black w-full z-30 text-center p-2 bottom-0 text-white">
+              Watch
+            </div>
+            <Image src={cover5} className="w-full object-cover absolute top-0 sm:-top-8 group-hover:scale-110" />
+          </Link>
         </div>
       </section>
       {/* Call Tutor section  */}
@@ -401,10 +411,9 @@ export default function StudentDashboard({
         </div>
       </section>
       <section>
-        <div className='flex items-center justify-center gap-4'>
-        <h2 className="text-[var(--lightBlue)] text-2xl text-center">You're the Best English Student 
-        </h2>
-        <FcLike size={"30px"} />
+        <div className="flex items-center justify-center gap-4">
+          <h2 className="text-[var(--lightBlue)] text-2xl text-center">You're the Best English Student</h2>
+          <FcLike size={'30px'} />
         </div>
         {/* <div className="flex justify-evenly my-2">
           <ReactPlayer

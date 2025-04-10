@@ -38,6 +38,7 @@ const wordsGamePage = ({ data, userData }) => {
     boxShadow: 24,
     p: 4,
   };
+  
   const router = useRouter();
   const level = router.query.level;
   const filteredData = data.filter(item => item.level === level);
