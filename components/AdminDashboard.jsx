@@ -9,7 +9,7 @@ import { db } from '@/config/firebase'
 import { BsFillCameraVideoFill, BsHeartFill } from 'react-icons/bs'
 import CtaAnimationPage from './CtaAnimationPage'
 import student from '@/public/animations/student.json'
-import Backdrop from '@mui/material/Backdrop';
+import Backdrop from '@mui/material/Backdrop'
 import ExternalApps from './ExternalApps'
 import YourProfile from './YourProfile'
 import { MdFaceRetouchingNatural, MdReplay, MdTaskAlt } from 'react-icons/md'
@@ -19,14 +19,15 @@ import { PiGameControllerFill } from 'react-icons/pi'
 import { GiGamepadCross } from 'react-icons/gi'
 
 export default function AdminDashboard({ allUsers, id, url, wordsGameProgress }) {
-
+  console.log(allUsers)
   const router = useRouter()
-  const [urlMeet, setUrlMeet] = useState("")
-  const [open, setOpen] = React.useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+  const [flashCategory, setFlashCategory] = useState('Animals')
+  const [urlMeet, setUrlMeet] = useState('')
+  const [open, setOpen] = React.useState(false)
+  const handleOpen = () => setOpen(true)
+  const handleClose = () => setOpen(false)
 
-  const isScreenBig = useMediaQuery('(min-width: 550px)');
+  const isScreenBig = useMediaQuery('(min-width: 550px)')
 
   const style = {
     position: 'absolute',
@@ -36,38 +37,38 @@ export default function AdminDashboard({ allUsers, id, url, wordsGameProgress })
     transform: 'translate(-50%, -50%)',
     bgcolor: 'background.paper',
     border: '2px solid #000',
-    borderRadius: "8px",
+    borderRadius: '8px',
     boxShadow: 24,
     p: 4,
-  };
+  }
 
   const changeUrl = async (e) => {
     e.preventDefault()
-    const nameRef = doc(db, "users", id);
+    const nameRef = doc(db, 'users', id)
     await updateDoc(nameRef, {
       urlMeet: urlMeet,
-    }).then(() => toast.success("Link added succesfully!"))
+    }).then(() => toast.success('Link added succesfully!'))
     setTimeout(() => {
       router.reload()
     }, 3000)
   }
 
-  const [isFinished, setIsFinished] = useState(false);
-  const [key, setKey] = useState(0);
+  const [isFinished, setIsFinished] = useState(false)
+  const [key, setKey] = useState(0)
 
   useEffect(() => {
-    setIsFinished(false);
-    setKey(key + 1);
-  }, []);
+    setIsFinished(false)
+    setKey(key + 1)
+  }, [])
 
   const handleReset = () => {
-    setIsFinished(false);
-    setKey(key + 1);
-  };
+    setIsFinished(false)
+    setKey(key + 1)
+  }
 
   const showAlert = () => {
-    setIsFinished(true);
-  };
+    setIsFinished(true)
+  }
 
   const [meetingRoom, setMeetingRoom] = useState(false)
   return (
@@ -258,8 +259,41 @@ export default function AdminDashboard({ allUsers, id, url, wordsGameProgress })
             <div className="h-32 md:h-24 md:w-24 group-hover:scale-[1000%] md:group-hover:scale-[350%] w-32 bg-gradient-to-tl from-yellow-200 to-yellow-600 rounded-full -left-12 md:left-16 md:top-1 absolute"></div>
           </div>
         </div>
+        <div id="FlashCardsManager" className='mx-auto max-w-2xl'>
+          <div className="flex justify-around my-4">
+            <button onClick={() => setFlashCategory('Animals')} className="bg-gray-400 p-2 rounded-md">
+              Animals
+            </button>
+            <p className="text-white">{flashCategory}</p>
+            <button onClick={() => setFlashCategory('Food')} className="bg-gray-400 p-2 rounded-md">
+              Food
+            </button>
+          </div>
 
-        <div className="group bg-gray-100 mx-4 pb-0 relative overflow-hidden my-4 rounded-md md:flex md:justify-between md:pb-0 max-w-5xl md:mx-auto">
+          {allUsers.map((user) => (
+            <div className="bg-white rounded-md my-2 hover:bg-gray-400 cursor-pointer flex justify-between p-2">
+              <div className="w-40">
+                <p>{user.firstName} </p>
+              </div>
+              {flashCategory == 'Animals' && (
+                <div className="flex w-full justify-around ">
+                  <p>{user.FlashProgress.animals.First}</p>
+                  <p>{user.FlashProgress.animals.Second}</p>
+                  <p>{user.FlashProgress.animals.Third}</p>
+                </div>
+              )}
+              {flashCategory == 'Food' && (
+                <div className="flex w-full justify-around ">
+                  <p>{user.FlashProgress.food.First}</p>
+                  <p>{user.FlashProgress.food.Second}</p>
+                  <p>{user.FlashProgress.food.Third}</p>
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+
+        {/* <div className="group bg-gray-100 mx-4 pb-0 relative overflow-hidden my-4 rounded-md md:flex md:justify-between md:pb-0 max-w-5xl md:mx-auto">
           <div className="px-4 md:px-20 md:py-4">
             <div>
               <PiGameControllerFill className="opacity-80 group-hover:scale-125 absolute text-7xl -rotate-12 -right-2 -bottom-4 md:-left-2 md:-top-2 fill-gray-500" />
@@ -285,14 +319,15 @@ export default function AdminDashboard({ allUsers, id, url, wordsGameProgress })
             </span>{' '}
             Modules Complete in Total
           </div>
-        </div>
+        </div> */}
         <div className="mx-4 py-8 justify-center">
           <div className="md:w-[80%] w-full  mx-auto rounded-md bg-black">
             <Image className="object-cover w-full rounded-t-md" src={image3} />
             <div className="p-4">
               <p className="text-white">Working with Write & Improve</p>
               <p className="text-gray-600">
-                When a student is Ready to jump into to writing simple essays. add this activity once a week to check grammar and coherence in their text.
+                When a student is Ready to jump into to writing simple essays. add this activity once a week to check
+                grammar and coherence in their text.
               </p>
               <a href="https://writeandimprove.com/" target="_blank">
                 <button class="bg-white px-8 py-4 rounded-full my-2">
