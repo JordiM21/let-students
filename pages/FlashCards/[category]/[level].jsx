@@ -290,7 +290,10 @@ const FlashLevel = ({ userData, data }) => {
             {options.map((option, index) => (
               <button
                 key={index}
-                onClick={() => handleAnswer(option)}
+                onClick={(e) => {
+                  e.currentTarget.blur() // <-- removes focus right after click
+                  handleAnswer(option)
+                }}
                 disabled={isDisabled}
                 className={`btn-shine
       ${isDisabled ? 'cursor-not-allowed opacity-70 no-hover' : 'hover:bg-[var(--color3)]'}
