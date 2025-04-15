@@ -17,8 +17,9 @@ const FlashLevel = ({ userData, data }) => {
   const correctSound = new Audio('/audio/sfx/right.mp3')
   const wrongSound = new Audio('/audio/sfx/wrong.mp3')
   const newRecord = new Audio('/audio/sfx/new-record.mp3')
-  const loseRecord = new Audio('/audio/sfx/lose-record.mp3')
-    const maracadance = new Audio('/audio/sfx/maracadance.mp3')
+  const loseRecord = new Audio('/audio/sfx/mario-victory.mp3')
+  const ps5 = new Audio('/audio/sfx/ps5.mp3')
+  const ps5Back = new Audio('/audio/sfx/ps5-back.mp3')
 
 
   const router = useRouter()
@@ -137,6 +138,10 @@ const FlashLevel = ({ userData, data }) => {
 
     const isCorrect = selected === currentWord.word
     const remaining = shuffledWords.slice(1)
+    if (typeof window !== 'undefined' && remaining[0]?.img) {
+      const img = new window.Image()
+      img.src = remaining[0].img
+    }
 
     if (isCorrect) {
       correctSound.play()
@@ -154,7 +159,7 @@ const FlashLevel = ({ userData, data }) => {
         setIsDisabled(false)
         setHighlightCorrect(null)
         setIsTransitioning(false)
-      }, 1000)
+      }, 500)
     } else {
       wrongSound.play()
       setFeedback('wrong')
@@ -166,16 +171,34 @@ const FlashLevel = ({ userData, data }) => {
         setFeedback(null)
         setIsDisabled(false)
         setHighlightCorrect(null)
-      }, 3000)
+      }, 1000)
     }
     console.log(shuffledWords)
   }
 
   if (!router.isReady || !userData) return <LoadingScreen />
 
-  const startGame =() => {
+  const startGame = () => {
     setHasStarted(true)
-    maracadance.play()
+    ps5.play()
+  }
+
+  const resetGame = () => {
+    ps5Back.play()
+    const reshuffled = [...rawWords].sort(() => Math.random() - 0.5)
+    setShuffledWords(reshuffled)
+    setTotalWords(reshuffled.length)
+    setCurrentIndex(0)
+    setCurrentWord(null)
+    setSelectedAnswer(null)
+    setFeedback(null)
+    setIsDisabled(false)
+    setIsNewRecord(false)
+    setTime(0)
+    setHighlightCorrect(null)
+    setOptions([])
+    setHasStarted(false)
+    clearInterval(timerInterval)
   }
 
   return (
@@ -192,7 +215,7 @@ const FlashLevel = ({ userData, data }) => {
 
       {/* Pre-Start Screen */}
       {!hasStarted && (
-        <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex flex-col items-center justify-center text-white px-4">
+        <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex flex-col items-center justify-center text-white px-4 transition-opacity duration-500 ease-out opacity-100">
           <div className="bg-[var(--bluebg)] p-8 rounded-lg flex flex-col items-center justify-center">
             <h2 className="text-2xl text-white text-center max-w-md mb-6">
               Aprende palabras nuevas. <br />
@@ -213,8 +236,16 @@ const FlashLevel = ({ userData, data }) => {
           <div className="absolute top-28 md:top-20 left-4 md:left-20 bg-black/40 px-3 py-1 rounded text-white text-lg font-mono">
             📚 {currentIndex} / {totalWords}
           </div>
-          <div className="absolute top-28 md:top-20 right-4 bg-black/40 px-3 py-1 rounded text-white text-lg font-mono">
-            ⏱ {formatTime(time)}
+          <div className="absolute top-28 md:top-20 right-4 bg-black/40 px-3 py-1 rounded text-lg font-mono">
+            <div className="text-white">⏱ {formatTime(time)}</div>
+            <div>
+              <button
+                onClick={resetGame}
+                className="absolute top-12 right-4 bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600 transition"
+              >
+                Reset
+              </button>
+            </div>
           </div>
         </div>
       )}
@@ -223,6 +254,12 @@ const FlashLevel = ({ userData, data }) => {
       {!currentWord ? (
         <div className="text-center mt-20">
           <p className="text-4xl text-white">🎉 ¡Completado! 😎</p>
+          <button
+            onClick={resetGame}
+            className="bg-blue-500 text-white px-4 py-2 my-4 rounded hover:bg-blue-600 transition mt-4"
+          >
+            Try Again
+          </button>
           <>
             {isNewRecord ? (
               <div>
@@ -243,7 +280,12 @@ const FlashLevel = ({ userData, data }) => {
         </div>
       ) : (
         <div className="mx-auto max-w-5xl text-center">
-          <img src={currentWord.img} alt="Guess" className="w-40 sm:w-56 md:w-72 lg:w-96 mx-auto my-8 rounded" />
+          <img
+            key={currentWord.img}
+            src={currentWord.img}
+            alt="Guess"
+            className="w-40 sm:w-56 md:w-72 lg:w-96 mx-auto my-8 rounded"
+          />
           <div className="grid grid-cols-2 gap-4 max-w-md mx-auto">
             {options.map((option, index) => (
               <button
