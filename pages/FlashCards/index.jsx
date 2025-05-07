@@ -17,21 +17,30 @@ const FlashCards = ({ userData, data }) => {
 
   const router = useRouter()
 
-  const categories = [
-    {
-      name: 'Animals',
-      img: 'https://res.cloudinary.com/djllpk0tt/image/upload/v1743694938/Animals_Cover_fwt6qh.png',
-      url: 'animals',
-    },
-    {
-      name: 'Food',
-      img: 'https://res.cloudinary.com/djllpk0tt/image/upload/v1743694943/Food_Cover_utvjpm.png',
-      url: 'food',
-    },
-  ]
+  const categoriesFromData = Object.keys(data[0] || {})
+    .filter((key) => key.toLowerCase() !== 'id') // 👈 Exclude "id" or "Id"
+    .sort()
+    .map((categoryKey) => {
+      const categoryData = data[0][categoryKey]
+
+      // Try to get a meaningful cover image — fallback to one of the level covers or a default
+      const coverImg =
+        categoryData.cover ||
+        categoryData.levels?.easyCover ||
+        categoryData.levels?.mediumCover ||
+        categoryData.levels?.hardCover
+      // Capitalize the first letter for display
+      const displayName = categoryKey.charAt(0).toUpperCase() + categoryKey.slice(1)
+
+      return {
+        name: displayName,
+        url: categoryKey,
+        img: coverImg,
+      }
+    })
 
   return (
-    <div className="pt-20 bg-[var(--bluebg)] h-screen py-8">
+    <div className="pt-20 bg-[var(--bluebg)]  min-h-screen py-8">
       <BackHeader largeTitle={'Games Lobby'} parentTitle={'Back'} />
       <h1 className="text-[var(--lightBlue)] text-4xl text-center">FLASH CARDS</h1>
       <div className="mx-10 sm:mx-auto max-w-2xl">
@@ -42,7 +51,7 @@ const FlashCards = ({ userData, data }) => {
           </p>
         </div>
         <div className="flex justify-around gap-4 flex-wrap">
-          {categories.map((category) => (
+          {categoriesFromData.map((category) => (
             <div className="group relative">
               <Link key={category.name} className="text-[var(--lightBlue)]" href={`/FlashCards/${category.url}`}>
                 <div className="bg-white rounded-t-md overflow-hidden">

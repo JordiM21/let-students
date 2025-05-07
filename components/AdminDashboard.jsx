@@ -249,14 +249,14 @@ export default function AdminDashboard({ allUsers, id, url, wordsGameProgress })
             <div className="h-32 md:h-24 md:w-24 group-hover:scale-[1000%] md:group-hover:scale-[350%] w-32 bg-gradient-to-tl from-green-300 to-green-700 rounded-full -left-12 md:left-16 md:top-1 absolute"></div>
           </div>
           <div
-            onClick={() => router.push('/Activities/')}
+            onClick={() => router.push('/adminCreate/createFlash')}
             className="group active:scale-90 bg-white relative overflow-hidden flex gap-2 justify-center items-center py-6 md:py-2 md:w-56 rounded-md hover:shadow-lg shadow-black cursor-pointer hover:-translate-y-1 md:h-40 md:flex-col mx-4"
           >
             <MdTaskAlt className="z-10 text-5xl md:text-7xl" />
-            <p className="z-10 group-hover:text-white">Asign</p>
-            <p className="z-10 group-hover:text-white ">Tasks</p>
+            <p className="z-10 group-hover:text-white">Create</p>
+            <p className="z-10 group-hover:text-white ">Flash</p>
             <div className="h-20 group-hover:scale-[100%] scale-0 w-20 z-[5] bg-white rounded-full -left-8 md:left-[72px] md:top-2 absolute"></div>
-            <div className="h-32 md:h-24 md:w-24 group-hover:scale-[1000%] md:group-hover:scale-[350%] w-32 bg-gradient-to-tl from-yellow-200 to-yellow-600 rounded-full -left-12 md:left-16 md:top-1 absolute"></div>
+            <div className="h-32 md:h-24 md:w-24 group-hover:scale-[1000%] md:group-hover:scale-[350%] w-32 bg-gradient-to-tl from-orange-200 to-orange-600 rounded-full -left-12 md:left-16 md:top-1 absolute"></div>
           </div>
         </div>
         <div id="FlashCardsManager" className='mx-auto max-w-2xl'>

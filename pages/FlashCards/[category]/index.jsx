@@ -22,26 +22,42 @@ const FlashCategory = ({ userData, data }) => {
     return `${mins}:${secs}`
   }
 
-  const levels = [
-    {
-      name: 'First',
-      img: data[0][category].levels.easyCover,
-      url: 'First',
-      record: userData.FlashProgress[category].First,
-    },
-    {
-      name: 'Second',
-      img: data[0][category].levels.mediumCover,
-      url: 'Second',
-      record: userData.FlashProgress[category].Second,
-    },
-    {
-      name: 'Third',
-      img: data[0][category].levels.hardCover,
-      url: 'Third',
-      record: userData.FlashProgress[category].Third,
-    },
-  ]
+  // const levels = [
+  //   {
+  //     name: 'First',
+  //     img: data[0][category].levels.easyCover,
+  //     url: 'First',
+  //     record: userData.FlashProgress[category].First,
+  //   },
+  //   {
+  //     name: 'Second',
+  //     img: data[0][category].levels.mediumCover,
+  //     url: 'Second',
+  //     record: userData.FlashProgress[category].Second,
+  //   },
+  //   {
+  //     name: 'Third',
+  //     img: data[0][category].levels.hardCover,
+  //     url: 'Third',
+  //     record: userData.FlashProgress[category].Third,
+  //   },
+  // ]
+
+const levelMap = [
+  { key: 'First', coverKey: 'easyCover' },
+  { key: 'Second', coverKey: 'mediumCover' },
+  { key: 'Third', coverKey: 'hardCover' },
+]
+
+const levels = levelMap
+  .filter(({ key }) => userData.FlashProgress?.[category]?.[key]) // Only include levels with existing progress
+  .map(({ key, coverKey }) => ({
+    name: key,
+    img: data[0]?.[category]?.levels?.[coverKey] || '/fallback.jpg',
+    url: key,
+    record: userData.FlashProgress?.[category]?.[key] || 0,
+  }))
+
 
   return (
     <div className="bg-[var(--bluebg)] min-h-screen py-20">
@@ -49,7 +65,8 @@ const FlashCategory = ({ userData, data }) => {
       <div className="mx-10 lg:mx-auto max-w-5xl">
         <div className="w-full h-32 my-4 rounded-lg p-3 bg-[var(--blueDarkbg)]">
           <p className="text-[var(--lightBlue)] opacity-90">
-            Responde lo más rápido posible para superar tu record anterior, inténtalo las veces que quieras hasta que alcances la mayor puntuación
+            Responde lo más rápido posible para superar tu record anterior, inténtalo las veces que quieras hasta que
+            alcances la mayor puntuación
           </p>
         </div>
         <div className="flex justify-around gap-4 flex-wrap">
@@ -66,7 +83,7 @@ const FlashCategory = ({ userData, data }) => {
                 </div>
                 <div className="bg-[var(--blueDarkbg)] flex justify-around items-center w-full p-2 rounded-b-md text-[var(--lightBlue)]">
                   <div>
-                    <p className="text-white text-xl">🏆 {formatTime(records?.[level.name])} </p>
+                    <p className="text-white text-xl">🏆 {formatTime(level.record)}</p>
                   </div>
                   <div>
                     <button className="btn-shine !bg-[var(--color3)] text-xl font-extrabold !py-2 !px-4">Play</button>
