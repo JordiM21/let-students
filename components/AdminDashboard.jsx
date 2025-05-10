@@ -265,7 +265,7 @@ export default function AdminDashboard({ allUsers, id, url, wordsGameProgress })
               Animals
             </button>
             <button onClick={() => setFlashCategory('Verbs')} className="bg-gray-400 p-2 rounded-md">
-              Food
+              Verbs
             </button>
             <button onClick={() => setFlashCategory('Food')} className="bg-gray-400 p-2 rounded-md">
               Food
@@ -286,9 +286,8 @@ export default function AdminDashboard({ allUsers, id, url, wordsGameProgress })
               )}
               {flashCategory == 'Food' && (
                 <div className="flex w-full justify-around ">
-                  <p>{user.FlashProgress.food.First}</p>
-                  <p>{user.FlashProgress.food.Second}</p>
-                  <p>{user.FlashProgress.food.Third}</p>
+                  <p>{user.FlashProgress.verbs.First}</p>
+                  <p>{user.FlashProgress.verbs.Second}</p>
                 </div>
               )}
               {flashCategory == 'Verbs' && (
