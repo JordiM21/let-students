@@ -259,12 +259,14 @@ export default function AdminDashboard({ allUsers, id, url, wordsGameProgress })
             <div className="h-32 md:h-24 md:w-24 group-hover:scale-[1000%] md:group-hover:scale-[350%] w-32 bg-gradient-to-tl from-orange-200 to-orange-600 rounded-full -left-12 md:left-16 md:top-1 absolute"></div>
           </div>
         </div>
-        <div id="FlashCardsManager" className='mx-auto max-w-2xl'>
+        <div id="FlashCardsManager" className="mx-auto max-w-2xl">
           <div className="flex justify-around my-4">
             <button onClick={() => setFlashCategory('Animals')} className="bg-gray-400 p-2 rounded-md">
               Animals
             </button>
-            <p className="text-white">{flashCategory}</p>
+            <button onClick={() => setFlashCategory('Verbs')} className="bg-gray-400 p-2 rounded-md">
+              Food
+            </button>
             <button onClick={() => setFlashCategory('Food')} className="bg-gray-400 p-2 rounded-md">
               Food
             </button>
@@ -283,6 +285,13 @@ export default function AdminDashboard({ allUsers, id, url, wordsGameProgress })
                 </div>
               )}
               {flashCategory == 'Food' && (
+                <div className="flex w-full justify-around ">
+                  <p>{user.FlashProgress.food.First}</p>
+                  <p>{user.FlashProgress.food.Second}</p>
+                  <p>{user.FlashProgress.food.Third}</p>
+                </div>
+              )}
+              {flashCategory == 'Verbs' && (
                 <div className="flex w-full justify-around ">
                   <p>{user.FlashProgress.food.First}</p>
                   <p>{user.FlashProgress.food.Second}</p>
