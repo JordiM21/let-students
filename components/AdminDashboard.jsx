@@ -284,13 +284,13 @@ export default function AdminDashboard({ allUsers, id, url, wordsGameProgress })
                   <p>{user.FlashProgress.animals.Third}</p>
                 </div>
               )}
-              {flashCategory == 'Food' && (
+              {flashCategory == 'Verbs' && (
                 <div className="flex w-full justify-around ">
                   <p>{user.FlashProgress.verbs.First}</p>
                   <p>{user.FlashProgress.verbs.Second}</p>
                 </div>
               )}
-              {flashCategory == 'Verbs' && (
+              {flashCategory == 'Food' && (
                 <div className="flex w-full justify-around ">
                   <p>{user.FlashProgress.food.First}</p>
                   <p>{user.FlashProgress.food.Second}</p>
