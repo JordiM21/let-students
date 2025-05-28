@@ -22,16 +22,11 @@ import { FaTasks } from 'react-icons/fa'
 import { TbPlayerTrackNextFilled } from 'react-icons/tb'
 import ReactPlayer from 'react-player'
 import Link from 'next/link'
-import bg from '@/public/bg-square.png'
 import cover1 from '@/public/miro_covers/1.png'
 import cover2 from '@/public/miro_covers/2.png'
-import cover3 from '@/public/miro_covers/3.png'
-import cover4 from '@/public/miro_covers/4.png'
 import cover5 from '@/public/miro_covers/5.png'
+import dojoCover from '@/public/covers/dojo.jpg'
 import coverFlash from '@/public/miro_covers/cover-flashcards.png'
-
-
-
 
 export default function StudentDashboard({
   id,
@@ -46,6 +41,7 @@ export default function StudentDashboard({
   progressI,
   progressA,
   count,
+  classDojo,
 }) {
   const router = useRouter()
 
@@ -136,9 +132,27 @@ export default function StudentDashboard({
           </Link>
         </div>
       </section>
+      {/* Newest Section */}
+
+      <section className="mx-4 max-w-5xl md:mx-auto my-4 justify-between flex gap-4">
+        <div className="h-64 lg:h-80 bg-[var(--blueDarkbg)] group cursor-pointer relative w-full lg:w-[64%] overflow-hidden rounded-lg">
+          <Link href={classDojo} target="_blank">
+            <div className="absolute bg-[var(--blueSuperDark)] md:text-3xl font-black w-full z-30 text-center p-2 bottom-0 text-white">
+              Enter Dojo Class
+            </div>
+            <Image src={dojoCover} className="w-full object-cover absolute top-0 sm:-top-8 group-hover:scale-110" />
+          </Link>
+        </div>
+        <div className="h-64 lg:h-80 bg-gray-400 group cursor-pointer relative w-full hidden lg:flex lg:w-[32%] overflow-hidden rounded-lg">
+          <div className="absolute bg-[var(--blueSuperDark)] md:text-3xl font-black w-full z-30 text-center p-2 bottom-0 text-white">
+            Future Update
+          </div>
+        </div>
+      </section>
+
       {/* New Section */}
       <section className="mx-4 max-w-5xl md:mx-auto my-4 justify-between flex gap-4">
-        <div className=" h-36 lg:h-56 bg-[var(--blueDarkbg)] group cursor-pointer relative w-[32%] overflow-hidden rounded-lg">
+        <div className="h-36 lg:h-56 bg-[var(--blueDarkbg)] group cursor-pointer relative w-[32%] overflow-hidden rounded-lg">
           <Link href={tutor.urlMeet} target="_blank">
             <div className="absolute bg-[var(--blueSuperDark)] md:text-3xl font-black w-full z-30 text-center p-2 bottom-0 text-white">
               Meeting
