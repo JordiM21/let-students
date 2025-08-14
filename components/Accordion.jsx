@@ -4,10 +4,8 @@ import AccordionActions from '@mui/material/AccordionActions';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import Button from '@mui/material/Button';
-import { Typography } from '@mui/material';
 
-export default function AccordionUsage() {
+export default function FaqAccordion() {
   return (
     <div className='w-11/12 md:w-6/12 mx-auto pb-20'>
       <Accordion  sx={{ backgroundColor: '#173330'}}>

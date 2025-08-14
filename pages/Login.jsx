@@ -32,35 +32,44 @@ export default function Login() {
   const { user, login } = useAuth()
   const router = useRouter()
 
-  useEffect(() => {
-    if (user) {
-      router.push("/Dashboard")
-    }
-  }, [])
+  // useEffect(() => {
+  //   if (user) {
+  //     router.push("/Dashboard")
+  //   }
+  // }, [])
 
   const [data, setData] = useState({
     email: "",
     password: ""
   })
-
+  
   const handleLogin = async (e) => {
     e.preventDefault()
-    try {
-      await login(data.email, data.password)
-      setTimeout(toast("¡Autenticación exitosa!", {
+     setTimeout(toast("Actualización en curso...", {
         hideProgressBar: true,
-        autoClose: 200,
-        type: 'success'
-      }), 200)
-      router.push("/Dashboard")
-    } catch (error) {
-      console.log(error)
-      toast(`Algo salió mal, intenta de nuevo`, {
-        autoClose: 1000,
+        autoClose: 500,
         type: 'error'
-      })
-    }
+      }), 200)
   }
+
+  // const handleLogin = async (e) => {
+  //   e.preventDefault()
+  //   try {
+  //     await login(data.email, data.password)
+  //     setTimeout(toast("¡Autenticación exitosa!", {
+  //       hideProgressBar: true,
+  //       autoClose: 200,
+  //       type: 'success'
+  //     }), 200)
+  //     router.push("/Dashboard")
+  //   } catch (error) {
+  //     console.log(error)
+  //     toast(`Algo salió mal, intenta de nuevo`, {
+  //       autoClose: 1000,
+  //       type: 'error'
+  //     })
+  //   }
+  // }
 
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
