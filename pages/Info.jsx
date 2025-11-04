@@ -49,7 +49,7 @@ export default function Info() {
           <NextImage src={Icon} className="z-50 object-contain w-[40px] h-[40px]" />
         </div>
         <a
-          href="https://wa.me/+393792913474?text=Hola!%20Acabo%20de%20ver%20la%20página%20y%20me%20gustaría%20obtener%20más%20información%20por%20favor"
+          href="https:////wa.me/+393792913474?text=Hola!%20Acabo%20de%20ver%20la%20página%20y%20me%20gustaría%20obtener%20más%20información%20por%20favor"
           className="bg-red-200"
           target="_blank"
         >
@@ -155,7 +155,7 @@ export default function Info() {
             <Divider />
             <div className="my-4 px-4 flex items-end justify-between">
               <p>
-               usd<span className="text-4xl font-black"> 50$/</span>mes
+                usd<span className="text-4xl font-black"> 50$/</span>mes
               </p>
               <p>Todo Incluído</p>
             </div>
