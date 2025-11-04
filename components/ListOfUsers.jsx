@@ -47,7 +47,7 @@ export default function ListOfUsers({ allUsers }) {
               <TableCell align="center">{row.role}</TableCell>
               <TableCell align="center">{row.level}</TableCell>
               <TableCell align="center">{row.plan}</TableCell>
-              <TableCell align="center">{row.asignedTutor}</TableCell>
+              <TableCell align="center">{row?.asignedTutor}</TableCell>
               <TableCell align="center">{row.email}</TableCell>
               <TableCell align="center">{row.country}</TableCell>
               <TableCell align="center">{row.phone}</TableCell>

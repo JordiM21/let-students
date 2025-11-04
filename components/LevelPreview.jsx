@@ -8,7 +8,7 @@ export default function LevelPreview({ image, url, description, title, disabled,
   const router = useRouter()
 
   return (
-    <div>
+    <div className='mx-2'>
       {disabled == false && (
         <div className="max-w-sm mx-auto group relative">
           <div className="overflow-hidden h-6 absolute top-2 right-10 z-10 bg-transparent">

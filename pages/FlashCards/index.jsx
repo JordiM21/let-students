@@ -6,14 +6,9 @@ import withUserData from '@/components/WithUserData'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
-const FlashCards = ({ userData, data }) => {
-  if (!userData) {
-    return <LoadingScreen />
-  }
-
-  console.log(data[0].food.levels.First[0])
+const FlashCards = ({ userData, data, defaultFlash }) => {
 
   const router = useRouter()
 
@@ -40,34 +35,54 @@ const FlashCards = ({ userData, data }) => {
     })
 
   return (
-    <div className="pt-20 bg-[var(--bluebg)]  min-h-screen py-8">
-      <BackHeader largeTitle={'Games Lobby'} parentTitle={'Back'} />
-      <h1 className="text-[var(--lightBlue)] text-4xl text-center">FLASH CARDS</h1>
-      <div className="mx-10 sm:mx-auto max-w-2xl">
-        <div className="w-full my-4 rounded-lg p-3 bg-[var(--blueDarkbg)]">
-          <p className="text-[var(--lightBlue)] opacity-90">
-            Hello Student! Do you want to learn new words and have fun at the same time? <br />
-            Great, let's start playing some flash cards with vocabulary. the fastest, the better!
+    <div className="pt-20 bg-[var(--bluebg)] min-h-screen py-8">
+      <BackHeader largeTitle={'Aprende Jugando'} parentTitle={'Volver'} />
+
+      <h1 className="text-[#2bb0e0] py-4 text-5xl md:text-8xl text-center font-bold">Flash Cards</h1>
+
+      <div className="mx-4 sm:mx-8 lg:mx-auto max-w-5xl">
+        {/* Info box */}
+        <div className="w-full my-4 rounded-lg p-4 max-w-[420px] bg-[var(--blueDarkbg)] mx-auto shadow-md">
+          <p className="text-[var(--lightBlue)] opacity-90 text-center text-lg">
+            ¡Diviértete mientras aprendes y reta a tus amigos a ver quién acierta más rápido!
           </p>
         </div>
-        <div className="flex justify-around gap-4 flex-wrap">
-          {categoriesFromData.map((category) => (
-            <div className="group relative">
-              <Link key={category.name} className="text-[var(--lightBlue)]" href={`/FlashCards/${category.url}`}>
-                <div className="bg-white rounded-t-md overflow-hidden">
-                  <Image
-                    width={300}
-                    height={300}
-                    src={category.img}
-                    className="object-cover group-hover:scale-[118%] transition-all .2s ease-in-out"
-                  />
+
+        {/* Categories Grid */}
+        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-6">
+          {categoriesFromData && categoriesFromData.length > 0
+            ? categoriesFromData.map((category) => (
+                <Link key={category.name} href={`/FlashCards/${category.url}`} className="group">
+                  <div className="bg-white rounded-xl shadow-lg overflow-hidden cursor-pointer transition-opacity duration-500 ease-in-out opacity-0 group-hover:opacity-100">
+                    {/* Image container */}
+                    <div className="relative w-full aspect-[1/1] overflow-hidden">
+                      <Image
+                        src={category.img}
+                        alt={category.name}
+                        fill
+                        className="object-cover transition-transform duration-300 group-hover:scale-110"
+                        onLoadingComplete={(img) => {
+                          img.parentElement.parentElement.style.opacity = '1' // fade in card
+                        }}
+                      />
+                    </div>
+
+                    {/* Category Name */}
+                    <div className="bg-[var(--blueDarkbg)] text-[var(--lightBlue)] text-center text-xl sm:text-2xl font-semibold p-3 rounded-b-xl">
+                      {category.name}
+                    </div>
+                  </div>
+                </Link>
+              ))
+            : // Loading skeletons while data is fetching
+              Array.from({ length: 4 }).map((_, i) => (
+                <div key={i} className="bg-white rounded-xl shadow-lg overflow-hidden animate-pulse">
+                  {/* Image skeleton */}
+                  <div className="w-full aspect-[1/1] bg-gray-200" />
+                  {/* Text skeleton */}
+                  <div className="h-12 bg-gray-300 mt-0.5 mx-2 rounded-b-xl" />
                 </div>
-                <div className="bg-[var(--blueDarkbg)] text-2xl w-full p-3 rounded-b-md text-[var(--lightBlue)]">
-                  {category.name}
-                </div>
-              </Link>
-            </div>
-          ))}
+              ))}
         </div>
       </div>
     </div>

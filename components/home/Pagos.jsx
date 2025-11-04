@@ -7,7 +7,7 @@ export default function PagosView() {
         <h1 className="text-6xl md:text-8xl shadow-black drop-shadow-lg my-4 text-center text-[#F9F1D2] font-black">
           Gestión <br /> Pagos
         </h1>
-        <p className="text-md mx-auto max-w-[350px] md:text-xl drop-shadow-lg text-center text-[#F9F1D2]">
+        <p className="text-base mx-auto max-w-[350px] md:text-xl drop-shadow-lg text-center text-[#F9F1D2]">
           Elige un plan o paga la mensualidad correspondiente al mes actual
         </p>
       </div>

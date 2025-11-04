@@ -1,17 +1,20 @@
-import { useEffect, useState } from 'react';
-import { useAuth } from '@/context/AuthContext';
-import { useRouter } from 'next/router';
-import LoadingScreen from '@/components/LoadingScreen';
-import YourFlag from '@/components/YourFlag';
+import { useEffect, useState } from 'react'
+import { useAuth } from '@/context/AuthContext'
+import { useRouter } from 'next/router'
+import LoadingScreen from '@/components/LoadingScreen'
+import YourFlag from '@/components/YourFlag'
 import { CgPassword } from 'react-icons/cg'
-import Box from '@mui/material/Box';
-import Modal from '@mui/material/Modal';
-import YourProfile from '@/components/YourProfile';
+import Box from '@mui/material/Box'
+import Modal from '@mui/material/Modal'
+import YourProfile from '@/components/YourProfile'
 import { TbEdit } from 'react-icons/tb'
-import { ChevronRightOutlined } from '@mui/icons-material';
-import Rewards from '@/components/Rewards';
-import withUserData from '@/components/WithUserData';
-import Link from 'next/link';
+import { ChevronRightOutlined } from '@mui/icons-material'
+import Rewards from '@/components/Rewards'
+import withUserData from '@/components/WithUserData'
+import Link from 'next/link'
+import BackHeader from '@/components/BackHeader'
+import { FiCopy, FiExternalLink } from 'react-icons/fi'
+import { toast } from 'react-toastify'
 
 const style = {
   position: 'absolute',
@@ -24,31 +27,40 @@ const style = {
   boxShadow: 24,
   p: 2,
   borderRadius: 4,
-};
+}
 
 const Profile = ({ userData, tutor }) => {
   if (!userData) {
-    return <LoadingScreen />;
+    return <LoadingScreen />
+  }
+
+  const [copied, setCopied] = useState('')
+
+  const handleCopy = (text) => {
+    navigator.clipboard.writeText(text)
+    toast.success('¡Link copiado!', {
+      position: 'top-right',
+      autoClose: 1500,
+      hideProgressBar: true,
+    })
   }
 
   const [userMatched, setUserMatched] = useState(userData)
 
   const router = useRouter()
-  const [open, setOpen] = useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+  const [open, setOpen] = useState(false)
+  const handleOpen = () => setOpen(true)
+  const handleClose = () => setOpen(false)
 
-  const { logout } = useAuth();
-
-  console.log(userMatched)
+  const { logout } = useAuth()
 
   return (
     <>
-      <div className="bg-gray-200 object-cover absolute -z-10"></div>
+      <BackHeader largeTitle={'Mi Perfil'} parentTitle={'Volver'} />
       <div className="bg-[var(--bluebg)] h-full min-h-screen shadow-2xl mx-auto  pb-24 md:pb-0">
         {userMatched != '' && (
           <>
-            <div className="bg-gradient-to-r flex justify-center items-center from-cyan-500 to-blue-500 h-64 md:h-80 relative rounded-b-2xl">
+            <div className="bg-gradient-to-r flex justify-center items-end p-6 from-cyan-500 to-blue-500 h-80 md:h-80 relative rounded-b-2xl">
               <div
                 className="cursor-pointer rounded-full hover:opacity-90 relative active:scale-95 active:opacity-100 transition-all 1s ease-in"
                 onClick={() => router.push(`/selectCharacter/${userMatched.id}`)}
@@ -62,69 +74,158 @@ const Profile = ({ userData, tutor }) => {
                 </div>
               </div>
             </div>
-            <div className="w-11/12 md:w-1/2 mx-auto space-y-3 my-4">
-            <Link href={"https://billing.stripe.com/p/login/dR67sQ8ya3EqbiU3cc"}>
-              <div className="bg-blue-800 cursor-pointer hover:opacity-80 w-full flex items-center rounded-xl justify-between py-4 px-4">
-                <p className="text-white">Administra tu Plan</p>
-                <div className="flex items-center justify-center">
-                  <p className="text-gray-400 opacity-80">
-                    Exclusivo para Padres
-                  </p>
-                </div>
-              </div>
-            </Link>
-              <div className="bg-[var(--blueDarkbg)] cursor-pointer hover:bg-slate-800 w-full flex items-center rounded-xl justify-between py-2 px-4">
-                <p className="text-white">Name</p>
-                <div className="flex items-center justify-center">
-                  <p className="text-gray-400 opacity-80">
-                    {userMatched.firstName} {userMatched.lastName}{' '}
-                  </p>
-                  <ChevronRightOutlined className="stroke-gray-400 opacity-80" />
-                </div>
-              </div>
-              <div className="">
-                <div className="bg-[var(--blueDarkbg)] cursor-pointer hover:bg-slate-800 w-full flex items-center rounded-t-xl justify-between py-2 px-4">
-                  <p className="text-white">Level</p>
-                  <div className="flex items-center justify-center">
-                    <p className="text-gray-400 opacity-80">{userMatched.level}</p>
-                  </div>
-                </div>
-                <div className="bg-[var(--blueDarkbg)] cursor-pointer  hover:bg-slate-800 ovef overflow-visible w-full flex gap-8 items-center justify-between py-2 px-4">
-                  <p className="text-white">Rewards</p>
-                  <Rewards
-                    user={userMatched}
-                    likes={userMatched.likedVideos?.length}
-                    progressB={userMatched.progressBeginner}
-                    progressI={userMatched.progressIntermediate}
-                    progressA={userMatched.progressAdvanced}
-                  />
-                </div>
-                <div className="bg-[var(--blueDarkbg)] cursor-pointer hover:bg-slate-800 overflow-hidden w-full flex gap-8 items-center justify-between py-2 px-4">
-                  <p className="text-white">Email</p>
-                  <div className="flex items-center justify-center">
-                    <p className="text-gray-400 opacity-80">{userMatched.email}</p>
-                  </div>
-                </div>
-                <div className="bg-[var(--blueDarkbg)] cursor-pointer hover:bg-slate-800 w-full flex items-center justify-between py-2 px-4">
-                  <p className="text-white">Phone</p>
-                  <div className="flex items-center justify-center">
-                    <p className="text-gray-400 opacity-80">{userMatched.phone}</p>
-                  </div>
-                </div>
-                <div className="bg-[var(--blueDarkbg)] cursor-pointer hover:bg-slate-800 w-full flex items-center rounded-b-xl justify-between py-2 px-4">
-                  <p className="text-white">Age</p>
-                  <div className="flex items-center justify-center">
-                    <p className="text-gray-400 opacity-80">{userMatched.age}</p>
-                  </div>
-                </div>
-              </div>
+            <div className="w-11/12 md:w-[500px] mx-auto space-y-3 my-4">
+              {/* STUDENT PROFILE */}
+
               {userMatched.role == 'Student' && (
                 <>
-                  <div className="bg-[var(--blueDarkbg)] cursor-pointer hover:bg-slate-800 w-full flex items-center rounded-xl justify-between py-2 px-4">
-                    <p className="text-white">Personal Tutor</p>
-                    <div className="flex items-center gap-2 justify-end">
-                      <p className="text-gray-400 opacity-80">{tutor.firstName} (Italy) </p>
-                      <YourProfile char={tutor.profileImg} size="small" />
+                  <button
+                    className="bg-blue-800 cursor-pointer hover:opacity-80 w-full flex items-center rounded-xl justify-between py-4 px-4"
+                    onClick={() => router.push('/planAdmin')}
+                  >
+                    <p className="text-white">Mi Plan</p>
+                    <div className="flex items-center justify-center">
+                      <p className="text-gray-400 opacity-80">Exclusivo para Padres</p>
+                    </div>
+                  </button>
+                  <div className="bg-[var(--blueDarkbg)] cursor-pointer hover:bg-[#00235c] w-full flex items-center rounded-xl justify-between py-2 px-4">
+                    <p className="text-white">Representante</p>
+                    <div className="flex items-center justify-center">
+                      <p className="text-gray-400 opacity-80">{userMatched.parentName}</p>
+                    </div>
+                  </div>
+                  <div className="bg-[var(--blueDarkbg)] cursor-pointer hover:bg-[#00235c] w-full flex items-center rounded-xl justify-between py-2 px-4">
+                    <p className="text-white">Estudiante</p>
+                    <div className="flex items-center justify-center">
+                      <p className="text-gray-400 opacity-80">
+                        {userMatched.firstName} {userMatched.lastName}{' '}
+                      </p>
+                    </div>
+                  </div>
+                  <div className="">
+                    <div className="bg-[var(--blueDarkbg)] cursor-pointer hover:bg-[#00235c] overflow-hidden w-full flex rounded-t-xl gap-8 items-center justify-between py-2 px-4">
+                      <p className="text-white">Email</p>
+                      <div className="flex items-center justify-center">
+                        <p className="text-gray-400 opacity-80">{userMatched.email}</p>
+                      </div>
+                    </div>
+                    <div className="bg-[var(--blueDarkbg)] cursor-pointer hover:bg-[#00235c] w-full flex items-center justify-between py-2 px-4">
+                      <p className="text-white">Teléfono</p>
+                      <div className="flex items-center justify-center">
+                        <p className="text-gray-400 opacity-80">{userMatched.phone}</p>
+                      </div>
+                    </div>
+                    <div className="bg-[var(--blueDarkbg)] cursor-pointer hover:bg-[#00235c] w-full flex items-center rounded-b-xl justify-between py-2 px-4">
+                      <p className="text-white">Número Matrícula</p>
+                      <div className="flex items-center justify-center">
+                        <p className="text-gray-400 opacity-80">{userMatched.matriculation}</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="bg-[var(--blueDarkbg)] cursor-pointer hover:bg-[#00235c] w-full flex gap-4 flex-col items-between rounded-xl justify-center py-2 px-4">
+                    <div className="flex items-center justify-between">
+                      <p className="text-white">Tutor Personal</p>
+                      <div className="flex items-center gap-2 justify-end">
+                        <p className="text-gray-400 opacity-80">{tutor.firstName} (Italy) </p>
+                        <YourProfile char={tutor.profileImg} size="super-small" />
+                      </div>
+                    </div>
+                    <div className="flex items-center justify-between">
+                      <p className="text-white">Contacto</p>
+                      <p className="text-gray-400 opacity-80">+39 3792184615</p>
+                    </div>
+                  </div>
+                  <div className="bg-gray-700 w-full flex flex-col gap-4 rounded-xl py-3 px-4">
+                    {/* Link de Clase */}
+                    <div className="flex items-center justify-between flex-wrap gap-2">
+                      <p className="text-white font-semibold">Link de Clase</p>
+                      <div className="flex items-center gap-2 bg-gray-500 max-w-[250px] p-2 rounded-md flex-1 min-w-0">
+                        <Link
+                          target="_blank"
+                          href={tutor?.urlMeet}
+                          className="text-gray-300 hover:underline truncate text-sm min-w-0"
+                        >
+                          {tutor.urlMeet}
+                        </Link>
+                        <button
+                          onClick={() => handleCopy(tutor.urlMeet)}
+                          className="p-1 bg-gray-600 hover:bg-white rounded transition"
+                          title="Copiar link"
+                        >
+                          <FiCopy className="text-white" size={18} />
+                        </button>
+                      </div>
+                    </div>
+
+                    {/* Link de ClassDojo */}
+                    <div className="flex items-center justify-between flex-wrap gap-2">
+                      <p className="text-white font-semibold">Link de ClassDojo</p>
+                      <div className="flex items-center bg-gray-500 max-w-[250px] p-2 rounded-md  gap-2 flex-1 min-w-0">
+                        <Link
+                          target="_blank"
+                          href={userMatched.classDojo}
+                          className="text-gray-300 hover:underline truncate text-sm min-w-0"
+                        >
+                          {userMatched.classDojo}
+                        </Link>
+                        <button
+                          onClick={() => handleCopy(userMatched.classDojo)}
+                          className="p-1 bg-gray-600 hover:bg-white rounded transition"
+                          title="Copiar link"
+                        >
+                          <FiCopy className="text-white" size={18} />
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </>
+              )}
+
+              {/* ADMIN PROFILE */}
+              {userMatched.role == 'Admin' && (
+                <>
+                  <div className="bg-[var(--blueDarkbg)] cursor-pointer hover:bg-[#00235c] w-full flex items-center rounded-xl justify-between py-2 px-4">
+                    <p className="text-white">Nombre</p>
+                    <div className="flex items-center justify-center">
+                      <p className="text-gray-400 opacity-80">
+                        {userMatched.firstName} {userMatched.lastName}{' '}
+                      </p>
+                    </div>
+                  </div>
+                  <div className="">
+                    <div className="bg-[var(--blueDarkbg)] cursor-pointer hover:bg-[#00235c] overflow-hidden w-full flex rounded-t-xl gap-8 items-center justify-between py-2 px-4">
+                      <p className="text-white">Email</p>
+                      <div className="flex items-center justify-center">
+                        <p className="text-gray-400 opacity-80">{userMatched.email}</p>
+                      </div>
+                    </div>
+                    <div className="bg-[var(--blueDarkbg)] cursor-pointer hover:bg-[#00235c] w-full flex items-center justify-between py-2 px-4">
+                      <p className="text-white">Teléfono</p>
+                      <div className="flex items-center justify-center">
+                        <p className="text-gray-400 opacity-80">{userMatched.phone}</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="bg-gray-700 w-full flex flex-col gap-4 rounded-xl py-3 px-4">
+                    {/* Link de Clase */}
+                    <div className="flex items-center justify-between flex-wrap gap-2">
+                      <p className="text-white font-semibold">Link de Clase</p>
+                      <div className="flex items-center gap-2 bg-gray-500 max-w-[250px] p-2 rounded-md flex-1 min-w-0">
+                        <Link
+                          target="_blank"
+                          href={userMatched?.urlMeet}
+                          className="text-gray-300 hover:underline truncate text-sm min-w-0"
+                        >
+                          {userMatched?.urlMeet}
+                        </Link>
+                        <button
+                          onClick={() => handleCopy(userMatched?.urlMeet)}
+                          className="p-1 bg-gray-600 hover:bg-white rounded transition"
+                          title="Copiar link"
+                        >
+                          <FiCopy className="text-white" size={18} />
+                        </button>
+                      </div>
                     </div>
                   </div>
                 </>

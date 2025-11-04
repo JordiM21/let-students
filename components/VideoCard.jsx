@@ -9,7 +9,7 @@ export default function VideoCard({ id, url, title, level }) {
     <article class="article-wrapper">
       <a href={`/immersiveActivities/${id}`}>
         <div class="rounded-lg container-project">
-          <div className='bg-red-200 h-[150px] w-[300px] opacity-0 absolute'></div>
+          <div className='bg-gray-200 h-[150px] w-[300px] opacity-0 absolute'></div>
           <ReactPlayer
             width={"100%"}
             height={"150px"}

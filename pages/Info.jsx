@@ -147,7 +147,7 @@ export default function Info() {
                       fontWeight: 'bold',
                       letterSpacing: 0,
                     }}
-                    primary="Clases de 45 Min"
+                    primary="Clases de 60 Min"
                   />
                 </ListItemButton>
               </ListItem>
@@ -155,7 +155,7 @@ export default function Info() {
             <Divider />
             <div className="my-4 px-4 flex items-end justify-between">
               <p>
-                Bs<span className="text-4xl font-black">350/</span>mes
+               usd<span className="text-4xl font-black"> 50$/</span>mes
               </p>
               <p>Todo Incluído</p>
             </div>
@@ -268,7 +268,7 @@ export default function Info() {
             <Divider />
             <div className="my-4 px-4 flex items-end justify-between">
               <p>
-                Bs<span className="text-4xl font-black">600/</span>mes
+                usd<span className="text-4xl font-black"> 80$/</span>mes
               </p>
               <p>Todo Incluído</p>
             </div>

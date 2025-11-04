@@ -39,7 +39,7 @@ import { BsFillPatchCheckFill } from 'react-icons/bs'
 
 const wordsGame = ({ userData }) => {
   if (!userData) {
-    return <LoadingScreen />;
+    return <LoadingScreen />
   }
 
   const { wordsGameProgress } = userData
@@ -49,172 +49,173 @@ const wordsGame = ({ userData }) => {
   const situations = [
     {
       image: airport,
-      url: "Airport"
+      url: 'Airport',
     },
     {
       image: meeting,
-      url: "Meeting"
+      url: 'Meeting',
     },
     {
       image: delivery,
-      url: "Delivery"
+      url: 'Delivery',
     },
     {
       image: social,
-      url: "Social"
+      url: 'Social',
     },
     {
       image: gym,
-      url: "Gym"
+      url: 'Gym',
     },
     {
       image: house,
-      url: "house"
+      url: 'house',
     },
   ]
 
   const enviroment = [
     {
       image: house,
-      url: "house"
+      url: 'house',
     },
     {
       image: cinema,
-      url: "cinema"
+      url: 'cinema',
     },
     {
       image: pets,
-      url: "pets"
+      url: 'pets',
     },
     {
       image: vacations,
-      url: "vacations"
+      url: 'vacations',
     },
     {
       image: school,
-      url: "school"
+      url: 'school',
     },
     {
       image: shopping,
-      url: "shopping"
+      url: 'shopping',
     },
     {
       image: hotel,
-      url: "hotel"
+      url: 'hotel',
     },
     {
       image: restaurant,
-      url: "restaurant"
+      url: 'restaurant',
     },
     {
       image: friends,
-      url: "friends"
+      url: 'friends',
     },
   ]
   const levels = [
     {
       image: Basics,
-      url: "Basics"
+      url: 'Basics',
     },
     {
       image: veryBeginner,
-      url: "veryBeginner"
+      url: 'veryBeginner',
     },
     {
       image: beginner,
-      url: "Beginner"
+      url: 'Beginner',
     },
     {
       image: uperBeginner,
-      url: "upperBeginner"
+      url: 'upperBeginner',
     },
     {
       image: intermediateBronze,
-      url: "intermediateBronze"
+      url: 'intermediateBronze',
     },
     {
       image: intermediateSilver,
-      url: "intermediateSilver"
+      url: 'intermediateSilver',
     },
     {
       image: intermediateGold,
-      url: "intermediateGold"
+      url: 'intermediateGold',
     },
     {
       image: uperIntermediate,
-      url: "upperIntermediate"
+      url: 'upperIntermediate',
     },
     {
       image: earlyAdvanced,
-      url: "earlyAdvanced"
+      url: 'earlyAdvanced',
     },
     {
       image: advanced1,
-      url: "advanced1"
+      url: 'advanced1',
     },
     {
       image: advanced2,
-      url: "advanced2"
+      url: 'advanced2',
     },
     {
       image: advanced3,
-      url: "advanced3"
+      url: 'advanced3',
     },
     {
       image: uperAdvanced,
-      url: "upperAdvanced"
+      url: 'upperAdvanced',
     },
     {
       image: englishPro,
-      url: "englishPro"
+      url: 'englishPro',
     },
     {
       image: englishMaster,
-      url: "englishMaster"
+      url: 'englishMaster',
     },
     {
       image: champion,
-      url: "champion"
+      url: 'champion',
     },
   ]
 
   return (
-    <div className='bg-[var(--color2)] pt-20 h-full pb-20'>
-      <div className='w-full relative h-10 overflow-hidden'>
-        <div className='bg-white py-2 cursor-pointer rounded-lg w-[230px] absolute hover:-right-4 -right-44 flex items-center justify-center gap-4'>
-          <BsFillPatchCheckFill className=' text-xl fill-green-400' />
-          <p className='text-gray-500 text-md'>
-            Modules Finished: {wordsGameProgress ? wordsGameProgress.length : "0"}
+    <div className="bg-[var(--color2)] pt-20 h-full pb-20">
+      <div className="w-full relative h-10 overflow-hidden">
+        <div className="bg-white py-2 cursor-pointer rounded-lg w-[230px] absolute hover:-right-4 -right-44 flex items-center justify-center gap-4">
+          <BsFillPatchCheckFill className=" text-xl fill-green-400" />
+          <p className="text-gray-500 text-base">
+            Modules Finished: {wordsGameProgress ? wordsGameProgress.length : '0'}
           </p>
         </div>
       </div>
-      <div className='px-8'>
-        <BackHeader parentTitle={"Back"} largeTitle={"Words Game"} />
-        {
-          userData.role == "Admin" && (
-            <div className='max-w-[70%] flex justify-center md:max-w-[50%] lg:max-w-[30%] mx-auto'>
-              <button onClick={() => router.push(`/adminCreate/createWordsGame/`)} className="bg-white px-4 py-2 rounded-full">
-                <span class="text-[var(--color2)]">Añadir Actividades</span>
-              </button>
-            </div>
-          )
-        }
-        <p className='text-5xl md:text-6xl font-extrabold text-center '>
-          <span className='text-orange-400 hover:text-white cursor-pointer drop-shadow-xl shadow-black'>W</span>
-          <span className='text-orange-300 hover:text-white cursor-pointer drop-shadow-xl shadow-black'>O</span>
-          <span className='text-yellow-400 hover:text-white cursor-pointer drop-shadow-xl shadow-black'>R</span>
-          <span className='text-green-200 hover:text-white cursor-pointer drop-shadow-xl shadow-black'>D</span>
-          <span className='text-green-400 hover:text-white cursor-pointer drop-shadow-xl shadow-black'>S</span>
+      <div className="px-8">
+        <BackHeader parentTitle={'Volver'} largeTitle={'Words Game'} />
+        {userData.role == 'Admin' && (
+          <div className="max-w-[70%] flex justify-center md:max-w-[50%] lg:max-w-[30%] mx-auto">
+            <button
+              onClick={() => router.push(`/adminCreate/createWordsGame/`)}
+              className="bg-white px-4 py-2 rounded-full"
+            >
+              <span class="text-[var(--color2)]">Añadir Actividades</span>
+            </button>
+          </div>
+        )}
+        <p className="text-5xl md:text-6xl font-extrabold text-center ">
+          <span className="text-orange-400 hover:text-white cursor-pointer drop-shadow-xl shadow-black">W</span>
+          <span className="text-orange-300 hover:text-white cursor-pointer drop-shadow-xl shadow-black">O</span>
+          <span className="text-yellow-400 hover:text-white cursor-pointer drop-shadow-xl shadow-black">R</span>
+          <span className="text-green-200 hover:text-white cursor-pointer drop-shadow-xl shadow-black">D</span>
+          <span className="text-green-400 hover:text-white cursor-pointer drop-shadow-xl shadow-black">S</span>
           <br />
-          <span className='text-blue-300 hover:text-white cursor-pointer drop-shadow-xl shadow-black'>G</span>
-          <span className='text-green-800 hover:text-white cursor-pointer drop-shadow-xl shadow-black'>A</span>
-          <span className='text-blue-400 hover:text-white cursor-pointer drop-shadow-xl shadow-black'>M</span>
-          <span className='text-purple-400 hover:text-white cursor-pointer drop-shadow-xl shadow-black'>E</span>
+          <span className="text-blue-300 hover:text-white cursor-pointer drop-shadow-xl shadow-black">G</span>
+          <span className="text-green-800 hover:text-white cursor-pointer drop-shadow-xl shadow-black">A</span>
+          <span className="text-blue-400 hover:text-white cursor-pointer drop-shadow-xl shadow-black">M</span>
+          <span className="text-purple-400 hover:text-white cursor-pointer drop-shadow-xl shadow-black">E</span>
         </p>
         <CarouselWordsGame carouselTitle="Ordered by Level" progress={wordsGameProgress} array={levels} />
         <CarouselWordsGame carouselTitle="Ordered by Enviroment" progress={wordsGameProgress} array={enviroment} />
         <CarouselWordsGame carouselTitle="Ordered by Situation" progress={wordsGameProgress} array={situations} />
-      </div >
+      </div>
     </div>
   )
 }

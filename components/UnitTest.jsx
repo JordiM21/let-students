@@ -9,7 +9,6 @@ import { db } from '@/config/firebase';
 import { toast } from 'react-toastify';
 import { useAuth } from '@/context/AuthContext';
 import { useRouter } from 'next/router';
-import UnitWithTroubleBtn from './UnitWithTroubleBtn';
 import CtaAnimationPage from './CtaAnimationPage';
 import trophy from '@/public/animations/trophy.json'
 import LoadingScreen from './LoadingScreen';
@@ -25,6 +24,9 @@ const UnitTest = ({ userData, level, unit }) => {
   const [progress, setProgress] = useState(0)
   const router = useRouter()
   const [userMatched, setUserMatched] = useState(userData)
+  const correctSound = new Audio('/audio/sfx/right.mp3')
+  const wrongSound = new Audio('/audio/sfx/wrong.mp3')
+  const newRecord = new Audio('/audio/sfx/new-record.mp3')
 
   const fetchPost = async () => {
     await getDocs(collection(db, "questions"))
@@ -52,7 +54,6 @@ const UnitTest = ({ userData, level, unit }) => {
   useEffect(() => {
     fetchPost();
     fetchUser();
-    console.log(progress)
   }, [progress, finished])
 
 
@@ -89,42 +90,50 @@ const UnitTest = ({ userData, level, unit }) => {
   const handleTest = (e) => {
     e.preventDefault()
     if (res1 != data[0]?.answer) {
+      wrongSound.play()
       return toast.error("¡Ups! Algo esta mal, revisa la primera respuesta")
     }
     if (res2 != data[1]?.answer) {
+      wrongSound.play()
       return toast.error("¡Ups! Algo esta mal, revisa la segunda respuesta")
     }
     if (res3 != data[2]?.answer) {
+      wrongSound.play()
       return toast.error("¡Ups! Algo esta mal, revisa la tercera respuesta")
     }
     if (res4 != data[3]?.answer) {
+      wrongSound.play()
       return toast.error("¡Ups! Algo esta mal, revisa la cuarta respuesta")
     }
     if (res5 != data[4]?.answer) {
+      wrongSound.play()
       return toast.error("¡Ups! Algo esta mal, revisa la quinta respuesta")
     }
     if (res6 != data[5]?.answer) {
+      wrongSound.play()
       return toast.error("¡Ups! Algo esta mal, revisa la sexta respuesta")
     }
     if (res7 != data[6]?.answer) {
+      wrongSound.play()
       return toast.error("¡Ups! Algo esta mal, revisa la séptima respuesta")
     }
     if (res8 != data[7]?.answer) {
+      wrongSound.play()
       return toast.error("¡Ups! Algo esta mal, revisa la octava respuesta")
     }
+    newRecord.play()
     updateProgress()
   }
 
   return (
     <div>
-      <UnitWithTroubleBtn unit={unit} />
       {
-        finished == true && (
+        finished == true && ( //modal testing
           <CtaAnimationPage
-            title={"Congratulations! You did it amazing!"}
+            title={"¡Felicitaciones!"}
             subTitle={`Completaste con éxito la unidad ${unit} del nivel ${level}, Sigue asi!`}
             animation={trophy}
-            cta={"Go to the Next Lesson"}
+            cta={"Siguiente"}
             btn="router"
             link={`/Niveles/${level}/${unit + 1}`}
             test={true}

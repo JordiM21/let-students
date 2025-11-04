@@ -1,6 +1,21 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('https://fonts.gstatic.com/s/roboto/v48/KFO7CnqEu92Fr1ME7kSn66aGLdTylUAMa3yUBHMdazQ.woff2') format('woff2');
+}
+
+
+/* Prevent GSAP animations from causing layout overflow */
+html, body {
+  overflow-x: hidden;
+  width: 100%;
+}
+
 
 * {
   color: rgb(12, 21, 33);
@@ -229,6 +244,7 @@
   --color3: #ff9900;
   --bluebg: #00102b;
   --blueDarkbg: #001942;
+  --gg: #00235c;
   --blueSuperDark: #000817;
   --color4: #db162f;
   --color-texto-dark: #131313;
@@ -704,25 +720,22 @@
 }
 
 .heading-primary {
-  font-size: 36px;
-  font-weight: 600;
-  background-image: linear-gradient(to right, #f7bb97, #dd5e89);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  transform: scale(1.6);
+  font-size: 40px;
+  font-weight: 800;
+  color: #F17024;
 }
 
 .heading-secondary {
-  font-size: 24px;
-  font-weight: 600;
+  font-size: 30px;
+  font-weight: 800;
   margin-top: 20px;
   letter-spacing: 2px;
 }
 
 .heading-tertiary {
-  font-size: 20px;
-  font-weight: 500;
-  color: hsl(221, 100%, 96%);
+  font-size: 24px;
+  font-weight: 800;
+  color: #2D878D;
 }
 
 .paragraph {
@@ -752,51 +765,44 @@
   justify-content: center;
   padding: 20px;
   border-radius: 30px;
-  background-image: linear-gradient(to bottom, #4c4b73, #1e2a64);
-  animation: gradient 9s infinite alternate linear;
+  background-image: linear-gradient(to top, #2D878D, #ffffff);
 }
 
 .result-box {
   width: 160px;
   height: 160px;
   border-radius: 50%;
-  background-image: linear-gradient(-45deg, #62b9ef, #274c5a);
-  background-color: #56ab2f;
+  background-image: linear-gradient(-45deg, #123c3f, #2bb1bb);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  animation: gradient 9s linear infinite;
 }
 
 .result {
   margin-top: -8px;
   font-size: 16px;
   font-weight: 400;
-  color: hsl(241, 100%, 89%);
+  color: #ffff;
 }
 
 .btn {
   width: 240px;
   padding: 16px;
   color: #ffffff;
-  background-image: linear-gradient(to right, #1f50ba, rgb(34, 201, 227));
+  background-color: #F17024;
   border: none;
   border-radius: 100px;
   font-size: 18px;
   text-transform: uppercase;
-  letter-spacing: 3px;
-  font-weight: 700;
+  letter-spacing: 1px;
+  font-weight: 800;
   cursor: pointer;
   margin: 20px 0 2px 0;
   transition: all 0.3s;
 }
 
-.btn:hover {
-  transform: translateY(3px);
-  background-image: linear-gradient(to right, #193e8f, rgb(26, 159, 180));
-}
 
 @keyframes gradient {
   0% {
@@ -823,7 +829,7 @@
   width: 300px;
   height: 60%;
   overflow: hidden;
-  z-index: 1000;
+  z-index: 10;
 }
 
 .confetti-piece {
@@ -1229,8 +1235,16 @@ button:hover .button-text {
   font-family: inherit;
   z-index: 0;
   overflow: hidden;
-  transition: all 0.3s cubic-bezier(0.02, 0.01, 0.47, 1);
+  transition: transform 0.3s cubic-bezier(0.02, 0.01, 0.47, 1); /* Only transform */
+  transform-origin: center;
+  will-change: transform;
 }
+
+.btn-shine:hover {
+  animation: rotate624 0.7s ease-in-out both;
+  transform: scale(1.1); /* Correct scaling */
+}
+
 
 .btn-shine span {
   color: #00022f;
@@ -1239,10 +1253,6 @@ button:hover .button-text {
   letter-spacing: 0.7px;
 }
 
-.btn-shine:hover {
-  animation: rotate624 0.7s ease-in-out both;
-  scale: 110%;
-}
 
 .btn-shine:hover span {
   animation: storm1261 0.7s ease-in-out both;

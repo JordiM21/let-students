@@ -24,8 +24,6 @@ const likedVideos = ({ likedVideos, userData, submit, setSubmit }) => {
   const deleteActivity = async (e, video) => {
     e.preventDefault()
     const { id } = userMatched
-    console.log('Video to remove:', video);
-console.log('LikedVideos array:', likedVideosRef.current);
     try {
         toast.error('Este video ya no te gusta!');
         const userRef = doc(db, 'users', id);
@@ -46,8 +44,10 @@ console.log('LikedVideos array:', likedVideosRef.current);
 
   return (
     <div className="bg-[var(--blueDarkbg)] min-h-screen pt-20">
-      <BackHeader largeTitle={'Liked Videos'} parentTitle={'Back'} />
-      <h3 className="text-center text-xl md:text-3xl text-[var(--lightBlue)]">Aquí puedes ver los todos videos que has dado like</h3>
+      <BackHeader largeTitle={'Liked Videos'} parentTitle={'Volver'} />
+      <h3 className="text-center text-xl md:text-3xl text-[var(--lightBlue)]">
+        Aquí puedes ver los todos videos que has dado like
+      </h3>
       <div className="md:flex md:mx-8 gap-4 justify-center items-center flex-wrap space-y-8 py-8 sm:space-y-2">
         {likedVideos.map((video, e) => (
           <div className=" hover:opacity-80 h-[220px] w-[400px] bg-[var(--blueSuperDark)] transition-all 1s ease-in cursor-pointer mx-auto rounded-md relative my-4">

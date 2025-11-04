@@ -8,9 +8,6 @@ import teacher3 from '@/public/teachers/teacher3.png'
 import teacher4 from '@/public/teachers/teacher4.jpg'
 import teacher5 from '@/public/teachers/teacher5.png'
 import teacher6 from '@/public/teachers/teacher6.png'
-import greenSquare1 from '@/public/GreenSquares/GreeenSquare1.png'
-import greenSquare2 from '@/public/GreenSquares/GreenSquare2.png'
-import greenSquare3 from '@/public/GreenSquares/GreenSquare3.png'
 import bolivia from '@/public/flags/bolivia.png'
 import brazil from '@/public/flags/brazil.png'
 import chile from '@/public/flags/chile.png'
@@ -23,14 +20,19 @@ import venezuela from '@/public/flags/venezuela.png'
 import slide1 from '@/public/slide1.png'
 import slide2 from '@/public/slide2.png'
 import slide3 from '@/public/slide3.png'
+import review1 from '@/public/review1.webp'
+import review2 from '@/public/review2.webp'
+import review3 from '@/public/review3.webp'
+import review4 from '@/public/review4.webp'
+import review5 from '@/public/review5.webp'
 import sticker1 from '@/public/sticker1.png'
 import sticker2 from '@/public/sticker2.png'
 import sticker3 from '@/public/sticker3.png'
 import sticker4 from '@/public/sticker4.png'
 import step1 from '@/public/step1.png'
 import step2 from '@/public/step2.png'
-import step3 from '@/public/step3.png'
-import step4 from '@/public/step4.png'
+import step4 from '@/public/step3.png'
+import step3 from '@/public/step4.png'
 import background from '@/public/background-landing.svg'
 import backgroundFooter from '@/public/background-footer.svg'
 import letbgWEBP from '@/public/let-bg.webp'
@@ -38,10 +40,12 @@ import { useRouter } from 'next/router'
 import { useAuth } from '@/context/AuthContext'
 import { useEffect, useState, useRef } from 'react'
 import gsap from 'gsap'
-import Icon from '@/public/Icon.png'
 import FaqAccordion from '@/components/Accordion'
 import Link from 'next/link'
-import { MdArrowBackIos, MdArrowForwardIos } from 'react-icons/md'
+import { FaStar, FaWhatsapp } from 'react-icons/fa'
+import { useGsapScrollAnim } from '../useGsapScrollAnim'
+import Carousel from '../CarouselCards'
+import ScheduleClassModal from '@/components/ScheduleClassModal'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -57,7 +61,7 @@ const preloadImages = (srcArray) => {
   return Promise.all(promises)
 }
 
-export default function HomeView() {
+export default function HomeView({ setNavItem }) {
   const { user } = useAuth()
   const router = useRouter()
   const [dataLoaded, setDataLoaded] = useState(false)
@@ -70,6 +74,12 @@ export default function HomeView() {
   const step1Ref = useRef(null)
   const step2Ref = useRef(null)
   const step3Ref = useRef(null)
+  const step4Ref = useRef(null)
+  const card1Ref = useRef(null)
+  const card2Ref = useRef(null)
+  const card3Ref = useRef(null)
+  const card4Ref = useRef(null)
+  const cardsRef = useRef([])
 
   useEffect(() => {
     if (user) {
@@ -90,166 +100,147 @@ export default function HomeView() {
     })
   }, [router, user])
 
-  //gsap
-  useEffect(() => {
-    if (dataLoaded) {
-      gsap.fromTo(imageRef.current, { opacity: 0, y: 0 }, { opacity: 1, y: 0, duration: 1, ease: 'power2.out' })
-      gsap.fromTo(textRef.current, { opacity: 0, y: 0 }, { opacity: 1, y: 10, duration: 1, ease: 'power2.out' })
-      gsap.fromTo(
-        sticker1Ref.current,
-        { opacity: 0, x: 0, y: 0 },
-        {
-          opacity: 1,
-          x: 20,
-          y: -70,
-          ease: 'power1.out',
-          duration: 0.5,
-          scrollTrigger: {
-            trigger: sticker1Ref.current,
-            start: '10px 80%',
-            toggleActions: 'play complete restart complete',
-            once: false,
-          },
-        }
-      )
-      gsap.fromTo(
-        sticker2Ref.current,
-        { opacity: 0, x: 0, y: 0 },
-        {
-          opacity: 1,
-          x: 20,
-          y: 50,
-          ease: 'power1.out',
-          duration: 0.5,
-          opacity: 1,
-          scrollTrigger: {
-            trigger: sticker1Ref.current,
-            start: '100px 80%',
-            toggleActions: 'play complete restart complete',
-            once: false,
-          },
-        }
-      )
-      gsap.fromTo(
-        sticker3Ref.current,
-        { opacity: 0, x: 0 },
-        {
-          opacity: 1,
-          x: -40,
-          ease: 'power1.out',
-          duration: 0.5,
-          scrollTrigger: {
-            trigger: sticker1Ref.current,
-            start: '200px 80%',
-            toggleActions: 'play complete restart complete',
-            once: false,
-          },
-        }
-      )
-      gsap.fromTo(
-        sticker4Ref.current,
-        { opacity: 0, x: 0, y: 0 },
-        {
-          opacity: 1,
-          x: -40,
-          y: 100,
-          ease: 'power1.out',
-          duration: 0.5,
-          scrollTrigger: {
-            trigger: sticker1Ref.current,
-            start: '300px 80%',
-            toggleActions: 'play complete restart complete',
-            once: false,
-          },
-        }
-      )
-      gsap.fromTo(
-        step1Ref.current,
-        { opacity: 0, x: -50, y: 0 },
-        {
-          opacity: 1,
-          x: 0,
-          y: 0,
-          ease: 'power1.out',
-          duration: 0.5,
-          scrollTrigger: {
-            trigger: step1Ref.current,
-            start: '0px 80%',
-            toggleActions: 'play complete restart complete',
-            once: false,
-          },
-        }
-      )
-      gsap.fromTo(
-        step2Ref.current,
-        { opacity: 0, x: 50, y: 0 },
-        {
-          opacity: 1,
-          x: 0,
-          y: 0,
-          ease: 'power1.out',
-          duration: 0.5,
-          scrollTrigger: {
-            trigger: step2Ref.current,
-            start: '0px 80%',
-            toggleActions: 'play complete restart complete',
-            once: false,
-          },
-        }
-      )
-      gsap.fromTo(
-        step3Ref.current,
-        { opacity: 0, x: -50, y: 0 },
-        {
-          opacity: 1,
-          x: 0,
-          y: 0,
-          ease: 'power1.out',
-          duration: 0.5,
-          scrollTrigger: {
-            trigger: step3Ref.current,
-            start: '0px 80%',
-            toggleActions: 'play complete restart complete',
-            once: false,
-          },
-        }
-      )
-    }
-  }, [dataLoaded])
+  const modalRef = useRef(null)
+
+  const openModal = () => {
+    modalRef.current?.openModal()
+  }
+  // Animations Trigger
+  useGsapScrollAnim(
+    [
+      // === HEADER ANIMATION ===
+      {
+        ref: imageRef,
+        from: { opacity: 1, y: 0 },
+        to: { opacity: 1, y: 0, duration: 0.8 },
+      },
+      {
+        ref: textRef,
+        from: { opacity: 0, y: 0 },
+        to: { opacity: 1, y: 10, duration: 0.8 },
+      },
+
+      // === TESTIMONIAL CARDS ===
+      {
+        ref: card1Ref,
+        from: { opacity: 0, y: 40, x: -30 },
+        to: { opacity: 1, y: 0, x: 0, duration: 0.4 },
+      },
+      {
+        ref: card2Ref,
+        from: { opacity: 0, y: 40, x: 30 },
+        to: { opacity: 1, y: 0, x: 0, duration: 0.4, delay: 0.2 },
+      },
+      {
+        ref: card3Ref,
+        from: { opacity: 0, y: 40, x: -30 },
+        to: { opacity: 1, y: 0, x: 0, duration: 0.4, delay: 0.4 },
+      },
+      {
+        ref: card4Ref,
+        from: { opacity: 0, y: 40, x: 30 },
+        to: { opacity: 1, y: 0, x: 0, duration: 0.4, delay: 0.6 },
+      },
+
+      // === STICKERS ===
+      {
+        ref: sticker1Ref,
+        from: { opacity: 0, x: 0, y: 0 },
+        to: { opacity: 1, x: 20, y: -70, duration: 0.5 },
+      },
+      {
+        ref: sticker2Ref,
+        from: { opacity: 0, x: 0, y: 0 },
+        to: { opacity: 1, x: 20, y: 50, duration: 0.5 },
+      },
+      {
+        ref: sticker3Ref,
+        from: { opacity: 0, x: 0 },
+        to: { opacity: 1, x: -40, duration: 0.5 },
+      },
+      {
+        ref: sticker4Ref,
+        from: { opacity: 0, x: 0, y: 0 },
+        to: { opacity: 1, x: -40, y: 100, duration: 0.5 },
+      },
+
+      // === STEPS ===
+      {
+        ref: step1Ref,
+        from: { opacity: 0, x: -50 },
+        to: { opacity: 1, x: 0, duration: 0.4 },
+      },
+      {
+        ref: step2Ref,
+        from: { opacity: 0, x: 50 },
+        to: { opacity: 1, x: 0, duration: 0.4 },
+      },
+      {
+        ref: step3Ref,
+        from: { opacity: 0, x: -50 },
+        to: { opacity: 1, x: 0, duration: 0.4 },
+      },
+      {
+        ref: step4Ref,
+        from: { opacity: 0, x: 50 },
+        to: { opacity: 1, x: 0, duration: 0.4 },
+      },
+    ],
+    [dataLoaded] // dependencies
+  )
+
   return (
     <>
+      {/* Modal lives here but invisible until opened */}
+      <ScheduleClassModal ref={modalRef} />
       <div>
-        <div id="hero" className="w-full absolute top-20 z-20" ref={textRef}>
-          <h1 className="text-6xl md:text-8xl shadow-black drop-shadow-lg my-4 text-center text-[#F9F1D2] font-black">
-            English for <br /> Children
+        <div id="hero" className="w-full absolute top-20 md:top-36 z-20" ref={textRef}>
+          <h1 className="text-3xl md:text-6xl shadow-black drop-shadow-lg my-4 md:my-8 text-center text-[#F9F1D2] font-black">
+            Pequeños Bilingües
+            <br />
+            Grandes Oportunidades
           </h1>
-          <p className="text-md md:text-xl drop-shadow-lg text-center text-white">
-            Haz que tu hijo sea <span className="text-[#0F3F3F] text-md font-black">Bilingüe</span> <br /> y regálale un
-            mundo de oportunidades
+          <p className="text-sm md:text-xl py-2 drop-shadow-sm text-center text-white">
+            Haz que tu hijo aprenda inglés mientras se divierte.
           </p>
-          <div className="flex w-11/12 md:w-1/2 mx-auto justify-evenly my-6">
+          <p className="text-xs md:text-base py-1 drop-shadow-sm text-center text-white opacity-60 px-8">
+            Clases en vivo 🎥 Profesores certificados 👩‍🏫 Método Interáctivo 🧩
+          </p>
+          <div className="flex w-11/12 md:w-[500px] mx-auto justify-evenly my-16">
             <div
-              onClick={() => router.push('/Login')}
-              className="p-3 px-5 md:px-6 md:py-4 rounded-full bg-white shadow-black/30 shadow-lg cursor-pointer hover:scale-105 ease-in 1s active:scale-95"
+              onClick={() => setNavItem('Nosotros')}
+              className="py-2 px-3 md:px-6 md:py-4 rounded-full bg-[#F9F1D2] shadow-black/30 shadow-lg cursor-pointer hover:scale-105 ease-in 1s active:scale-95"
             >
-              <a className="font-black text-md md:text-lg text-[#173330]">Soy Estudiante</a>
+              <a className="font-black text-sm md:text-lg text-[#173330]">La Academia</a>
             </div>
             <div
-              onClick={() => router.push('/Info')}
-              className="p-3 px-5 md:px-6 md:py-4 rounded-full bg-[#F17024] shadow-black/30 shadow-lg cursor-pointer  hover:scale-105 ease-in 1s active:scale-95"
+              onClick={openModal}
+              className="py-2 px-3 md:px-6 md:py-4 rounded-full bg-[#F17024] shadow-black/30 shadow-lg cursor-pointer  hover:scale-105 ease-in 1s active:scale-95"
             >
-              <a className="font-black text-md md:text-lg text-white">Planes Disponibles</a>
+              <a className="font-black text-sm md:text-lg text-white">Agenda una Clase Gratuita</a>
             </div>
           </div>
         </div>
-        <NextImage
-          priority
-          src={letbgWEBP} //bg
-          className="w-full h-[500px] md:h-[600px] lg:h-screen object-cover pt-0 bg-[#2D878D] overflow-hidden"
-          fetchPriority="high"
-          quality={80}
-          ref={imageRef}
-        />
+        <div className="relative w-full h-[500px] md:h-[600px] overflow-hidden">
+          <NextImage
+            src={letbgWEBP}
+            className="w-full h-full object-cover"
+            priority // 👈 preload for faster LCP
+            fetchPriority="high" // optional: for extra clarity
+            quality={80}
+            ref={imageRef}
+            alt="Background illustration"
+          />
+          <div className="absolute inset-0 bg-[#2D878D]/60 mix-blend-multiply"></div>
+        </div>
+        {/* Floating Chip */}
+        <div className="bg-[#173330] absolute py-2 px-4 rounded-full top-[480px] md:top-[580px] lg:top- left-4 z-20 shadow-lg shadow-[#08201e]">
+          <p className="text-center text-xs md:text-sm text-[#F9F1D2]/80">
+            +250 familias felices en Latinoamérica y Europa
+          </p>
+        </div>
+
+        {/* Logos slider */}
         <div className="relative">
           <div className="logos">
             <div className="logos-slide">
@@ -296,261 +287,349 @@ export default function HomeView() {
             </div>
           </div>
         </div>
-        <div className="py-10 md:py-20 bg-[#173330] flex flex-wrap">
-          <div className="lg:w-[40%] my-3 max-md:mx-10 md:ml-16">
-            <h2 className=" text-5xl text-start font-black text-[#F9F1D2]">¿Como le haremos Bilingüe?</h2>
-            <p className="text-start font-bold text-[#F9F1D2] my-6 opacity-80">
-              El Progama está diseñado especialmente para que los más pequeños de la casa puedan adquirir un nuevo
-              idioma. Nos especializamos en la enseñanza a estudiantes desde los 7 hasta los 15 años y destacamos por
-              ofrecer acompañamiento personalizado y una participación activa de padres y representantes.
+        {/* First Section */}
+        <div className="relative py-10 md:py-20 bg-[#173330] flex flex-wrap items-center overflow-hidden">
+          {/* Left content */}
+          <div className="lg:w-[45%] my-3 max-md:mx-10 md:ml-16 relative z-10">
+            <h2 className="text-[#F9F1D2] text-4xl md:text-5xl font-black text-start">
+              ¿Por qué los padres eligen <span className="text-[#F99B32] font-black">LET Academy?</span>
+            </h2>
+
+            <p className="text-[#F9F1D2]/80 text-start font-semibold my-6 leading-relaxed">
+              Porque combinamos diversión, resultados reales y un ambiente lleno de confianza. Nuestro programa fue
+              diseñado para que los niños aprendan inglés con alegría, mientras los padres ven su progreso semana a
+              semana.
             </p>
+
+            {/* Benefits list */}
+            <ul className="space-y-4 mt-6">
+              <li className="flex items-start gap-3">
+                <div class="w-6 h-6 rounded-full bg-[#F99B32] flex items-center justify-center text-[#173330] font-bold flex-none">
+                  ✓
+                </div>
+
+                <span className="text-[#F9F1D2] font-medium">
+                  Profesores certificados y apasionados por enseñar a niños.
+                </span>
+              </li>
+              <li className="flex items-start gap-3">
+                <div class="w-6 h-6 rounded-full bg-[#F99B32] flex items-center justify-center text-[#173330] font-bold flex-none">
+                  ✓
+                </div>
+
+                <span className="text-[#F9F1D2] font-medium">
+                  Clases 100% interactivas con seguimiento personalizado.
+                </span>
+              </li>
+              <li className="flex items-start gap-3">
+                <div class="w-6 h-6 rounded-full bg-[#F99B32] flex items-center justify-center text-[#173330] font-bold flex-none">
+                  ✓
+                </div>
+
+                <span className="text-[#F9F1D2] font-medium">
+                  Método comunicativo: aprender, jugar y hablar desde el primer día.
+                </span>
+              </li>
+              <li className="flex items-start gap-3">
+                <div class="w-6 h-6 rounded-full bg-[#F99B32] flex items-center justify-center text-[#173330] font-bold flex-none">
+                  ✓
+                </div>
+
+                <span className="text-[#F9F1D2] font-medium">
+                  Reportes y actividades para involucrar a los padres en el proceso.
+                </span>
+              </li>
+            </ul>
+
+            {/* CTA */}
             <div
-              onClick={() => router.replace('/Info')}
-              className="px-4 md:px-6 py-4 rounded-full bg-[#F9F1D2] text-[#173330] shadow-black/30 shadow-lg w-[250px] font-black text-md md:text-lg cursor-pointer  hover:scale-105 ease-in 1s active:scale-95"
+              onClick={openModal}
+              className="px-4 md:px-6 py-4 rounded-full bg-[#F17024] text-white shadow-black/30 shadow-lg w-[230px] md:w-[270px] font-black text-base md:text-lg cursor-pointer mt-8 hover:scale-105 ease-in duration-200 active:scale-95"
             >
-              Ver Planes Disponibles
+              Agenda tu Clase Gratuita
             </div>
           </div>
-          <iframe
-            className="sm:w-[600px] my-8 rounded-lg w-[400px] h-[225px] sm:h-[337px] mx-auto"
-            src="https://www.youtube.com/embed/veYDnCDTEbU?si=1l7TYJdeg_nnfgSt"
-            frameBorder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-            title="YouTube video player"
-          ></iframe>
+
+          {/* Right content: video */}
+          <div className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg px-2 pt-2 pb-4 cursor-pointer transition-transform hover:-translate-y-1 w-10/12 lg:w-1/2 max-w-[600px] mx-auto">
+            <div className="relative w-full aspect-video">
+              <iframe
+                src={'https://www.youtube.com/embed/veYDnCDTEbU'}
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                className="absolute inset-0 w-full h-full rounded-xl"
+              />
+            </div>
+          </div>
         </div>
-        <div className="bg-white relative py-20">
-          <h2 className="text-center font-black text-5xl md:text-8xl z-50">
-            Nuestros <br /> Pequeños Bilingües
-          </h2>
-          <p className="text-center py-6 opacity-60 px-20 ">+80 estudiantes en Español - Italiano</p>
-          <div className="flex flex-wrap gap-0 justify-center my-10">
-            <iframe
-              className="my-8 rounded-lg w-[400px] h-[225px] mx-auto md:w-[480px] md:h-[270px]"
-              src="https://www.youtube.com/embed/oEjZfTepaYM?si=IvY7rFc55Xd81zAU"
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-              title="YouTube video player"
-            ></iframe>
-            <iframe
-              className="my-8 rounded-lg w-[400px] h-[225px] mx-auto md:w-[480px] md:h-[270px]"
-              src="https://www.youtube.com/embed/Cg2dbPF42uI?si=PDC0CXot5RZ9RhSn"
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-              title="YouTube video player"
-            ></iframe>
+
+        {/* Testimonials Section */}
+        <div className="bg-[#173330] relative py-10 px-6 md:px-12 lg:px-20">
+          <h2 className="text-center text-[#F9F1D2] font-black text-5xl md:text-7xl mb-6">Lo que dicen de nosotros</h2>
+          <p className="text-center text-[#F9F1D2]/80 max-w-2xl mx-auto mb-12">
+            Historias reales de padres orgullosos y pequeños que ya dominan el inglés.
+          </p>
+
+          <div className="grid grid-cols-1 md:grid-cols-6 gap-6 auto-rows-[minmax(200px,auto)]">
+            {/* Card 1 - wide */}
+            <div
+              ref={card1Ref}
+              className="md:col-span-4 bg-white cursor-pointer rounded-2xl shadow-lg p-6 flex flex-col justify-start hover:scale-[1.02] transition-transform duration-300 relative"
+            >
+              {/* Stars */}
+              <div className="absolute top-4 right-4 flex">
+                {[...Array(5)].map((_, i) => (
+                  <FaStar key={i} className="w-4 h-4 fill-yellow-400" />
+                ))}
+              </div>
+
+              <div className="flex items-center gap-4 mb-4">
+                <NextImage src={review1} alt="Profile" className="w-14 h-14 rounded-full object-cover" />
+                <div>
+                  <h3 className="font-bold text-lg text-[#173330]">María José Acevedo</h3>
+                  <p className="text-sm text-gray-500">Comerciante</p>
+                </div>
+              </div>
+              <p className="text-gray-700">
+                Mis pequeños antes se aburrían con el inglés del colegio, pero en LET Academy lo viven como un juego y
+                cada clase es divertida, participan sin miedo y ya incluso empezaron a entender sus series y películas
+                en inglés sin subtítulos.
+                <span className="text-gray-700 hidden md:inline">
+                  {' '}
+                  Recomiendaría la academia a niños que se distraen facilmente como mis hijos porque la profesora les
+                  mantiene entretenidos y aprendiendo
+                </span>
+              </p>
+            </div>
+
+            {/* Card 2 - tall */}
+            <div
+              ref={card2Ref}
+              className="md:col-span-2 md:row-span-2 bg-white cursor-pointer rounded-2xl shadow-lg p-6 flex flex-col justify-start hover:scale-[1.02] transition-transform duration-300 relative"
+            >
+              {/* Stars */}
+              <div className="absolute top-4 right-4 flex">
+                {[...Array(5)].map((_, i) => (
+                  <FaStar key={i} className="w-4 h-4 fill-yellow-400" />
+                ))}
+              </div>
+
+              <div className="flex items-center gap-4 mb-4">
+                <NextImage src={review2} alt="Profile" className="w-14 h-14 rounded-full object-cover" />
+                <div>
+                  <h3 className="font-bold text-lg text-[#173330]">Antonio Méndez</h3>
+                  <p className="text-sm text-gray-500">Agente Inmobiliario</p>
+                </div>
+              </div>
+              <p className="text-gray-700">
+                Mi hija Lucía esta aprendiendo inglés jugando, cantando y riendo con las clases de la academia. Los
+                profesores los motivan a aprender en formas que se divierten al mismo tiempo y cada día que le toca su
+                clase me insiste para hacerla entrar. <br />
+                <span className="text-gray-700 hidden md:inline">
+                  {' '}
+                  Mi pequeña tiene un aprendizaje visual mayormente y los profesores explican los temas en modo que sea
+                  fácil de asimilar para todos los estudiantes de la clase, incluso para los que tienen mayor dificultad
+                  o les cuesta el idioma. <br />
+                  Quiero agradecer y recomendar especialmente al profesor Jordi, que ha estado siempre disponible para
+                  mi hija, con cualquier tema que no entendía o tarea de la escuela le ha ayudado en lo necesario.
+                  Muchas gracias...
+                </span>
+              </p>
+            </div>
+
+            {/* Card 3 */}
+            <div
+              ref={card3Ref}
+              className="md:col-span-2 bg-white cursor-pointer rounded-2xl shadow-lg p-6 flex flex-col justify-start hover:scale-[1.02] transition-transform duration-300 relative"
+            >
+              {/* Stars */}
+              <div className="absolute top-4 right-4 flex">
+                {[...Array(5)].map((_, i) => (
+                  <FaStar key={i} className="w-4 h-4 fill-yellow-400" />
+                ))}
+              </div>
+
+              <div className="flex items-center gap-4 mb-4">
+                <NextImage src={review3} alt="Profile" className="w-14 h-14 rounded-full object-cover" />
+                <div>
+                  <h3 className="font-bold text-lg text-[#173330]">Gustavo Bravo</h3>
+                  <p className="text-sm text-gray-500">Médico Veterinario</p>
+                </div>
+              </div>
+              <p className="text-gray-700">
+                100% recomendado, los profesores son muy profesionales, disponibles y amables. La enseñanza es
+                excelente, el aprendizaje muy rápido y en poco tiempo mi pequeño Santiago ya estaba nombrando cosas en
+                inglés por toda la casa, muy satisfecho con LET Academy y contento con el avance de mi hijo.
+              </p>
+            </div>
+
+            {/* Card 4 */}
+            <div
+              ref={card4Ref}
+              className="md:col-span-2 bg-white cursor-pointer rounded-2xl shadow-lg p-6 flex flex-col justify-start hover:scale-[1.02] transition-transform duration-300 relative"
+            >
+              {/* Stars */}
+              <div className="absolute top-4 right-4 flex">
+                {[...Array(5)].map((_, i) => (
+                  <FaStar key={i} className="w-4 h-4 fill-yellow-400" />
+                ))}
+              </div>
+
+              <div className="flex items-center gap-4 mb-4">
+                <NextImage src={review4} alt="Profile" className="w-14 h-14 rounded-full object-cover" />
+                <div>
+                  <h3 className="font-bold text-lg text-[#173330]">José Ramírez</h3>
+                  <p className="text-sm text-gray-500">Independiente</p>
+                </div>
+              </div>
+              <p className="text-gray-700">
+                Recomiendo LET Academy sin dudarlo. Mi hija aprendió más en unos meses que en años anteriores, la
+                profesora es súper amable y profesional en las clases. Después de tanto buscar finalmente encontramos la
+                academia ideal
+              </p>
+            </div>
           </div>
-          <div className="w-[320px] mx-auto rounded-full bg-[#F17024] shadow-black/30 shadow-lg cursor-pointer  hover:scale-105 ease-in 1s active:scale-95">
-            <Link href={'https://www.youtube.com/@let_academy'} target="_blank">
-              <p className="font-black text-lg text-center py-4 px-6 text-white">Ir a YouTube para más Clases</p>
-            </Link>
-          </div>
+
+          {/* CTA Button */}
+          <a
+            href="https:wa.me/+393792913474?text=Hola!%20Acabo%20de%20ver%20la%20página%20y%20me%20gustaría%20obtener%20más%20información%20por%20favor"
+            target="_blank"
+          >
+            <div className="px-3 flex justify-around items-center w-[250px] mx-auto py-2 rounded-full bg-[#25d366] shadow-black/30 shadow-lg cursor-pointer  hover:scale-105 ease-in 1s active:scale-95 mt-12">
+              <p style={{ textShadow: '2px 2px 2px #1ba84f' }} className="font-black text-lg text-white text-shadow-md">
+                Contacta un Asesor
+              </p>
+              <FaWhatsapp className="w-[40px] h-[40px] fill-white p-1" />
+            </div>
+          </a>
         </div>
         <div className="py-20 px-10 bg-[#17423d] space-y-8">
-          <h3 className="text-6xl md:text-8xl shadow-black drop-shadow-lg my-4 text-center text-white font-black">
-            Método de
+          <h3 className="text-5xl md:text-8xl shadow-black drop-shadow-lg my-4 text-center text-white font-black">
+            Nuestro
             <br />
             Aprendizaje
           </h3>
+
+          {/* Pilar 1 */}
           <div
             ref={step1Ref}
-            className="w-full flex items-start flex-wrap justify-between h-[500px] lg:h-[300px] rounded-md relative bg-[#ffffff] overflow-hidden px-12 pt-2"
+            className="w-full flex items-start flex-wrap justify-between h-[500px] lg:h-[300px] rounded-md relative bg-[#ffffff] overflow-hidden px-12 pt-2 shadow-lg hover:shadow-xl transition-shadow duration-300"
           >
             <div className="lg:max-w-[35%] xl:max-w-[45%]">
-              <h3 className="text-4xl md:text-6xl font-black">Plataforma Interáctiva.</h3>
+              <h3 className="text-3xl md:text-6xl font-black">Plataforma Interactiva</h3>
               <p className="py-2 opacity-80 text-start">
-                Todos los estudiantes al entrar al programa tendrán su carnet estudiantil y acceso a la plataforma con
-                su matrícula. Donde podrá resolver actividades, ver su progreso y acceder a los recursos de aprendizaje.
+                Cada estudiante recibe su carnet estudiantil y acceso a nuestra plataforma digital, donde puede
+                practicar inglés, revisar sus calificaciones, resolver actividades interactivas y aprender a su propio
+                ritmo, en cualquier momento del día.
               </p>
             </div>
             <div className="max-w-lg:w-full">
               <NextImage src={step1} className="w-[400px] md:w-[450px] h-auto mx-auto" />
             </div>
           </div>
+
+          {/* Pilar 2 */}
           <div
             ref={step2Ref}
-            className="w-full flex flex-row-reverse items-start flex-wrap justify-between h-[500px] md:h-[300px] rounded-md relative bg-[#ffffff] overflow-hidden px-12 pt-2"
+            className="w-full flex flex-row-reverse items-start flex-wrap justify-between h-[500px] md:h-[300px] rounded-md relative bg-[#ffffff] overflow-hidden px-12 pt-2 shadow-lg hover:shadow-xl transition-shadow duration-300"
           >
             <div className="lg:max-w-[35%] xl:max-w-[45%]">
-              <h3 className="text-4xl md:text-6xl font-black">Aprendizaje Divertido</h3>
+              <h3 className="text-3xl md:text-6xl font-black">Método Audiovisual</h3>
               <p className="py-2 opacity-80 text-start">
-                El estudiante aprenderá inglés con sus peliculas favoritas y temas que realmente le interesan, de esta
-                manera le mantendremos concentrado y sin aburrirse como en las clases tradicionales. Pueden elegir de
-                más de 1.000 películas animadas de Disney, Pixar y más!
+                Aprender inglés puede ser tan divertido como ver una película. Nuestro método se basa en materiales
+                audiovisuales: series, dibujos y juegos adaptados a la edad del estudiante, para que el aprendizaje
+                ocurra de forma natural mientras se divierte.
               </p>
             </div>
             <div className="max-w-lg:w-full">
               <NextImage src={step2} className="w-[450px] md:w-[550px] h-auto mx-auto" />
             </div>
           </div>
+
+          {/* Pilar 3 */}
           <div
             ref={step3Ref}
-            className="w-full flex items-start flex-wrap justify-between h-[500px] lg:h-[300px] rounded-md relative bg-[#ffffff] overflow-hidden px-12 pt-2"
+            className="w-full flex items-start flex-wrap justify-between h-[500px] lg:h-[300px] rounded-md relative bg-[#ffffff] overflow-hidden px-12 pt-2 shadow-lg hover:shadow-xl transition-shadow duration-300"
           >
             <div className="lg:max-w-[35%] xl:max-w-[45%]">
-              <h3 className="text-4xl md:text-6xl font-black">Clases Online </h3>
+              <h3 className="text-3xl md:text-6xl font-black">Clases en Vivo Personalizadas</h3>
               <p className="py-2 opacity-80 text-start">
-                También tendrá clases en vivo donde participará en todo momento en las actividades del tutor para
-                mantener un óptimo desempeño. Tableros virtuales y videos muy cortos ayudan a desarrollar sus
-                habilidades lingüisticas.
-              </p>
-            </div>
-            <div className="max-w-lg:w-full">
-              <NextImage src={step4} className="w-[450px] md:w-[550px] h-auto mx-auto" />
-            </div>
-          </div>
-          <div
-            ref={step3Ref}
-            className="w-full flex-row-reverse flex items-start flex-wrap justify-between h-[500px] lg:h-[300px] rounded-md relative bg-[#ffffff] overflow-hidden px-12 pt-2"
-          >
-            <div className="lg:max-w-[35%] xl:max-w-[45%]">
-              <h3 className="text-4xl md:text-6xl font-black">Test de Habilidad</h3>
-              <p className="py-2 opacity-80 text-start">
-                Validamos los conocimiento de los estudiantes con evaluaciones divertidas y entretenidas (muy diferentes
-                a un exámen tradicional) son mucho más visuales y didácticos para fomentar su comprensión y aprendizaje.
+                Nuestras clases online en grupos reducidos aseguran atención personalizada. Fomentamos la participación,
+                la expresión oral y la confianza para hablar inglés sin miedo a equivocarse, porque aprender también es
+                atreverse.
               </p>
             </div>
             <div className="max-w-lg:w-full">
               <NextImage src={step3} className="w-[450px] md:w-[550px] h-auto mx-auto" />
             </div>
           </div>
-        </div>
-        <div className="bg-white relative py-20">
-          <h2 className="text-center font-black text-5xl md:text-8xl z-50">Nuestros Teachers Certificados</h2>
-          <p className="text-center py-6 opacity-60 px-20">+20 docentes de Inglés - Italiano</p>
-          <div className="relative overflow-hidden">
-            {/* Buttons for navigation */}
-            <button
-              className="absolute top-1/2 -translate-y-1/2 left-4 z-10 bg-gray-200 bg-opacity-70 backdrop-blur-sm text-black rounded-full p-3 hover:bg-gray-300 transition"
-              onClick={() =>
-                document.getElementById('carousel-container').scrollBy({
-                  left: -250,
-                  behavior: 'smooth',
-                })
-              }
-            >
-              <MdArrowBackIos size={24} />
-            </button>
-            <button
-              className="absolute top-1/2 -translate-y-1/2 right-4 z-10 bg-gray-200 bg-opacity-70 backdrop-blur-sm text-black rounded-full p-3 hover:bg-gray-300 transition"
-              onClick={() =>
-                document.getElementById('carousel-container').scrollBy({
-                  left: 250,
-                  behavior: 'smooth',
-                })
-              }
-            >
-              <MdArrowForwardIos size={24} />
-            </button>
-            {/* Carousel Container */}
-            <div
-              id="carousel-container"
-              className="flex bg-gray-200 py-2 px-10 gap-4 overflow-x-auto scroll-smooth no-scrollbar"
-            >
-              {/* Teacher Cards */}
-              {[
-                {
-                  img: teacher1,
-                  name: 'Jordi',
-                  sub: 'Online Teacher',
-                  description: 'Profesor certificado de Inglés e Italiano (7-14)',
-                },
-                {
-                  img: teacher4,
-                  name: 'Ersa',
-                  sub: 'Online Teacher',
-                  description: 'Profesora certificada de Inglés e Italiano (4-6)',
-                },
-                {
-                  img: teacher3,
-                  name: 'Luca',
-                  sub: 'Italian Teacher',
-                  description: 'Profesor presencial de Italiano en Español (18+)',
-                },
-                {
-                  img: teacher2,
-                  name: 'Anna',
-                  sub: 'Children Teacher',
-                  description: 'Profesora de Inglés certificada (7-14)',
-                },
-                {
-                  img: teacher5,
-                  name: 'Agostino',
-                  sub: 'Online Teacher',
-                  description: 'Profesor certificado de Inglés e Italiano (7-14)',
-                },
-                {
-                  img: teacher6,
-                  name: 'Vincenzo',
-                  sub: 'Business Teacher',
-                  description: 'Docente de Inglés para profesionales (18+)',
-                },
-              ].map((teacher, index) => (
-                <div key={index} className="bg-green-600 p-0 w-64 min-w-[256px] rounded-md flex-shrink-0">
-                  <div className="teacher-card-bg bg-green-800 rounded-md w-full h-20" />
-                  <div className="teacher-card-body relative">
-                    <div className="absolute -top-14 right-4">
-                      {/* Image Component */}
-                      <NextImage
-                        src={teacher.img}
-                        alt={`Photo of ${teacher.name}`}
-                        width={96}
-                        height={96}
-                        className="my-2 object-cover rounded-full mx-auto w-24 h-24"
-                      />
-                    </div>
-                    <div className="teacher-card-text px-8 py-4">
-                      <p className="text-2xl font-black">{teacher.name}</p>
-                      <p className="text-sm opacity-70">{teacher.sub}</p>
-                      <p className="py-2">{teacher.description}</p>
-                    </div>
-                  </div>
-                </div>
-              ))}
+
+          {/* Pilar 4 */}
+          <div
+            ref={step4Ref}
+            className="w-full flex-row-reverse flex items-start flex-wrap justify-between h-[500px] lg:h-[300px] rounded-md relative bg-[#ffffff] overflow-hidden px-12 pt-2 shadow-lg hover:shadow-xl transition-shadow duration-300"
+          >
+            <div className="lg:max-w-[35%] xl:max-w-[45%]">
+              <h3 className="text-3xl md:text-6xl font-black">Evaluación de Conocimientos</h3>
+              <p className="py-2 opacity-80 text-start">
+                Evaluamos el progreso de forma dinámica y divertida con pruebas interactivas que van más allá del examen
+                tradicional. Estas actividades visuales y didácticas permiten reforzar la comprensión y celebrar cada
+                avance del estudiante.
+              </p>
+            </div>
+            <div className="max-w-lg:w-full">
+              <NextImage src={step4} className="w-[450px] md:w-[550px] h-auto mx-auto" />
             </div>
           </div>
         </div>
 
-        <div className="bg-[#173330] py-20">
-          <h3 className="text-5xl md:text-8xl shadow-black drop-shadow-lg py-8 text-center text-white font-black">
-            Metodología
-            <br />
-            de <span className="text-yellow-400 font-black">Aprendizaje</span>
-          </h3>
-          <p className="mx-auto w-[90%] text-center text-white opacity-70">
-            Queremos dar la oportunidad a todos los estudiantes de tener una educación de calidad donde puedan
-            participar libremente y aprender de sus errores. Es por eso que creamos un ambiente cómodo donde el
-            estudiante pueda desarrollar su vocabulario y exprimir sus ideas en inglés con confianza
+        <div className="bg-white relative py-20">
+          <h2 className="text-center font-black text-3xl md:text-8xl z-50">Nuestros Teachers Certificados</h2>
+          <p className="text-center text-xs sm:text-sm py-6 opacity-60 px-10">
+            Profesionales apasionados por la educación y comprometidos con el futuro de tu hijo
           </p>
-          <div className="flex flex-wrap gap-4 justify-center my-10">
-            <div className="w-[300px] mx-auto my-8">
-              <NextImage src={greenSquare1} className="my-2 rounded-lg mx-auto" />
-              <p className="text-white opacity-70 text-center">
-                Tu hijo/a aprende inglés mientras se divierte y descubre su potencial.
-              </p>
-            </div>
-            <div className="w-[300px] mx-auto my-8">
-              <NextImage src={greenSquare2} className="my-2 rounded-lg mx-auto" />
-              <p className="text-white opacity-70 text-center">
-                Usa el vocabulario aprendido con actividades grupales interáctivas.
-              </p>
-            </div>
-            <div className="w-[300px] mx-auto my-8">
-              <NextImage src={greenSquare3} className="my-2 rounded-lg mx-auto" />
-              <p className="text-white opacity-70 text-center">
-                El estudiante realiza la prueba final y tu recibes el reporte detallado
-              </p>
-            </div>
-          </div>
-          <div
-            onClick={() => router.push('/Info')}
-            className="px-6 w-[240px] mx-auto py-4 rounded-full bg-[#F17024] shadow-black/30 shadow-lg cursor-pointer  hover:scale-105 ease-in 1s active:scale-95"
-          >
-            <p className="font-black text-lg text-white">Ver Planes y Precios</p>
-          </div>
+          <Carousel
+            cardWidth="w-64"
+            cardHeight="h-40"
+            items={[
+              {
+                type: 'photo',
+                src: teacher1,
+                title: 'Jordi',
+                subtitle: 'Online Teacher',
+                description: 'Docente online certificado de Inglés e Italiano (7-14)',
+              },
+              {
+                type: 'photo',
+                src: teacher4,
+                title: 'Ersa',
+                subtitle: 'Online Teacher',
+                description: 'Docente online certificada de Inglés e Italiano (4-6)',
+              },
+              {
+                type: 'photo',
+                src: teacher3,
+                title: 'Luca',
+                subtitle: 'Italian Teacher',
+                description: 'Docente presencial de Italiano en Español (Adults)',
+              },
+              {
+                type: 'photo',
+                src: teacher2,
+                title: 'Anna',
+                subtitle: 'Children Teacher',
+                description: 'Docente presencial de Inglés certificada (7-14)',
+              },
+              {
+                type: 'photo',
+                src: teacher6,
+                title: 'Vincenzo',
+                subtitle: 'Business Teacher',
+                description: 'Docente de Inglés para profesionales (Adults)',
+              },
+            ]}
+          />
         </div>
         <div className="bg-white relative py-60">
           <NextImage
@@ -574,16 +653,16 @@ export default function HomeView() {
             className="h-[160px] w-[160px] md:h-[250px] md:w-[250px] rounded-full absolute bottom-2 left-14 md:left-16 -rotate-6"
           />
           <h2 className="text-center font-black text-6xl md:text-8xl z-50">
-            Tu Hijo disfrutará <br /> Aprender Inglés
+            Tu Hijo Disfrutará <br /> Aprender Inglés
           </h2>
         </div>
         <div className="bg-[#173330]">
-          <h3 className="text-6xl md:text-8xl shadow-black drop-shadow-lg pt-20 pb-8 md:pb-20 text-center text-white font-black">
+          <h3 className="text-5xl md:text-8xl shadow-black drop-shadow-lg pt-28 pb-8 md:pb-20 text-center text-white font-black">
             Preguntas
             <br />
             Frecuentes
           </h3>
-          <FaqAccordion />
+          <FaqAccordion textColor="white" bgColor="#173330" />
         </div>
       </div>
     </>

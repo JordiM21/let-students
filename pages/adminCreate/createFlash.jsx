@@ -1,6 +1,7 @@
 import BackHeader from '@/components/BackHeader';
 import { db } from '@/config/firebase';
 import { addDoc, collection, getDocs } from 'firebase/firestore';
+import Image from 'next/image';
 import React, { useEffect, useState } from 'react'
 
 export default function CreateCategories() {
@@ -25,11 +26,10 @@ export default function CreateCategories() {
     fetchData()
   }, [])
 
-  console.log(categories)
 
   return (
     <div className="mx-4 max-w-4xl md:mx-auto mt-8 mb-20 pt-20 min-h-screen py-8">
-      <BackHeader largeTitle={'Flash Admin'} parentTitle={'Back'} />
+      <BackHeader largeTitle={'Flash Admin'} parentTitle={'Volver'} />
       <h2 className="text-2xl font-bold mb-4">All Categories</h2>
       {Object.entries(categories)
         .sort(([aName], [bName]) => aName.localeCompare(bName))
@@ -46,7 +46,7 @@ export default function CreateCategories() {
               </button>
 
               {categoryData.cover && (
-                <img src={categoryData.cover} alt={`${categoryName} cover`} className="w-48 my-2 rounded shadow" />
+                <Image src={categoryData.cover} alt={`${categoryName} cover`} className="w-48 my-2 rounded shadow" />
               )}
               {isExpanded && categoryData.levels && (
                 <div>
@@ -64,7 +64,7 @@ export default function CreateCategories() {
                               <li key={index} className="mb-1">
                                 <strong>{item.word}</strong>
                                 {item.img && (
-                                  <img
+                                  <Image
                                     src={item.img}
                                     alt={item.word}
                                     className="inline-block w-16 h-16 ml-2 object-cover rounded"

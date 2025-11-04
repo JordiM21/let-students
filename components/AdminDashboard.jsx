@@ -4,28 +4,35 @@ import image3 from '@/public/cambridgeandlet.png'
 import { AiFillCloseCircle, AiFillPieChart, AiFillYoutube, AiOutlineCopy } from 'react-icons/ai'
 import { toast } from 'react-toastify'
 import { useRouter } from 'next/router'
-import { Box, Fade, Modal, TextField, useMediaQuery } from '@mui/material'
+import { Box, Fade, IconButton, Modal, TextField, useMediaQuery } from '@mui/material'
 import { db } from '@/config/firebase'
-import { BsFillCameraVideoFill, BsHeartFill } from 'react-icons/bs'
-import CtaAnimationPage from './CtaAnimationPage'
-import student from '@/public/animations/student.json'
 import Backdrop from '@mui/material/Backdrop'
-import ExternalApps from './ExternalApps'
-import YourProfile from './YourProfile'
 import { MdFaceRetouchingNatural, MdReplay, MdTaskAlt } from 'react-icons/md'
 import { TbBrandYoutubeKids } from 'react-icons/tb'
-import { FaTasks } from 'react-icons/fa'
 import { PiGameControllerFill } from 'react-icons/pi'
 import { GiGamepadCross } from 'react-icons/gi'
+import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper } from '@mui/material'
+import { useTheme } from '@mui/material/styles'
+import { getCurrentMonthWithAdjustment } from './getCurrentMonth'
 
 export default function AdminDashboard({ allUsers, id, url, wordsGameProgress }) {
-  console.log(allUsers)
+  const theme = useTheme()
   const router = useRouter()
-  const [flashCategory, setFlashCategory] = useState('Animals')
+  const isMobile = useMediaQuery(theme.breakpoints.down('md'))
+  const [currentMonth, setCurrentMonth] = useState()
   const [urlMeet, setUrlMeet] = useState('')
-  const [open, setOpen] = React.useState(false)
+  const [open, setOpen] = useState(false)
   const handleOpen = () => setOpen(true)
   const handleClose = () => setOpen(false)
+  const [userMonths, setUserMonths] = useState({}) // store month per user
+
+  useEffect(() => {
+    const months = {}
+    allUsers.forEach((user) => {
+      months[user.uid] = getCurrentMonthWithAdjustment(user.startDate, user.dateVariable)
+    })
+    setUserMonths(months)
+  }, [allUsers])
 
   const isScreenBig = useMediaQuery('(min-width: 550px)')
 
@@ -69,239 +76,128 @@ export default function AdminDashboard({ allUsers, id, url, wordsGameProgress })
   const showAlert = () => {
     setIsFinished(true)
   }
+  const levelOrder = ['First', 'Second', 'Third', 'Fourth', 'Fifth']
 
-  const [meetingRoom, setMeetingRoom] = useState(false)
+  const renderFlashProgress = (progress = {}) => {
+    return Object.entries(progress).map(([category, levels]) => (
+      <div key={category} className="mb-1">
+        <strong>{category}:</strong>{' '}
+        {Object.entries(levels)
+          .sort(([a], [b]) => levelOrder.indexOf(a) - levelOrder.indexOf(b))
+          .map(([level, value]) => (
+            <span key={level} className="mr-2">
+              {level}: <span className="font-mono">{value}</span>
+            </span>
+          ))}
+      </div>
+    ))
+  }
+
+  // State at the top of your component
+  const [expandedUsers, setExpandedUsers] = useState({})
+
+  const handleToggleExpand = (userId) => {
+    setExpandedUsers((prev) => ({
+      ...prev,
+      [userId]: !prev[userId], // toggle only this user
+    }))
+  }
+
+  const sortedUsers = allUsers.sort((a, b) => (userMonths[b.uid] ?? 0) - (userMonths[a.uid] ?? 0))
+
+
   return (
     <div>
-      {meetingRoom == true && (
-        <CtaAnimationPage
-          title={'Entra en tu sala de reuniones con tus estudiantes'}
-          subTitle={`Antes de entrar debes haber establecido un horario, Este botón te llevará a tu sala de reuniones en zoom ¡Recuerda ser muy puntual! `}
-          animation={student}
-          cta={'Ir a Zoom'}
-          btn="link"
-          link={url}
-          bg="green"
-          setMeetingRoom={setMeetingRoom}
-        />
-      )}
-      <div
-        onClick={() => setMeetingRoom(true)}
-        className="flex bg-green-500 py-1 px-3 absolute top-2 left-2 md:left-20 cursor-pointer hover:opacity-80 rounded-full w-[100px] md:w-[170px] justify-between items-center"
-      >
-        <BsFillCameraVideoFill fill="white" size={20} />
-        <p className={`text-white text-xs`}>
-          <span className="hidden text-white md:inline">Enter in the </span>
-          Meeting
-        </p>
-      </div>
       <div className="md:gap-8 my-8 mx-4 md:mx-16">
-        <small className="text-white">
-          Problemas con tu meeting link?{' '}
-          <span onClick={handleOpen} className="text-green-500 cursor-pointer underline">
-            Click aqui!
-          </span>
-        </small>
-        <Modal
-          aria-labelledby="transition-modal-title"
-          aria-describedby="transition-modal-description"
-          open={open}
-          onClose={handleClose}
-          closeAfterTransition
-          slots={{ backdrop: Backdrop }}
-          slotProps={{
-            backdrop: {
-              timeout: 500,
-            },
-          }}
-        >
-          <Fade in={open}>
-            <Box sx={style}>
-              <small className="text-gray-500 text-xs">Current Url (link actual): {url} </small>
-              <p>
-                Ingresa aqui el link proporcionado por Zoom. cuando tengas tu link personal ingresalo aqui y listo!
-                todos tus estudiantes lo tendran a disposición.
-              </p>
-              <form onSubmit={changeUrl} className="flex flex-col p-8 space-y-4">
-                <TextField
-                  id="filled-basic"
-                  label="Link given by Zoom"
-                  variant="filled"
-                  className="bg-gray-300 rounded-md w-full"
-                  value={urlMeet}
-                  type="text"
-                  placeholder="https://us05web.zoom.us/******"
-                  onChange={(e) => setUrlMeet(e.target.value)}
-                />
-                <button type="submit" className="bg-[var(--color3)] py-4 text-lg text-white rounded-md">
-                  Add link
-                </button>
-              </form>
-            </Box>
-          </Fade>
-        </Modal>
-        <div className="mx-4 flex justify-center flex-wrap gap-4 my-4">
-          {allUsers.length < 2 && (
-            <div className="hover:-translate-y-1 cursor-pointer shadow-xl hover:shadow-black flex items-center flex-col bg-slate-300 rounded-lg p-2 w-72">
-              <YourProfile />
-              <p className="text-2xl">Future Student</p>
-              <div className="flex justify-between w-full px-4">
-                <div className="group cursor-pointer flex gap-1 items-center">
-                  <BsHeartFill size={30} className="group-hover:fill-red-600 group-hover:-translate-y-1" />
-                  <p className="group-hover:text-red-600 group-hover:-translate-y-1">0</p>
-                </div>
-                <div className="group cursor-pointer flex gap-2 items-center">
-                  <FaTasks size={30} className="group-hover:fill-yellow-500 group-hover:-translate-y-1" />
-                  <p className="group-hover:text-yellow-500 group-hover:-translate-y-1">0</p>
-                </div>
-              </div>
-              <div className="w-[90%] mx-auto">
-                <button class="learn-more my-2">
-                  <span class="circle bg-gray-400" aria-hidden="true">
-                    <span class="icon arrow"></span>
-                  </span>
-                  <span class="button-text text-gray-400">No Disponible</span>
-                </button>
-              </div>
-            </div>
-          )}
-          {allUsers.map((student) => (
-            <div className="hover:-translate-y-1 cursor-pointer shadow-xl hover:shadow-black flex items-center flex-col bg-slate-300 rounded-lg p-2 w-72">
-              <YourProfile char={student.profileImg} size={''} />
-              <p className="text-2xl">{student.firstName}</p>
-              <div className="flex justify-between w-full px-4">
-                <div className="group cursor-pointer flex gap-1 items-center">
-                  <BsHeartFill size={30} className="group-hover:fill-red-600 group-hover:-translate-y-1" />
-                  <p className="group-hover:text-red-600 group-hover:-translate-y-1">{student.likedVideos.length}</p>
-                </div>
-                <div className="group cursor-pointer flex gap-2 items-center">
-                  <FaTasks size={30} className="group-hover:fill-yellow-500 group-hover:-translate-y-1" />
-                  <p className="group-hover:text-yellow-500 group-hover:-translate-y-1">{student.activities.length}</p>
-                </div>
-              </div>
-              <div className="w-[90%] flex justify-center">
-                <button
-                  onClick={() => router.push(`/ActivitiesDetail/${student.id}`)}
-                  className="bg-[var(--bluebg)] hover:bg-[var(--blueDarkbg)] py-2 px-4 rounded-md my-2"
+        <TableContainer component={Paper} className="rounded-xl shadow-md overflow-x-auto">
+          <Table
+            stickyHeader
+            sx={{
+              tableLayout: 'fixed',
+              minWidth: 1200,
+            }}
+          >
+            <TableHead>
+              <TableRow>
+                <TableCell className="font-bold w-[150px]">Name</TableCell>
+                <TableCell className="font-bold w-[250px]">Email</TableCell>
+                <TableCell className="font-bold w-[150px]">Phone</TableCell>
+                <TableCell className="font-bold w-[150px]">Mat Number</TableCell>
+                <TableCell className="font-bold w-[150px]">Level</TableCell>
+                <TableCell className="font-bold w-[500px]">Flash Cards</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {sortedUsers.map((user) => (
+                <TableRow
+                  key={user.uid}
+                  hover
+                  className="cursor-pointer"
+                  onClick={() => router.push(`/StudentDetail/${user.id}`)}
                 >
-                  <span class="text-white">Ver Actividades</span>
-                </button>
-              </div>
-            </div>
-          ))}
-          {allUsers.length < 3 && (
-            <div className="hover:-translate-y-1 cursor-pointer shadow-xl hover:shadow-black flex items-center flex-col bg-slate-300 rounded-lg p-2 w-72">
-              <YourProfile />
-              <p className="text-2xl">Future Student</p>
-              <div className="flex justify-between w-full px-4">
-                <div className="group cursor-pointer flex gap-1 items-center">
-                  <BsHeartFill size={30} className="group-hover:fill-red-600 group-hover:-translate-y-1" />
-                  <p className="group-hover:text-red-600 group-hover:-translate-y-1">0</p>
-                </div>
-                <div className="group cursor-pointer flex gap-2 items-center">
-                  <FaTasks size={30} className="group-hover:fill-yellow-500 group-hover:-translate-y-1" />
-                  <p className="group-hover:text-yellow-500 group-hover:-translate-y-1">0</p>
-                </div>
-              </div>
-              <div className="w-[90%] mx-auto">
-                <button class="learn-more my-2">
-                  <span class="circle bg-gray-400" aria-hidden="true">
-                    <span class="icon arrow"></span>
-                  </span>
-                  <span class="button-text text-gray-400">No Disponible</span>
-                </button>
-              </div>
-            </div>
-          )}
-        </div>
+                  <TableCell>{user.firstName}</TableCell>
+                  <TableCell>{user.email}</TableCell>
+                  <TableCell>{user.phone}</TableCell>
+                  <TableCell>{user.matriculation}</TableCell>
+                  <TableCell>{userMonths[user.uid] ?? 'Loading...'}</TableCell>{' '}
+                  <TableCell
+                    className="align-top whitespace-pre-wrap break-words"
+                    style={{ minWidth: '500px' }} // 👈 enforce width
+                  >
+                    {renderFlashProgress(user.FlashProgress)}
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
 
         {/* <ExternalApps role={'admin'} />*/}
 
-        <div className="w-full max-w-4xl mx-auto space-y-6 md:my-12 md:space-y-0 md:flex justify-evenly">
+        <div className="w-full max-w-4xl mx-auto space-y-6 py-8 md:my-12 md:space-y-0 md:flex flex-wrap gap-2 justify-evenly">
           <div
             onClick={() => router.push(`/Register`)}
-            className="group active:scale-90 bg-white relative overflow-hidden flex gap-2 justify-center items-center py-6 md:py-2 md:w-56 rounded-md hover:shadow-lg shadow-black cursor-pointer hover:-translate-y-1 md:h-40 md:flex-col mx-4"
+            className="group active:scale-90 bg-white relative overflow-hidden flex gap-2 justify-center items-center py-6 md:py-2 md:w-40 rounded-md hover:shadow-lg shadow-black cursor-pointer hover:-translate-y-1 md:h-40 md:flex-col "
           >
             <MdFaceRetouchingNatural className="z-10 text-5xl md:text-7xl" />
             <p className="z-10 group-hover:text-white">Add</p>
             <p className="z-10 group-hover:text-white">Student</p>
-            <div className="h-20 group-hover:scale-[100%] scale-0 w-20 z-[5] bg-white rounded-full -left-8 md:left-[72px] md:top-2 absolute"></div>
-            <div className="h-32 md:h-24 md:w-24 group-hover:scale-[1000%] md:group-hover:scale-[350%] w-32 bg-gradient-to-tl from-cyan-300 to-blue-700 rounded-full -left-12 md:left-16 md:top-1 absolute"></div>
+            <div className="h-20 group-hover:scale-[100%] scale-0 w-20 z-[5] bg-white rounded-full -left-8 md:left-[60px] md:top-2 absolute"></div>
+            <div className="h-32 md:h-24 md:w-24 group-hover:scale-[1000%] md:group-hover:scale-[350%] w-32 bg-gradient-to-tl from-cyan-300 to-blue-700 rounded-full -left-12 md:left-8 md:top-1 absolute"></div>
           </div>
           <div
             onClick={() => router.push('/adminCreate/createVideo/')}
-            className="group active:scale-90 bg-white relative overflow-hidden flex gap-2 justify-center items-center py-6 md:py-2 md:w-56 rounded-md hover:shadow-lg shadow-black cursor-pointer hover:-translate-y-1 md:h-40 md:flex-col mx-4"
+            className="group active:scale-90 bg-white relative overflow-hidden flex gap-2 justify-center items-center py-6 md:py-2 md:w-40 rounded-md hover:shadow-lg shadow-black cursor-pointer hover:-translate-y-1 md:h-40 md:flex-col "
           >
             <TbBrandYoutubeKids className="z-10 text-5xl md:text-7xl" />
             <p className="z-10 group-hover:text-white">Add a</p>
             <p className="z-10 group-hover:text-white">Video</p>
             <div className="h-20 group-hover:scale-[100%] scale-0 w-20 z-[5] bg-white rounded-full -left-8 md:left-[72px] md:top-2 absolute"></div>
-            <div className="h-32 md:h-24 md:w-24 group-hover:scale-[1000%] md:group-hover:scale-[350%] w-32 bg-gradient-to-tl from-red-300 to-red-600 rounded-full -left-12 md:left-16 md:top-1 absolute"></div>
+            <div className="h-32 md:h-24 md:w-24 group-hover:scale-[1000%] md:group-hover:scale-[350%] w-32 bg-gradient-to-tl from-red-300 to-red-600 rounded-full -left-12 md:left-8 md:top-1 absolute"></div>
           </div>
           <div
-            onClick={() => router.push('/Progress/')}
-            className="group active:scale-90 bg-white relative overflow-hidden flex gap-2 justify-center items-center py-6 md:py-2 md:w-56 rounded-md hover:shadow-lg shadow-black cursor-pointer hover:-translate-y-1 md:h-40 md:flex-col mx-4"
+            onClick={() => router.push('/Profile/')}
+            className="group active:scale-90 bg-white relative overflow-hidden flex gap-2 justify-center items-center py-6 md:py-2 md:w-40 rounded-md hover:shadow-lg shadow-black cursor-pointer hover:-translate-y-1 md:h-40 md:flex-col "
           >
             <AiFillPieChart className="z-10 text-5xl md:text-7xl" />
             <p className="z-10 group-hover:text-white">My</p>
-            <p className="z-10 group-hover:text-white">Students</p>
+            <p className="z-10 group-hover:text-white">Profile</p>
             <div className="h-20 group-hover:scale-[100%] scale-0 w-20 z-[5] bg-white rounded-full -left-8 md:left-[72px] md:top-2 absolute"></div>
-            <div className="h-32 md:h-24 md:w-24 group-hover:scale-[1000%] md:group-hover:scale-[350%] w-32 bg-gradient-to-tl from-green-300 to-green-700 rounded-full -left-12 md:left-16 md:top-1 absolute"></div>
+            <div className="h-32 md:h-24 md:w-24 group-hover:scale-[1000%] md:group-hover:scale-[350%] w-32 bg-gradient-to-tl from-green-300 to-green-700 rounded-full -left-12 md:left-8 md:top-1 absolute"></div>
           </div>
           <div
             onClick={() => router.push('/adminCreate/createFlash')}
-            className="group active:scale-90 bg-white relative overflow-hidden flex gap-2 justify-center items-center py-6 md:py-2 md:w-56 rounded-md hover:shadow-lg shadow-black cursor-pointer hover:-translate-y-1 md:h-40 md:flex-col mx-4"
+            className="group active:scale-90 bg-white relative overflow-hidden flex gap-2 justify-center items-center py-6 md:py-2 md:w-40 rounded-md hover:shadow-lg shadow-black cursor-pointer hover:-translate-y-1 md:h-40 md:flex-col "
           >
             <MdTaskAlt className="z-10 text-5xl md:text-7xl" />
             <p className="z-10 group-hover:text-white">Create</p>
             <p className="z-10 group-hover:text-white ">Flash</p>
             <div className="h-20 group-hover:scale-[100%] scale-0 w-20 z-[5] bg-white rounded-full -left-8 md:left-[72px] md:top-2 absolute"></div>
-            <div className="h-32 md:h-24 md:w-24 group-hover:scale-[1000%] md:group-hover:scale-[350%] w-32 bg-gradient-to-tl from-orange-200 to-orange-600 rounded-full -left-12 md:left-16 md:top-1 absolute"></div>
+            <div className="h-32 md:h-24 md:w-24 group-hover:scale-[1000%] md:group-hover:scale-[350%] w-32 bg-gradient-to-tl from-orange-200 to-orange-600 rounded-full -left-12 md:left-8 md:top-1 absolute"></div>
           </div>
         </div>
-        <div id="FlashCardsManager" className="mx-auto max-w-2xl">
-          <div className="flex justify-around my-4">
-            <button onClick={() => setFlashCategory('Animals')} className="bg-gray-400 p-2 rounded-md">
-              Animals
-            </button>
-            <button onClick={() => setFlashCategory('Verbs')} className="bg-gray-400 p-2 rounded-md">
-              Verbs
-            </button>
-            <button onClick={() => setFlashCategory('Food')} className="bg-gray-400 p-2 rounded-md">
-              Food
-            </button>
-          </div>
 
-          {allUsers.map((user) => (
-            <div className="bg-white rounded-md my-2 hover:bg-gray-400 cursor-pointer flex justify-between p-2">
-              <div className="w-40">
-                <p>{user.firstName} </p>
-              </div>
-              {flashCategory == 'Animals' && (
-                <div className="flex w-full justify-around ">
-                  <p>{user.FlashProgress.animals.First}</p>
-                  <p>{user.FlashProgress.animals.Second}</p>
-                  <p>{user.FlashProgress.animals.Third}</p>
-                </div>
-              )}
-              {flashCategory == 'Verbs' && (
-                <div className="flex w-full justify-around ">
-                  <p>{user.FlashProgress.verbs.First}</p>
-                  <p>{user.FlashProgress.verbs.Second}</p>
-                </div>
-              )}
-              {flashCategory == 'Food' && (
-                <div className="flex w-full justify-around ">
-                  <p>{user.FlashProgress.food.First}</p>
-                  <p>{user.FlashProgress.food.Second}</p>
-                  <p>{user.FlashProgress.food.Third}</p>
-                </div>
-              )}
-            </div>
-          ))}
-        </div>
-
-        {/* <div className="group bg-gray-100 mx-4 pb-0 relative overflow-hidden my-4 rounded-md md:flex md:justify-between md:pb-0 max-w-5xl md:mx-auto">
+        <div className="group bg-gray-100  pb-0 relative overflow-hidden my-4 rounded-md md:flex md:justify-between md:pb-0 max-w-5xl md:mx-auto">
           <div className="px-4 md:px-20 md:py-4">
             <div>
               <PiGameControllerFill className="opacity-80 group-hover:scale-125 absolute text-7xl -rotate-12 -right-2 -bottom-4 md:-left-2 md:-top-2 fill-gray-500" />
@@ -310,7 +206,7 @@ export default function AdminDashboard({ allUsers, id, url, wordsGameProgress })
               <GiGamepadCross className="opacity-0 md:opacity-80 group-hover:scale-110 absolute text-7xl rotate-6 right-60 -top-4 fill-gray-500" />
               <AiFillYoutube className="opacity-0 md:opacity-80 group-hover:scale-110 absolute text-7xl rotate-12 -right-4 top-3 fill-gray-500" />
               <p className="text-center text-[var(--color2)] text-2xl py-2">WORDS GAME (Juego de Palabras)</p>
-              <p className="font-bold text-md hidden md:block">
+              <p className="font-bold text-base hidden md:block">
                 Learn new words and phrases by listening to native people
               </p>
               <button
@@ -327,7 +223,7 @@ export default function AdminDashboard({ allUsers, id, url, wordsGameProgress })
             </span>{' '}
             Modules Complete in Total
           </div>
-        </div> */}
+        </div>
         <div className="mx-4 py-8 justify-center">
           <div className="md:w-[80%] w-full  mx-auto rounded-md bg-black">
             <Image className="object-cover w-full rounded-t-md" src={image3} />

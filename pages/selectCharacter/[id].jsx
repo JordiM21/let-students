@@ -24,7 +24,7 @@ const selectCharacter = ({ userData }) => {
     const nameRef = doc(db, "users", userMatched.id);
     await updateDoc(nameRef, {
       profileImg: e,
-    }).then(() => toast.success("Character changed succesfully!"))
+    }).then(() => toast.success("Has cambiado tu avatar"))
     setTimeout(() => {
       router.back()
     }, 1000)
@@ -54,29 +54,34 @@ const selectCharacter = ({ userData }) => {
   });
 
   return (
-    <div className='px-8 pt-20 h-screen bg-[var(--color2Shadow)]'>
-      {
-        !userMatched &&
-        (
-          <LoadingScreen />
-        )
-      }
-      <BackHeader parentTitle={"My Profile"} largeTitle={"Change Character"} />
-      <div className='flex justify-center'>
+    <div className="px-8 pt-20 h-screen bg-[var(--color2Shadow)]">
+      {!userMatched && <LoadingScreen />}
+      <BackHeader parentTitle={'Volver'} largeTitle={'Change Character'} />
+      <div className="flex justify-center">
         <YourProfile char={userMatched?.profileImg} />
       </div>
-      <div className='flex mt-4 gap-2'>
-        <div className='w-full'>
+      <div className="flex mt-4 gap-2">
+        <div className="w-full">
           <div>
-            <div className='flex justify-between relative'>
-              <button className='absolute z-10 top-0 h-[150px] -left-5 bg-black hover:bg-slate-950 rounded-l-lg' onClick={slideToPrevItem}><ChevronLeftRounded className='stroke-white text-lg' /></button>
-              <button className='absolute z-10 top-0 h-[150px] -right-5 bg-black hover:bg-slate-950 rounded-r-lg' onClick={slideToNextItem}><ChevronRightRounded className='stroke-white text-lg' /></button>
+            <div className="flex justify-between relative">
+              <button
+                className="absolute z-10 top-0 h-[150px] -left-5 bg-black hover:bg-slate-950 rounded-l-lg"
+                onClick={slideToPrevItem}
+              >
+                <ChevronLeftRounded className="stroke-white text-lg" />
+              </button>
+              <button
+                className="absolute z-10 top-0 h-[150px] -right-5 bg-black hover:bg-slate-950 rounded-r-lg"
+                onClick={slideToNextItem}
+              >
+                <ChevronRightRounded className="stroke-white text-lg" />
+              </button>
             </div>
             <div ref={carouselRef}>{carouselFragment}</div>
           </div>
         </div>
       </div>
-    </div >
+    </div>
   )
 }
 
