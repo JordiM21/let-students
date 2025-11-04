@@ -1,5 +1,5 @@
 import BackHeader from '@/components/BackHeader'
-import exam from '@/public/Progreso.webp'
+import exam from '@/public/progreso.webp' 
 import map from '@/public/Map.webp'
 import trophy from '@/public/trophy.webp'
 import NextImage from 'next/image'
