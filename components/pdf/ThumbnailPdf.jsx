@@ -12,6 +12,9 @@ const ThumbnailPdf = ({ fileId, title }) => {
         <Image
           loading="lazy"
           src={thumbnailUrl}
+          alt={title}
+          width={200}
+          height={256} // roughly 4:5 ratio
           className="w-full h-64 object-cover rounded-2xl shadow-lg cursor-pointer hover:scale-105 transition"
         />
       </div>
