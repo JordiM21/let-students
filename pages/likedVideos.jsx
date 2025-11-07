@@ -53,7 +53,7 @@ const likedVideos = ({ likedVideos, userData, submit, setSubmit }) => {
           <div className=" hover:opacity-80 h-[220px] w-[400px] bg-[var(--blueSuperDark)] transition-all 1s ease-in cursor-pointer mx-auto rounded-md relative my-4">
             <div
               onClick={() => router.push(`/immersiveActivities/${video.id}`)}
-              className="bg-gray-200 h-[220px] absolute z-20 w-[100px] opacity-0"
+              className="bg-gray-200 h-[220px] absolute z-20 w-full opacity-80"
             ></div>
             <ReactPlayer
               width={'90%'}
@@ -63,12 +63,12 @@ const likedVideos = ({ likedVideos, userData, submit, setSubmit }) => {
               controls={true}
               light={true}
             />
-            <button
+            {/* <button
               className="bg-red-500 hover:scale-110 p-2 rounded-md absolute right-6 bottom-4 z-30"
               onClick={(e) => deleteActivity(e, video)}
             >
               <BsTrashFill className="text-xl fill-white" />
-            </button>
+            </button> */}
           </div>
         ))}
       </div>

@@ -68,7 +68,7 @@ export default function PdfPage() {
       const userRef = doc(db, 'users', userMatched.id)
       await updateDoc(userRef, { completedPdfs: updatedCompleted })
       setCompleted(!completed)
-      toast.success(`Marked as ${!completed ? 'completed' : 'incomplete'}!`)
+      toast.success(`Marcado como ${!completed ? 'completado' : 'pendiente'}!`)
     } catch (error) {
       console.error('Error updating completion:', error)
       toast.error('Failed to update status')
