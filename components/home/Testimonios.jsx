@@ -18,6 +18,7 @@ import review5 from '@/public/review5.webp'
 import { useGsapScrollAnim } from '../useGsapScrollAnim'
 import { FaStar, FaWhatsapp } from 'react-icons/fa'
 import FaqAccordion from '../Accordion'
+import { trackEvent } from '@/config/fbpixel'
 
 const preloadImages = (srcArray) => {
   const promises = srcArray.map((src) => {
@@ -117,8 +118,19 @@ export default function TestimoniosView({ setNavItem }) {
         </p>
         <div className="flex w-11/12 md:w-[500px] mx-auto justify-evenly my-4">
           <a
-            href="https://wa.me/+393792913474?text=Hola!%20Acabo%20de%20ver%20la%20página%20y%20me%20gustaría%20obtener%20más%20información%20por%20favor"
-            target="_blank"
+            rel="noopener noreferrer"
+            onClick={(e) => {
+              e.preventDefault() // stop immediate navigation
+              // Track event first
+              trackEvent('Contact_WhatsApp', { method: 'whatsapp_button' })
+              // Open the link after a short delay to ensure tracking
+              setTimeout(() => {
+                window.open(
+                  'https://wa.me/+393792913474?text=Hola!%20Acabo%20de%20ver%20la%20página%20y%20me%20gustaría%20obtener%20más%20información%20por%20favor',
+                  '_blank'
+                )
+              }, 300) // 300ms = enough for the pixel to fire
+            }}
           >
             <div className="px-3 flex justify-around items-center w-[250px] mx-auto py-2 rounded-full bg-[#25d366] shadow-black/30 shadow-lg cursor-pointer  hover:scale-105 ease-in 1s active:scale-95 mt-12">
               <p style={{ textShadow: '2px 2px 2px #1ba84f' }} className="font-black text-lg text-white text-shadow-md">
@@ -153,7 +165,10 @@ export default function TestimoniosView({ setNavItem }) {
             Aprovecha la <span className="text-[#fffd00] font-bold">OFERTA ESPECIAL</span> en tu curso de inglés
           </p>
           <button
-            onClick={openModal}
+            onClick={() => {
+              openModal()
+              trackEvent('Agenda_Clase_Gratuita', { method: 'cta_button' })
+            }}
             className="bg-white text-sm md:text-base text-[#F17024] hover:bg-[#fff2e9] hover:scale-105 transition-all font-semibold rounded-full w-[240px] px-4 py-2 cursor-pointer shadow-md"
           >
             Agenda tu Clase Gratuita
@@ -388,7 +403,10 @@ export default function TestimoniosView({ setNavItem }) {
 
         {/* CTA Button */}
         <div
-          onClick={openModal}
+          onClick={() => {
+            openModal()
+            trackEvent('Agenda_Clase_Gratuita', { method: 'cta_button' })
+          }}
           className="px-4 md:px-6 py-4 rounded-full bg-[#F17024] text-white shadow-black/30 shadow-lg w-[230px] md:w-[270px] font-black text-base md:text-lg cursor-pointer mt-8 hover:scale-105 ease-in duration-200 active:scale-95 mx-auto"
         >
           Agenda tu Clase Gratuita

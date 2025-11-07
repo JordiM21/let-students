@@ -101,7 +101,7 @@ export default function Login() {
         <h1 className="text-5xl sm:text-6xl text-[#17332E] font-black my-4 text-center">Inicia Sesión</h1>
         <div className="w-10/12 text-[#17332E] text-center font-black opacity-90 mx-auto">
           Acceso a representantes y estudiantes de la academia, si necesitas ayuda
-          <a className="text-[#0b7425] font-black underline cursor-pointer"> ¡Contáctanos!</a>
+          <a href='' target='_blank' className="text-[#0b7425] font-black underline cursor-pointer"> ¡Contáctanos!</a>
         </div>
         <form onSubmit={handleLogin} className="flex flex-col p-8 space-y-4">
           <TextField

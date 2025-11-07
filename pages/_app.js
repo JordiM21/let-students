@@ -1,20 +1,11 @@
 import { useEffect } from 'react'
 import { AuthContextProvider } from '@/context/AuthContext'
 import '@/styles/globals.css'
-import NavBar from '@/components/NavBar.jsx'
 import { useRouter } from 'next/router'
 import ProtectedRoutes from '@/components/ProtectedRoutes'
-import 'react-toastify/dist/ReactToastify.css'
 import { ToastContainer } from 'react-toastify'
-import NextNProgress from 'nextjs-progressbar'
 import Head from 'next/head'
-import { SpeedInsights } from '@vercel/speed-insights/next'
-import { Inter } from 'next/font/google'
-
-const inter = Inter({
-  subsets: ['latin'],
-  display: 'swap', // 👈 This ensures text appears immediately
-})
+import { initFacebookPixel, trackPageView } from '@/config/fbpixel'
 
 const allowedUrl = ['/Login', '/', '/Info']
 
@@ -22,16 +13,18 @@ export default function App({ Component, pageProps }) {
   const router = useRouter()
 
   useEffect(() => {
-    const handleRouteChange = (url) => {
-      window.gtag('config', 'G-P7YLPBXYJS', {
-        page_path: url,
-      })
-    }
+    initFacebookPixel()
+    trackPageView()
+  }, [])
+
+  useEffect(() => {
+    const handleRouteChange = () => trackPageView()
     router.events.on('routeChangeComplete', handleRouteChange)
     return () => {
       router.events.off('routeChangeComplete', handleRouteChange)
     }
   }, [router.events])
+
   return (
     <AuthContextProvider>
       <Head>
@@ -42,18 +35,12 @@ export default function App({ Component, pageProps }) {
         />
       </Head>
 
-      {/* <NextNProgress /> */}
       <ToastContainer />
       {allowedUrl.includes(router.pathname) ? (
-        <div className="">
-          <Component {...pageProps} />
-        </div>
+        <Component {...pageProps} />
       ) : (
         <ProtectedRoutes>
-          {/* <NavBar /> */}
-          <div className="">
-            <Component {...pageProps} />
-          </div>
+          <Component {...pageProps} />
         </ProtectedRoutes>
       )}
     </AuthContextProvider>

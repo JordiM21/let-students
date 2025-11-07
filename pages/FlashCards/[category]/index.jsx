@@ -120,8 +120,8 @@ const FlashCategory = ({ userData, data }) => {
 
                  {/* Info / Button */}
                  <div className="bg-[var(--blueDarkbg)] flex justify-between items-center w-full p-3 rounded-b-xl text-[var(--lightBlue)]">
-                   <p className="text-white text-xl">🏆 {level.record === 60 ? 'Pending' : formatTime(level.record)}</p>
-                   <button className="btn-shine !bg-[var(--color3)] text-xl font-extrabold !py-2 !px-4">Play</button>
+                   <p className="text-white text-xl">🏆 {level.record === 60 ? 'Pendiente' : formatTime(level.record)}</p>
+                   <button className="btn-shine !bg-[var(--color3)] text-xl font-extrabold !py-2 !px-4">Jugar</button>
                  </div>
                </div>
              </Link>

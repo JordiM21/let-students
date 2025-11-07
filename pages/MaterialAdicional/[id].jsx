@@ -85,7 +85,7 @@ export default function PdfPage() {
         <div className="flex items-center mx-auto rounded-md w-[280px] justify-center bg-white gap-3 mt-4">
           <Switch checked={completed} onChange={toggleCompleted} color="success" />
           <span className={`${completed ? 'text-green-700 font-semibold' : 'text-gray-700'}`}>
-            Status: {completed ? 'Completed ✅' : 'Not Completed'}
+            Estado: {completed ? 'Completado ✅' : 'No Completado'}
           </span>
         </div>
         <PreviewPdf fileId={id} />

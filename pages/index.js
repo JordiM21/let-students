@@ -19,6 +19,7 @@ import TestimoniosView from '@/components/home/Testimonios'
 import PagosView from '@/components/home/Pagos'
 import Icon from '@/public/Icon.png'
 import Link from 'next/link'
+import { trackEvent } from '@/config/fbpixel'
 
 const preloadImages = (srcArray) => {
   const promises = srcArray.map((src) => {
@@ -129,9 +130,19 @@ export default function Home() {
             </div>
             <div>
               <a
-                href="https://wa.me/+393792913474?text=Hola!%20Acabo%20de%20ver%20la%20página%20y%20me%20gustaría%20obtener%20más%20información%20por%20favor"
-                className="bg-red-200"
-                target="_blank"
+                rel="noopener noreferrer"
+                onClick={(e) => {
+                  e.preventDefault() // stop immediate navigation
+                  // Track event first
+                  trackEvent('Contact_WhatsApp', { method: 'whatsapp_button' })
+                  // Open the link after a short delay to ensure tracking
+                  setTimeout(() => {
+                    window.open(
+                      'https://wa.me/+393792913474?text=Hola!%20Acabo%20de%20ver%20la%20página%20y%20me%20gustaría%20obtener%20más%20información%20por%20favor',
+                      '_blank'
+                    )
+                  }, 300) // 300ms = enough for the pixel to fire
+                }}
               >
                 <div className="group hover:scale-110 mt-1 active:scale-95 cursor-pointer shadow-black/60 shadow-md z-50 hover:shadow-md bg-[#25D366] rounded-full p-[5px]">
                   <FaWhatsapp className="w-[30px] h-[30px] fill-white p-1" />
@@ -187,8 +198,19 @@ export default function Home() {
             </div>
             <div>
               <a
-                href="https://wa.me/+393792913474?text=Hola!%20Acabo%20de%20ver%20la%20página%20y%20me%20gustaría%20obtener%20más%20información%20por%20favor"
-                target="_blank"
+                rel="noopener noreferrer"
+                onClick={(e) => {
+                  e.preventDefault() // stop immediate navigation
+                  // Track event first
+                  trackEvent('Contact_WhatsApp', { method: 'whatsapp_button' })
+                  // Open the link after a short delay to ensure tracking
+                  setTimeout(() => {
+                    window.open(
+                      'https://wa.me/+393792913474?text=Hola!%20Acabo%20de%20ver%20la%20página%20y%20me%20gustaría%20obtener%20más%20información%20por%20favor',
+                      '_blank'
+                    )
+                  }, 300) // 300ms = enough for the pixel to fire
+                }}
               >
                 <div className="group hover:scale-110 active:scale-95 cursor-pointer shadow-black/60 shadow-md z-50 bg-[#25D366] rounded-full p-[5px]">
                   <FaWhatsapp className="w-[40px] h-[40px] fill-white p-1" />
@@ -213,8 +235,19 @@ export default function Home() {
                 ¡Es Posible!
               </h3>
               <a
-                href="https://wa.me/+393792913474?text=Hola!%20Acabo%20de%20ver%20la%20página%20y%20me%20gustaría%20obtener%20más%20información%20por%20favor"
-                target="_blank"
+                rel="noopener noreferrer"
+                onClick={(e) => {
+                  e.preventDefault() // stop immediate navigation
+                  // Track event first
+                  trackEvent('Contact_WhatsApp', { method: 'whatsapp_button' })
+                  // Open the link after a short delay to ensure tracking
+                  setTimeout(() => {
+                    window.open(
+                      'https://wa.me/+393792913474?text=Hola!%20Acabo%20de%20ver%20la%20página%20y%20me%20gustaría%20obtener%20más%20información%20por%20favor',
+                      '_blank'
+                    )
+                  }, 300) // 300ms = enough for the pixel to fire
+                }}
               >
                 <div className="px-3 flex justify-around items-center w-[250px] mx-auto py-2 rounded-full bg-[#25d366] shadow-black/30 shadow-lg cursor-pointer  hover:scale-105 ease-in 1s active:scale-95 mt-12">
                   <p

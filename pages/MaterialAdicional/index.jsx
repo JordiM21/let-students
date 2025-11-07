@@ -83,9 +83,9 @@ export default function MaterialAdicional() {
                 <ThumbnailPdf fileId={pdf.id} title={pdf.title} completed={isCompleted} />
                 <div className="flex justify-center mt-2 gap-2">
                   {isCompleted ? (
-                    <span className="text-green-700 text-sm font-semibold">Completed</span>
+                    <span className="text-green-700 text-sm font-semibold">Completado</span>
                   ) : (
-                    <span className="text-gray-500 text-sm font-semibold">Not Completed</span>
+                    <span className="text-gray-500 text-sm font-semibold">Pendiente</span>
                   )}
                 </div>
               </div>

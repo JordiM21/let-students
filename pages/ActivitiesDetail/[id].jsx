@@ -272,7 +272,7 @@ export default function ActivitiesDetail() {
                 <small className="text-white absolute z-50 -top-4 text-[11px] opacity-50">{activity.assignedDay}</small>
                 <div className="bg-yellow-400 rounded-md px-2 z-10 absolute gap-1 -top-2 flex items-center -right-2">
                   <AiFillInfoCircle />
-                  <p>Pending</p>
+                  <p>Pendiente</p>
                 </div>
                 <div className="bg-black cursor-pointer rounded-xl py-2 px-4 relative overflow-hidden">
                   <div

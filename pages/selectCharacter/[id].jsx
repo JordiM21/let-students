@@ -56,7 +56,7 @@ const selectCharacter = ({ userData }) => {
   return (
     <div className="px-8 pt-20 h-screen bg-[var(--color2Shadow)]">
       {!userMatched && <LoadingScreen />}
-      <BackHeader parentTitle={'Volver'} largeTitle={'Change Character'} />
+      <BackHeader parentTitle={'Volver'} largeTitle={'Personaliza Avatar'} />
       <div className="flex justify-center">
         <YourProfile char={userMatched?.profileImg} />
       </div>
