@@ -249,14 +249,14 @@ export default function Home() {
                   }, 300) // 300ms = enough for the pixel to fire
                 }}
               >
-                <div className="px-3 flex justify-around items-center w-[250px] mx-auto py-2 rounded-full bg-[#25d366] shadow-black/30 shadow-lg cursor-pointer  hover:scale-105 ease-in 1s active:scale-95 mt-12">
+                <div className="px-3 flex justify-around items-center w-[190px] md:w-[250px] mx-auto py-1 md:py-2 rounded-full bg-[#25d366] shadow-black/30 shadow-lg cursor-pointer  hover:scale-105 ease-in 1s active:scale-95 mt-12">
                   <p
                     style={{ textShadow: '2px 2px 2px #1ba84f' }}
-                    className="font-black text-lg text-white text-shadow-md"
+                    className="font-black text-sm md:text-lg text-white text-shadow-md"
                   >
                     Contacta un Asesor
                   </p>
-                  <FaWhatsapp className="w-[40px] h-[40px] fill-white p-1" />
+                  <FaWhatsapp className="w-[30px] md:w-[40px] h-[30px] md:h-[40px] fill-white p-1" />
                 </div>
               </a>
             </div>

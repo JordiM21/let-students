@@ -145,11 +145,14 @@ export default function NosotrosView({ setNavItem }) {
               }, 300) // 300ms = enough for the pixel to fire
             }}
           >
-            <div className="px-3 flex justify-around items-center w-[250px] mx-auto py-2 rounded-full bg-[#25d366] shadow-black/30 shadow-lg cursor-pointer  hover:scale-105 ease-in 1s active:scale-95 mt-12">
-              <p style={{ textShadow: '2px 2px 2px #1ba84f' }} className="font-black text-lg text-white text-shadow-md">
+            <div className="px-3 flex justify-around items-center md:w-[250px] mx-auto py-1 md:py-2 rounded-full bg-[#25d366] shadow-black/30 shadow-lg cursor-pointer  hover:scale-105 ease-in 1s active:scale-95 mt-12">
+              <p
+                style={{ textShadow: '2px 2px 2px #1ba84f' }}
+                className="font-black text-sm md:text-lg text-white text-shadow-md"
+              >
                 Contacta un Asesor
               </p>
-              <FaWhatsapp className="w-[40px] h-[40px] fill-white p-1" />
+              <FaWhatsapp className="w-[30px] md:w-[40px] h-[30px] md:h-[40px] fill-white p-1" />
             </div>
           </a>
         </div>
@@ -234,7 +237,7 @@ export default function NosotrosView({ setNavItem }) {
           {/* CTA button */}
           <div
             onClick={() => setNavItem('Metodología')}
-            className="px-2 py-4 rounded-full bg-[#165646] text-white shadow-black/30 shadow-lg w-[230px] font-black text-base md:text-lg cursor-pointer mt-10 hover:scale-105 hover:bg-[#1b725e] ease-in duration-200 active:scale-95 flex items-center justify-center gap-2"
+            className="px-1 py-2 md:py-4 rounded-full bg-[#165646] text-white shadow-black/30 shadow-lg w-[180px] md:w-[230px] font-black text-sm md:text-lg cursor-pointer mt-10 hover:scale-105 hover:bg-[#1b725e] ease-in duration-200 active:scale-95 flex items-center justify-center gap-2"
           >
             Nuestra Metodología
           </div>
@@ -381,7 +384,7 @@ export default function NosotrosView({ setNavItem }) {
           <Link
             href="https://forms.gle/c5PYooudkGZnC9jQ9"
             target="_blank"
-            className="px-8 py-4 rounded-full bg-[#F17024] text-white font-bold shadow-lg shadow-black/20 hover:bg-[#d85f1c] hover:scale-105 active:scale-95 transition-all duration-300"
+            className="md:px-8 px-4 py-2 md:py-4 rounded-full bg-[#F17024] text-white font-bold shadow-lg shadow-black/20 hover:bg-[#d85f1c] hover:scale-105 active:scale-95 transition-all duration-300 text-sm md:text-lg"
           >
             Postúlate ahora 🚀
           </Link>

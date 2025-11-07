@@ -351,9 +351,9 @@ export default function HomeView({ setNavItem }) {
                 openModal()
                 trackEvent('Agenda_Clase_Gratuita', { method: 'cta_button' })
               }}
-              className="px-4 md:px-6 py-4 rounded-full bg-[#F17024] text-white shadow-black/30 shadow-lg w-[230px] md:w-[270px] font-black text-base md:text-lg cursor-pointer mt-8 hover:scale-105 ease-in duration-200 active:scale-95"
+              className="py-2 px-3 md:px-6 w-[210px] md:w-[290px] md:py-4 rounded-full bg-[#F17024] shadow-black/30 shadow-lg cursor-pointer  hover:scale-105 ease-in 1s active:scale-95 my-3"
             >
-              Agenda tu Clase Gratuita
+              <a className="font-black text-sm md:text-lg text-white">Agenda una Clase Gratuita</a>
             </div>
           </div>
 
@@ -514,11 +514,14 @@ export default function HomeView({ setNavItem }) {
               }, 300) // 300ms = enough for the pixel to fire
             }}
           >
-            <div className="px-3 flex justify-around items-center w-[250px] mx-auto py-2 rounded-full bg-[#25d366] shadow-black/30 shadow-lg cursor-pointer  hover:scale-105 ease-in 1s active:scale-95 mt-12">
-              <p style={{ textShadow: '2px 2px 2px #1ba84f' }} className="font-black text-lg text-white text-shadow-md">
+            <div className="px-3 flex justify-around items-center w-[200px] md:w-[250px] mx-auto py-1 md:py-2 rounded-full bg-[#25d366] shadow-black/30 shadow-lg cursor-pointer  hover:scale-105 ease-in 1s active:scale-95 mt-12">
+              <p
+                style={{ textShadow: '2px 2px 2px #1ba84f' }}
+                className="font-black text-sm md:text-lg text-white text-shadow-md"
+              >
                 Contacta un Asesor
               </p>
-              <FaWhatsapp className="w-[40px] h-[40px] fill-white p-1" />
+              <FaWhatsapp className="w-[30px] md:w-[40px] h-[30px] md:h-[40px] fill-white p-1" />
             </div>
           </a>
         </div>
