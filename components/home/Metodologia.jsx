@@ -77,12 +77,13 @@ export default function MetodologiaView({ setNavItem }) {
     })
   }, [router, user])
 
-  useEffect(() => {
-    if (dataLoaded) {
-      gsap.fromTo(imageRef.current, { opacity: 0, y: 0 }, { opacity: 1, y: 0, duration: 1, ease: 'power2.out' })
-      gsap.fromTo(textRef.current, { opacity: 0, y: 0 }, { opacity: 1, y: 10, duration: 1, ease: 'power2.out' })
-    }
-  }, [dataLoaded])
+  // === HEADER ANIMATION ===
+  // useEffect(() => {
+  //   if (dataLoaded) {
+  //     gsap.fromTo(imageRef.current, { opacity: 0, y: 0 }, { opacity: 1, y: 0, duration: 1, ease: 'power2.out' })
+  //     gsap.fromTo(textRef.current, { opacity: 0, y: 0 }, { opacity: 1, y: 10, duration: 1, ease: 'power2.out' })
+  //   }
+  // }, [dataLoaded])
 
   useGsapScrollAnim([
     // ==== BELOW ANIMATIONS ===

@@ -63,12 +63,13 @@ export default function TestimoniosView({ setNavItem }) {
     })
   }, [router, user])
 
-  useEffect(() => {
-    if (dataLoaded) {
-      gsap.fromTo(imageRef.current, { opacity: 0, y: 0 }, { opacity: 1, y: 0, duration: 1, ease: 'power2.out' })
-      gsap.fromTo(textRef.current, { opacity: 0, y: 0 }, { opacity: 1, y: 10, duration: 1, ease: 'power2.out' })
-    }
-  }, [dataLoaded])
+  // === HEADER ANIMATION ===
+  // useEffect(() => {
+  //   if (dataLoaded) {
+  //     gsap.fromTo(imageRef.current, { opacity: 0, y: 0 }, { opacity: 1, y: 0, duration: 1, ease: 'power2.out' })
+  //     gsap.fromTo(textRef.current, { opacity: 0, y: 0 }, { opacity: 1, y: 10, duration: 1, ease: 'power2.out' })
+  //   }
+  // }, [dataLoaded])
 
   const modalRef = useRef(null)
 
@@ -133,7 +134,10 @@ export default function TestimoniosView({ setNavItem }) {
             }}
           >
             <div className="px-3 flex justify-around items-center md:w-[250px] mx-auto py-1 md:py-2 rounded-full bg-[#25d366] shadow-black/30 shadow-lg cursor-pointer  hover:scale-105 ease-in 1s active:scale-95 mt-12">
-              <p style={{ textShadow: '2px 2px 2px #1ba84f' }} className="font-black text-sm md:text-lg text-white text-shadow-md">
+              <p
+                style={{ textShadow: '2px 2px 2px #1ba84f' }}
+                className="font-black text-sm md:text-lg text-white text-shadow-md"
+              >
                 Contacta un Asesor
               </p>
               <FaWhatsapp className="w-[30px] md:w-[40px] h-[30px] md:h-[40px] fill-white p-1" />

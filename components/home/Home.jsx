@@ -110,16 +110,16 @@ export default function HomeView({ setNavItem }) {
   useGsapScrollAnim(
     [
       // === HEADER ANIMATION ===
-      {
-        ref: imageRef,
-        from: { opacity: 1, y: 0 },
-        to: { opacity: 1, y: 0, duration: 0.8 },
-      },
-      {
-        ref: textRef,
-        from: { opacity: 0, y: 0 },
-        to: { opacity: 1, y: 10, duration: 0.8 },
-      },
+      // {
+      //   ref: imageRef,
+      //   from: { opacity: 1, y: 0 },
+      //   to: { opacity: 1, y: 0, duration: 0.8 },
+      // },
+      // {
+      //   ref: textRef,
+      //   from: { opacity: 0, y: 0 },
+      //   to: { opacity: 1, y: 10, duration: 0.8 },
+      // },
 
       // === TESTIMONIAL CARDS ===
       {
