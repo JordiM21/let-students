@@ -34,12 +34,6 @@ export default function Login() {
   const { user, login } = useAuth()
   const router = useRouter()
 
-  useEffect(() => {
-    if (user) {
-      router.push('/Dashboard')
-    }
-  }, [user])
-
   const [data, setData] = useState({
     email: '',
     password: '',
@@ -56,7 +50,6 @@ export default function Login() {
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
       if (!emailRegex.test(identifier)) {
-        // Treat it as a phone number
         const q = query(collection(db, 'phoneToEmail'), where('phone', '==', identifier))
         const snapshot = await getDocs(q)
         if (!snapshot.empty) {
@@ -69,20 +62,23 @@ export default function Login() {
       // 2. Proceed with login
       await login(emailToUse, password)
 
-      setTimeout(() => {
-        toast('¡Autenticación exitosa!', {
-          hideProgressBar: true,
-          autoClose: 200,
-          type: 'success',
-        })
-      }, 200)
+      // ✅ Show success toast immediately
+      toast.success('¡Autenticación exitosa!', {
+        hideProgressBar: true,
+        autoClose: 1200, // stays visible for 1.2s
+        closeOnClick: true,
+        draggable: false,
+        pauseOnHover: false,
+      })
 
-      router.push('/Dashboard')
+      // ✅ Redirect only after the toast finishes
+      setTimeout(() => {
+        router.push('/Dashboard')
+      }, 1200)
     } catch (error) {
       console.error(error)
-      toast('Algo salió mal, intenta de nuevo', {
-        autoClose: 1000,
-        type: 'error',
+      toast.error('Algo salió mal, intenta de nuevo', {
+        autoClose: 1500,
       })
     }
   }
@@ -101,7 +97,10 @@ export default function Login() {
         <h1 className="text-5xl sm:text-6xl text-[#17332E] font-black my-4 text-center">Inicia Sesión</h1>
         <div className="w-10/12 text-[#17332E] text-center font-black opacity-90 mx-auto">
           Acceso a representantes y estudiantes de la academia, si necesitas ayuda
-          <a href='' target='_blank' className="text-[#0b7425] font-black underline cursor-pointer"> ¡Contáctanos!</a>
+          <a href="" target="_blank" className="text-[#0b7425] font-black underline cursor-pointer">
+            {' '}
+            ¡Contáctanos!
+          </a>
         </div>
         <form onSubmit={handleLogin} className="flex flex-col p-8 space-y-4">
           <TextField
