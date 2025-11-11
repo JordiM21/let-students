@@ -4,6 +4,7 @@ import '@/styles/globals.css'
 import { useRouter } from 'next/router'
 import ProtectedRoutes from '@/components/ProtectedRoutes'
 import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 import Head from 'next/head'
 import { initFacebookPixel, trackPageView } from '@/config/fbpixel'
 

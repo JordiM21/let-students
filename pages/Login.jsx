@@ -4,7 +4,6 @@ import { TextField } from '@mui/material'
 import { Router, useRouter } from 'next/router'
 import React, { useEffect, useState } from 'react'
 import { toast } from 'react-toastify'
-import 'react-toastify/dist/ReactToastify.css'
 import Box from '@mui/material/Box'
 import Modal from '@mui/material/Modal'
 import background from '@/public/background-landing.svg'
@@ -65,7 +64,7 @@ export default function Login() {
       // ✅ Show success toast immediately
       toast.success('¡Autenticación exitosa!', {
         hideProgressBar: true,
-        autoClose: 1200, // stays visible for 1.2s
+        autoClose: 1200, 
         closeOnClick: true,
         draggable: false,
         pauseOnHover: false,
