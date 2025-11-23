@@ -331,7 +331,7 @@ const Register = ({ userData, admins }) => {
         />
 
         {/* payment register fields  */}
-        <div className='flex flex-col gap-4 p-2 bg-slate-300 rounded-md'>
+        <div className="flex flex-col gap-4 p-2 bg-slate-300 rounded-md">
           <TextField
             id="filled-basic"
             label="Payment Due Date"
@@ -368,6 +368,7 @@ const Register = ({ userData, admins }) => {
               <MenuItem value="bnb-biweekly">bnb-biweekly</MenuItem>
               <MenuItem value="stripe-monthly">stripe-monthly</MenuItem>
               <MenuItem value="stripe-biweekly">stripe-biweekly</MenuItem>
+              <MenuItem value="usd-stripe-monthly">usd-stripe-monthly</MenuItem>
             </Select>
           </FormControl>
           <FormControl variant="filled" className="w-full">

@@ -21,6 +21,8 @@ const planAdmin = ({ userData, tutor }) => {
         return { type: 'iframe', value: tutor.paymentMethod.stripe.monthlyQr }
       case 'stripe-biweekly':
         return { type: 'iframe', value: tutor.paymentMethod.stripe.biweeklyQr }
+      case 'usd-stripe-monthly':
+        return { type: 'iframe', value: tutor.paymentMethod.stripe.usdMonthly }
       default:
         return null
     }
