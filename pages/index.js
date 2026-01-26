@@ -103,27 +103,24 @@ export default function Home() {
             >
               <div
                 onClick={() => setnavItem('Nosotros')}
-                className={`group cursor-pointer px-3 py-2  rounded-full transition-all duration-150 ease-in-out ${
-                  navItem === 'Nosotros' ? 'bg-[#173330]' : 'hover:bg-white/30'
-                }`}
+                className={`group cursor-pointer px-3 py-2  rounded-full transition-all duration-150 ease-in-out ${navItem === 'Nosotros' ? 'bg-[#173330]' : 'hover:bg-white/30'
+                  }`}
               >
                 <p className={`text-sm ${navItem === 'Nosotros' ? 'text-white' : ''}`}>Nosotros</p>
               </div>
 
               <div
                 onClick={() => setnavItem('Metodología')}
-                className={`group cursor-pointer px-3 py-2 rounded-full transition-all duration-150 ease-in-out ${
-                  navItem === 'Metodología' ? 'bg-[#F9F1D2]' : 'hover:bg-white/60'
-                }`}
+                className={`group cursor-pointer px-3 py-2 rounded-full transition-all duration-150 ease-in-out ${navItem === 'Metodología' ? 'bg-[#F9F1D2]' : 'hover:bg-white/60'
+                  }`}
               >
                 <p className={`text-sm ${navItem === 'Metodología' ? '' : ''}`}>Método</p>
               </div>
 
               <div
                 onClick={() => setnavItem('Testimonios')}
-                className={`group cursor-pointer px-3 py-2 rounded-full transition-all duration-150 ease-in-out ${
-                  navItem === 'Testimonios' ? 'bg-[#F9F1D2]' : 'hover:bg-white/60'
-                }`}
+                className={`group cursor-pointer px-3 py-2 rounded-full transition-all duration-150 ease-in-out ${navItem === 'Testimonios' ? 'bg-[#F9F1D2]' : 'hover:bg-white/60'
+                  }`}
               >
                 <p className={`text-sm ${navItem === 'Testimonios' ? '' : ''}`}>Reseñas</p>
               </div>
@@ -171,27 +168,24 @@ export default function Home() {
             >
               <div
                 onClick={() => setnavItem('Nosotros')}
-                className={`group  cursor-pointer px-4 py-2  rounded-full transition-all duration-150 ease-in-out ${
-                  navItem === 'Nosotros' ? 'bg-[#173330]' : 'hover:bg-white/30'
-                }`}
+                className={`group  cursor-pointer px-4 py-2  rounded-full transition-all duration-150 ease-in-out ${navItem === 'Nosotros' ? 'bg-[#173330]' : 'hover:bg-white/30'
+                  }`}
               >
                 <p className={`${navItem === 'Nosotros' ? 'text-white' : 'text-black'}`}>Nosotros</p>
               </div>
 
               <div
                 onClick={() => setnavItem('Metodología')}
-                className={`group  cursor-pointer px-4 py-2 rounded-full transition-all duration-150 ease-in-out ${
-                  navItem === 'Metodología' ? 'bg-[#F9F1D2]' : 'hover:bg-white/30'
-                }`}
+                className={`group  cursor-pointer px-4 py-2 rounded-full transition-all duration-150 ease-in-out ${navItem === 'Metodología' ? 'bg-[#F9F1D2]' : 'hover:bg-white/30'
+                  }`}
               >
                 <p>Metodología</p>
               </div>
 
               <div
                 onClick={() => setnavItem('Testimonios')}
-                className={`group cursor-pointer px-4 py-2 rounded-full transition-all duration-150 ease-in-out ${
-                  navItem === 'Testimonios' ? 'bg-[#F9F1D2]' : 'hover:bg-white/30'
-                }`}
+                className={`group cursor-pointer px-4 py-2 rounded-full transition-all duration-150 ease-in-out ${navItem === 'Testimonios' ? 'bg-[#F9F1D2]' : 'hover:bg-white/30'
+                  }`}
               >
                 <p>Testimonios</p>
               </div>

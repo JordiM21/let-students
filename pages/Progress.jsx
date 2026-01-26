@@ -1,5 +1,5 @@
 import BackHeader from '@/components/BackHeader'
-import exam from '@/public/progreso.webp' 
+import exam from '@/public/progreso.webp'
 import map from '@/public/Map.webp'
 import trophy from '@/public/trophy.webp'
 import NextImage from 'next/image'
@@ -16,7 +16,7 @@ const Progress = ({ allUsers, likedVideos, userData, setSubmit, submit }) => {
   const [userMatched, setUserMatched] = useState(userData)
 
   return (
-    <div className="py-12 bg-[var(--bluebg)] ">
+    <div className="py-12 bg-[var(--bluebg)] min-h-screen">
       <BackHeader largeTitle={'Progreso del Estudiante'} parentTitle={'Volver'} />
       {userMatched.role == 'Student' && (
         <div id="body" className="mx-auto px-4 flex flex-col max-w-[600px] md:max-w-[800px] gap-8 my-6">

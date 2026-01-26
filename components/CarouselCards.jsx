@@ -35,7 +35,7 @@ export default function Carousel({ items = [], cardWidth = 'w-64', cardHeight = 
       {/* Carousel Container */}
       <div
         ref={carouselRef}
-        className={`flex gap-4 overflow-x-auto scroll-smooth no-scrollbar py-2 px-10 ${containerClassName}`}
+        className={`flex gap-4 lg:justify-center overflow-x-auto scroll-smooth no-scrollbar py-2 px-10 ${containerClassName}`}
       >
         {items.map((item, index) => (
           <div

@@ -3,7 +3,7 @@ import { useRouter } from 'next/router'
 import profileBg from '@/public/profile-bg.webp'
 import letbgWEBP from '@/public/let-bg.webp'
 import progreso from '@/public/Luggage.webp'
-import recursos from '@/public/recursos.webp' 
+import recursos from '@/public/recursos.webp'
 import funZone from '@/public/fun-zone.webp'
 import NextImage from 'next/image'
 import YourProfile from './YourProfile'
@@ -321,7 +321,10 @@ export default function StudentDashboard({
                     }
 
                     // Calculate numeric average
-                    const avg = exams.reduce((sum, exam) => sum + gradeToNumber(exam.grade), 0) / exams.length
+                    const rawAvg = exams.reduce((sum, exam) => sum + gradeToNumber(exam.grade), 0) / exams.length
+
+                    // Fix to 1 decimal place (e.g. 4.7) and ensure it remains a Number type
+                    const avg = Number(rawAvg.toFixed(1))
 
                     // (Optional) Keep this if you still want to convert numeric averages to letters
                     const numberToGrade = (num) => {
@@ -333,9 +336,8 @@ export default function StudentDashboard({
                     }
 
                     // You can now choose what to return
-                    const promedioNumerico = avg // → e.g. 4.5
-                    const promedioLetra = numberToGrade(avg) // → e.g. 'A'
-
+                    const promedioNumerico = avg // → e.g. 4.7
+                    const promedioLetra = numberToGrade(avg) // → e.g. 'A+'
                     return (
                       <div className="mt-2">
                         <p className="text-gray-700 text-sm">
@@ -399,13 +401,12 @@ export default function StudentDashboard({
                     return (
                       <div
                         key={name}
-                        className={`flex items-center gap-2 p-2 rounded-xl ${
-                          isCurrent
+                        className={`flex items-center gap-2 p-2 rounded-xl ${isCurrent
                             ? 'bg-blue-100 border border-blue-400'
                             : isPast
-                            ? 'bg-green-100 border border-green-300'
-                            : 'bg-gray-100 border border-gray-200'
-                        }`}
+                              ? 'bg-green-100 border border-green-300'
+                              : 'bg-gray-100 border border-gray-200'
+                          }`}
                       >
                         <span className="text-xl">{icon}</span>
                         <div>
