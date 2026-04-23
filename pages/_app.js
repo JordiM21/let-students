@@ -8,7 +8,7 @@ import 'react-toastify/dist/ReactToastify.css'
 import Head from 'next/head'
 import { initFacebookPixel, trackPageView } from '@/config/fbpixel'
 
-const allowedUrl = ['/Login', '/', '/Info']
+const allowedUrl = ['/Login', '/', '/Info', '/verify', '/verify/[id]']// new added allowed URLs that don't require authentication
 
 export default function App({ Component, pageProps }) {
   const router = useRouter()
