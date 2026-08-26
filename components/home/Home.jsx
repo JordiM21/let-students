@@ -17,9 +17,6 @@ import italy from '@/public/flags/italy.png'
 import mexico from '@/public/flags/mexico.png'
 import spain from '@/public/flags/spain.png'
 import venezuela from '@/public/flags/venezuela.png'
-import slide1 from '@/public/slide1.png'
-import slide2 from '@/public/slide2.png'
-import slide3 from '@/public/slide3.png'
 import review1 from '@/public/review1.webp'
 import review2 from '@/public/review2.webp'
 import review3 from '@/public/review3.webp'
@@ -33,12 +30,11 @@ import step1 from '@/public/step1.png'
 import step2 from '@/public/step2.png'
 import step4 from '@/public/step3.png'
 import step3 from '@/public/step4.png'
-import background from '@/public/background-landing.svg'
 import backgroundFooter from '@/public/background-footer.svg'
 import letbgWEBP from '@/public/let-bg.webp'
 import { useRouter } from 'next/router'
 import { useAuth } from '@/context/AuthContext'
-import { useEffect, useState, useRef } from 'react'
+import { useEffect, useRef } from 'react'
 import gsap from 'gsap'
 import FaqAccordion from '@/components/Accordion'
 import Link from 'next/link'
@@ -50,22 +46,9 @@ import { trackEvent } from '@/config/fbpixel'
 
 const inter = Inter({ subsets: ['latin'] })
 
-const preloadImages = (srcArray) => {
-  const promises = srcArray.map((src) => {
-    return new Promise((resolve, reject) => {
-      const img = new window.Image()
-      img.src = src
-      img.onload = resolve
-      img.onerror = reject
-    })
-  })
-  return Promise.all(promises)
-}
-
 export default function HomeView({ setNavItem }) {
   const { user } = useAuth()
   const router = useRouter()
-  const [dataLoaded, setDataLoaded] = useState(false)
   const imageRef = useRef(null)
   const textRef = useRef(null)
   const sticker1Ref = useRef(null)
@@ -93,12 +76,6 @@ export default function HomeView({ setNavItem }) {
     }
 
     loadPlugins()
-
-    const imageSources = [background.src, slide1.src, slide2.src, slide3.src]
-
-    preloadImages(imageSources).then(() => {
-      setDataLoaded(true)
-    })
   }, [router, user])
 
   const modalRef = useRef(null)
@@ -187,7 +164,7 @@ export default function HomeView({ setNavItem }) {
         to: { opacity: 1, x: 0, duration: 0.4 },
       },
     ],
-    [dataLoaded] // dependencies
+    [] // dependencies
   )
 
   return (
@@ -229,6 +206,7 @@ export default function HomeView({ setNavItem }) {
           <NextImage
             src={letbgWEBP}
             className="w-full h-full object-cover"
+            placeholder="blur"
             priority // 👈 preload for faster LCP
             fetchPriority="high" // optional: for extra clarity
             quality={80}

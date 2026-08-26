@@ -2,7 +2,7 @@ import React from 'react'
 import teachers from '@/public/teachers.webp'
 import NextImage from 'next/image'
 import { useAuth } from '@/context/AuthContext'
-import { useEffect, useState, useRef } from 'react'
+import { useEffect, useRef } from 'react'
 import Link from 'next/link'
 import { MdArrowBackIos, MdArrowForwardIos } from 'react-icons/md'
 import { useRouter } from 'next/router'
@@ -20,18 +20,6 @@ import { FaStar, FaWhatsapp } from 'react-icons/fa'
 import FaqAccordion from '../Accordion'
 import { trackEvent } from '@/config/fbpixel'
 
-const preloadImages = (srcArray) => {
-  const promises = srcArray.map((src) => {
-    return new Promise((resolve, reject) => {
-      const img = new window.Image()
-      img.src = src
-      img.onload = resolve
-      img.onerror = reject
-    })
-  })
-  return Promise.all(promises)
-}
-
 // TestimoniosView.jsx
 export default function TestimoniosView({ setNavItem }) {
   const { user } = useAuth()
@@ -42,7 +30,6 @@ export default function TestimoniosView({ setNavItem }) {
   const card3Ref = useRef(null)
   const card4Ref = useRef(null)
   const router = useRouter()
-  const [dataLoaded, setDataLoaded] = useState(false)
 
   useEffect(() => {
     if (user) {
@@ -55,21 +42,7 @@ export default function TestimoniosView({ setNavItem }) {
     }
 
     loadPlugins()
-
-    const imageSources = [letbgWEBP.src]
-
-    preloadImages(imageSources).then(() => {
-      setDataLoaded(true)
-    })
   }, [router, user])
-
-  // === HEADER ANIMATION ===
-  // useEffect(() => {
-  //   if (dataLoaded) {
-  //     gsap.fromTo(imageRef.current, { opacity: 0, y: 0 }, { opacity: 1, y: 0, duration: 1, ease: 'power2.out' })
-  //     gsap.fromTo(textRef.current, { opacity: 0, y: 0 }, { opacity: 1, y: 10, duration: 1, ease: 'power2.out' })
-  //   }
-  // }, [dataLoaded])
 
   const modalRef = useRef(null)
 
@@ -150,6 +123,7 @@ export default function TestimoniosView({ setNavItem }) {
           ref={imageRef}
           src={letbgWEBP}
           className="w-full h-full object-cover"
+          placeholder="blur"
           priority // 👈 preload for faster LCP
           fetchPriority="high" // optional: for extra clarity
           quality={80}

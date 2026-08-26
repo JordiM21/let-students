@@ -7,7 +7,8 @@ export default class MyDocument extends Document {
       <Html lang="en" translate="no">
         <Head>
           <meta name="google" content="notranslate" />
-          <link rel="icon" href="./Icon3.png" className="object-contain w-10" />
+          <link rel="icon" href="/Icon3.png" />
+          <link rel="apple-touch-icon" href="/Icon3.png" />
           <link rel="preconnect" href="https://i.ytimg.com" />
           <Script src={`https://www.googletagmanager.com/gtag/js?id=G-P7YLPBXYJS`} strategy="afterInteractive" />
 

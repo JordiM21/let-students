@@ -8,7 +8,7 @@ import 'react-toastify/dist/ReactToastify.css'
 import Head from 'next/head'
 import { initFacebookPixel, trackPageView } from '@/config/fbpixel'
 
-const allowedUrl = ['/Login', '/', '/Info', '/verify', '/verify/[id]']// new added allowed URLs that don't require authentication
+const allowedUrl = ['/Login', '/', '/Info', '/verify', '/verify/[id]', '/advices', '/advices/[slug]']// new added allowed URLs that don't require authentication
 
 export default function App({ Component, pageProps }) {
   const router = useRouter()
@@ -29,10 +29,10 @@ export default function App({ Component, pageProps }) {
   return (
     <AuthContextProvider>
       <Head>
-        <title>LET Students | Curso de Inglés para Niños</title>
+        <title>LET Junior | Curso de Inglés para Niños</title>
         <meta
           name="description"
-          content="Aprende inglés con LET Students, la plataforma diseñada para niños. Clases divertidas, juegos interactivos y progreso real con profesores expertos. ¡Comienza hoy!"
+          content="Aprende inglés con LET Junior (LET Academy), la plataforma diseñada para niños. Clases divertidas, juegos interactivos y progreso real con profesores expertos. ¡Comienza hoy!"
         />
       </Head>
 

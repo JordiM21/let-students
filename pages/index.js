@@ -1,13 +1,7 @@
 import NextImage from 'next/image'
-import { Inter } from 'next/font/google'
-import slide1 from '@/public/slide1.png'
-import slide2 from '@/public/slide2.png'
-import slide3 from '@/public/slide3.png'
-import background from '@/public/background-landing.svg'
 import { useRouter } from 'next/router'
 import { useAuth } from '@/context/AuthContext'
-import { useEffect, useState, useRef } from 'react'
-import LoadingScreen from '@/components/LoadingScreen'
+import { useEffect, useState } from 'react'
 import gsap from 'gsap'
 import logo from '@/public/let-nobg.png'
 import { FaFacebook, FaTiktok, FaWhatsapp, FaYoutube } from 'react-icons/fa'
@@ -19,24 +13,12 @@ import TestimoniosView from '@/components/home/Testimonios'
 import PagosView from '@/components/home/Pagos'
 import Icon from '@/public/Icon.png'
 import Link from 'next/link'
+import Head from 'next/head'
 import { trackEvent } from '@/config/fbpixel'
-
-const preloadImages = (srcArray) => {
-  const promises = srcArray.map((src) => {
-    return new Promise((resolve, reject) => {
-      const img = new window.Image()
-      img.src = src
-      img.onload = resolve
-      img.onerror = reject
-    })
-  })
-  return Promise.all(promises)
-}
 
 export default function Home() {
   const { user } = useAuth()
   const router = useRouter()
-  const [dataLoaded, setDataLoaded] = useState(false)
 
   useEffect(() => {
     if (user) {
@@ -49,15 +31,32 @@ export default function Home() {
     }
 
     loadPlugins()
-
-    const imageSources = [background.src, slide1.src, slide2.src, slide3.src]
-
-    preloadImages(imageSources).then(() => {
-      setDataLoaded(true)
-    })
   }, [router, user])
 
   const [navItem, setnavItem] = useState('Home')
+
+  const slugMap = { Nosotros: 'nosotros', Metodología: 'metodologia', Testimonios: 'testimonios', Pagos: 'pagos' }
+  const itemFromSlug = (hash) => {
+    const slug = hash.replace('#', '')
+    const found = Object.entries(slugMap).find(([, s]) => s === slug)
+    return found ? found[0] : 'Home'
+  }
+  const changeNavItem = (item) => {
+    setnavItem(item)
+    const slug = slugMap[item] || ''
+    window.history.pushState(null, '', slug ? `#${slug}` : '/')
+  }
+
+  useEffect(() => {
+    const syncFromHash = () => setnavItem(itemFromSlug(window.location.hash))
+    syncFromHash()
+    window.addEventListener('popstate', syncFromHash)
+    window.addEventListener('hashchange', syncFromHash)
+    return () => {
+      window.removeEventListener('popstate', syncFromHash)
+      window.removeEventListener('hashchange', syncFromHash)
+    }
+  }, [])
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' })
@@ -74,9 +73,51 @@ export default function Home() {
   // }, [navItem])
   return (
     <>
-      {dataLoaded ? (
-        <div>
-          {/* Glass Fixed CTA LOGIN  */}
+      <Head>
+        <title>LET Junior | Curso de Inglés Online para Niños</title>
+        <meta
+          name="description"
+          content="LET Junior (LET Academy) enseña inglés a niños con clases en vivo, profesores certificados y una plataforma interactiva. Agenda una clase gratuita hoy."
+        />
+        <link rel="canonical" href="https://letjunior.com/" />
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content="LET Junior" />
+        <meta property="og:title" content="LET Junior | Curso de Inglés Online para Niños" />
+        <meta
+          property="og:description"
+          content="Clases de inglés en vivo para niños, profesores certificados y una plataforma interactiva. Agenda una clase gratuita hoy."
+        />
+        <meta property="og:url" content="https://letjunior.com/" />
+        <meta property="og:image" content="https://letjunior.com/let-bg.webp" />
+        <meta property="og:locale" content="es_ES" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="LET Junior | Curso de Inglés Online para Niños" />
+        <meta
+          name="twitter:description"
+          content="Clases de inglés en vivo para niños, profesores certificados y una plataforma interactiva."
+        />
+        <meta name="twitter:image" content="https://letjunior.com/let-bg.webp" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'EducationalOrganization',
+              name: 'LET Junior',
+              alternateName: ['LET Academy', 'LET Students'],
+              url: 'https://letjunior.com',
+              logo: 'https://letjunior.com/let-nobg.png',
+              sameAs: [
+                'https://www.tiktok.com/@letacademy',
+                'https://www.youtube.com/@let_academy',
+                'https://www.facebook.com/profile.php?id=100076017257031',
+              ],
+            }),
+          }}
+        />
+      </Head>
+      <div>
+        {/* Glass Fixed CTA LOGIN  */}
           <div
             onClick={() => router.push('/Login')}
             className="fixed cursor-pointer max-md:top-4 md:bottom-4 right-4 z-50"
@@ -88,7 +129,7 @@ export default function Home() {
 
           {/* mobile navbar */}
           <div className="w-full flex md:hidden max-w-[360px] justify-between h-12 fixed bottom-8 left-1/2 -translate-x-1/2 z-50">
-            <div onClick={() => setnavItem('Home')}>
+            <div onClick={() => changeNavItem('Home')}>
               <div className="group hover:scale-110 mt-1 shadow-black/60 active:scale-95 cursor-pointer shadow-md z-50 bg-[#F9F1D2] rounded-full p-[5px]">
                 <NextImage src={logo} className="w-[30px] h-[30px] fill-white p-1" />
                 <div className="hidden absolute -top-8 -left-[1px] rounded-full p-1 group-hover:block bg-white/30 backdrop-blur-md">
@@ -102,7 +143,7 @@ export default function Home() {
                 items-center justify-around"
             >
               <div
-                onClick={() => setnavItem('Nosotros')}
+                onClick={() => changeNavItem('Nosotros')}
                 className={`group cursor-pointer px-3 py-2  rounded-full transition-all duration-150 ease-in-out ${navItem === 'Nosotros' ? 'bg-[#173330]' : 'hover:bg-white/30'
                   }`}
               >
@@ -110,7 +151,7 @@ export default function Home() {
               </div>
 
               <div
-                onClick={() => setnavItem('Metodología')}
+                onClick={() => changeNavItem('Metodología')}
                 className={`group cursor-pointer px-3 py-2 rounded-full transition-all duration-150 ease-in-out ${navItem === 'Metodología' ? 'bg-[#F9F1D2]' : 'hover:bg-white/60'
                   }`}
               >
@@ -118,7 +159,7 @@ export default function Home() {
               </div>
 
               <div
-                onClick={() => setnavItem('Testimonios')}
+                onClick={() => changeNavItem('Testimonios')}
                 className={`group cursor-pointer px-3 py-2 rounded-full transition-all duration-150 ease-in-out ${navItem === 'Testimonios' ? 'bg-[#F9F1D2]' : 'hover:bg-white/60'
                   }`}
               >
@@ -153,7 +194,7 @@ export default function Home() {
           {/* wide navbar */}
           <div className="w-full hidden md:flex max-w-[500px]  justify-between h-12 fixed top-4 left-1/2 -translate-x-1/2 z-50">
             <div
-              onClick={() => setnavItem('Home')}
+              onClick={() => changeNavItem('Home')}
               className="group hover:scale-110 active:scale-95 cursor-pointer shadow-black/60 shadow-md bg-[#F9F3D3] rounded-full p-[5px] z-30"
             >
               <NextImage src={logo} className="object-contain  w-[40px] h-[40px]" />
@@ -167,7 +208,7 @@ export default function Home() {
                 items-center justify-around"
             >
               <div
-                onClick={() => setnavItem('Nosotros')}
+                onClick={() => changeNavItem('Nosotros')}
                 className={`group  cursor-pointer px-4 py-2  rounded-full transition-all duration-150 ease-in-out ${navItem === 'Nosotros' ? 'bg-[#173330]' : 'hover:bg-white/30'
                   }`}
               >
@@ -175,7 +216,7 @@ export default function Home() {
               </div>
 
               <div
-                onClick={() => setnavItem('Metodología')}
+                onClick={() => changeNavItem('Metodología')}
                 className={`group  cursor-pointer px-4 py-2 rounded-full transition-all duration-150 ease-in-out ${navItem === 'Metodología' ? 'bg-[#F9F1D2]' : 'hover:bg-white/30'
                   }`}
               >
@@ -183,7 +224,7 @@ export default function Home() {
               </div>
 
               <div
-                onClick={() => setnavItem('Testimonios')}
+                onClick={() => changeNavItem('Testimonios')}
                 className={`group cursor-pointer px-4 py-2 rounded-full transition-all duration-150 ease-in-out ${navItem === 'Testimonios' ? 'bg-[#F9F1D2]' : 'hover:bg-white/30'
                   }`}
               >
@@ -215,11 +256,11 @@ export default function Home() {
               </a>
             </div>
           </div>
-          {navItem === 'Home' && <HomeView setNavItem={setnavItem} />}
-          {navItem === 'Nosotros' && <NosotrosView setNavItem={setnavItem} />}
-          {navItem === 'Metodología' && <MetodologiaView setNavItem={setnavItem} />}
-          {navItem === 'Testimonios' && <TestimoniosView setNavItem={setnavItem} />}
-          {navItem === 'Pagos' && <PagosView setNavItem={setnavItem} />}
+          {navItem === 'Home' && <HomeView setNavItem={changeNavItem} />}
+          {navItem === 'Nosotros' && <NosotrosView setNavItem={changeNavItem} />}
+          {navItem === 'Metodología' && <MetodologiaView setNavItem={changeNavItem} />}
+          {navItem === 'Testimonios' && <TestimoniosView setNavItem={changeNavItem} />}
+          {navItem === 'Pagos' && <PagosView setNavItem={changeNavItem} />}
           {/* footer */}
           <div className="bg-[#357DB9] relative pt-44 pb-12">
             <div className="absolute top-[5vh]  w-11/12 left-1/2 transform -translate-x-1/2">
@@ -301,9 +342,6 @@ export default function Home() {
             <NextImage src={backgroundFooter} className="w-full h-screen object-cover bg-[#2D878D] overflow-hidden" />
           </div>
         </div>
-      ) : (
-        <LoadingScreen />
-      )}
     </>
   )
 }

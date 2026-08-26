@@ -1,0 +1,25 @@
+User-agent: *
+Allow: /
+Disallow: /Dashboard
+Disallow: /Profile
+Disallow: /Progress
+Disallow: /Exams
+Disallow: /Pensum
+Disallow: /Resources
+Disallow: /Games
+Disallow: /Immersive
+Disallow: /funZone
+Disallow: /likedVideos
+Disallow: /planAdmin
+Disallow: /adminCreate
+Disallow: /StudentDetail
+Disallow: /ActivitiesDetail
+Disallow: /Niveles
+Disallow: /FlashCards
+Disallow: /wordsGame
+Disallow: /immersiveActivities
+Disallow: /selectCharacter
+Disallow: /LevelProgression
+Disallow: /Register
+
+Sitemap: https://letjunior.com/sitemap.xml
