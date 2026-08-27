@@ -6,23 +6,17 @@ import teacher2 from '@/public/teachers/teacher2.jpg'
 import teacher3 from '@/public/teachers/teacher3.png'
 import teacher4 from '@/public/teachers/teacher4.jpg'
 import teacher6 from '@/public/teachers/teacher6.png'
-import craft1 from '@/public/grammarPage.webp'
-import craft2 from '@/public/flashPage.webp'
-import craft3 from '@/public/sheetsPage.webp'
 import studentsTeacher from '@/public/studentsTeacher.webp'
-import craft4 from '@/public/videosPage.webp'
 import NextImage from 'next/image'
 import { useAuth } from '@/context/AuthContext'
 import { useEffect, useRef } from 'react'
 import Link from 'next/link'
-import { MdArrowBackIos, MdArrowForwardIos } from 'react-icons/md'
 import { useRouter } from 'next/router'
 import letbgWEBP from '@/public/nosotrosBg.webp'
 import gsap from 'gsap'
 import ScheduleClassModal from '@/components/ScheduleClassModal'
 import Carousel from '../CarouselCards'
 import { useGsapScrollAnim } from '../useGsapScrollAnim'
-import { delay } from 'framer-motion'
 import FaqAccordion from '../Accordion'
 import { FaWhatsapp } from 'react-icons/fa'
 import { trackEvent } from '@/config/fbpixel'
@@ -33,10 +27,6 @@ export default function NosotrosView({ setNavItem }) {
   const imageRef = useRef(null)
   const textRef = useRef(null)
   const studentsTeacherRef = useRef(null)
-  const craft1Ref = useRef(null)
-  const craft2Ref = useRef(null)
-  const craft3Ref = useRef(null)
-  const craft4Ref = useRef(null)
   const router = useRouter()
 
   useEffect(() => {
@@ -58,27 +48,6 @@ export default function NosotrosView({ setNavItem }) {
       from: { opacity: 0, x: 50 },
       to: { opacity: 1, x: 0, duration: 0.4, delay: 0.2 },
     },
-    // === STEPS ===
-    {
-      ref: craft1Ref,
-      from: { opacity: 0, x: -50 },
-      to: { opacity: 1, x: 0, duration: 0.4 },
-    },
-    {
-      ref: craft2Ref,
-      from: { opacity: 0, x: 50 },
-      to: { opacity: 1, x: 0, duration: 0.4 },
-    },
-    {
-      ref: craft3Ref,
-      from: { opacity: 0, x: -50 },
-      to: { opacity: 1, x: 0, duration: 0.4 },
-    },
-    {
-      ref: craft4Ref,
-      from: { opacity: 0, x: 50 },
-      to: { opacity: 1, x: 0, duration: 0.4 },
-    },
   ])
 
   const modalRef = useRef(null)
@@ -92,7 +61,7 @@ export default function NosotrosView({ setNavItem }) {
       {/* Modal lives here but invisible until opened */}
       <ScheduleClassModal ref={modalRef} />
       <div id="hero" className="w-full absolute top-20 md:top-36 z-20" ref={textRef}>
-        <h1 className="text-3xl md:text-6xl shadow-black drop-shadow-lg my-4 md:my-8 text-center text-[#F9F1D2] font-black">
+        <h1 className="font-display text-3xl md:text-6xl shadow-black drop-shadow-lg my-4 md:my-8 text-center text-brand-cream font-black">
           Docentes Apasionados
           <br />
           Comprometidos con su Futuro
@@ -105,19 +74,10 @@ export default function NosotrosView({ setNavItem }) {
         </p>
         <div className="flex w-11/12 md:w-[500px] mx-auto justify-evenly my-4">
           <a
+            href="https://wa.me/+393792913474?text=Hola!%20Acabo%20de%20ver%20la%20página%20y%20me%20gustaría%20obtener%20más%20información%20por%20favor"
+            target="_blank"
             rel="noopener noreferrer"
-            onClick={(e) => {
-              e.preventDefault() // stop immediate navigation
-              // Track event first
-              trackEvent('Contact_WhatsApp', { method: 'whatsapp_button' })
-              // Open the link after a short delay to ensure tracking
-              setTimeout(() => {
-                window.open(
-                  'https://wa.me/+393792913474?text=Hola!%20Acabo%20de%20ver%20la%20página%20y%20me%20gustaría%20obtener%20más%20información%20por%20favor',
-                  '_blank'
-                )
-              }, 300) // 300ms = enough for the pixel to fire
-            }}
+            onClick={() => trackEvent('Contact_WhatsApp', { method: 'whatsapp_button' })}
           >
             <div className="px-3 flex justify-around items-center md:w-[250px] mx-auto py-1 md:py-2 rounded-full bg-[#25d366] shadow-black/30 shadow-lg cursor-pointer  hover:scale-105 ease-in 1s active:scale-95 mt-12">
               <p
@@ -143,13 +103,13 @@ export default function NosotrosView({ setNavItem }) {
           alt="Background illustration"
         />
         {/* Overlay */}
-        <div className="absolute inset-0 bg-[#2D878D]/60 mix-blend-multiply"></div>
+        <div className="absolute inset-0 bg-brand-teal/60 mix-blend-multiply"></div>
       </div>
       {/* CTA mini section */}
       <div className="relative z-10">
         <div
           className="overflow-hidden flex flex-col md:flex-row items-center justify-center gap-2 md:gap-10 py-4 px-4 absolute w-full 
-                  bg-gradient-to-r from-[#F17024] to-[#ff8c00] text-white shadow-lg"
+                  bg-gradient-to-r from-brand-orangeDeep to-[#ff8c00] text-white shadow-lg"
         >
           <p className="text-center md:text-left font-semibold text-sm md:text-lg">
             Aprovecha la <span className="text-[#fffd00] font-bold">OFERTA ESPECIAL</span> en tu curso de inglés
@@ -159,30 +119,30 @@ export default function NosotrosView({ setNavItem }) {
               openModal()
               trackEvent('Agenda_Clase_Gratuita', { method: 'cta_button' })
             }}
-            className="bg-white text-sm md:text-base text-[#F17024] hover:bg-[#fff2e9] hover:scale-105 transition-all font-semibold rounded-full w-[240px] px-4 py-2 cursor-pointer shadow-md"
+            className="bg-white text-sm md:text-base text-brand-orangeDeep hover:bg-[#fff2e9] hover:scale-105 transition-all font-semibold rounded-full w-[240px] px-4 py-2 cursor-pointer shadow-md"
           >
             Agenda tu Clase Gratuita
           </button>
         </div>
       </div>
       {/* First Section - Optimized Version */}
-      <div className="pt-32 pb-12 md:py-32 bg-[#F9F1D2] flex flex-wrap flex-col-reverse md:flex-row items-center overflow-hidden relative">
+      <div className="pt-32 pb-12 md:py-32 bg-brand-cream flex flex-wrap flex-col-reverse md:flex-row items-center overflow-hidden relative">
         {/* Left content */}
         <div className="w-full md:w-[50%] lg:w-[45%] my-3 px-6 md:pl-16 relative z-10">
           {/* Context subtitle */}
-          <p className="text-[#165646] text-sm md:text-base font-bold uppercase tracking-wider mb-3">
+          <p className="text-brand-leaf text-sm md:text-base font-bold uppercase tracking-wider mb-3">
             Nuestra misión en LET Academy
           </p>
           {/* Main title */}
-          <h2 className="text-[#1b725e] text-4xl md:text-5xl font-black text-start leading-tight">
+          <h2 className="font-display text-brand-leafLight text-4xl md:text-5xl font-black text-start leading-tight">
             Nuestro objetivo:
             <br />
-            <span className="text-[#F99B32] font-black bg-gradient-to-r from-[#F99B32] to-[#ec7c20] bg-clip-text text-transparent">
+            <span className="text-brand-orange font-black bg-gradient-to-r from-brand-orange to-[#ec7c20] bg-clip-text text-transparent">
               Hacer que tu hijo se enamore del inglés
             </span>
           </h2>
           {/* Supporting subtitle */}
-          <p className="text-start font-semibold text-[#081325] mt-4 opacity-80 leading-relaxed">
+          <p className="text-start font-semibold text-brand-ink mt-4 opacity-80 leading-relaxed">
             Aprender inglés no es solo memorizar palabras — es abrir puertas al futuro de tu hijo y en LET Academy, lo
             hacemos posible. 🌟
           </p>
@@ -190,34 +150,35 @@ export default function NosotrosView({ setNavItem }) {
           <ul className="space-y-4 mt-6">
             <li className="flex items-center gap-3">
               <p className="text-2xl">🎨</p>
-              <span className="text-[#081325] text-sm md:text-base font-semibold">
+              <span className="text-brand-ink text-sm md:text-base font-semibold">
                 Clases llenas de juegos, historias y creatividad
               </span>
             </li>
 
             <li className="flex items-center gap-3">
               <p className="text-2xl">💬</p>
-              <span className="text-[#081325] text-sm md:text-base font-semibold">
+              <span className="text-brand-ink text-sm md:text-base font-semibold">
                 Interacción con otros niños para ganar seguridad al hablar
               </span>
             </li>
 
             <li className="flex items-center gap-3">
               <p className="text-2xl">🚀</p>
-              <span className="text-[#081325] text-sm md:text-base font-semibold">
+              <span className="text-brand-ink text-sm md:text-base font-semibold">
                 Método efectivo que convierte el aprendizaje en una aventura
               </span>
             </li>
           </ul>
           {/* CTA button */}
-          <div
+          <button
+            type="button"
             onClick={() => setNavItem('Metodología')}
-            className="px-1 py-2 md:py-4 rounded-full bg-[#165646] text-white shadow-black/30 shadow-lg w-[180px] md:w-[230px] font-black text-sm md:text-lg cursor-pointer mt-10 hover:scale-105 hover:bg-[#1b725e] ease-in duration-200 active:scale-95 flex items-center justify-center gap-2"
+            className="px-1 py-2 md:py-4 rounded-full bg-brand-leaf text-white shadow-black/30 shadow-lg w-[180px] md:w-[230px] font-black text-sm md:text-lg cursor-pointer mt-10 hover:scale-105 hover:bg-brand-leafLight ease-in duration-200 active:scale-95 flex items-center justify-center gap-2"
           >
             Nuestra Metodología
-          </div>
+          </button>
           {/* Microtext for trust */}
-          <p className="text-[#1b725e] font-semibold text-xs mt-6 opacity-80">
+          <p className="text-brand-leafLight font-semibold text-xs mt-6 opacity-80">
             💚 Más del 90% de nuestros alumnos gana confianza al hablar inglés en menos de 3 meses.
           </p>
         </div>
@@ -235,8 +196,8 @@ export default function NosotrosView({ setNavItem }) {
       </div>
 
       {/* section / our teachers  */}
-      <div className="bg-[#F9F1D2] relative pt-12">
-        <h2 className="text-center text-[#165646] font-black text-3xl md:text-8xl z-50">
+      <div className="bg-brand-cream relative pt-12">
+        <h2 className="font-display text-center text-brand-leaf font-black text-3xl md:text-8xl z-50">
           Nuestros Teachers Certificados
         </h2>
         <p className="text-center text-xs sm:text-sm py-6 opacity-60 px-10">
@@ -287,25 +248,25 @@ export default function NosotrosView({ setNavItem }) {
       </div>
 
       {/* section / Quienes somos?  */}
-      <div className="bg-[#F9F1D2] py-16 px-6 flex flex-col md:flex-row justify-center items-center gap-14">
+      <div className="bg-brand-cream py-16 px-6 flex flex-col md:flex-row justify-center items-center gap-14">
         {/* Texto */}
         <div className="max-w-[450px] md:max-w-[550px] leading-relaxed">
-          <h2 className="text-3xl md:text-6xl text-center md:text-left font-black text-[#1b725e] mb-6">
+          <h2 className="font-display text-3xl md:text-6xl text-center md:text-left font-black text-brand-leafLight mb-6">
             ¿Quiénes somos?
           </h2>
 
-          <p className="text-center md:text-left font-semibold text-[#081325] opacity-90 mb-4">
+          <p className="text-center md:text-left font-semibold text-brand-ink opacity-90 mb-4">
             Somos un grupo de jóvenes profesionales egresados de la{' '}
             <span className="font-bold">Universidad de la Calabria</span>, especializados en{' '}
             <span className="font-bold">enseñanza de idiomas y pedagogía infantil</span>.
           </p>
-          <p className="text-center md:text-left font-medium text-[#081325] opacity-80 mb-4">
+          <p className="text-center md:text-left font-medium text-brand-ink opacity-80 mb-4">
             En <span className="font-bold">LET Academy</span> creemos que cada niño aprende mejor cuando se siente
             motivado y comprendido. Por eso combinamos métodos pedagógicos modernos con actividades interactivas que
             despiertan la curiosidad y la confianza al comunicarse en otro idioma.
           </p>
 
-          <p className="text-center md:text-left font-medium text-[#081325] opacity-80">
+          <p className="text-center md:text-left font-medium text-brand-ink opacity-80">
             Ofrecemos clases presenciales en <span className="font-bold">Italia</span> y virtuales para estudiantes de
             todo el mundo, manteniendo siempre nuestro compromiso: hacer que aprender inglés sea una{' '}
             <span className="font-bold">experiencia alegre, significativa y duradera</span>.
@@ -324,16 +285,17 @@ export default function NosotrosView({ setNavItem }) {
 
       {/* second section / donde estamos?  */}
 
-      <div className="bg-[#F9F1D2] py-16 px-6 flex flex-col-reverse md:flex-row justify-center items-center gap-14">
+      <div className="bg-brand-cream py-16 px-6 flex flex-col-reverse md:flex-row justify-center items-center gap-14">
         <div>
           <NextImage
             src={unical}
+            alt="Sede de la Università della Calabria en Rende, Cosenza"
             className="w-[340px] md:w-[450px] rounded-xl shadow-md shadow-[#5c5637] hover:scale-105 transition-transform duration-300"
           />
         </div>
         <div className="max-w-[400px] md:max-w-[600px] text-center md:text-left">
-          <h2 className="text-3xl md:text-6xl font-black text-[#1b725e] mb-4">¿Dónde estamos?</h2>
-          <p className="font-medium text-[#081325] opacity-80 leading-relaxed">
+          <h2 className="font-display text-3xl md:text-6xl font-black text-brand-leafLight mb-4">¿Dónde estamos?</h2>
+          <p className="font-medium text-brand-ink opacity-80 leading-relaxed">
             Nuestra sede principal se encuentra en Italia, dentro de la{' '}
             <Link
               href="https://www.unical.it/"
@@ -345,13 +307,13 @@ export default function NosotrosView({ setNavItem }) {
             en Rende, Cosenza. Aun así, la mayoría de nuestros estudiantes asisten a clases virtuales desde diferentes
             países, como Colombia, Bolivia, España y México. 🌍
           </p>
-          <p className="mt-4 text-[#165646] font-semibold opacity-90">¡Estamos presentes donde tú estés!</p>
+          <p className="mt-4 text-brand-leaf font-semibold opacity-90">¡Estamos presentes donde tú estés!</p>
         </div>
       </div>
 
-      <div className="bg-[#F9F1D2] py-32 px-8 md:px-24 text-center relative">
-        <h2 className="text-[#165646] font-black text-3xl md:text-5xl mb-4">¿Te gustaría trabajar con nosotros?</h2>
-        <p className="text-[#165646] opacity-80 mb-8 text-sm max-w-2xl mx-auto leading-relaxed">
+      <div className="bg-brand-cream py-32 px-8 md:px-24 text-center relative">
+        <h2 className="font-display text-brand-leaf font-black text-3xl md:text-5xl mb-4">¿Te gustaría trabajar con nosotros?</h2>
+        <p className="text-brand-leaf opacity-80 mb-8 text-sm max-w-2xl mx-auto leading-relaxed">
           Si eres un docente de idiomas certificado, compartes nuestra pasión por la enseñanza y quieres formar parte de
           una comunidad educativa internacional, ¡te estamos buscando!
         </p>
@@ -359,14 +321,14 @@ export default function NosotrosView({ setNavItem }) {
           <Link
             href="https://forms.gle/c5PYooudkGZnC9jQ9"
             target="_blank"
-            className="md:px-8 px-4 py-2 md:py-4 rounded-full bg-[#F17024] text-white font-bold shadow-lg shadow-black/20 hover:bg-[#d85f1c] hover:scale-105 active:scale-95 transition-all duration-300 text-sm md:text-lg"
+            className="md:px-8 px-4 py-2 md:py-4 rounded-full bg-brand-orangeDeep text-white font-bold shadow-lg shadow-black/20 hover:bg-[#d85f1c] hover:scale-105 active:scale-95 transition-all duration-300 text-sm md:text-lg"
           >
             Postúlate ahora 🚀
           </Link>
         </div>
       </div>
-      <div className="bg-[#F9F1D2]">
-        <h3 className="text-5xl md:text-8xl shadow-black drop-shadow-lg pt-20 pb-8 md:pb-20 text-center text-[#165646] font-black">
+      <div className="bg-brand-cream">
+        <h3 className="font-display text-5xl md:text-8xl shadow-black drop-shadow-lg pt-20 pb-8 md:pb-20 text-center text-brand-leaf font-black">
           Preguntas
           <br />
           Frecuentes

@@ -1,12 +1,10 @@
 import React from 'react'
 import NextImage from 'next/image'
-import { Inter } from 'next/font/google'
 import argentina from '@/public/flags/argentina.png'
 import teacher1 from '@/public/teachers/teacher1.jpg'
 import teacher2 from '@/public/teachers/teacher2.jpg'
 import teacher3 from '@/public/teachers/teacher3.png'
 import teacher4 from '@/public/teachers/teacher4.jpg'
-import teacher5 from '@/public/teachers/teacher5.png'
 import teacher6 from '@/public/teachers/teacher6.png'
 import bolivia from '@/public/flags/bolivia.png'
 import brazil from '@/public/flags/brazil.png'
@@ -21,7 +19,6 @@ import review1 from '@/public/review1.webp'
 import review2 from '@/public/review2.webp'
 import review3 from '@/public/review3.webp'
 import review4 from '@/public/review4.webp'
-import review5 from '@/public/review5.webp'
 import sticker1 from '@/public/sticker1.png'
 import sticker2 from '@/public/sticker2.png'
 import sticker3 from '@/public/sticker3.png'
@@ -30,21 +27,17 @@ import step1 from '@/public/step1.png'
 import step2 from '@/public/step2.png'
 import step4 from '@/public/step3.png'
 import step3 from '@/public/step4.png'
-import backgroundFooter from '@/public/background-footer.svg'
 import letbgWEBP from '@/public/let-bg.webp'
 import { useRouter } from 'next/router'
 import { useAuth } from '@/context/AuthContext'
 import { useEffect, useRef } from 'react'
 import gsap from 'gsap'
 import FaqAccordion from '@/components/Accordion'
-import Link from 'next/link'
 import { FaStar, FaWhatsapp } from 'react-icons/fa'
 import { useGsapScrollAnim } from '../useGsapScrollAnim'
 import Carousel from '../CarouselCards'
 import ScheduleClassModal from '@/components/ScheduleClassModal'
 import { trackEvent } from '@/config/fbpixel'
-
-const inter = Inter({ subsets: ['latin'] })
 
 export default function HomeView({ setNavItem }) {
   const { user } = useAuth()
@@ -63,7 +56,6 @@ export default function HomeView({ setNavItem }) {
   const card2Ref = useRef(null)
   const card3Ref = useRef(null)
   const card4Ref = useRef(null)
-  const cardsRef = useRef([])
 
   useEffect(() => {
     if (user) {
@@ -173,7 +165,7 @@ export default function HomeView({ setNavItem }) {
       <ScheduleClassModal ref={modalRef} />
       <div>
         <div id="hero" className="w-full absolute top-20 md:top-36 z-20" ref={textRef}>
-          <h1 className="text-3xl md:text-6xl shadow-black drop-shadow-lg my-4 md:my-8 text-center text-[#F9F1D2] font-black">
+          <h1 className="font-display text-3xl md:text-6xl shadow-black drop-shadow-lg my-4 md:my-8 text-center text-brand-cream font-black">
             Pequeños Bilingües
             <br />
             Grandes Oportunidades
@@ -185,21 +177,23 @@ export default function HomeView({ setNavItem }) {
             Clases en vivo 🎥 Profesores certificados 👩‍🏫 Método Interáctivo 🧩
           </p>
           <div className="flex w-11/12 md:w-[500px] mx-auto justify-evenly my-16">
-            <div
+            <button
+              type="button"
               onClick={() => setNavItem('Nosotros')}
-              className="py-2 px-3 md:px-6 md:py-4 rounded-full bg-[#F9F1D2] shadow-black/30 shadow-lg cursor-pointer hover:scale-105 ease-in 1s active:scale-95"
+              className="py-2 px-3 md:px-6 md:py-4 rounded-full bg-brand-cream shadow-black/30 shadow-lg cursor-pointer hover:scale-105 ease-in 1s active:scale-95"
             >
-              <a className="font-black text-sm md:text-lg text-[#173330]">La Academia</a>
-            </div>
-            <div
+              <span className="font-black text-sm md:text-lg text-brand-forest">La Academia</span>
+            </button>
+            <button
+              type="button"
               onClick={() => {
                 openModal()
                 trackEvent('Agenda_Clase_Gratuita', { method: 'cta_button' })
               }}
-              className="py-2 px-3 md:px-6 md:py-4 rounded-full bg-[#F17024] shadow-black/30 shadow-lg cursor-pointer  hover:scale-105 ease-in 1s active:scale-95"
+              className="py-2 px-3 md:px-6 md:py-4 rounded-full bg-brand-orangeDeep shadow-black/30 shadow-lg cursor-pointer  hover:scale-105 ease-in 1s active:scale-95"
             >
-              <a className="font-black text-sm md:text-lg text-white">Agenda una Clase Gratuita</a>
-            </div>
+              <span className="font-black text-sm md:text-lg text-white">Agenda una Clase Gratuita</span>
+            </button>
           </div>
         </div>
         <div className="relative w-full h-[500px] md:h-[600px] overflow-hidden">
@@ -213,11 +207,11 @@ export default function HomeView({ setNavItem }) {
             ref={imageRef}
             alt="Background illustration"
           />
-          <div className="absolute inset-0 bg-[#2D878D]/60 mix-blend-multiply"></div>
+          <div className="absolute inset-0 bg-brand-teal/60 mix-blend-multiply"></div>
         </div>
         {/* Floating Chip */}
-        <div className="bg-[#173330] absolute py-2 px-4 rounded-full top-[480px] md:top-[580px] lg:top- left-4 z-20 shadow-lg shadow-[#08201e]">
-          <p className="text-center text-xs md:text-sm text-[#F9F1D2]/80">
+        <div className="bg-brand-forest absolute py-2 px-4 rounded-full top-[480px] md:top-[580px] lg:top- left-4 z-20 shadow-lg shadow-[#08201e]">
+          <p className="text-center text-xs md:text-sm text-brand-cream/80">
             +250 familias felices en Latinoamérica y Europa
           </p>
         </div>
@@ -226,58 +220,58 @@ export default function HomeView({ setNavItem }) {
         <div className="relative">
           <div className="logos">
             <div className="logos-slide">
-              <NextImage src={argentina} className="w-10 h-10 object-contain mx-8" />
-              <NextImage src={spain} className="w-10 h-10 object-contain mx-8" />
-              <NextImage src={colombia} className="w-10 h-10 object-contain mx-8" />
-              <NextImage src={chile} className="w-10 h-10 object-contain mx-8" />
-              <NextImage src={italy} className="w-10 h-10 object-contain mx-8" />
-              <NextImage src={ecuador} className="w-10 h-10 object-contain mx-8" />
-              <NextImage src={bolivia} className="w-10 h-10 object-contain mx-8" />
-              <NextImage src={mexico} className="w-10 h-10 object-contain mx-8" />
-              <NextImage src={venezuela} className="w-10 h-10 object-contain mx-8" />
-              <NextImage src={brazil} className="w-10 h-10 object-contain mx-8" />
-              <NextImage src={argentina} className="w-10 h-10 object-contain mx-8" />
-              <NextImage src={spain} className="w-10 h-10 object-contain mx-8" />
-              <NextImage src={colombia} className="w-10 h-10 object-contain mx-8" />
-              <NextImage src={chile} className="w-10 h-10 object-contain mx-8" />
-              <NextImage src={italy} className="w-10 h-10 object-contain mx-8" />
-              <NextImage src={ecuador} className="w-10 h-10 object-contain mx-8" />
-              <NextImage src={bolivia} className="w-10 h-10 object-contain mx-8" />
-              <NextImage src={mexico} className="w-10 h-10 object-contain mx-8" />
-              <NextImage src={venezuela} className="w-10 h-10 object-contain mx-8" />
-              <NextImage src={brazil} className="w-10 h-10 object-contain mx-8" />
-              <NextImage src={argentina} className="w-10 h-10 object-contain mx-8" />
-              <NextImage src={spain} className="w-10 h-10 object-contain mx-8" />
-              <NextImage src={colombia} className="w-10 h-10 object-contain mx-8" />
-              <NextImage src={chile} className="w-10 h-10 object-contain mx-8" />
-              <NextImage src={italy} className="w-10 h-10 object-contain mx-8" />
-              <NextImage src={ecuador} className="w-10 h-10 object-contain mx-8" />
-              <NextImage src={bolivia} className="w-10 h-10 object-contain mx-8" />
-              <NextImage src={mexico} className="w-10 h-10 object-contain mx-8" />
-              <NextImage src={venezuela} className="w-10 h-10 object-contain mx-8" />
-              <NextImage src={brazil} className="w-10 h-10 object-contain mx-8" />
-              <NextImage src={argentina} className="w-10 h-10 object-contain mx-8" />
-              <NextImage src={spain} className="w-10 h-10 object-contain mx-8" />
-              <NextImage src={colombia} className="w-10 h-10 object-contain mx-8" />
-              <NextImage src={chile} className="w-10 h-10 object-contain mx-8" />
-              <NextImage src={italy} className="w-10 h-10 object-contain mx-8" />
-              <NextImage src={ecuador} className="w-10 h-10 object-contain mx-8" />
-              <NextImage src={bolivia} className="w-10 h-10 object-contain mx-8" />
-              <NextImage src={mexico} className="w-10 h-10 object-contain mx-8" />
-              <NextImage src={venezuela} className="w-10 h-10 object-contain mx-8" />
-              <NextImage src={brazil} className="w-10 h-10 object-contain mx-8" />
+              <NextImage src={argentina} className="w-10 h-10 object-contain mx-8" alt="" />
+              <NextImage src={spain} className="w-10 h-10 object-contain mx-8" alt="" />
+              <NextImage src={colombia} className="w-10 h-10 object-contain mx-8" alt="" />
+              <NextImage src={chile} className="w-10 h-10 object-contain mx-8" alt="" />
+              <NextImage src={italy} className="w-10 h-10 object-contain mx-8" alt="" />
+              <NextImage src={ecuador} className="w-10 h-10 object-contain mx-8" alt="" />
+              <NextImage src={bolivia} className="w-10 h-10 object-contain mx-8" alt="" />
+              <NextImage src={mexico} className="w-10 h-10 object-contain mx-8" alt="" />
+              <NextImage src={venezuela} className="w-10 h-10 object-contain mx-8" alt="" />
+              <NextImage src={brazil} className="w-10 h-10 object-contain mx-8" alt="" />
+              <NextImage src={argentina} className="w-10 h-10 object-contain mx-8" alt="" />
+              <NextImage src={spain} className="w-10 h-10 object-contain mx-8" alt="" />
+              <NextImage src={colombia} className="w-10 h-10 object-contain mx-8" alt="" />
+              <NextImage src={chile} className="w-10 h-10 object-contain mx-8" alt="" />
+              <NextImage src={italy} className="w-10 h-10 object-contain mx-8" alt="" />
+              <NextImage src={ecuador} className="w-10 h-10 object-contain mx-8" alt="" />
+              <NextImage src={bolivia} className="w-10 h-10 object-contain mx-8" alt="" />
+              <NextImage src={mexico} className="w-10 h-10 object-contain mx-8" alt="" />
+              <NextImage src={venezuela} className="w-10 h-10 object-contain mx-8" alt="" />
+              <NextImage src={brazil} className="w-10 h-10 object-contain mx-8" alt="" />
+              <NextImage src={argentina} className="w-10 h-10 object-contain mx-8" alt="" />
+              <NextImage src={spain} className="w-10 h-10 object-contain mx-8" alt="" />
+              <NextImage src={colombia} className="w-10 h-10 object-contain mx-8" alt="" />
+              <NextImage src={chile} className="w-10 h-10 object-contain mx-8" alt="" />
+              <NextImage src={italy} className="w-10 h-10 object-contain mx-8" alt="" />
+              <NextImage src={ecuador} className="w-10 h-10 object-contain mx-8" alt="" />
+              <NextImage src={bolivia} className="w-10 h-10 object-contain mx-8" alt="" />
+              <NextImage src={mexico} className="w-10 h-10 object-contain mx-8" alt="" />
+              <NextImage src={venezuela} className="w-10 h-10 object-contain mx-8" alt="" />
+              <NextImage src={brazil} className="w-10 h-10 object-contain mx-8" alt="" />
+              <NextImage src={argentina} className="w-10 h-10 object-contain mx-8" alt="" />
+              <NextImage src={spain} className="w-10 h-10 object-contain mx-8" alt="" />
+              <NextImage src={colombia} className="w-10 h-10 object-contain mx-8" alt="" />
+              <NextImage src={chile} className="w-10 h-10 object-contain mx-8" alt="" />
+              <NextImage src={italy} className="w-10 h-10 object-contain mx-8" alt="" />
+              <NextImage src={ecuador} className="w-10 h-10 object-contain mx-8" alt="" />
+              <NextImage src={bolivia} className="w-10 h-10 object-contain mx-8" alt="" />
+              <NextImage src={mexico} className="w-10 h-10 object-contain mx-8" alt="" />
+              <NextImage src={venezuela} className="w-10 h-10 object-contain mx-8" alt="" />
+              <NextImage src={brazil} className="w-10 h-10 object-contain mx-8" alt="" />
             </div>
           </div>
         </div>
         {/* First Section */}
-        <div className="relative py-10 md:py-20 bg-[#173330] flex flex-wrap items-center overflow-hidden">
+        <div className="relative py-10 md:py-20 bg-brand-forest flex flex-wrap items-center overflow-hidden">
           {/* Left content */}
           <div className="lg:w-[45%] my-3 max-md:mx-10 md:ml-16 relative z-10">
-            <h2 className="text-[#F9F1D2] text-4xl md:text-5xl font-black text-start">
-              ¿Por qué los padres eligen <span className="text-[#F99B32] font-black">LET Academy?</span>
+            <h2 className="font-display text-brand-cream text-4xl md:text-5xl font-black text-start">
+              ¿Por qué los padres eligen <span className="text-brand-orange font-black">LET Academy?</span>
             </h2>
 
-            <p className="text-[#F9F1D2]/80 text-start font-semibold my-6 leading-relaxed">
+            <p className="text-brand-cream/80 text-start font-semibold my-6 leading-relaxed">
               Porque combinamos diversión, resultados reales y un ambiente lleno de confianza. Nuestro programa fue
               diseñado para que los niños aprendan inglés con alegría, mientras los padres ven su progreso semana a
               semana.
@@ -286,53 +280,54 @@ export default function HomeView({ setNavItem }) {
             {/* Benefits list */}
             <ul className="space-y-4 mt-6">
               <li className="flex items-start gap-3">
-                <div class="w-6 h-6 rounded-full bg-[#F99B32] flex items-center justify-center text-[#173330] font-bold flex-none">
+                <div class="w-6 h-6 rounded-full bg-brand-orange flex items-center justify-center text-brand-forest font-bold flex-none">
                   ✓
                 </div>
 
-                <span className="text-[#F9F1D2] font-medium">
+                <span className="text-brand-cream font-medium">
                   Profesores certificados y apasionados por enseñar a niños.
                 </span>
               </li>
               <li className="flex items-start gap-3">
-                <div class="w-6 h-6 rounded-full bg-[#F99B32] flex items-center justify-center text-[#173330] font-bold flex-none">
+                <div class="w-6 h-6 rounded-full bg-brand-orange flex items-center justify-center text-brand-forest font-bold flex-none">
                   ✓
                 </div>
 
-                <span className="text-[#F9F1D2] font-medium">
+                <span className="text-brand-cream font-medium">
                   Clases 100% interactivas con seguimiento personalizado.
                 </span>
               </li>
               <li className="flex items-start gap-3">
-                <div class="w-6 h-6 rounded-full bg-[#F99B32] flex items-center justify-center text-[#173330] font-bold flex-none">
+                <div class="w-6 h-6 rounded-full bg-brand-orange flex items-center justify-center text-brand-forest font-bold flex-none">
                   ✓
                 </div>
 
-                <span className="text-[#F9F1D2] font-medium">
+                <span className="text-brand-cream font-medium">
                   Método comunicativo: aprender, jugar y hablar desde el primer día.
                 </span>
               </li>
               <li className="flex items-start gap-3">
-                <div class="w-6 h-6 rounded-full bg-[#F99B32] flex items-center justify-center text-[#173330] font-bold flex-none">
+                <div class="w-6 h-6 rounded-full bg-brand-orange flex items-center justify-center text-brand-forest font-bold flex-none">
                   ✓
                 </div>
 
-                <span className="text-[#F9F1D2] font-medium">
+                <span className="text-brand-cream font-medium">
                   Reportes y actividades para involucrar a los padres en el proceso.
                 </span>
               </li>
             </ul>
 
             {/* CTA */}
-            <div
+            <button
+              type="button"
               onClick={() => {
                 openModal()
                 trackEvent('Agenda_Clase_Gratuita', { method: 'cta_button' })
               }}
-              className="py-2 px-3 md:px-6 w-[210px] md:w-[290px] md:py-4 rounded-full bg-[#F17024] shadow-black/30 shadow-lg cursor-pointer  hover:scale-105 ease-in 1s active:scale-95 my-3"
+              className="py-2 px-3 md:px-6 w-[210px] md:w-[290px] md:py-4 rounded-full bg-brand-orangeDeep shadow-black/30 shadow-lg cursor-pointer  hover:scale-105 ease-in 1s active:scale-95 my-3"
             >
-              <a className="font-black text-sm md:text-lg text-white">Agenda una Clase Gratuita</a>
-            </div>
+              <span className="font-black text-sm md:text-lg text-white">Agenda una Clase Gratuita</span>
+            </button>
           </div>
 
           {/* Right content: video */}
@@ -340,6 +335,7 @@ export default function HomeView({ setNavItem }) {
             <div className="relative w-full aspect-video">
               <iframe
                 src={'https://www.youtube.com/embed/veYDnCDTEbU'}
+                title="Video introductorio de LET Academy"
                 frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
@@ -350,9 +346,9 @@ export default function HomeView({ setNavItem }) {
         </div>
 
         {/* Testimonials Section */}
-        <div className="bg-[#173330] relative py-10 px-6 md:px-12 lg:px-20">
-          <h2 className="text-center text-[#F9F1D2] font-black text-5xl md:text-7xl mb-6">Lo que dicen de nosotros</h2>
-          <p className="text-center text-[#F9F1D2]/80 max-w-2xl mx-auto mb-12">
+        <div className="bg-brand-forest relative py-10 px-6 md:px-12 lg:px-20">
+          <h2 className="font-display text-center text-brand-cream font-black text-5xl md:text-7xl mb-6">Lo que dicen de nosotros</h2>
+          <p className="text-center text-brand-cream/80 max-w-2xl mx-auto mb-12">
             Historias reales de padres orgullosos y pequeños que ya dominan el inglés.
           </p>
 
@@ -370,9 +366,9 @@ export default function HomeView({ setNavItem }) {
               </div>
 
               <div className="flex items-center gap-4 mb-4">
-                <NextImage src={review1} alt="Profile" className="w-14 h-14 rounded-full object-cover" />
+                <NextImage src={review1} alt="María José Acevedo" className="w-14 h-14 rounded-full object-cover" />
                 <div>
-                  <h3 className="font-bold text-lg text-[#173330]">María José Acevedo</h3>
+                  <h3 className="font-bold text-lg text-brand-forest">María José Acevedo</h3>
                   <p className="text-sm text-gray-500">Comerciante</p>
                 </div>
               </div>
@@ -401,9 +397,9 @@ export default function HomeView({ setNavItem }) {
               </div>
 
               <div className="flex items-center gap-4 mb-4">
-                <NextImage src={review2} alt="Profile" className="w-14 h-14 rounded-full object-cover" />
+                <NextImage src={review2} alt="Antonio Méndez" className="w-14 h-14 rounded-full object-cover" />
                 <div>
-                  <h3 className="font-bold text-lg text-[#173330]">Antonio Méndez</h3>
+                  <h3 className="font-bold text-lg text-brand-forest">Antonio Méndez</h3>
                   <p className="text-sm text-gray-500">Agente Inmobiliario</p>
                 </div>
               </div>
@@ -436,9 +432,9 @@ export default function HomeView({ setNavItem }) {
               </div>
 
               <div className="flex items-center gap-4 mb-4">
-                <NextImage src={review3} alt="Profile" className="w-14 h-14 rounded-full object-cover" />
+                <NextImage src={review3} alt="Gustavo Bravo" className="w-14 h-14 rounded-full object-cover" />
                 <div>
-                  <h3 className="font-bold text-lg text-[#173330]">Gustavo Bravo</h3>
+                  <h3 className="font-bold text-lg text-brand-forest">Gustavo Bravo</h3>
                   <p className="text-sm text-gray-500">Médico Veterinario</p>
                 </div>
               </div>
@@ -462,9 +458,9 @@ export default function HomeView({ setNavItem }) {
               </div>
 
               <div className="flex items-center gap-4 mb-4">
-                <NextImage src={review4} alt="Profile" className="w-14 h-14 rounded-full object-cover" />
+                <NextImage src={review4} alt="José Ramírez" className="w-14 h-14 rounded-full object-cover" />
                 <div>
-                  <h3 className="font-bold text-lg text-[#173330]">José Ramírez</h3>
+                  <h3 className="font-bold text-lg text-brand-forest">José Ramírez</h3>
                   <p className="text-sm text-gray-500">Independiente</p>
                 </div>
               </div>
@@ -478,19 +474,10 @@ export default function HomeView({ setNavItem }) {
 
           {/* CTA Button */}
           <a
+            href="https://wa.me/+393792913474?text=Hola!%20Acabo%20de%20ver%20la%20página%20y%20me%20gustaría%20obtener%20más%20información%20por%20favor"
+            target="_blank"
             rel="noopener noreferrer"
-            onClick={(e) => {
-              e.preventDefault() // stop immediate navigation
-              // Track event first
-              trackEvent('Contact_WhatsApp', { method: 'whatsapp_button' })
-              // Open the link after a short delay to ensure tracking
-              setTimeout(() => {
-                window.open(
-                  'https://wa.me/+393792913474?text=Hola!%20Acabo%20de%20ver%20la%20página%20y%20me%20gustaría%20obtener%20más%20información%20por%20favor',
-                  '_blank'
-                )
-              }, 300) // 300ms = enough for the pixel to fire
-            }}
+            onClick={() => trackEvent('Contact_WhatsApp', { method: 'whatsapp_button' })}
           >
             <div className="px-3 flex justify-around items-center w-[200px] md:w-[250px] mx-auto py-1 md:py-2 rounded-full bg-[#25d366] shadow-black/30 shadow-lg cursor-pointer  hover:scale-105 ease-in 1s active:scale-95 mt-12">
               <p
@@ -503,8 +490,8 @@ export default function HomeView({ setNavItem }) {
             </div>
           </a>
         </div>
-        <div className="py-20 px-10 bg-[#17423d] space-y-8">
-          <h3 className="text-5xl md:text-8xl shadow-black drop-shadow-lg my-4 text-center text-white font-black">
+        <div className="py-20 px-10 bg-brand-forest space-y-8">
+          <h3 className="font-display text-5xl md:text-8xl shadow-black drop-shadow-lg my-4 text-center text-white font-black">
             Nuestro
             <br />
             Aprendizaje
@@ -513,10 +500,10 @@ export default function HomeView({ setNavItem }) {
           {/* Pilar 1 */}
           <div
             ref={step1Ref}
-            className="w-full flex items-start flex-wrap justify-between h-[500px] lg:h-[300px] rounded-md relative bg-[#ffffff] overflow-hidden px-12 pt-2 shadow-lg hover:shadow-xl transition-shadow duration-300"
+            className="w-full flex items-start flex-wrap justify-between min-h-[500px] lg:min-h-[300px] rounded-md relative bg-[#ffffff] overflow-hidden px-12 pt-2 shadow-lg hover:shadow-xl transition-shadow duration-300"
           >
             <div className="lg:max-w-[35%] xl:max-w-[45%]">
-              <h3 className="text-3xl md:text-6xl font-black">Plataforma Interactiva</h3>
+              <h3 className="font-display text-3xl md:text-6xl font-black">Plataforma Interactiva</h3>
               <p className="py-2 opacity-80 text-start">
                 Cada estudiante recibe su carnet estudiantil y acceso a nuestra plataforma digital, donde puede
                 practicar inglés, revisar sus calificaciones, resolver actividades interactivas y aprender a su propio
@@ -524,17 +511,17 @@ export default function HomeView({ setNavItem }) {
               </p>
             </div>
             <div className="max-w-lg:w-full">
-              <NextImage src={step1} className="w-[400px] md:w-[450px] h-auto mx-auto" />
+              <NextImage src={step1} alt="Estudiante usando la plataforma interactiva de LET Academy" className="w-[400px] md:w-[450px] h-auto mx-auto" />
             </div>
           </div>
 
           {/* Pilar 2 */}
           <div
             ref={step2Ref}
-            className="w-full flex flex-row-reverse items-start flex-wrap justify-between h-[500px] md:h-[300px] rounded-md relative bg-[#ffffff] overflow-hidden px-12 pt-2 shadow-lg hover:shadow-xl transition-shadow duration-300"
+            className="w-full flex flex-row-reverse items-start flex-wrap justify-between min-h-[500px] md:min-h-[300px] rounded-md relative bg-[#ffffff] overflow-hidden px-12 pt-2 shadow-lg hover:shadow-xl transition-shadow duration-300"
           >
             <div className="lg:max-w-[35%] xl:max-w-[45%]">
-              <h3 className="text-3xl md:text-6xl font-black">Método Audiovisual</h3>
+              <h3 className="font-display text-3xl md:text-6xl font-black">Método Audiovisual</h3>
               <p className="py-2 opacity-80 text-start">
                 Aprender inglés puede ser tan divertido como ver una película. Nuestro método se basa en materiales
                 audiovisuales: series, dibujos y juegos adaptados a la edad del estudiante, para que el aprendizaje
@@ -542,17 +529,17 @@ export default function HomeView({ setNavItem }) {
               </p>
             </div>
             <div className="max-w-lg:w-full">
-              <NextImage src={step2} className="w-[450px] md:w-[550px] h-auto mx-auto" />
+              <NextImage src={step2} alt="Material audiovisual usado en las clases de LET Academy" className="w-[450px] md:w-[550px] h-auto mx-auto" />
             </div>
           </div>
 
           {/* Pilar 3 */}
           <div
             ref={step3Ref}
-            className="w-full flex items-start flex-wrap justify-between h-[500px] lg:h-[300px] rounded-md relative bg-[#ffffff] overflow-hidden px-12 pt-2 shadow-lg hover:shadow-xl transition-shadow duration-300"
+            className="w-full flex items-start flex-wrap justify-between min-h-[500px] lg:min-h-[300px] rounded-md relative bg-[#ffffff] overflow-hidden px-12 pt-2 shadow-lg hover:shadow-xl transition-shadow duration-300"
           >
             <div className="lg:max-w-[35%] xl:max-w-[45%]">
-              <h3 className="text-3xl md:text-6xl font-black">Clases en Vivo Personalizadas</h3>
+              <h3 className="font-display text-3xl md:text-6xl font-black">Clases en Vivo Personalizadas</h3>
               <p className="py-2 opacity-80 text-start">
                 Nuestras clases online en grupos reducidos aseguran atención personalizada. Fomentamos la participación,
                 la expresión oral y la confianza para hablar inglés sin miedo a equivocarse, porque aprender también es
@@ -560,17 +547,17 @@ export default function HomeView({ setNavItem }) {
               </p>
             </div>
             <div className="max-w-lg:w-full">
-              <NextImage src={step3} className="w-[450px] md:w-[550px] h-auto mx-auto" />
+              <NextImage src={step3} alt="Clase en vivo personalizada de LET Academy" className="w-[450px] md:w-[550px] h-auto mx-auto" />
             </div>
           </div>
 
           {/* Pilar 4 */}
           <div
             ref={step4Ref}
-            className="w-full flex-row-reverse flex items-start flex-wrap justify-between h-[500px] lg:h-[300px] rounded-md relative bg-[#ffffff] overflow-hidden px-12 pt-2 shadow-lg hover:shadow-xl transition-shadow duration-300"
+            className="w-full flex-row-reverse flex items-start flex-wrap justify-between min-h-[500px] lg:min-h-[300px] rounded-md relative bg-[#ffffff] overflow-hidden px-12 pt-2 shadow-lg hover:shadow-xl transition-shadow duration-300"
           >
             <div className="lg:max-w-[35%] xl:max-w-[45%]">
-              <h3 className="text-3xl md:text-6xl font-black">Evaluación de Conocimientos</h3>
+              <h3 className="font-display text-3xl md:text-6xl font-black">Evaluación de Conocimientos</h3>
               <p className="py-2 opacity-80 text-start">
                 Evaluamos el progreso de forma dinámica y divertida con pruebas interactivas que van más allá del examen
                 tradicional. Estas actividades visuales y didácticas permiten reforzar la comprensión y celebrar cada
@@ -578,13 +565,13 @@ export default function HomeView({ setNavItem }) {
               </p>
             </div>
             <div className="max-w-lg:w-full">
-              <NextImage src={step4} className="w-[450px] md:w-[550px] h-auto mx-auto" />
+              <NextImage src={step4} alt="Evaluación interactiva de conocimientos de LET Academy" className="w-[450px] md:w-[550px] h-auto mx-auto" />
             </div>
           </div>
         </div>
 
         <div className="bg-white relative py-20">
-          <h2 className="text-center font-black text-3xl md:text-8xl z-50">Nuestros Teachers Certificados</h2>
+          <h2 className="font-display text-center font-black text-3xl md:text-8xl z-50">Nuestros Teachers Certificados</h2>
           <p className="text-center text-xs sm:text-sm py-6 opacity-60 px-10">
             Profesionales apasionados por la educación y comprometidos con el futuro de tu hijo
           </p>
@@ -634,29 +621,29 @@ export default function HomeView({ setNavItem }) {
           <NextImage
             ref={sticker1Ref}
             src={sticker1}
-            className="h-[180px] w-[180px] md:h-[250px] md:w-[250px] rounded-full absolute top-10 md:top-8 right-10 rotate-6"
+            className="h-[180px] w-[180px] md:h-[250px] md:w-[250px] rounded-full absolute top-10 md:top-8 right-10 rotate-6" alt=""
           />
           <NextImage
             src={sticker2}
             ref={sticker2Ref}
-            className="h-[180px] w-[180px] md:h-[250px] md:w-[250px] rounded-full absolute bottom-2 right-12 rotate-12"
+            className="h-[180px] w-[180px] md:h-[250px] md:w-[250px] rounded-full absolute bottom-2 right-12 rotate-12" alt=""
           />
           <NextImage
             src={sticker3}
             ref={sticker3Ref}
-            className="h-[180px] w-[180px] md:h-[250px] md:w-[250px] rounded-full absolute top-2 left-16 -rotate-12"
+            className="h-[180px] w-[180px] md:h-[250px] md:w-[250px] rounded-full absolute top-2 left-16 -rotate-12" alt=""
           />
           <NextImage
             src={sticker4}
             ref={sticker4Ref}
-            className="h-[160px] w-[160px] md:h-[250px] md:w-[250px] rounded-full absolute bottom-2 left-14 md:left-16 -rotate-6"
+            className="h-[160px] w-[160px] md:h-[250px] md:w-[250px] rounded-full absolute bottom-2 left-14 md:left-16 -rotate-6" alt=""
           />
-          <h2 className="text-center font-black text-6xl md:text-8xl z-50">
+          <h2 className="font-display text-center font-black text-6xl md:text-8xl z-50">
             Tu Hijo Disfrutará <br /> Aprender Inglés
           </h2>
         </div>
-        <div className="bg-[#173330]">
-          <h3 className="text-5xl md:text-8xl shadow-black drop-shadow-lg pt-28 pb-8 md:pb-20 text-center text-white font-black">
+        <div className="bg-brand-forest">
+          <h3 className="font-display text-5xl md:text-8xl shadow-black drop-shadow-lg pt-28 pb-8 md:pb-20 text-center text-white font-black">
             Preguntas
             <br />
             Frecuentes

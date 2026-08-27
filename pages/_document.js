@@ -4,7 +4,7 @@ import Script from 'next/script'
 export default class MyDocument extends Document {
   render() {
     return (
-      <Html lang="en" translate="no">
+      <Html lang="es" translate="no">
         <Head>
           <meta name="google" content="notranslate" />
           <link rel="icon" href="/Icon3.png" />

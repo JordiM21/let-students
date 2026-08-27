@@ -1,18 +1,12 @@
-import cefr from '@/public/cefr.webp'
 import week from '@/public/week.webp'
 import React from 'react'
 import NextImage from 'next/image'
 import { useAuth } from '@/context/AuthContext'
 import { useEffect, useState, useRef } from 'react'
-import Link from 'next/link'
-import { MdArrowBackIos, MdArrowForwardIos } from 'react-icons/md'
 import { useRouter } from 'next/router'
 import letbgWEBP from '@/public/metodoBg.webp'
 import teenBanner from '@/public/teenBanner.webp'
 import gsap from 'gsap'
-import BenefitsAccordion from '../Accordion2'
-import Carousel from '../CarouselCards'
-import { ArrowLeft, ArrowRight } from '@mui/icons-material'
 import { motion, AnimatePresence } from 'framer-motion'
 import craft1 from '@/public/crafts/playdoughCraft.webp'
 import craft2 from '@/public/crafts/paperRollCraft.webp'
@@ -22,7 +16,6 @@ import page1 from '@/public/grammarPage.webp'
 import page2 from '@/public/flashPage.webp'
 import page3 from '@/public/sheetsPage.webp'
 import page4 from '@/public/videosPage.webp'
-import { BsArrowLeft } from 'react-icons/bs'
 import { FaArrowLeft, FaArrowRight, FaWhatsapp } from 'react-icons/fa'
 import ScheduleClassModal from '@/components/ScheduleClassModal'
 import { useGsapScrollAnim } from '../useGsapScrollAnim'
@@ -160,7 +153,7 @@ export default function MetodologiaView({ setNavItem }) {
       {/* Modal lives here but invisible until opened */}
       <ScheduleClassModal ref={modalRef} />
       <div id="hero" className="w-full absolute top-20 md:top-36 z-20" ref={textRef}>
-        <h1 className="text-3xl md:text-6xl shadow-black drop-shadow-lg my-4 md:my-8 text-center text-[#F9F1D2] font-black">
+        <h1 className="font-display text-3xl md:text-6xl shadow-black drop-shadow-lg my-4 md:my-8 text-center text-brand-cream font-black">
           Clases Divertidas
           <br />
           Fluidez Garantizada
@@ -173,19 +166,10 @@ export default function MetodologiaView({ setNavItem }) {
         </p>
         <div className="flex w-11/12 md:w-[500px] mx-auto justify-evenly my-4">
           <a
+            href="https://wa.me/+393792913474?text=Hola!%20Acabo%20de%20ver%20la%20página%20y%20me%20gustaría%20obtener%20más%20información%20por%20favor"
+            target="_blank"
             rel="noopener noreferrer"
-            onClick={(e) => {
-              e.preventDefault() // stop immediate navigation
-              // Track event first
-              trackEvent('Contact_WhatsApp', { method: 'whatsapp_button' })
-              // Open the link after a short delay to ensure tracking
-              setTimeout(() => {
-                window.open(
-                  'https://wa.me/+393792913474?text=Hola!%20Acabo%20de%20ver%20la%20página%20y%20me%20gustaría%20obtener%20más%20información%20por%20favor',
-                  '_blank'
-                )
-              }, 300) // 300ms = enough for the pixel to fire
-            }}
+            onClick={() => trackEvent('Contact_WhatsApp', { method: 'whatsapp_button' })}
           >
             <div className="px-3 flex justify-around items-center md:w-[250px] mx-auto py-1 md:py-2 rounded-full bg-[#25d366] shadow-black/30 shadow-lg cursor-pointer  hover:scale-105 ease-in 1s active:scale-95 mt-12">
               <p
@@ -211,13 +195,13 @@ export default function MetodologiaView({ setNavItem }) {
           alt="Background illustration"
         />
         {/* Overlay */}
-        <div className="absolute inset-0 bg-[#2D878D]/60 mix-blend-multiply"></div>
+        <div className="absolute inset-0 bg-brand-teal/60 mix-blend-multiply"></div>
       </div>
       {/* CTA mini section */}
       <div className="relative">
         <div
           className="overflow-hidden flex flex-col md:flex-row items-center justify-center gap-2 md:gap-10 py-4 px-4 absolute w-full 
-                  bg-gradient-to-r from-[#F17024] to-[#ff8c00] text-white shadow-lg"
+                  bg-gradient-to-r from-brand-orangeDeep to-[#ff8c00] text-white shadow-lg"
         >
           <p className="text-center md:text-left font-semibold text-sm md:text-lg">
             Aprovecha la <span className="text-[#fffd00] font-bold">OFERTA ESPECIAL</span> en tu curso de inglés
@@ -227,25 +211,25 @@ export default function MetodologiaView({ setNavItem }) {
               openModal()
               trackEvent('Agenda_Clase_Gratuita', { method: 'cta_button' })
             }}
-            className="bg-white text-sm md:text-base text-[#F17024] hover:bg-[#fff2e9] hover:scale-105 transition-all font-semibold rounded-full w-[240px] px-4 py-2 cursor-pointer shadow-md"
+            className="bg-white text-sm md:text-base text-brand-orangeDeep hover:bg-[#fff2e9] hover:scale-105 transition-all font-semibold rounded-full w-[240px] px-4 py-2 cursor-pointer shadow-md"
           >
             Agenda tu Clase Gratuita
           </button>
         </div>
       </div>
       {/* First Section */}
-      <div className="pt-32 pb-12 md:py-32 bg-[#173330] flex flex-wrap flex-col-reverse md:flex-row items-center overflow-hidden">
+      <div className="pt-32 pb-12 md:py-32 bg-brand-forest flex flex-wrap flex-col-reverse md:flex-row items-center overflow-hidden">
         {/* Left content */}
         <div className="lg:w-[45%] my-3 max-md:mx-10 md:ml-16 relative z-10">
-          <h2 className="text-[#F9F1D2] text-4xl md:text-5xl font-black text-start">
+          <h2 className="font-display text-brand-cream text-4xl md:text-5xl font-black text-start">
             Un plan ideal para los
             <br />
-            <span className="text-[#F99B32] font-black bg-gradient-to-r from-[#F99B32] to-[#ec7c20] bg-clip-text text-transparent">
+            <span className="text-brand-orange font-black bg-gradient-to-r from-brand-orange to-[#ec7c20] bg-clip-text text-transparent">
               Pequeños de la Casa
             </span>
           </h2>
 
-          <p className="text-[#F9F1D2] text-start font-semibold my-6 opacity-90 leading-relaxed">
+          <p className="text-brand-cream text-start font-semibold my-6 opacity-90 leading-relaxed">
             Nuestro método de enseñanza está creado específicamente para que niños y niñas de 7 a 14 años aprendan
             inglés en tiempo record y puedan hablarlo con fluidez sin reglas gramáticales aburridas
           </p>
@@ -253,60 +237,61 @@ export default function MetodologiaView({ setNavItem }) {
           {/* Benefits list */}
           <ul className="space-y-4 mt-6">
             <li className="flex items-start gap-3">
-              <div class="w-6 h-6 rounded-full bg-[#F99B32] flex items-center justify-center text-[#173330] font-bold flex-none">
+              <div class="w-6 h-6 rounded-full bg-brand-orange flex items-center justify-center text-brand-forest font-bold flex-none">
                 ✓
               </div>
-              <span className="text-[#F9F1D2] font-medium">
+              <span className="text-brand-cream font-medium">
                 Clases dinámicas e interáctivas que despiertan el interés por hablar en inglés desde el primer día
               </span>
             </li>
 
             <li className="flex items-start gap-3">
-              <div class="w-6 h-6 rounded-full bg-[#F99B32] flex items-center justify-center text-[#173330] font-bold flex-none">
+              <div class="w-6 h-6 rounded-full bg-brand-orange flex items-center justify-center text-brand-forest font-bold flex-none">
                 ✓
               </div>
-              <span className="text-[#F9F1D2] font-medium">
+              <span className="text-brand-cream font-medium">
                 Actividades creativas y en grupo que estimulan la imaginación y el trabajo en equipo
               </span>
             </li>
 
             <li className="flex items-start gap-3">
-              <div class="w-6 h-6 rounded-full bg-[#F99B32] flex items-center justify-center text-[#173330] font-bold flex-none">
+              <div class="w-6 h-6 rounded-full bg-brand-orange flex items-center justify-center text-brand-forest font-bold flex-none">
                 ✓
               </div>
-              <span className="text-[#F9F1D2] font-medium">
+              <span className="text-brand-cream font-medium">
                 Juegos y experiencias lúdicas que convierten el aprendizaje del inglés en pura diversión
               </span>
             </li>
           </ul>
 
           {/* CTA */}
-          <div
+          <button
+            type="button"
             onClick={() => {
               openModal()
               trackEvent('Agenda_Clase_Gratuita', { method: 'cta_button' })
             }}
-            className="py-2 px-3 md:px-6 w-[210px] md:w-[290px] md:py-4 rounded-full bg-[#F17024] shadow-black/30 shadow-lg cursor-pointer  hover:scale-105 ease-in 1s active:scale-95 my-3"
+            className="py-2 px-3 md:px-6 w-[210px] md:w-[290px] md:py-4 rounded-full bg-brand-orangeDeep shadow-black/30 shadow-lg cursor-pointer  hover:scale-105 ease-in 1s active:scale-95 my-3"
           >
-            <a className="font-black text-sm md:text-lg text-white">Agenda una Clase Gratuita</a>
-          </div>
+            <span className="font-black text-sm md:text-lg text-white">Agenda una Clase Gratuita</span>
+          </button>
         </div>
 
         {/* Right content: photo */}
         <NextImage
           ref={girlRef}
           src={teenBanner}
-          alt="Profile"
+          alt="Adolescente estudiando inglés con LET Academy"
           className="w-full max-w-[360px] sm:max-w-[540px] mx-auto my-8"
         />
       </div>
 
       {/* Second Section */}
-      <div className="py-12 bg-[#173330] flex flex-wrap flex-col md:flex-row items-center overflow-hidden">
+      <div className="py-12 bg-brand-forest flex flex-wrap flex-col md:flex-row items-center overflow-hidden">
         {/* big title */}
         <div className="pb-8 mx-auto">
-          <h2 className="text-3xl md:text-8xl text-center text-[#F9F1D2] font-black">Manualidades en Clase</h2>
-          <p className="py-2 drop-shadow-sm text-xs sm:text-sm px-10 text-center text-[#F9F1D2]/60">
+          <h2 className="font-display text-3xl md:text-8xl text-center text-brand-cream font-black">Manualidades en Clase</h2>
+          <p className="py-2 drop-shadow-sm text-xs sm:text-sm px-10 text-center text-brand-cream/60">
             Actividades divertidas e interáctivas que permiten al estudiante aprender mientras se divierte
           </p>
         </div>
@@ -318,7 +303,7 @@ export default function MetodologiaView({ setNavItem }) {
             className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg p-4 cursor-pointer transition-transform hover:-translate-y-1"
           >
             <div className="w-full h-40 bg-gray-200 rounded-lg mb-4 overflow-hidden">
-              <NextImage src={craft1} className="object-cover w-full h-full" />
+              <NextImage src={craft1} alt="Manualidad PlayDough Animals hecha en clase" className="object-cover w-full h-full" />
             </div>
             <h3 className="text-lg font-bold text-gray-900 mb-1">PlayDough Animals </h3>
             <p className="text-sm font-medium text-indigo-600">- Sofía, Isaac, Laura y Sebastián</p>
@@ -334,7 +319,7 @@ export default function MetodologiaView({ setNavItem }) {
             className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg p-4 cursor-pointer transition-transform hover:-translate-y-1"
           >
             <div className="w-full h-40 bg-gray-200 rounded-lg mb-4 overflow-hidden">
-              <NextImage src={craft2} className="object-cover w-full h-full" />
+              <NextImage src={craft2} alt="Manualidad Halloween Paper Roll Monsters hecha en clase" className="object-cover w-full h-full" />
             </div>
             <h3 className="text-lg font-bold text-gray-900 mb-1">Halloween Paper Roll Monsters</h3>
             <p className="text-sm font-medium text-orange-600">- Carlos, Daniela, Nikol y Felipe</p>
@@ -350,7 +335,7 @@ export default function MetodologiaView({ setNavItem }) {
             className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg p-4 cursor-pointer transition-transform hover:-translate-y-1"
           >
             <div className="w-full h-40 bg-gray-200 rounded-lg mb-4 overflow-hidden">
-              <NextImage src={craft3} className="object-cover w-full h-full" />
+              <NextImage src={craft3} alt="Manualidad Paper Bags Monsters hecha en clase" className="object-cover w-full h-full" />
             </div>
             <h3 className="text-lg font-bold text-gray-900 mb-1">Paper Bags Monsters</h3>
             <p className="text-sm font-medium text-purple-600">- Carla, Mónica y Luciano</p>
@@ -366,7 +351,7 @@ export default function MetodologiaView({ setNavItem }) {
             className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg p-4 cursor-pointer transition-transform hover:-translate-y-1"
           >
             <div className="w-full h-40 bg-gray-200 rounded-lg mb-4 overflow-hidden">
-              <NextImage src={craft4} className="object-cover w-full h-full" />
+              <NextImage src={craft4} alt="Manualidad Travel Suitcase hecha en clase" className="object-cover w-full h-full" />
             </div>
             <h3 className="text-lg font-bold text-gray-900 mb-1">Travel Suitcase Handicraft</h3>
             <p className="text-sm font-medium text-purple-600">- Neila, Ian, Samir y Mila</p>
@@ -379,11 +364,11 @@ export default function MetodologiaView({ setNavItem }) {
       </div>
 
       {/* Third Section */}
-      <div className="py-12 bg-[#173330] overflow-hidden">
+      <div className="py-12 bg-brand-forest overflow-hidden">
         {/* big title */}
         <div className="pt-12 mx-auto">
-          <h2 className="text-3xl md:text-8xl text-center text-[#F9F1D2] font-black">Nuestros Pequeños Bilingües</h2>
-          <p className="py-4 mx-auto max-w-[750px] text-xs sm:text-sm px-10 drop-shadow-sm text-center text-[#F9F1D2]/60">
+          <h2 className="font-display text-3xl md:text-8xl text-center text-brand-cream font-black">Nuestros Pequeños Bilingües</h2>
+          <p className="py-4 mx-auto max-w-[750px] text-xs sm:text-sm px-10 drop-shadow-sm text-center text-brand-cream/60">
             Esto es lo que dicen nuestros estudiantes de las clases, ellos aprenden inglés a diario mientras se
             divierten en la academia con actividades de aprendizaje adaptadas a su edad y a su nivel de inglés
           </p>
@@ -395,7 +380,7 @@ export default function MetodologiaView({ setNavItem }) {
             <button
               onClick={goPrev}
               className="absolute left-16 sm:left-1/3 -bottom-10 -translate-y-1/2 
-          bg-[#F17024] shadow-lg p-4 rounded-full z-10 hover:scale-105 transition"
+          bg-brand-orangeDeep shadow-lg p-4 rounded-full z-10 hover:scale-105 transition"
             >
               <FaArrowLeft />
             </button>
@@ -405,7 +390,7 @@ export default function MetodologiaView({ setNavItem }) {
             <button
               onClick={goNext}
               className="absolute right-16 sm:right-1/3 -bottom-10 -translate-y-1/2 
-          bg-[#F17024] shadow-lg p-4 rounded-full z-10 hover:scale-105 transition"
+          bg-brand-orangeDeep shadow-lg p-4 rounded-full z-10 hover:scale-105 transition"
             >
               <FaArrowRight />
             </button>
@@ -448,7 +433,7 @@ export default function MetodologiaView({ setNavItem }) {
                 key={i}
                 onClick={() => setCurrent(i)}
                 className={`h-3 w-3 rounded-full transition ${
-                  current === i ? 'bg-[#F17024] scale-125' : 'bg-gray-300'
+                  current === i ? 'bg-brand-orangeDeep scale-125' : 'bg-gray-300'
                 }`}
               />
             ))}
@@ -457,16 +442,16 @@ export default function MetodologiaView({ setNavItem }) {
       </div>
 
       {/* Fourth Section */}
-      <div className="pt-12 pb-12 md:py-32 bg-[#173330] flex flex-wrap flex-col-reverse md:flex-row items-center overflow-hidden">
+      <div className="pt-12 pb-12 md:py-32 bg-brand-forest flex flex-wrap flex-col-reverse md:flex-row items-center overflow-hidden">
         {/* Left content */}
         <div className="lg:w-[45%] my-3 max-md:mx-10 md:ml-16 relative z-10">
-          <h2 className="text-[#F9F1D2] text-4xl md:text-5xl font-black text-start">
+          <h2 className="font-display text-brand-cream text-4xl md:text-5xl font-black text-start">
             La Semana de Clase en
             <br />
-            <span className="text-[#F99B32] font-black">LET Academy</span>
+            <span className="text-brand-orange font-black">LET Academy</span>
           </h2>
 
-          <p className="text-[#F9F1D2] text-start font-semibold my-6 opacity-90 leading-relaxed">
+          <p className="text-brand-cream text-start font-semibold my-6 opacity-90 leading-relaxed">
             Así es como están organizadas las clases en la Academia en 3 días semanales (Lunes, Miércoles y Viernes).
             Especialmente diseñado para mantener la atención de los más pequeños de la casa y aprender temas complejos
             en tiempo record
@@ -475,20 +460,20 @@ export default function MetodologiaView({ setNavItem }) {
           {/* Benefits list */}
           <ul className="space-y-4 mt-6">
             <li className="flex items-start gap-3">
-              <div class="w-6 h-6 rounded-full bg-[#F99B32] flex items-center justify-center text-[#173330] font-bold flex-none">
+              <div class="w-6 h-6 rounded-full bg-brand-orange flex items-center justify-center text-brand-forest font-bold flex-none">
                 ✓
               </div>
-              <span className="text-[#F9F1D2] font-medium">
+              <span className="text-brand-cream font-medium">
                 El dinamismo de nuestras clases permite a los estudiantes aprender sin aburrirse ya que cada día les
                 espera algo nuevo
               </span>
             </li>
 
             <li className="flex items-start gap-3">
-              <div class="w-6 h-6 rounded-full bg-[#F99B32] flex items-center justify-center text-[#173330] font-bold flex-none">
+              <div class="w-6 h-6 rounded-full bg-brand-orange flex items-center justify-center text-brand-forest font-bold flex-none">
                 ✓
               </div>
-              <span className="text-[#F9F1D2] font-medium">
+              <span className="text-brand-cream font-medium">
                 Los tutores están disponibles los fines de semana o después del horario de clases para aclarar dudas o
                 repetir temas complejos (sin costo adicional)
               </span>
@@ -496,26 +481,27 @@ export default function MetodologiaView({ setNavItem }) {
           </ul>
 
           {/* CTA */}
-          <div
+          <button
+            type="button"
             onClick={() => setNavItem('Testimonios')}
-            className="px-4 md:px-6 py-2 md:py-4 rounded-full bg-[#F9F1D2] font-black text-sm md:text-lg text-[#173330] shadow-black/30 shadow-lg w-[200px] md:w-[270px] cursor-pointer mt-8 hover:scale-105 ease-in duration-200 active:scale-95"
+            className="px-4 md:px-6 py-2 md:py-4 rounded-full bg-brand-cream font-black text-sm md:text-lg text-brand-forest shadow-black/30 shadow-lg w-[200px] md:w-[270px] cursor-pointer mt-8 hover:scale-105 ease-in duration-200 active:scale-95"
           >
             Nuestros Casos de Éxito
-          </div>
+          </button>
         </div>
 
         {/* Right content: photo */}
         <NextImage
           src={week}
-          alt="Profile"
+          alt="Horario semanal de clases de LET Academy"
           className="w-11/12 rounded-md max-w-[580px] sm:max-w-[540px] mx-auto my-8"
         />
       </div>
-      <div className="py-12 bg-[#173330] flex flex-wrap flex-col md:flex-row items-center overflow-hidden">
+      <div className="py-12 bg-brand-forest flex flex-wrap flex-col md:flex-row items-center overflow-hidden">
         {/* big title */}
         <div className="pb-8 mx-auto max-w-[850px]">
-          <h2 className="text-[#F9F1D2] text-3xl md:text-8xl font-black text-center">Nuestra Plataforma</h2>
-          <p className=" py-2 text-xs sm:text-sm px-10 drop-shadow-sm text-center text-[#F9F1D2]/60">
+          <h2 className="font-display text-brand-cream text-3xl md:text-8xl font-black text-center">Nuestra Plataforma</h2>
+          <p className=" py-2 text-xs sm:text-sm px-10 drop-shadow-sm text-center text-brand-cream/60">
             Un espacio seguro para que los más pequeños de la casa se diviertan mientras aprenden inglés y para que tú
             como representante tengas un rol activo en su aprendizaje
           </p>
@@ -528,7 +514,7 @@ export default function MetodologiaView({ setNavItem }) {
             className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg p-4 cursor-pointer transition-transform hover:-translate-y-1"
           >
             <div className="w-full aspect-[4/3] bg-gray-200 rounded-lg mb-4 overflow-hidden">
-              <NextImage src={page1} className="object-cover w-full h-full" />
+              <NextImage src={page1} alt="Ejercicio de gramática básica en la plataforma" className="object-cover w-full h-full" />
             </div>
             <h3 className="text-lg font-bold text-gray-900 mb-1">Gramática Básica</h3>
             <p className="text-sm font-medium text-[#087c21]">- Principiantes</p>
@@ -543,7 +529,7 @@ export default function MetodologiaView({ setNavItem }) {
             className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg p-4 cursor-pointer transition-transform hover:-translate-y-1"
           >
             <div className="w-full aspect-[4/3] bg-gray-200 rounded-lg mb-4 overflow-hidden">
-              <NextImage src={page2} className="object-cover w-full h-full" />
+              <NextImage src={page2} alt="Flash cards en inglés en la plataforma" className="object-cover w-full h-full" />
             </div>
             <h3 className="text-lg font-bold text-gray-900 mb-1">Flash Cards en Inglés</h3>
             <p className="text-sm font-medium text-[#087c21]">- Principiantes</p>
@@ -558,7 +544,7 @@ export default function MetodologiaView({ setNavItem }) {
             className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg p-4 cursor-pointer transition-transform hover:-translate-y-1"
           >
             <div className="w-full aspect-[4/3] bg-gray-200 rounded-lg mb-4 overflow-hidden">
-              <NextImage src={page3} className="object-cover w-full h-full" />
+              <NextImage src={page3} alt="Hoja de actividades descargable en la plataforma" className="object-cover w-full h-full" />
             </div>
             <h3 className="text-lg font-bold text-gray-900 mb-1">Hojas de Actividades</h3>
             <p className="text-sm font-medium text-[#d36409]">- Intermedio</p>
@@ -574,7 +560,7 @@ export default function MetodologiaView({ setNavItem }) {
             className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg p-4 cursor-pointer transition-transform hover:-translate-y-1"
           >
             <div className="w-full aspect-[4/3] bg-gray-200 rounded-lg mb-4 overflow-hidden">
-              <NextImage src={page4} className="object-cover w-full h-full" />
+              <NextImage src={page4} alt="Series y películas de aprendizaje en la plataforma" className="object-cover w-full h-full" />
             </div>
             <h3 className="text-lg font-bold text-gray-900 mb-1">Series y Peliculas</h3>
             <p className="text-sm font-medium text-[#d36409]">- Intermedio</p>
@@ -584,8 +570,8 @@ export default function MetodologiaView({ setNavItem }) {
           </div>
         </div>
       </div>
-      <div className="bg-[#173330]">
-        <h3 className="text-5xl md:text-8xl shadow-black drop-shadow-lg pt-20 pb-8 md:pb-20 text-center text-[#ece3bf] font-black">
+      <div className="bg-brand-forest">
+        <h3 className="font-display text-5xl md:text-8xl shadow-black drop-shadow-lg pt-20 pb-8 md:pb-20 text-center text-[#ece3bf] font-black">
           Preguntas
           <br />
           Frecuentes

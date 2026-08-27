@@ -93,8 +93,8 @@ export default function Login() {
       <NextImage src={background} alt="background" className="-z-10 h-screen object-cover absolute" />
       <div className="w-11/12 z-50 sm:max-w-md bg-[#f9f3d3ce] backdrop-blur-sm p-4 rounded-md absolute top-[16vh] left-1/2 transform -translate-x-1/2">
         {' '}
-        <h1 className="text-5xl sm:text-6xl text-[#17332E] font-black my-4 text-center">Inicia Sesión</h1>
-        <div className="w-10/12 text-[#17332E] text-center font-black opacity-90 mx-auto">
+        <h1 className="text-5xl sm:text-6xl text-brand-forest font-black my-4 text-center">Inicia Sesión</h1>
+        <div className="w-10/12 text-brand-forest text-center font-black opacity-90 mx-auto">
           Acceso a representantes y estudiantes de la academia, si necesitas ayuda
           <a href="" target="_blank" className="text-[#0b7425] font-black underline cursor-pointer">
             {' '}

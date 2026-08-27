@@ -1,14 +1,6 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@font-face {
-  font-family: 'Roboto';
-  font-style: normal;
-  font-weight: 600;
-  font-display: swap;
-  src: url('https://fonts.gstatic.com/s/roboto/v48/KFO7CnqEu92Fr1ME7kSn66aGLdTylUAMa3yUBHMdazQ.woff2') format('woff2');
-}
-
 
 /* Prevent GSAP animations from causing layout overflow */
 html, body {
@@ -17,10 +9,8 @@ html, body {
 }
 
 
-* {
+body {
   color: rgb(12, 21, 33);
-  font-weight: 700;
-  transition: all 0.1s ease-in;
 }
 
 @keyframes slide {
@@ -111,108 +101,9 @@ html, body {
   }
 }
 
-.loader {
-  position: absolute;
-  top: -150px;
-  right: -8px;
-  width: 80px;
-  height: 80px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.circle {
-  position: absolute;
-  border-radius: 50%;
-  animation-duration: 1.5s;
-  animation-iteration-count: infinite;
-  animation-timing-function: linear;
-}
-
-.circle-1 {
-  width: 50px;
-  height: 50px;
-  background: linear-gradient(
-    90deg,
-    rgba(255, 160, 0, 0.9094012605042017) 0%,
-    rgba(255, 250, 0, 0.8813900560224089) 100%
-  );
-  animation-name: circle-1-animation;
-}
-
-.circle-3 {
-  width: 30px;
-  height: 30px;
-  background: linear-gradient(
-    90deg,
-    rgba(247, 255, 0, 0.4556197478991597) 0%,
-    rgba(255, 250, 0, 0.8813900560224089) 100%
-  );
-  animation-name: circle-3-animation;
-}
-
-.circle-4 {
-  width: 20px;
-  height: 20px;
-  background: radial-gradient(circle, rgba(255, 194, 0, 1) 0%, rgba(255, 250, 0, 1) 100%);
-  animation-name: circle-4-animation;
-}
-
-@keyframes circle-1-animation {
-  0% {
-    transform: scale(1);
-  }
-
-  50% {
-    transform: scale(1.2);
-  }
-
-  100% {
-    transform: scale(1);
-  }
-}
-
-@keyframes circle-2-animation {
-  0% {
-    transform: scale(1);
-  }
-
-  50% {
-    transform: scale(1.2);
-  }
-
-  100% {
-    transform: scale(1);
-  }
-}
-
-@keyframes circle-3-animation {
-  0% {
-    transform: scale(1);
-  }
-
-  50% {
-    transform: scale(1.2);
-  }
-
-  100% {
-    transform: scale(1);
-  }
-}
-
-@keyframes circle-4-animation {
-  0% {
-    transform: scale(1);
-  }
-
-  50% {
-    transform: scale(1.2);
-  }
-
-  100% {
-    transform: scale(1);
-  }
+:focus-visible {
+  outline: 3px solid #F99B32;
+  outline-offset: 2px;
 }
 
 ::-webkit-scrollbar {
@@ -658,48 +549,6 @@ html, body {
   }
 }
 
-.btn-cta {
-  padding: 1.1em 2em;
-  background: none;
-  border: 2px solid #fff;
-  font-size: 15px;
-  color: #131313;
-  cursor: pointer;
-  position: relative;
-  overflow: hidden;
-  transition: all 0.3s;
-  border-radius: 12px;
-  background-color: rgb(58, 207, 58);
-  font-weight: bolder;
-  box-shadow: 0 2px 0 2px #000;
-}
-
-.btn-cta:before {
-  content: '';
-  position: absolute;
-  width: 100px;
-  height: 200%;
-  background-color: #ff6700;
-  top: 50%;
-  transform: skewX(30deg) translate(-150%, -50%);
-  transition: all 0.5s;
-}
-
-.btn-cta:hover {
-  background-color: #4cc9f0;
-  color: #fff;
-  box-shadow: 0 2px 0 2px #0d3b66;
-}
-
-.btn-cta:hover::before {
-  transform: skewX(30deg) translate(190%, -50%);
-  transition-delay: 0.1s;
-}
-
-.btn-cta:active {
-  transform: scale(0.9);
-}
-
 .results-summary-container {
   font-family: 'Hanken Grotesk', sans-serif;
   display: flex;
@@ -742,10 +591,6 @@ html, body {
   font-size: 17px;
   line-height: 1.4;
   color: hsl(221, 100%, 96%);
-}
-
-.paragraph-text-box {
-  width: 100%;
 }
 
 .text-center {
@@ -1125,77 +970,6 @@ button {
   padding: 0;
   font-size: inherit;
   font-family: inherit;
-}
-
-button.learn-more {
-  height: auto;
-}
-
-button.learn-more .circle {
-  transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
-  position: relative;
-  display: block;
-  margin: 0;
-  width: 3rem;
-  height: 3rem;
-  border-radius: 1.625rem;
-}
-
-button.learn-more .circle .icon {
-  transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  margin: auto;
-  background: #fff;
-}
-
-button.learn-more .circle .icon.arrow {
-  transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
-  left: 0.625rem;
-  width: 1.125rem;
-  height: 0.125rem;
-  background: none;
-}
-
-button.learn-more .circle .icon.arrow::before {
-  position: absolute;
-  content: '';
-  top: -0.29rem;
-  right: 0.0625rem;
-  width: 0.625rem;
-  height: 0.625rem;
-  border-top: 0.125rem solid #fff;
-  border-right: 0.125rem solid #fff;
-  transform: rotate(45deg);
-}
-
-button.learn-more .button-text {
-  transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  padding: 0.75rem 0;
-  margin: 0 0 0 1.85rem;
-  font-weight: 700;
-  line-height: 1.6;
-  text-align: center;
-  text-transform: uppercase;
-}
-
-button:hover .circle {
-  width: 100%;
-}
-
-button:hover .circle .icon.arrow {
-  background: #fff;
-  transform: translate(1rem, 0);
-}
-
-button:hover .button-text {
-  color: #fff;
 }
 
 @keyframes shake {

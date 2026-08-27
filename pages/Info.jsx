@@ -41,7 +41,7 @@ export default function Info() {
 
   return (
     <>
-      <div className="relative bg-[#2D878D] pt-[500px] md:pt-36">
+      <div className="relative bg-brand-teal pt-[500px] md:pt-36">
         <div
           onClick={() => router.replace('/')}
           className="absolute top-3 left-4 hover:scale-110 active:scale-95 cursor-pointer hover:shadow-[#255d61] shadow-sm z-50 hover:shadow-md bg-[#F9F3D3] rounded-full p-[5px]"
@@ -57,7 +57,7 @@ export default function Info() {
             <FaWhatsapp className="w-[40px] h-[40px] fill-white p-1" />
           </div>
         </a>
-        <NextImage src={background} className="-z-10 bg-[#2D878D] h-screen object-cover absolute" />
+        <NextImage src={background} className="-z-10 bg-brand-teal h-screen object-cover absolute" />
         <div className="absolute top-[2vh] md:top-[5vh] w-10/12 left-1/2 transform -translate-x-1/2">
           <h1
             ref={title}

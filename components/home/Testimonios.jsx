@@ -1,20 +1,15 @@
 import React from 'react'
-import teachers from '@/public/teachers.webp'
 import NextImage from 'next/image'
 import { useAuth } from '@/context/AuthContext'
 import { useEffect, useRef } from 'react'
-import Link from 'next/link'
-import { MdArrowBackIos, MdArrowForwardIos } from 'react-icons/md'
 import { useRouter } from 'next/router'
 import letbgWEBP from '@/public/testimoniosBg.webp'
 import gsap from 'gsap'
-import Carousel from '../CarouselCards'
 import ScheduleClassModal from '@/components/ScheduleClassModal'
 import review1 from '@/public/review1.webp'
 import review2 from '@/public/review2.webp'
 import review3 from '@/public/review3.webp'
 import review4 from '@/public/review4.webp'
-import review5 from '@/public/review5.webp'
 import { useGsapScrollAnim } from '../useGsapScrollAnim'
 import { FaStar, FaWhatsapp } from 'react-icons/fa'
 import FaqAccordion from '../Accordion'
@@ -79,7 +74,7 @@ export default function TestimoniosView({ setNavItem }) {
       {/* Modal lives here but invisible until opened */}
       <ScheduleClassModal ref={modalRef} />
       <div id="hero" className="w-full absolute top-20 md:top-36 z-20" ref={textRef}>
-        <h1 className="text-3xl md:text-6xl shadow-black drop-shadow-lg my-4 md:my-8 text-center text-[#F9F1D2] font-black">
+        <h1 className="font-display text-3xl md:text-6xl shadow-black drop-shadow-lg my-4 md:my-8 text-center text-brand-cream font-black">
           Padres Orgullosos y
           <br />
           Casos de Éxito Reales
@@ -92,19 +87,10 @@ export default function TestimoniosView({ setNavItem }) {
         </p>
         <div className="flex w-11/12 md:w-[500px] mx-auto justify-evenly my-4">
           <a
+            href="https://wa.me/+393792913474?text=Hola!%20Acabo%20de%20ver%20la%20página%20y%20me%20gustaría%20obtener%20más%20información%20por%20favor"
+            target="_blank"
             rel="noopener noreferrer"
-            onClick={(e) => {
-              e.preventDefault() // stop immediate navigation
-              // Track event first
-              trackEvent('Contact_WhatsApp', { method: 'whatsapp_button' })
-              // Open the link after a short delay to ensure tracking
-              setTimeout(() => {
-                window.open(
-                  'https://wa.me/+393792913474?text=Hola!%20Acabo%20de%20ver%20la%20página%20y%20me%20gustaría%20obtener%20más%20información%20por%20favor',
-                  '_blank'
-                )
-              }, 300) // 300ms = enough for the pixel to fire
-            }}
+            onClick={() => trackEvent('Contact_WhatsApp', { method: 'whatsapp_button' })}
           >
             <div className="px-3 flex justify-around items-center md:w-[250px] mx-auto py-1 md:py-2 rounded-full bg-[#25d366] shadow-black/30 shadow-lg cursor-pointer  hover:scale-105 ease-in 1s active:scale-95 mt-12">
               <p
@@ -130,14 +116,14 @@ export default function TestimoniosView({ setNavItem }) {
           alt="Background illustration"
         />
         {/* Overlay */}
-        <div className="absolute inset-0 bg-[#2D878D]/60 mix-blend-multiply"></div>
+        <div className="absolute inset-0 bg-brand-teal/60 mix-blend-multiply"></div>
       </div>
 
       {/* CTA mini section */}
       <div className="relative">
         <div
           className="overflow-hidden flex flex-col md:flex-row items-center justify-center gap-2 md:gap-10 py-4 px-4 absolute w-full 
-                  bg-gradient-to-r from-[#F17024] to-[#ff8c00] text-white shadow-lg"
+                  bg-gradient-to-r from-brand-orangeDeep to-[#ff8c00] text-white shadow-lg"
         >
           <p className="text-center md:text-left font-semibold text-sm md:text-lg">
             Aprovecha la <span className="text-[#fffd00] font-bold">OFERTA ESPECIAL</span> en tu curso de inglés
@@ -147,20 +133,20 @@ export default function TestimoniosView({ setNavItem }) {
               openModal()
               trackEvent('Agenda_Clase_Gratuita', { method: 'cta_button' })
             }}
-            className="bg-white text-sm md:text-base text-[#F17024] hover:bg-[#fff2e9] hover:scale-105 transition-all font-semibold rounded-full w-[240px] px-4 py-2 cursor-pointer shadow-md"
+            className="bg-white text-sm md:text-base text-brand-orangeDeep hover:bg-[#fff2e9] hover:scale-105 transition-all font-semibold rounded-full w-[240px] px-4 py-2 cursor-pointer shadow-md"
           >
             Agenda tu Clase Gratuita
           </button>
         </div>
       </div>
       {/* section / videos */}
-      <div className="bg-[#173330] py-36">
-        <h2 className="text-center text-[#F9F1D2] font-black text-3xl md:text-8xl z-50">
+      <div className="bg-brand-forest py-36">
+        <h2 className="font-display text-center text-brand-cream font-black text-3xl md:text-8xl z-50">
           Historias de
           <br />
           Familias Orgullosas
         </h2>
-        <p className="text-center text-[#F9F1D2]/60 py-6 text-xs sm:text-sm px-10">
+        <p className="text-center text-brand-cream/60 py-6 text-xs sm:text-sm px-10">
           Escucha lo que dicen las familias que hacen parte de LET Academy
         </p>
 
@@ -253,9 +239,9 @@ export default function TestimoniosView({ setNavItem }) {
         </div>
       </div>
       {/* Testimonials Section */}
-      <div className="bg-[#173330] relative py-10 px-6 md:px-12 lg:px-20">
-        <h2 className="text-center text-[#F9F1D2] font-black text-3xl md:text-8xl mb-6">Lo que dicen de nosotros</h2>
-        <p className="text-center text-xs sm:text-sm px-10 text-[#F9F1D2]/60 max-w-2xl mx-auto mb-12">
+      <div className="bg-brand-forest relative py-10 px-6 md:px-12 lg:px-20">
+        <h2 className="font-display text-center text-brand-cream font-black text-3xl md:text-8xl mb-6">Lo que dicen de nosotros</h2>
+        <p className="text-center text-xs sm:text-sm px-10 text-brand-cream/60 max-w-2xl mx-auto mb-12">
           Historias reales de padres orgullosos y pequeños que ya dominan el inglés.
         </p>
 
@@ -275,7 +261,7 @@ export default function TestimoniosView({ setNavItem }) {
             <div className="flex items-center gap-4 mb-4">
               <NextImage src={review1} alt="Profile" className="w-14 h-14 rounded-full object-cover" />
               <div>
-                <h3 className="font-bold text-lg text-[#173330]">María José Acevedo</h3>
+                <h3 className="font-bold text-lg text-brand-forest">María José Acevedo</h3>
                 <p className="text-sm text-gray-500">Comerciante</p>
               </div>
             </div>
@@ -306,7 +292,7 @@ export default function TestimoniosView({ setNavItem }) {
             <div className="flex items-center gap-4 mb-4">
               <NextImage src={review2} alt="Profile" className="w-14 h-14 rounded-full object-cover" />
               <div>
-                <h3 className="font-bold text-lg text-[#173330]">Antonio Méndez</h3>
+                <h3 className="font-bold text-lg text-brand-forest">Antonio Méndez</h3>
                 <p className="text-sm text-gray-500">Agente Inmobiliario</p>
               </div>
             </div>
@@ -341,7 +327,7 @@ export default function TestimoniosView({ setNavItem }) {
             <div className="flex items-center gap-4 mb-4">
               <NextImage src={review3} alt="Profile" className="w-14 h-14 rounded-full object-cover" />
               <div>
-                <h3 className="font-bold text-lg text-[#173330]">Gustavo Bravo</h3>
+                <h3 className="font-bold text-lg text-brand-forest">Gustavo Bravo</h3>
                 <p className="text-sm text-gray-500">Médico Veterinario</p>
               </div>
             </div>
@@ -367,7 +353,7 @@ export default function TestimoniosView({ setNavItem }) {
             <div className="flex items-center gap-4 mb-4">
               <NextImage src={review4} alt="Profile" className="w-14 h-14 rounded-full object-cover" />
               <div>
-                <h3 className="font-bold text-lg text-[#173330]">José Ramírez</h3>
+                <h3 className="font-bold text-lg text-brand-forest">José Ramírez</h3>
                 <p className="text-sm text-gray-500">Independiente</p>
               </div>
             </div>
@@ -380,19 +366,20 @@ export default function TestimoniosView({ setNavItem }) {
         </div>
 
         {/* CTA Button */}
-        <div
+        <button
+          type="button"
           onClick={() => {
             openModal()
             trackEvent('Agenda_Clase_Gratuita', { method: 'cta_button' })
           }}
-          className="mx-auto mt-4 py-2 px-3 md:px-6 w-[210px] md:w-[290px] md:py-4 rounded-full bg-[#F17024] shadow-black/30 shadow-lg cursor-pointer  hover:scale-105 ease-in 1s active:scale-95 my-3"
+          className="mx-auto mt-4 py-2 px-3 md:px-6 w-[210px] md:w-[290px] md:py-4 rounded-full bg-brand-orangeDeep shadow-black/30 shadow-lg cursor-pointer  hover:scale-105 ease-in 1s active:scale-95 my-3 block"
         >
-          <a className="font-black text-sm md:text-lg text-white">Agenda una Clase Gratuita</a>
-        </div>
+          <span className="font-black text-sm md:text-lg text-white">Agenda una Clase Gratuita</span>
+        </button>
       </div>
 
-      <div className="bg-[#173330]">
-        <h3 className="text-5xl md:text-8xl shadow-black drop-shadow-lg pt-20 pb-8 md:pb-20 text-center text-[#ece3bf] font-black">
+      <div className="bg-brand-forest">
+        <h3 className="font-display text-5xl md:text-8xl shadow-black drop-shadow-lg pt-20 pb-8 md:pb-20 text-center text-[#ece3bf] font-black">
           Preguntas
           <br />
           Frecuentes

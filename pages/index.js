@@ -116,71 +116,66 @@ export default function Home() {
           }}
         />
       </Head>
-      <div>
+      <div className="font-body">
         {/* Glass Fixed CTA LOGIN  */}
-          <div
+          <button
+            type="button"
             onClick={() => router.push('/Login')}
             className="fixed cursor-pointer max-md:top-4 md:bottom-4 right-4 z-50"
           >
-            <p className="bg-[#0f5186] hover:bg-[#083a63] text-white backdrop-blur-md rounded-full px-3 py-1 border-[#166bb1] shadow-lg shadow-black/40 border border-w transition-all duration-200 ease-in-out">
+            <span className="bg-[#0f5186] hover:bg-[#083a63] text-white backdrop-blur-md rounded-full px-3 py-1 border-[#166bb1] shadow-lg shadow-black/40 border border-w transition-all duration-200 ease-in-out">
               Iniciar Sesión 🔐
-            </p>
-          </div>
+            </span>
+          </button>
 
           {/* mobile navbar */}
           <div className="w-full flex md:hidden max-w-[360px] justify-between h-12 fixed bottom-8 left-1/2 -translate-x-1/2 z-50">
-            <div onClick={() => changeNavItem('Home')}>
-              <div className="group hover:scale-110 mt-1 shadow-black/60 active:scale-95 cursor-pointer shadow-md z-50 bg-[#F9F1D2] rounded-full p-[5px]">
-                <NextImage src={logo} className="w-[30px] h-[30px] fill-white p-1" />
+            <button type="button" onClick={() => changeNavItem('Home')}>
+              <div className="group hover:scale-110 mt-1 shadow-black/60 active:scale-95 cursor-pointer shadow-md z-50 bg-brand-cream rounded-full p-[5px]">
+                <NextImage src={logo} alt="LET Academy" className="w-[30px] h-[30px] fill-white p-1" />
                 <div className="hidden absolute -top-8 -left-[1px] rounded-full p-1 group-hover:block bg-white/30 backdrop-blur-md">
                   <p className="text-xs">Home</p>
                 </div>
               </div>
-            </div>
+            </button>
             <div
               className="flex shadow-black/60 w-full max-w-[260px] h-12 fixed left-1/2 -translate-x-1/2 z-50
                bg-white/30 backdrop-blur-md rounded-full shadow-md border border-white/20
                 items-center justify-around"
             >
-              <div
+              <button
+                type="button"
                 onClick={() => changeNavItem('Nosotros')}
-                className={`group cursor-pointer px-3 py-2  rounded-full transition-all duration-150 ease-in-out ${navItem === 'Nosotros' ? 'bg-[#173330]' : 'hover:bg-white/30'
+                className={`group cursor-pointer px-3 py-2  rounded-full transition-all duration-150 ease-in-out ${navItem === 'Nosotros' ? 'bg-brand-forest' : 'hover:bg-white/30'
                   }`}
               >
                 <p className={`text-sm ${navItem === 'Nosotros' ? 'text-white' : ''}`}>Nosotros</p>
-              </div>
+              </button>
 
-              <div
+              <button
+                type="button"
                 onClick={() => changeNavItem('Metodología')}
-                className={`group cursor-pointer px-3 py-2 rounded-full transition-all duration-150 ease-in-out ${navItem === 'Metodología' ? 'bg-[#F9F1D2]' : 'hover:bg-white/60'
+                className={`group cursor-pointer px-3 py-2 rounded-full transition-all duration-150 ease-in-out ${navItem === 'Metodología' ? 'bg-brand-cream' : 'hover:bg-white/60'
                   }`}
               >
                 <p className={`text-sm ${navItem === 'Metodología' ? '' : ''}`}>Método</p>
-              </div>
+              </button>
 
-              <div
+              <button
+                type="button"
                 onClick={() => changeNavItem('Testimonios')}
-                className={`group cursor-pointer px-3 py-2 rounded-full transition-all duration-150 ease-in-out ${navItem === 'Testimonios' ? 'bg-[#F9F1D2]' : 'hover:bg-white/60'
+                className={`group cursor-pointer px-3 py-2 rounded-full transition-all duration-150 ease-in-out ${navItem === 'Testimonios' ? 'bg-brand-cream' : 'hover:bg-white/60'
                   }`}
               >
                 <p className={`text-sm ${navItem === 'Testimonios' ? '' : ''}`}>Reseñas</p>
-              </div>
+              </button>
             </div>
             <div>
               <a
+                href="https://wa.me/+393792913474?text=Hola!%20Acabo%20de%20ver%20la%20página%20y%20me%20gustaría%20obtener%20más%20información%20por%20favor"
+                target="_blank"
                 rel="noopener noreferrer"
-                onClick={(e) => {
-                  e.preventDefault() // stop immediate navigation
-                  // Track event first
-                  trackEvent('Contact_WhatsApp', { method: 'whatsapp_button' })
-                  // Open the link after a short delay to ensure tracking
-                  setTimeout(() => {
-                    window.open(
-                      'https://wa.me/+393792913474?text=Hola!%20Acabo%20de%20ver%20la%20página%20y%20me%20gustaría%20obtener%20más%20información%20por%20favor',
-                      '_blank'
-                    )
-                  }, 300) // 300ms = enough for the pixel to fire
-                }}
+                onClick={() => trackEvent('Contact_WhatsApp', { method: 'whatsapp_button' })}
               >
                 <div className="group hover:scale-110 mt-1 active:scale-95 cursor-pointer shadow-black/60 shadow-md z-50 hover:shadow-md bg-[#25D366] rounded-full p-[5px]">
                   <FaWhatsapp className="w-[30px] h-[30px] fill-white p-1" />
@@ -193,59 +188,54 @@ export default function Home() {
           </div>
           {/* wide navbar */}
           <div className="w-full hidden md:flex max-w-[500px]  justify-between h-12 fixed top-4 left-1/2 -translate-x-1/2 z-50">
-            <div
+            <button
+              type="button"
               onClick={() => changeNavItem('Home')}
               className="group hover:scale-110 active:scale-95 cursor-pointer shadow-black/60 shadow-md bg-[#F9F3D3] rounded-full p-[5px] z-30"
             >
-              <NextImage src={logo} className="object-contain  w-[40px] h-[40px]" />
+              <NextImage src={logo} alt="LET Academy" className="object-contain  w-[40px] h-[40px]" />
               <div className="hidden absolute mt-2 -ml-1 rounded-full px-2 group-hover:block bg-white/30 backdrop-blur-md">
                 <p className="text-sm">Inicio</p>
               </div>
-            </div>
+            </button>
             <div
               className="flex w-full max-w-[380px] shadow-black/60 shadow-md h-12 fixed left-1/2 -translate-x-1/2 z-50
                bg-white/30 backdrop-blur-md rounded-full border border-white/20
                 items-center justify-around"
             >
-              <div
+              <button
+                type="button"
                 onClick={() => changeNavItem('Nosotros')}
-                className={`group  cursor-pointer px-4 py-2  rounded-full transition-all duration-150 ease-in-out ${navItem === 'Nosotros' ? 'bg-[#173330]' : 'hover:bg-white/30'
+                className={`group  cursor-pointer px-4 py-2  rounded-full transition-all duration-150 ease-in-out ${navItem === 'Nosotros' ? 'bg-brand-forest' : 'hover:bg-white/30'
                   }`}
               >
                 <p className={`${navItem === 'Nosotros' ? 'text-white' : 'text-black'}`}>Nosotros</p>
-              </div>
+              </button>
 
-              <div
+              <button
+                type="button"
                 onClick={() => changeNavItem('Metodología')}
-                className={`group  cursor-pointer px-4 py-2 rounded-full transition-all duration-150 ease-in-out ${navItem === 'Metodología' ? 'bg-[#F9F1D2]' : 'hover:bg-white/30'
+                className={`group  cursor-pointer px-4 py-2 rounded-full transition-all duration-150 ease-in-out ${navItem === 'Metodología' ? 'bg-brand-cream' : 'hover:bg-white/30'
                   }`}
               >
                 <p>Metodología</p>
-              </div>
+              </button>
 
-              <div
+              <button
+                type="button"
                 onClick={() => changeNavItem('Testimonios')}
-                className={`group cursor-pointer px-4 py-2 rounded-full transition-all duration-150 ease-in-out ${navItem === 'Testimonios' ? 'bg-[#F9F1D2]' : 'hover:bg-white/30'
+                className={`group cursor-pointer px-4 py-2 rounded-full transition-all duration-150 ease-in-out ${navItem === 'Testimonios' ? 'bg-brand-cream' : 'hover:bg-white/30'
                   }`}
               >
                 <p>Testimonios</p>
-              </div>
+              </button>
             </div>
             <div>
               <a
+                href="https://wa.me/+393792913474?text=Hola!%20Acabo%20de%20ver%20la%20página%20y%20me%20gustaría%20obtener%20más%20información%20por%20favor"
+                target="_blank"
                 rel="noopener noreferrer"
-                onClick={(e) => {
-                  e.preventDefault() // stop immediate navigation
-                  // Track event first
-                  trackEvent('Contact_WhatsApp', { method: 'whatsapp_button' })
-                  // Open the link after a short delay to ensure tracking
-                  setTimeout(() => {
-                    window.open(
-                      'https://wa.me/+393792913474?text=Hola!%20Acabo%20de%20ver%20la%20página%20y%20me%20gustaría%20obtener%20más%20información%20por%20favor',
-                      '_blank'
-                    )
-                  }, 300) // 300ms = enough for the pixel to fire
-                }}
+                onClick={() => trackEvent('Contact_WhatsApp', { method: 'whatsapp_button' })}
               >
                 <div className="group hover:scale-110 active:scale-95 cursor-pointer shadow-black/60 shadow-md z-50 bg-[#25D366] rounded-full p-[5px]">
                   <FaWhatsapp className="w-[40px] h-[40px] fill-white p-1" />
@@ -270,19 +260,10 @@ export default function Home() {
                 ¡Es Posible!
               </h3>
               <a
+                href="https://wa.me/+393792913474?text=Hola!%20Acabo%20de%20ver%20la%20página%20y%20me%20gustaría%20obtener%20más%20información%20por%20favor"
+                target="_blank"
                 rel="noopener noreferrer"
-                onClick={(e) => {
-                  e.preventDefault() // stop immediate navigation
-                  // Track event first
-                  trackEvent('Contact_WhatsApp', { method: 'whatsapp_button' })
-                  // Open the link after a short delay to ensure tracking
-                  setTimeout(() => {
-                    window.open(
-                      'https://wa.me/+393792913474?text=Hola!%20Acabo%20de%20ver%20la%20página%20y%20me%20gustaría%20obtener%20más%20información%20por%20favor',
-                      '_blank'
-                    )
-                  }, 300) // 300ms = enough for the pixel to fire
-                }}
+                onClick={() => trackEvent('Contact_WhatsApp', { method: 'whatsapp_button' })}
               >
                 <div className="px-3 flex justify-around items-center w-[190px] md:w-[250px] mx-auto py-1 md:py-2 rounded-full bg-[#25d366] shadow-black/30 shadow-lg cursor-pointer  hover:scale-105 ease-in 1s active:scale-95 mt-12">
                   <p
@@ -298,7 +279,7 @@ export default function Home() {
             <div className="absolute bottom-12 md:bottom-0 w-full left-0 py-8 px-2 md:px-8 flex justify-center">
               <div className="bg-white-500 md:flex justify-between items-end md:w-full gap-4">
                 <div>
-                  <NextImage src={Icon} className="w-20 lg:w-40 object-contain" />
+                  <NextImage src={Icon} alt="LET Academy" className="w-20 lg:w-40 object-contain" />
                 </div>
                 <div>
                   <p className="text-base md:text-xl shadow-black drop-shadow-lg text-start md:text-end text-white font-black">
@@ -339,7 +320,7 @@ export default function Home() {
                 </div>
               </div>
             </div>
-            <NextImage src={backgroundFooter} className="w-full h-screen object-cover bg-[#2D878D] overflow-hidden" />
+            <NextImage src={backgroundFooter} alt="" className="w-full h-screen object-cover bg-brand-teal overflow-hidden" />
           </div>
         </div>
     </>

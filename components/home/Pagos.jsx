@@ -4,10 +4,10 @@ export default function PagosView() {
   return (
     <div className="bg-[#186f5f]">
       <div id="hero" className="w-full py-24">
-        <h1 className="text-6xl md:text-8xl shadow-black drop-shadow-lg my-4 text-center text-[#F9F1D2] font-black">
+        <h1 className="font-display text-6xl md:text-8xl shadow-black drop-shadow-lg my-4 text-center text-brand-cream font-black">
           Gestión <br /> Pagos
         </h1>
-        <p className="text-base mx-auto max-w-[350px] md:text-xl drop-shadow-lg text-center text-[#F9F1D2]">
+        <p className="text-base mx-auto max-w-[350px] md:text-xl drop-shadow-lg text-center text-brand-cream">
           Elige un plan o paga la mensualidad correspondiente al mes actual
         </p>
       </div>
